@@ -1,0 +1,1651 @@
+Developmental Cell
+Article
+A Growth Factor-Induced, Spatially Organizing
+Cytoskeletal Module Enables Rapid
+and Persistent Fibroblast Migration
+Katrin Martin,1 Marco Vilela,2,4 Noo Li Jeon,3 Gaudenz Danuser,2,4 and Olivier Pertz1,*
+1Department of Biomedicine, University of Basel, Mattenstrasse 28, 4058 Basel, Switzerland
+2Department of Cell Biology, Harvard Medical School, 240 Longwood Avenue, LHRRB 301B, Boston, MA 02115, USA
+3School of Mechanical and Aerospace Engineering, Seoul National University, Seoul 151-742, Republic of Korea
+4Present address: Department of Cell Biology, UT Southwestern Medical Center, Dallas, TX 75235-5303, USA
+*Correspondence: olivier.pertz@unibas.ch
+http://dx.doi.org/10.1016/j.devcel.2014.07.022
+SUMMARY
+Directional migration requires robust front/back po-
+larity. We ﬁnd that ﬁbroblasts treated with platelet-
+derived growth factor (PDGF) and prepolarized by
+plating on a ﬁbronectin line substrate exhibit persis-
+tent migration for hours. This does not occur in the
+absence of PDGF or on uniformly coated ﬁbronectin
+substrates. Persistent migration arises from estab-
+lishment of two functional modules at cell front and
+back. At the front, formation of a zone containing po-
+dosome-like structures (PLS) dynamically correlates
+with low RhoA and myosin activity and absence of a
+contractile lamella. At the back, myosin contractility
+speciﬁcally controls tail retraction with minimal
+crosstalk to the front module. The PLS zone is main-
+tained in a dynamic steady state that preserves size
+and position relative to the cell front, allowing for
+long-term coordination of front and back modules.
+We propose that front/back uncoupling achieved
+by the PLS zone is crucial for persistent migration
+in the absence of directional cues.
+INTRODUCTION
+Cells directionally migrate in response to gradients of immobi-
+lized (haptotaxis) or diffusible (chemotaxis) cues ( Parsons
+et al., 2010). Extracellular matrix (ECM) rigidity or dimensionality
+can also modulate this process (Petrie et al., 2009). Combina-
+tions of these cues will affect parameters such as cell speed,
+shape, and directionality, producing a continuum of cell migra-
+tion modalities (Friedl and Wolf, 2010). Whereas the diversity of
+cell migration modalities is well accepted, they have been
+described in a wide variety of different model systems, making
+fair comparisons difﬁcult. Accordingly, our understanding as to
+how the dynamics of the migration machinery is modulated to
+establish particular migration modes is still limited.
+Fibroblasts are large mesenchymal cells that are mostly
+involved in tissue repair. Due to their well-deﬁned cytoskeleton
+organization, they have been a popular model system to study
+actin and adhesion dynamics during cell migration. At the front,
+two cytoskeletal modules are coupled with integrin-based
+adhesion structures to allow cell propulsion ( Ponti et al.,
+2004). The lamellipodium uses Arp2/3-mediated assembly of
+an actin dendritic meshwork to propel the leading edge forward
+(Pollard and Borisy, 2003). Nascent adhesions are formed and
+can mature into focal complexes. Behind the lamellipodium,
+the lamella consists of bundled actin and nonmuscle myosin
+II ﬁlaments that provide a contractile network for traction.
+Here, focal complexes mature into stress ﬁber-linked, elon-
+gated focal adhesions (Parsons et al., 2010). Linkage of front
+and back focal adhesions through stress ﬁbers, coupled with
+propulsion of the leading edge, moves the cell forward, and
+leads to disassembly of back focal adhesions and tail retrac-
+tion. Podosomes are an additional type of adhesions that
+consist of a central actin core associated with integrins and
+other proteins (Murphy and Courtneidge, 2011 ). They are
+observed in a wide variety of immune and cancer cells (Calle
+et al., 2006 ) and are found in Src-transformed ﬁbroblasts
+(Oikawa et al., 2008). Podosome substrate interaction leads
+to local ECM degradation and invasion.
+One important limitation of ﬁbroblasts is their moderate capa-
+bility to robustly polarize during random migration on uniform
+ECM ﬁelds (haptokinesis) or in response to global growth factor
+stimulation (chemokinesis). Thus, on planar ECM substrates,
+unrestricted membrane protrusion leads ﬁbroblasts to adopt
+a wide variety of cellular shapes with various degrees of polariza-
+tion. Although this is sufﬁcient to study the ﬁne dynamics of
+membrane protrusion and tail retraction, it precludes the anal-
+ysis of how both processes are coordinated to produce net
+movement. In vivo, ﬁbroblasts interact with ECM structures of
+speciﬁc geometries that inﬂuence cell polarization (Kim et al.,
+2012). Hence, ﬁbroblasts migrating on micrometric ECM line
+patterns exhibit increased migration speed and directionality
+(Doyle et al., 2009). Mimicking the anisotropic ECM organization
+observed in vivo therefore provides an opportunity to induce
+robust ﬁbroblast polarization.
+Rho family GTPases are key regulators of the spatio-tem-
+poral organization of actin and adhesion dynamics during cell
+migration. While initial models suggested that Rac1 and Cdc42
+operate at the front to regulate membrane protrusion, and
+RhoA functions at the back to control tail retraction (Burridge
+and Wennerberg, 2004 ), recent studies using ﬂuorescence
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 701
+00:00
+02:00
+01:00
+04:00
+03:00
+05:00
+06:00
+Hapto Chemo
+0 2 4 6 8 10 12
+0
+10
+20
+30
+40
+50
+60
+70
+Time [h]
+Hapto
+Chemo
+Left focus
+Centroid
+Right focus
+Reflection Reflection
+H
+Hapto
+Chemo
+Hapto
+Chemo
+01234567
+Hapto
+0
+50
+100
+150Speed [μm/h]
+01234567
+Chemo
+60
+100
+140
+180
+Length [μm]
+Time [h]
+GF
+ED
+CBA
+0
+0.2
+0.4
+0.6
+0.8
+1
+Persistence
+Hapto planeChemo plane
+Hapto lineChemo line
+*
+**
+Time ∆t=5min LateEarly
+Hapto Chemo
+0 1 2 3 4 5 6 7−100
+−50
+0
+50
+100
+150
+200
+ 
+ 
+Speed [μm/h]
+Hapto
+0 2 4 6 8 10−100
+−50
+0
+50
+100
+150
+ 
+ 
+Left
+Right Chemo
+ 
+Time [h]
+Instantaneous speed
+Bidirectional motion
+Trend
+0 20 40 60 80 100120140160−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8
+Motion of left and
+right focusHapto Chemo
+Confidence interval α<0.05; Cross-correlation not significant
+−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8Cross−correlation
+0 20 40 60 80 100120140160
+Time [min]Time [min]
+Confidence interval α<0.05 
+Cross-correlation not significant
+Time [min]
+ 
+ 
+−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8
+1
+Average 
+Cross-correlation
+Hapto
+Time [min]
+−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8
+1
+Average 
+Cross-correlation
+Chemo
+High densityLow density
+J
+I
+Speed [μm/h]
+Figure 1. Characterization of Hapto and Chemo Cell Migration on the Line Substrate
+(A) Representative phase contrast time series of hapto and chemo cell migration on line substrates.
+(B) Time course of instantaneous speed. Speed ± SEM is shown (nR 20 cells).
+(C) Cell migration persistence. Boxplots of net over total travel distance during steady state migration (6 hr until 12 hr post-PDGF stimulation); median, interquartile
+(box) and data (whiskers) ranges are shown. *p < 0.005, **p < 0.001; (nR 19 cells; Dunn’s multiple comparison test).
+(D) Confocal imaging of phalloidin stained hapto and chemo cells. Left: xy, xz, and yz cross-sections. Right: 3D reconstructions of ﬁbroblasts.
+(E) Strategy for identiﬁcation of centroid and left and right foci. Cell centroid is ﬁrst identiﬁed using the segmented outline of the cell. Ellipse ﬁtting to reﬂected (left
+and right) halves deﬁnes left and right foci, representing independent cell motions at both cell edges.
+(F) Examples of cell segmentation of hapto and chemo cells. Cell outlines (upper); and movements of left and right foci (lower) are color-coded according to time.
+Cells were plated in absence or presence of 40 ng/ml PDGF, and time-lapse analysis was started 1–2 hr postplating using a 203 air objective.
+(G) Representative time courses of centroid velocities for hapto and chemo cells (dark blue line). Red line, low variation trend speed. Light blue bands indicate
+95% conﬁdence intervals of bidirectional motion. In phases in which the trend speed is outside the band, the cell transiently establishes directed motion. See the
+Experimental Proceduresfor complete description of time course decomposition in high and low variation components.
+(legend continued on next page)
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+702 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.
+resonance energy transfer (FRET)-based biosensors have indi-
+cated a higher level of signaling complexity (Machacek et al.,
+2009; Pertz et al., 2006). Most importantly, RhoA signaling is
+also active at the cell front, where during ﬁbroblast haptokinesis,
+two distinct activities are observed: Adjacent to the leading
+edge, a focused region of RhoA activity is coupled to the initia-
+tion of edge protrusion (Machacek et al., 2009). This is followed
+by a broader gradient of RhoA activity reaching 10–15mm into
+the lamella (Pertz et al., 2006). Rac1 and Cdc42 are also acti-
+vated at the front, however, with a delay relative to protrusion
+onset (Machacek et al., 2009). This organization is fundamentally
+altered when ﬁbroblasts are acutely stimulated with platelet-
+derived growth factor (PDGF), which leads to heightened cell
+edge protrusion and membrane rufﬂing. Here, RhoA activity is
+displaced from the leading edge (Pertz et al., 2006), and suppos-
+edly replaced by heightened Rac1 and Cdc42 activity. Hence,
+dependent on the cue, different Rho GTPase signaling programs
+are activated to induce distinct modes of cell migration.
+In this paper, we dissect the mechanisms underlying the differ-
+ences of ﬁbroblast haptokinesis and PDGF-induced chemokine-
+sis on micropatterned ﬁbronectin (FN) line substrates. We ﬁnd
+that PDGF-treated ﬁbroblasts exhibit persistent cell migration
+for hours. This correlates with the formation of a zone containing
+podosome-like structures (PLSs) directly behind the lamellipo-
+dium that exhibits constant size and position. The PLS zone
+dynamically correlates with low RhoA and myosin activity, and
+precludes the formation of a lamella. Instead, myosin activity is
+concentrated behind the PLS zone to promote tail retraction.
+Thus, the PLS zone spatially organizes the formation of two
+distinct modules, one for membrane protrusion and one for tail
+retraction, enabling persistent migration.
+RESULTS
+PDGF Induces Persistent Migration of Prepolarized
+Fibroblasts
+To compare haptokinetic (hapto) and PDGF-induced chemoki-
+netic (chemo) cell migration modes, we used REF52 rat embry-
+onic ﬁbroblasts, a classic model system to study actin and
+adhesion dynamics (Zamir et al., 1999). Throughout this work,
+we used the following conditions: serum-starved REF52 ﬁbro-
+blasts were plated on 10mg/ml FN-coated coverslips in absence
+(hapto) or presence of 40 ng/ml PDGF (chemo). On uniformly
+coated plane substrates, both hapto and chemo ﬁbroblasts
+migrate randomly with an instantaneous speed of/C24 10 mm/hr
+(Figures S1A–S1C available online). Although not signiﬁcant at
+the population level, a fraction of chemo cells displayed
+increased directional persistence (Figure S1B). To normalize
+cell shape and mimic the anisotropic nature of the ECM
+observed in vivo, we used plasma etching to construct 20mm
+wide 10mg/ml FN lines separated by the nonadhesive compound
+poly-L-Lysine-polyethylene glycol (PLL-PEG;Figure S1D). This
+allowed FN coating at a density identical to the coat on the plane
+substrate (Figures S1E and S1F). Hapto cells on line substrate
+adopted an elongated morphology and exhibited similar instan-
+taneous speed and persistence as on plane substrates (Figures
+1A, 1B, andS1C). In contrast, chemo cells gradually sped up on
+line substrates, reaching a 5-fold increase in instantaneous
+speed within hours after PDGF stimulation and acquired a steady
+state in which they stably migrated in one direction (Figures 1A–
+1C). Both steady state speed and persistence scaled inversely
+with the FN coating density (Figures S1G and S1H). The differ-
+ences between hapto and chemo cells in terms of migration
+properties were accompanied by acquisition of distinct cell mor-
+phologies. Hapto cells were elongated and ﬂat, whereas chemo
+cells exhibited a strongly rufﬂed leading edge, a thick cell body,
+and an obvious trailing edge (Figure 1D). Together, these results
+show that PDGF stimulation of ﬁbroblasts that are prepolarized
+on a FN line substrate induces rapid, persistent, and unidirec-
+tional cell migration.
+Polarization of Chemo Cells Involves a Morphological
+Transition with Uncoupling of Front and Back Motions
+The cell shape normalization on the line substrate enabled us
+to unambiguously deﬁne cell front and back and thus to study
+their coordination. For that purpose, we acquired time-lapse
+sequences of ﬁbroblasts stably expressing the F-actin marker
+Lifeact-green ﬂuorescent protein (GFP;Riedl et al., 2008). To
+quantify cell migration morphodynamics at relevant time scales,
+we designed an automated segmentation algorithm to evaluate
+the dynamics of front, centroid, and back parts (Figures 1E
+and 1F; Movie S1). Hapto cells exhibited alternating left and
+right motions, indicating the existence of transient polarization
+episodes that impede persistent cell migration ( Figure 1G).
+In contrast, a few hours after PDGF stimulation, chemo cells ac-
+quired a stably polarized state of persistent migration (Figure 1G).
+This correlated with increased speed and decreased cell length,
+whereas these parameters remained constant throughout time in
+hapto cells (Figure 1H).
+We then evaluated the coordination between cell front and
+back movements by performing time-dependent cross-correla-
+tion analysis of velocity ﬂuctuations (Experimental Procedures
+and Figure S1I). Hapto cells displayed transient episodes of
+strongly positive and strongly negative cross-correlations
+(Figures 1I and 1J), where front and back move coordinately in
+identical or opposite directions. This indicates that at least during
+episodes of comovement, front and back motions are coupled.
+In contrast, chemo cells did not exhibit robust positive or nega-
+tive cross-correlations (Figures 1I and 1J), suggesting that front
+and back movements are uncoupled. Thus, establishment of
+the steady state of persistent migration in chemo cells occurs
+on time scales of hours and involves a morphological transition
+(H) Average time courses of cell speeds (red) and lengths (blue), n = 21 chemo cells, n = 16 hapto cells. Light blue and red intervals represent the 95% conﬁdence
+interval around the mean value. Note that different cell trajectories were aligned in time to faithfully represent the transition to a polarized phenotype.
+(I and J) Motion coordination between left and right foci as quantiﬁed by cross-correlation. See experimental procedures for the time-dependent cross-correlation
+algorithm. (I) Single cell, foci motion cross-correlation traces. Cartoons indicate possible states of focus motion yielding positive, null, and negative cross-
+correlation. (J) 2D distribution of the average cross-correlation (y axis); duration of all instances of uniform qualitative behavior (x axis). Data from n = 13 cells
+(hapto), n = 10 cells (chemo).
+Scale bars represent (A) 100mm and (D and F) 10mm.
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 703
+that correlates with increased velocity. Furthermore, the polar-
+ized steady state of chemo cells correlates with uncoupling of
+front and back motions.
+Chemo Cells Display Podosome-like Structures at the
+Leading Edge
+The distinct cell morphologies suggest that hapto and chemo
+cell migration modes are mediated by different cytoskeletal
+and adhesion dynamics. To test this we used high-resolution
+immunostaining using epiﬂuorescence (EPI) and total internal
+reﬂection ﬂuorescence (TIRF) microscopy. Transiently polarized
+hapto cells displayed asymmetric distributions of front-enriched
+stress ﬁbers and focal adhesions (Figure 2A). A network of trans-
+verse stress ﬁbers connected leading edge and lateral focal
+adhesions, whereas a lower amount of focal adhesions was
+observed at the trailing edge. Focal adhesions at front and
+back were connected by lateral stress ﬁbers. In contrast, stably
+polarized chemo cells overall had fewer stress ﬁbers (Figure 2B).
+A large region at the leading edge displayed dotted F-actin-rich/
+vinculin-low PLSs (Figure 2B; red arrowheads, PLS; dotted blue
+line, PLS zone). Although PLSs did not display the bona ﬁde F-
+actin core surrounded by a ring containing adhesion structures
+as observed in podosomes (Albiges-Rizo et al., 2009), they dis-
+played proteolytic activity on a gelatin line substrate (Figure S2A)
+and were enriched in cortactin (Figure S2B). Within the PLS
+zone, we also observed F-actin-low/vinculin-rich structures not
+connected to stress ﬁbers (Figure 2B, yellow arrowheads) that
+were reminiscent of focal complexes. Focal adhesions were
+A BHapto 
+F-actin
+Vinculin
+F-actin/ Vinculin/ Nucleus
+F-actin
+Chemo 
+F-actin
+F-actin
+Vinculin
+12
+LS C A
+0
+2
+4
+6
+8
+10Ratio (F-actin/ Vinculin)
+***
+***
+***
+LS C
+0
+1
+2
+3
+4
+5
+6Ratio (F-actin/ Paxillin)
+***
+***
+n.s.
+1
+Vinculin
+F-actin/ 
+Vinculin
+D
+F-actin/ 
+Vinculin/ 
+Nucleus
+2
+Focal complex (FC) Focal adhesion (FA)Podosome-like structure (PLS)Stress fiber 
+F-actin
+Vinculin
+F-actin/ Vinculin
+C
+F-actin
+Vinculin
+F-actin/ 
+VinculinF-actin
+Figure 2. Actin and Adhesion Structures in Hapto and Chemo Cells
+Micrographs are shown in inverted black and white contrast (ibw) or as color composites.
+(A and B) Representative F-actin and vinculin stainings in hapto (A) and chemo (B) cells. Cells were ﬁxed 6 hr postplating, stained with phalloidin-alexa555 and
+anti-vinculin antibody, and imaged using EPI or TIRF microscopy. A DAPI nuclear stain was also included. Magniﬁed insets of leading edge are shown. Blue
+outline delineates the PLS zone.
+(C) Magniﬁed inset of the back region of the chemo cell in (B). White arrowhead denotes rear contractile F-actin network, blue arrowhead points to focal
+adhesions.
+(D) Quantiﬁcation of F-actin/vinculin or paxillin ﬂuorescence ratios of different adhesion structures. Mean ﬂuorescence intensity of F-actin andadhesion
+component were ratioed using threshold masks in the same cell. Ratio F-actin/vinculin: 5 cells, n = 98 PLSs, 112 focal complexes, 82 focal adhesions; ratio
+F-actin/paxillin: 5 cells, n = 162 PLSs, 187 focal complexes, 77 focal adhesions. Boxplots with median, interquartile (box), and data (whiskers) ranges are shown.
+***p < 0.001 (Dunn’s multiple comparison test).
+Scale bars represent 10mm (A–C).
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+704 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.
+absent within the PLS zone. Immediately behind the PLS zone,
+TIRF microscopy revealed a network of ventrally localized trans-
+verse actin ﬁbers (Figure 2C, white arrowhead). This network
+was not connected to any adhesion structure in the cell center,
+but associated with elongated focal adhesions conﬁned to the
+lateral edges and the back of the cell (Figure 2C, blue arrow-
+heads). To clearly distinguish these different adhesion struc-
+tures, the relative enrichment between F-actin and vinculin or
+paxillin ﬂuorescence signals in PLSs, focal complexes and focal
+adhesions in chemo cells is quantitated inFigure 2D. Overall,
+such organization with a PLS zone was observed in 70% of
+chemo cells on lines (Figure S2C). These results indicate the ex-
+istence of different actin and adhesion structures in hapto and
+chemo cells.
+Chemo Cells Lack a Contractile Lamella
+We subsequently monitored actin dynamics in both cell migration
+modes using the F-actin marker Lifeact-GFP (Movie S2). In hapto
+cells, the lamellipodium remained continuously attached to the
+substrate, leading to a highly adherent mode of membrane pro-
+trusion (Figure 3A, lower panels). Formation of actin arcs (Hotulai-
+nen and Lappalainen, 2006) indicated robust actin retrograde
+ﬂow in the lamella as well as on the lateral sides (Figure 3A, kymo-
+graphs 1 and 2, quantitated inFigure 3C). In marked contrast,
+in chemo cells, the lamellipodium was characterized by rapid
+bursts of ﬁlopodial and membrane protrusions that escaped the
+TIRF illumination ﬁeld. This indicates a low adhesive protrusion
+mode because these structures extend in Z before contacting
+the substrate (Figure 3B, lower panels). Directly behind the lamel-
+lipodium, the lamella was replaced by the PLS zone (Figure 3B,
+kymograph 1) with absence of contractile, rearward-ﬂowing actin
+arcs. This suggests that actin retrograde ﬂow is conﬁned to
+the lamellipodium but mostly absent from the PLS zone. Live
+cell imaging also revealed that PLSs speciﬁcally originate in the
+lamellipodium that extends on the permissive FN substrate,
+remain immobile with respect to the substrate (Figure 3B, kymo-
+graph 1, red arrowheads), and display a lifetime of about 10 min
+(Figure 3G). Accordingly, the PLS zone remained constant in
+size throughout cell migration (Figure 3B, dotted white lines in
+kymograph 1). Robust actin retrograde ﬂow persisted on the
+sides as observed by inward ﬂow of lateral arcs (Figure 3B, kymo-
+graph 2, quantitated inFigure 3C).
+We then observed adhesion dynamics (Figures 3D–3G; Movie
+S3) and noticed that chemo cell polarization and formation of
+the PLS zone was highly sensitive to exogenous expression of
+GFP-tagged cytoskeletal or adhesion proteins, even when sta-
+bly expressed at low level. This required two-color imaging ex-
+periments, in which we ﬁrst produced stable cell lines using a
+lentiviral system for low expression of GFP-tagged proteins,
+then used an adenovirus system to coexpress Lifeact-mCherry
+for identiﬁcation of polarized chemo cells. We tested a number
+of different constructs, and found that VASP-GFP was the adhe-
+sion marker that was least perturbing. In hapto cells, focal com-
+plexes immediately converted to focal adhesions, most likely
+through interaction with the contractile lamella (Parsons et al.,
+2010; Figures 3D and 3E;Movie S3, hapto, blue arrowheads).
+These focal adhesions displayed typical centripetal sliding
+behavior (Figure 3F) with a lifetime of approximately 30 min
+(Figure 3G). Chemo cells displayed both PLSs (F-actin-high/
+VASP-low, red arrowheads) and focal complexes (F-actin-low/
+VASP-high, yellow arrowheads) at the leading edge (Figures
+3D and 3E). Nonmotile PLSs grew and shrunk in lateral exten-
+sion-decay cycles (Figure 3F, red arrowheads). Within the PLS
+zone, VASP-GFP revealed that focal complexes also remained
+immobile relative to the substrate (Figure 3F, yellow arrowheads)
+and almost never matured into focal adhesions. Thus, they
+display identical lifetimes as PLSs (Figure 3G). Elongated focal
+adhesions were only observed on the lateral edges and at the
+back of the cells, and exhibited sliding motions (Figure 3F,
+chemo, blue arrowheads), most likely through pulling by the
+SF array emanating from the cell center (Movie S3). Together,
+these results show that the contractile lamella observed in hapto
+cells is replaced by the PLS zone in chemo cells. Absence of a
+contractile lamella correlates with loss of focal complex-focal
+adhesions maturation within the PLS zone, leading to their turn-
+over, and restricting focal adhesions to the back and lateral
+sides of the cell.
+Establishment of Steady-State, Persistent Chemo Cell
+Migration Correlates with Appearance of the PLS Zone
+The steady state of persistent chemo cell migration is acquired
+hours after PDGF stimulation and is then characterized by a dy-
+namic PLS zone at the leading edge. To explore how this polar-
+ized steady state is established, we performed high-resolution
+time-lapse imaging of F-actin dynamics during the ﬁrst 7 hr after
+PDGF stimulation. On the line substrate, hapto cells continuously
+exhibited robust, symmetric stress ﬁbers that correlate with left-
+right motions impeding long-term polarization (Movie S4). PDGF
+stimulation led to a stereotypical series of morphological states
+that culminated in the steady state of polarized cell migration
+(Figures 4A and 4B;Movie S4). Immediately after PDGF stimula-
+tion, chemo cells on the line substrate exhibited intense rufﬂing,
+which correlated with decreased amounts of stress ﬁbers. Two
+to three hours later, a robust PLS zone suddenly appeared at
+one cell edge, but the cell body was still adherent. Tens of
+minutes later, the presence of a robust PLS zone and rounding
+up of the cell body then correlated with persistent, rapid cell
+migration. As already observed on smaller time scales, the PLS
+zone remained at the leading edge and displayed constant
+length (Figure 4C). These results indicate that acquisition of the
+polarized steady state of persistent migration coincides with
+appearance of the PLS zone.
+The PLS Zone also Occurs in Chemo Cells on Plane
+Substrates
+On the plane substrate, hapto cells also continuously exhibited
+prominent actin arcs that retrogradely ﬂowed inward throughout
+the periphery (Movie S4). This correlated with robust focal adhe-
+sion formation; however, with shorter lifetimes than on the line
+substrate (Figures S3A–S3C and S3G). In chemo cells, PDGF
+stimulation initially led to intense rufﬂing that then dampened
+(Movie S4). This was followed by appearance of multiple PLS
+zones that exhibit scanning motions at the cell periphery (Fig-
+ure 4D) and were intermixed with regions of actin retrograde
+ﬂow. These PLS zones were unstable and only persisted on
+time scales of tens of minutes (Figure 4D; Movie S4). High-res-
+olution analysis using TIRF indicated that PLSs were nonmotile
+with respect to the substrate (Figures S3D–S3F) and displayed
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 705
+Hapto
+Chemo
+n.s.
+0
+10
+20
+30
+40
+50
+60Lifetime [min]
+FCs (front)PLSs (front)FAs (front)
+***
+***
+G
+C
+0
+10
+20
+30
+40
+Hapto lineChemo line
+front side side
+**
+***
+Speed [μm/h]
+00:00 03:30 07:00 21:00
+Hapto 
+VASP
+FA
+(front)
+00:00 02:00 04:00 06:00 08:00 10:00 12:00
+VASP
+FC
+(front)
+00:00 02:00 04:00 06:00 08:00 10:00 12:00
+F-actin
+PLS
+(front)
+00:00 00:30 01:00 01:30 02:00 02:30 03:00
+VASP
+FA
+(back)
+Chemo 
+14:00 17:3010:30
+AB
+00:00 00:06 00:12 00:18
+Hapto 
+1
+1
+2
+2
+2
+Chemo 
+1
+1
+2
+00:00 00:06 00:12 00:18
+2F-actin
+VASP
+F-actin/ VASP
+F-actin
+VASP
+F-actin/ VASP
+1
+1
+F-actin F-actin
+VASP VASP
+F-actin/ VASP F-actin/ VASP
+Hapto Chemo 
+1 2
+1
+Hapto Chemo 
+Focal complex (FC) Focal adhesion (FA)Podosome-like structure (PLS)
+DE
+F
+Figure 3. Actin and Adhesion Dynamics in Hapto and Chemo Cells
+(A and B) Representative micrographs, time series (min:s), and inset zooms of Lifeact-GFP signals using TIRF in hapto (A) and chemo (B) cells. Kymographs are
+used to analyze actin dynamics at the leading (1) and lateral edges (2). Black arrowheads indicate actin arcs used to measure actin retrograde ﬂow velocity.
+Lower: white arrowheads indicate membrane protrusions. (B) Vertical streaks in the kymograph (indicated by red arrowheads) show that PLSs originate at the
+leading edge, are nonmotile with respect to the substrate, and display constant lifetimes. White dotted lines delineate PLS zone.
+(C) Quantiﬁcation of actin retrograde ﬂow velocity by kymograph analysis. Hapto: n = 9 cells, chemo: n = 5 cells, error bars indicate ± SEM, **p < 0.001,
+***p < 0.0001; Dunn’s multiple comparison test.
+(D) Representative micrographs of VASP-GFP and Lifeact-mCherry signals in hapto and chemo cells.
+(E) Kymographs of lines drawn in (D). Blue arrowheads point to focal adhesions, yellow arrowheads point to focal complexes, red arrowheads point to PLSs.
+(legend continued on next page)
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+706 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.
+shorter lifetimes than on the line substrate (on the order of 2–
+3 min,Figure S3G). The apparent motile behavior of PLS zones,
+observed at a global scale, resulted from cycles of single PLS
+appearance/disappearance. Focal complexes present within
+the PLS zone did not mature to focal adhesions and displayed
+identical lifetimes than PLSs (Figure S3D–S3G). These cytoskel-
+etal dynamics correlated with a higher level of polarization of
+chemo versus hapto cells, characterized by a lower aspect ratio
+(F) Representative time series of front and back adhesions and podosomes. Dashed crosshair provides reference for virtual inspection of motile behaviors of the
+adhesions. Arrowheads are color-coded as in (E).
+(G) Boxplots of lifetimes of leading edge adhesions and PLSs; median, interquartile (box), and data (whiskers) ranges are shown. nR5 cells each,R20 adhesions
+per cell, 87 PLSs, ***p < 0.0001; Dunn’s multiple comparison test.
+Scale bars represent (A, B, D, and E) 10mm and (F) 5mm.
+00:00
+00:50
+01:40
+02:30
+03:20
+04:10
+05:00
+05:50
+06:40
+05:00 05:50 06:4004:1003:20F-actin
+F-actin
+ 00:00
+01:40
+03:20
+04:10
+F-actin
+Peripheral ruffleStress fiber Podosome-like structure (PLS)
+A
+D
+05:50 F-actin F-actin05:30
+05:40
+05:50
+06:00
+06:10
+06:20
+B
+C
+Figure 4. Kinetics of Establishment of the Chemo Cell Polarized Migration Steady State
+Cells were stimulated with 40 ng/ml PDGF and immediately time-lapsed for F-actin dynamics (Lifeact-GFP) for 7 hr using a 403 air objective. Multiple ﬁelds of
+view were stitched to depict the whole polarization process. Time is in hr:min.
+(A) Low-resolution view of a time series of a chemo cell.
+(B) Representative high-resolution images of different polarization stages. 00:00, contractile stage; 01:40, rufﬂing; 3:20, appearance of PLS zone with cell body
+adherent; 04:10, PLS zone and loosely adherent cell body.
+(C) High-magniﬁcation views of the PLS zone after acquisition of the steady state of polarized cell migration.
+(D) Chemo cell on the plane substrate. Left: Fluorescent micrograph of a chemo cell. Right: time series depicting PLS zone dynamics. Different PLS zones are
+indicated by dotted lines. Dotted blue (05:30) and red lines (06:00–06:20) highlight different temporally deﬁned PLS zones.
+Scale bars represent (A) 100mm; (B–D) 10mm.
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 707
+(hapto: 0.27 ± 0.06, n = 13 cells; chemo: 0.17 ± 0.04, n = 16
+cells, ***p < 0.0001). These results show that on the plane sub-
+strate, transient establishment of PLS zones associates with
+localized loss of contractile structures such as actin arcs and
+focal adhesions and only correlates with mild polarization. On
+the line substrate, the PLS zone is geometrically conﬁned
+and correlates with loss of contractile networks and lamella
+formation at one cell edge, which is associated with robust
+polarization.
+Hapto and Chemo Cells Display Different Leading Edge
+Dynamics
+We next investigated the dynamics of the leading edge in high-
+resolution time-lapse sequences sampled at 5 s per frame. We
+quantiﬁed the dynamics of edge protrusion and retraction as
+previously described (Machacek and Danuser, 2006). Protrusion
+velocity maps were generated for hapto and chemo cells both on
+plane and line substrates (Figures 5A–5D) and statistically eval-
+uated (Figures 5E–5G). Hapto cells on the plane substrate
+−200−150−100−500 50100150200250300Speed [nm/s]
+ 
+ 
+1 2 3 4 5 6 7 8
+10
+20
+30
+40
+50
+60
+70
+Time [min]
+Window
+1 2 3 4 5 6 7 8
+10
+20
+30
+40
+50
+60
+70 Window
+Time [min]
+Hapto plane Chemo plane
+1 2 3 4 5 6 7 8
+10
+20
+30
+40
+50
+60
+70 Window
+Time [min]
+1 2 3 4 5 6 7 8
+10
+20
+30
+40
+50
+60
+70 Window
+Time [min]
+Hapto line Chemo line
+0
+20
+40
+60
+80
+100Persistence [s]
+0
+20
+40
+60
+80
+100
+120Speed[nm/s]
+0
+2
+4
+6
+8Distance [μm]
+ line  line
+**/**
+ns/**
+**/**
+**/** **/**
+ns/ns
+**/**
+**/****/** **/****/**
+**/** 
+**/****/** **/****/**
+**/** 
+Retraction
+Protrusion
+A B
+CD
+EF G
+ line  line  line  line
+**/**
+**/**
+ns/**
+ns/** ns/ns
+Figure 5. Dynamics of Leading Edge in Hapto and Chemo Cells
+Micrographs are shown in ibw contrast.
+(A–D) Space-time maps of edge velocities and representative cell edges indicating segments used for the analysis. Edge velocities are color-coded according to
+scale with protrusions displayed in warm and retractions displayed in cold colors. (C and D) Dotted lines indicate edge dynamics on the permissive substrate. (B)
+Dotted lines indicate edge segments containing PLSs.
+(E–G) Quantiﬁcation of different metrics characterizing membrane protrusion dynamics. Average persistence times (E), speed (F), and traveled distance (G), nR5
+cells each, ±SEM, **p < 0.001; Dunn’s multiple comparison test.
+Scale bars represent 10mm (A–D).
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+708 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.
+displayed poorly protrusive edges, with low velocities and
+no obvious persistence (Figure 5A). Spatial clustering of locally
+measured edge velocities revealed two populations of edge dy-
+namics in chemo cells on the plane substrate. Remarkably, they
+speciﬁcally associated either with the PLS zone (red edge) or
+contractile networks (blue edge;Figure 5B). Whereas the speed
+of the PLS-associated edge was enhanced, it displayed low pro-
+trusive persistence, but still promoted efﬁcient net protrusion.
+The contractile edge displayed similar properties as those
+observed in hapto cells (which had only one type of protrusion
+dynamics). On the line substrate, hapto cells displayed a slight
+enhancement of edge velocity and protrusion persistence (Fig-
+ure 5C). Chemo cells displayed enhancement of both protrusion
+persistence and speed, resulting in a higher net protrusive
+activity (Figure 5D, red edges). These results indicate that the
+noncontractile PLS zone associates with a highly protrusive
+leading edge, prominently on line substrates, but present also
+locally on plane substrates.
+Chemo Cells Assemble a Myosin Cluster Directly behind
+the PLS Zone for Trailing Edge Retraction
+The absence of a contractile lamella in chemo cells raised the
+question of their migration dependence on nonmuscle myosin
+II (myosin)-based contractility. To address this, we evaluated
+the subcellular localization and dynamics of myosin light chain
+2a (MLC2a) and of its active Ser19 phosphostate (pMLC). In
+hapto cells, pMLC and MLC2a prominently decorated stress
+ﬁbers (Figures 6A andS4A, Hapto), whereas pMLC additionally
+labeled the lamella (Figure 6A, Hapto, red arrowhead). Identical
+patterns were observed on plane substrates ( Figure S4B,
+Hapto). In contrast, both pMLC and MLC2a were absent from
+the chemo cell front and localized to a cortical cluster positioned
+behind the PLS zone, that coincided with the transverse stress
+ﬁber array that connects to focal adhesions at the lateral sides
+and back of the cell (Figures 6A and S4A, Chemo, red arrow-
+head). Outside the cluster, faint MLC2a staining remained
+present on these stress ﬁbers. On the plane substrate, chemo
+cells displayed mixed pMLC patterns: whereas the PLS zone
+was devoid of any pMLC signal, pMLC localized both as a cluster
+adjacent to the PLS zone, as well as to peripheral contractile
+arrays (Figure S4B, Chemo). Live imaging of MLC2a-GFP and
+Lifeact-mCherry dynamics revealed constant association be-
+tween MLC2a and stress ﬁbers in hapto cells (Figures 6B and
+6C, Hapto; Movie S5). In chemo cells, apposed but mutually
+exclusive PLS and MLC2a zones of constant size occurred
+throughout cell migration (Figures 6B and 6C, Chemo;Movie S5).
+To test the functional signiﬁcance of myosin-based contrac-
+tility, we used blebbistatin (Straight et al., 2003) to acutely inhibit
+myosin ATPase activity (Figure S4C, Hapto). Whole cell kymo-
+graph analysis showed that hapto cells lost their transient polar-
+ized state by extending uncontrolled membrane protrusions
+in all directions (Figure 6D; Movie S6), which correlated with a
+decrease in front/back coordination (Figure 6F, Hapto). Chemo
+cells were speciﬁcally impaired in tail retraction, but displayed
+almost unaffected leading edge membrane protrusion ( Fig-
+ure 6E). This correlated with loss of the pMLC cluster in chemo
+cells without affecting PLSs (Figure S4C, Chemo). On a time
+scale of 12 hr, loss of myosin-based contractility decreased
+chemo cell migration persistence without affecting speed (Fig-
+ures 6G and 6H). This occurred because of extreme stretching
+of chemo cells that ultimately led to their turning. Blebbistatin-
+treated hapto cells displayed no decrease in speed (Figures
+6G and 6H). These results show that myosin activity occurs
+in the lamella and stress ﬁber network of hapto cells, and its
+inhibition deregulates overall edge protrusion and migration.
+In contrast, in chemo cells, PLSs establish functionally distinct
+cytoskeleton structures, one without (front), and one with
+(back) myosin-driven contractility. Myosin inhibition then only
+affects tail retraction whereas the lamellipodial machinery in front
+of the PLS remains intact.
+Inhibition of the PLS Zone Rescues a Contractile
+Lamella in Chemo Cells
+The lack of myosin activity within the PLS zone of chemo cells
+prompted us to explore if it directly inhibited contractile function.
+To this end, we tested a panel of drugs and identiﬁed the Arp2/3
+inhibitor CK666 (Nolen et al., 2009) and the Src inhibitor PP2 (Oi-
+kawa et al., 2008) as appropriate compounds to acutely remove
+PLSs. Indeed, CK666 does not only affect PLSs, but also Arp2/3
+pools involved in lamellipodial protrusion. Consistently, in both
+hapto and chemo cells, treatment with 200mM CK666 led to
+the appearance of spiky protrusions (Figure 7A; Movie S6)a s
+previously described (Wu et al., 2012). This however did not
+markedly inhibit cell migration for 1 hr. Adhesion dynamics in
+hapto cells were only minimally affected (Figure 7A, blue arrow-
+heads; Movie S7), as well as pMLC signals (Figure 7B, Hapto). In
+chemo cells, CK666 treatment led to rapid removal of PLSs,
+which was concomitant with immediate appearance of stress ﬁ-
+bers and focal adhesions at the leading edge (Figure 7A, blue ar-
+rowheads; Movie S7). pMLC signals relocalized from the back of
+the PLS zone to the leading edge, in a pattern reminiscent of the
+lamella of hapto cells (Figure 7B). CK666 treatment did however
+not revert chemo cells to a contractile state as intense as in hapto
+cells. At a global level, CK666 only minimally affected hapto cell
+morphodynamics, with temporal cross-correlation analysis still
+indicating the presence of front/back coordination (Figures 7C
+and 7E;Movie S6). Chemo cells, however, only remained polar-
+ized for approximately 1 hr after CK666 treatment, and then lost
+persistent migration (Figure 7D; Movie S6). During this ﬁrst 1-hr
+polarized cell migration episode, strong front/back motion corre-
+lations were observed, indicating that abrogation of the PLS led
+to linkage of cell front and back (Figure 7F). To strengthen these
+results, we inhibited Src using 12.5mM PP2, which led to imme-
+diate removal of PLSs in chemo cells. Although this only margin-
+ally affected focal adhesion dynamics and pMLC signals in hapto
+cells (Figures S5A and S5C), immediate maturation of focal com-
+plexes to focal adhesions and rescue of leading edge pMLC sig-
+nals occurred in chemo cells upon PLS disruption in 3–4 min
+(Figures S5B and S5D). At longer time scales, Src inhibition
+also affected tail retraction, precluding the analysis of global
+cell migration properties. Together, these results indicate that
+the PLS zone inhibits myosin contractility responsible for lamella
+formation, which is required for front/back uncoupling.
+PLSs Dynamically Correlate with Low RhoA Activity in
+Chemo Cells
+The absence of contractility—absence of actin arcs, focal com-
+plex-focal adhesion maturation and pMLC—within the PLS
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 709
+F-actin
+A
+EPITIRF
+F-actin
+F-actin
+pMLC
+F-actin/ pMLC
+F-actin
+F-actin
+pMLC
+F-actin/ pMLC
+C 21Hapto Chemo 
+1
+ 2
+ F-actin
+MLC
+F-actin/ MLC
+t=30min
+F-actin
+MLC
+F-actin/ MLC
+TIRF
+Hapto Chemo B 
+1
+2
+F-actin
+MLC
+D
+Low Density High Density
+Confidence interval 
+α<0.05 Cross-correlation
+not significant
+Average Cross-correlation Distribution
+Ft=150min
+Chemo
+F-actin
+Chemo + Blebbistatin
+F-actin
+Hapto
+Hapto + Blebbistatin
+F-actin
+E
+5 10 15 20 25 30 35 40 45 50 55 60−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8
+1
+Hapto + Blebbistatin
+−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8
+1
+Chemo + Blebbistatin 
+Time [min]
+5 10 15 20 25 30 35 40 45 50 55 60
+F-actin/ MLC
+G
+H
+0
+20
+40
+60
+80
+Hapto DMSOChemo DMSO
+Hapto BLChemo BL
+Speed [um/h]
+***
+ns
+***
+***
+***ns
+0
+0.2
+0.4
+0.6
+0.8
+1
+Hapto BLChemo BL
+ Persistence
+******
+Figure 6. Characterization of the Back Myosin Module
+Micrographs and kymographs are shown in ibw contrast or as color composites.
+(A) Representative high-resolution micrographs of F-actin and pMLC stainings. Hapto cells: red arrowhead indicates pMLC enrichment at the leadingedge.
+Chemo cells: red arrowhead indicates pMLC in the myosin cluster behind the PLS zone.
+(B) Representative micrographs of Lifeact-mCherry and MLC2a-GFP signals using TIRF. Dotted black/white lines delineate PLS and myosin zones.
+(C) Kymograph analysis of F-actin and MLC2a dynamics along proﬁles shown in (B).
+(legend continued on next page)
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+710 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.
+zone prompted us to explore any potential role for RhoA
+signaling using RhoA2G, a FRET-based biosensor of RhoA acti-
+vation (Fritz et al., 2013). In hapto cells, both on the line and
+plane substrates, RhoA was activated as a broad gradient span-
+ning the entire lamella with activity decreasing from the leading
+edge to the cell center (Figures 8A and 8B, Hapto;Movie S8).
+This most likely results from an integrin-mediated mechano-
+sensing pathway impinging on RhoA (Guilluy et al., 2011). In
+chemo cells, low RhoA activity was observed at the PLS zone,
+but a highly focused region of lamellipodial RhoA activity re-
+mained (Figure 8A, Chemo;Movie S8). On the plane substrate,
+dynamic PLS motion correlated with local decrease of the
+lamellar RhoA activity, which immediately reappeared at sub-
+cellular regions in which PLSs vanish (Figure 8B, Chemo). This
+indicates an intimate spatio-temporal relationship between
+PLSs and low RhoA activity. We then acutely disrupted the
+PLS zone using CK666. In hapto cells, this did not affect the
+broad gradient of lamellar RhoA activity on both plane and
+line substrates (Figures 8C and 8D). In contrast, CK666-induced
+PLS disruption rescued the broad RhoA activation gradient
+at the front of chemo cells (Figure 8E). Identical results were
+observed on the plane substrate, again without any effect on
+RhoA activity in lamellar regions (Figure 8F). This indicates
+that the effects of CK666-mediated Arp2/3 inhibition on RhoA
+speciﬁcally correlate with PLS disruption, but do not affect
+lamellar RhoA signaling. Finally, identical results were obtained
+with the Src inhibitor PP2. PP2-induced PLS removal again led
+to immediate rescue of the broad RhoA activation pattern at the
+(D and E) Global morphodynamics of hapto (D) and chemo (E) cells in reponse to acute myosin inhibition. Steady-state hapto or chemo cells expressing Lifeact-
+GFP were incubated with carrier or 10mM blebbistatin and immediately imaged using a 203 air objective. Single micrograph and whole cell kymographs are
+shown.
+(F) 2D distribution of the average cross-correlation-duration of all instances of uniform qualitative behavior of hapto and chemo cells treated with1 0mM bleb-
+bistatin. n = 10 (hapto) and 11 (chemo) cells.
+(G and H) Instantaneous cell speed (G) and persistence (H) averaged between 6h and 12h after drug application. nR20 cells per condition. ***p < 0.0001; Dunn’s
+multiple comparison test. (G) Error bars represent SD. (H) Boxplots with median, interquartile (box), and data (whiskers) ranges are shown.
+Scale bars represent 10mm (A–E).
+A B
+C D
+F-actin
+Chemo + CK666
+t=150min
+Hapto + CK666
+F-actin
+F-actin (EPI)
+F-actin (TIRF)
+pMLC (TIRF)
+F-actin/ pMLC (TIRF) 
+Nucleus (EPI)
+Hapto + CK666
+F-actin (EPI)
+F-actin (TIRF)
+pMLC (TIRF)
+F-actin/ pMLC (TIRF) 
+Nucleus (EPI)
+Chemo + CK666
+High densityConfidence interval α<0.05 
+Cross-correlation not significant
+ Low density
+E F
+−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8
+1
+Hapto + CK666
+Average 
+Cross-correlation
+5 10 15 20 25 30 35 40 45 50 55 60
+Time [min]
+−1
+−0.8
+−0.6
+−0.4
+−0.2
+0
+0.2
+0.4
+0.6
+0.8
+1
+Chemo + CK666 
+5 10 15 20 25 30 35 40 45 50 55
+Average 
+Cross-correlation
+Time [min]
+VASP
+F-actin -01:30
+2
+VASP
+F-actin 04:30+ CK666
+2
++ CK666
++ CK666
++ CK666
+-01:30
+04:30
+06:00
+07:30
+F-actin / VASP F-actin / VASP
+2
+Chemo
+Hapto
+1
+ 1
++ CK666
++ CK666
++ CK666
+04:30
+06:00
+07:30
+-01:30
+VASP
+F-actin
+F-actin / VASP
+VASP
+F-actin
+F-actin / VASP
+04:30+ CK666 1 -01:30
+Figure 7. Front PLS Module Perturbations
+Micrographs and kymographs are shown in ibw contrast or as color composites.
+(A) Representative TIRF micrographs (Lifeact-mCherry and VASP-GFP) and time-series (VASP-GFP) of hapto and chemo cells before and after PLSs disruption
+by Arp2/3 inhibition. Cells were incubated with 200mM CK666 at time 0:00. Red arrowheads indicate PLSs; blue arrowheads indicate focal adhesions.
+(B) pMLC signals of hapto and chemo cells after 1 hr treatment with 200mM CK666. Red arrowhead indicates rescue of leading edge pMLC directly at the leading
+edge in chemo cells.
+(C and D) Global morphodynamics of cells in response to acute Arp2/3 inhibition. Whole cell kymograph. Cells were imaged as inFigures 5D and 5E.
+(E and F) 2D distribution of the average cross-correlation - duration of all instances of uniform qualitative behavior of hapto (E) and chemo (F) cells. n = 12 (hapto)
+and 8 (chemo) cells.
+Scale bars represent 10mm (A–D).
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 711
+1.00 1.47
+ 1.00 1.47
+F-actin Ratio
+F-actin Ratio
+F-actin Ratio
+F-actin Ratio
+F-actin Ratio
+F-actin Ratio
+∆t = 1min
+∆t = 1min
+AB
+C Hapto
+1.00 1.34
++ CK666 + CK666
+∆t = 90sec
+F-actin Ratio
+ +CK666  +CK666
+D
+- 02:00 - 01:00 00:00 01:00
++ CK666F-actin
+- 02:00 - 01:00 00:00 01:00
++ CK666Ratio
+F-actin
+1.00 1.34
+Ratio
+Hapto
++ CK666
++ CK666
+E
+F-actin Ratio
+Chemo
+ +CK666
++ CK666 + CK666
+∆t = 90sec
+ +CK666
+ 1
+2
+- 02:00 - 01:00 00:00 01:00
++ CK666
+- 02:00
+1
+2
+- 01:00 00:00 01:00
++ CK666
+Chemo
+Ratio
+F-actin
+2
++ CK666
+1.00 1.34
+2
++ CK666
+1F-actin
++ CK666
+1Ratio
++ CK666
+F
+Figure 8. RhoA Activation Dynamics in Hapto and Chemo Cells
+Cells stably expressing the RhoA2G biosensor, and infected with an adenovirus encoding Lifeact-mCherry were imaged using EPI microscopy. RhoA activation,
+ratio images are color-coded according to scale bars. Lifeact-mCherry micrographs are shown in ibw contrast.
+(A and B) Representative micrographs and kymographs of hapto and chemo cells on the line (A) and plane (B) substrates.
+(C–F) Representative micrographs and kymographs of hapto (C and D) and chemo (E and F) cells before and after Arp2/3 inhibition on the line (C and E) and plane
+substrates (D and F). At the indicated time, cells were incubated with 200mM CK666.
+Scale bars represent 10mm.
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+712 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.
+front of chemo cells, without however affecting lamellar RhoA
+activity in hapto cells (Figures S5E and S5F). These results
+indicate that the low contractility observed in the PLS zone
+correlates with decreased RhoA activity at this speciﬁc subcel-
+lular location.
+DISCUSSION
+PLSs Serve as a Spatially Organizing Module to Polarize
+Fibroblasts
+Fibroblast migration has classically been studied on planar
+substrates with uniform coating that does not allow strong cell
+polarization. We show that PDGF stimulation of prepolarized
+ﬁbroblasts leads to rapid and persistent migration in one direction
+for hours, in the absence of any gradient. Both initiation and main-
+tenance of this polarized steady state correlates with the formation
+of a PLS zone, which allows to shape a subcellular region that ex-
+hibits low contractility (as characterized by loss of actin arcs and
+focal complex-focal adhesion maturation, and low myosin/RhoA
+activity). Such PLSs are not bona ﬁde podosomes as described
+in macrophages (Calle et al., 2006) or in Src-transformed ﬁbro-
+blasts (Oikawa et al., 2008). However, similar structures have
+been observed before in NIH 3T3 ﬁbroblasts (Collin et al., 2006).
+Sustained persistent migration correlates with two emergent
+properties of the system. First, ﬁbroblast prepolarization
+geometrically constrains the PLS zone proximal to the leading
+edge to hinder lamella formation, restricting contraction to the
+back of the cell. The establishment of a noncontractile, protru-
+sive front and a contractile back allows for front/back uncoupling
+and efﬁcient cell symmetry breaking. On the plane substrate,
+PLS zones with an identical function in the local decrease of
+lamellar contractility also exist. However, these only allow mod-
+erate polarization, most likely because they only disrupt the con-
+tractile lamellar networks observed throughout the cell periphery
+in local subsectors. Second, the dynamic properties of PLSs
+(Figures 3D and 3E) maintain the size and relative position of
+the PLS zone with time, indicating that PLSs function as a
+spatially organizing module that appropriately positions and
+coordinates front lamellipodium protrusion with back myosin
+retraction throughout the cell migration process. Future studies
+will be aimed at understanding the signaling and biophysical
+mechanisms that enable shaping of the mesoscale properties
+of the PLS zone. Similar spatially organizing cytoskeletal mod-
+ules have already been proposed to regulate cytoskeletal polar-
+ity in neutrophils (Weiner et al., 2007). In the latter cells, the higher
+cytoskeletal plasticity and the intrinsically asymmetric cell shape
+might explain the absence of a requirement for prepolarization. It
+is also worth mentioning that persistent ﬁbroblast migration has
+also been observed on 1 (but not 20)mm wide FN line substrate,
+which additionally mimic 3D ECM dimensionality (Doyle et al.,
+2009). However, this occurs in the absence of PLS structures,
+indicating that persistent migration can be mediated by multiple
+pathways. The requirement of a cytoskeletal, spatially organizing
+module for cell polarization has important consequences for
+experimental analysis of this system: signaling events that regu-
+late cytoskeletal dynamics during persistent migration cannot
+be perturbed before acquisition of a polarized steady state,
+and thus, acute perturbations by pharmacological inhibition
+have to be used to study these pathways.
+Functional Consequences of Front/Back Uncoupling
+An important feature of persistent chemo cell migration is the un-
+coupling of front and back motions. The current model for front/
+back coordination of ﬁbroblast migration posits that contraction
+of stress ﬁbers connected to focal adhesions at the front gener-
+ates forces on focal adhesions in the rear, promoting disas-
+sembly and tail retraction (Parsons et al., 2010). In prepolarized
+hapto cells, stress ﬁber arrays along the cell length indeed
+induce mechanical coupling between focal adhesions in the
+lamella and focal adhesions at the cell rear. However, this me-
+chanical linkage admits only transient polarization episodes,
+and is insufﬁcient to establish persistent migration. Although
+we cannot formally exclude that chemical signals lead to uncou-
+pling of front/back motions in chemo cells, the ﬁnding that the
+PLS zone disrupts formation of a contractile lamella, restricts
+stress ﬁbers and focal adhesions to the back and lateral parts
+of the cell, strongly suggests that the nature of the front/back un-
+coupling is mechanical by nature. Perturbation of the PLS zone
+using the CK666 compound leads to a rapid increase of myosin
+activity at the cell front, which is accompanied by focal adhesion
+maturation. This translates into front/back coupling and ulti-
+mately to loss of persistent migration. This strongly suggests
+the need for cell front and back uncoupling to maintain cell polar-
+ity and persistent migration.
+One consequence of front/back uncoupling is the concentra-
+tion of myosin activity behind the PLS zone promoting tail retrac-
+tion. Surprisingly, stress ﬁbers emanating from behind the PLS
+are not anchored to any adhesion structure within the myosin
+cluster. Most likely, the concentrated myosin zone is anchored
+at the back of the PLS zone through interaction with the lateral
+stress ﬁber-focal adhesion array. Importantly, chemo cells
+display lower levels of stress ﬁbers and focal adhesions. There-
+fore, adhesion and contraction strength in these cells are
+adjusted so that lower rear contractility is still sufﬁcient to pro-
+mote rear focal adhesions disassembly. Similar myosin clusters
+have been observed at the back but not at the front of neutrophils
+(Pestonjamasp et al., 2006) and ﬁsh keratocytes (Svitkina et al.,
+1997), which both migrate rapidly and highly persistently. Hence,
+we speculate that a rear-concentrated myosin module may be a
+general feature of rapid, persistent migration.
+An additional consequence of front/back uncoupling is the
+appearance of a potent increase in protrusion velocity and persis-
+tence at the front. This seems to enable highly processive leading
+edge advancement that might explain the rapid migration speed
+of chemo cells. Here, the absence of a contractile lamella might
+optimize the functional output of the lamellipodial actin treadmill
+at the leading edge. Our data imply that the Arp2/3 complex is
+involved but not required for this membrane protrusion mode.
+Together, these observations suggest that front/back uncoupling
+leads to fast cell migration by promoting efﬁcient lamellipodial
+protrusion without inhibitory lamellar contraction at the front
+and by forming a loosely anchored myosin module that is just
+strong enough to dissolve rear focal adhesions.
+Spatiotemporal Control of RhoA Activity at the PLS Zone
+Our FRET imaging studies suggest that a broad gradient of RhoA
+in hapto cells from the leading edge regulates lamellar myosin
+contractility, most likely through Rho kinase-mediated control
+of MLC (Burridge and Wennerberg, 2004). In chemo cells, the
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 713
+PLS zone dynamically correlates with reduced RhoA activity.
+Acute removal of the PLS zone using two pharmacological com-
+pounds that operate through distinct modes of action, and do not
+affect lamellar RhoA activity, restores the broad RhoA activity
+gradient, pMLC signal, and contractile structures. This indicates
+a local, negative reciprocal crosstalk between PLSs and RhoA
+within the PLS zone. By locally lowering contractility, PLSs might
+switch off a positive feedback in which RhoA-speciﬁc GEFs such
+as LARG or GEF-H1 (Guilluy et al., 2011) translate mechanical
+activation of integrins by contractile forces into RhoA activation
+upstream of myosin II. An interesting result is that, in absence
+of a lamella, chemo cells still display a highly focused zone of
+active RhoA directly in the lamellipodium not visible in hapto cells.
+Our previous work has already established that two pools of
+RhoA activity can exist at the leading edge: a broad gradient
+and a focused band directly at the edge that correlates specif-
+ically with the onset of robust membrane protrusion (Machacek
+et al., 2009; Pertz et al., 2006). We propose that in chemo cells
+the former is switched off in conjunction with the inhibition of
+the lamella by the PLS, leaving the edge-focused RhoA activity
+pool to regulate membrane protrusion, e.g., through the effectors
+mDia1/2 (Palazzo et al., 2001). As previously documented (Pertz
+et al., 2006), additional RhoA activation pools can be observed in
+retracting tails (Figures 8C and 8E), but not at the myosin cluster
+observed behind the PLS zone in chemo cells. These results
+reveal a complex spatiotemporal RhoA activation landscape
+that correlates with the induction of speciﬁc cytoskeletal struc-
+tures. This also suggests the existence of multiple signaling path-
+ways that regulate different subcellular myosin pools.
+Signiﬁcance of Chemokinesis in Directional Cell
+Migration
+Our results show that growth factor-induced, persistent ﬁbro-
+blast migration does not necessarily require a chemotactic
+gradient. Chemokinesis is sufﬁcient to lock the cell in a polarized
+state of persistent migration. This has important consequences
+for the regulation of directed cell migration in vivo. During devel-
+opment, this might be useful during collective, directional migra-
+tion of neural crest cells, in which chemokinesis and contact
+inhibition cooperate to generate an overall polarity to the cell
+population (Theveneau and Mayor, 2012). During cancer metas-
+tasis, a macrophage-tumor cell paracrine loop that involves
+secretion of growth factors from the two different cell types
+allows for collective cell streaming in one speciﬁc direction on
+collagen ﬁbrils (Roussos et al., 2011). Although this was pro-
+posed to involve chemotaxis, it is conceivable that chemokinesis
+might be sufﬁcient to induce directional cell movement on the
+highly asymmetric collagen ﬁber. In both cases, the ability of a
+chemokinetic stimulus to hardwire directionality of prepolarized
+cells might therefore provide a means for generation of persis-
+tent, directional cell migration.
+EXPERIMENTAL PROCEDURES
+Line Substrate Microfabrication
+Polydimethylsiloxane (PDMS) ridge stamps were used as a template to pro-
+duce the line substrate (20mm wide ridge structures separated by 100mm
+wide gaps) on glass coverslips (Figure S1D). PDMS was mixed well in a ratio
+of 10:1 with curing agent (Sylgard 184 Silicone Elastomere KIT; Dow Corning)
+and poured onto a silicon wafer produced by soft lithography. Vacuum was
+applied to remove enclosed air bubbles and PDMS was cured by incubation
+for 2 hr at 70/C14 C. The polymer was then peeled off the silicon wafer and cut
+into pieces with adequate dimensions. PDMS-based live cell chambers con-
+sisting of a square chamber (5 mm width, 6 mm length, 100mm high roof) con-
+nected to an inlet and an outlet were constructed the same way using speciﬁc
+silicon wafers.
+Glass coverslips (243 50 mm) were extensively cleaned with anhydrous
+ethanol and demineralized water and were coated with 0.5 mg/ml poly-Lly-
+sine-polyethylene glycol, (PLL-PEG; SUSOS) for 30 min at room temperature.
+Next, the glass coverslip was once washed with water and dried. In the mean-
+while, the PDMS ridge stamp and PDMS live cell chamber were cleaned with
+tape at the structured surface. The PDMS ridge stamp was then aligned on the
+PLL-PEG coated surface of the glass coverslip and exposed to plasma etching
+at 100% power for 90 s using a CUTE plasma oven (Femto Science). The glass
+coverslips (with PDMS ridge stamp) as well as the PDMS-based live cell imag-
+ing chamber (structured side up) were treated with plasma for an additional
+30 s. The PDMS ridge stamp was then removed and the PDMS-based live
+cell-imaging chamber was grafted on the glass coverslip on top of the line
+substrate. Once the PDMS-based live cell-imaging chamber was covalently
+bound to the glass coverslip, ﬁbronectin was coated overnight at 4/C14 Ca t
+10 mg/ml. Line substrates were then washed once with PBS and once with im-
+aging medium. Five microliters of a suspension containing 23 105 cells/ml
+was loaded into the microﬂuidic device. Loading cells in such a small volume
+minimized ﬂow and improved cell attachment. After 30 min, when cells had
+adhered, the inlet and outlet of the microﬂuidic device were ﬁlled with imaging
+medium and the devices were kept in an incubator until live cell imaging.
+Image Analysis
+Basic image analysis and processing was performed using MetaMorph
+software. FRET data were analyzed as described elsewhere (Fritz et al.,
+2013). Cell edge dynamics as shown inFigure 4were quantiﬁed using in-house
+MATLAB-based software (MathWorks). This software calculates the velocities
+by tracking the displacement of all pixels at the cell edge from one frame to the
+next (Machacek and Danuser, 2006). The pixel-wise velocities were averaged
+within sampling windows of approximately 1mm width placed along the cell
+edge. This averaging step gave rise to the ﬁnal velocities used for analysis.
+We further analyzed the edge dynamics by clustering regions of the cell
+edge with similar velocity magnitude. A fuzzy k-means algorithm was used
+for this purpose (Nock and Nielsen, 2006).
+Analysis of Global Fibroblast Morphodynamics
+To analyze global properties of ﬁbroblasts migrating on the line substrate,
+a computer vision algorithm was developed to measure the kinematic
+parameters from different cell regions. These analyses were all performed
+on time-lapse movies of ﬁbroblasts stably expressing Lifeact-GFP, which pro-
+vide adequate contrast for the segmentation of the cell boundary using inten-
+sity-based thresholding. The basic idea behind this algorithm is to separately
+capture the motion from the left, central, and right regions of the cell by
+reducing these areas to single points. After segmentation, the algorithm calcu-
+lates the cell centroid. The centroid point is then used to divide the cell in half
+where the dividing plane is perpendicular to the long axis of the migration path.
+Once divided, each cell half is reﬂected over the same dividing plane to form a
+closed symmetric object. An ellipse is then inscribed to both objects and
+the foci coordinates are calculated (Figure 1E). The right and left ellipse foci
+from the right and left mirrored halves, respectively, were used to quantify
+the motion for the right and left regions. The motion of the center region was
+quantiﬁed by the centroid. Two important aspects are achieved with this
+approach: independence between right/left measurements and the ability
+to include local cell morphology from the right/left regions to capture their
+respective motions. In addition to the velocities described above, the algo-
+rithm also calculates the cell length (Figure 1H).
+Cell Velocity Analysis
+Visual inspection of hapto and chemo cells revealed a clear difference of
+cell displacement over time. To quantify the different migration modes, we im-
+plemented an algorithm based on a time series analysis technique called
+empirical mode decomposition (Wu et al., 2007). This algorithm locally decom-
+poses the centroid instantaneous velocity into two frequency components:
+a fast component (including quick changes in velocity direction) and a slow
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+714 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.
+component (including the overall trend in velocity). The fast component was
+used to estimate an interval that represents the distribution of magnitudes
+for the fast, quasirandom changes in velocity. The interval was locally esti-
+mated using a sliding window of 10 points with reﬂective boundaries in order
+to accommodate temporal variations of the fast component. The range values
+were calculated from the spread of the fast component within the 10 points
+window (±3 SD centered in 0).
+We deﬁned as bidirectional migration, periods in which the slow component
+of the centroid velocity was contained in the fast component interval. That
+means the cell changes direction from one frame to the next, having little or
+no displacement. Unidirectional migration mode was deﬁned as periods in
+which the slow component is outside the fast component interval. Although
+there is a possibility of change in direction, this scenario indicates that the
+cell has an overall displacement in one direction. We used left-to-right as
+the direction of positive migration. The front region of the cell was deﬁned as
+the side corresponding to the direction of centroid motion and left/right foci
+velocities were labeled as front/back accordingly (Figure 1G).
+Front/Back Coordination Quantiﬁcation
+We used time-dependent cross-correlation to test the coordination between
+the front and back regions of the cell. Given two time seriesxðtÞ and yðtÞ,
+the time-dependent cross-correlation is deﬁned as:
+rðtÞ = 1
+W + 1
+Xt + W=2
+i = t/C0 W=2
+ðyi /C0 yÞðxi /C0 xÞ
+sy sx
+;
+where W + 1 is the length of the sliding window andsx; sy; x; y denote the SDs
+and means forx and y within the sliding window. The coupling between front
+and back regions was estimated by replacingx and y with front/back instan-
+taneous velocities. Positive values indicate front and back moving in the
+same direction. The conﬁdence interval around zero correlation was estimated
+based on asymptotic distribution analysis for the cross-correlation of two
+random Gaussian processes (Box et al., 1994). Correlations values inside
+this interval are statistically insigniﬁcant.
+Average Cross-Correlation Distributions
+The time-dependent cross-correlation plots showed a transient nature of
+the front/back coordination with periods of negative, insigniﬁcant, and positive
+cross-correlation. To better summarize this variability in behavior for the entire
+data set, we plotted the 2D distribution of the interval length and its respective
+average cross-correlation for three qualitative behaviors (Figure S1I).
+Additional details can be found in the Supplemental Experimental
+Procedures.
+SUPPLEMENTAL INFORMATION
+Supplemental Information includes Supplemental Experimental Procedures,
+ﬁve ﬁgures and eight movies and can be found with this article online at
+http://dx.doi.org/10.1016/j.devcel.2014.07.022.
+ACKNOWLEDGMENTS
+We are grateful to Johan De Rooij, Alan Howe, Matthias Kaeser, Olivier Desta-
+ing, and Ana-Maria Lennon-Dumenil for sharing reagents and to Eugene
+Tkachenko and Bernhard Wehrle-Haller for comments on the manuscript.
+This work was supported by grants from the Swiss National Science Founda-
+tion to O.P., and from the Human Frontier Science Program to O.P, G.D, and
+N.L.J. M.V. was supported by an Institutional Training Grant NIH/NRSA
+1F32GM103278-01.
+Received: October 22, 2013
+Revised: April 17, 2014
+Accepted: July 28, 2014
+Published: September 29, 2014
+REFERENCES
+Albiges-Rizo, C., Destaing, O., Fourcade, B., Planus, E., and Block, M.R.
+(2009). Actin machinery and mechanosensitivity in invadopodia, podosomes
+and focal adhesions. J. Cell Sci.122, 3037–3049.
+Box, G.E.P., Jenkins, G.M., and Reinsel, G.C. (1994). Time Series Analysis:
+Forecasting and Control, Third Edition. (Englewood Cliffs: Prentice Hall).
+Burridge, K., and Wennerberg, K. (2004). Rho and Rac take center stage. Cell
+116, 167–179.
+Calle, Y., Burns, S., Thrasher, A.J., and Jones, G.E. (2006). The leukocyte
+podosome. Eur. J. Cell Biol.85, 151–157.
+Collin, O., Tracqui, P., Stephanou, A., Usson, Y., Cle´ ment-Lacroix, J., and
+Planus, E. (2006). Spatiotemporal dynamics of actin-rich adhesion micro-
+domains: inﬂuence of substrate ﬂexibility. J. Cell Sci.119, 1914–1925.
+Doyle, A.D., Wang, F.W., Matsumoto, K., and Yamada, K.M. (2009). One-
+dimensional topography underlies three-dimensional ﬁbrillar cell migration.
+J. Cell Biol.184, 481–490.
+Friedl, P., and Wolf, K. (2010). Plasticity of cell migration: a multiscale tuning
+model. J. Cell Biol.188, 11–19.
+Fritz, R.D., Letzelter, M., Reimann, A., Martin, K., Fusco, L., Ritsma, L.,
+Ponsioen, B., Fluri, E., Schulte-Merker, S., van Rheenen, J., and Pertz, O.
+(2013). A versatile toolkit to produce sensitive FRET biosensors to visualize
+signaling in time and space. Sci. Signal.6, rs12.
+Guilluy, C., Swaminathan, V., Garcia-Mata, R., O’Brien, E.T., Superﬁne, R., and
+Burridge, K. (2011). The Rho GEFs LARG and GEF-H1 regulate the mechanical
+response to force on integrins. Nat. Cell Biol.13, 722–727.
+Hotulainen, P., and Lappalainen, P. (2006). Stress ﬁbers are generated by two
+distinct actin assembly mechanisms in motile cells. J. Cell Biol.173, 383–394.
+Kim, D.H., Provenzano, P.P., Smith, C.L., and Levchenko, A. (2012). Matrix
+nanotopography as a regulator of cell function. J. Cell Biol.197, 351–360.
+Machacek, M., and Danuser, G. (2006). Morphodynamic proﬁling of protrusion
+phenotypes. Biophys. J.90, 1439–1452.
+Machacek, M., Hodgson, L., Welch, C., Elliott, H., Pertz, O., Nalbant, P., Abell,
+A., Johnson, G.L., Hahn, K.M., and Danuser, G. (2009). Coordination of Rho
+GTPase activities during cell protrusion. Nature461, 99–103.
+Murphy, D.A., and Courtneidge, S.A. (2011). The ‘ins’ and ‘outs’ of podosomes
+and invadopodia: characteristics, formation and function. Nat. Rev. Mol. Cell
+Biol.12, 413–426.
+Nock, R., and Nielsen, F. (2006). On weighting clustering. IEEE Trans. Pattern
+Anal. Mach. Intell.28, 1223–1235.
+Nolen, B.J., Tomasevic, N., Russell, A., Pierce, D.W., Jia, Z., McCormick, C.D.,
+Hartman, J., Sakowicz, R., and Pollard, T.D. (2009). Characterization of two
+classes of small molecule inhibitors of Arp2/3 complex. Nature460, 1031–
+1034.
+Oikawa, T., Itoh, T., and Takenawa, T. (2008). Sequential signals toward
+podosome formation in NIH-src cells. J. Cell Biol.182, 157–169.
+Palazzo, A.F., Cook, T.A., Alberts, A.S., and Gundersen, G.G. (2001). mDia
+mediates Rho-regulated formation and orientation of stable microtubules.
+Nat. Cell Biol.3, 723–729.
+Parsons, J.T., Horwitz, A.R., and Schwartz, M.A. (2010). Cell adhesion: inte-
+grating cytoskeletal dynamics and cellular tension. Nat. Rev. Mol. Cell Biol.
+11, 633–643.
+Pertz, O., Hodgson, L., Klemke, R.L., and Hahn, K.M. (2006). Spatiotemporal
+dynamics of RhoA activity in migrating cells. Nature440, 1069–1072.
+Pestonjamasp, K.N., Forster, C., Sun, C., Gardiner, E.M., Bohl, B., Weiner, O.,
+Bokoch, G.M., and Glogauer, M. (2006). Rac1 links leading edge and uropod
+events through Rho and myosin activation during chemotaxis. Blood108,
+2814–2820.
+Petrie, R.J., Doyle, A.D., and Yamada, K.M. (2009). Random versus direction-
+ally persistent cell migration. Nat. Rev. Mol. Cell Biol.10, 538–549.
+Pollard, T.D., and Borisy, G.G. (2003). Cellular motility driven by assembly and
+disassembly of actin ﬁlaments. Cell112, 453–465.
+Ponti, A., Machacek, M., Gupton, S.L., Waterman-Storer, C.M., and Danuser,
+G. (2004). Two distinct actin networks drive the protrusion of migrating cells.
+Science305, 1782–1786.
+Riedl, J., Crevenna, A.H., Kessenbrock, K., Yu, J.H., Neukirchen, D., Bista, M.,
+Bradke, F., Jenne, D., Holak, T.A., Werb, Z., et al. (2008). Lifeact: a versatile
+marker to visualize F-actin. Nat. Methods5, 605–607.
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc. 715
+Roussos, E.T., Condeelis, J.S., and Patsialou, A. (2011). Chemotaxis in cancer.
+Nat. Rev. Cancer11, 573–587.
+Straight, A.F., Cheung, A., Limouze, J., Chen, I., Westwood, N.J., Sellers, J.R.,
+and Mitchison, T.J. (2003). Dissecting temporal and spatial control of cytoki-
+nesis with a myosin II Inhibitor. Science299, 1743–1747.
+Svitkina, T.M., Verkhovsky, A.B., McQuade, K.M., and Borisy, G.G. (1997).
+Analysis of the actin-myosin II system in ﬁsh epidermal keratocytes: mecha-
+nism of cell body translocation. J. Cell Biol.139, 397–415.
+Theveneau, E., and Mayor, R. (2012). Neural crest delamination and migration:
+from epithelium-to-mesenchyme transition to collective cell migration. Dev.
+Biol.366, 34–54.
+Weiner, O.D., Marganski, W.A., Wu, L.F., Altschuler, S.J., and Kirschner, M.W.
+(2007). An actin-based wave generator organizes cell motility. PLoS Biol.5, e221.
+Wu, Z., Huang, N.E., Long, S.R., and Peng, C.K. (2007). On the trend, detrend-
+ing, and variability of nonlinear and nonstationary time series. Proc. Natl. Acad.
+Sci. USA104, 14889–14894.
+Wu, C., Asokan, S.B., Berginski, M.E., Haynes, E.M., Sharpless, N.E., Grifﬁth,
+J.D., Gomez, S.M., and Bear, J.E. (2012). Arp2/3 is critical for lamellipodia and
+response to extracellular matrix cues but is dispensable for chemotaxis. Cell
+148, 973–987.
+Zamir, E., Katz, B.Z., Aota, S., Yamada, K.M., Geiger, B., and Kam, Z. (1999).
+Molecular diversity of cell-matrix adhesions. J. Cell Sci.112, 1655–1669.
+Developmental Cell
+Front/Back Uncoupling Enables Persistent Migration
+716 Developmental Cell30, 701–716, September 29, 2014ª2014 Elsevier Inc.

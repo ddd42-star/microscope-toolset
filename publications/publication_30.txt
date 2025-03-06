@@ -1,0 +1,1410 @@
+See discussions, stats, and author profiles for this publication at: https://www.researchgate.net/publication/275245830
+Machine learning-based tools to model and to remove the off-target effect
+Article  in   Pattern Analysis and Applications · April 2015
+DOI: 10.1007/s10044-015-0469-z
+CITATION
+1
+READS
+164
+4 authors, including:
+Riwal Lefort
+Idiap Research Institute
+29 PUBLICATIONS   202 CITATIONS   
+SEE PROFILE
+Ludovico Fusco
+GlaxoSmithKline
+42 PUBLICATIONS   356 CITATIONS   
+SEE PROFILE
+Francois Fleuret
+University of Geneva
+178 PUBLICATIONS   8,451 CITATIONS   
+SEE PROFILE
+All content following this page was uploaded by Ludovico Fusco on 21 April 2015.
+The user has requested enhancement of the downloaded file.
+THEORETICAL ADVANCES
+Machine learning-based tools to model and to remove
+the off-target effect
+Riwal Lefort1 • Ludovico Fusco2 • Olivier Pertz2 • Franc¸ois Fleuret 1,3
+Received: 1 July 2014 / Accepted: 15 March 2015
+/C211Springer-Verlag London 2015
+Abstract A RNA interference, also called a gene
+knockdown, is a biological technique which consists of
+inhibiting a targeted gene in a cell. By doing so, one can
+identify statistical dependencies between a gene and a cell
+phenotype. However, during such a gene inhibition pro-
+cess, additional genes may also be modiﬁed. This is called
+the ‘‘off-target effect’’. The consequence is that there are
+some additional phenotype perturbations which are ‘‘off-
+target’’. In this paper, we study new machine learning tools
+that both model the cell phenotypes and remove the ‘‘off-
+target effect’’. We propose two new automatic methods to
+remove the ‘‘off-target’’ components from a data sample.
+The ﬁrst method is based on vector quantization (VQ). The
+second method we propose relies on a classiﬁcation forest.
+Both methods rely on analyzing the homogeneity of several
+repetitions of a gene knockdown. The baseline we consider
+is a Gaussian mixture model whose parameters are learned
+under constraints with a standard Expectation–Maximiza-
+tion algorithm. We evaluate these methods on a real data
+set, a semi-synthetic data set, and a synthetic toy data set.
+The real data set and the semi-synthetic data set are com-
+posed of cell growth dynamic quantities measured in time
+laps movies. The main result is that we obtain the best
+recognition performance with the probabilistic version of
+the VQ-based method.
+Keywords Vector quantization /C1 Random forest /C1
+Gaussian mixture model /C1 Bioinformatics /C1 Off-target effect
+1 Introduction
+1.1 The off-target effect
+The analysis of gene functions is a major challenge clas-
+sically carried out using RNA interference: one can infer
+the role of a gene using a RNA molecule that knockdowns
+its expression, and examines the resulting phenotypical
+perturbation. For instance, if a cell is smaller after a gene
+inhibition, one can conclude that the considered gene has
+an important role regarding the said size. This technique is
+used for understanding phenomena such as endocytosis [ 6]
+and cell migration [ 2].
+However, the gene inhibition technique with RNA re-
+mains often imprecise, and may cause the inhibition of
+additional and non-targeted genes. This phenomenon,
+which is called the ‘‘off-target effect’’ [ 12], may induce
+some additional changes in the phenotype. For instance, a
+cell may be smaller after the gene inhibition, but it may
+also have a greater mobility during its growth, due to a
+hidden gene inhibition.
+In this article, we propose novel machine learning-based
+tools to automatically remove the ‘‘off-target’’ components
+from a data set of phenotypic measurements.
+& Riwal Lefort
+riwal.lefort@unicaen.fr
+Ludovico Fusco
+ludovico.fusco@unibas.ch
+Olivier Pertz
+olivier.pertz@unibas.ch
+Franc¸ois Fleuret
+francois.ﬂeuret@idiap.ch
+1 Idiap Research Institute, Centre du Parc, Rue Marconi 19,
+PO Box 592, 1920 Martigny, Switzerland
+2 Department of Biomedicine, University of Basel,
+Mattenstrasse 28, 4058 Basel, Switzerland
+3 Ecole Polytechnique Fe´de´rale de Lausanne (EPFL), Route
+Cantonale, 1015 Lausanne, Switzerland
+123
+Pattern Anal Applic
+DOI 10.1007/s10044-015-0469-z
+1.2 State of the art
+The usual protocol used to study the relation between gene
+expression and phenotype is as follows [ 6, 8]: The phe-
+notype obtained with a given RNA molecule is ﬁrst mod-
+eled by a vector each component of which is associated to a
+particular feature of the cell (related to its morphological,
+dynamic, or contextual properties) and depends on the
+similarity of that feature between normal cells and per-
+turbed cells.
+The measure of similarity can be either a standard sta-
+tistical measure such as the Kolmogorov–Smirnov (KS)
+test [30], the z test [25], the t test [25], the v2 test [6], or it
+can be a machine learning-based technique such as the
+neural networks [2], support vector machine (SVM) [ 31],
+and random forest [ 28].
+Then, the methodology to deal with the ‘‘off-target ef-
+fects’’ is applied to the phenotypic vectors coming from
+each RNA molecule.
+A classical method is based on RNA selection. It con-
+sists of using multiple RNA molecules targeting the same
+gene, and keeping only the common phenotypic perturba-
+tions. Echeverri et al. [ 8] stated that if at least 2 out of 3
+used RNA molecules produce the same phenotype changes,
+we can consider it as ‘‘on-target’’. In addition, they rec-
+ommend to repeat the experiment to validate the results.
+An alternative method consists of making an average
+gene proﬁle. In that case, using again several RNA mole-
+cules targeting the same gene, one averages the multiple
+resulting vector of phenotypic measurements. Collinet
+et al. [ 6] compute the most probable phenotype using a
+Bayesian model.
+1.3 Our contributions
+We ﬁrst propose in Sect. 4 a model based on a vector
+quantization (VQ) [ 14, 23]. Using the K-means algorithm,
+we ﬁnd clusters in the feature space, and use a hard clas-
+siﬁcation rule to determine whether samples in a cluster are
+‘‘on-target’’ components, or ‘‘off-target’’ components
+(Sect. 4.1). In Sect. 4.2, we propose a soft version of this
+classiﬁcation rule using a probabilistic K-means. Note that,
+choosing the optimal number of clusters is not straight-
+forward. In the context of unsupervised learning, some
+methods assess the optimal number of clusters [19, 20].
+These methods start with an empty set of clusters which is
+ﬁlled dynamically using online learning. In unsupervised
+learning, the objective is to model the sample distribution.
+By contrast, we tackle the special case of supervised
+clustering. We do not want to model the sample distribu-
+tion, we rather want a model of the class speciﬁcities and
+the class mixtures. In this context, assessing the number of
+clusters is different from unsupervised techniques [ 19, 20].
+We address the supervised selection of the cluster number
+in Sect. 4.3.
+Our second contribution, presented in Sect.5,i sb a s e do n
+the analysis of the Random Forest outputs [ 4, 5]. We start
+from the idea that the ‘ ‘RNA entropy’ ’ of an on-target
+component—that is the entropy of the distribution of the
+RNA used to produce the phenotypes in that cluster—is
+high, since multiple RNA molecules are represented. Con-
+versely, an ‘ ‘off-target’ ’ component resulting from a single
+RNA molecule leads to a small RNA entropy. To compute
+this entropy, each sample is associated to a probability
+vector that is build from tree-based classiﬁcation steps.
+In addition, we propose to use the two methods above as
+a mean to initialize the expectation–maximization (EM)
+procedure. Collinet et al. [6] proposed a Gaussian mixture
+model (GMM) to characterize the ‘‘on-target’’ component,
+but the parameters of the model are trained from an EM
+algorithm which is very sensitive to its initialization. We
+show that our approach drastically improves the recogni-
+tion performance. The GMM being our baseline, this is the
+ﬁrst methodological approach we present, see Sect.3.
+1.4 Data sets
+In Sect.6.1, to interpret the results, we use a synthetic 2D
+data set.
+Both Sects. 6.2 and 6.3 consider an application in the ﬁeld
+of neuroscience. We propose to characterize cells’ develop-
+ment dynamics in time laps movies [17]. In the ﬁeld of neu-
+robiology, it has been observed connections between the
+static morphological properties of a cell and its genotype [27].
+More recent works in oncology have shown that studying the
+cell growth dynamics provides important information about
+the cell genotype [ 11, 24]. Following that line of thinking,
+biologists want to quantify how much neurites’ morphody-
+namic depends on the genotype characteristics.
+For instance, Fig. 1a shows one video of neurons for
+which the gene RhoA has been inhibited, which leads to
+longer neurites. Figure1b shows one video of neurons for
+which the gene Map2K7 has been inhibited which leads to
+shorter neurites and faster protrusion and retraction process.
+The characterization of such aspects of the neurite
+phenotypes requires to deal with the ‘‘off-target effect’’,
+which is our core objective.
+2 Basic idea
+Before we deal with the methodological and experimental
+aspects, we present the concepts and the basic idea of the
+process and introduce notation.
+Pattern Anal Applic
+123
+We consider that a cell is represented by a set of F
+features: the soma area, the instantaneous soma speed, the
+number of neurites, the neurite total length, the instanta-
+neous neurite activity (protruding or retracting), etc. Let
+X 2RF be the feature vector associated to a cell.
+We consider M RNA molecules that inhibit the same
+gene, to which correspond M cell classes. We consider
+M þ1 distributions for X, one corresponding to the ‘‘on-
+target’’ component, and the M others to the ‘‘off-target’’
+components.
+This is illustrated in Fig. 2. We consider a synthetic
+example with three RNA molecules ( M ¼3), and where
+each cell is represented by two features ( F ¼2): its speed
+and its size. Each cell is represented by a vector in the two-
+dimensional feature space. These vectors are depicted by
+crosses, dots and squares, depending on the RNA molecule
+which is associated with each cell. We identify four clus-
+ters ( M þ1 ¼4). The ﬁrst cluster is the ‘‘on-target’’
+component which is composed of every RNA molecules.
+The three other clusters are the ‘‘off-target’’ components
+that are composed of a single RNA molecule each.
+The methods we propose aim at characterizing the sta-
+tistical distribution of each cluster. Then, we can remove
+the ‘‘off-target’’ components and we are able to extract the
+phenotypic gene proﬁle. This approach assumes two im-
+portant properties: (1) the ‘‘off-target’’ components and the
+‘‘on-target’’ component are additive in the feature space,
+and (2) at least one RNA molecule must be absent in each
+of the ‘‘off-target’’ components.
+3 Gaussian mixture model (GMM)
+To understand the baseline [6], we introduce the GMM and
+the EM training procedure. For a random initialization, the
+method is called ‘‘RandomþGMM’’, else, using an other
+initialization that we call ‘‘init’’, the method is designated
+as ‘‘init?GMM’’.
+3.1 State of the art
+Gaussian mixture models (GMM) are mostly used to model
+a statistical distribution of vectors. The distribution g of the
+random variable X 2RF has the following form:
+gðxÞ¼
+XC
+c¼1
+qcNðx jlc; RcÞ ð1Þ
+where C denotes the number of components in the mixture,
+NðX jlc; RcÞdenotes the multivariate normal distribution
+with mean lc and covariance matrix Rc, and qc denotes the
+component prior.
+Dempster et al. [ 7] proposed to assess the parameters
+H ¼fqc; lc; RcgC
+c¼1 with an EM algorithm [ 7]. If we
+consider a diagonal covariance matrix, K-means [ 10]i s
+also suitable.
+Fig. 1 a A video that contains
+some cells for which the gene
+RhoA is inhibited. This leads to
+bigger neurites. b A video that
+contains some cells for which
+the gene Map2K7 is inhibited.
+This leads to shorter neurites
+1st "off-target" component
+2nd "off-target" component
+3rd "off-target" component
+The "on-target" component
+1st RNA molecule
+2nd RNA molecule
+3rd RNA molecule
+Cell size
+Cell speed
+Fig. 2 In this schematic example, we consider that a cell is described
+by two features ( F ¼2): its speed and its size. In the ﬁgure, a cell is
+represented by a vector in the two-dimensional feature space. There
+are three RNA molecules (M ¼3) that are represented by crosses,
+dots, and squares, respectively. The ‘‘off-target’’ components are
+represented by the clusters that contain vectors from single RNA
+molecules. The ‘‘on-target’’ component is the cluster that contains
+vectors from every RNA molecules
+Pattern Anal Applic
+123
+The model can be extended to a classiﬁcation task where
+each class is independently modeled using equation (1). Let
+M be the number of classes, and gt be the class t distri-
+bution. The distribution f of a random variable X 2RF has
+the following expression:
+f ðxÞ¼
+XM
+t¼1
+ptgtðxÞ ð2Þ
+In supervised learning, the parameters fpt; HtgM
+t¼1 are
+learned independently, class by class, using the usual EM
+procedure [7], where Ht are the parameters of gt. Note that,
+the training data set fXn; YngN
+n¼1 is composed of the vectors
+Xn 2RF and the labels Yn 2f1; ... ; Mg.
+In weakly supervised learning, the label Yn is a hidden
+variable. The training data set is fXn; pngN
+n¼1, where pn ¼
+fpn;tgM
+t¼1 is a vector that indicates the prior probability that
+sample Xn belong to each class:
+pn;t ¼pðYn ¼tÞð 3Þ
+In the case of equi-probable prior pn;t 2f0; 1=Mg, Bishop
+and Ulusoy [ 3] proposed an EM approach to train the pa-
+rameters fpt; HtgM
+t¼1. This method has been extended to
+any prior value pn;t 2½0; 1/C138in [16].
+At iteration ðiÞ, given a training data set fXn; pngN
+n¼1 and
+the current values of the parameters for class t
+HðiÞ
+t ¼ qðiÞ
+t;c; lðiÞ
+t;c; RðiÞ
+t;c
+no C
+c¼1
+;
+the EM procedure consists of: In the ﬁrst step, which is
+called the ‘‘expectation’’ step, we compute for each sample
+both the class posterior:
+cn;t ¼pn;tgðiÞ
+t ðXnÞ
+f ðiÞðXnÞ
+ð4Þ
+and the component posterior:
+an;t;c ¼qt;cNðXn jlðiÞ
+c ; RðiÞ
+c Þ
+gðiÞðXnÞ
+ð5Þ
+In the second step, which is called the ‘‘maximization’’
+step, we update the new set of parameters Hðiþ1Þ
+t :
+qðiþ1Þ
+t;c ¼
+PN
+n¼1 cn;tan;t;c
+PN
+n¼1 cn;t
+ð6Þ
+lðiþ1Þ
+t;c ¼
+PN
+n¼1 cn;tan;t;cXn
+PN
+n¼1 cn;tan;t;c
+ð7Þ
+Rðiþ1Þ
+t;c ¼
+PN
+n¼1 cn;tan;t;cðXn /C0 lðiþ1Þ
+t;c ÞðXn /C0 lðiþ1Þ
+t;c ÞT
+PN
+n¼1 cn;tan;t;c
+ð8Þ
+These two steps are iterated until convergence. We con-
+sider that the method converges when the likelihood is
+stabilized. The number of components C per mixture is
+assessed by maximizing the likelihood, or using the Mean-
+shift algorithm [ 32]. In this paper, we maximize the like-
+lihood to learn the parameters.
+3.2 Modeling the RNA perturbations with GMM
+Following Sect.2, we consider cells represented by vectors
+fXm
+n gNm
+n¼1, where Xm
+n 2RF represents a cell which is ob-
+tained from the RNA molecule m 2f1; ... ; Mg.
+Ideally, if there was no ‘‘off-target effect’’, these vectors
+would all follow the same distribution g0 that we call the
+‘‘on-target’’ component. However, in practice, there is an
+‘‘off-target’’ component following the distribution gm.I n
+this situation, a vector Xm
+n is generated by either g0 or gm,
+and its distribution is a mixture of the ‘‘on-target’’ com-
+ponent g0 and the speciﬁc ‘‘off-target’’ componentgm. Let
+fm be that mixture distribution. Then, the relation between
+ffmgM
+m¼1 and fgtgM
+t¼0 is as follows:
+fm ¼pm
+0 g0 þð1 /C0 pm
+0 Þgm; ð9Þ
+where pm
+0 2½0; 1/C138is the prior probability that a vector is
+generated by the ‘‘on-target’’ component. By considering
+all the RNA molecules, the distribution takes the following
+expression:
+f ¼
+XM
+m¼0
+ð1 /C0 pm
+0 Þgm ð10Þ
+where 1 /C0 p0
+0 ¼PM
+m¼1 pm
+0 . The model ( 10) being the same
+as the model (2), we can consider the EM algorithm [16]t o
+train the parameters fHtgM
+t¼0.
+In this application, we can also include some speciﬁc
+constraints. Let Ym
+n be a random variable on f0; ... ; Mg
+which speciﬁes which component generated Xm
+n .I f Ym
+n ¼0,
+sample Xm
+n is generated by the ‘‘on-target’’ componentg0,
+and 8t [ 0i f Ym
+n ¼t, sample Xm
+n is generated by the ‘‘off-
+target’’ componentgt. Since we know which RNA mole-
+cule is associated to each cell, we have the following rules:
+pðYm
+n ¼tÞ¼ 0i f t [ 0; t 6¼m
+pðYm
+n ¼0Þ¼ pm
+0
+pðYm
+n ¼mÞ¼ 1 /C0 pm
+0
+8
+<
+: ð11Þ
+In other words, a cell obtained from a RNA molecule m
+cannot be generated from an ‘‘off-target’’ component of an
+other RNA molecule t 6¼m. It is generated by either the
+‘‘on-target’’ component or the ‘‘off-target’’ component of
+the considered RNA molecule m. Then, from the con-
+straints ( 11), we deﬁne the new posteriors at the current
+iteration ðiÞ:
+Pattern Anal Applic
+123
+cm
+n;t ¼0i f t 6¼m
+cm
+n;t ¼pm
+0 gðiÞ
+0 ðXm
+n Þ
+f ðiÞ
+m ðXm
+n Þ
+if t ¼0
+cm
+n;t ¼ð1 /C0 pm
+0 ÞgðiÞ
+m ðXm
+n Þ
+f ðiÞ
+m ðXm
+n Þ
+if t ¼m
+8
+>>>>>><
+>>>>>>:
+ð12Þ
+This method allows to characterize each component of the
+distribution of the random variable Xm
+n . We can now
+classify the vector Xm
+n as being ‘‘on-target’’ or ‘‘off-tar-
+get’’. This classiﬁcation step is achieved using the Bayes
+rule:
+pðYm
+n ¼0 jXm
+n ; H0; ... ; HMÞ¼ pm
+0 g0ðXm
+n Þ
+fmðXm
+n Þ
+pðYm
+n ¼m jXm
+n ; H0; ... ; HMÞ¼ ð1 /C0 pm
+0 ÞgmðXm
+n Þ
+fmðXm
+n Þ
+8
+>><
+>>:
+ð13Þ
+3.3 Estimation of the parameters
+The ﬁrst parameter to set is the number of iterations of the
+EM algorithm. We stop the iterations when the likelihood
+Lf Xm
+n g; fHðiÞ
+t g
+/C16/C17
+at iteration i is very close to the likeli-
+hood at iteration i þ1. In other words, we stop the iteration
+whether:
+Lf Xm
+n g; fHðiþ1Þ
+t g
+/C16/C17
+/C0Lf Xm
+n g; fHðiÞ
+t g
+/C16/C17/C12/C12/C12
+/C12/C12/C12 \/C15 ð14Þ
+In practice, using our data set, we noticed that the classi-
+ﬁcation performances do not change after 50 iterations. So,
+the number of iterations is set to 50. But, if a user does not
+know a data set, we recommend to train /C15 by grid search.
+The second parameter to set is C, i.e., the targeted
+number of components per class [see Eq. ( 1)]. The pa-
+rameter is optimized using a grid search. We choose the
+optimal value C 2f2; 4; 16; 32; 64; 128g that maximizes
+the likelihood:
+^C ¼arg max
+C
+LfXm
+n g; fHtg; C
+/C0/C1
+ð15Þ
+Note that, for our classiﬁcation task, we do not need a ﬁne
+evaluation of the number of Gaussian components per
+class. This value can even be over-estimated to guarantee a
+proper assessment of the ‘‘off-target effect’’. The cell
+classiﬁcation being more important than a good model
+distribution, we set a rough grid for C.
+There is no prior data. Hence, at the initialization step, it
+is reasonable to give the same weight to both the ‘‘off-
+target effect’’ and the ‘‘on-target effect’’. As a conse-
+quence, each effect has the same probability to appear. So,
+the priors fpt
+0gM
+t¼0 are set to 0.5 at the beginning of the EM
+algorithm.
+4 Vector quantization
+We investigate in this section an alternative approach to the
+discovery of the ‘‘off-target’’ effect, which bypass the
+modeling of the respective distributions, and directly at-
+tempts at classifying each sample as either ‘‘off-target’’ or
+‘‘on-target’’.
+4.1 A hard classiﬁcation rule (hard-VQ)
+This method relies on the analysis of the presence or the
+absence of the RNA molecules in each region of the feature
+space. These regions are build using a VQ algorithm. If all
+the RNA molecules are present in a region of the feature
+space, we assume that these cells are generated from the
+‘‘on-target’’ component. If a RNA molecule is not present
+in a region of the feature space, we further assume that this
+region is ‘‘off-target’’. This is illustrated in Fig.2: the ‘‘off-
+target’’ components contain only crosses, dots, or squares,
+while the ‘‘on-target’’ component contains all of the
+crosses, the dots, and the squares. We call this method
+‘‘hard-VQ’’.
+Formally, let fXm
+n gNm
+n¼1 be a representation of the cells in
+the feature space, where the vector Xm
+n 2RF represents a
+cell which is obtained from the RNA molecule indexed by
+m 2f1; ... ; Mg. The ﬁrst step of the method consists of
+dividing the feature space into K clusters. This is achieved
+using the K-means algorithm [ 10] from all the available
+vectors ffXm
+n gNm
+n¼1gM
+m¼1. Let
+Im
+n 2f1; ... ; Kg
+be the index of the cluster which is associated to the sample
+Xm
+n , and let
+Hk ¼fHm
+k gM
+m¼1
+be the histogram that of the vector distribution of the M
+RNA molecules in cluster k 2f1; ... ; Kg. Each component
+Hm
+k of the histogram Hk takes the following formal
+expression:
+Hm
+k ¼
+PNm
+n¼1 11fImn ¼kg
+PM
+j¼1
+PNj
+n¼1 11fIj
+n¼kg
+ð16Þ
+where 11fImn ¼kg¼1i f Im
+n ¼k, and 11fImn ¼kg¼0 otherwise.
+The second step of the method consists of classifying
+each cluster into either ‘‘off-target’’ or ‘‘on-target’’. To this
+end, we analyze the histograms fHkgK
+k¼1.L e tdðkÞ2f 0; 1g
+be the classiﬁcation result, i.e., the decision, where dðkÞ¼
+1 if the kth cluster is considered as ‘‘on-target’’, and
+dðkÞ¼ 0, if the kth cluster is considered as ‘‘off-target’’.
+The classiﬁcation rule is deﬁned as follows:
+Pattern Anal Applic
+123
+dðkÞ¼ 11 8m; Hm
+k [ 0fg ð17Þ
+In other words, if all the RNA molecules are present in the
+kth cluster, all the components of the vector Hk are dif-
+ferent from zero, then, this cluster is considered as an ‘‘on-
+target’’ component. If there is at least one RNA molecule
+which is absent in the kth cluster, there is at least one
+component of the vector Hk which equals to zero, then we
+consider this cluster as an ‘‘off-target’’ component.
+Finally, we deﬁne the RNA class posterior
+pðYm
+n jXm
+n ; H1; ... ; HK Þ, where Ym
+n is deﬁned in Sect. 3
+from the decision rule ( 17), with
+pY m
+n ¼t jXm
+n ; H1; ... ; HK
+/C0/C1
+¼0i f t [ 0; t 6¼m;
+pY m
+n ¼0 jXm
+n ; H1; ... ; HK
+/C0/C1
+¼11 dðImn Þ¼1fg ;
+pY m
+n ¼m jXm
+n ; H1; ... ; HK
+/C0/C1
+¼11 dðImn Þ¼0fg : ð18Þ
+8
+>><
+>>:
+In other words, if the vector Xm
+n is in a cluster classiﬁed as
+‘‘on-target’’, we setYm
+n ¼0, and if the vector Xm
+n is in a
+cluster classiﬁed as ‘‘off-target’’, we setYm
+n ¼m.
+Note that, in this paper, the K-means procedure is ini-
+tialized using the K-meansþþalgorithm [1].
+4.2 A soft version of the classiﬁcation rule (soft-VQ)
+We propose to extend the hard classiﬁcation rule (18)t oa
+soft version, using a probabilistic version of the K-means.
+This method is called ‘‘soft-VQ’’. The idea is to generate
+several clusterings and to merge them together. By doing
+this, we aim to reduce the inﬂuence of the K-means ini-
+tialization, and then, we expect to improve the recognition
+performance. The main reason of that improvement comes
+from the reduction of the noise brought by the vectors that
+are close to the cluster boundaries.
+The algorithm is based on bootstrapping. We want to
+combine B classiﬁers. At step b 2f1; ... ; Bg,t ob u i l da
+classiﬁer, we apply theK-means algorithm on a random sub-
+population of the training data. This sub-population is com-
+posed of vectors which are sampled at random among
+ffXm
+n gNm
+n¼1gM
+m¼1. The proportion of sampled training data is
+denoted by a. Using the classiﬁcation rule ( 17), we classify
+the clusters at step b into ‘‘on-target’’ component or ‘‘off-
+target’ ’ component. Following the ‘ ‘Bagging’ ’ idea [4], the
+ﬁnal decision to classify Xm
+n as being either an ‘ ‘on-target’ ’
+component or an ‘ ‘off-target’ ’ component is taken from a vote.
+Formally, let dbðkÞ2f 0; 1gbe the decision taken by the
+classiﬁer at step b, where dbðkÞ¼ 1 if the kth cluster is
+considered as ‘‘on-target’’, anddbðkÞ¼ 0, if the kth cluster
+is considered as ‘‘off-target’’. Then, the posterior takes the
+formal expression:
+pY m
+n ¼0 jXm
+n ; H1; ... ; HK
+/C0/C1
+¼1
+B
+XB
+b¼1
+11 dbðImn Þ¼1fg
+pY m
+n ¼m jXm
+n ; H1; ... ; HK
+/C0/C1
+¼1
+B
+XB
+b¼1
+11 dbðImn Þ¼0fg ð19Þ
+8
+>>>><
+>>>>:
+Note that, in this paper, we set the number of K-means to
+B ¼100 and the proportion of random training data to
+a ¼0:5.
+4.3 Estimation of K
+Setting K is very important and not straightforward. If K is
+too high, all the clusters may contain only one type of RNA
+molecule. In that case, all the samples may be considered
+to be ‘‘off-target’’. On the other hand, ifK is too small, we
+can expect that all the RNA molecules are present in each
+cluster. In that case, all the cells will be considered to be
+‘‘on-target’’. To address this issue, we propose an opti-
+mization criterion which forces the vector distributions of
+the ‘‘on-target’’ components to be similar and the vector
+distributions of the ‘‘off-target’’ components to be
+different.
+Let fXn; YngN
+n¼1 be the training data set, whereXn 2RF is
+a cell and Yn 2f1; ... ; Mgindicates the index of the RNA
+molecule. From either the posterior (18) or the posterior (19),
+we derive the decision rule dnðKÞwhich is similar to the
+decision (17). If Xn is considered to be on-target,dnðKÞ¼ 0.
+Else, if Xn is considered to be ‘‘off-target’’,dnðKÞ¼ 1. We
+want a value of K that both minimizes the distance between
+the ‘‘on-target’’ distributions and maximizes the distance
+between the ‘‘off-target’’ distributions.
+To achieve this, the optimal value of K is deﬁned as:
+^K ¼arg max
+K
+D1ðKÞ/C0 D0ðKÞ½/C138 ð20Þ
+where
+DtðKÞ¼
+X
+m16¼m2
+dl m1
+t ðKÞ; lm2
+t ðKÞ
+/C2/C3
+is an average distance and lm
+t ðKÞ2½ 0; 1/C138K0
+denotes a
+model of the distribution Xn jYn ¼m; dnðKÞ¼ tfg . The
+distribution function lm
+t ðKÞis computed using the bag-of-
+word model [18]. In other word, lm
+t ðKÞis a histogram that
+counts the number of samples in Xn jYn ¼m; dnðKÞ¼ tfg
+that are in each of K0clusters. The K0clusters are computed
+using a K-means. The Bhattacharyya distance is used to
+compute the distance:
+dl m1
+t ðKÞ; lm2
+t ðKÞ
+/C2/C3
+¼1 /C0
+XK0
+k¼1
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+lm1
+t;k ðKÞlm2
+t;k ðKÞ
+q
+ð21Þ
+Pattern Anal Applic
+123
+For a given set of values K 2fK1; ... ; KQg, we noticed that
+the value ranges of D1ðKÞand D0ðKÞare different. To have
+the same dynamics for both distance measures, the mea-
+sures are normalized as follows:
+DtðKÞ DtðKÞ/C0 minfDtðKÞgKQ
+K¼K1
+maxfDtðKÞgKQ
+K¼K1
+ð22Þ
+This normalization forces the distance measures in the
+range from 0 to 1.
+In this paper, the optimization criterion ( 20) is solved
+using a grid search where K 2f2qg12
+q¼2, and the number of
+clusters for the bag-of-words model is set to K0¼1024
+[see Eq. ( 21)].
+5 Random forest
+Our last method is based on bagging and Random Forests
+[4, 9, 15]. We train a bag of decision trees to predict the
+RNA molecule associated to a certain phenotypical vector,
+and we estimate how the said molecule can be predicted
+from the phenotype using the posterior entropy. We will
+refer to this method as ‘‘forest’’.
+The idea is that if a cell is ‘‘on-target’’, it is difﬁcult to
+know from which RNA molecule it is from, since all the
+RNA molecules are present in an ‘‘on-target’’ component.
+Thus, if we try to classify the cells among the RNA
+molecules, the classiﬁcation error rates of the ‘‘on-target’’
+cells will be high. The RNA entropy which characterizes
+the RNA probability will also be high.
+On the other hand, given a set of cells that are ‘‘off-
+target’’, it is reasonable to suppose that the cell classiﬁca-
+tion error will be low since an ‘‘off-target’’ component
+contains less RNA molecules than an ‘‘on-target’’ compo-
+nent. Thus, in the case of an ‘‘off-target’’ component, the
+RNA entropy is low.
+From these properties, we can derive an entropy-based
+index to characterize the level of RNA uncertainty and to
+know whether a cell is either ‘‘on-target’’ or ‘‘off-target’’.
+In the next part of this section, we formulate the problem in
+a formal way.
+Let B be the number of trees in the forest. To train a tree
+fb of the forest, the data set fXn; YngN
+n¼1 is split randomly
+into a train set and a test set, where Xn 2R is a cell and
+Yn 2f1; ... ; Mgis the index of the RNA molecule. Then,
+for a given test sample X, we can assign a class
+fbðXÞ2f 1; ... ; Mg. From the forest, we compute the class
+probabilities cn ¼fcn;1; ... ; cn;Mg, where cn;m 2½0; 1/C138andPM
+m¼1 cn;m ¼1. Formally, cn;m is related to the occurrence
+of each class:
+cn;m ¼1
+B fb s.t. fbðXnÞ¼ mgjj ð23Þ
+From the probability vector cn, we propose an entropy-
+based rule to decide whether Xn is ‘‘on-target’’ or ‘‘off-
+target’’. The entropy hn allows characterizing the homo-
+geneity of the vector cn:
+hn ¼/C0
+XM
+m¼1
+cn;m log cn;m
+We propose the following rule:
+if hn [ 1
+N
+XN
+n0¼1
+hn0; Xn is ‘‘on-target’’
+if hn\ 1
+N
+XN
+n0¼1
+hn0; Xn is ‘‘off-target’’
+8
+>>>><
+>>>>:
+ð24Þ
+More intuitively, if hn is low, Xn is always classiﬁed in the
+same class, which means that it is from an ‘‘off-target’’
+component. While if hn is high, Xn is classiﬁed among each
+of the RNA molecule, which means that it is from a ‘‘on-
+target’’ component. In addition, because we know that an
+‘‘on-target’’ component is composed of all the classes, we
+consider the following constraint that if:
+YM
+m¼1
+cn;m ¼0 ð25Þ
+the vector Xn is considered as ‘‘off-target’’.
+In this paper, the trees are trained using the CART al-
+gorithm [5] and we set the number of trees in the forest to
+B ¼100. In addition, the proportion between the random
+training data and the random test data is set to a ¼0:5.
+6 Experiments
+6.1 Toy examples
+In this section, a subjective analysis is suggested to show
+that the proposed methods are able to distinguish the ‘‘off-
+target’’ components from the ‘‘on-target’’ component. In
+this way, we generate a random data set that is visually
+easy to interpret in a 2D feature space. Both the ‘‘on-tar-
+get’’ component and the ‘‘off-target’’ components follow
+Gaussian distributions, such that the means and the vari-
+ances are chosen arbitrarily.
+The results are given in Fig. 3.F i g u r e3as h o w st h er a w
+data, i.e., the data as they are generated. Figure3b shows the
+classiﬁcation results for soft-VQ (Sect. 4). Figure 3cs h o w s
+the classiﬁcation results for the random forest (Sect. 5). Fig-
+ure 3d shows the classiﬁcation results for the GMM (Sect.3).
+Pattern Anal Applic
+123
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+ground truth: on−target data
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+ground truth: off−target data
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+(a) Ground truth
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+soft−VQ: on−target estimation
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+soft−VQ: off−target estimation
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+(b) Estimation using soft-VQ
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+Forest: on−target estimation
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+Forest: off−target estimation
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+(c) Estimation using the forest
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+Random+GMM: on−target estimation
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+−4 −2 0 2 4 6
+−4
+−2
+0
+2
+4
+6
+Random+GMM: off−target estimation
+feature 1
+feature 2
+siRNA1
+siRNA2
+siRNA3
+(d) Estimation using Random+GMM
+Fig. 3 Subjective analysis from
+a toy synthetic data set. a The
+ground truth. b Estimation using
+a soft vector quantization (soft-
+VQ). c Estimation using a
+random forest (Forest).
+d Estimation using a Gaussian
+mixture model
+(RandomþGMM)
+Pattern Anal Applic
+123
+The similarity between the estimated components in
+Fig. 3b and the ground truth in Fig. 3a shows that the
+method soft-VQ is able in that case to recognize the ‘‘off-
+target’’ components. The forest and the GMM [6] ﬁltered a
+lots of the ‘‘off-target’’ vectors as well, but are less precise.
+6.2 Semi-synthetic data set
+The subjective analysis in Sect.6.1 is used to illustrate the
+issue and the kinds of results we obtain. But, a robust
+quantitative analysis must be carried out to compare the
+methods using real data. We use cells in time laps movies
+(Fig.1).
+Initially, each cell is represented by 240 features. Some
+features characterize both the soma and nucleus shapes in
+each frame: Position, area, eccentricity, major axis length,
+minor axis length, perimeter, and circularity. We also
+characterize the distribution of these values in a video us-
+ing the quantilesf0; 0:25; 0:5; 0:75; 1g. In addition, we
+compute the dynamical version of these static measures by
+computing the Euclidean distance between the feature
+values in two consecutive frames. For instance, the in-
+stantaneous speed is the dynamical version of the position.
+To be more exhaustive, we add both the instantaneous
+acceleration, and the distance traveled, and we compute
+their distributions in the video using the quantiles.
+Then, for all the static features, we compute the fre-
+quency of the protrusion–retraction process, i.e., the num-
+ber of times a soma is growing or retracting. Other features
+characterize a neurite in each frame: number of branches,
+number of leaves, distribution of the branch lengths (using
+the quantiles), the extreme length (the longest path from
+the root to a leaf), the total cable length, and the neurite
+complexity that equals the extreme length divided by the
+number of branches. Again, to have a neuron-based mea-
+sure, we characterize their distribution using the quantiles.
+We also characterize the neurite feature distribution in a
+video using the quantiles. In addition, the instantaneous
+number of neurites is computed as well as its distribution in
+the video. Then, we compute the frequency of the protru-
+sion–retraction process, i.e., the number of times a neurite
+is growing or retracting.
+Finally, some features characterize the change between
+two images in the video. They are based on the entropy or
+they are pixel based. Their distribution is computed using
+the quantiles.
+To reduce the complexity, we select the 20 best features
+using the KS test [ 30], which leads to a vector of 20
+components for each cell.
+Because of many possible cell phenotypes, it is not
+straightforward to have an annotated data set. That is why
+we built a semi-synthetic data set from a set of 17 RNA
+molecules. To do this, we ﬁrst evaluate the phenotypic
+distance using the classiﬁcation accuracy as measure of the
+distance. The classiﬁcation accuracy is computed from 100
+cross validation steps using a Support Vector Machine with
+a Gaussian kernel [29]. Second, using the distance matrix
+that is given in Fig. 4, we choose the M þ1 RNA mole-
+cules that are the most further apart from each other. Then,
+RNA1
+RNA2
+RNA3RNA4
+RNA5
+RNA6
+RNA7
+RNA8
+RNA9
+RNA10
+RNA11
+RNA12
+RNA13
+RNA14
+RNA15
+RNA16
+RNA17
+RNA1
+RNA2
+RNA3
+RNA4
+RNA5
+RNA6
+RNA7
+RNA8
+RNA9
+RNA10
+RNA11
+RNA12
+RNA13
+RNA14
+RNA15
+RNA16
+RNA17
+Classification accuracy
+0.5
+0.55
+0.6
+0.65
+0.7
+0.75
+0.8
+0.85
+0.9
+Fig. 4 Measure of the phenotypic distance between each RNA
+molecule. The higher the classiﬁcation accuracy the higher the
+distance
+Table 1 Recognition
+performances as a function of
+the number of virtual RNA
+molecules
+Number of RNA molecules M ¼2 M ¼3 M ¼4 M ¼5
+Hard-VQ 0.70 ± 0.13 0.65 ± 0.17 0.62 ± 0.17 0.61 ± 0.17
+Hard-VQþGMM 0.71 ± 0.11 0.70 ± 0.09 0.68 ± 0.09 0.64 ± 0.10
+Soft-VQ 0.73 ± 0.11 0.70 ± 0.21 0.63 ± 0.18 0.63 ± 0.17
+Soft-VQþGMM 0.73 ± 0.12 0.73 ± 0.10 0.69 ± 0.10 0. 66 ± 0.09
+Forest 0.77 ± 0.06 0.73 ± 0.05 0.69 ± 0.06 0.64 ± 0.09
+ForestþGMM 0.73 ± 0.08 0.68 ± 0.06 0.65 ± 0.05 0.61 ± 0.04
+Random 0.37 ± 0.06 0.33 ± 0.04 0.31 ± 0.03 0.30 ± 0.03
+RandomþGMM 0.51 ± 0.05 0.50 ± 0.04 0.50 ± 0.04 0.50 ± 0.03
+The reported value represents the mean correct classiﬁcation rate
+Pattern Anal Applic
+123
+one of the RNA molecule is chosen at random to be the
+‘‘on-target’’ component, and the remaining RNA molecules
+are associated to each of the M RNA ‘‘off-target’’ com-
+ponents. By doing this, we build a data set which ensures
+both the ‘‘on-target’’ and the ‘‘off-target’’ components to
+have different distributions, while making these distribu-
+tions realistic. To statistically characterize the recognition
+performance and to identify the best method, this random
+procedure is repeated 100 times. At the end, we compute a
+mean correct classiﬁcation accuracy, that is the average
+between the correct classiﬁcation rate of the ‘‘on-target’’
+class and the correct classiﬁcation rate of the ‘‘off-target’’
+class. The standard deviation is also computed to indicate
+the unstable methods.
+All the results are given in Table 1. For each method,
+we plot the classiﬁcation accuracy as a function of M, the
+number of RNA molecules. We not only compare the
+GMM (Sect. 3), the hard-VQ (Sect. 4.1), the soft-VQ
+(Sect. 4.2), and the forest (Sect. 5), we also initialize the
+GMM using hard-VQ, soft-VQ, and the forest. The method
+‘‘Random’’ is a random classiﬁcation that provides a lower
+bound. The best performances are given in bold.
+From these results, we can make several observations.
+First of all, soft-VQ and the forest outperform the other
+methods. Second, in comparison to the GMM [ 6], we
+drastically improve the recognition performance using the
+proposed methods or by initializing the GMM with the
+proposed methods. This improvement goes from about
+10 % to about 25 % in the best case. Also, the probabilistic
+K-means we proposed (soft-VQ) outperforms the hard
+decision rule (hard-VQ) with a range from 1 to 5 %. In
+addition, these results point out that the EM algorithm
+Fig. 5 Classiﬁcation results for the gene HGS: a the raw data set, b estimation using soft vector quantization (soft-VQ)
+Pattern Anal Applic
+123
+needs a proper initialization. For instance, there is a 23 %
+improvement by initializing the GMM with the soft-VQ
+(M ¼2 and M ¼3). To be done with the observations, we
+notice that the VQ-based methods have a standard de-
+viation which is about 15, while it is about 5 for the forest
+and the GMM. Thus, in comparison to soft-VQ, soft-
+VQþGMM allows both improving the recognition perfor-
+mance and reducing the instability.
+6.3 Real data set
+In collaboration with biologists, we manually annotated a
+data set. We want to characterize the neurite outgrowth of
+the cells in time laps movies (Fig. 1). A neurite is repre-
+sented by three features: the total cable length of the
+neurite, the extreme length of the neurite, and the number
+of branches in the neurite. We have two sets of movies:
+cells for which the gene HGS is knockdown and cells for
+which the gene TRAF2 is knockdown. For each of these
+two set of movies, there are three sub-set of movies, each
+sub-set being related to a RNA molecule.
+To annotate the data, we use the following protocol. For
+each possible pair of features, we plot the data in the 2D
+feature space, and then, we manually designate the ‘‘off-
+target’’ vectors. The annotation result is shown in Fig. 5a
+for the gene HGS and in Fig. 6a for the gene TRAF2. The
+three RNA molecules are, respectively, represented by red
+circles, blue crosses, and black dots. As waited, the ‘‘on-
+target’’ component contains cells from the three RNA
+molecules, while the ‘‘off-target’’ component contains cells
+from either one or two RNA molecules. Figs. 5b and 6b
+show the classiﬁcation results using the soft-VQ model.
+Fig. 6 Classiﬁcation results for the gene TRAF2: a the raw data set, b estimation using soft vector quantization (soft-VQ)
+Pattern Anal Applic
+123
+This subjective analysis demonstrates that we properly
+identify the different components.
+To quantify the error rate, we provide the classiﬁcation
+accuracy as well. The recognition performances are given
+in Table2 for each of the methods. The best recognition
+performances are given in bold. As previously, our pro-
+posed methods allow improving drastically the classiﬁca-
+tion accuracy in comparison to the GMM baseline [6]i na
+range from 8 to 26 %. In addition, our proposed methods
+are better for the GMM initialization than a random GMM
+initialization (about 10 %). In comparison to Sect. 6.2, the
+VQ-based methods clearly outperform the forest. This is
+due to the default values of the forest parameters (number
+of trees and training proportion) that are not ﬁtted to this
+new data set. The advantage of the VQ-based methods is
+that we estimate the optimal number of clusters (Sect.4.3).
+Note that, these results mainly depend on the quality of
+the data annotation. The fact that we obtain more than
+90 % of classiﬁcation accuracy proves that the annotation
+procedure has been well designed.
+In Table 3, we report an analysis of the main parameter
+sensitivity. The four main parameters are the bootstrapping
+parameters (B and a) that are used for both Forest and soft-
+VQ. We characterize their sensitivity by computing the
+average standard deviation of the classiﬁcation accuracy. If
+the standard deviation is high, the dispersion of the clas-
+siﬁcation accuracy is high. Regarding the parameter B,w e
+note that the accuracy dispersion is lower if
+B 2f 100; 200; 300; 400; 500g. This means that it is
+equivalent to use B ¼100 and B ¼500. In addition, we
+note that the classiﬁcation performance increases from B ¼
+1t o B ¼100 and becomes steady from B ¼100. For this
+reason, B ¼100. Regarding the parameter a, we note that
+the dispersion always increases when we remove the ex-
+treme values of alpha (either a ¼0:1o r a ¼0:9). As a
+consequence, setting a ¼0:5 is a good compromise that
+ensures a better choice than random.
+6.4 Discussion
+The results in Tables1 and 2 reveal that the forest-based
+method is less robust. Actually, in Table 1 the forest gives
+similar to the soft-VQ, while in Table 2 the VQ-based
+method largely outperforms the forest in a range from 14 to
+20 %. The explanation of this phenomenon is the fact that
+we set the number of trees in the forest toB ¼100, the data
+proportion to train a tree at a ¼0:5. These values are well
+set in Table 1, but this is not true in Table 2. To improve
+the chosen value, we could train the optimal value in a grid
+search, as it is done for the GMM in Sect. 3.3.
+We now discuss the fact that the standard deviation of
+the VQ-based methods is much higher than the forest and
+the random classiﬁcation. The VQ methods are trained in
+an unsupervised context. The consequence being that
+cluster deﬁnition only depends on the random centroid
+initialization. Hence, the cell classiﬁcation may strongly
+vary between two VQ realizations. On the other hand, both
+GMM and Forest are trained in a supervised manner. In
+such a case, clusters are not only driven by centroid ini-
+tialization, but also by the class distributions. This con-
+straint forces the clusters to converge to steadier results,
+where clusters are centered around the class mixtures or the
+class speciﬁcities. The consequence is a reduction of both
+the randomness of events and the standard deviation. Note
+that, the random classiﬁcation is based on a random class
+Table 2 Classiﬁcation accuracy for the genes TRAF2 and HGS
+Gene names HGS TRAF2
+Hard-VQ 0.94 0.91
+Hard-VQþGMM 0.80 0.84
+Soft-VQ 0.96 0.94
+Soft-VQþGMM 0.83 0.81
+Forest 0.76 0.80
+ForestþGMM 0.78 0.83
+Random 0.25 0.25
+RandomþGMM 0.70 0.76
+The reported value represents the mean correct classiﬁcation rate
+Table 3 In this table, we report an analysis of the sensitivity of the
+two main parameters B and a that deﬁne the bootstrapping environ-
+ment of both Forest and soft-VQ
+parameters Default Method HGS (%) TRAF2 (%)
+B 2B1, a ¼a1 B ¼100 Forest 3.9 3.6
+B 2B2, a ¼a1 B ¼100 Forest 1.4 1.6
+B 2B1, a ¼a1 B ¼100 Soft-VQ 1.3 1.2
+B 2B2, a ¼a1 B ¼100 Soft-VQ 0.5 0.2
+a 2a1, B ¼B1 a ¼0:5 Forest 2.9 3.6
+a 2a2, B ¼B1 a ¼0:5 Forest 2.2 2.1
+a 2a3, B ¼B1 a ¼0:5 Forest 1.7 3.6
+a 2a4, B ¼B1 a ¼0:5 Forest 2.7 2.9
+a 2a1, B ¼B1 a ¼0:5 Soft-VQ 7.3 8.6
+a 2a2, B ¼B1 a ¼0:5 Soft-VQ 3.7 1.3
+a 2a3, B ¼B1 a ¼0:5 Soft-VQ 7.5 10.8
+a 2a4, B ¼B1 a ¼0:5 Soft-VQ 1.7 0.6
+We report the average standard deviation of the classiﬁcation accu-
+racy. To study the sensitivity of the parameter B, we compute the
+standard deviation of the classiﬁcation accuracy for each value of a
+given a value of B, then we average the standard deviation. To study
+the sensitivity of the parameter a, we compute the standard deviation
+of the classiﬁcation accuracy for each value of B given a value of a,
+then we average the standard deviation. Let B1 ¼f10; 50; 75; 100;
+200; 300; 400; 500g, B2 ¼f100; 200; 300; 400; 500g, a1 ¼f0:1; 0:3;
+0:5; 0:7; 0:9g, a2 ¼f0:3; 0:5; 0:7g, a3 ¼f0:1; 0:3; 0:5g, and a4 ¼
+f0:5; 0:7; 0:9g
+Pattern Anal Applic
+123
+attribution to each cell. Hence, it is not surprising to have
+similar error rates between several consecutive
+experiments.
+Now, we address the convergence of EM. In Table 1,
+VQþGMM outperforms VQ, but Forest outperforms For-
+estþGMM. On the contrary, in Table 2, VQ outperforms
+VQþGMM while Forest þGMM outperforms Forest. The
+theory behind this results is that, using EM, the likelihood
+does not necessarily converge towards a global maximum.
+Instead, any local extrema such as local maximum, local
+minimum or saddle point, may be reached. The conse-
+quence is that the likelihood may slightly decrease after an
+EM procedure, especially if the initialization is already
+interesting. In their works, McLachlan and Krishnan give
+such examples [ 21].
+7 Conclusion
+We have proposed several implementations of a common
+idea to detect automatically the ‘‘off-target’’ population in a
+set of samples. One is based on VQ, and the other on a
+forest of decision trees. Both of these methods are able to
+cope with large data sets in high-dimension space.
+A necessary condition common to all our methods is to
+have at least one phenotype which is the same for every
+RNA molecules. In other words, we force a cell to be
+considered as ‘‘off-target’’ from the moment a RNA
+molecule is not represented. However, these condition can
+be relaxed to extend the approach to more general situa-
+tions. For instance, when lots of different RNA molecules
+are used to knockdown a gene, we may be interested in
+considering a percentage of RNA molecules having similar
+phenotypic components instead of the majority. We could
+stipulate that, if 80 % of the RNA molecules produce the
+same phenotype, this phenotype is ‘‘on-target’’. We want to
+point out that the rules (17) and (25) can easily be changed
+to use this soft criterion.
+In the experimental sections, we compared our proposed
+models to a baseline based on a GMM [ 6]. In addition, we
+proposed to initialize the GMM training step in a proper
+way, i.e., using our proposed methods. These experiments
+have been conducted from a real data set which is made of
+cells in time laps movies, as well as a semi-synthetic data
+set and a toy synthetic data set.
+Our main conclusion is that the VQ-based method
+drastically outperforms the baseline [ 6]. The forest also
+provides good recognition performance, but the evaluation
+of the parameters is not so easy such that we had bad
+results on the real data set. An other argument that goes in
+favor of the VQ-based model, is that this model is very
+straightforward and simple to understand for non-computer
+scientists such as biologists. The forest approach may still
+exhibit interesting properties in different contexts, for in-
+stance if the feature space lacks a metric structure.
+Acknowledgments This work was supported by the Swiss National
+Science Foundation under Sinergia grant 127456 ‘ ‘Understanding
+Brain morphogenesis’’, and from a Human Frontier Science Program
+grant.
+References
+1. Arthur D, Vassilvitskii S (2007) k-means þþ: the advantages of
+careful seeding. In: Proceedings of the ACM-SIAM symposium
+on discrete algorithms, p 1027–1035
+2. Bakal C (2007) Quantitative morphological signatures deﬁne
+local signaling networks regulating cell morphology. Science
+316:1753–1756
+3. Bishop CM, Ulusoy I (2005) Generative versus discriminative
+methods for object recognition. Conf Comput Vis Pattern Recogn
+2:258–265
+4. Breiman L (2001) Random forest. Mach Learn 45:5–32
+5. Breiman L, Friedman JH, Olshen RA, Stone CJ (1984) Classiﬁ-
+cation and regression trees. Wadsworth & Brooks/Cole Advanced
+Books & Software, Monterey
+6. Collinet C et al (2010) Systems survey of endocytosis by multi-
+parametric image analysis. Nature 464:243–249
+7. Dempster AP, Laird NM, Rubin DB (1977) Maximum likelihood
+from incomplete data via the em algorithm. J R Stat Soc Ser B
+Methodol 39(1):1–38
+8. Echeverri CJ et al (2006) Minimizing the risk of reporting false
+positives in large-scale RNAi screens. Nat Methods
+3(10):777–779
+9. Freund Y, Schapire RE (1997) A decision-theoretic generaliza-
+tion of on-line learning and an application to boosting. J Comput
+Syst Sci 55(1):119–139
+10. Hartigan JA (1975) Clustering algorithms. Wiley, New York
+11. Held M et al (2010) CellCognition: time-resolved phenotype
+annotation in high-throughput live cell imaging. Nat Methods
+7:747–754
+12. Jackson AL, Linsley PS (2010) Recognizing and avoiding siRNA
+off-target effects for target identiﬁcation and therapeutic appli-
+cation. Nat Rev Drug Discov 9:57–67
+13. Kullback S (1987) Letter to the editor: the Kullback–Leibler
+distance. Am Stat 41(4):340–341
+14. Laptev I, Marszalek M, Schmid C, Rozenfeld B (2008) Learning
+realistic human actions from movies. In: International conference
+on computer vision and pattern recognition
+15. Lefort R, Fablet R, Boucher J-M (2010) Weakly supervised
+classiﬁcation of objects in images using soft random forests. In:
+European conference on computer vision
+16. Lefort R, Fablet R, Boucher JM (2011) Object recognition using
+proportion-based prior information: application to ﬁsheries
+acoustics. Pattern Recogn Lett 32(2):153–158
+17. Lefort R, Fleuret F (2013) treeKL: A distance between high di-
+mension empirical distributions. Pattern Recogn Lett
+34(2):140–145
+18. Lowe D (1999) Object recognition with informative features and
+linear classiﬁcation. In: International conference on computer
+vision and pattern recognition
+19. Lughofer E (2008) Extensions of vector quantization for incre-
+mental clustering. Pattern Recogn 41(3):995–1011
+20. Lughofer E (2013) eVQ-AM: an extended dynamic version of
+evolving vector quantization. In: IEEE conference on evolving
+and adaptive intelligent systems, p 40–47
+Pattern Anal Applic
+123
+21. McLachlan GJ, Krishnan T (2008) The EM algorithm and ex-
+tensions, 2nd edn. Wiley, New York
+22. Mahalanobis PC (1936) On the generalised distance in statistics.
+Proc Natl Inst Sci India 2(1):49–55
+23. Moosman F, Nowak E, Jurie F (2008) Randomized clustering
+forests for image classiﬁcation. IEEE Trans Pattern Anal Mach
+Intell 30(9):1632–1646
+24. Neumann B et al (2010) Phenotypic proﬁling of the human
+genome by time-lapse microscopy reveals cell division genes.
+Nature 464:721–72
+25. Orvedahl A et al (2011) Image-based genome-wide siRNA screen
+identiﬁes selective autophagy factors. Nature 480:113–117
+26. Parzen E (1962) On estimation of a probability density function
+and mode. Ann Math Stat 33:1065–1076
+27. Pertz O et al (2008) Spatial mapping of the neurite and soma
+proteomes reveals a functional Cdc42/Rac regulatory network.
+Natl Acad Sci USA 105:1931–1936
+28. Salma J et al (2012) Computational analysis and predictive
+modeling of small molecule modulators of microRNA. J Chem-
+inform 4(1):16. doi: 10.1186/1758-2946-4-16
+29. Scho¨ lkopf B, Smola AJ (2002) Learning with kernels: support
+vector machines, regularization, optimization and beyond. MIT
+Press, Cambridge
+30. Yan J et al (2013) Transcription factor binding in human cells
+occurs in dense clusters formed around cohesin anchor sites. Cell
+154(4):801–813
+31. Yin Z et al (2013) A screen for morphological complexity
+identiﬁes regulators of switch-like transitions between discrete-
+cell shape. Nat Cell Biol 15(7):860–871
+32. Yizong C (1995) Mean shift, mode seeking, and clustering. IEEE
+Trans Pattern Anal Mach Intell 17(8):790–799
+Pattern Anal Applic
+123
+View publication stats

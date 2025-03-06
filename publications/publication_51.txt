@@ -1,0 +1,677 @@
+p190RhoGAP negatively regulates Rho activity at the cleavage
+furrow of mitotic cells
+Ling Su*, Olivier Pertz†, Masahito Mikawa*, Klaus Hahn†, and Sarah J. Parsons*,‡
+* Department of Microbiology and Cancer Center, University of Virginia Health System, P O Box
+800734, Charlottesville, Virginia 22908
+† University of North Carolina at Chapel Hill, Department of Pharmacology and Lineberger Cancer
+Center, Chapel Hill, North Carolina 27599
+Abstract
+Previous studies demonstrated that p190RhoGAP (p190) negatively affects cytokinesis in a Rho-
+GAP-dependent manner, suggesting that regulation of Rho may be a critical mechanism of p190
+action during cytokinesis. P190 localizes to the cleavage furrow (CF) of dividing cells, and its levels
+decrease during late mitosis by an ubiquitin-mediated mechanism, consistent with the hypothesis
+that high RhoGTP levels are required for completion of cytokinesis. To determine whether RhoGTP
+levels in the CF are affected by p190 and to define the phase(s) of cytokinesis in which p190 is
+involved, we used FRET analysis alone or in combination with time lapse microscopy. In normal
+cell division activated Rho accumulated at the cell equator in early anaphase and in the contractile
+ring, where it co-localized with p190. Real-time movies revealed that cells expressing elevated levels
+of p190 exhibited multiple cycles of abnormal CF site selection and ingression/regression, which
+resulted in failed or prolonged cytokinesis. This was accompanied by mislocalization of active Rho
+at the aberrant CF sites. Quantified data revealed that in contrast to ECT2 and dominate negative
+p190 (Y1283Ap190), which resulted in hyper-activated Rho, Rho activity in the CF was reduced by
+wild type p190 in a dose-dependent manner. These results suggest that p190 regulates cytokinesis
+through modulation of Rho-GTP levels, thereby affecting CF specification site selection and
+subsequent ring contraction.
+Keywords
+p190RhoGAP; Rho; mitosis; cytokinesis; cleavage furrow; ECT2; FRET
+Introduction
+Cytokinesis, the final step of cell division, is initiated at the metaphase to anaphase transition
+by specification of the cleavage plane, followed by furrow assembly and ingression, midbody
+formation, and cell separation. This process results in the production of two daughter cells,
+each with an equal complement of chromosomes and membrane [1,2]. The molecular
+requirements for these events appear to be conserved in animal cells, since a core set of proteins
+have been found to be important for cytokinesis [3,4]. Among them are the two major
+‡Correspondence should be addressed to: S. J. Parsons, TEL: 434-924-2352, FAX: 434-982-0689, Email: sap@virginia.edu.
+Publisher's Disclaimer: This is a PDF file of an unedited manuscript that has been accepted for publication. As a service to our customers
+we are providing this early version of the manuscript. The manuscript will undergo copyediting, typesetting, and review of the resulting
+proof before it is published in its final citable form. Please note that during the production process errors may be discovered which could
+affect the content, and all legal disclaimers that apply to the journal pertain.
+NIH Public Access
+Author Manuscript
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+Published in final edited form as:
+Exp Cell Res. 2009 May 1; 315(8): 1347±1359. doi:10.1016/j.yexcr.2009.02.014.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+cytoskeleton components, microtubules and actin, as well as their motor proteins, kinesins and
+myosins. Early studies demonstrated by physical manipulation of the central spindle apparatus
+that selection of the cleavage plane initiation site and contractile ring assembly are mediated
+by mitotic spindle microtubules [5,6]. While multiple reports substantiate these findings,
+evidence suggests that astral microtubules may also play an important role in these events
+[7–12]. Cleavage furrow (CF) assembly and contraction involve actin filaments, myosin II,
+septins, and actin-interacting proteins, such as profilin and cofilin [3].
+Accumulating evidence suggests that RhoGTPases and their regulated local activities are also
+critical for successful completion of mitosis [13,14]. Cells depleted of Rho protein by siRNA
+or of Rho activity by treatment with C3 transferase, show cytokinesis defects [15–27]. Rho is
+important not only for CF specification through microtubules but also for furrow formation
+and contraction through actinmyosin via its downstream targets, including ROCK, citron
+kinase, LIM kinase, and formin-homology proteins [3]. The molecular mechanisms by which
+Rho is localized and activated to mediate CF specification, ring assembly and contraction are
+still poorly understood. While multiple models have been proposed to delineate these events
+[10,13,28], the current consensus is that initial positioning of the furrow is dependent on local
+enrichment and activation of Rho [13,14,22]. This process can be regulated by the
+centralspindlin complex, composed of a Rho family GTPase activating protein (GAP), CYK4/
+MgcRacGAP, and a kinesin protein, MKLP1. ECT2, a guanine nucleotide exchange factor
+(GEF) for Rho, is also recruited by centralspindlin to this region where it can activate Rho
+[26,27,29,30]. Until recently, it has been a challenge to visualize the active pool of Rho at the
+CF. Now, a number of different probes have permitted detection of the active population, but
+the results are conflicting and differ by method and cell type used [22,26,31]. The study
+reported here utilizes a single chain FRET biosensor that detects conformational changes in
+Rho that occur upon GDP-GTP exchange, yet still maintains Rho’s sensitivity to its regulators
+[32,33]
+At any given point in time and space, the activity of Rho represents a balance between its GTP-
+and GDP-bound states, which is mediated by the combined action of guanine nucleotide
+dissociation inhibitors (GDIs), GEFs, and GAPs. ECT2 and CYK-4/mgcRacGAP are
+candidates for performing the Rho GEF and GAP functions, as both localize to the cytokinetic
+apparatus and are critical for cytokinesis [26,29,34–38]. MgcRacGAP is the human homolog
+of CYK-4 and required for cytokinesis. Since its primary target is Rac in vitro, whether
+MgcRacGAP has Rho GAP activity in vivo during cytokinesis is unclear [39,40].
+However, previous studies have revealed another RhoGAP, p190RhoGAP (p190), that exhibits
+specific GAP activity for Rho in vivo and localizes to the CF [41,42]. P190 is a multidomain
+and multifunctional protein that plays a crucial role in regulating actin stress fiber dynamics
+by negatively regulating Rho and promoting actin stress fiber disassembly [42–48].
+Endogenous p190 is degraded in late mitosis by a ubiquitin-proteasome-dependent pathway.
+Gene silencing strategies to further define the role of p190 in cytokinesis have been
+uninformative, because p190-silenced cells become highly adherent and flattened and fail to
+even enter mitosis. In contrast, studies involving overexpression of p190 have shown that p190
+induces multinucleation and mis-localization of the cleavage plane specification site,
+suggesting that it functions in the early stages of cytokinesis. These effects of p190 are observed
+in multiple mammalian cell lines and are dependent on its RhoGAP domain. Together, these
+characteristics of p190 suggest that its effects on cytokinesis may be mediated in part through
+Rho.
+To test this hypothesis, we used time lapse microscopy and fluorescence resonance energy
+transfer (FRET) technology to analyze the effect of p190 on living cells and on Rho activity
+during cytokinesis. In normally dividing cells, FRET analysis demonstrated that activated Rho
+Su et al. Page 2
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+localized to the cell equator at the furrow specification plane in early anaphase and to the CF
+during cytoknesis, where it co-localized with p190. Real-time microscopy showed that
+overexpression of p190 resulted in defective and delayed mitosis through abnormal and/or
+failed specification of the CF plane and cycles of ingression/regression in both HeLa and MDA-
+MB 468 breast cancer cells. These abnormalities were accompanied by aberrant localization
+and reduced levels of active Rho in the CF. P190 overexpression reduced, while ECT2 and
+dominant negative p190 (Y1283A p190) increased Rho activity in the CF in a dose-dependent
+manner. Together, these data support the conclusion that p190 affects selection of the cleavage
+plane and ingression of the contractile ring through regulation of Rho activity in the CF during
+cytokinesis
+Materials and methods
+Tissue culture and transfection
+Tet-on HA-tagged p190RhoGAP MDA-MB-468 human breast cancer cells [41] were cultured
+in Dulbecco’s Modified Eagle Medium (DMEM, Invitrogen) supplemented with 10% fetal
+bovine serum and antibiotics and induced to overexpress p190 by addition of 1 ug/ml
+doxcycline (DOX) to the culture medium for the indicated time. HeLa cells, cultured in DMEM
+with 10% serum, were transfected with Rho biosensor variants and p190 variants or ECT2
+using Polyfect (Qiagen Inc, Valencia, CA) according to the manufacturer’s instructions. Rho
+biosensors were introduced into 468 cells by the same method and simultaneously treated with
+DOX to induce expression of p190. Cells were fixed and stained 24 hrs post transfection and
+visualized on a fluorescent microscope (Orthoplan; E. Leitz, Inc., Rockleigh, NJ).
+Plasmids
+The pkH3190 plasmid, which encodes an N-terminal triple HA-tagged full-length, wild type
+(wt) p190, and GFP-p190 were gifts from Ian Macara [47]. Mutant P190Y1283A, previously
+shown to be deficient for RhoGAP activity [48], was cloned into the pKH3 vector at the BamH1
+and EcoR1 sites. RFPp190 was cloned into the pTriEXmRFP vector at the BamH1 and EcoR1
+sites. The various Rho biosensors (wtRho, T19NRho and Q63LRho) were cloned into the
+pTriEx vector as described [32]. Each biosensor consists of a CFP-RBD (Rho binding domain
+from rhotekin) and YFP-Rho (wtRho, RhoQ63L or RhoT19N) connected by a linker.
+Constituitively active ECT2 (ECT2C {residues 414–883} hereafter referred to as ECT2) was
+cloned into the pcDNA3Flag vector at the EcoR1 and BamH1 sites. Expression of HA-tagged
+p190 and Flag-tagged ECT2 was verified by Western immunoblotting and
+immunofluorescence.
+Generation of HeLa cells stably expressing the Rho biosensor
+HeLa cells were co-transfected with the Rho biosensor and pBabe (puromycin) plasmids at a
+molar ratio of 10:1, respectively, and selected with 400ng/ml puromycin in tissue culture
+medium for 6 days. YFP positive cells were sorted by Becton Dickinson FACSVantage SE
+Turbo Sorter at 488nm. Stable transfectants were cultured in DMEM medium supplemented
+with 400ng/ml puromycin and 10% FBS and utilized for live FRET imaging.
+Immunofluorescence
+Cells were prepared for immunofluorescence as described in [44]. Two ug/ml anti-HA
+monoclonal antibody (mAb), (HA11 {Covance, Berkeley, CA}) and 2 ug/ml anti-Flag M2
+mAb (Sigma, St. Louis, MO) were used as primary antibodies to stain p190 and ECT2,
+respectively. Two ug/ml Alexa Fluor 594 goat anti-mouse IgG (Invitrogen, Molecular Probes,
+Inc., Eugene, OR) served as the secondary antibody. Coverslips were mounted on microscope
+slides, and cells were viewed on a Nikon TE200 inverted microscope with a 60× 1.3 NA lens
+Su et al. Page 3
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+for FRET images or on a Zeiss LSM 510 UV confocal microscope equipped with a Plan
+Apochromat 100×/1.4 NA oil immersion lens for confocal images.
+Movies and images
+Hela or MDA-MB-468 cells were seeded in 0.17 mm Delta T dishes (Fisher Scientific,
+Pittsburgh, PA) and cultured in Leibovitz’s L-15 Medium (Gibco/Invitrogen) supplemented
+with 10% fetal bovine serum. P190 expression was induced by addition of 1ug/ml Dox to
+MDA-MB-468 tet-on cells or by transient transfection of pKH3p190, GFP p190, or RFPp190
+into Hela cells. Both 468 and HeLa cells were transfected with the indicated biosensor as
+described above. Movies were taken 24 hrs after exogenous p190 induction or transfection.
+Ten ug/ml OxyFluor (Oxyrase, Inc, Mansfield, OH) was added to the medium before taking
+movies to facilitate the capture of fluorescent images. Images were taken with a Nikon TE200
+inverted microscope, equipped with a 60× 1.3 NA lens and a Hamamatsu camera controller,
+and analyzed with OpenLab software. Temperature in the dish was controlled by a Bioptechs
+Delta T4 Culture Dish Controller. For FRET movies of living cells, RFPp190- and/or
+biosensor-positive mitotic cells were selected by FACS sorting, and CFP/YFP, CFP/CFP and
+DIC images were taken every min.
+FRET analysis
+HeLa cells were synchronized (see below) and transfected with the various Rho biosensors or
+cotransfected with either the pKH3p190 or ECT2 constructs as described above. Cells were
+fixed and stained for either p190 or ECT2 and visualized by fluorescence microscopy. For
+FRET analysis, the following wave length filters were used: CFP excitation - 436/10nm; CFP
+emission - 470/30nm; YFP excitation - 493/17nm; YFP emission - 535/30nm; Alexa Fluor 594
+excitation - 575/25 and emission - 630/60. Three images were captured for each field: CFP
+excitation and CFP emission (CC), CFP excitation and YFP emission (CY) and YFP excitation
+and YFP emission (YY). Fluorescence ratio images are presented as CY/CC, showing the
+relative Rho specific activity in cells. The ratio range is depicted by the colored bar, with red
+showing the highest and blue the lowest ratio. Digital densitometric measurements of
+fluorescence intensity (CFP, YFP, or Alexa Fluor 594) in each cell (or designated part of each
+cell) include background subtraction. OpenLab software was used for the image analysis.
+Cell cycle synchronization
+Cells were synchronized in mitosis by incubation in 2 mM thymidine (Sigma) in tissue culture
+medium for 12–16 hrs, washed and released from the block by incubation in normal medium
+for 8–10 hrs. During release, cells were transfected with different Rho biosensors or
+cotransfected with pKH3-p190 or Flag-ECT2 constructs. Cells were then fixed, stained, and
+visualized by fluorescence microscopy.
+Results
+Ectopic expression of p190RhoGAP induces a mitotic defect in living cells
+Our previous studies showed that overexpression of p190 induced multinucleation in both
+MDA-MB-468 breast cancer cells and HeLa cells, suggesting a role for p190 in cytokinesis.
+Employing conventional immunofluorescence of fixed cells, we obtained initial evidence that
+p190 can affect cleavage plane specification. To visualize the effect of p190 overexpression
+in real time and to gain additional insights into its mechanism of action, we produced movies
+of 468 cells that inducibly overexpress p190 in response to tetracycline (doxycycline) or of
+HeLa cells transiently transfected to express GFP-tagged p190. In movies S1 and S2,
+recordings were started 24 hrs after exogenous p190 was induced by 1ug/ml doxcycline (DOX)
+in 468 cells. Figure 1a depicts selected images in sequence over a 12 hr period from movie S1.
+Su et al. Page 4
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+In these asynchronous cultures, the arrows identify four cells attempting to undergo mitosis.
+These cells either took an abnormally long time to transit mitosis (at least 12 hours, see cells
+2, 3, and 4), as compared to control cells (about 3 hrs) in Figure 1c, or appeared to undergo
+apoptosis (cells 1 and 3). All suffered mitotic failure. When cells entered mitosis, it appeared
+that the division planes could be positioned at anaphase (sometimes abnormally – see cells 3
+and 4) and ring contraction was initiated. But the rings retracted, and several cells tried to
+reposition the furrow, in some instances repeatedly (cells 2, 3, and 4). Movie S2 and Figure 1b
+show at higher magnification one cell that attempted multiple times to define the cleavage
+plane and divide. Quantitation from a 20 hrs movie (total of 30 cells) revealed that about 30%
+of the cells failed to complete mitosis, while 16% eventually divided into two daughter cells
+after a prolonged time. All of the mitotic cells made multiple attempts to define the cleavage
+plane and underwent partial ingression. About 17% became apoptotic, as determined by
+morphological changes. This abnormal phenomena is consistent with our previous
+observations in fixed cells, in which large, multinucleated and multi-lobed cells were seen in
+p190 overexpressors [41]. Figure 1c and movie S3 depict cultures of tet-on 468 cells
+undergoing normal division in the absence of Dox (see cells 1, 2, and 3). Together, these data
+suggest that p190 overexpression can result in multiple mitotic phenotypes, including abnormal
+division plane selection, restricted CF contraction followed by regression, and cycles of faulty
+site selection and unsuccessful division, all resulting in delayed or unproductive mitosis.
+Membrane blebbing, cell rounding, and condensed chromatin were also observed, consistent
+with the cells undergoing apoptosis.
+To determine whether this phenomena was cell type-specific, we transiently transfected
+GFPp190 into Hela cells and started recording 24 hrs after transfection. Figure 1d and movie
+S4 feature four GFPp190 expressing cells (noted by arrows and numbers). None of these four
+cells initiated CF contraction or cell division within the 40 hr time-frame of the movie, although
+all four exhibited the rounded morphology of mitotic cells. Two of them (cells 3 and 4) detached
+from the dish at the end of movie, and two others (cells 1 and 2) failed to divide. However, the
+majority of non-GFPp190 expressing cells near the GFPp190 positive cells underwent cell
+division. These data further support our hypothesis that overexpression of p190 disrupts the
+initiation of the cleavage plane and demonstrate that this phenomenon is not cell type-specific.
+p190RhoGAP and Rho colocalize at the CF during cytokinesis
+Our previous data showed that endogenous p190 co-localized with actin to the CF specification
+site in early anaphase and to the CF during ring contraction [41]. To determine whether p190
+and Rho co-localized at these sites, we examined by confocal microscopy their subcellular
+localization in HeLa cells throughout mitosis. Figure 2 shows that HA-p190 (red) colocalized
+with wtRho (green) at the CF throughout the various stages of cytokinesis, further supporting
+the idea that p190 regulates Rho in cytokinesis.
+Localization of active Rho to the equatorial zone and the CF during cytokinesis
+Rho GTPase, the major in vivo target of p190RhoGAP [42], is required for CF formation,
+ingression and stabilization, but its spatio-temporal regulation during cytokinesis is unclear.
+To further study the function of p190 in cytokinesis and its effect on Rho activity, we employed
+a recently developed Rho biosensor which detects RhoA conformational changes [32]. The
+biosensor is a single, genetically encoded chain consisting of RBD (Rho binding domain from
+rhotekin) linked to RhoA (either wtRho, constitutively active [ca] RhoQ63L or dominant
+negative [dn] RhoT19N). In the linker between these molecules are two mutants of GFP that
+undergo FRET (CFP and YFP). When the Rho is in an active, GTP-bound form, it binds the
+RBD, causing the orientation to change and the distance between the GFP mutants to diminish,
+thereby inducing FRET. The ratio of FRET/CFP provides a measure of localized Rho
+Su et al. Page 5
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+activation. The GFP mutants are placed in the middle of the chain to leave the C terminus free
+for normal regulation by GDI [32].
+Using the Rho biosensor, we examined the subcellular localization of active Rho at different
+stages of mitosis. The various Rho biosensors (wtRho, RhoQ63L, and RhoT19N) were
+transfected separately into HeLa cells. Initially, a dose-dependency study was conducted to
+determine the lowest amount of transfected plasmid that would generate a FRET signal while
+avoiding potential artifacts of high overexpression. This amount was used throughout the study.
+Following transfection, cells were synchronized in different stages of mitosis by release from
+a thymidine block for varying lengths of time (8–11 hrs), fixed and imaged. The fluorescence
+ratio and controls for protein distribution and bleaching were carried out as previously
+described [32]. Figure 3 shows that active Rho was distributed throughout the cytoplasm in
+metaphase cells but concentrated at the initial points of furrow formation (furrow specification
+site) in early anaphase and at the CF throughout ring contraction. At the end of cytokinesis,
+when the two daughter cells were separated, RhoGTP re-localized to the cytoplasm. The
+fluorescence ratio and levels of caQ63LRho and dnT19NRho are shown for comparison. A
+similar localization of the active Rho biosensors was also observed in living cells (see Figure
+5), suggesting that the localization was not affected by the fixation process. This pattern of
+Rho activation is consistent with recent publications, in which a single fluorescence-conjugated
+RBD was used as a probe to follow the spatiotemporal regulation of Rho [22,26]. These results
+further support the involvement of Rho in CF site specification and contraction.
+P190RhoGAP and ECT2 co-regulate Rho activity in the CF during cytokinesis
+Our previous studies showed that the GAP domain of overexpressed p190 was required for
+induction of multinucleation, suggesting that p190 might regulate Rho activity during
+cytokinesis. To more rigorously test this hypothesis, we co-transfected HeLa cells with HA-
+tagged p190 and each of the various Rho bio-sensors. Cells were synchronized in mitosis, fixed,
+stained with anti-HA mAb, and visualized by immunofluorescence microscopy for levels of
+p190. Although individual cells expressed varying levels of HA-p190 as visualized by
+immunofluorescence, Western blotting of extracts prepared from populations of cells revealed
+no greater than 2–3 fold overexpression relative to endogenous p190 (Fig. 4b and data not
+shown). Rho biosensor expression was detected by YFP excitation (493nm) and emission
+(535nm) (YY). Rho activity was assessed by ratio imaging of the CF (area delineated by the
+oval) during cytokinesis (i.e., FRET signal normalized to the amount of Rho biosensor per cell
+{CY/CC}). Figure 4a, upper panels, shows two cells undergoing cytokinesis, both of which
+co-express HA-p190 and wtRho biosensor. The cell expressing the higher level of p190 can
+be seen to generate the lower Rho activity at the CF, suggesting a dose-dependency of p190
+action. The middle and lower series of panels show that neither caRho nor dnRho activity was
+affected by p190 co-expression.
+Quantitative analysis of biosensor signals from several independent experiments (a minimum
+of 10 cells per treatment group) revealed that p190 significantly reduced Rho activity at the
+CF as compared to cells expressing the biosensor alone (Fig. 4b, upper panel). In contrast,
+overexpression of ECT2, an established activator of Rho in cytokinesis, significantly increased
+levels of Rho activity in the CF. Similar to ECT2, a high-level (>5 fold wt p190) of a GAP
+inactive mutant of p190 (Y1283A) significantly increased Rho activity at the CF, while
+expression of the mutant at the same level as transfected wt p190 had no effect. Moreover, the
+subcellular location of Y1283Ap190 in different stages of mitosis mimicked that of wt-p190
+(supplemental figure S9) and co-localized with Rho throughout mitosis. These results suggest
+that the GAP deficient mutant functioned as a dominant negative, interfering with the activity
+of endogenous p190 (Fig. 4b, upper panel). The lower panel of Fig. 4b shows the expression
+levels of wt and mutant p190 used in the experiments. caRho and dnRho biosensors generated
+Su et al. Page 6
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+the highest and lowest activation levels, respectively, among all the treatment groups, but these
+signals were not altered by either p190 or ECT2. In comparison, Rho activity in interphase
+cells was slightly reduced by p190 but not significantly changed by ECT2 (data not show).
+Figure 4c demonstrates that the extent to which p190 downmodulated and ECT2 increased the
+activity of Rho was indeed dependent on the amount of p190 or ECT2 expressed. Together,
+these data suggest that p190 functions upstream of Rho to downregulate Rho signaling during
+cytokinesis in a dose-dependent manner.
+FRET analysis of RhoGTP in living cells expressing ectopic p190: Reduced and mislocalized
+RhoGTP is associated with mitotic defects
+To study the effect of p190 on the dynamic activity of Rho during cytokinesis in living cells,
+the Rho biosensor and p190 were co-expressed in 468 and HeLa cells, and the distribution of
+Rho activity was followed by FRET analysis. Both cell lines exhibited a defect in CF site
+selection, as evidenced by the oscillations of the Rho activity zone and furrow ingression/
+regression. The upper panels of Figure 5a and movie S5 show a 468 cell induced to overexpress
+p190 and undergoing cytokinesis, juxtaposed to cells in interphase. The phenotype of the cell
+was similar to that seen in Figure 1 and movies S1 and S2, in which cells attempted multiple
+times to specify a CF. At the beginning of the movie, the CF was sited near the equator, where
+high Rho activity could be seen (arrows, frame 1). A new CF region was then defined by a new
+Rho activity zone, and the original Rho activity zone disappeared (arrows, frame 2). Finally,
+the CF returned to the original site (frames 3–5). Cell separation was not observed during the
+41 mins of the movie, and Rho activity in the CFs appeared to be suppressed. In contrast, cells
+lacking exogenous p190 displayed normal progression through cytokinesis (Figure 5a, lower
+panels and movie S6). Rho activity was concentrated at the equatorial region and remained
+until the two cells separated. The process took less than 10 min.
+Figure 5b (upper and lower panels), movies S7 and S8, show Rho activity changes during
+cytokinesis in HeLa cells with or without RFPp190 expression. Without exogenous p190
+(lower panel and S8), Rho activity was cortically distributed in metaphse then concentrated to
+the CF area and both poles during anaphase and telophase until the two cells separated. The
+process was completed in ~10 min. However, in RFPp190 expressing cells (upper panel and
+S7), Rho activity failed to concentrate in the equatorial CF area, CF sites migrated back and
+forth between the two daughter cells, and eventually the two daughter cells rejoined, but failed
+to divide. These data strongly support the hypothesis that p190 affects CF specification in early
+anaphase by reducing Rho activity at the CF and inhibiting cytokinesis. As such, p190 functions
+as an important negative regulator of mitotic progression.
+Discussion
+One of the mysteries of cytokinesis is the molecular mechanism by which the cleavage plane
+is established. Much evidence suggests that the cleavage plane is specified by the anaphase
+mitotic spindle, perhaps through regulation of Rho GTPase. In support of this model are the
+findings that active RhoA becomes concentrated at the cleavage plane specification site before
+ring contraction and that this accumulation is independent of actin and myosin II, but dependent
+on ECT2 and the centraspindlin complex [22,26,27,30].
+Data in this paper together with our previous observations indicate that p190 may also play a
+role in CF site selection. Specifically, using immunofluorescence of fixed cells, p190
+overexpression was shown to induce abnormal positioning of CF specification sites and
+formation of large, multi-lobed cells [41]. In the current study we used time lapse microscopy
+of living cells alone or in combination with FRET analysis and observed that p190
+overexpression resulted in mitotic defects that arose through inappropriate selection of the
+cleavage plane, failure to concentrate and retain high RhoGTP levels at the selected sites, and
+Su et al. Page 7
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+an inability to complete ring contraction. These defects resulted in abnormal cell shapes,
+including membrane blebbing, a mark of apoptosis. All of these data suggest that without the
+appropriate amount of p190, especially in the early stages of cytokinesis, the process can go
+awry. This conclusion is consistent with our previous findings that p190 is degraded in late
+mitosis, perhaps after it has fulfilled its function in early and mid-cytokinesis.
+An alternative approach utilized by our laboratory to investigate the role of p190 in cytokinesis
+was gene silencing. Unexpectedly, knock-down of p190 resulted in failure of cells to enter
+mitosis. Cells with reduced p190 exhibited a highly flattened morphology and were unable to
+release from the substratum and round up, thereby preventing initiation of mitosis. While
+uninformative with regard to cytokinesis, these results suggested that p190 plays multiple roles
+in the cell cycle, one at the G2/M border (early prophase, as revealed by gene silencing) and
+another in cytokinesis (as revealed by overexpression). In fact, Burridge and coworkers have
+suggested a role for p190 in early prophase that involves contraction of the actinomyosin
+network at the cell cortex, a process involved in cell rounding [49].
+While the GAP domain of p190 is critical to its function in cytokinesis, other domains within
+the molecule may also contribute to the process. P190 is a large protein that contains multiple
+protein-protein interaction motifs, including an N-terminal GTP binding domain [50], FF
+domains that mediate interactions with RNA binding proteins [51], polyproline regions that
+bind SH3 domains, and phosphotyrosine, phosphoserine, and phosphothreonine that can also
+mediate binding with proteins containing SH2 or PTB (phosphotyrosine binding) domains
+[52]. Such interactions could serve as scaffolding functions in assembly of the actinomyosin
+complexes that form the contractile ring or in associations with the mitotic spindle that
+determine the cleavage plane.
+Although several Rho regulators and effectors are involved in cytokinesis [3,13,15], the
+signaling pathway(s) related to this process are not completely defined. An emerging model
+suggests that localization and activation of RhoA during cytokinesis is regulated by the ECT2-
+centraspindlin complex [26,27,30]. Both positive and negative regulation of Rho are necessary,
+since CF assembly and ring contraction are dynamic processes [53]. Several models have
+suggested that cytokinesis is initiated by activation of Rho at the site of CF assembly and
+terminated by inactivation of Rho, presupposing that Rho activation and inactivation are
+temporally uncoupled. However, recent studies, including the findings in this paper, support
+the concept that Rho’s GTPase cycle undergoes rapid and repetitive turnover during the entire
+process of cytokinesis and that this cycling is necessary for normal cytokinesis [28,54]. This
+model implies that both RhoGEFs and RhoGAPs are highly activated and remain associated
+with the Rho activation zone at the CF. It is well established that ECT2 localizes to the CF and
+is a positive regulator of Rho in cytokinesis. The following evidence suggests that
+p190RhoGAP is a strong candidate for fulfilling the negative regulatory role. First, the GAP
+activity of p190 is specific for Rho in vivo, as compared to Rac and Cdc42 [42]. Second, p190’s
+involvement in cytokinesis is GAP domain-dependent [41], and a dominant negative GAP-
+domain mutant enhances Rho activity at the CF above that of control, suggesting that measured
+negative regulation of Rho activity is mediated during cytokinesis by p190 (Fig. 4). Third,
+p190 localizes to the CF and co-localizes with Rho throughout the entire process of cytokinesis
+(Fig. 2). Fourth, FRET analysis demonstrated that p190 reduces Rho activity at the CF, that
+this reduction is dependent on the dose of p190, and that reduced Rho activity correlates with
+aberrant localization of the cleavage plane (Figs. 3–5). Lastly, p190 and ECT2 are physically
+associated during mitosis [55]. Together, these data strongly support p190 as an upstream
+negative regulator of Rho activity during cytokinesis.
+Our findings regarding the spatio-temporal regulation of Rho activity during cytokinesis are
+consistent with other studies in which alternative probes and cell types were used to follow
+Su et al. Page 8
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+activated Rho. Bement et al. (2005) utilized an eGFP-conjugated Rhotekin Binding Domain
+(eGFP-RBD) construct to explore the active pool of Rho GTPases in sea urchin and frog
+embryos [22]. They found that the eGFP-RBD concentrated at the equator of blastomeres in
+narrow zones that coincided with the sites of furrow formation and that these zones contracted
+in synchrony with ingressing CFs. Yuce et al. (2005) transfected YFP-tagged, full-length C.
+elegans RhoA (Ce-Rho) into HeLa cells, and like eGFP-RBD in sea urchin and frog embryos,
+found that CeRhoA accumulated at sites of furrow initiation early in anaphase, a concentration
+that was sustained in the CF throughout ring contraction [26]. A similar localization of
+endogenous RhoA was found in trichloroacetic acid-fixed HeLa cells stained with specific
+RhoA antibodies [26]. However, using a single chain Rho FRET probe, designed differently
+than the one used in the current study, Yoshizaki et al (2003) found that RhoGTP levels
+increased only at the end of cytokinesis [31], suggesting that activated Rho does not play a
+significant role in cleavage plane specification or contractile ring assembly and contraction. In
+contrast to this study, we show that Rho activity increases at the equatorial region before and
+during CF contraction. The discrepancies between these studies might be due to the different
+biosensor constructs or the sensitivity of the detection systems. Also, unlike the biosensor used
+in Yoshizaki et al (2003), the biosensor used here is subject to normal regulation by GDI and
+has been used to study Rho activity in situ in both interphase cells and cells undergoing
+cytokinesis [32,33].
+Our data clearly suggest that overexpression of p190 affects specification of the CF through
+inhibition of Rho activity at the potential CF. It is generally agreed that anaphase spindle
+microtubules define the furrow position. In addition to regulating actin dynamics, Rho has been
+shown to regulate microtubules through its substrates, formin-homology proteins [56,57]. Live
+cell FRET imaging (Fig. 5) showed a concentration of active Rho at potential cleavage sites,
+but it is not clear whether this effect is mediated through p190 directly or indirectly through
+Rho, or whether the effect is on microtubules or actin. Such questions warrant further
+investigation.
+In summary, the results in this paper suggest that active Rho accumulates at the cell equator
+in early anaphase before ring contraction and remains in the activated state throughout
+cytokinesis. Overexpression of p190 results in dose-dependent downregulation of Rho activity
+at the CF, thereby altering the dynamics of cleavage plane specification and furrow contraction.
+Endogenous p190 co-localizes with Rho throughout cytokinesis. From these results, we
+postulate that p190 acts as a negative regulator of Rho during cytokinesis in juxtaposition to
+RhoGEFs to ensure normal progression through cytokinesis.
+Supplementary Material
+Refer to Web version on PubMed Central for supplementary material.
+Acknowledgments
+We are grateful to J. T. Parsons, A. F. (Rick) Horwitz and the SJP lab for helpful discussions. This work was supported
+by grant CA39438 from the NCI and the Cell Migration Consortium (GM64346).
+Reference List
+1. Glotzer M. Animal cell cytokinesis. Annu Rev Cell Dev Biol 2001;17:351–386. [PubMed: 11687493]
+2. Barr FA, Gruneberg U. Cytokinesis: placing and making the final cut. Cell 2007;131:847–860.
+[PubMed: 18045532]
+3. Glotzer M. The molecular requirements for cytokinesis. Science 2005;307:1735–1739. [PubMed:
+15774750]
+Su et al. Page 9
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+4. Robinson DN, Spudich JA. Towards a molecular understanding of cytokinesis. Trends Cell Biol
+2000;10:228–237. [PubMed: 10802538]
+5. Rappaport, R. Cytokinesis in Animal Cells. Cambridge Univ. Press; Cambridge: 1996. Ref Type: Serial
+(Book, Monograph)
+6. Rappaport R. Cleavage furrow establishment by the moving mitotic apparatus. Dev Growth Differ
+1997;39:221–226. [PubMed: 9108335]
+7. Cao LG, Wang YL. Signals from the spindle midzone are required for the stimulation of cytokinesis
+in cultured epithelial cells. Mol Biol Cell 1996;7:225–232. [PubMed: 8688554]
+8. Gatti M, Giansanti MG, Bonaccorsi S. Relationships between the central spindle and the contractile
+ring during cytokinesis in animal cells. Microsc Res Tech 2000;49:202–208. [PubMed: 10816260]
+9. Dechant R, Glotzer M. Centrosome separation and central spindle assembly act in redundant pathways
+that regulate microtubule density and trigger cleavage furrow formation. Dev Cell 2003;4:333–344.
+[PubMed: 12636915]
+10. Glotzer M. Cleavage furrow positioning. J Cell Biol 2004;164:347–351. [PubMed: 14757750]
+11. Burgess DR, Chang F. Site selection for the cleavage furrow at cytokinesis. Trends Cell Biol
+2005;15:156–162. [PubMed: 15752979]
+12. Canman JC, Cameron LA, Maddox PS, Straight A, Tirnauer JS, Mitchison TJ, Fang G, Kapoor TM,
+Salmon ED. Determining the position of the cell division plane. Nature 2003;424:1074–1078.
+[PubMed: 12904818]
+13. Piekny A, Werner M, Glotzer M. Cytokinesis: welcome to the Rho zone. Trends Cell Biol
+2005;15:651–658. [PubMed: 16243528]
+14. Wadsworth P. Cytokinesis: Rho marks the spot. Curr Biol 2005;15:R871–R874. [PubMed: 16271857]
+15. Prokopenko SN, Saint R, Bellen HJ. Untying the Gordian knot of cytokinesis. Role of small G proteins
+and their regulators. J Cell Biol 2000;148:843–848. [PubMed: 10704435]
+16. Kimura K, Tsuji T, Takada Y, Miki T, Narumiya S. Accumulation of GTP-bound RhoA during
+cytokinesis and a critical role of ECT2 in this accumulation. J Biol Chem 2000;275:17233–17236.
+[PubMed: 10837491]
+17. Kishi K, Sasaki T, Kuroda S, Itoh T, Takai Y. Regulation of cytoplasmic division of Xenopus embryo
+by rho p21 and its inhibitory GDP/GTP exchange protein rho GDI. J Cell Biol 1993;120:1187–1195.
+[PubMed: 8436590]
+18. O’Connell CB, Wheatley SP, Ahmed S, Wang YL. The small GTP-binding protein rho regulates
+cortical activities in cultured cells during division. J Cell Biol 1999;144:305–313. [PubMed:
+9922456]
+19. Moorman JP, Bobak DA, Hahn CS. Inactivation of the small GTP binding protein Rho induces
+multinucleate cell formation and apoptosis in murine T lymphoma EL4. J Immunol 1996;156:4146–
+4153. [PubMed: 8666781]
+20. Takaishi K, Sasaki T, Kameyama T, Tsukita S, Tsukita S, Takai Y. Translocation of activated Rho
+from the cytoplasm to membrane ruffling area, cell-cell adhesion sites and cleavage furrows.
+Oncogene 1995;11:39–48. [PubMed: 7624130]
+21. Yonemura S, Hirao-Minakuchi K, Nishimura Y. Rho localization in cells and tissues. Exp Cell Res
+2004;295:300–314. [PubMed: 15093731]
+22. Bement WM, Benink HA, von Dassow G. A microtubule-dependent zone of active RhoA during
+cleavage plane specification. J Cell Biol 2005;170:91–101. [PubMed: 15998801]
+23. Nishimura Y, Nakano K, Mabuchi I. Localization of Rho GTPase in sea urchin eggs. FEBS Lett
+1998;441:121–126. [PubMed: 9877178]
+24. Echard A, Hickson GR, Foley E, O’Farrell PH. Terminal cytokinesis events uncovered after an RNAi
+screen. Curr Biol 2004;14:1685–1693. [PubMed: 15380073]
+25. Skop AR, Liu H, Yates J III, Meyer BJ, Heald R. Dissection of the mammalian midbody proteome
+reveals conserved cytokinesis mechanisms. Science 2004;305:61–66. [PubMed: 15166316]
+26. Yuce O, Piekny A, Glotzer M. An ECT2-centralspindlin complex regulates the localization and
+function of RhoA. J Cell Biol 2005;170:571–582. [PubMed: 16103226]
+27. Kamijo K, Ohara N, Abe M, Uchimura T, Hosoya H, Lee JS, Miki T. Dissecting the role of Rho-
+mediated signaling in contractile ring formation. Mol Biol Cell 2006;17:43–55. [PubMed: 16236794]
+Su et al. Page 10
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+28. Miller AL, von DG, Bement WM. Control of the cytokinetic apparatus by flux of the Rho GTPases.
+Biochem Soc Trans 2008;36:378–380. [PubMed: 18481962]
+29. Somers WG, Saint R. A RhoGEF and Rho family GTPase-activating protein complex links the
+contractile ring to cortical microtubules at the onset of cytokinesis. Dev Cell 2003;4:29–39. [PubMed:
+12530961]
+30. Nishimura Y, Yonemura S. Centralspindlin regulates ECT2 and RhoA accumulation at the equatorial
+cortex during cytokinesis. J Cell Sci 2006;119:104–114. [PubMed: 16352658]
+31. Yoshizaki H, Ohba Y, Kurokawa K, Itoh RE, Nakamura T, Mochizuki N, Nagashima K, Matsuda
+M. Activity of Rho-family GTPases during cell division as visualized with FRET-based probes. J
+Cell Biol 2003;162:223–232. [PubMed: 12860967]
+32. Pertz O, Hodgson L, Klemke RL, Hahn KM. Spatiotemporal dynamics of RhoA activity in migrating
+cells. Nature 2006;440:1069–1072. [PubMed: 16547516]
+33. Birkenfeld J, Nalbant P, Bohl BP, Pertz O, Hahn KM, Bokoch GM. GEF-H1 modulates localized
+RhoA activation during cytokinesis under the control of mitotic kinases. Dev Cell 2007;12:699–712.
+[PubMed: 17488622]
+34. Tatsumoto T, Xie X, Blumenthal R, Okamoto I, Miki T. Human ECT2 is an exchange factor for Rho
+GTPases, phosphorylated in G2/M phases, and involved in cytokinesis. J Cell Biol 1999;147:921–
+928. [PubMed: 10579713]
+35. Prokopenko SN, Brumby A, O’Keefe L, Prior L, He Y, Saint R, Bellen HJ. A putative exchange
+factor for Rho1 GTPase is required for initiation of cytokinesis in Drosophila. Genes Dev
+1999;13:2301–2314. [PubMed: 10485851]
+36. Jantsch-Plunger V, Gonczy P, Romano A, Schnabel H, Hamill D, Schnabel R, Hyman AA, Glotzer
+M. CYK-4: A Rho family gtpase activating protein (GAP) required for central spindle formation and
+cytokinesis. J Cell Biol 2000;149:1391–1404. [PubMed: 10871280]
+37. Mishima M, Kaitna S, Glotzer M. Central spindle assembly and cytokinesis require a kinesin-like
+protein/RhoGAP complex with microtubule bundling activity. Dev Cell 2002;2:41–54. [PubMed:
+11782313]
+38. Hirose K, Kawashima T, Iwamoto I, Nosaka T, Kitamura T. MgcRacGAP is involved in cytokinesis
+through associating with mitotic spindle and midbody. J Biol Chem 2001;276:5821–5828. [PubMed:
+11085985]
+39. Minoshima Y, Kawashima T, Hirose K, Tonozuka Y, Kawajiri A, Bao YC, Deng X, Tatsuka M,
+Narumiya S, May WS Jr, Nosaka T, Semba K, Inoue T, Satoh T, Inagaki M, Kitamura T.
+Phosphorylation by aurora B converts MgcRacGAP to a RhoGAP during cytokinesis. Dev Cell
+2003;4:549–560. [PubMed: 12689593]
+40. Yamada T, Hikida M, Kurosaki T. Regulation of cytokinesis by mgcRacGAP in B lymphocytes is
+independent of GAP activity. Exp Cell Res 2006;312:3517–3525. [PubMed: 16959247]
+41. Su L, Agati JM, Parsons SJ. p190RhoGAP is cell cycle regulated and affects cytokinesis. J Cell Biol
+2003;163:571–582. [PubMed: 14610059]
+42. Ridley AJ, Self AJ, Kasmi F, Paterson HF, Hall A, Marshall CJ, Ellis C. rho family GTPase activating
+proteins p190, bcr and rhoGAP show distinct specificities in vitro and in vivo. EMBO J
+1993;12:5151–5160. [PubMed: 8262058]
+43. Brouns MR, Matheson SF, Settleman J. p190 RhoGAP is the principal Src substrate in brain and
+regulates axon outgrowth, guidance and fasciculation. Nat Cell Biol 2001;3:361–367. [PubMed:
+11283609]
+44. Chang JH, Gill S, Settleman J, Parsons SJ. c-Src regulates the simultaneous rearrangement of actin
+cytoskeleton, p190RhoGAP, and p120RasGAP following epidermal growth factor stimulation. J Cell
+Biol 1995;130:355–368. [PubMed: 7542246]
+45. Arthur WT, Burridge K. RhoA inactivation by p190RhoGAP regulates cell spreading and migration
+by promoting membrane protrusion and polarity. Mol Biol Cell 2001;12:2711–2720. [PubMed:
+11553710]
+46. Fincham VJ, Chudleigh A, Frame MC. Regulation of p190 Rho-GAP by v-Src is linked to cytoskeletal
+disruption during transformation. J Cell Sci 1999;112:947–956. [PubMed: 10036244]
+Su et al. Page 11
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+47. Tatsis N, Lannigan DA, Macara IG. The function of the p190 Rho GTPase-activating protein is
+controlled by its N-terminal GTP binding domain. J Biol Chem 1998;273:34631–34638. [PubMed:
+9852136]
+48. Haskell MD, Nickles AL, Agati JM, Su L, Dukes BD, Parsons SJ. Phosphorylation of p190 on
+Tyr1105 by c-Src is necessary but not sufficient for EGF-induced actin disassembly in C3H10T1/2
+fibroblasts. J Cell Sci 2001;114:1699–1708. [PubMed: 11309200]
+49. Maddox AS, Burridge K. RhoA is required for cortical retraction and rigidity during mitotic cell
+rounding. J Cell Biol 2003;160:255–265. [PubMed: 12538643]
+50. Settleman J, Narasimhan V, Foster LC, Weinberg RA. Molecular cloning of cDNAs encoding the
+GAP-associated protein p190: implications for a signaling pathway from ras to the nucleus. Cell
+1992;69:539–549. [PubMed: 1581965]
+51. Bedford MT, Leder P. The FF domain: a novel motif that often accompanies WW domains. Trends
+Biochem Sci 1999;24:264–265. [PubMed: 10390614]
+52. Hunter T. Signaling--2000 and beyond. Cell 2000;100:113–127. [PubMed: 10647936]
+53. Pelham RJ, Chang F. Actin dynamics in the contractile ring during cytokinesis in fission yeast. Nature
+2002;419:82–86. [PubMed: 12214236]
+54. Bement WM, Miller AL, von DG. Rho GTPase activity zones and transient contractile arrays.
+Bioessays 2006;28:983–993. [PubMed: 16998826]
+55. Mikawa M, Su L, Parsons SJ. Opposing roles of p190RhoGAP and Ect2 RhoGEF in regulating
+cytokinesis. Cell Cycle 2008;7:2003–2012. [PubMed: 18642445]
+56. Watanabe S, Ando Y, Yasuda S, Hosoya H, Watanabe N, Ishizaki T, Narumiya S. mDia2 induces
+the actin scaffold for the contractile ring and stabilizes its position during cytokinesis in NIH 3T3
+cells. Mol Biol Cell 2008;19:2328–2338. [PubMed: 18287523]
+57. Wen Y, Eng CH, Schmoranzer J, Cabrera-Poch N, Morris EJ, Chen M, Wallar BJ, Alberts AS,
+Gundersen GG. EB1 and APC bind to mDia to stabilize microtubules downstream of Rho and
+promote cell migration. Nat Cell Biol 2004;6:820–830. [PubMed: 15311282]
+Su et al. Page 12
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Su et al. Page 13
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 1.
+p190RhoGAP overexpression results in a mitotic defect in tet-on MDA-MB-468 breast cancer
+and HeLa cells. (a) Selected images of 12 hr time-lapse recordings of multiple mitotic 468 cells
+inducibly overexpressing p190 in the presence of 1ug/ml Dox (movie S1). Cells exhibit a defect
+in cytokinesis. (b) p190 overexpression disturbs furrow specification in anaphase. Enlarged,
+selected images of one hour time-lapse recordings of a p190-overexpressing 468 cell in the
+presence of 1ug/ml Dox (movie S2) (anaphase to telophase). (c) Selected images of 3 hr time-
+lapse recordings of tet-on 468 cells during mitosis in absence of Dox (movie S3). All movies
+started recording 24 hrs after Dox treatment. Upper right corners show the time frame of the
+Su et al. Page 14
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+image. Arrows and numbers beside the arrows indicate the mitotic cells. (d) Selected images
+of 40 hr time-lapse recordings of HeLa cells transiently overexpressing GFP190 (movie S4).
+Lower left corner shows the time. Arrows and numbers beside the arrows in DIC images and
+black background images show GFP190 positive cells. The movie started recording 24 hrs
+after transfection. Scale bars, 15μm.
+Su et al. Page 15
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 2.
+p190RhoGAP and Rho co-localize in mitosis. HeLa cells were synchronized by thymidine
+block, transfected with pKH3p190 and wtRho biosensor, and released for 8 to 11 hrs to enter
+mitosis. In various stages of mitosis, cells were fixed and immunostained for p190 with anti-
+HA mAb/Alexa red 594 goat anti-mouse IgG and visualized by confocal fluorescence
+microscopy. Total Rho biosensor was visualized in the same cells by YFP excitation/emission.
+Scale bars, 10μm.
+Su et al. Page 16
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 3.
+Localization of RhoGTP in mitotic cells by FRET analysis. HeLa cells were transfected with
+wtRho or mutant Rho biosensors and 24 hrs later were visualized by fluorescence microscopy.
+Color images showing the subcellular localization of Rho activation are represented by the
+ratio of CY/CC (CFP excitation and YFP emission/CFP excitation and CFP emission)
+calculated with OpenLab software. The upper panel presents Rho activity in the various cells,
+when images were adjusted to similar ratio ranges. The second panel shows the highest Rho
+activation levels in each cell by modifying the ratio range respective to the upper panel. The
+third panel shows the Rho expression levels in cells depicted in the upper panels, visualized
+by YFP excitation and YFP emission. Lower panels show fluorescence ratio generated by the
+positive and negative Rho biosensor controls. Scale bars, 10μm.
+Su et al. Page 17
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Su et al. Page 18
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 4.
+p190RhoGAP and ECT2 co-regulate Rho activity in the CF during cytokinesis. (a) Effect of
+p190RhoGAP on Rho activity during cytokinesis. HeLa cells were synchronized into mitosis
+by a thymidine block, co-transfected with pkH3p190 and one of the Rho biosensor mutants
+(wtRho, Q63LRho or T19NRho), and released from the block for 8 to 10 hrs. At various times
+after release, Rho expression levels were visualized by YFP excitation/emission, while p190
+levels were determined by Alexa red 594 excitation/emission, as described in Methods. Rho
+activity was quantified by CY/CC ratioing, using OpenLab software. Circles around the CF
+show the areas used for quantitation in (b). Scale bar, 10 μm. (b) Upper panels, quantitation of
+Rho activation. The Y axis represents the densitometry units of each interested area in a CY
+image divided by the densitometry units of the same area of the CC image. More than 10 cells
+were analyzed per individual group. Error bars represent the standard error of the mean.
+*p<0.05 compared to the wtRho biosensor only. Only the CF area was quantified for cells
+undergoing cytokinesis. Lower panels, relative protein expression levels of wt or mutant p190
+used in (a) and (b), as analyzed by Western blot. Data from (c) show the mean effect of different
+levels of p190 or ECT2 on Rho activation. The X axis represents arbitrary densitometry units
+of p190 or ECT2 in individual cells, while the Y axis denotes the CY/CC ratio from the same
+cells. Rho activity from the lowest p190 or ECT2-expressing cell was set at 1, to which all
+other values were normalized.
+Su et al. Page 19
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 5.
+Effects of p190RhoGAP on Rho activity in live mitotic cells. (a) Upper panels, selected FRET
+ratio images from a 40 min time-lapse recording of mitotic 468 tet-on p190 expressing cells
+transfected with wtRho biosensor and induced to overexpress p190 (movie S5). The movie
+was recorded 24 hrs after transfection and addition of 1ug/ml Dox. Lower panels, selected
+FRET ratio images from a 20 min time-lapse recording of a mitotic 468 cell transfected with
+wtRho biosensor and not treated with Dox (movie S6). The movie was recorded 24 hrs after
+transfection. (b) Upper panels, selected FRET ratio images from a 100 min time-lapse recording
+of a mitotic HeLa cell stably expressing wtRho biosensor and transfected with RFPp190 (movie
+S7). The movie was recorded 24 hrs after transfection. Lower panels, selected FRET ratio
+images from an 11 min time-lapse recording of a mitotic HeLa cell stably expressing wtRho
+biosensor only (movie S8). The DIC image selected from each movie represents frame 1. Black
+background images are YY showing the Rho biosensor expression levels. Lower left corner
+shows the time. Scale bars, 10μm.
+Su et al. Page 20
+Exp Cell Res. Author manuscript; available in PMC 2010 May 1.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript

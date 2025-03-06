@@ -1,0 +1,1489 @@
+RESEA RCH ARTICL E
+The MAPK/ERK channel capacity exceeds 6
+bit/hour
+Paweł Nałęcz-Jawecki
+ID
+1
+, Paolo Armando Gagliardi
+ID
+2
+, Marek Kochańczyk
+ID
+1
+,
+Coralie Dessauges
+ID
+2¤
+, Olivier Pertz
+ID
+2
+*, Tomasz Lipniacki
+ID
+1
+*
+1 Institute of Fundamen tal Technolo gical Resea rch, Polish Academy of Sciences, Warsaw, Poland,
+2 Institute of Cell Biology, University of Bern, Bern, Switzerlan d
+¤ Current address: Laborat ory of Systems Pharmacology , Harvard Medical School, Boston, Massachus etts,
+United States of America
+* olivier .pertz@izb.un ibe.ch (OP); tlipnia@i ppt.pan.p l (TL)
+Abstract
+Living cells utilize signaling pathways to sense, transduce, and process information. As the
+extracellular stimulation often has rich temporal characteristics which may govern dynamic
+cellular responses, it is important to quantify the rate of information flow through the signal-
+ing pathways. In this study, we used an epithelial cell line expressing a light-activatable FGF
+receptor and an ERK activity reporter to assess the ability of the MAPK/ERK pathway to
+transduce signal encoded in a sequence of pulses. By stimulating the cells with random light
+pulse trains, we demonstrated that the MAPK/ERK channel capacity is at least 6 bits per
+hour. The input reconstruction algorithm detects the light pulses with 1-min accuracy 5 min
+after their occurrence. The high information transmission rate may enable the pathway to
+coordinate multiple processes including cell movement and respond to rapidly varying sti-
+muli such as chemoattracting gradients created by other cells.
+Author summary
+To respond to external stimulation, living cells need to transfer information from mem-
+brane receptors to downstream proteins that regulate physiological outcomes. In this
+study we used cells expressing a light-activatable receptor that transmits signals to MAPK/
+ERK transduction pathway, which regulates numerous physiological processes including
+proliferation, differentiation and cell motility. By stimulating these cells with various
+sequences of short light pulses we found that ERK, the last component of the considered
+signal transduction pathway, may receive at least 6 bits per hour. This bitrate allows 6
+binary decisions per hour, enabling rapid responses to varied extracellular stimuli.
+Introduction
+Living cells communicate with each other and constantly monitor their extracellular milieu.
+Upon receiving a stimulus, they have to recognize its identity and act accordingly to operate in
+a coordinated manner and properly adapt to the changing environment. At the molecular
+PLOS COMP UTATIONAL  BIOLOGY
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 1 / 21
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+OPEN ACCESS
+Citation: Nałęcz-Jawe cki P, Gagliardi PA,
+Kochańczyk M, Dessauges C, Pertz O, Lipniacki T
+(2023) The MAPK/ERK channel capacity exceeds 6
+bit/hour. PLoS Comput Biol 19(5): e1011155.
+https://do i.org/10.1371/j ournal.pc bi.1011155
+Editor: Padmini Rangaman i, University of California
+San Diego, UNITED STATES
+Received: January 17, 2023
+Accepted: May 4, 2023
+Published: May 22, 2023
+Peer Review History: PLOS recognize s the
+benefits of transpar ency in the peer review
+process; therefore, we enable the publication of
+all of the content of peer review and author
+response s alongside final, published articles. The
+editorial history of this article is available here:
+https://doi.o rg/10.1371/jo urnal.pcbi .1011155
+Copyright: © 2023 Nałęcz-Jawec ki et al. This is an
+open access article distributed under the terms of
+the Creative Commons Attributio n License, which
+permits unrestricte d use, distribu tion, and
+reproduction in any medium, provided the original
+author and source are credited.
+Data Availabilit y Statement: A complete set of
+live-cell imaging data is available at DOI: 10.5281/
+zenodo.780 8385 Source code used to generate
+main figures is available at URL: https://g ithub.
+com/pawelna lecz/pulsatil e-informatio n.
+level, recognition of a specific signal as well as its reliable transmission and appropriate inter-
+pretation involve diverse intracellular processes that are notoriously stochastic [1]. At the sin-
+gle-cell level, major intracellular signaling pathways respond to an external stimulus in a crude
+all-or-nothing manner [2–5]. The inability of individual cells to resolve the level of stimulation
+is reflected in the amount of information about the ligand concentration the signaling path-
+ways can transmit, which has been estimated to only slightly exceed 1 bit [6–9].
+However, when cells are subjected to temporally varying stimulation by morphogens, hor-
+mones, or cytokines, it is of interest to quantify the maximum rate at which information can
+be transferred through a biochemical signaling pathway. A similar question has been asked
+before in the fields of neuroscience and bacteria or amoebae chemotaxis. Neurons utilize pre-
+cise timing of spikes to evoke proper response [10–12]. The information transmission rate (or
+simply bitrate) through a single neuron may reach tens of bits per second [13,14]. For bacteria
+navigating in a chemical gradient, the drift velocity scales linearly with the gradient, while the
+bitrate was found to be proportional to the square of the gradient [15]. When concentration
+varies on the length scales of millimeters to centimeters, the chemotactic system of E. coli
+transfers about 0.01 bit per second, which allows bacteria to climb up the gradient with a few
+percent of its swimming speed. This suggests that at low gradients, drift velocity is information
+limited [15]. Without explicitly quantifying the information flow, Meier et al. [16] showed that
+Dictyostelium discoideum amoebae may synchronously readapt their migration direction to
+switching chemotactic gradient oscillating at rates up to 0.02 Hz. This suggests that the rate of
+information transmission to the navigation system is up to 1 bit per minute, and the limit is
+achieved if all cell decisions are correct. The maximum bitrate depends on biophysics of a spe-
+cific information channel. In the case of neurons, where the bitrates are highest, information is
+transmitted with the help of fast electro-chemical signals; in the case of E. coli and MAPK,
+information is transmitted by means of posttranslational proteins modifications, thus expected
+bitrates are lower. The bitrate observed in the E. coli chemotactic system can be higher than
+that expected for the MAPK channel, because bacteria are much smaller than a eukaryotic cell.
+Some other signaling pathways such, as that of NF-κB or p53, require protein synthesis and
+degradation, which are slower than post-translational modifications, and so for these pathways
+even lower bitrates are expected.
+Gagliardi et al. [17] demonstrated that the ERK pulses triggered locally by growth factors
+shed by apoptotic cells coordinate the maintenance of epithelial integrity. In vivo studies
+showed pulsatile ERK dynamics during wound healing in mice, wherein the wound edge initi-
+ates recurrent, quasiperiodic mechanochemical traveling fronts of ERK activity [18]. Such
+waves were also observed during mammalian epidermis development [19] and during scale
+regeneration in zebrafish [20]. Pulsatile ERK dynamics has been observed also for tonic EGF
+stimulation, for example Albeck et al. [21] and Aoki et al. [22] have shown that the MAPK
+pathway converts various types of stimulation into ERK pulses, suggesting their role in gener-
+ating physiological outcomes.
+In this study, we assessed the capability of the MAPK/ERK pathway to transduce informa-
+tion encoded in a sequence of stimulatory pulses, and estimated the lower bound for the rate
+of information transmission through this pathway. In light of the mentioned findings, we
+focused solely on pulsatile stimulation protocols. As we conjecture that protocols ensuring
+highest information transfer are used for cell signaling, we searched for a protocol that would
+maximize the information transmission rate, and thus estimated the MAPK/ERK channel
+capacity. We considered three different families of pulsatile input protocols: (i) binary encod-
+ing, resembling digital communication with zeros and ones occurring in well-defined, tempo-
+rally equidistant time slots, is plausibly the simplest pulsatile stimulation protocol; (ii) interval
+encoding, with exponentially-distrib uted waiting times in discrete time domain (so, effectively,
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 2 / 21
+Funding: This study was supported by Swiss
+Cancer League (https://ga p.swissca ncer.ch) grant
+KLS-4867-08- 2019 to OP, Swiss National Science
+Foundation (https://www .snf.ch) grant Div3
+310030_1 85376 to OP, and National Science
+Centre Poland (https://w ww.ncn.gov .pl) grant
+2019/35/B/N Z2/03898 to TL. The funders had no
+role in study design, data collection and analysis,
+decision to publish, or preparation of the
+manuscript.
+Competing interests : The authors have declared
+that no competing interests exist.
+geometrically-distributed waiting times), is statistically maximally random (entropic); this pro-
+tocol is also natural form the biological perspective as it implies constant propensity of receiv-
+ing stimulation pulses in time; (iii) interval encoding with an additional gap after each pulse is
+an attempt to tailor a maximally entropic stimulation to cells characterized by an inextricable
+refractory (resting) period. We used an epithelial cell line with an optogenetically modified
+fibroblast growth factor receptor (optoFGFR) [23,24] which allowed us to stimulate the path-
+way with short light pulses activating ERK with the similar kinetics as EGF or FGF [25]. The
+cell line is stably transfected with a reporter, enabling fine temporal monitoring of ERK activ-
+ity. By stimulating cells with random pulse trains, generated with probabilistic algorithms
+according to protocols from the three families, and applying classifier-based algorithm to
+reconstruct the stimulatory sequence, we demonstrated that the maximum information trans-
+mission rate through the pathway exceeds 6 bits per hour. A classifier-free approach gives an
+even higher estimate of about 8.5 bits per hour.
+Results
+Information encoding and information transmission rate
+The maximum amount of information that can be transmitted through a communication
+channel per unit time using the best possible input protocol is called the channel capacity C:
+C ¼ max
+protocols
+lim
+Δt !1
+I ðS; RÞ
+Δt
+ð1Þ
+where I(S, R) is the mutual information between the input (signal) S and the output (response)
+R in an experiment of duration Δt [26]. In this work, we computed I(S, R) as the difference:
+I ðS; RÞ ¼ H ðSÞ   H ðSjRÞ ð2Þ
+where H(S) is the input entropy (the amount of information sent), which in our experimental
+design can be computed directly from the assumed probabilistic distribution of the pathway-
+stimulating input sequence; and H(S|R) is the conditional entropy (the amount of information
+lost), which captures the uncertainty introduced by the channel (here: the signaling pathway).
+The value H(S|R) depends both on the channel and the signal and as such is estimated based
+on experimental data.
+There are multiple ways to encode information in a train of pulses. When the magnitudes
+of all stimulation pulses are equal, the input can be perceived as a sequence of 0s (no pulse)
+and 1s (pulse). The input information (or entropy) rate increases with the frequency of pulses,
+reaching the maximum for binary sequences that have equal probabilities of 0 and 1. However,
+shorter intervals between pulses imply higher information loss due to imperfect transmission.
+One should thus expect that there exists an optimum, for which the bitrate is maximal.
+We applied three types of pulsatile stimulation protocols to estimate the lower bound for
+the channel capacity of the MAPK/ERK pathway (see Fig 1A and Materials and methods
+for details). In what we call the binary encoding protocol, information is encoded in a
+sequence of 0s and 1s sent at regular time intervals τ
+clock
+with equal probabilities. In our exper-
+iments, we stimulated cells with light pulses according to a 0/1 sequence of length 19:
+1011010011110000101 and its logic negation (both of them containing each of the 16 possible
+subsequences of length 4 exactly once, which allowed us to collect good statistics in a single,
+relatively short experiment). In the interval encoding protocol, information is encoded in the
+lengths of intervals between subsequent input light pulses. To maximize the input entropy
+(which, in light of Eq (2), bounds the transmitted information from above), the intervals were
+drawn from geometric distribution. In the interval encoding protocol with a minimal gap, the
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 3 / 21
+Fig 1. Decoding pulsatile signals relayed through the MAPK/ER K pathway. (A) Input: three considered protocols
+of encoding informa tion in a pulse train. In binary encoding, a pulse is either present or not in each of the tempora lly
+equidist ant slots. In interval encoding, information is carried by the lengths of time intervals between subsequent
+pulses. The intervals are drawn from a geometric distributi on (with one-minute resolution). In interval encoding with
+a minim al gap, the intervals are drawn from a geometric distributi on and a fixed “gap” is added. Small numbers in
+bold typeface denote intervals between pulse slots (in binary encoding ) and inter-pulse intervals (in both interval
+encoding s). (B) Diagram of the MAPK/ERK pathway within the engineered MCF-10A cells. Blue light activates
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 4 / 21
+time intervals were also drawn from geometric distribution (with the average inter-pulse inter-
+val τ
+geom
+), and then τ
+gap
+was added to the drawn value, thus the expected value of the inter-
+pulse interval was τ
+geom
++ τ
+gap
+. For each τ
+gap
+, we chose τ
+geom
+that maximizes the input entropy
+(see Materials and methods for details). Introduction of τ
+gap
+reduces the input entropy rate
+compared to the interval encoding protocols, but increases the percentage of cells evoking a
+timely response to a light pulse, which facilitates accurate information transmission.
+Detection of pulses
+To quantify the bitrate through the MAPK/ERK pathway, we used the human mammary epi-
+thelial cell line MCF-10A with both an optogenetically modified fibroblast growth factor
+receptor (optoFGFR) [17,25], which can be activated with blue light (470 nm), and a fluores-
+cent ERK kinase translocation reporter (ERK KTR), which translocates from the nucleus to
+the cytoplasm when phosphorylated by ERK (Fig 1B). The cells were stimulated with short
+(100 ms, see Materials and methods) blue light pulses according to the three types of encoding
+protocols (Fig 1A). ERK KTR translocation was measured at one-minute resolution (Fig 1C
+and 1D; see Materials and methods and S1 Fig for details of the workflow). We observed that
+the signal was transduced from optoFGFR to ERK KTR within single minutes, consistently
+with Ref. [25], with the steepest translocation increment (drop of the nuclear ERK KTR fluo-
+rescence) observed between 2 and 3 min, maximum translocation at 6 min, and steepest trans-
+location decrement around 11 min after the light pulse (Fig 1E).
+We then employed a classifier based on the k-nearest neighbors (kNN) algorithm (see
+Materials and methods for details) to reconstruct the sequence of stimulatory light pulses
+using the quantified single-cell trajectories of nuclear ERK KTR (Fig 1D). The algorithm was
+designed to predict the timing of light pulses using a short (overall, 8 minute-long) window
+sliding over the ERK KTR translocation trajectory. The method was typically able to predict
+the pulse timing with one-minute resolution (Fig 1F), markedly better than any individual
+pulse feature (cf. Fig 1E and 1F). The percentage of detected pulses increases sharply with the
+time interval between the pulse to be detected and the previous pulse, reaching about 70% for
+the interval of 10 min and nearly 90% for the interval of 15 min (Fig 1G). Missed pulses, pulses
+detected as occurring earlier or later (proportion of which is shown in Fig 1G), and false detec-
+tions are responsible for the information loss.
+optoFGFR , triggerin g a kinase cascade, which culminate s in ERK activation. The fluoresce nt (mRuby2) ERK KTR,
+which in non-stimul ated cells is mostly localize d to the nucleus , upon phosphory lation by active nuclear ERK (ppERK)
+is exported to the cytoplasm. (A drop of) the mean nuclear fluoresce nce of ERK KTR is used as a proxy of its
+translocati on and ERK activity. (C) Output: ERK KTR translocati on in response to activation of optoFGFR by a light
+pulse at t
+0
+. Nuclear contours of 13 cells are marke d with different colors. For the sake of presenta tion, microscopic
+images are normali zed such that the original 10%–90% quantiles of pixel intensity span over the whole grayscale range,
+black to white. (D) Input reconstruc tion: time track of ERK KTR translocati on in response to a sequence of 4 light
+pulses in the 13 cells marked in panel C. The shaded interval is the interval in which the snapshot s shown in panel C
+were acquired; the trajectori es correspond to respective color-coded nuclear outlines shown in panel C. Green bars
+show the proporti on of cells (estimated based on 400 single cell trajectories) in which a pulse was detected by the
+trained classifier. (E) Histogra ms of three basic tempo ral features characterizin g the ERK KTR translocati on profile:
+time to the largest translocati on increment , the peak of translocati on, and the largest translocati on decreme nt (all with
+respect to the time of a light pulse that elicited the characterize d response). In a typical cell, the translocati on has the
+steepest slope between 2 and 3 min after the light pulse, reaches the maximum at 6 min, and rebounds at the highest
+rate between 10 and 11 min after the light pulse. Data from all 6 experime nts with the interval encoding protocol. (F)
+Accuracy of the light pulse detection. Most of the pulses are detected exactly with one-minut e resolution. Data as in
+panel E, classifier trained on other cells from the same experime nt. (G) Proportio n of cells in which a pulse was
+detected as a function of the interval after the previous pulse. Data as in panel F.
+https://d oi.org/10.1371/j ournal.pc bi.1011155. g001
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 5 / 21
+Bitrate estimation
+We computed the information loss along the pathway as the entropy of the input conditioned
+on its (classifier-based) reconstruction from single-cell ERK KTR trajectories, H(S|R). Next, by
+subtracting the information loss from the input entropy H(S), we quantified the transmitted
+information I(S|R), and eventually, by dividing the result by experiment duration, we esti-
+mated the bitrate. It is important to stress that our method of pulse detection is based only on
+an 8-min rolling window, hence we do not use prior knowledge about the minimal gap
+between pulses.
+In Fig 2A we show 10 example single-cell ERK KTR translocation trajectories of cells
+responding to the first sequence used in the binary encoding protocol with the time span
+between subsequent digits (clock period) τ
+clock
+= 10 min. The percentage of cells identified as
+responding to light pulses varied from around 80% to nearly 100%. As expected, the detectabil-
+ity is higher when the time span from the preceding pulse is 20 min or more (more than 95%
+pulses are detected). A tiny percentage of cells, � 1%, was incorrectly identified as responding
+at time points without a light pulse.
+For the binary protocol we performed experiments for 7 different clock periods ranging
+from 3 to 30 min (Fig 2B). The input information rate, 1 bit/τ
+clock
+, decreases with increasing
+τ
+clock
+but, as expected, for longer τ
+clock
+the fraction of information lost due to missed pulses or
+false detections is lower. For the shortest τ
+clock
+of 3 min, the input information rate reached 20
+bit/h, but due to severe information loss the transmitted information rate was lower than for
+τ
+clock
+= 5 min (Fig 2B). It should be noted that in the case of the binary encoding protocol dur-
+ing input reconstruction we utilize the a priori knowledge of the time points in which the light
+pulses could have occurred (“pulse slots”). Thus, based on the ERK KTR translocation trajec-
+tory we have to decide only whether the light pulses occurred in these time points or not. This
+makes the reconstruction easier than in the interval encoding protocols, however binary
+encoding appears rather artificial in the biological context.
+In Fig 2C we show a representative part of ERK KTR translocation trajectories in 10 cells
+responding to stimulation with light according to the interval encoding protocol with τ
+geom
+=
+32 min. For all but one input pulse the percentage of cells identified as responding timely
+exceeds 75% and is generally higher for pulses occurring after a longer time span from the pre-
+vious pulse. For inter-pulse intervals below 10 min, the detectability decreases rapidly (for
+example, the pulse at minute 744 that occurred 8 min after its predecessor was detected timely
+by only 25% of cells). For each pulse there is also a fraction of detections that indicate an input
+pulse 1 min before or after the true pulse.
+We performed 6 experiments according to the interval encoding protocol with τ
+geom
+rang-
+ing from 22 to 55 min (Fig 2D). The highest bitrate of 6.3 bit/h was found for τ
+geom
+36 min,
+while for τ
+geom
+= 32 and 42 min the bitrate was found equal 5.3 and 5.0 bit/h, respectively. The
+shortest (22 min) and longest (55 min) average intervals resulted in, respectively, the highest
+and the lowest information loss. This causes that for these two suboptimal protocols, having
+respectively high (15 bit/h) and low (7.7 bit/h) input information rate, the bitrate is similar,
+between 4 and 5 bit/h. The information is lost due to the imprecise detections (that carry
+incomplete information about the timing of pulses), missed pulses and false detections (Fig
+2D). The estimation of the information loss due to these three types of signal reconstruction
+errors is outlined in S2 Fig, panels C–E, and described in Materials and methods.
+In Fig 2E, we show 10 example trajectories for the interval encoding protocol with τ
+geom
+=
+10 min and a gap of τ
+gap
+= 20 min (giving together the mean inter-pulse interval equal 30
+min). The ERK KTR translocation pulses are well distinguishable and thus in around 90% of
+single-cell trajectories the stimulation pulses were reconstructed with one-minute resolution.
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 6 / 21
+For this protocol the bitrate was found to be the highest, equal 7.0 bit/h based on two experi-
+mental replicates (Fig 2F). The somewhat lower bitrate of 6.2 bit/h was found for the protocol
+with τ
+geom
+= 8 min and τ
+gap
+= 15 min (average of two replicates). As for the previous protocol,
+information is lost due to the three types of errors.
+Fig 2. Pulse detection and bitrate estimation in three protocols. (A) Binary encoding : 10 representati ve trajectories from an experiment with slots
+every τ
+clock
+= 10 min. Stimulation pulses are marke d with blue down-poin ting triangles. Small filled circles indicate light pulses detected based on the
+correspond ing trajectories. Percentag e-labeled green bars in each pulse slot show the fraction of cells in which a pulse was correctly detected. Fraction s
+of false positive detections are shown as percentag e-labeled gray bars. (B) Binary encoding : bitrate and sources of bitrate loss in experimen ts with
+various clock periods. In each column, total height of the stacked bars is equal to the input entropy rate. The number of analyzed cell trajectori es was
+3200 for clock periods τ
+clock
+ranging from 3 to 15 min and 1200 for τ
+clock
+= 20 and 30 min. Each analyzed cell trajectory contained 19 pulse slots. (C)
+Interval encoding : 10 representati ve trajectories from the experime nt with the mean interval τ
+geom
+= 36 min. Stimulation pulses are marke d with blue
+down-p ointing triangles. Colored dots indicate light pulses detected based on the correspond ing trajectories. Green bars show the fraction of cells in
+which a pulse was detected in a particular minute. (D) Interval encoding: bitrate and sources of bitrate loss in experiments with various mean intervals.
+In each column, total height of the stacked bars is equal to the input entropy rate. The number of analyzed cell trajectories was 400 in each of 6
+experime nts. The mean number of light pulses in analyzed trajectori es was in the range 24–60 depending on the mean interval (all experime nts lasted
+27–33 h). (E) Interval encoding with a minimal gap: 10 representati ve trajectories from the experime nt with a minimal gap of τ
+gap
+= 20 min and the
+inverse of the optimize d geometric distribution parameter τ
+geom
+= 10 min. Graphic al conventi on as in panel C. (F) Interval encoding with a minima l
+gap: bitrate and loss sources in experiment s with various minimal gaps and mean intervals. In each column, total height of the stacked bars is equal to
+the input entrop y rate. The number of analyzed cell trajectories was 400 in each of 9 experiments. The mean number of light pulses in analyzed
+trajectori es was in the range 19–96 depending on the mean interval (all experime nts last 27–33 h).
+https:// doi.org/10.1371 /journal.pcbi.10 11155.g002
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 7 / 21
+Latency and accuracy of signal detection
+In Fig 3A–3C we gathered all the experiments to estimate the maximum bitrate that can be
+achieved across all 3 protocols. From 6 to 9 experiments performed for each protocol we
+selected 2–4 experiments for which we obtained the highest bitrate, and estimated the lower
+bound of the maximum bitrate as the average over these selected experiments. As a result, we
+obtained the following bounds (mean ± standard error of the mean):
+• 4.1 ± 0.1 bit/h for the binary encoding protocol with the optimal clock period (τ
+clock
+) in the
+range of 5–7 min,
+• 5.6 ± 0.4 bit/h for the interval encoding protocol with the optimal average interval (τ
+geom
+) in
+the range of 32–42 min, and
+• 6.6 ± 0.3 bit/h for the interval encoding protocol with a minimal gap, with the optimal gap
+interval (τ
+gap
+) in the range of 15–20 min and the (inverse of the) corresponding geometric
+distribution parameter (τ
+geom
+) in the range of 8–10 min.
+Altogether, the above results show that the channel capacity of the MAPK/ERK pathway
+exceeds 6 bit/h and suggest that the highest bitrate can be achieved for the interval encoding
+protocol with a gap.
+Fig 3. Channel capacity estimation–r econstruction- based approach . (A)–(C) Informa tion transmi ssion rate for the three protocol families. In A,
+each data point is a mean of 8–10 experime nts, and standard deviation of these replicates is shown. In B and C, where each point correspond s to a single
+replicate, the standard deviation of the estimates obtained after 10 random train–test splits of the 400 cell trajectories is shown. The maximum bitrate
+for a given protocol is estimated (from below) as the mean ± standard error of the mean of 2–4 encircled points and marked with a dashed line. (D)–(E)
+Lower bound of maximum bitrate as a function of time from pulse to its detection for two interval encoding protocols. Points correspond to
+experiment s encircled in panels B and C; line shows the average over these experiment s. Pulse detection is based on the ERK KTR trajectory window
+that begins 2 min before a pulse slot and ends at the time after the pulse slot indicated on the horizontal axis (classificatio n is always based on three
+overlapping slices of their length adjusted to the length of the window). The 8 min-long window (red circle) was used for pulse detection throughout the
+paper.
+https://doi.o rg/10.1371/j ournal.pcbi. 1011155.g003
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 8 / 21
+We should mention that the bitrate estimations were obtained after rejecting the fraction
+f = 20% of ERK KTR trajectories that exhibit the lowest variability, that is, those with the small-
+est average square change of the nuclear intensity between subsequent snapshots. As we can
+see in S3 Fig, panel A, the maximum bitrate estimated for each of three protocols is an increas-
+ing function of f for f in the range from 0 to 50%. In the case of the binary encoding, the maxi-
+mum bitrate increases nearly linearly with f, which results from the fact that for short clock
+periods lower variability directly corresponds to lower chance of responding to a light pulse.
+However, for the interval encoding protocol the most significant increase is observed in the
+range 0–20%, which motivated us to remove 20% trajectories. At least some of these trajecto-
+ries come from cells with optoFGFR or ERK KTR not functioning properly.
+In S3 Fig, panels B–D, we show the histograms of bitrate measured for single cells in all
+experiments for the three encoding protocols. The orange area in the histograms corresponds
+to the removed 20% fraction of cells. We can notice that the histograms for the interval encod-
+ing protocol with a minimal gap are bimodal, but by removing the 20% of cells we may eradi-
+cate the lower mode, which additionally justifies the choice of the particular value of f (for
+consistency we removed the same fraction of trajectories from experiments for the other two
+protocols).
+All bitrate estimations are based on the ERK KTR translocation trajectory analyzed in an 8
+min-wide rolling window that ends t
+D
+= 5 min after the hypothetical pulse to be detected (t
+D
+stands for ‘time to decision’). This means that we account for information that is available for
+each cell 5 min after the pulse that the cell is expected to recognize. In Fig 3D we give the maxi-
+mal bitrate estimates (for the interval encoding protocol with a minimal gap jointly for the
+experiments with the highest bitrate, encircled in Fig 3A–3C) as a function of t
+D
+. We found
+that increasing t
+D
+beyond 5 min only marginally increases the bitrate, while decreasing it
+below 3 min dramatically decreases the bitrate (which possibly reflects the fact that the maxi-
+mum increment is usually observed between 2 and 3 min after the pulse).
+Reconstruction-free bitrate estimation
+An advantage of the reconstruction-based approach is that it enables discerning particular
+sources of classification errors (as shown in Fig 2B, 2D and 2F) and provides insight into infor-
+mation available to a responding cell. On the other hand, any classifier loses some information
+about the responding cell and thus provides a lower bound on the estimate of the cell capability
+of transmitting information. Therefore (prompted by an anonymous Reviewer), we performed
+a direct (reconstruction-free) estimation of the information transmission rate for both families
+of interval encoding protocols. We used the kNN (k = 20) algorithm to estimate the condi-
+tional entropy H(S|R), where R is the quantified response, and obtain I(S,R) = H(S) − H(S|R).
+Then, by dividing the result by experiment duration, we estimated the bitrate, see Materials
+and methods. As in the reconstruction-based approach, we used an 8-min rolling window. As
+shown in Fig 4A and 4B, the reconstruction-free estimates are about 2 bit/h higher than those
+obtained in the reconstruction-based approach, and equal (mean ± standard error of the
+mean):
+• 8.2 ± 0.1 bit/h for the interval encoding protocol (based on four data points encircled in Fig
+4A) and
+• 8.5 ± 0.2 bit/h for the interval encoding protocol with a minimal gap (based on six data
+points encircled in Fig 4B).
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 9 / 21
+The largest difference between the reconstruction-based and the reconstruction-free
+approach can be observed for data points corresponding to the shortest mean intervals (cf. Figs
+3B and 4A). Heuristically, it can be explained as follows: In the reconstruction-bas ed approach,
+the small missed pulse errors (occurring for pulses preceded by long intervals) are averaged
+with large missed pulse errors (occurring for pulses preceded by short intervals). Thus, for
+short mean intervals, the average fidelity of the pulse reconstruction is relatively low which
+implies high H(S|R) calculated from the confusion matrix. To illustrate this with a simple
+example: when one sends 20 zero-one digits, and the first 10 of them are received with p = 1
+confidence, while remaining with p = ½ confidence, then the transmitted information is 10
+bits (provided that the receiver knows which bits should be trusted). However, when the
+receiver does not know which bits should be trusted, the averaged confidence is p
+a
+= ¾, which
+implies that the transmitted information is 20 (1 –H(S|R)) = 20 (1 + p
+a
+log
+2
+(p
+a
+) + (1 –p
+a
+) log
+2
+(1
+–p
+a
+)) � 3.8 bit. In the reconstruction-free approach the uncertainty about pulses is not
+averaged.
+Discussion
+Toettcher et al. [27] showed that the RAS–ERK module of the MAPK pathway may transmit
+input signals across a broad range of timescales, from 4 min to multiple hours. Here, by apply-
+ing signal reconstruction-based approach we estimated the information transmission rate
+from FGFR to an ERK activity reporter to find that the MAPK/ERK channel capacity exceeds
+6 bit/h. In a direct, reconstruction-free approach, we obtained a higher estimate of 8.5 bit/h,
+which shows that at the signal reconstruction step a substantial portion of information is lost.
+It is debatable, however, whether cells can utilize the input information without “reconstruct-
+ing the signal”.
+We analyzed three protocols to encode information: binary encoding, interval encoding,
+and interval encoding with a minimal gap, to find that interval-encoded information can be
+transmitted at a significantly higher bitrate than binary-encoded information. The presence of
+a minimal gap between pulses of length comparable to the refractory time (i.e., time in which
+the cell may not unambiguously respond to a subsequent pulse) further increases the bitrate
+(although this increase is small for the reconstruction-free approach). The lower bound of the
+MAPK/ERK channel capacity found in this study is well above our earlier purely theoretical
+estimates [28], which suggested a bitrate between 1.4 and 1.9 bit/h. Those MAPK-model esti-
+mates were obtained for the binary protocol, but the main source of discrepancy is the longer
+Fig 4. Channel capacity estimati on–reconstruc tion-free approach. (A)–(B) Informatio n transmissi on rate for two
+families of interval encoding protocol s. Error bars indicate the standard deviatio n of the estimates obtained after 10
+random resamplin gs of 50% (200 out of 400) cell trajectori es. The maximum bitrate for a given protocol is estimated as
+the mean ± standard error of the mean of 4 or 6 encircled points and marked with a dashed line.
+https://d oi.org/10.1371/j ournal.pc bi.1011155. g004
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 10 / 21
+refractory time of ~50 min, arising in the computational model [29]. Interval encoding appears
+the most natural from the biological perspective as it assumes that pulses occur independently
+with some constant intensity (the mean interval is the inverse of the intensity). These random
+pulses can be associated with single-cell apoptosis, which recently has been found to trigger
+synchronous ERK activation [30] that propagates radially for about three cell “layers” [17].
+Using the reconstruction-based approach we found that for the interval encoding with a
+minimal gap the bitrate may exceed 6 bit/h, which can be considered as a “safe” lower bound
+on the MAPK/ERK channel capacity. The fact that interval encoding is associated with the
+highest bitrate follows from the cells’ ability to respond to light pulses in a very synchronous
+manner. The light pulses can be detected nearly perfectly with one-minute resolution (pro-
+vided that the time from the preceding pulse is longer than the refractory time), based on the
+ERK activity in an 8-min interval ending 5 min after the light pulse. Synchronous responses to
+the stimuli may enable long-distance waves of ERK activity that assist wound healing, inducing
+collective cell migration [18,31]. In our experiments we do not observe communication
+between cells, because all cells are illuminated equally and simultaneously. However, when
+cells are stimulated in a single spot only, for example due to an apoptotic event, one may
+observe propagation of an ERK activity wave outside of this spot [17,32]. This clearly indicates
+for cell-to-cell communication and propagation of information. One could expect that even if
+such wounding- or apoptosis-generated waves are initiated at small time intervals, the first
+“layer” of cells filters out the pulses that occur within the refractory time, and thus the farther
+“layers” of cells will be subjected to stimulation that resembles the interval encoding with a
+minimal gap.
+Since we have not investigated signaling with resolution finer than 1 min we may not rule
+out that the MAPK/ERK channel capacity exceeds the determined lower bound of 6 bit/h.
+Using finer temporal discretization would increase the entropy of the input, but in the recon-
+struction-based approach it would also result in more classification errors, therefore both H(S)
+and H(S|R) would be increased. Even for one-minute resolution, a substantial part of informa-
+tion loss is due to inaccurate detections (see Fig 2D and 2F).
+In our analysis we lumped together responses of different cells. This is known to reduce the
+measured information transfer because cell-to-cell differences in responses are treated as
+noise. As observed earlier by Toettcher et al. [27], individual cells exhibit precise and reversible
+Ras/ERK dose-response behavior; in our case we observe that there are faster and slower cells,
+and this causes that we occasionally reconstruct pulses with 1 minute delay or 1 minute in
+advance. By learning about each individual cell from its response to first light pulses, one could
+use its response to reconstruct subsequent pulses with higher accuracy; such type of analysis
+was performed by Selimkhanov et al. [7]. However, when one aims at interpreting transmitted
+information as the ability of cells to exhibit synchronous responses to stimuli (required for
+ERK activity wave propagation), cell-to-cell differences can be interpreted as an (extrinsic)
+noise.
+Cells send, receive, and process information, however a natural question is how the infor-
+mation transmitted at the rate exceeding 6 bit/h can be utilized. Intuitively, high information
+rate is critical when a cell has to respond to constantly changing stimuli. Neurons were shown
+to transmit information at rates of tens of bits per second [13,14]. E. coli chemotactic system
+transfers about 0.01 bit per second, and this information rate limits its drift velocity in shallow
+chemical gradients [15]. Meier et al. [16] showed that D. discoideum (chemotaxis of which is
+known to be regulated by an atypical MAP kinase, ERKB [33,34]) may navigate in a switching
+chemotactic gradient, changing its direction within a minute. This suggests the information
+processing rate of about 1 bit per minute, or less if some cell switch-or-not decisions are
+incorrect.
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 11 / 21
+In higher organisms, the MAPK/ERK pathway is known to coordinate diverse complex
+behaviors and cell fate decisions, such as cell proliferation, differentiation, migration, senes-
+cence and apoptosis [35]. The distinction between particular cell fates depends on ERK pulsa-
+tile activity integrated over timescales of multiple hours [36]. RAS-to-ERK cascade transmits
+signals (and information) from numerous inputs to numerous outputs regulated by ERK and
+its upstream components, MEK, RAF, and RAS. During collective cell migration, ERK con-
+trols myosin contractile pulses [37]. Spatially localized RAS activation is responsible for forma-
+tion of actin-based cell protrusions [38], which arise and contract at the timescale of single
+minutes [39], directing cell motion. Since ERK works as a RAS-activated (via RAF and MEK)
+RAS inhibitor [40], the ERK activity profile influences cell protrusion and retraction, and thus
+cell motion [41]. The high information capacity of the MAPK/ERK channel demonstrated in
+this study enables coordination of the versatile functions associated with ERK and its upstream
+kinases, with cell motion in response to rapidly changing stimuli likely being the process the
+most information is fed into.
+Materials and methods
+Cell lines
+The MCF-10A human mammary epithelial cells (derived from an adult female) were a gift of
+J.S. Brugge. The cells were modified to stably express the nuclear marker H2B-miRFP703, the
+ERK biosensor ERK-KTR-mRuby2 [42] and the optogenetic actuator optoFGFR [23] and used
+before in Refs. [17,25].
+Cell culture
+The modified MCF-10A cells were cultured in tissue-culture treated plastic flasks and fed with
+a growth medium composed of DMEM:F12 (1:1) supplemented with horse serum 5%, recom-
+binant human EGF (20 ng/ml, Peprotech), L-glutamine, hydrocortisone (0.5 μg/ml, Sigma-
+Aldrich/Merck), insulin (10 μg/ml, Sigma-Aldrich/Merck), penicillin (200 U/ml) and strepto-
+mycin (200 μg/ml). The cells were routinely split upon reaching ~90% confluency. For time-
+lapse optogenetic experiments, cells were seeded on 24-well 1.5 glass bottom plates (Cellvis)
+coated with 5 μg/ml fibronectin (PanReac AppliChem) at 1×10
+5
+cells/well density in growth
+medium two days before the experiment. Four hours before the optogenetic stimulation (2.5 h
+before imaging), cells were washed twice with PBS and then cultured in a starvation medium
+composed of DMEM:F12 (1:1) supplemented with BSA (0.3% Sigma-Aldrich/Merck), L-gluta-
+mine, hydrocortisone (0.5 μg/ml, Sigma-Aldrich/Merck).
+Optogenetic stimulation
+OptoFGFR was stimulated with pulses of blue LED light (100 ms, 470 nm, 3 W/cm
+2
+) applied
+according to specific stimulation protocols (see a further subsection on stimulation protocols).
+It should be noticed that for short pulses the response depends on the total pulse energy per
+unit surface, and that 0.3 J/cm
+2
+is above the saturation dose [25].
+Imaging
+Imaging experiments were performed on an epifluorescence Eclipse Ti inverted fluorescence
+microscope (Nikon) controlled by NIS-Elements (Nikon) with a Plan Apo air 20× (NA 0.8)
+objective. Laser-based autofocus was used throughout the experiments. Image acquisition was
+performed with an Andor Zyla 4.2 plus camera at the 16-bit depth every 1 min. The following
+excitation and emission filters were used: far red: 640 nm, ET705/72m; red: 555 nm, ET652/
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 12 / 21
+60m; green: 470 nm, ET525/36m. Imaging started 1.5 h before the onset of optogenetic stimu-
+lation (to provide proper history for ERK KTR track normalization, see a further subsection
+on signal processing).
+Stimulation protocols
+In the case of binary encoding, all stimulation protocols have 19 temporally equidistant pulse
+“slots”. We applied the following fixed pattern of pulses: 10110100111100001 01 (1 = pulse,
+0 = no pulse), which is the shortest sequence containing uniquely every possible subsequence
+of four binary digits. For each “clock period” (i.e., time between pulse slots) this sequence (in
+one field of view) and its logic negation (in another field of view) were used. Since the clock
+periods ranged from 3 min to 30 min, overall protocol durations ranged from 19×3 = 57 to
+19×30 = 570 min. The estimated values of the information transmission rate are means com-
+puted for tracks obtained from 2 fields of view and 4–5 biological replicates for each clock
+period, except for the clock periods of 20 min and 30 min, for which 10 fields of view from a
+single biological replicate were used.
+In the case of interval encoding, the inter-pulse intervals were chosen in a randomized
+manner: the interval lengths were first selected to best reflect the underlying distribution,
+either geometric or geometric with a minimal gap, given the time budget of a single experi-
+ment (~26 h), and then randomly shuffled. A four hour-long resting period was added in the
+middle of the experiment to allow the cells to regenerate in 3 of 6 experiments with stimulation
+according to the protocol without a gap and 5 of 9 experiments with stimulation according to
+the protocol with a minimal gap; however, no significant difference was observed between
+results of the experiments with and without the resting period. The resting period and the ini-
+tial 90-min starvation period were excluded from the analysis. The first pulse of the sequence
+and the first pulse after the resting period were also discarded as non-representative. Overall,
+in each protocol there were 24–131 analyzed pulses (during 25–31 h) depending on the
+assumed average interval between pulses.
+Nuclei detection and cell tracking
+The nuclei were detected in the channel of fluorescently tagged histone 2B (H2B)-miRFP703
+using local thresholding. Outlines of overlapping nuclei were split based on geometric convex-
+ity defects when possible. Outlines of nuclei that were partially out of frame were excluded
+from analysis. The nuclei were tracked automatically using a greedy algorithm based on
+parameters such as proximity of outlines in subsequent time points, their surface area, eccen-
+tricity, orientation, total fluorescence intensity and intensity distribution. ERK KTR trajecto-
+ries were obtained by calculating within each tracked nuclear outline the mean intensity in the
+ERK KTR channel. All image processing was performed within our custom software,
+S HUTTLE T RACKER .
+Signal processing
+For each tracked nucleus, the mean ERK KTR intensity in its contour was quantified and nor-
+malized, first with the whole-image mean intensity in the ERK KTR channel (to compensate
+for possible global changes in fluorescence), and then with the average over the cell 120-min
+history (to account for variation in ERK KTR expression or its uneven visibility in individual
+cells). Such normalized values were subtracted from 1 and then referred to simply as ‘ERK
+KTR translocation’ and denoted x
+t
+, where t indicates a time point and directly corresponds to
+the minute of the imaged part of the experiment. Of note, for nuclear ERK KTR signal con-
+stant in time, such normalization and linear transformation would imply x
+t
+= 0.
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 13 / 21
+Selection of tracks
+In each field of view, we ranked tracks by their length and then by their quality, defined as low
+variation of the nuclear area within the track, and preselected 500 top scoring tracks. To elimi-
+nate cells that responded weakly to stimulation, for example due to low reporter expression,
+we further rejected 100 tracks (20%) with the lowest sum-of-squares of the discrete derivative
+of the ERK KTR translocation trajectory (computed after only the first step of normalization).
+Input reconstruction
+Binary encoding. For each experiment, 200 out of the 400 ERK KTR translocation trajec-
+tories were randomly selected as a train set, and 200 trajectories from cells stimulated with the
+negated sequence as the test set. For each potential light pulse time point t
+0
+, referred to as
+“slot”, we extracted slices of ℓ = 6 subsequent time points beginning at three different shifts
+with respect to t
+0
+: 2 min before the slot (that is, from t
+0
+− 2 to t
+0
++ 3), 1 min before the slot
+(from t
+0
+− 1 to t
+0
++ 4), and exactly on the time point of the slot (from t
+0
+to t
+0
++ 5). For each slice
+we computed ℓ − 1 discrete backward derivatives, Δx
+t
+= x
+t
+− x
+t−1
+. Separately for each of the
+three sets of slices (corresponding to a specific shift with respect to t
+0
+), a kNN (k = 20) classifier
+[43] with (ℓ − 1)-dimensional Euclidean distance was trained and evaluated so that each slice
+in the test set was labeled with 0/1 depending on the predicted occurrence of a light pulse in its
+slot. In this way, three 0/1 labels were assigned to a single slot. To obtain input signal recon-
+struction in each slot of x
+t
+, an ensemble classifier combined three binary predictions through
+hard voting, i.e., pulse is confirmed if two or three predictions are ‘yes’. In the estimation of
+the confusion matrix (described further), the whole procedure was repeated for 10 random
+resamplings of the training set and the test set. We checked that the reconstruction is not
+improved for higher k.
+Interval encoding. The ERK KTR translocation trajectories from each experiment were
+split into the training set (200 randomly selected trajectories) and the test set (200 remaining
+trajectories). Each trajectory was represented as a set of overlapping slices of ℓ = 6 subsequent
+time points. The slices constitute a perfect 6-fold coverage meaning that each (non-terminal)
+time point belongs to 6 (partially overlapping) slices. Each slice was labeled with the “time
+after pulse” (TAP) being the time from the last light pulse to the last time point of the slice (or
+from the previous pulse if this time is shorter than 3 min); this adjustment is important in the
+case of very short, 3–4 min, inter-pulse intervals). For each slice we computed ℓ − 1 discrete
+backward derivatives, Δx
+t
+= x
+t
+− x
+t−1
+. A kNN (k = 20) classifier [43] with (ℓ − 1)-dimensional
+Euclidean distance was trained to predict a TAP associated with each slice. Slices with TAP val-
+ues of 3, 4, or 5 min were used to predict pulses through hard voting: time points indicated by
+at least two of three slices were considered as time points having a light pulse in the final recon-
+struction (see S2 Fig, panels A and B). To additionally prevent a single pulse from being pre-
+dicted multiple times, if more than one prediction was indicated within any three subsequent
+time points, all predictions except the first one were discarded. In the estimation of the contin-
+gency table (described further), the whole procedure was repeated for 10 different random par-
+titionings of trajectories into the test set and the train set.
+Let us notice that in both the binary and the interval encoding protocols, the decision
+whether to classify a given time point t
+0
+as a point containing a light pulse was made based on
+3 subsequent, partially overlapping slices of length 6, which cover 8 subsequent values of x
+t
+(for t ranging from t
+0
+− 2 to t
+0
++ 5). Thus, only information available to a cell 5 min after the
+pulse was used by the trained ensemble classifier to make a prediction. In Fig 3D and 3E, the
+length of this window is varied to check how fast information is accumulated.
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 14 / 21
+Bitrate computation
+We estimated the bitrate as the amount of information I(S, R) between the input signal S and
+the elicited response R sent within an interval corresponding to the total input duration Δt
+according to the formula:
+i S; Rð Þ ¼
+I ðS; RÞ
+Δt
+¼
+H ðSÞ   H ðSjRÞ
+Δt
+¼
+H ðSÞ
+Δt
+ 
+H ðSjRÞ
+Δt
+ð3Þ
+where H(S) is the entropy of an input signal and H(S|R) is the entropy of the input conditioned
+on the response in the case of reconstruction-free approach or on the output-based reconstruc-
+tion of the input in the case of reconstruction-based approach. As described below, the input
+entropy rate, h(S) ≔ H(S)/Δt, may be determined theoretically, whereas the conditional
+entropy H(S|R) is calculated based on ERK KTR translocation trajectories.
+Input entropy rate
+In the case of the binary encoding protocol, input sequences contain 0/1 digits occurring inde-
+pendently with identical probabilities of ½ in temporally equidistant pulse slots. The entropy
+of such 19-digit input sequences is H
+binary
+(S) = 19 bits. When digits occur in pulse slots τ
+clock
+apart, then the input entropy rate per digit is
+h
+bin ary
+S; t
+clo ck
+ð Þ ¼
+19 bit s
+19 t
+clo ck
+¼ 1 bit=t
+clo ck
+ð4Þ
+Since τ
+clock
+is the clock period of the binary encoding protocol, Eq (4) expresses the input
+entropy rate per clock period.
+In the case of the interval encoding protocols, intervals between pulses are drawn at random
+from the geometric distribution with the rate parameter p = 1/τ
+geom
+and are optionally length-
+ened by adding τ
+gap
+. The entropy of the geometric distribution is
+ 
+p log
+2
+p þ 1   pð Þ log
+2
+1   pð Þ
+p
+¼ t
+geom
+log
+2
+t
+geom
+  t
+geo m
+  1
+� �
+log
+2
+t
+geom
+  1
+� �
+ð5Þ
+so the input entropy rate h
+interval
+(S; τ
+geom
+, τ
+gap
+) is
+h
+int erv al
+S; t
+geom
+; t
+gap
+� �
+¼
+t
+geo m
+log
+2
+t
+geo m
+  t
+geom
+  1
+� �
+log
+2
+t
+geo m
+  1
+� �
+t
+geo m
+þ t
+gap
+ð6Þ
+where τ
+geom
++ τ
+gap
+is the mean inter-pulse interval. Since in the interval encoding protocols,
+digits 0/1 occur at the one-minute resolution, h
+interval
+computed in Eq (6) is also the entropy
+per digit. For the interval encoding protocol (nominally without a minimal gap), τ
+geom
+was
+varied and a technical τ
+gap
+of 2 min was introduced in experiments to avoid ambiguities in sig-
+nal reconstruction. For the protocol with a minimal gap, τ
+gap
+was varied and τ
+geom
+was
+adjusted through numerical optimization to maximize h
+interval
+(S; τ
+geom
+, τ
+gap
+).
+Conditional entropy—Reconstruction-ba sed approach
+For the binary and the interval encoding protocols, we estimate from above the conditional
+entropy H(S|R) per digit of the input given its reconstruction (throughout this section, R
+denotes input reconstruction). In light of Eq (3) this will provide us with a lower bound on the
+bitrate i(S, R). Entropy of a joint distribution is lower than the sum of individual entropies
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 15 / 21
+[44], thus
+H ðSjRÞ �
+X
+d
+H ðS
+d
+jRÞ ð7Þ
+where S
+d
+is a single input digit and H(S
+d
+|R) is the entropy of that input digit conditioned on
+the whole-sequence reconstruction R. The equality holds only when R and S jointly are a Mar-
+kov process, this is, when digits occur independently and the reconstruction of a given digit
+does not depend on other digits. Of note, in our experiments the input digits are independent
+for the binary encoding protocol, but dependent for the interval encoding protocol with a
+(minimal) gap. However, even for the binary encoding protocol, the probability of detecting a
+pulse (digit ‘1’) depends on the time interval from the previous ‘1’.
+Further, from the data processing inequality [44], for the binary encoding protocol, we
+have
+H ðS
+d
+jRÞ � H ðS
+d
+jR
+d
+Þ ð8Þ
+where H(S
+d
+|R
+d
+) is the entropy of an input digit S
+d
+conditioned on its reconstruction R
+d
+, and
+for the interval encoding protocols we have
+H ðS
+d
+jRÞ � H ðS
+d
+jðR
+d  1
+; R
+d
+; R
+dþ1
+ÞÞ ð9Þ
+where H(S
+d
+|(R
+d − 1
+, R
+d
+, R
+d + 1
+)) is the entropy of S
+d
+conditioned on three subsequent digits of
+the reconstruction.
+Taken together, from inequalities (7)–(9) we have
+H SjRð Þ �
+X
+d
+H S
+d
+jR
+d
+ð Þ and H ðSjRÞ �
+X
+d
+H ðS
+d
+jðR
+d  1
+; R
+d
+; R
+dþ1
+ÞÞ ð10Þ
+which means that to obtain upper bounds on conditional entropies for the binary encoding
+and the interval encoding protocols we have to calculate H(S
+d
+|R
+d
+) and H(S
+d
+|(R
+d−1
+, R
+d
+, R
+d+1
+)),
+respectively.
+Calculation of H(S
+d
+|R
+d
+) for binary encoding. To obtain H(S
+d
+|R
+d
+), we calculated the con-
+fusion matrix between S
+d
+and R
+d
+:
+R
+d
+1 0
+S
+d
+1
+0
+TP FN
+FP TN
+ð11Þ
+where TP, FP, FN, TN are, respectively, the probabilities of true positive detections, false posi-
+tive detections (“false detections”), false negative detections (“missed pulses”), and true nega-
+tive detections averaged over all time points, all selected tracks, and all partitions of data into
+the train set and the test set. Based on this confusion matrix we calculated H(S
+d
+|R
+d
+) according
+to the definition as:
+H S
+d
+jR
+d
+ð Þ ¼   E log
+2
+pðS
+d
+jR
+d
+Þð Þ ¼  
+X
+s;r 2f0;1g
+p S
+d
+¼ s; R
+d
+¼ rð Þ log
+2
+pðS
+d
+¼ s; R
+d
+¼ r Þ
+pðR
+d
+¼ r Þ
+ð12Þ
+Calculation of H(S
+d
+|(R
+d−1
+, R
+d
+, R
+d+1
+)) for interval encoding. For this encoding, we com-
+puted the contingency table showing the relation between S
+d
+and the reconstruction of the
+three subsequent digits (R
+d−1
+, R
+d
+, R
+d+1
+), which also accounts for information carried by
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 16 / 21
+inaccurate detections:
+ðR
+d  1
+; R
+d
+; R
+dþ1
+Þ
+0; 0; 0ð Þ 1; 0; 0ð Þ 0; 1; 0ð Þ 0; 0; 1ð Þ
+S
+d
+1
+0
+p
+0;0;0ð Þ;1
+p
+1;0;0ð Þ;1
+p
+0;1;0ð Þ;1
+p
+0;0;1ð Þ;1
+p
+0;0;0ð Þ;0
+p
+1;0;0ð Þ;0
+p
+0;1;0ð Þ;0
+p
+0;0;1ð Þ;0
+ð13Þ
+The entries of the contingency table are joint probabilities p
+(r−, r0, r+);s
+= p(S
+d
+= s, (R
+d−1
+, R
+d
+,
+R
+d+1
+) = (r
+−
+, r
+0
+, r
++
+)) of input signal s 2 {0, 1} and reconstructed input (r
+–
+, r
+0
+,r
++
+) 2 {(0,0,0),
+(1,0,0), (0,1,0), (0,0,1)}. In contrast to the confusion matrix for the binary encoding, these joint
+probabilities have no straightforward interpretation in terms of TP, FP, FN, TN or inaccurate
+detection probabilities. The combinations of (R
+d−1
+, R
+d
+, R
+d+1
+) containing two or three 1s do not
+occur due to the prior elimination of detections that are closer than 3 min apart. The condi-
+tional entropy was calculated according to the definition as:
+H S
+d
+j R
+d  1
+; R
+d
+; R
+dþ1
+  �  �
+¼  
+X
+s;r
+ 
+;r
+0
+;r
+þ
+2f0;1g
+p
+r
+ 
+;r
+0
+;r
+þð Þ
+;s
+log
+2
+p
+r
+ 
+;r
+0
+;r
+þð Þ
+;s
+p
+r
+ 
+;r
+0
+;r
+þð Þ
+ð14Þ
+To summarize, bitrate may be computed based on Eq (3) with input entropy rates given by
+Eqs (4) and (6) and conditional entropies given by Eqs (12) and (14) in the case of the binary
+encoding protocols and in the case of interval encoding protocols, respectively.
+Reconstruction-ba sed approach—Sourc es of information loss
+To determine the sources of the information loss (Fig 2B, 2D and 2F), we sequentially cor-
+rected all types of errors in the reconstruction: false detections (false positives), missed pulses
+(false negatives), and for the interval encoding protocols also inaccurate (deferred or
+advanced) detections. After each correction step, we recomputed the confusion matrix/contin-
+gency table and attributed the decrease of conditional entropy and the resulting increases of
+bitrate to the particular type of error. Since the obtained results depend on a particular order
+of correction steps, to compare individual contributions from the three corresponding types of
+reconstruction errors, we calculated each of these contributions by averaging over all possible
+orders of the correction steps (2 permutations for the binary encoding protocol; 6 permuta-
+tions for the interval encoding protocols; see S2 Fig, panels C–E). Of note, each sequence of
+correction steps restores exactly the input signal and the estimated bitrate losses associated
+with considered error types sum up to the total bitrate loss. Since the procedure is symmetric
+with respect to each type of error, these contributions may be compared.
+Conditional entropy—Reconstruction-fr ee approach
+To estimate the information transmission rate directly, i.e., without the reconstruction step
+(Fig 4), we split the trajectories into slices of length ℓ = 8 as described above and labeled them
+with 0/1 depending on whether an input pulse occurred at the time point 5 min before the last
+time point in the slice. The slice length ℓ = 8 was chosen to comply with the reconstruction-
+based approach, where we used three consecutive slices of length 6 that jointly span over an
+interval of 8 time points. Seven (= ℓ−1) finite differences were computed for each slice, r,
+embedding all slices in the 7-dimensional Euclidian space. For each r, k = 20 nearest neighbors
+were found (including the slice itself) and the numbers n
+0
+and n
+1
+of neighbors marked with 0
+and 1, respectively, were counted (n
+0
++ n
+1
+= k). For each slice, the conditional entropy was
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 17 / 21
+estimated according to the formula:
+H Sjrð Þ ¼  
+n
+0
+k
+log
+2
+n
+0
+k
+þ
+n
+1
+k
+log
+2
+n
+1
+k
+� �
+þ bias correction ð15Þ
+where (Miller–Madow) bias correction is 1/(2k ln 2) if both n
+0
+and n
+1
+are non-zero, and 0 oth-
+erwise [45,46]. The overall conditional entropy H(S|R) was estimated by averaging H(S|r) over
+all slices r. The procedure was performed on 200 trajectories randomly chosen out of 400 cell
+trajectories in each experiment, and repeated 10 times for different choices to evaluate the
+robustness of the estimate.
+Supporting information
+S1 Fig. Experimental and data analysis workflow (reconstruction-based approach).
+(TIF)
+S2 Fig. Interval encoding: Input sequence reconstruction algorithm and determination of
+the sources of information loss (reconstruction-based approach). (A) Tracks from the train-
+ing set are segmented into overlapping slices of 6 consecutive time points such that each time
+point belongs to 6 slices. Each slice is labeled with the time after pulse (TAP), measured with
+respect to the last time point in the slice. The kNN classifier is trained to predict the TAP based
+on 5 discrete differences between 6 consecutive time points of a slice. (B) For each slice, the
+TAP predicted by the classifier indicates a time point at which the stimulation pulse could
+occur. Votes for particular time points from different slices are counted. Only votes from slices
+predicted with TAP = 3,4,5 min are taken into account, the remaining are ignored as unreli-
+able. Time points that received at least two out of the three possible votes are considered as
+time points with pulse in the final reconstruction, R. (C) Detection and labeling of errors in
+the reconstruction R. Inaccurate detections (one minute before or after the pulse) are not
+decomposed into missed pulses and false detections but assigned to their specific error types.
+Since the patterns ‘11’ and ‘101’ are guaranteed never to occur in the input sequence S, the
+error classification is unambiguous. (D) An example 3-step sequence of error corrections for
+the interval encoding protocols. After the third step, the fully corrected reconstruction R
+0 0 0
+is
+identical to the input sequence S. The difference between bitrate before and after each correc-
+tion step is attributed to the particular information loss source. (E) As the difference in bitrate
+depends on the sequence of corrections, the contributions of the three types of errors are aver-
+aged over all permutations of correction steps.
+(TIF)
+S3 Fig. Cell-to-cell bitrate variability and exclusion of non-responding cells (reconstruc-
+tion-based approach). (A) Bitrate estimate as a function of the fraction of cells excluded in the
+preselection step. The (lower bound for) bitrate is computed as in Fig 3. Error bars denote
+standard error of the mean based on the 2–4 experiments with highest bitrate. In the preselec-
+tion step we aim at excluding cells that do not respond to stimulation, possibly due to low
+expression of optoFGFR or ERK KTR. The rejection criterion is formulated in a way a priori
+independent of the accuracy of pulse detection, see Methods for details. Throughout the paper,
+the fraction of rejected cells is set to 20% (highlighted in gray), because above this value the
+bitrate estimates in the interval encoding protocols (with and without minimal gap) reach a
+plateau. (B, C, D) Histograms of the information transmission rates in single cells for (B)
+binary encoding, (C) interval encoding, and (D) interval encoding with a minimal gap. Esti-
+mates for cells rejected in the preselection step (20% of all cells) are marked in orange. Negative
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 18 / 21
+bitrate estimates can occur due to the rough approximation based on inequalities in Eq (7) in
+the main text.
+(TIF)
+Acknowledgmen ts
+We thank Prof. Joan S. Brugge from Harvard Medical School, Boston, MA for providing the
+MCF-10A human mammary epithelial cells line. We acknowledge support of the Microscopy
+Imaging Center of the University of Bern (https://www.mic.unibe.ch).
+Author Contributions
+Conceptualization: Paweł Nałęcz-Jawecki, Paolo Armando Gagliardi, Marek Kochańczyk,
+Olivier Pertz, Tomasz Lipniacki.
+Data curation: Marek Kochańczyk.
+Funding acquisition: Olivier Pertz, Tomasz Lipniacki.
+Investigation: Paweł Nałęcz-Jawecki, Paolo Armando Gagliardi.
+Methodology: Marek Kochańczyk, Coralie Dessauges.
+Resources: Paolo Armando Gagliardi, Coralie Dessauges.
+Software: Marek Kochańczyk.
+Visualization: Paweł Nałęcz-Jawecki, Marek Kochańczyk.
+Writing – original draft: Paweł Nałęcz-Jawecki, Marek Kochańczyk, Tomasz Lipniacki.
+Writing – review & editing: Paolo Armando Gagliardi, Olivier Pertz, Tomasz Lipniacki.
+References
+1. Bowsher CG, Swain PS. Identifying sources of variation and the flow of informati on in biochemical net-
+works. Proc Natl Acad Sci USA. 2012; 109: E1320–1328 . https://doi. org/10.1073/p nas.1119 407109
+PMID: 225293 51
+2. Das J, Ho M, Zikherman J, Govern C, Yang M, Weiss A, et al. Digital signaling and hysteresis character -
+ize Ras activation in lymphoid cells. Cell. 2009; 136: 337–351. https:// doi.org/10.10 16/j.cell.2 008.11.
+051 PMID: 191673 34
+3. Markevich NI, Hoek JB, Kholodenko BN. Signaling switches and bistability arising from multisite phos-
+phorylation in protein kinase cascades . J Cell Biol. 2004; 164: 353–359 . https://doi.or g/10.1083/ jcb.
+200308060 PMID: 14744999
+4. Tay S, Hughey JJ, Lee TK, Lipniacki T, Quake SR, Covert MW. Single-cell NF-κB dynamics reveal digi-
+tal activation and analogue informati on processing . Nature. 2010; 466: 267–271. https://doi.or g/10.
+1038/nat ure09145 PMID: 20581820
+5. Turner DA, Paszek P, Woodcock DJ, Nelson DE, Horton CA, Wang Y, et al. Physiolog ical levels of
+TNFalpha stimulation induce stochastic dynamics of NF-kappa B response s in single living cells. J Cell
+Sci. 2010; 123: 2834–2843. https:// doi.org/10.12 42/jcs.0696 41 PMID: 20663918
+6. Cheong R, Rhee A, Wang CJ, Nemenman I, Levchenko A. Informatio n transductio n capacity of noisy
+biochemical signalin g networks. Science. 2011; 334: 354–35 8. https://doi.or g/10.112 6/science.
+1204553 PMID: 21921160
+7. Selimkha nov J, Taylor B, Yao J, Pilko A, Albeck J, Hoffmann A, et al. Accurate informati on transmiss ion
+through dynamic biochemic al signaling networks. Science. 2014; 346: 1370–1373. https:// doi.org/10.
+1126/scien ce.12549 33 PMID: 25504722
+8. Tang Y, Adelaja A, Ye FX-F, Deeds E, Wollman R, Hoffman n A. Quantifying informati on accumulation
+encoded in the dynamics of biochemic al signaling. Nat Commun . 2021; 12: 1272. https://doi.or g/10.
+1038/s41 467-021-2 1562-0 PMID: 33627672
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 19 / 21
+9. Tudelska K, Markiewic z J, Kochańc zyk M, Czerkies M, Prus W, Korwek Z, et al. Informatio n processing
+in the NF-κB pathway. Sci Rep. 2017; 7: 15926. https://doi.or g/10.103 8/s41598 -017-16166 -y PMID:
+29162874
+10. Butts DA, Weng C, Jin J, Yeh C-I, Lesica NA, Alonso J-M, et al. Temporal precision in the neural code
+and the timesca les of natural vision. Nature. 2007; 449: 92–95. https://doi.or g/10.1038/ nature06105
+PMID: 178052 96
+11. Gollisch T, Meister M. Rapid neural coding in the retina with relative spike latencies. Science. 2008;
+319: 1108–11 11. https://doi.or g/10.112 6/science.114 9639 PMID: 18292344
+12. MacKay DM, McCullo ch WS. The limiting informati on capacity of a neuronal link. Bull Math Biophys.
+1952; 14: 127–13 5. https://doi.or g/10.100 7/BF02477711
+13. Arnold MM, Szczepansk i J, Montejo N, Amigo ´ JM, Wajnryb E, Sanchez-Vives MV. Informatio n content
+in cortical spike trains during brain state transitio ns. J Sleep Res. 2013; 22: 13–21. https://do i.org/10.
+1111/j.136 5-2869.2012 .01031.x PMID: 22737985
+14. Strong SP, Koberle R, de Ruyter van Steveninc k RR, Bialek W. Entropy and information in neural spike
+trains. Phys Rev Lett. 1998; 80: 197–200. https:/ /doi.org/10.11 03/PhysR evLett.80.19 7
+15. Mattingly HH, Kamino K, Machta BB, Emonet T. Escherich ia coli chemotax is is informati on limited. Nat
+Phys. 2021; 17: 1426–1 431. https://doi.or g/10.103 8/s41567-021- 01380-3 PMID: 350355 14
+16. Meier B, Zielinski A, Weber C, Arcizet D, Youssef S, Franosch T, et al. Chemotac tic cell trapping in con-
+trolled alternating gradient fields. Proc Natl Acad Sci USA. 2011; 108: 11417–1 1422. https://doi.or g/10.
+1073/pnas .1014853108 PMID: 21709255
+17. Gagliardi PA, Dobrzyński M, Jacques M-A, Dessauges C, Ender P, Blum Y, et al. Collective ERK/Akt
+activity waves orchestrate epithel ial homeostasis by driving apoptosis- induced survival. Dev Cell. 2021;
+56: 1712–172 6.e6. https://doi.or g/10.101 6/j.devcel.20 21.05.00 7 PMID: 34081908
+18. Hiratsuka T, Fujita Y, Naoki H, Aoki K, Kamioka Y, Matsuda M. Intercellular propagation of extracellu lar
+signal-regu lated kinase activation revealed by in vivo imaging of mouse skin. Davis R, editor. eLife Sci-
+ences. 2015; 4: e05178 . https://doi.or g/10.755 4/eLife.05178 PMID: 25668746
+19. Hiratsuka T, Bordeu I, Pruessne r G, Watt FM. Regulatio n of ERK basal and pulsatile activity control pro-
+liferation and exit from the stem cell compartm ent in mamma lian epidermis. Proc Natl Acad Sci USA.
+2020; 117: 17796–17807 . https://doi.o rg/10.1073/pn as.20069 65117 PMID: 326512 68
+20. De Simone A, Evanitsky MN, Hayden L, Cox BD, Wang J, Tornini VA, et al. Control of osteoblast regen-
+eration by a train of Erk activity waves. Nature. 2021; 590: 129–133. https://doi.o rg/10.1038/s4 1586-
+020-03085- 8 PMID: 334084 18
+21. Albeck JG, Mills GB, Brugge JS. Frequency -modulated pulses of ERK activity transmit quantitativ e pro-
+liferation signals. Mol Cell. 2013; 49: 249–26 1. https://doi.or g/10.101 6/j.molcel.20 12.11.002 PMID:
+23219535
+22. Aoki K, Kumaga i Y, Sakura i A, Komatsu N, Fujita Y, Shionyu C, et al. Stochastic ERK activation induced
+by noise and cell-to-cell propagation regulate s cell density-de pendent proliferatio n. Molecular Cell.
+2013; 52: 529–54 0. https://doi.or g/10.101 6/j.molcel.20 13.09.01 5 PMID: 24140422
+23. Kim N, Kim JM, Lee M, Kim CY, Chang K-Y, Heo WD. Spatiotem poral control of fibroblas t growth factor
+receptor signals by blue light. Chem Biol. 2014; 21: 903–912. https://doi.or g/10.1016/ j.chembiol .2014.
+05.013 PMID: 24981772
+24. Bugaj LJ, Choksi AT, Mesuda CK, Kane RS, Schaffer DV. Optogenetic protein clustering and signaling
+activation in mamma lian cells. Nat Methods. 2013; 10: 249–252. https://doi.o rg/10.1038/nm eth.2360
+PMID: 233773 77
+25. Dessaug es C, Mikelson J, Dobrzyński M, Jacques M, Frismantien e A, Gagliardi PA, et al. Optogenetic
+actuator– ERK biosensor circuits identify MAPK network nodes that shape ERK dynamic s. Mol Syst
+Biol. 2022; 18: e10670 . https://doi.or g/10.152 52/msb.2021 10670 PMID: 356948 20
+26. Shannon CE. A Mathematical Theory of Commun ication. Bell Syst Tech J. 1948; 27: 379–423. https://
+doi.org/10.10 02/j.1538-73 05.1948.t b01338.x
+27. Toettcher JE, Weiner OD, Lim WA. Using optogenetic s to interrogate the dynamic control of signal
+transmiss ion by the Ras/Erk module. Cell. 2013; 155: 1422–14 34. https://doi.or g/10.1016 /j.cell.2013.
+11.004 PMID: 24315106
+28. Grabows ki F, Czyż P, Kochańczy k M, Lipniacki T. Limits to the rate of informati on transmission through
+the MAPK pathway . J R Soc Interface. 2019; 16: 201807 92. https://doi.or g/10.109 8/rsif.2018. 0792
+PMID: 308368 91
+29. Kochańczy k M, Kocieniew ski P, Kozłows ka E, Jaruszew icz-Błońska J, Sparta B, Pargett M, et al.
+Relaxation oscillation s and hierarch y of feedbacks in MAPK signaling. Sci Rep. 2017; 7: 38244. https://
+doi.org/10.10 38/srep38244 PMID: 280450 41
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 20 / 21
+30. Valon L, Davidov ić A, Levillayer F, Villars A, Chouly M, Cerquei ra-Campos F, et al. Robust ness of epi-
+thelial sealing is an emerging property of local ERK feedback driven by cell eliminati on. Dev Cell. 2021;
+56: 1700–171 1.e8. https://doi.or g/10.101 6/j.devcel.20 21.05.00 6 PMID: 34081909
+31. Aoki K, Kondo Y, Naoki H, Hiratsuka T, Itoh RE, Matsuda M. Propagat ing wave of ERK activation ori-
+ents collective cell migration. Dev Cell. 2017; 43: 305–317.e5. https://d oi.org/10.101 6/j.devcel.20 17.10.
+016 PMID: 291128 51
+32. Gagliardi PA, Gra ¨ del B, Jacques M-A, Hinderling L, Ender P, Cohen AR, et al. Automatic detection of
+spatio-te mporal signalling patterns in cell collectives . bioRxiv; 2022. p. 2022.07.12.499 734. https://doi.
+org/10.1101/ 2022.07.12.499 734
+33. Schwebs DJ, Pan M, Adhikari N, Kuburich NA, Jin T, Hadwig er JA. Dictyosteli um Erk2 is an atypical
+MAPK required for chemotaxis . Cellular Signal. 2018; 46: 154–165. https://doi. org/10.1016/j .cellsig.
+2018.03. 006 PMID: 29551366
+34. Nichols JME, Paschke P, Peak-Che w S, Williams TD, Tweedy L, Skehel M, et al. The Atypical MAP
+Kinase ErkB Transmits Distinct Chemot actic Signals through a Core Signaling Module. Dev Cell. 2019;
+48: 491–505. e9. https://doi.or g/10.101 6/j.devcel.20 18.12.001 PMID: 30612939
+35. Sun Y, Liu W-Z, Liu T, Feng X, Yang N, Zhou H-F. Signaling pathway of MAPK/E RK in cell proliferatio n,
+differentiation , migration, senescen ce and apoptosis. J Recep t Signal Transduct Res. 2015; 35: 600–
+604. https://do i.org/10.3109 /1079989 3.2015.103041 2 PMID: 26096166
+36. Ender P, Gagliardi PA, Dobrzy ński M, Frismantien e A, Dessau ges C, Ho ¨ hener T, et al. Spatiotem poral
+control of ERK pulse frequen cy coordin ates fate decisions during mamma ry acinar morpho genesis.
+Dev Cell. 2022; 57: 2153–2167. e6. https://doi.or g/10.101 6/j.devcel.20 22.08.008 PMID: 36113484
+37. Hino N, Rossetti L, Marı ´ n-Llaurado ´ A, Aoki K, Trepat X, Matsuda M, et al. ERK-Med iated Mechano-
+chemical Waves Direct Collectiv e Cell Polarization . Dev Cell. 2020; 53: 646–660.e8. https://doi. org/10.
+1016/j.dev cel.2020.0 5.011 PMID: 324974 87
+38. Sasaki AT, Chun C, Takeda K, Firtel RA. Localized Ras signaling at the leading edge regulates PI3K,
+cell polarity , and directional cell movem ent. J Cell Biol. 2004; 167: 505–51 8. https://doi.or g/10.108 3/jcb.
+200406177 PMID: 15534002
+39. Yang J-M, Bhattacha rya S, West-Foyle H, Hung C-F, Wu T-C, Iglesias PA, et al. Integrating chemical
+and mechanical signals through dynamic coupling between cellular protrusions and pulsed ERK activa-
+tion. Nat Commun . 2018; 9: 4673. https://doi.or g/10.1038/ s41467-018- 07150-9 PMID: 30405112
+40. Zhan H, Bhattacha rya S, Cai H, Iglesias PA, Huang C-H, Devreotes PN. An excitable Ras/PI3K/E RK
+signaling network controls migratio n and oncogenic transforma tion in epithelial cells. Dev Cell. 2020;
+54: 608–623. e5. https://doi.or g/10.101 6/j.devcel.20 20.08.001 PMID: 32877650
+41. Tanimura S, Takeda K. ERK signalling as a regulator of cell motility. J Biochem. 2017; 162: 145–154.
+https://doi.or g/10.109 3/jb/mvx048 PMID: 28903547
+42. Regot S, Hughey JJ, Bajar BT, Carrasco S, Covert MW. High-sensiti vity measuremen ts of multiple
+kinase activities in live single cells. Cell. 2014; 157: 1724–1 734. https://doi.or g/10.101 6/j.cell.20 14.04.
+039 PMID: 249499 79
+43. Pedregosa F, Varoquaux G, Gramfort A, Michel V, Thirion B, Grisel O, et al. Scikit-le arn: Machine learn-
+ing in Python. J Mach Learn Res. 2011; 12: 2825–2 830.
+44. Cover TM, Thomas JA. Elemen ts of informati on theory. 2nd ed. Hoboken, N.J: Wiley-Inte rscience;
+2006.
+45. Miller G. Note on the bias of information estimates . Informatio n Theory in Psychology : Problems and
+Methods. Glencoe , IL: Free Press; 1955. pp. 95–100.
+46. Paninski L. Estimation of entropy and mutual informati on. Neural Comp ut. 2003; 15: 1191–1 253.
+https://doi.or g/10.116 2/0899766033 217802 72
+PLOS COMP UTATIONAL  BIOLOGY
+The MAPK/ER K channel capacity exceeds 6 bit/hour
+PLOS Computationa l Biology | https:/ /doi.org/10.13 71/journal.p cbi.1011155 May 22, 2023 21 / 21

@@ -1,0 +1,1335 @@
+Combining Activity Proﬁling with Advanced Annotation to
+Accelerate the Discovery of Natural Products Targeting Oncogenic
+Signaling in Melanoma
+Tanja Hell,‡ Adriano Rutz,‡ Lara Dürr, Maciej Dobrzyński, Jakob K. Reinhardt, Timo Lehner,
+Morris Keller, Anika John, Mahabir Gupta, Olivier Pertz, Matthias Hamburger, Jean-Luc Wolfender,
+and Eliane Garo*
+Cite This: https://doi.org/10.1021/acs.jnatprod.2c00146 Read Online
+ACCESS Metrics & More Article Recommendations *sı Supporting Information
+ABSTRACT: The discovery of bioactive natural products remains a
+time-consuming and challenging task. The ability to link high-
+conﬁdence metabolite annotations in crude extracts with activity
+would be highly beneﬁcial to the drug discovery process. To address
+this challenge, HPLC-based activity proﬁling and advanced UHPLC-
+HRMS/MS metabolite pro ﬁling for annotation were combined to
+leverage the information obtained from both approaches on a crude
+extract scaled down to the submilligram level. This strategy was applied
+to a subset of an extract library screening aiming to identify natural
+products inhibiting oncogenic signaling in melanoma. Advanced
+annotation and data organization enabled the identiﬁcation of
+compounds that were likely responsible for the activity in the extracts.
+These compounds belonged to two diﬀerent natural product scaﬀolds, namely, brevipolides from aHyptis brevipes extract and
+methoxylated ﬂavonoids identiﬁed in three diﬀerent extracts of Hyptis and Artemisia spp. Targeted isolation of these prioritized
+compounds led toﬁve brevipolides and seven methoxylatedﬂavonoids. Brevipolide A (1) and 6-methoxytricin (9) were the most
+potent compounds from each chemical class and displayed AKT activity inhibition with an IC50 of 17.6 ± 1.6 and 4.9± 0.2 μM,
+respectively.
+N
+atural products are a proli ﬁc source of new drugs.
+However, the path from an active extract of an organism
+to a promising active compound is a time-consuming and
+challenging process which is negatively aﬀecting the overall
+interest for natural products in drug discovery.1,2
+Technologies and methodologies have been developed to
+address these shortcomings.3 In the early 2000s, implementa-
+tion of preformatted libraries4,5 and development of hyphen-
+ated techniques6 and new nuclear magnetic resonance (NMR)
+probe technologies7 have accelerated signiﬁcantly the discov-
+ery of bioactive compounds in extracts. This allowed the use of
+HPLC-SPE-NMR combined with inhibition proﬁling, for the
+discovery of bioactive compounds in plant extracts.8
+More recently, advanced metabolomic tools, such as
+molecular networking (MN) implemented in global natural
+product social molecular networking (GNPS), 9 have been
+established as a drug discovery approach.10 MN is based on
+MS fragmentation spectra, which are then linked together on
+the basis of their similarity. The development of this workﬂow,
+driven by a collective eﬀort of academic groups, enables the
+visualization of features associated with metabolites present in
+complex extracts and is now used for targeted discovery of
+natural products.11 Moreover, signiﬁcant progress has been
+made in the structural annotation of such networks. 12
+Together with new natural products-oriented chemical
+classiﬁcation methods, 13 more advanced approaches allow
+the classiﬁcation of unknown metabolites based on their MS
+fragmentation spectra.14 Complementing this annotation with
+conﬁdence scores15,16 further increases the relevance of such
+annotations.
+By interrogating the molecular network, it is possible to
+explore the chemical diversity present in an extract and to
+pinpoint compounds of interest for subsequent isolation. One
+possibility is to focus on a given biological activity and to look
+for corresponding features in the data set. Clusters containing
+features either predicted as biologically active or already
+reported as active can then be highlighted as potentially
+interesting, since they most likely include structural analogues
+Received: February 11, 2022
+Articlepubs.acs.org/jnp
+© XXXX American Chemical Society and
+American Society of Pharmacognosy
+A
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+Downloaded via UNIV OF BASEL on June 3, 2022 at 08:30:01 (UTC).
+See https://pubs.acs.org/sharingguidelines for options on how to legitimately share published articles.
+
+Figure 1. Workﬂow overview. (A) Eight diﬀerent plant extracts, including active and inactive extracts from two diﬀerent genera, were examined.
+(B) Extracts were submitted to time-based microfractionation by analytical HPLC, and microfractions were submitted to biological testing (left).In
+parallel, extracts were analyzed by UHPLC-HRMS/MS (right). (C) Activity values obtained were associated with each fraction (left). HRMS/MS
+data were processed and (structurally) annotated (right). (D) A molecular network was built containing diﬀerent layers of information, such as
+structures (I), extract activity associated with the size of nodes (II), and activity of fractions associated with colors of the nodes (III). (E) Features
+associated with high activity were prioritized and visualized. (F) Selected active features were targeted for isolation, and activity of the isolated
+compounds was conﬁrmed.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+B
+
+that may also be active. This strategy has been used
+successfully to isolate new analogues of known active
+compounds.17,18 While the network can be used to target
+biologically active compounds, another way to use it is to
+discover structural novelty.
+An extract-based activity annotation was recently reported
+by Litaudon and co-workers,19 whereby the MN was based on
+analytical data and activity of extracts only. In this case, a large
+data set of closely related extracts (292 extracts from diﬀerent
+Euphorbiaceae spp., 20 genera, 107 species) enabled the
+targeted isolation of speciﬁc features on their putative antiviral
+potential and structural novelty.
+A fraction-based activity annotation of the MN has been
+recently reported. For exam ple, Liang and co-workers
+developed a workﬂow where four active extracts from the
+family Papaveraceae were fractionated on an analytical scale.
+Fractions were analyzed by LC-CAD-HRMS/MS and tested
+for biological activities, and a MN was built with this
+qualitative, semiquantitative, and bioactivity information.20 A
+similar approach was used by Dorrestein and co-workers to
+identify the deoxyphorbol esters responsible for the antiviral
+activity in an extract ofEuphorbia dendroides.21 In this case, the
+extract was ﬁrst fractionated on a preparative scale, and each
+fraction was analyzed and tested. Results obtained from the
+fractions were added to the network. In these two examples,
+the MN was built on the basis of data obtained from the
+fractions and not from the extract. Linking relevant biological
+activity with features directly in crude extracts would enable an
+activity-driven approach which, in turn, would signiﬁcantly
+accelerate the discovery process.
+HPLC-based activity proﬁling has been used routinely for
+multiple drug discovery projects since the early 2000s. 22
+Depending on the assay type, microgram to submilligram
+amounts of extract are submitted to a time-based fractionation.
+The activity of these fractions is then combined with HPLC
+chromatograms to obtain so-called“HPLC-based activity
+proﬁles”. Thus, activity can be assigned to discrete fractions/
+peaks.
+To enable the annotation of peaks of interest and to
+eﬃciently link these annotated peaks with an activity, the
+workﬂow presented herein combines HPLC-based activity
+proﬁling with UHPLC-HRMS/MS metabolite annotation to
+exploit the full potential of both approaches. This resulted in a
+multilayered MN that was used for the eﬃcient prioritization
+of two classes of compounds inhibiting AKT activity in human
+melanoma cells. The prioritized compounds were isolated and
+tested as active, thus validating the workﬂow utilized.
+■ RESULTS AND DISCUSSION
+Establishment of Workﬂow for Eﬃcient Prioritization
+of Active Features. To investigate the combination of
+HPLC-based activity proﬁling and advanced UHPLC-HRMS/
+MS metabolite proﬁling, eight extracts from a recent plant-
+based drug discovery project were chosen.23 Thus, an extract
+library consisting of over 2500 plant extracts was screened
+using a scalable high-content screening (HCS) assay that
+quantiﬁes inhibition of oncogenic ERK (extracellular signal-
+regulated kinase) and AKT (AK strain transforming kinase)
+activity in melanoma cells. As outlined inFigure 1A, two active
+extracts originating from Artemisia argyi H. Lév. & Vaniot
+(Asteraceae) and Hyptis brevipes Poit. (Lamiaceae) were
+selected, together with six in active extracts from other
+Artemisia and Hyptis species. Inclusion of active and inactive
+extracts of related species is regarded as important in the study
+design since (1) species belonging to the same genus are more
+likely to produce similar compounds,24 (2) speciﬁc features
+responsible for bioactivity should be easier to highlight among
+species based on comparison of proﬁling data within the same
+genus, and (3) annotation conﬁdence is improved by including
+well-studied species within the genus, with multiple com-
+pounds already known. All eight extracts were thus submitted
+to both HPLC-UV-ELSD activity proﬁling and UHPLC-
+HRMS/MS metabolite pro ﬁling ( Figure 1 B,C). The MN
+obtained on the whole extract data set allowed the organization
+of the data and to establish links between the extracts and the
+annotation with diﬀerent information types, such as
+dereplicated structures, corresponding natural product classes,
+the activity of the extracts, and the activity of the micro-
+fractions (Figure 1D). In this manner, some clusters of interest
+were prioritized (Figure 1E) for scale-up isolation, and the
+activity of the compounds was conﬁrmed subsequently after
+isolation.
+HCS Assay on Melanoma Cells and Activity of
+Extracts. The HCS assay used throughout this study aimed
+to identify natural products that target aberrant oncogenic
+signaling states in melanoma. A patient-derived MM121224
+cell line that harborsBRAF V600E andNRAS Q61K mutations
+leading to aberrant proliferation through constitutive activation
+of phosphoinositide 3-kinase/AK strain transforming kinase
+(PI3K/AKT) and mitogen-activated protein kinase/extracel-
+lular signal-regulated kinase (MAPK/ERK) pathway was
+used.25 Cells were engineered to express genetically encoded
+kinase translocation reporters (KTR) that report simulta-
+neously on ERK (ERK-KTR) and AKT (AKT-KTR) activity.
+In the absence of ERK/AKT activity, the KTR sensors localize
+to the nucleus of cells, whereas when ERK/AKT activity is
+high, the KTR sensors get phosphorylated and shuttle to the
+cytosol in a reversible fashion. Since ERK- and AKT-KTR are
+labeled with diﬀerent ﬂuorophores, multiplexed single-cell
+measurements are possible. The activation status of each kinase
+can be measured by a ratio of cytosolic versus nucleus
+ﬂuorescence intensities.26 ,27 Finally, an automated image
+analysis pipeline that enables the analysis of large volumes of
+images was used to process the data, as described in an earlier
+paper.23 This HCS pipeline was used initially to screen 2576
+plant extracts.
+Eight extracts were selected on the basis of the AKT activity
+on MM121224 cells obtained from this previous screen and, as
+described before, included two active and six inactive extracts.
+These extracts were again submitted for biological testing. The
+AKT activity is reported as normalized percentage inhibition
+(NPI), where an NPI≤ 0.4 was considered as strongly active.
+A NPI between 0.4 and 0.7 was considered as moderately
+active and values above as inactive. As expected, extracts from
+H. brevipesas well as A. argyi exhibited strong inhibition of
+AKT activity with NPIs of 0.06 and 0.08, respectively. In
+contrast to the previous screen, extracts fromHyptis brachiata
+Briq. (Lamiaceae) and Hyptis verticillata Jacq. (Lamiaceae)
+showed moderate activity. The other four extracts were
+inactive (Table S1, Supporting Information). As all extracts
+were inactive on the ERK pathway (data not shown), in the
+following workﬂow only the AKT activity was considered.
+HPLC-Based Activity Proﬁling. Selected extracts were
+submitted to analytical HPLC-based activity proﬁling (Figure
+1B, left). The amount of extract and HPLC method used to
+obtain microfractions were adapted to bestﬁt the assay format
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+C
+
+and assay type. In the present work, a submilligram amount of
+crude extract was fractionated by analytical HPLC in 24
+fractions that were tested in the HCS assay. The HPLC-based
+activity proﬁle of H. brevipes extract (Figure 2) indicated four
+active fractions (activity on AKT in MM121224 cells). Strong
+and moderate inhibition of AKT activity was also observed in
+the fractions ofH. brachiataand A. argyiextracts (Figures S2−
+S5, Supporting Information). However, fractions of H.
+verticillata extract were inactive (Figures S6−S7, Supporting
+Information). All inactive extracts remained inactive at the
+fraction level (data not shown). The activity-based information
+obtained at the fraction level could then be used to annotate
+the MN (Figure 1D III).
+HPLC-UHPLC-MS/MS Geometrical Chromatographic
+Gradient Transfer. In order to link the “HPLC-based
+bioactivity data” with “UHPLC metabolite pro ﬁling data”
+both chromatographic methods had to be precisely correlated.
+For this, the HPLC conditions were optimized to ideallyﬁt the
+activity testing purposes and were taken as the starting point
+for the geometrical chromatographic gradient transfer to
+UHPLC (Figure 1B), as described by Guillarme et al. 28
+HPLC and UHPLC stationary phases were the same to ensure
+ideal transfer. To avoid small inaccuracies, particularly at the
+beginning of the gradient, retention times were normalized
+between the ﬁrst and last observed peaks. This resulted in
+HPLC fraction times transferable to the UHPLC conditions,
+thus avoiding a systematic analysis of all fractions on the
+UHPLC platform. An example of such transferred retention
+time windows is shown in Figure S6 and S7 (Supporting
+Information). After this was done, the activity of the fractions
+was mapped on the corresponding normalized retention time
+window of the UHPLC run.
+UHPLC-MS/MS Data Organization and Usage for
+Prioritization. The UHPLC-PDA-CAD-HRMS/MS data
+was treated with MZmine using the recently introduced ion
+identity.29 It was then processed through the GNPS to lead to
+a hybrid MN containing both MS1 and MS2 information to
+organize the data.
+The network obtained is shown in Figure 3A. Clustering
+parameters were adapted to maintain maximum connectivity
+between nodes, thus maximizing information. Further details
+can be found in the relatedExperimental Section. Features
+were, in parallel, annotated with taxonomic, structural, and
+bioactivity information. The annotation of the features with
+biological information was made through the calculated
+retention time window. All features were informed with a
+reﬁned NPI value, as described in theExperimental Section,
+allowing a more precise selection of features to prioritize.
+Features annotated with an NPI value <0.7 were considered as
+active and were prioritized. Edges to nonactive features were
+discarded (Figure 3B), and the MN was reorganized according
+to remaining edges (Figure 3C). The advanced annotation of
+the MN is illustrated inFigure 3D. As all analytical runs were
+acquired in the same batch, the source organism(s) of the
+feature could be attributed to those in the extract where the
+three most intense signals were found.
+The entire processing and data organization were performed
+to rationally reduce features/data dimension to a meaningful
+subset that allows expert evaluations for prioritization. Out of
+214 features that were linked to an interesting NPI value
+(≤0.4), 80 belonged to clusters with at least four features
+(Figure 3 C). These clusters were annotated mainly as
+brevipolides, ﬂavonoids, triterpenoi ds, diterpenoids, and
+sesquiterpenoids (mainly sesquiterpene lactones).
+The two larger clusters, clusters 1 and 2, were analyzed and
+annotated in more depth (Figure 4). Cluster 1 did contain
+features belonging to mainly one extract, and these features
+were annotated as being very active (highlighted in pink). On
+the other hand, cluster 2 displayed features from di ﬀerent
+extracts, suggesting the presence of less taxon-speci ﬁc
+compounds associated with an activity. Best-candidate
+structures coming from the GNPS and ISDB-LOTUS 30,31
+complemented with pairs coming from the Dictionary of
+Natural Products are reported. Details concerning the
+candidate taxonomically informed weighting, are provided in
+the Experimental Section.
+In cluster 1, features were present almost exclusively inH.
+brevipes. Their activity scores were the highest among all
+features, and they could be annotated as brevipolides,
+described earlier fromH. brevipes .32−34 Interestingly, a
+diterpenoid with abietane skeleton reported previously from
+H. dilatata 35 was also annotated in the middle of the
+brevipolide cluster. In total, with stereoisomers, four of the
+annotated structures in cluster 1 were conﬁrmed by later
+isolation (see related section).
+Figure 2.HPLC-based activity proﬁle of the EtOAc extract ofHyptis brevipesaerial parts with AKT activity in MM121224 cells. The activity of the
+crude extract is presented to the right as a cross. The activity of each fraction is represented by a dot; the color scale on the right is used to indicate
+their activity value, normalized percentage inhibition (NPI). Bold numbers refer to isolated compounds1−7.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+D
+
+In cluster 2, nodes with the highest activity score again were
+found mainly inH. brevipes, but some other related nodes also
+exhibiting reasonable activity occurred in A. argyi and H.
+brachiata. All annotated nodes were methoxylatedﬂavonoids,
+with the exception of an anthraquinone derivative coming from
+the GNPS library (CCMSLIB00006422349). Based on the
+structure, it was possible to see the structural moiety of the
+anthraquinone leading to similar fragments as the methoxy-
+latedﬂavonoids to explain this inconsistency. Among the
+methoxylated ﬂavonoids cluster, only one structure was
+annotated correctly. The di ﬃculty of correct identi ﬁcation
+lay in determining the exact positions of the methoxylated
+group of theseﬂavonoids, which do not lead to signiﬁcant
+diﬀerences in the corresponding fragmentation spectra. As an
+example, 6-methoxytricin ( 9), isolated in this work, was
+annotated as an isomer that had only one small modiﬁcation
+among its substituents. Compound9 has one methoxy moiety
+at C-3′ and one hydroxy group at C-4′. However, the position
+of these substituents was inverted in the annotated feature.
+Some of the annotated methoxylatedﬂavonoids were already
+reported either in H. brevipes ,32 A. argyi ,36−41 or related
+Artemisia species.42
+Annotations were highly consistent within both the
+brevipolide and methoxylated ﬂavonoid molecular families,
+and so isolation eﬀorts were focused on those active labeled
+features. Tabulations detailing prioritized features are available
+inTables S2 and S3(Supporting Information), together with
+related extracted ion chromatograms ( Figures S16 −S18,
+Supporting Information).
+Scale-up Isolation of Prioritized Compounds. Brevi-
+p o l i d e sa sw e l la ss o m eﬂavonoids highlighted in the
+prioritization work ﬂow were identi ﬁed from a large-scale
+Figure 3. Overview of the Molecular Network (MN). (A) The obtained MN, without self-loops. (B) The nodes considered as active are
+prioritized. Nodes are highlighted according to color scale (pink for NPI = 0.0; beige for NPI = 0.4, green for NPI = 0.7 and blue for NPI = 1.0)
+and edges to nonactive features removed. (C) The data are reorganized according to the remaining edges. (D) The two most interesting clusters
+after metadata addition.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+E
+
+EtOAc extract ofH. brevipes and isolated as compounds1−7.
+Their planar structures were elucidated by NMR spectroscopy
+and identiﬁed on the basis of comparison with literature values
+as brevipolide A (1),32 brevipolide B (2),32 brevipolide C
+(3),32 brevipolide F ( 4),32 brevipolide G ( 5),33,43 3,7-
+dimethylquercetagetin (6),44 and chrysosplenol C (7).45 The
+isolated brevipolides (1−5) have been previously reported in
+H. brevipes,32,33 but, to the best of our knowledge, the two
+ﬂavonoids 6 and 7 are new to the genusHyptis.
+Additional methoxylated ﬂavonoids were annotated in H.
+brachiata and A. argyi. A scale-up extract of H. brachiata
+aﬀorded sideritoﬂavone (8),46 which already has been reported
+from other Hyptis species.47−49
+One fraction, namely, fraction N, obtained in a previous
+investigation on A. argyi,50 was determined as containing
+mainly ﬂavonoids. Further puriﬁcation of this fraction led to
+the isolation of compounds9−12. These were identiﬁed as 6-
+methoxytricin ( 9), jaceosidin ( 10), eupatilin ( 11), and
+chrysosplenetin (12). All compounds are known as constitu-
+ents of A. argyi, except for 6-methoxytricin, which was so far
+reported only in otherArtemisia species (Chart 1).51−54
+Absolute Conﬁgurations of Brevipolides.The absolute
+conﬁguration (AC) for brevipolides A −G was established
+previously as 5R,6 S,7 S,9 S using a combination of NOESY,
+ECD, and Mosher’s method, without being able to resolve the
+AC at C-11.32 This was later established as 11S by X-ray
+crystallography and hydrogenation for brevipolides H and I.
+The AC of all other brevipolides was suggested to be the same
+at C-11 considering similarity in experimental and theoretical
+NMR and ECD data.33 However, the calculated spectra of
+both C-11 epimers had not been studied. We, therefore,
+compared the experimental ECD spectra to ab initio calculated
+Figure 4.Two most interesting clusters. (A) Cluster 1, containing highly speciﬁc features ofHyptis brevipesextract annotated as brevipolides. (B)
+Cluster 2, containing features shared among diﬀerent extracts and annotated as methoxylatedﬂavonoids.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+F
+
+reference spectra of both epimers at C-11 to assign the
+conﬁgurations.
+The main diﬀerence between the experimental spectra of
+trans- and cis-brevipolides in their ECD was the sign of the
+band around 300 nm (representative examples are shown in
+Figure 5) as described earlier. 33 In addition, experimental
+ECDs of both trans- and cis-brevipolides show a negative
+Cotton eﬀect (CE) around 228 nm and a positive CE at 260
+nm.
+The ECD spectra of both C-11 epimers oftrans- and cis-
+brevipolides were calculated (Figures 5 and S20, S22, S24,
+Supporting Information). In all trans- brevipolides, the
+calculated spectra of the 11S-epimers typically showed negative
+CEs at 228 nm and positive CEs at 260 nm. Moreover, the
+spectra displayed a positive or no signiﬁcant CE at 300 nm
+(Figures 5 Aa n d S20, S24 , Supporting Information). In
+contrast, the calculated spectra of all 11R-epimers did exhibit
+a positive CE at 260, no negative CE at 228 nm, and in
+brevipolides A and G an additional positive CE at 275 nm.
+Moreover, they showed a distinct negative CE around 300 nm.
+As the calculated CE at 300 nm was very distinct for both C-11
+epimers, the assignment of the 11S-conﬁguration could be
+deﬁned clearly for thetrans-brevipolides A (1), C (3), and G
+(5).
+For the two cis-brevipolides, no clear conclusion could be
+reached, as the diﬀerences between the calculated spectra were
+much less pronounced or virtually nonexistent (Figures 5B and
+S22, Supporting Information). A reason could be the negative
+CE at 300 nm, which was previously described as typical for
+cis-brevipolides, and coincides with the negative CE around
+300 nm calculated for all 11R epimers.33 Thus, ECD was not
+suited to assign the ACs at C-11 forcis-brevipolides B (2) and
+F( 4). However, as all 13C NMR shifts for C-11 are very
+similar, this suggests a commonS-conﬁguration at this position
+for all compounds.
+Activity of Isolated Compounds. While only AKT
+activity readouts were considered for MN analysis, the results
+of both ERK and AKT activity in response to the isolated
+compounds were determined.
+All brevipolides exhibited a strong concentration-dependent
+inhibition of AKT activity, whereas the ERK activity was, as
+expected, less a ﬀected ( Figure 6 ,a n d S25, Supporting
+Information). However, at the highest concentration of 200
+Chart 1. Compounds Isolated fromHyptis brevipes (1−7), Hyptis brachiata (8), and Artemisia argyi (9−12) Extracts
+Figure 5. ECD spectra of brevipolide G (5) and brevipolide F (4).
+Experimental ECD spectra (black line) are compared to the calculated
+ECD spectra of the 11S- and 11R-epimers (dashed lines) in MeOH
+(calculated spectra shifted by +10 nm).
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+G
+
+Figure 6. Representative images of positive and negative controls of the AKT-KTR (A) and ERK-KTR (B) in MM121224 cells. Concentration
+response curve for brevipolide A (1) (C) and 6-methoxytricin (9) (D) on ERK and AKT activity in MM12224 with representative images. C+ and
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+H
+
+μM (100μM for brevipolide A,1), lower cell numbers, as well
+as rounding up of the cells were observed, indicating cell
+toxicity. Among these compounds, brevipolide A (1) was the
+most potent with a relative IC50 of 17.6 ± 1.6 μM on AKT
+(Figure 6). The IC50 values for2−5 were determined as 32.9±
+3.4, 61.7 ± 9.6, 53.5 ± 9.9, and 32.3± 5.6 μM against AKT,
+respectively. There were no IC50 values determined for ERK in
+the MM121224 cells used, because no plateau was reached at
+200μM (respectively, 100μM).
+Brevipolides A (1), B (2), F (4), and G (5) were reported
+previously to be cytotoxic against di ﬀerent cancer cells.
+Brevipolide C (3) is known to inhibit the proteasome, while
+brevipolide G reportedly inhibits NF-κB.32 An updated study
+of brevipolide pharmacology was published recently, in which
+brevipolide H was examined. With a methoxy group instead of
+a hydroxy group at C-4′, brevipolide H is closely related to
+brevipolide G. In this report, brevipolide H was shown to
+reduce AKT activity using Western-blot experiments.55 The
+inhibitory activity of brevipolides A−C, F, G (1−5) on AKT
+signaling support these earlierﬁndings on brevipolide H.
+The most activeﬂavonoid 9 had an IC50 value of 4.9± 0.2
+μM, whereas compounds8, 10, 11 were also active at a low
+μM range (27.9 ± 2.8, 11.1 ± 1.1, and 20.9 ± 2.7 μM,
+respectively) (Figures 6, S28, and S29, Supporting Informa-
+tion). For the less active compounds6, 7, and 12, which all
+bear a methoxy group at C-3, a 100% inhibition was not
+reached (Figure S28 and S29, Supporting Information). Within
+the series of methoxylatedﬂavonoids, it was theﬁrst time that
+compounds 8 and 9 were identiﬁed as downregulating AKT
+activity in melanoma. Previous studies have suggested that
+eupatilin (11) speci ﬁcally inhibits PI3K kinase, 56 and
+phosphorylated AKT was shown to be decreased in jaceosidin
+treated cells.57 The general potential ofﬂavonoids in inhibiting
+the phosphorylation of AKT was studied in a screen of 44
+phenolic compounds, where 26 compounds showed activity via
+ELISA and Western blot experiments.58 Furthermore, it is
+interesting to mention that a morpholine-containing small
+molecule, compound LY294002, developed as an ATP
+competitive inhibitor of PI3K enzymes, was derived from the
+basic structure of aﬂavonoid (quercetin).59 These examples
+highlight the potential ofﬂavonoids as PI3K/AKT inhibitors.
+■ CONCLUSION
+The main goal of the current work was to investigate how
+HPLC-based activity proﬁling can be rationally combined with
+advanced UHPLC-HRMS/MS metabolite pro ﬁling. The
+workﬂow developed here allowed data organization and
+annotation to e ﬃciently link activity with compounds
+contained in crude extracts, thereby facilitating the prioritiza-
+tion of features for scale-up isolation of active natural products.
+The tagging of bioactive features present in crude extracts was
+conﬁrmed by the isolation of two classes of compounds that
+were subsequently tested as active.
+The miniaturization and scalability of the HCS platform
+provided the necessary throughput to eﬃciently characterize
+the antioncogenic ERK/AKT activity of a range of compound
+analogues. Thus, brevipolides A −C, F, G ( 1−5) were all
+shown to downregulate AKT, a ﬁnding that is in line with
+results obtained with Western blot on the related brevipolide
+H.55 This example highlights the advantages of HCS assays in
+the context of library screening and rapid characterization of
+compound series.
+By combining activity proﬁling with advanced annotation,
+information obtained by each of the approaches could be
+leveraged. On the one side, the activity-proﬁling approach
+provides activity data at the microfraction level, thereby
+improving the quality of the annotation. In comparison to an
+extract-based activity annotation, the number of features being
+active is signiﬁcantly reduced. This advanced annotation even
+allowed the identiﬁcation of an active methoxylatedﬂavonoid
+from H. brachiata which would not have been identiﬁed as
+active by using the activity proﬁling approach alone.
+Nevertheless, some of the limitations inherent to each
+approach will remain. Activity proﬁling will still be aﬀected, for
+example, by peaks eluting in two adjacent fractions. Moreover,
+feature annotation could be biased by the over-representation
+of compound classes already well described, both structurally
+and for their activity.60
+Since metabolite and activity proﬁling both allow for high
+throughput, lowering it to medium throughput appears as a
+good compromise between speed and data quality. Longer LC
+gradient times, for example, allow for better discrimination of
+isomers, better peak shapes, and more accurate gradient
+transfer. This also aﬀords more fractions for bioactivity testing,
+allowing better localization of the activity within an extract.
+While slightly increasing experimental time, this undoubtedly
+leads to better prioritization of active features, and later
+validation of the predicted active features.
+Finally, while the presented results were obtained in a screen
+for natural products inhibiting oncogenic signaling in
+melanoma, the developed methodology can be used with any
+modern bioassay pipelines that allow for both miniaturization
+and scalability. It is expected also that this workﬂow will be
+useful when trying to better understand an observed activity
+resulting from a complex extract. This is of great importance
+for natural products drug discovery, as highlighted here, and
+also of great potential for the identiﬁcation of active principles
+in phytomedicines, and for the rapidly growing ﬁelds of
+nutraceuticals and cosmetics containing plant derived com-
+pounds.
+■ EXPERIMENTAL SECTION
+General Experimental Procedures.UV and ECD spectra were
+recorded in MeOH (66.6 −133.3 μg/mL) on a Chirascan CD
+spectrometer using 1 mm-path precision cells (110 QS, Hellma
+Analytics, Müllheim, Germany). NMR spectra were recorded on a
+Bruker Avance III NMR spectrometer operating at 500.13 MHz for
+1H and 125.77 MHz for13C nuclei.1H NMR, COSY, HSQC, HMBC,
+and NOESY spectra were measured at 23°C in a 1 mm TXI or a 5
+mm BBO probe. Spectra were recorded in CDCl3 (Sigma-Aldrich, St.
+Louis, MO, U.S.A.), acetone-d, or DMSO-d6 (both Armar Chemicals,
+Döttingen, Switzerland). Bruker TopSpin 3.5 and ACD/Laboratories
+NMR Workbook suites softwares were used to process the data.
+Figure 6. continued
+C- designate positive (1μM GDC0941 as PI3K/AKT pathway inhibitor, 200 nM cobimetinib as MAPK/ERK pathway inhibitor) and negative
+(0.75% DMSO) controls. Data distribution from single MM121224 cells are represented as a violin plot; the median of treatment distribution
+(middle bar), as well as theﬁrst and third quartiles, are shown. Data are taken from at least 200 cells. The brightness of representative images was
+adapted per 96-well plates.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+I
+
+Chemical shifts are reported asδ values (ppm), with residual signal as
+internal reference, J in Hz.
+HPLC-grade solvents MeOH, CH 3CN (Avantor, Radnor, PA,
+U.S.A.) and water from a Milli-Q water puriﬁcation system (Merck
+Millipore, Billerica, U.S.A.) were used for HPLC separation. HPLC-
+grade formic acid (FA) and DMSO were obtained from Scharlau
+(Scharlab S.L., Spain). For extraction and silica gel column
+chromatography, technical-grade n-hexane, EtOAc, and MeOH and
+HPLC-grade CHCl3 were used (Rheuss Chemie, Tägerig, Switzer-
+land). Normal-phase ﬂash chromatography was carried out on a
+Puriﬂash 4100 system (Interchim, Montluçon, France) consisting of a
+pump, a UV detector and fraction collector. Silica gel 60 (15−40 μm
+to pack column; 63−200 μm for dry loading) was obtained from
+Merck. TLC analysis was performed on silica gel 60 F254 coated
+aluminum TLC plates (Merck, Darmstadt, Germany). Detection
+occurred at UV 254 and 366 nm, and after spraying with 1% ethanolic
+vanillin and 10% sulfuric acid in EtOH, followed by heating (10 min;
+110 °C). Preparative HPLC separation was carried out on a 1290
+Inﬁnity II Preparative LC/MS system (Agilent Technologies, Santa
+Clara, CA, U.S.A.) consisting of a binary pump connected to a PDA
+and to a single quadrupole MS detector via a T-splitter. A SunFire
+Prep C18 OBD column (5μm, 30 × 150 mm i.d., Waters, Milford,
+MA, U.S.A.) equipped with a C18 Prep guard column (10× 30 mm
+i.d.) was used. Theﬂow rate was 20 mL/min. Semipreparative HPLC
+was carried out on a HP 1100 Series system (Agilent Technologies,
+Santa Clara, U.S.A.) consisting of a binary pump, an autosampler, and
+a DAD or on an Alliance HPLC system 2690 (Waters, Milford, MA,
+U.S.A.) equipped with a DAD 996 detector (Waters). Separations
+were carried out at a ﬂow rate of 4 mL/min. The following
+semiseparative RP-HPLC columns were used: SunFire Prep C 18
+column (5 μm, 10 × 150 mm i.d., Waters, Milford, MA, U.S.A.)
+equipped with a guard column (10× 10 mm i.d.) forH. brevipesand
+A. argyiand a ReproSil-Pur 120 C18-AQ column (3μm, 10× 150 mm
+i.d., Dr. Maisch GmbH, Ammerbuch-Entringen, Germany) and forH.
+brachiata.
+Microfractionation and analytical HPLC-PDA-ELSD-ESIMS (for
+activity pro ﬁles) were carried out on a LC-MS 8030 system
+(Shimadzu, Kyoto, Japan) consisting of degasser, binary high-pressure
+mixing pump, autosampler, column oven, and PDA detector. A triple
+quadrupole MS and an ELSD 3300 detector (Alltech, Deerﬁeld, IL,
+U.S.A.) were connected via a T-splitter to the system. The mobile
+phases contained 0.1% FA. An XBridge C18 (3.5 μm, 3.0 × 150 mm
+i.d.) column equipped with a VanGuard precolumn (3.5μm, 2.1 mm
+× 5 mm i.d.) (both Waters, Milford, MA, U.S.A.) was used.
+UHPLC analysis was performed on a Waters Acquity UPLC
+system (Waters, Milford, MA, U.S.A.) with photodiode array (PDA)
+(Waters) interfaced to a Q-Exactive Focus mass spectrometer
+(Thermo Scientiﬁc, Bremen, Germany) and a Charged Aerosol
+Detector (CAD) (Thermo Scientiﬁc, Bremen, Germany) using a
+heated electrospray ionization (HESI-II) source. Thermo Scientiﬁc
+Xcalibur 3.1 software with SII and speciﬁc drivers for CAD were used
+for instrument control. The mass analyzer was calibrated using a
+mixture of ca ﬀeine, methionine−arginine−phenylalanine−alanine−
+acetate (MRFA), sodium dodecyl sulfate, sodium taurocholate, and
+Ultramark 1621 in a CH3CN/MeOH/H2O solution containing 1%
+FA by direct injection. The data-dependent MS/MS events were
+performed on the three most intense ions detected in full-scan MS
+(Top3 experiment). The MS/MS isolation window width was 1.5 Da,
+and the stepped normalized collision energy (NCE) was set to 15, 30,
+and 45 units. In data-dependent MS/MS experiments, full scans were
+acquired at a resolution of 35,000 fwhm (atm/z 200) and MS/MS
+scans at 17,500 fwhm both with a maximum injection time of 119 ms
+and 55 ms, respectively. After being acquired in a MS/MS scan,
+parent ions were placed in a dynamic exclusion list for 2.0 s. Di-
+isooctyl phthalate C24H38O4 [M + H]+ ion (m/z 391.28429) was used
+as an internal lock mass. The optimized HESI-II parameters for the
+long runs were as follows: source voltage, 3.5 kV (positive); sheath gas
+ﬂow rate (N2), 38 units; auxiliary gasﬂow rate, 10 units; auxiliary gas
+temperature, 266 °C; sweep gas ﬂow rate, 1 unit; capillary
+temperature, 250 °C; S-Lens RF Level, 45. For short runs: source
+voltage, 3.5 kV (positive); sheath gas ﬂow rate (N 2), 45 units;
+auxiliary gas ﬂow rate, 10 units; auxiliary gas temperature, 400°C;
+sweep gasﬂow rate, 2 units; capillary temperature, 250°C; S-Lens RF
+Level, 45. Separation was achieved on an Acquity BEH C18 column
+(2.1 × 50 mm I.D.; 1.7μm) (Waters) for the short runs, and on an
+Acquity BEH C18 column (2.1 × 150 mm I.D.; 1.7μm) (Waters),
+both equipped with a precolumn of 5 mm of the same phase. The
+temperature in the autosampler and column oven wasﬁxed at 10 and
+40 °C, respectively. The mobile phase consisted of water (A) and
+CH3CN (B) both containing 0.1% FA; separation was performed with
+a linear gradient from 5 to 100% of B in 3.42 min with an initial hold
+of 0.17 min at 5% followed by a 1 min isocratic step at 100% of B and
+then a 1 min isocratic step at 5% of B for column reconditioning. For
+long runs, separation was performed with a linear gradient from 5 to
+100% of B in 59.00 min with an initial hold of 1.18 min at 5%
+followed by a 17 min isocratic step at 100% of B and then an 11 min
+isocratic step at 5% of B for column reconditioning. The injection
+volume was set at 2μL for both runs, and theﬂow rates wereﬁxed at
+0.6 mL/min and 0.4 mL/min, respectively. A PDA was used to
+acquire UV spectra detected from 200 to 500 nm. The CAD
+evaporation temperature was set at 40°C, with 5 bar N2, and power
+function 1, and a data collection rate of 20 Hz with a 0.5 sﬁlter
+constant. The analyticalﬂow splitter was an ASI 610 Series and was
+set to 62, which corresponded to a 2:1 ratio (CAD:MS).
+Plant Material. Hyptis brevipes aerial parts were collected in San
+Antonio (Panama) in November 1990, by the Centro de
+Investigaciones Farmacognosticas de la Flora Panamena (CIFLOR-
+PAN).Hyptis brachiata aerial parts were collected in the area of El
+Pinar, CocléProvince (Panama) by CIFLORPAN. The taxonomic
+identity of H. brevipes and H. brachiata was conﬁrmed by Alex
+Espinosa, a botanist at CIFLORPAN, and voucher specimens are
+deposited at the Herbarium of the University of Panama (H. brevipes
+ground plant material, no. 1183;H. brachiata, no. 391). The material
+was dried and ground in Panama. Voucher specimens are also
+available at the Division of Pharmaceutical Biology, Department of
+Pharmaceutical Sciences, University of Basel (no. 1183; 1181).
+Artemisia argyiwhole plant material was purchased from Peter
+W e i n f u r t h ,B o c h u m ,G e r m a n y ,i nM a r c h2 0 1 6( b a t c hn o .
+150788859). A voucher specimen (no. 00 979) is deposited at the
+Division of Pharmaceutical Biology, University of Basel, Switzerland.
+Microfractionation and Activity Proﬁles. The following EtOAc
+extracts (10 mg/mL in DMSO) from an in-house library were
+microfractionated and tested:H. brachiata (Lamiaceae), H. brevipes
+(Lamiaceae), Hyptis capitata Jacq. (Lamiaceae), H. verticillata (syn.
+Condea verticillata (Jacq.) Harley & J.F.B. Pastore) (Lamiaceae),
+Artemisia absinthium L. (Asteraceae), A. argyi (Asteraceae), Artemisia
+scoparia Waldst. & Kit. (Asteraceae), and Artemisia vulgaris L.
+(Asteraceae).
+Microfractionation of the extracts was carried out on an LC-MS
+8030 system (Shimadzu, Kyoto, Japan) connected to an FC 204
+fraction collector (Gilson, Middleton, WI, U.S.A.) adapted for 96-
+deep-well plates. Three injections of each extract were carried out: 2×
+30 μL (corresponding to 600 μg of extract) using only the PDA
+detector for collection of microfractions, and 1× 10 μL with PDA-
+ELSD-ESIMS detection without collection. Water with 0.1% FA (A)
+and CH3CN with 0.1% FA (B) were used as mobile phases. The
+gradient started with an initial 10% B for 2 min, followed by a gradient
+to 100% B in 28 min, and aﬁnal hold at 100% B. Fractions of 1.5 min
+each were collected from min 2 to min 38, resulting in 24 fractions.
+The microfractions of the two successive runs were collected into the
+same well of a 96-deep-well plate. The plate was dried in a Genevac
+EZ-2 evaporator. The HPLC-ELSD or HPLC-UV chromatogram was
+combined with the activity of fractions to generate the so-called
+activity proﬁle.
+UHPLC-MS/MS Data Analysis Pipeline. After conversion to
+the.mzML format with ThermoRawFileParser61 to also encode the
+CAD signal, a custom version of MZmine ( https://github.com/
+robinschmid/mzmine2/releases ) was used to perform the Ion
+Identity UHPLC-HRMS/MS data processing.29
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+J
+
+During the mass detection step, the ions kept were those above a
+noise level set at 1.0E5 for MS1 (and 0 for MS2). Chromatogram
+builder was employed with a minimum height of 1.0E5 and m/z
+tolerance of 0.02 Da. The chromatogram deconvolution was
+performed using the wavelets ADAP algorithm62 with a single noise
+(S/N) threshold of 3.3, the wavelet scales from 0.00 to 0.10 min, and
+a peak duration range from 0.02 to 3.00 min; the MS2 scan pairing
+was set at m/z 0.02 Da (0.2 min). The chromatograms were
+deisotoped using the isotope peak grouper with anm/z tolerance of
+10 ppm, a retention time (RT) tolerance of 0.1 min, and a maximum
+charge of 3, while the representative isotope used was the most
+intense. Peak alignment was applied using the join aligner method
+with an m/z tolerance of 10 ppm, an RT absolute tolerance at 0.1
+min, and weight form/z and RT of 1. The peak list was gap-ﬁlled
+using the multithreaded peak ﬁnder module with a peak shape
+tolerance of 100%, an m/z tolerance of 10 ppm, and 0.1 min.
+Duplicated features were removed. Manual curation was performed
+on the peak list. Additionally, features wereﬁltered between 0.5 and
+77.5 min and with a peak duration range between 0.02 and 3.00 min.
+Feature IDs were reset. An ion identity module was used with 10 ppm
+tolerance, a minimum height of 1E5, and a minimum cluster size of 2.
+Networks without major monomers were discarded. Multiple steps of
+adducts and modiﬁcations annotations were performed, including
+custom lists. Finally, ion identities were checked by MS/MS, with an
+MS2 tolerance of 10 ppm and a minimal MS2 height of 50. Multimers
+and neutral losses were checked. Once done, a custom script was built
+to remove the gap-ﬁlled area and reintegrate the features using the
+gap-ﬁlling module again with a peak shape tolerance of 0%, anm/z
+tolerance of 10 ppm, and 0.1 min. Data were exported using both
+GNPS and SIRIUS export modules, allowing to merge MS/MS
+spectra across samples by a weighted average, summing their
+intensities, with an expected mass deviation of 10 ppm, a cosine
+threshold of 65%, a peak count threshold of 20%, no isolation window
+oﬀset, and an isolation window width of 3 Da. To keep the retention
+time, the exact mass information and to allow for the separation of
+isomers, an ion identity molecular network was created using the
+export resulting from the MZmine pretreatment step detailed above.
+A network was then created on GNPS9 where edges wereﬁltered to
+have a cosine score above 0.6 and more than six matched peaks.
+Further edges between two nodes were kept in the network if and
+only if each of the nodes appeared in the respective top 20 most
+similar nodes of one anohter. The spectra in the network were then
+searched against the GNPS spectral libraries. The precursor ion mass
+tolerance was set to 0.02 Da and the MS/MS fragment ion tolerance
+to 0.02 Da. A MN was then created where edges wereﬁltered to have
+a cosine score above 0.6 and more than 6 matched peaks. Further,
+edges between two nodes were kept in the network only if each of the
+nodes appeared in each other’s respective top 20 most similar nodes.
+Finally, the maximum size of a molecular family was set to 0, and the
+lowest-scoring edges were removed from molecular families until the
+molecular family size was below this threshold. The spectra in the
+network were then searched against the GNPS spectral libraries.9,63
+All matches kept between network spectra and library spectra were
+required to have a score above 0.6 and at least six matched peaks.
+Additional edges coming from IIN processing were added. The GNPS
+job parameters and resulting data are available at the following
+address ( https://gnps.ucsd.edu/Prot eoSAFe/status.jsp?task=
+828243dd50da4fd2ad94d25ba5e559c9). The full MS data set is
+uploaded and accessible on the GNPS servers as Massive Data setsN°
+MSV000088606 ( https://massive.ucsd.edu/ProteoSAFe/dataset.
+jsp?accession=MSV000088606 ). Reference MS/MS spectra of
+isolated compounds were deposited in the GNPS public spectral
+library (CCMSLIB00009918413, CCMSLIB00009918414,
+CCMSLIB00009918415, CCMSLIB00009918416,
+CCMSLIB00009918417, CCMSLIB00009918418,
+CCMSLIB00009918419, CCMSLIB00009918420,
+CCMSLIB00009918421, CCMSLIB00009918424,
+CCMSLIB00009918426, CCMSLIB00009918427,
+CCMSLIB00009918428, CCMSLIB00009918429,
+CCMSLIB00009918430, CCMSLIB00009918431,
+CCMSLIB00009918432, CCMSLIB00009918433). All occurrences
+will be added to Wikidata upon publication.
+All spectra were searched against a custom version of the ISDB-
+LOTUS database,30,31,64 completed with the Dictionary of Natural
+Products (DNP v30.1) using spectral_lib_matcher (https://github.
+com/mandelbrot-project/spectral_lib_matcher). All candidates with
+less than 0.02 Da deviation from expected mass were kept.
+Annotations were then completed and reweighted using an updated
+version (https://github.com/taxonomicallyinformedannotation/tima-
+r) of the published taxonomically informed scoring16 and the same
+custom LOTUS-DNP library. MS1 annotation complementation was
+performed with 10 ppm tolerance and 0.05 min for adducts. Allowed
+adducts were: [M+3H] 3+,[ M + 2 H + N a ]3+,[ M + H + 2 N a ]3+,[ M
++3Na]3+, [M+2H]2+, [M+2H+NH3]2+, [M+H+Na]2+, [M+H+K]2+,
+[M+2H+CH3CN]2+,[ M + 2 N a ]2+, [M+2H+2CH 3CN]2+,[ M + 2 H
++3CH 3CN] 2+ ,[ M+H ] +,[ M + N H3]+, [M+CH 3CN] +,[ M
++CH 3OH] +,[ M + K ]+, [M+H+CH 3CN] +,[ M - H + 2 N a ]+,[ M
++C2H7N]+, [M+Na+CH 3CN]+, [M-H+2K] +,[ M + H + 2 C H3CN]+,
+[2M+H] +, [2M+H+NH 3]+,[ 2 M + N a ]+,[ 2 M + K ]+,[ 2 M + H
++CH3CN]+, [2M+Na+CH3CN]+. Initial candidates were set to 50
+and weighted candidates to 3. Spectral weight was set to 0.333,
+chemical weight to 0.167, and biological weight to 0.500. Chemical
+and biological scores were attributed to rank/n(ranks), respectively.
+The features bioactivity score was calculated as the mean of the
+NPIs of the fractions attributed to the feature, multiplied by the
+feature abundance in the given fractions.
+Outputs were ﬁnally visualized using Cytoscape 3.9.0 software.65
+The color and the size of the nodes were adapted to di ﬀerent
+parameters, depending on the layouts.
+Extraction and Isolation,Hyptis brevipes. Ground aerial parts
+of H. brevipes (350 g) were macerated (5× 5 L EtOAc). The extract
+was dried under reduced pressure and freeze-dried to aﬀord 10.9 g of
+dry residue. The extract was fractionated byﬂash chromatography on
+silica gel (7 × 40cm i.d.) utilizing a gradient of EtOAc inn-hexane
+[0−20% (0−20 min), 20−40% (20−75 min), 40−100% (75−300
+min), 100% EtOAc (300−330 min), and a ﬁnal wash with 100%
+MeOH for 30 min;ﬂow rate 30 mL/min; sample introduction via dry
+load (10.2 g extract absorbed on 40 g silica gel 65 −200 μm)].
+Fractions (22 mL) were collected and pooled based on their TLC
+(100% EtOAc) patterns to 17 main fractions F1−F17: F1 (waste, 70.3
+mg), F2 (1−60; 1.1 g), F3 (61−104; 814.8 mg), F4 (105−139; 951.5
+mg); F5 (140−169; 324. 6 mg), F6 (170−196; 246.3 mg), F7 (197−
+206; 79.2 mg), F8 (207−225; 232.5 mg), F9 (226−245; 1.2 g), F10
+(246−257; 125.5 mg), F11 (258−266; 238.3 mg), F12 (267−274;
+89.5 mg), F13 (275−297; 123.9 mg), F14 (298−320; 371.5 mg), F15
+(321−339; 86.5 mg), F16 (340−369; 101.4 mg), F17 (370−410 +
+wash; 4.2 g).
+Fractions F10, F11 and F15 were submitted to preparative RP-
+HPLC with a gradient of 10−100% CH3CN (solvents containing
+0.1% FA) over 30 min. Several injections of F10 (125 mg) aﬀorded 7
+(12.4 mg, tR 15.9 min), F11 (238 mg) aﬀorded subfraction P3 (39.3
+mg, tR 18.3 min), and F15 (86 mg) aﬀorded subfraction B2 (22.3 mg,
+tR 15.4 min). P3 was further separated by semipreparative RP-HPLC
+using 40% CH3CN (tR 9.6 min). Further separation with 52% MeOH
+(both solvents containing 0.1% FA) provided 1 (16.6 mg, tR 27.4
+min) and 2 (3.2 mg, tR 23.5 min). B2 was submitted to
+semipreparative HPLC with a gradient 40 −70% MeOH over 30
+min to aﬀord fraction C2 (13.3 mg,tR 13.5 min). Compounds4 (1.7
+mg, tR 18.0 min) and5 (12.1 mg, tR 16.3 min) were isolated by RP-
+HPLC of C2 with 29% CH3CN (solvents containing 0.1% FA). F17
+(4.2 g) was submitted to preparative RP-HPLC with a gradient of
+20−70% CH3CN (both containing 0.1% FA) over 45 min, to aﬀord
+fraction T2 (18.4 mg, tR 13.7 min). T2 was submitted to
+semipreparative HPLC with 25% CH3CN (solvents containing 0.1%
+FA) to aﬀord 6 (0.8 mg, tR 14.6 min) and3 (11 mg, tR 17.1 min).
+Extraction and Isolation,Hyptis brachiata. Ground aerial parts
+of H. brachiata (712 g) were percolated with EtOAc (9 L), followed
+by MeOH (17 L), at aﬂow rate of 5 mL/min. Evaporation under
+reduced pressure aﬀorded 9.4 g of EtOAc and 27.4 g of MeOH
+extract. The EtOAc extract (9.3 g) was prepared for dry loading
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+K
+
+adsorbed on 35 g silica gel, and fractionated byﬂash chromatography
+on a silica column (7× 46 cm, i.d.) with a gradient of EtOAc inn-
+hexane [2% (0−10 min), 2−70% (10−450 min), 70−100% (450−
+570 min), 100% (570−615 min)], followed by MeOH in EtOAc
+[(0−50% (615−735 min), 50−100% (8735−750 min), 100% (750−
+810 min); ﬂow rate of 20 mL/min]. A total of 808 fractions were
+collected and combined based on TLC analysis [n-hexane-EtOAc
+(7:3 for fractions 1−264, 1:1 for fractions 265−598, 3:7 for fractions
+598−688), EtOAc-MeOH (8:2 for fractions 655 −808)] to 28
+fractions (F1 −F28). Further separation of F21 (249.7 mg) by
+preparative HPLC with a gradient of 5−100% CH3CN in water (both
+containing 0.1% FA) in 30 min gave 21 fractions F21−1 to F21−21.
+Fraction F21−13 (17.9 mg, tR 19.0 min) was further puriﬁed by
+semipreparative HPLC using a gradient of 30−60% CH3CN in water
+(both containing 0.1% formic acid) in 30 min to yield8 (8.9 mg, tR
+15.9 min).
+Extraction and Isolation, Artemisia argyi. Fraction N (900
+mg) of anA. argyiwhole plant EtOAc extract from a previous study50
+was fractionated byﬂash chromatography on silica gel (3.5× 45 cm
+i.d.). Sample was introduced as dry load (900 mg sample adsorbed on
+2.7 g silica gel). The column was eluted with a gradient of MeOH in
+CHCl3 [1% MeOH (0−40 min), 1−10% (40−120 min), 10−12.5%
+(120−135 min), 12.5−20% (135−155 min), 20−100% (155−165
+min), 100% (165−200 min)]. Fractions were combined based on
+TLC analysis (CHCl 3-MeOH, 95:5) to fractions N_A to N_J.
+Fraction N_A (46.9 mg) was submitted to semipreparative RP-HPLC
+with 38% CH3CN + 0.1% FA, yielding11 (1.5 mg,tR 16.0 min) and
+12 (1.8 mg,tR 21.5 min). Fraction N_F (104.7 mg) was submitted to
+semipreparative RP-HPLC with 30% CH3CN + 0.1% FA, to aﬀord
+compounds 10 (35 mg, tR 15.5 min) and9 (3.9 mg, tR 17.5 min).
+Brevipolide A (1). Colorless oil; UV (MeOH) λmax (log ε) 207
+(4.3), 226 (4.1), 315 (4.4) nm; ECD (c 0.31 mM, MeOH, 1 mm path
+length) λmax (Δε) 231 (−1.26), 255 (+4.02), 308 (+6.94);1H and
+13C NMR, see Table S4, Supporting Information; HRESIMS m/z
+429.1541 [M + H] + (calcd for C23H25O8
++, 429.1544). SMILES:
+CC(C(O)[C@H]1C[C@@H]1[C @@H]([C@H]2CC=CC( 
+O)O2)OC(O)C)OC(O)/C=C/C3=CC=C(C=C3)O. InChI-
+Key: HEYOPWSFHOXZQH-ZEEHAMELSA-N
+Brevipolide B (2). Colorless oil; UV (MeOH)λmax (log ε) 207 (4.4,
+sh), 227 (4.1), 309 (4.1, sh) nm; ECD (c 0.31 mM, MeOH, 1 mm
+path length) λmax (Δε) 229 (−0.82), 260 (+2.94), 317 (−3.92); 1H
+and 13C NMR, seeTable S4, Supporting Information; HRESIMSm/z
+429.1538 [M + H] + (calcd for C23H25O8
++, 429.1544). SMILES:
+CC(C(O)[C@H]1C[C@@H]1[C @@H]([C@H]2CC=CC( 
+O)O2)OC(O)C)OC(O)/C=C\C3=CC=C(C=C3)O. InChI-
+Key: HEYOPWSFHOXZQH-SOBDBXMASA-N
+Brevipolide C (3). Pale yellow transparent oil; UV (MeOH)λmax
+(log ε) 216 (4.3, sh), 245 (4.0), 302 (4.1, sh), 332 (4.3) nm; ECD (c
+0.33 mM, MeOH, 1 mm path length)λmax (Δε) 229 (−1.33), 260
+(+3.09), 301 (+4.65), 328 (+3.06);1H and 13C NMR, seeTable S5,
+Supporting Information; HRESIMSm/z 403.1389 [M + H]+ (calcd
+for C21H23O8
++, 403.1387). SMILES: CC(C(O)[C@H]1C[C@@
+H]1[C@@H]([C@H]2CC=CC( O)O2)O)OC( O)/C=C/
+C3=CC(=C(C=C3)O)O. InChIKey: PMVFYHVSZOZDAN-
+WJWNCLPLSA-N
+Brevipolide F (4). Colorless oil; UV (MeOH) λmax (log ε) 207
+(4.4), 226 (4.1), 314 (4.3) nm; ECD (c 0.34 mM, MeOH, 1 mm path
+length) λmax (Δε) 228 (−0.94), 258 (+4.27), 321 (−2.78); 1H and
+13C NMR, see Table S6, Supporting Information; HRESIMS m/z
+387.1408 [M + H] + (calcd for C21H23O7
++, 387.1438). SMILES:
+CC(C(O)[C@H]1C[C@@H]1[C @@H]([C@H]2CC=CC( 
+O)O2)O)OC( O)/C=C\C3=CC=C(C=C3)O. InChIKey:
+BJDMHAYLPGRUFH-BSGJGGAISA-N
+Brevipolide G (5). Colorless oil; UV (MeOH) λmax (log ε) 209
+(4.3, sh), 227 (4.1, sh), 315 (4.4) nm; ECD (c 0.34 mM, MeOH, 1
+mm path length)λmax (Δε) 230 (−2.75), 256 (+3.15), 308 (+6.24);
+1H and 13C NMR, seeTable S6, Supporting Information; HRESIMS
+m/z 387.1404 [M + H]+ (calcd for C21H23O7
++, 387.1438). SMILES:
+C[C@@H](C( O)[C@H]1C[C@@H]1[C@@H]([C@H]-
+2CC=CC(O)O2)O)OC( O)/C=C/C3=CC=C(C=C3)O. In-
+ChIKey: BJDMHAYLPGRUFH-HIELJHRRSA-N
+3,7-Dimethylquercetagetin (6). Yellow amorphous solid;1H and
+13C NMR, seeTable S7, Supporting Information; ESIMS 347m/z [M
++H ] +. SMILES: COC1=C(C(=C2C(=C1)OC(=C(C2=O)OC)-
+C3=CC(=C(C=C3)O)O)O)O. InChIKey:
+WGWGXVOAFMLMJZ-UHFFFAOYSA-N
+Chrysosplenol C (7). Yellow amorphous solid;1H and 13C NMR,
+see Table S7, Supporting Information; HRESIMSm/z 361.0920 [M
++H ]+ (calcd for C18H17O8
++, 361.0918). SMILES: COC1=C(C=CC-
+(=C1)C2=C(C(O)C3=C(C(=C(C=C3O2)OC)O)O)OC)O. In-
+ChIKey: QQBSPLCHDUCBNM-UHFFFAOYSA-N
+Sideritoﬂavone (8). Yellow amorphous solid, 1H and 13C NMR,
+see Table S8, Supporting Information; ESIMS 361m/z [M + H]+.
+SMILES: COC1=C(C(=C2C(=C1O)C( O)C=C(O2)C3=CC-
+(=C(C=C3)O)O)OC)OC. InChI Key: UWNUJPINKMRKKR-
+UHFFFAOYSA-N
+6-Methoxytricin (9). Yellow amorphous solid, 1H and 13C NMR,
+see Table S9, Supporting Information; HRESIMSm/z 361.0911 [M
++H ]+ (calcd for C18H17O8
++, 361.0918). SMILES: COC1=CC(=CC-
+(=C1O)OC)C2=CC( O)C3=C(O2)C=C(C(=C3O)OC)O. In-
+ChIKey: BVRHGBHZAQNORL-UHFFFAOYSA-N
+Jaceosidin (10). Yellow solid; 1H and 13C NMR, see Table S9,
+Supporting Information; HRESIMSm/z 331.0807 [M + H]+ (calcd
+for C17H15O7
++, 331.0812). SMILES: COC1=C(C=CC(=C1)C2=CC-
+( O)C3=C(O2)C=C(C(=C3O)OC)O)O. InChIKey:
+GLAAQZFBFGEBPS-UHFFFAOYSA-N
+Eupatilin (11). Yellow solid; 1H and 13C NMR, see Table S9,
+Supporting Information; ESIMS 345 m/z [M + H] +. SMILES:
+COC1=C(C=C(C=C1)C2=CC( O)C3=C(O2)C=C(C(=C3O)-
+OC)O)OC. InChIKey: DRRWBCNQOKKKOL-UHFFFAOYSA-N
+Chrysosplenetin (12). Yellow solid; 1H and 13C NMR, seeTable
+S9, Supporting Information; HRESIMS m/z 375.1084 [M + H]+
+(calcd for C19H19O8
++, 375.1074). SMILES: COC1=C(C=CC(=C1)-
+C2=C(C(O)C3=C(C(=C(C=C3O2)OC)OC)O)OC)O. InChI-
+Key: NBVTYGIYKCPHQN-UHFFFAOYSA-N
+Calculation of ECD Spectra. Conformational analysis was
+performed with Schrödinger MacroModel 11.0 (Schrödinger, LLC,
+New York) employing the OPLS2005 (optimized potential for liquid
+simulations) force ﬁeld in H2O for geometrical optimization in two
+steps. In theﬁrst step, a global minimum was searched using 30,000
+steps, in the second step, the global minimum was used for a
+conformational search (10,000 steps) choosing ten conformers to be
+subjected to geometrical optimization and energy calculation applying
+DFT at the CAM-B3LYP/Def2SVP level of theory, employing the
+SCRF method and the CPMC model for solvation in MeOH with the
+Gaussian 09 program package. 66 Excitation energy (denoted by
+wavelength in nm), rotator strength (Rstr), dipole velocity (Rvel), and
+dipole length (Rlen) were calculated in MeOH by TD-DFT at the
+same level of theory. ECD curves were obtained on the basis of
+rotator strengths with a half-band of 0.25 eV using SpecDis v1.7.67
+High-Content Assay. A high-content assay (HCA) was
+performed as previously described. 23 In brief, patient-derived
+MM121224 cells25 were transfected to genetically encoding H2B-
+mTurquoise, ERK- and AKT-KTRs. For the experiments, cells were
+seeded in 96-well plates and incubated with extracts, fractions, or pure
+compounds. Afterward, they were ﬁxed and imaged with a HCS
+microscope. A computer vision approach was used to automatically
+segment each cell, and extract a ratio of cytosol over nuclear ratio
+indicative of ERK or AKT activity. The isolated compounds were
+tested at eight diﬀerent concentrations starting at 200μM to 1.56μM
+(97 μM to 0.8μM for 8).
+■ ASSOCIATED CONTENT
+*sı Supporting Information
+The Supporting Information is available free of charge at
+https://pubs.acs.org/doi/10.1021/acs.jnatprod.2c00146.
+1H and 13C NMR spectra for all compounds, additional
+HPLC-based activity proﬁles, ECD spectra, chromato-
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+L
+
+grams of prioritized m/z, annotation tables of the two
+prioritized clusters, and concentration−response curve
+of all compounds (PDF)
+■ AUTHOR INFORMATION
+Corresponding Author
+Eliane Garo − Division of Pharmaceutical Biology,
+Department of Pharmaceutical Sciences, University of Basel,
+4056 Basel, Switzerland;orcid.org/0000-0002-3497-
+2524; Email: eliane.garo@unibas.ch
+Authors
+Tanja Hell− Division of Pharmaceutical Biology, Department
+of Pharmaceutical Sciences, University of Basel, 4056 Basel,
+Switzerland;orcid.org/0000-0002-8867-2412
+Adriano Rutz− School of Pharmaceutical Sciences, University
+of Geneva, CH-1211 Geneva, Switzerland; Institute of
+Pharmaceutical Sciences of Western Switzerland, University
+of Geneva, CH-1211 Geneva, Switzerland;orcid.org/
+0000-0003-0443-9902
+Lara Dü rr − Division of Pharmaceutical Biology, Department
+of Pharmaceutical Sciences, University of Basel, 4056 Basel,
+Switzerland;orcid.org/0000-0001-6551-1854
+Maciej Dobrzyń ski − Institute of Cell Biology, University of
+Bern, 3012 Bern, Switzerland; orcid.org/0000-0002-
+0208-7758
+Jakob K. Reinhardt− Division of Pharmaceutical Biology,
+Department of Pharmaceutical Sciences, University of Basel,
+4056 Basel, Switzerland;orcid.org/0000-0002-8675-
+1029
+Timo Lehner − Division of Pharmaceutical Biology,
+Department of Pharmaceutical Sciences, University of Basel,
+4056 Basel, Switzerland
+Morris Keller − Division of Pharmaceutical Biology,
+Department of Pharmaceutical Sciences, University of Basel,
+4056 Basel, Switzerland; orcid.org/0000-0002-4316-
+6591
+Anika John − Institute of Cell Biology, University of Bern,
+3012 Bern, Switzerland
+¶Mahabir Gupta− Center for Pharmacognostic Research and
+Panamanian Flora, Faculty of Pharmacy, University of
+Panama, Panama City 0824, Republic of Panama
+Olivier Pertz − Institute of Cell Biology, University of Bern,
+3012 Bern, Switzerland
+Matthias Hamburger − Division of Pharmaceutical Biology,
+Department of Pharmaceutical Sciences, University of Basel,
+4056 Basel, Switzerland;orcid.org/0000-0001-9331-
+273X
+Jean-Luc Wolfender − School of Pharmaceutical Sciences,
+University of Geneva, CH-1211 Geneva, Switzerland;
+Institute of Pharmaceutical Sciences of Western Switzerland,
+University of Geneva, CH-1211 Geneva, Switzerland;
+orcid.org/0000-0002-0125-952X
+Complete contact information is available at:
+https://pubs.acs.org/10.1021/acs.jnatprod.2c00146
+Author Contributions
+‡T.H. and A.R. contributed equally to this work.
+Notes
+The authors declare no competingﬁnancial interest.
+¶Deceased on December 14, 2020.
+■ ACKNOWLEDGMENTS
+We thank Mitchell Levesque (University Hospital of Zurich)
+for providing the MM121224 cell line, and Albert Mattei
+(Institute of Cell Biology, University of Bern) for transfecting
+them with the KTRs. We thank Pascal Lorentz and the DBM
+Microscopy Core Facility (Department of Biomedicine,
+University of Basel) for access to the HCS microscope and
+for technical support. We acknowledge Alex Espinosa (botanist
+at CILORPAN) for the identiﬁcation of the Panamanian
+plants. ECD spectra were measured at the Biophysics Facility,
+Biozentrum, University of Basel. Funding was provided by
+grants from the Swiss National Science Foundation (to
+Matthias Hamburger and Olivier Pertz, 205321-176008, and
+to Jean-Luc Wolfender Sinergia grant CRSII5_189921) and
+from the Swiss Cancer League (KFS-3727-08-2015; Olivier
+Pertz).
+■ REFERENCES
+(1) Butler, M. S.J. Nat. Prod.2004, 67, 2141−2153.
+(2) Koehn, F. E.; Carter, G. T.Nat. Rev. Drug Discov2005, 4, 206−
+220.
+(3) Wolfender, J.-L.; Litaudon, M.; Touboul, D.; Queiroz, E. F.Nat.
+Prod. Rep. 2019, 36, 855−868.
+(4) Butler, M.; Fontaine, F.; Cooper, M. Planta Med. 2014, 80,
+1161−1170.
+(5) Wilson, B. A. P.; Thornburg, C. C.; Henrich, C. J.; Grkovic, T.;
+O’Keefe, B. R.Nat. Prod. Rep.2020, 37, 893−918.
+(6) Wolfender, J.-L.; Marti, G.; Thomas, A.; Bertrand, S.Journal of
+Chromatography A 2015, 1382, 136−164.
+(7) Molinski, T. F.Nat. Prod. Rep.2010, 27, 321.
+(8) Kongstad, K. T.; Özdemir, C.; Barzak, A.; Wubshet, S. G.;
+Staerk, D. J. Agric. Food Chem.2015, 63, 2257−2263.
+(9) Wang, M.; Carver, J. J.; Phelan, V. V.; Sanchez, L. M.; Garg, N.;
+Peng, Y.; Nguyen, D. D.; Watrous, J.; Kapono, C. A.; Luzzatto-Knaan,
+T.; Porto, C.; Bouslimani, A.; Melnik, A. V.; Meehan, M. J.; Liu, W.-
+T.; Crüsemann, M.; Boudreau, P. D.; Esquenazi, E.; Sandoval-
+Calderón, M.; Kersten, R. D.; Pace, L. A.; Quinn, R. A.; Duncan, K.
+R.; Hsu, C.-C.; Floros, D. J.; Gavilan, R. G.; Kleigrewe, K.; Northen,
+T.; Dutton, R. J.; Parrot, D.; Carlson, E. E.; Aigle, B.; Michelsen, C. F.;
+Jelsbak, L.; Sohlenkamp, C.; Pevzner, P.; Edlund, A.; McLean, J.; Piel,
+J.; Murphy, B. T.; Gerwick, L.; Liaw, C.-C.; Yang, Y.-L.; Humpf, H.-
+U.; Maansson, M.; Keyzers, R. A.; Sims, A. C.; Johnson, A. R.;
+Sidebottom, A. M.; Sedio, B. E.; Klitgaard, A.; Larson, C. B.; Boya P,
+C. A.; Torres-Mendoza, D.; Gonzalez, D. J.; Silva, D. B.; Marques, L.
+M.; Demarque, D. P.; Pociute, E.; O’Neill, E. C.; Briand, E.; Helfrich,
+E. J. N.; Granatosky, E. A.; Glukhov, E.; Ryffel, F.; Houson, H.;
+Mohimani, H.; Kharbush, J. J.; Zeng, Y.; Vorholt, J. A.; Kurita, K. L.;
+Charusanti, P.; McPhail, K. L.; Nielsen, K. F.; Vuong, L.; Elfeki, M.;
+Traxler, M. F.; Engene, N.; Koyama, N.; Vining, O. B.; Baric, R.; Silva,
+R. R.; Mascuch, S. J.; Tomasi, S.; Jenkins, S.; Macherla, V.; Hoffman,
+T.; Agarwal, V.; Williams, P. G.; Dai, J.; Neupane, R.; Gurr, J.;
+Rodríguez, A. M. C.; Lamsa, A.; Zhang, C.; Dorrestein, K.; Duggan, B.
+M.; Almaliti, J.; Allard, P.-M.; Phapale, P.; Nothias, L.-F.; Alexandrov,
+T.; Litaudon, M.; Wolfender, J.-L.; Kyle, J. E.; Metz, T. O.; Peryea, T.;
+Nguyen, D.-T.; VanLeer, D.; Shinn, P.; Jadhav, A.; Müller, R.; Waters,
+K. M.; Shi, W.; Liu, X.; Zhang, L.; Knight, R.; Jensen, P. R.; Palsson,
+B. Ø.; Pogliano, K.; Linington, R. G.; Gutiérrez, M.; Lopes, N. P.;
+Gerwick, W. H.; Moore, B. S.; Dorrestein, P. C.; Bandeira, N.Nat.
+Biotechnol. 2016, 34, 828−837.
+(10) Quinn, R. A.; Nothias, L.-F.; Vining, O.; Meehan, M.;
+Esquenazi, E.; Dorrestein, P. C. Trends Pharmacol. Sci. 2017, 38,
+143−154.
+(11) Cabral, R. S.; Allard, P.-M.; Marcourt, L.; Young, M. C. M.;
+Queiroz, E. F.; Wolfender, J.-L.J. Nat. Prod.2016, 79, 2270−2278.
+(12) Beniddir, M. A.; Kang, K. B.; Genta-Jouve, G.; Huber, F.;
+Rogers, S.; van der Hooft, J. J. J.Nat. Prod. Rep.2021, 38, 1967−1993.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+M
+
+(13) Kim, H. W.; Wang, M.; Leber, C. A.; Nothias, L.-F.; Reher, R.;
+Kang, K. B.; van der Hooft, J. J. J.; Dorrestein, P. C.; Gerwick, W. H.;
+Cottrell, G. W.J. Nat. Prod.2021, 84, 2795−2807.
+(14) Dührkop, K.; Nothias, L.-F.; Fleischauer, M.; Reher, R.;
+Ludwig, M.; Hoffmann, M. A.; Petras, D.; Gerwick, W. H.; Rousu, J.;
+Dorrestein, P. C.; Böcker, S.Nat. Biotechnol. 2021, 39, 462−471.
+(15) Hoffmann, M. A.; Nothias, L.-F.; Ludwig, M.; Fleischauer, M.;
+Gentry, E. C.; Witting, M.; Dorrestein, P. C.; Dührkop, K.; Böcker, S.
+Nat. Biotechnol. 2022, 40, 411−421.
+(16) Rutz, A.; Dounoue-Kubo, M.; Ollivier, S.; Bisson, J.; Bagheri,
+M.; Saesong, T.; Ebrahimi, S. N.; Ingkaninan, K.; Wolfender, J.-L.;
+Allard, P.-M.Front. Plant Sci.2019, 10, 1329.
+(17) Hanke, W.; Patt, J.; Alenfelder, J.; Voss, J. H.; Zdouc, M. M.;
+Kehraus, S.; Kim, J. B.; Grujičić, G. V.; Namasivayam, V.; Reher, R.;
+Müller, C. E.; Kostenis, E.; Crüsemann, M.; König, G. M.J. Nat. Prod.
+2021, 84, 1941−1953.
+(18) Bracegirdle, J.; Hou, P.; Nowak, V. V.; Ackerley, D. F.; Keyzers,
+R. A.; Owen, J. G.J. Nat. Prod.2021, 84, 2536−2543.
+(19) Olivon, F.; Remy, S.; Grelier, G.; Apel, C.; Eydoux, C.;
+Guillemot, J.-C.; Neyts, J.; Delang, L.; Touboul, D.; Roussi, F.;
+Litaudon, M.J. Nat. Prod.2019, 82, 330−340.
+(20) Wang, R.; Liu, Y.; Zhou, H.; Chen, Y.; Wang, J.; Zhang, X.; Yu,
+R.; Liang, X.Journal of Chromatography A2020, 1616, 460779.
+(21) Nothias, L.-F.; Nothias-Esposito, M.; da Silva, R.; Wang, M.;
+Protsyuk, I.; Zhang, Z.; Sarvepalli, A.; Leyssen, P.; Touboul, D.;
+Costa, J.; Paolini, J.; Alexandrov, T.; Litaudon, M.; Dorrestein, P. C.J.
+Nat. Prod. 2018, 81, 758−767.
+(22) Potterat, O.; Hamburger, M. Planta Med. 2014, 80, 1171−
+1181.
+(23) Dürr, L.; Hell, T.; Dobrzyn ́ski, M.; Mattei, A.; John, A.;
+Augsburger, N.; Bradanini, G.; Reinhardt, J. K.; Rossberg, F.;
+Drobnjakovic, M.; Gupta, M. P.; Hamburger, M.; Pertz, O.; Garo,
+E. J. Nat. Prod.2022, 85, 1006−1017.
+(24) Wink, M.Phytochemistry 2003, 64,3 −19.
+(25) Raaijmakers, M. I. G.; Widmer, D. S.; Narechania, A.; Eichhoff,
+O.; Freiberger, S. N.; Wenzina, J.; Cheng, P. F.; Mihic-Probst, D.;
+Desalle, R.; Dummer, R.; Levesque, M. P.Oncotarget 2016, 7, 77163−
+77174.
+(26) Maryu, G.; Matsuda, M.; Aoki, K.Cell Struct. Funct.2016, 41,
+81−92.
+(27) Regot, S.; Hughey, J. J.; Bajar, B. T.; Carrasco, S.; Covert, M.
+W. Cell 2014, 157, 1724−1734.
+(28) Guillarme, D.; Nguyen, D. T. T.; Rudaz, S.; Veuthey, J.-L.Eur.
+J. Pharm. Biopharm.2008, 68, 430−440.
+(29) Schmid, R.; Petras, D.; Nothias, L.-F.; Wang, M.; Aron, A. T.;
+Jagels, A.; Tsugawa, H.; Rainer, J.; Garcia-Aloy, M.; Dührkop, K.;
+Korf, A.; Pluskal, T.; Kameník, Z.; Jarmusch, A. K.; Caraballo-
+Rodríguez, A. M.; Weldon, K. C.; Nothias-Esposito, M.; Aksenov, A.
+A.; Bauermeister, A.; Albarracin Orio, A.; Grundmann, C. O.; Vargas,
+F.; Koester, I.; Gauglitz, J. M.; Gentry, E. C.; Hövelmann, Y.; Kalinina,
+S. A.; Pendergraft, M. A.; Panitchpakdi, M.; Tehan, R.; Le Gouellec,
+A.; Aleti, G.; Mannochio Russo, H.; Arndt, B.; Hübner, F.; Hayen, H.;
+Zhi, H.; Raffatellu, M.; Prather, K. A.; Aluwihare, L. I.; Böcker, S.;
+McPhail, K. L.; Humpf, H.-U.; Karst, U.; Dorrestein, P. C. Nat.
+Commun. 2021, 12, 3832.
+(30) Allard, P.-M.; Bisson, J.; Rutz, A.Zenodo, 2021. DOI: 10.5281/
+zenodo.5607185.
+(31) Rutz, A.; Sorokina, M.; Galgonek, J.; Mietchen, D.; Willighagen,
+E.; Gaudry, A.; Graham, J. G.; Stephan, R.; Page, R.; Vondrášek, J.;
+Steinbeck, C.; Pauli, G. F.; Wolfender, J.-L.; Bisson, J.; Allard, P.-M.
+eLife 2022. DOI: 10.7554/eLife.70780.
+(32) Deng, Y.; Balunas, M. J.; Kim, J.-A.; Lantvit, D. D.; Chin, Y.-W.;
+Chai, H.; Sugiarso, S.; Kardono, L. B. S.; Fong, H. H. S.; Pezzuto, J.
+M.; Swanson, S. M.; Carcache de Blanco, E. J.; Kinghorn, A. D.J. Nat.
+Prod. 2009, 72, 1165−1169.
+(33) Suárez-Ortiz, G. A.; Cerda-García-Rojas, C. M.; Hernández-
+Rojas, A.; Pereda-Miranda, R.J. Nat. Prod.2013, 76,7 2−78.
+(34) Suárez-Ortiz, G. A.; Cerda-García-Rojas, C. M.; Fragoso-
+Serrano, M.; Pereda-Miranda, R.J. Nat. Prod.2017, 80, 181−189.
+(35) Urones, J. G.; Marcos, I. S.; Diez, D.; Cubilla, L.Phytochemistry
+1998, 48, 1035−1038.
+(36) Yoshikawa, M.; Shimada, H.; Matsuda, H.; Yamahara, J.;
+Murakami, N. Chem. Pharm. Bull.1996, 44, 1656−1662.
+(37) Chemesova, I. I.; Boiko, É.V Chem. Nat. Compd. 1990, 26,
+713−713.
+(38) Jeong, M. A.; Lee, K. W.; Yoon, D.-Y.; Lee, H. J.Ann. N.Y.
+Acad. Sci. 2007, 1095, 458−466.
+(39) Lee, H.-G.; Yu, K.-A.; Oh, W.-K.; Baeg, T.-W.; Oh, H.-C.; Ahn,
+J.-S.; Jang, W.-C.; Kim, J.-W.; Lim, J.-S.; Choe, Y.-K.; Yoon, D.-Y.
+Journal of Ethnopharmacology2005, 98, 339−343.
+(40) Nakasugi, T.; Nakashima, M.; Komai, K.J. Agric. Food Chem.
+2000, 48, 3256−3266.
+(41) Seo, J.-M.; Kang, H.-M.; Son, K.-H.; Kim, J. H.; Lee, C. W.;
+Kim, H. M.; Chang, S.-I.; Kwon, B.-M.Planta med 2003, 69, 218−
+222.
+(42) Marco, J. A.; Barberá, O.; Sánchez-Parareda, J.J. Nat. Prod.
+1987, 50, 774−775.
+(43) Hegde, V. R.; Pu, H.; Patel, M.; Das, P. R.; Strizki, J.; Gullo, V.
+P.; Chou, C.-C.; Buevich, A. V.; Chan, T.-M.Bioorg. Med. Chem. Lett.
+2004, 14, 5339−5342.
+(44) Ulubelen, A.; Kerr, K. M.; Mabry, T. J.Phytochemistry 1980, 19,
+1761−1766.
+(45) Huong, D. T.; Kamperdick, C.; Sung, T. V.J. Nat. Prod.2004,
+67, 445−447.
+(46) Li, M.-L.; Xu, L.-Y.; Li, Z.-L.; Qian, S.-H.; Qin, M.-J.Chem. Nat.
+Compd. 2014, 50, 124−125.
+(47) Kuhnt, M.; Pröbstle, A.; Rimpler, H.; Bauer, R.; Heinrich, M.
+Planta Med. 1995, 61, 227−232.
+(48) Novelo, M.; Cruz, J. G.; Hernández, L.; Pereda-Miranda, R.;
+Chai, H.; Mar, W.; Pezzuto, J. M.J. Nat. Prod.1993, 56, 1728−1736.
+(49) Kuhnt, M.; Rimpler, H.; Heinrich, M.Phytochemistry 1994, 36,
+485−489.
+(50) Reinhardt, J. K.; Klemd, A. M.; Danton, O.; De Mieri, M.;
+Smieško, M.; Huber, R.; Bürgi, T.; Gründemann, C.; Hamburger, M.
+J. Nat. Prod.2019, 82, 1424−1433.
+(51) Liu, Y.; Mabry, T. J.Phytochemistry 1981, 20, 309−311.
+(52) Liu, Y.-L.; Mabry, T. J.Phytochemistry 1982, 21, 209−214.
+(53) Bouzid, N.; Fouraste, I.; Voirin, B.; Favre-Bonvin, J.; Lebreton,
+P. Phytochemistry 1982, 21, 803−804.
+(54) Martínez, V.; Barberá, O.; Sánchez-Parareda, J.; Alberto Marco,
+J. Phytochemistry 1987, 26, 2619−2624.
+(55) Sheng, Y.-H.; Leu, W.-J.; Chen, C.-N.; Hsu, J.-L.; Liu, Y.-T.;
+Hsu, L.-C.; Hou, D.-R.; Guh, J.-H.Molecules 2020, 25, 2929.
+(56) Son, J.; Lee, E.; Seo, S.; Lee, J.; Kim, J.; Kim, J.; Lee, K.; Lee, H.
+Planta Med. 2013, 79, 1009−1016.
+(57) Han, H.-Y.; Kim, H. J.; Jeong, S.-H.; Kim, J.; Jeong, S.-H.; Kim,
+G. C.; Hwang, D.-S.; Kim, U.-K.; Ryu, M. H. Evidence-Based
+Complementary and Alternative Medicine2018, 2018,1 −9.
+(58) Dirimanov, S.; Högger, P.Biomolecules 2019, 9, 219.
+(59) Vlahos, C. J.; Matter, W. F.; Hui, K. Y.; Brown, R. F.J. Biol.
+Chem. 1994, 269, 5241−5248.
+(60) Bisson, J.; McAlpine, J. B.; Friesen, J. B.; Chen, S.-N.; Graham,
+J.; Pauli, G. F.J. Med. Chem.2016, 59, 1671−1690.
+(61) Hulstaert, N.; Shofstahl, J.; Sachsenberg, T.; Walzer, M.;
+Barsnes, H.; Martens, L.; Perez-Riverol, Y.J. Proteome Res.2020, 19,
+537−542.
+(62) Myers, O. D.; Sumner, S. J.; Li, S.; Barnes, S.; Du, X.Anal.
+Chem. 2017, 89, 8689−8695.
+(63) Horai, H.; Arita, M.; Kanaya, S.; Nihei, Y.; Ikeda, T.; Suwa, K.;
+Ojima, Y.; Tanaka, K.; Tanaka, S.; Aoshima, K.; Oda, Y.; Kakazu, Y.;
+Kusano, M.; Tohge, T.; Matsuda, F.; Sawada, Y.; Hirai, M. Y.;
+Nakanishi, H.; Ikeda, K.; Akimoto, N.; Maoka, T.; Takahashi, H.; Ara,
+T.; Sakurai, N.; Suzuki, H.; Shibata, D.; Neumann, S.; Iida, T.;
+Tanaka, K.; Funatsu, K.; Matsuura, F.; Soga, T.; Taguchi, R.; Saito, K.;
+Nishioka, T.J. Mass Spectrom.2010, 45, 703−714.
+(64) Allard, P.-M.; Péresse, T.; Bisson, J.; Gindro, K.; Marcourt, L.;
+Pham, V. C.; Roussi, F.; Litaudon, M.; Wolfender, J.-L.Anal. Chem.
+2016, 88, 3317−3323.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+N
+
+(65) Shannon, P.; Markiel, A.; Ozier, O.; Baliga, N. S.; Wang, J. T.;
+Ramage, D.; Amin, N.; Schwikowski, B.; Ideker, T.Genome Res.2003,
+13, 2498−2504.
+(66) Frisch, M. J.; Trucks, G. W.; Schlegel, H. B.; Scuseria, G. E.;
+Robb, M. A.; Cheeseman, J. R.; Scalmani, G.; Barone, V.; Petersson,
+G. A.; Nakatsuji, H.; Li, X.; Caricato, M.; Marenich, A.; Bloino, J.;
+Janesko, B. G.; Gomperts, R.; Mennucci, B.; Hratchian, H. P.; Ortiz, J.
+V.; Izmaylov, A. F.; Sonnenberg, J. L.; Williams-Young, D.; Ding, F.;
+Lipparini, F.; Egidi, F.; Goings, J.; Peng, B.; Petrone, A.; Henderson,
+T.; Ranasinghe, D.; Zakrzewski, V. G.; Gao, J.; Rega, N.; Zheng, G.;
+Liang, W.; Hada, M.; Ehara, M.; Toyota, K.; Fukuda, R.; Hasegawa, J.;
+Ishida, M.; Nakajima, T.; Honda, Y.; Kitao, O.; Naka, H.; Vreven, T.;
+Throssell, K.; Montgomery, J. A.; Peralta, J. E.; Ogliaro, F.; Bearpark,
+M.; Heyd, J. J.; Brothers, E.; Kudin, K. N.; Staroverov, V. N.; Keith,
+T.; Kobayashi, R.; Normand, J.; Raghavachari, K.; Rendel, A.; Burant,
+J. C.; Iyengar, S. S.; Tomasi, J.; Cossi, M.; Millam, J. M.; Klene, M.;
+Adamo, C.; Cammi, R.; Ochterski, J. W.; Martin, R. L.; Morokuma,
+K.; Farkas, O.; Foresman, J. B.; Fox, D. J.Gaussian 09, Revision D.01;
+Gaussian, Inc.: Wallingford, CT, 2009
+(67) Bruhn, T.; Schaumlöffel, A.; Hemberger, Y.; Bringmann, G.
+Chirality 2013, 25, 243−249.
+Journal of Natural Products pubs.acs.org/jnp Article
+https://doi.org/10.1021/acs.jnatprod.2c00146
+J. Nat. Prod.XXXX, XXX, XXX−XXX
+O
+  Recommended by ACS
+NCI Program for Natural Product Discovery: A Publicly-
+Accessible Library of Natural Product Fractions for
+High-Throughput Screening
+Christopher C. Thornburg, Barry R. O’Keefe, et al.
+MAY 29, 2018
+ACS CHEMICAL BIOLOGY
+ READ 
+Quantitative and Systems Pharmacology. 1. In Silico
+Prediction of Drug–Target Interactions of Natural
+Products Enables New Targeted Cancer Therapy
+Jiansong Fang, Feixiong Cheng, et al.
+SEPTEMBER 28, 2017
+JOURNAL OF CHEMICAL INFORMATION AND MODELING
+ READ 
+Prediction of Compound Profiling Matrices Using
+Machine Learning
+Raquel Rodríguez-Pérez, Jürgen Bajorath, et al.
+APRIL 30, 2018
+ACS OMEGA
+ READ 
+Bioactivity-Based Molecular Networking for the
+Discovery of Drug Leads in Natural Product Bioassay-
+Guided Fractionation
+Louis-Félix Nothias, Pieter C. Dorrestein, et al.
+MARCH 02, 2018
+JOURNAL OF NATURAL PRODUCTS
+ READ 
+Get More Suggestions >

@@ -1,0 +1,737 @@
+Protein Kinase A Governs a RhoA-RhoGDI Protrusion-Retraction 
+Pacemaker in Migrating Cells
+Eugene Tkachenko 1,4, Mohsen Sabouri-Ghomi 2, Olivier Pertz3, Chungho Kim 1, Edgar 
+Gutierrez4, Matthias Machacek2, Alex Groisman4, Gaudenz Danuser 2,5, and Mark H. 
+Ginsberg1,6
+1Department of Medicine, University of California San Diego, 9500 Gilman Drive, Mail Code 0726, 
+La Jolla, CA 92093 2Department of Cell Biology, The Scripps Research Institute, 10550 N. Torrey 
+Pines Road, La Jolla, CA 92037 3Department of Biomedicine, University of Basel, Mattenstrasse 
+28, 4058 Basel, Switzerland 4Department of Physics, University of California, San Diego, 9500 
+Gilman Drive, Mail Code 0374, La Jolla, CA, 92093
+Abstract
+The cyclical protrusion and retraction of the leading edge is a hallmark of many migrating cells 
+involved in processes such as development, inflammation, and tumorigenesis. The molecular 
+identity of signaling mechanisms that control these cycles has remained unknown. Here, we used 
+live cell imaging of biosensors to monitor spontaneous morphodynamic and signaling activities, 
+and employed correlative image analysis to examine the role of cAMP-activated Protein Kinase A 
+(PKA) in protrusion regulation. PKA activity at the leading edge is closely synchronized with 
+rapid protrusion and with the activity of RhoA. Ensuing PKA phosphorylation of RhoA and the 
+resulting increased interaction between RhoA and RhoGDI establishes a negative feedback that 
+controls the cycling of RhoA activity at the leading edge. Thus, cooperation between PKA, RhoA, 
+and a RhoGDI forms a pacemaker that governs the morphodynamic behavior of migrating cells.
+Keywords
+Cell migration; cAMP activated Protein Kinase A; Rho GTPase; cell protrusion; RhoGDI
+Cell movement requires precise spatiotemporal regulation of interconnected mechanical and 
+biochemical signaling networks. Cytoskeletal remodeling at the front of a cell moving via 
+the mesenchymal or collective modes of migration results in formation of morphologically 
+distinct leading edge which exhibits cycles of protrusion and retraction1–3. Many elements 
+Users may view, print, copy, download and text and data- mine the content in such documents, for the purposes of academic research, 
+subject always to the full Conditions of use: http://www.nature.com/authors/editorial_policies/license.html#terms
+6To whom correspondence should be addressed: mhginsberg@ucsd.edu, Phone:1-858-822-6432.5Present address: Department of Cell Biology, Harvard Medical School, 240 Longwood Ave, Boston, MA 02115
+Author Contributions: ET conceived the project, performed experiments, analyzed data, and wrote the paper. MS-G, CK and MM 
+analyzed data and wrote software. OP conceived experiments and provided critical reagents. AG and EG manufactured micro 
+patterned substrates. GD conceived experiments, analyzed data, and edited the paper. MHG conceived experiments, analyzed data, 
+and wrote the paper.
+HHS Public Access
+Author manuscript
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Published in final edited form as:
+Nat Cell Biol. 2011 June ; 13(6): 660–667. doi:10.1038/ncb2231.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+involved in the formation of cell protrusion such as actin assembly and adhesions exhibit a 
+similar cyclic behavior1,3–5; however, the molecular identity of the pacemakers of 
+protrusion-retraction cycles and the signaling pathways that govern their frequency remain 
+obscure.
+Cyclic AMP-dependent protein kinase A (PKA), a kinase that regulates diverse cellular 
+activities, is activated at the leading edge of some cell types migrating in vitro6,7, and 
+inhibition of PKA inhibits cell migration8–11. PKA regulates axonal guidance in vivo12, 
+morphogenetic movements in Xenopus13, and mutations of a PKA phosphorylation site in 
+doublecortin is associated with X-linked lissencephaly, a neuronal migration defect in 
+humans14. Furthermore, PKA facilitates the formation of peripheral ruffles15,16 and 
+influences protrusions at the leading edge of migrating CHO and smooth muscle cells6,17. 
+PKA activity in the cell is compartmentalized; therefore information about spatiotemporal 
+patterning of PKA activity is needed to understand the role of PKA in specific elements of 
+cell migration and to identify relevant PKA substrates.
+Here, we used live cell imaging of biosensors to monitor the spontaneous morphodynamic 
+and signaling activities of renal epithelial PtK1 cells and human umbilical vein endothelial 
+cells and employed correlative image analysis to examine the role of PKA in protrusion 
+regulation with second-scale temporal and micron-scale spatial resolution. PKA inhibition 
+led to reduced frequency of formation of protrusions of increased duration that propagated 
+transversely along the cell edge. Furthermore, PKA activity at the leading edge exhibited 
+close temporal and spatial correlation with the formation of protrusions and the activation of 
+RhoA. This correlation depended on the phosphorylation of RhoA(Ser 188) by PKA, an 
+event known to facilitate RhoA binding to RhoGDI 18, which leads to displacement of RhoA 
+from the plasma membrane and precludes RhoA from interactions with downstream 
+effectors19–21. Increased RhoGDI expression completely reversed the effects of PKA 
+inhibition on protrusion morphodynamics, thus establishing that PKA governs the timing of 
+protrusions by phosphorylation of RhoA resulting in RhoGDI-mediated termination of 
+RhoA activity at the leading edge; hence the interaction of these three elements defines a 
+pacemaker of the protrusion-retraction cycle. In consequence our studies provide direct 
+mechanistic insight into how PKA, RhoA, and RhoGDI cooperate to control events at the 
+leading edge of migrating cells.
+Results
+PKA controls protrusive duration, magnitude, and transverse propagation
+To examine the effects of PKA activation at the leading edge of migrating cells on 
+morphodynamic behaviors, we blocked PKA activity with a pseudosubstrate peptide, 
+PKI22,23 by transfecting PtK1 cells with cDNAs encoding PKI and enabled computer vision 
+tracking of the membrane dynamics of the leading edge2 with a membrane-localized GFP-
+CAAX (Fig.1a). We noted dramatically increased protrusion magnitude in PKI-expressing 
+cells (Fig.1b; Movies 1, 2). To quantify these effects, we divided the cell edge into segments 
+and followed their frame-to-frame displacements over time (SFigure 1)2. We then pasted the 
+edge velocity values in each segment at one time-point of the movie into the column of a 
+matrix and repeated the procedure time-point-by-time point over the entire movie. This 
+Tkachenko et al. Page 2
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+resulted in a cell-shape independent representation of protrusion and retraction dynamics as 
+a morphodynamic map. Velocity values were color-coded from −50 nm/sec retraction (blue) 
+to 50nm/sec protrusion (red) (Fig.1c). Confirming previous analyses of PtK1 cells 2, control 
+cells revealed quasi-cyclical protrusion and retraction events for each segment of the cell 
+edge. Importantly, the spatial autocorrelation of the protrusion and retraction activity along 
+the cell edge had a full width at half maximum of 4.9 µm, [CI ±1.0] indicating that 
+protrusion and retraction alternate on a length scale of single microns (see Methods).
+As reported before 2, the transitions from retraction to protrusion propagated transversely 
+along the cell edge, as indicated by a slanted streak of high forward velocity (arrow, Fig.1c). 
+PKI transfection dramatically altered these dynamics. Over 50 min., much fewer protrusion-
+retraction cycles of much greater duration were observed (Fig.1c middle panel). 
+Furthermore, PKA inhibition led to a more pronounced transversal protrusion propagation 
+(arrow, Fig.1c middle panel). Representative segment edge velocity over time in a control or 
+PKI-transfected cell is plotted in Fig.1c lower panel. Temporal auto-correlation function of 
+the edge movement, averaged over all segments of the cell edge showed that inhibition of 
+PKA activity prolonged the cycles from 130 to 820 sec (Fig.1d). Comparison of multiple 
+cells (SFigure 1) confirmed a systematic, statistically significant increase of the cycle time 
+[control (n=7) = 122±5.2(SEM) sec, and PKI (n=9) = 668±100.7 sec, P=0.0002]. Inhibition 
+of PKA activity by 1µM KT-5720 or mislocalization of PKA by expression of 
+mitochondrially-targeted AKAP peptide that binds all PKA (dual-AKAP trap) 24 resulted in 
+protrusion morphodynamics similar to those observed with PKI transfection (SFigure2). 
+These findings indicate that PKA regulates morphodynamics, controlling magnitude, 
+duration, and transverse propagation of protrusions.
+Temporal correlation of PKA activity with protrusion
+We examined temporal and spatial correlations of PKA activity with protrusion using a 
+membrane-bound FRET-based PKA biosensor (pmAKAR3) (SFigure3)25. CFP fluorescence 
+tracked the leading edge (Fig.2a left) and YFP/CFP fluorescent emissions were analyzed by 
+a MATLAB® program that corrects for dark current, variations in excitation light intensities, 
+uneven field illumination, background autofluorescence, and rates of donor and acceptor 
+photobleaching (see Methods) to calculate PKA activity FRET ratios (Fig.2a right). 
+Protrusion velocity and FRET signals at different distances from the cell edge were collected 
+(Fig.2b).
+PKA activity within 1µm of the leading edge (Fig.2c) varied with a similar periodicity to 
+protrusion-retraction (Fig.2d). Because the biosensor is a PKA substrate, at high expression 
+levels, it could be a dominant-negative suppressor of PKA signaling. Accordingly, we 
+selected cells with modest biosensor expression and verified that the duration of protrusion-
+retraction cycles was not altered(Fig.2e).
+Temporal cross-correlations between FRET and edge velocity at different time lags were 
+obtained in each sampling window (Fig.2b) by computing the Pearson’s correlation 
+coefficient between the collected time series. Mean correlation functions of the entire 
+leading edge of the cell were obtained by averaging the correlation coefficient over all 
+sampling windows for each temporal lag. Of note, averaging at the level of the correlation 
+Tkachenko et al. Page 3
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+coefficients permitted us to extract robust relationships between signaling and cell edge 
+movement despite the spatially heterogeneous protrusion and retraction states of an 
+individual cell. Integrating the data from 3 cells, we found a significant (P<0.0001) temporal 
+cross-correlation of cell edge protrusions with PKA activity within 1µm from the cell edge 
+(Fig.2f). The location of the cross-correlation maximum indicated a time shift of 22 sec, [CI 
+±13](CI - 95% Confidence Interval) between the peaks of PKA activity and protrusion 
+velocity (Fig.2f), i.e. maximum activity is slightly delayed relative to fastest edge 
+advancement. In primary Endothelial Cells peak PKA activity also slightly trailed maximal 
+protrusion velocities (SFigure 3). PKA activity measured up to 4 µm from the cell edge 
+maintained this temporal cross-correlation (Fig.2f). FRET data generated by a PKA-
+insensitive mutant biosensor generated insignificant, random correlation values at any time 
+shift (SFigure 3). The tight temporal cross-correlation between PKA activity and edge 
+movement suggested that they are causally-linked.
+PKA Phosphorylation Regulates the Dynamics of RhoA Activation
+We next sought PKA substrates that account for its linkage to morphodynamics. RhoA is a 
+PKA substrate18 and RhoA activity at the leading edge synchronizes with cell protrusion26. 
+We used a single chain, RhoA biosensor to measure the RhoA activity27 and we selected 
+cells with moderate expression of the biosensor in which the timing of protrusions was 
+similar to non-transfected cells (see Fig.3c). However, all cells that expressed the RhoA 
+biosensor exhibited prolonged and less periodic protrusions (not shown). Modest expression 
+biosensor of different design28 did not affect morphodynamics and was used in all 
+experiments reported here. These two biosensors differ in their mechanism of targeting 
+plasma membrane; specifically the second biosensor contains the authentic RhoA C-
+terminus, thereby preserving its PKA phosphorylation and RhoGDI binding sites. These 
+differences suggested the role of RhoA/RhoGDI interaction in control of protrusion 
+morphodynamics by PKA phosphorylation of RhoA. All protrusion velocity and activity 
+maps used for the analyses described below are in SFigure 4.
+Temporal cross-correlation of RhoA activities and protrusion within 0.4 µm of the cell edge 
+resembled the cross-correlation between PKA and protrusion (Fig.3a). This finding 
+suggested that PKA and RhoA activities are causally-linked. Indeed, PKA phosphorylation 
+of RhoA(Ser188) increases RhoA’s affinity for RhoGDI reducing RhoA activity in part by 
+sequestration from the membrane18. We therefore created a PKA-resistant RhoA(S188A) 
+reporter and expressed at levels that did not alter the timing of protrusions (Fig.3c). As 
+expected, activation of PKA resulted in increased binding of RhoGDI to RhoA but not 
+RhoA(S188A) reporters (SFigure 4f). The activity of RhoA(S188A) exhibited a dramatically 
+altered relationship with protrusions (Fig.3a). The most prominent feature of the cross-
+correlation between protrusion and the RhoA(S188A) activity was a negative peak 40 sec 
+after peak velocity of protrusions (Fig.3a). Thus, PKA-mediated phosphorylation of RhoA at 
+Ser 188 regulates the timing of RhoA activation at the leading edge.
+As noted above, phosphorylation of RhoA increases its affinity for RhoGDI, leading us to 
+suspect that mistiming of RhoA(S188A) activation was due to reduced affinity for RhoGDI. 
+To test this idea, we over-expressed RhoGDI in cells expressing RhoA or RhoA(S188A) 
+Tkachenko et al. Page 4
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+activity reporters. In RhoGDI over-expressing cells, peaks of activities of wild type RhoA 
+and RhoA(S188A) mutant occurred ∼30 sec before protrusions reached maximal velocities 
+(Fig.3b). We ascribe this leftward shift in the temporal correlation of RhoA and protrusive 
+activity to early termination of RhoA signaling at the plasma membrane in RhoGDI-over 
+expressing cells. Early termination of RhoA activity by over-expression of RhoGDI reduced 
+the average duration of protrusion cycle from 122 sec, [CI ±5.2] to 92 sec, [CI ±6.5]. Thus, 
+inhibition of PKA-mediated phosphorylation of RhoA alters the relationship between 
+protrusions and RhoA activity by reducing the affinity of RhoA for RhoGDI, whereas over-
+expression of RhoGDI compensates for this reduced affinity.
+Over-expression of RhoA(S188A) or RhoA phenocopies the effects of PKA inhibition on 
+protrusion dynamics
+As noted above, inhibition of PKA resulted in increased duration, magnitude, and transverse 
+propagation of protrusions. We hypothesized that this was due to the loss of RhoA 
+phosphorylation, resulting in prolonged and elevated RhoA signaling at the plasma 
+membrane. To test this idea, we over-expressed RhoA(S188A) which resulted in 
+morphodynamics resembling those observed with inhibition of PKA, i.e. these cells showed 
+a marked reduction in the frequency and an increase in the duration and transverse 
+propagation of protrusions (Fig.4; SFigure 5). Moreover, this phenotype was due to reduced 
+regulation by RhoGDI, because co-expression of RhoGDI with RhoA(S188A) resulted in 
+reversal of all the temporal effects of RhoA(S188A) expression, including shortening of 
+duration and reduction in transverse propagation of protrusions (Fig.4; SFigure 5). The 
+increased amplitude of protrusions and retractions remaining after co-expression of RhoGDI 
+and RhoA(S188A) is ascribed to an overall increase in RhoA. Over-expression of wild type 
+RhoA with and without RhoGDI resulted in cell phenotypes similar to the described above 
+for RhoA(S188A) with and without RhoGDI (SFigure 6) confirming the importance of the 
+ratio of RhoA/RhoGDI in the timing of protrusions.
+The foregoing data suggested that the interaction of RhoA with RhoGDI led to the 
+termination of protrusions. A recent study reported that, in some cells, over-expression of 
+Rho GTPases results in degradation of endogenous RhoGTPases due to competition for 
+RhoGDIs29. We did not observe a reduction in protein levels of Rac1 or CDC42 in cells 
+over-expressing wild type RhoA or RhoA(S188A) alone or in combination with RhoGDI1 
+(SFigure 6d). We therefore reasoned that over-expression of a RhoA mutant that does not 
+interact with RhoGDI and incapable of sequestering it to reduce protein levels of 
+endogenous RhoGTPases29 should also increase the duration of protrusions, and that over-
+expression of RhoGDI should not correct the increased protrusion duration. Over-expression 
+of RhoA(R68E), which is defective in binding RhoGDI 30, led to a dramatic increase in the 
+amplitude and duration of protrusions. In sharp contrast to the phenotype caused by wild 
+type RhoA or RhoA(S188A), over-expression of RhoGDI did not significantly alter the 
+morphodynamics of protrusions caused by RhoA(R68E)(Fig.5; SFigure 7). Thus, the effect 
+of RhoGDI on morphodynamics reported here depends on its ability to directly bind to 
+RhoA.
+Tkachenko et al. Page 5
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Over-expression of RhoGDI reverses the effect of PKA inhibition on protrusion 
+morphodynamics
+PKA has many potential substrates that could be involved in the control of morphodynamics 
+of protrusions. The foregoing experiments showed that PKA controls the timing of RhoA 
+activity by phosphorylation of Ser188, and that this effect depends on the RhoGDI-RhoA 
+interaction. To assess whether PKA modulation of RhoGDI-RhoA interaction is a master 
+regulator of the duration and transverse propagation of protrusions we inhibited PKA with 
+PKI and simultaneously over-expressed RhoGDI (SFigure 8). Over-expression of RhoGDI 
+reversed the effect of PKA inhibition (Fig.6a; SFigure 8). Specifically, protrusion duration 
+(Fig.6b,c) and their transverse propagation (Fig.6a) resembled control cells. Thus, PKA 
+phosphorylation of RhoA and its resulting effects on RhoGDI-RhoA interaction control the 
+cycling of functional RhoA activity, and thus protrusion-retraction cycles.
+Adhesion-dependent activation of PKA during protrusions
+As shown above, PKA shortens cell protrusions by increasing the affinity of RhoA for 
+RhoGDI through RhoA phosphorylation. We next wished to ask whether protrusion might 
+activate PKA, thereby initiating a self-inhibitory feedback mechanism. Disrupting actin 
+filaments with latrunculin A or antibody blockade of integrins inhibits leading edge PKA 
+activation6; however, integrin blockade also inhibited protrusion. To directly test the role of 
+adhesion as a requirement for PKA activation, we examined zones in which adhesion was 
+blocked yet passive protrusion was maintained. We produced micropatterned substrates 
+comprised of alternating 16 µm wide fibronectin stripes and 16µm inert polylysine-
+polyethylene glycol (PLL-PEG) stripes of (Fig.7a, left). Cells plated extended lamellipodia 
+along the fibronectin stripes (Fig.7a middle; Movie 3) and tips of these lamellipodia had 
+high level of PKA activity in the fibronectin-adherent regions (Fig.7a, right). The 
+morphodynamic maps (Fig.7b) revealed cycles of similar duration in adherent and non-
+adherent zones and those in the non-adherent zone were spatially connected to those in the 
+adherent zone (black arrows, Fig.7b, top panel) suggesting that that edge movements in non-
+adherent zones were passive extensions of those generated in adherent zones. In spite of 
+ongoing protrusions, the cell edge in the non-adherent PLL-PEG coated strips was virtually 
+devoid of PKA activity (Fig.7b, lower panel). Thus, the combination of protrusion and 
+adhesion of the leading edge results in PKA activation, thereby explaining the occurrence of 
+maximal PKA activity shortly after peak protrusion velocity (Fig.2f).
+Discussion
+Many motile cells pathfind by cycling between protrusion and retraction of the leading edge. 
+We found that in PtK1 epithelial cells a single protrusion-retraction-protrusion cycle lasts 
+∼80 s and spans a segment of the leading edge of about 5µm. To understand these highly 
+localized morphodynamics, we examined the intersecting roles of PKA, RhoA and RhoGDI 
+in the regulation of constitutively-migrating epithelial cells, and endothelial cells. Our 
+experiments re-emphasize that transient and highly localized increases in RhoA activity are 
+associated with protrusion28,31. Here, we report that the close association of RhoA activity 
+with protrusion requires phosphorylation of RhoA(Ser 188) by PKA. This is evidenced by: 
+First, inhibition of PKA decreased frequency and increased the duration of protrusions 
+Tkachenko et al. Page 6
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+formed at the leading edge. Second, PKA activity closely temporally correlated with both 
+RhoA activity and edge advancement. Thirdly, correlation of protrusion and RhoA activity 
+was altered in non-phosphorylatable RhoA(S188A). Phosphorylation of RhoA increases its 
+affinity for RhoGDI18, leading to displacement of RhoA from the plasma membrane19,21 
+and inhibition of effectors interactions. Over-expression of RhoGDI corrected the mistiming 
+of RhoA(S188A) activation. Fourth, over-expression of RhoGDI corrected the effects of 
+over expression of RhoA and RhoA(S188A) but not that of RhoA(R68E), a mutant which 
+can not bind to RhoGDI30, on the timing of the protrusion-retraction cycle. Fifth, increased 
+RhoGDI expression also overcame the effects of blocking PKA activity on protrusion 
+morphodynamics. Together, these data show that the cycling of active RhoA at the plasma 
+membrane controls the pace of the protrusion-retraction cycles. RhoA may control 
+protrusion by promotion of actin nucleation through formins 32. Alternatively, collisions of 
+transversely propagated protrusions lead to their termination and plays critical rode in 
+determining their duration2. Therefore, by reducing the frequency of new protrusions, RhoA 
+may prevent lateral inhibition, thereby resulting in protrusions of greater duration, amplitude 
+and transverse propagation. In either case, here we, identify PKA activity, in particular its 
+effect on RhoA- RhoGDI interaction by phosphorylating RhoA(Ser188), as a pacemaker of 
+the protrusion-retraction cycle (Fig.7c).
+PKA is activated at the leading edge of migrating cells6,7,17 and PKA inhibition reduces the 
+number of protrusions formed at the leading edge6. In accord with those observations, we 
+found that blocking PKA activity markedly widened the length-scale of protrusions while 
+increasing their duration. This suggested that PKA activity limits a protrusion-promoting 
+signal both in time and space. We propose that protrusion mechanically activates PKA via 
+adhesion-mediated mechano-transduction, placing PKA in the core of a self-inhibiting 
+feedback loop between RhoA and protrusion (Fig.7c). Mechanistically, this PKA activation 
+may be induced by increasing tractional forces during protrusion events. In PtK1 cells 
+traction force maxima lag behind the maximal protrusive velocity by ∼20 sec 3. In 
+remarkable agreement with this timing, our data here show that the activation of PKA was 
+also slightly delayed relative to the protrusion velocity. Thus, we find that the linked 
+activities of integrins, PKA, and RhoA(Ser 188)-phosphorylation establishes a mechano-
+responsive governor of the protrusion-retraction cycle.
+Alternative mechanisms by which PKA could inhibit RhoA, include inhibition of Giα12,13 
+signaling33 or inhibiting RhoGEF(s) function34,35. However, our data strongly favor direct 
+phosphorylation on RhoA here. Specifically, mutating the PKA phosphorylation site in 
+RhoA(S188A) leads to loss of positive correlation between protrusion and RhoA activity. 
+RhoA phosphorylation could change its affinity for specific effectors36 or its lateral 
+translocation into different membrane microdomains37 instead of affecting the interaction 
+between RhoA and RhoGDI. However, these mechanisms would not readily explain the 
+dramatic complementation by RhoGDI over-expression. Similarly, the finding that RhoGDI 
+over-expression reversed all of the effects of PKA inhibition provides a compelling 
+argument that the effects of PKA inhibition on morphodynamics is due to phosphorylation 
+of RhoA and resulting increased affinity for RhoGDI. Therefore, direct phosphorylation by 
+PKA controls RhoA activity cycles that regulate protrusion at the leading edge.
+Tkachenko et al. Page 7
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Previous studies suggested that that RhoGDI, along with GTPase activating proteins (GAPs) 
+and GDP/GTP exchange factors (GEFs), plays an active role in Rho GTPase turnover in 
+cellular protrusions38. Our studies provide demonstrate that RhoA cycling regulated by PKA 
+and RhoGDI is a part of protrusion-retraction pacemaker (Fig.7c). Therefore, the level of 
+RhoGDI expression could set the gain function by which cell protrusive behavior responds 
+to PKA activity as influenced, among other factors, by extracellular matrix composition6,39 
+and substrate stiffness40. Hence, changes in RhoGDI expression might result in enhanced 
+cellular migration on substrates characterized by otherwise suboptimal mechanical or 
+chemical composition properties41, helping to explain the role RhoGDI plays in determining 
+the invasive and metastatic properties of cancers42–44.
+Methods
+Constructs
+Plasma membrane targeted PKA reporter AKAR3 (pmAKAR3) and RhoA activity reporter 
+were previously described25,28. pcDNA3.1 (Invitrogen, Carlsbad, CA) encoding human 
+RhoA fused to 3 tandem hemagglutinin (HA) tags was obtained from Missouri S&T cDNA 
+Resource Center (Rolla, MO). Mutagenesis of RhoA Ser188 was done using the Quick 
+Change mutagenesis kit (Stratagene, La Jolla, CA) according to manufacturer’s protocol. 
+pEFBos myc RhoGDI was a obtained from Martin Schwartz (University of Virginia)45. 
+cDNAs encoding HA-tagged PKI in pcDNA 3.1 were gifts from Susan Taylor. H2b-EGFP 
+in SIN18.hPGK.eGFP.WPRE was a gift from Jeffrey H. Price46. Mitochondrial membrane-
+targeted dual (RI&RII) AKAP peptide (AKAP trap) was previously described 24. eGFP-
+RhoGDI construct in pcDNA3.1(Invitrogen) and RhoA R68E construct in PRK5M-cMyc 
+vector were gifts from Celine DerMardirossian (The Scripps Research Institute, La Jolla).
+Construction of mCherry-PKI in pcDNA 3.1
+283 bp sequence encoding HA-PKI was amplified by PCR using primers that introduced 
+ClaI and NotI sites at the N- and C-terminus, respectively, and ligated into corresponding 
+sites of a pcDNA3.1 construct encoding mCherry47 at the N-terminus and. The resulting 
+open reading frame encodes mCherry-HA-PKI. GFP-CAAX- in eGFP-N1  (Clontech, 
+Mountain View, CA) was generated by inserting synthesized double strained DNA encoding 
+K-Ras CAAX box into XhoI and BamHI cloning sites. mCherry-CAAX was generated by 
+exchanging eGFP in eGFP-CAAX construct with mCherry using XhoI and BamHI sites.
+Cell Culture
+Female Rat Kangaroo Kidney Epithelial Cells (PtK1) cells were a gift from Clare Waterman 
+(The National Heart, Lung, and Blood Institute). Cells were cultured in humidified incubator 
+at 37°C, 5% CO2 in K-12 media (Invitrogen) containing 10% FBS and Penicillin/
+Streptavidin (Invitrogen). For imaging, 25 mm glass coverslips (VistaVision No.1(VWR) 
+were coated with 10 µg/ml human fibronectin (Dow Corning, Midland, MI) at RT for 1h and 
+blocked with 1% heat-denatured bovine serum albumin (BSA) for 30 min. Cells were 
+cultured on cover slips for 24 hr before experiments.
+Tkachenko et al. Page 8
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+PTK1 cells were transduced with retrovirus encoding RhoA or RhoA(S188A) activity 
+reporters. Retroviral production and transduction was done as previously described 28. 
+Transient transfections were performed using Amaxa nucleoporator (Lonza). 1×106 cells 
+were resuspended in 100µl solution “R” containing 1–5 µg of plasmid construct and 
+electroporated using program T-20. For experiments involving over-expression of RhoGDI 
+in cells stably expressing RhoA or RhoA(S188A) reporter, cells were co-transfected by 
+electroporation with RhoGDI and H2B-eGFP construct at ratio 4:1. H2B-eGFP labels only 
+the nucleus, indicating transfected cells, and does not interfere with FRET imaging of the 
+cell edge. For experiments involving over-expression of RhoA(wt, S188A or R68E), cells 
+were transiently co-transfected with EGFP-CAAX , RhoA(wt, S188A or R68E) and either 
+empty vector or RhoGDI at ratio (0.5:1:4). For experiments involving expression of PKI, 
+cells were co transfected with EGFP-CAAX, PKI-cherry and empty vector or RhoGDI at 
+ratio 0.5:1:4. Cells with high levels of mCherry expression were used for analysis. 
+Immunostaining for phosphorylated PKA substrates was done to confirm an effect of PKI as 
+previously described 48. For all co-transfection combinations the levels of expression of 
+RhoGDI and RhoA(wt, S188A or R68E) were checked by immunoblot analysis or by 
+fluorescence of eGFP-fused form of RhoGDI.
+Co-Immunoprecipitation and Immunoblot Analysis
+Anti-GFP antibodies (Rosh) at concentration 2µg/ml and protein G sepharose beads 
+(Invitrogen) were used for co-immunoprecipitation assay. Anti-HA antibodies 16B12 were 
+obtained from Covance (Princeton, NJ). Anti- c-myc antibodies 9E10 were from Santa Cruz 
+Biotechnology (Santa Cruz, CA). Anti-CDC42 and anti-RhoA antibodies were from Cell 
+Signaling (Beverly MA). Anti-Rac1 antibodies were from Millipore (Billerica, MA). All 
+antibodies were used for western blot analysis at dilution 1:1000.
+Microscopy
+Cells grown on cover glasses were mounted into CM-R-Z004 chamber (Live Cell 
+Instrument, Inc., Seoul, Korea). The environmentally controlled microscopy system and 
+FRET acquisition were previously described6. Time-lapse images were acquired for every 
+10 seconds with Plan-Apo 60x/1.4 numerical aperture (NA) oil emersion objective (Nikon).
+Micro-patterning of fibronectin on glass coverslips
+Fibronectin was labeled with AnaTaq HiLyte Fluor 647 protein labeling kit (AnaSpec, 
+Fremont, CA) according to manufacturer’s protocol. We fabricated polydimethylsiloxane 
+(PDMS) stamps with 16 µm stripes spaced 16µm apart 49 and used these stamps to print a 
+micropatterned fluorescent fibronectin substrate as described 50. The nonprinted 16µm 
+intervening stripes were back-filled with poly-L-lysine-polyethylene glycol (PLL-PEG), 
+which renders them resistant to cell adhesion, by incubation of patterned coverslips for 30 
+min in PBS pH 7.4 solution of 0.5mg/ml of PLL-PEG (mPEG1k-b-PLKC100, Alamanda 
+Polymers, Hunsville, AL).
+Tkachenko et al. Page 9
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Image processing
+Time lapse series were edited in ImageJ (NIH, Bethesda, MD). Figures were assembled in 
+Photoshop CS2, Illustrator CS2 and InDesign CS2 (Adobe Systems, Mountain View, CA). 
+For all other image processing we used home-written Matlab functions (MathWorks, Natick, 
+MA).
+FRET analysis
+Processing of FRET data was done using automated custom-built Matlab software. Our 
+program subtracts dark current from raw images followed by correction for light source 
+intensity fluctuations, uneven illumination of the field, background autofluorescence, 
+variations in concentration of biosensor within a cell51, and different rates of photobleaching 
+for donor and acceptor fluorophores52.
+Cell edge tracking
+Cell edges were detected via an intensity-based segmentation of images with membrane-
+bound fluorophor. The edge evolution in time was tracked computationally as described in2. 
+Rates of protrusion and retraction (velocity maps) were calculated by finite differences of 
+positions in consecutive frame triplets at T−1, T, and T+1 (SFigure 1).
+Cross-Correlation analysis
+Temporal cross-correlations between FRET signal and protrusion (edge velocity) windows 
+at different lags were obtained in each sampling window (SFigure 1) by computing the 
+Pearson’s correlation coefficient. The correlation for the entire leading edge of the cell was 
+obtained by averaging the correlation coefficient over all sampling windows for each 
+temporal lag. To investigate the cell-to-cell heterogeneity of the cross-correlation between 
+two activities, a common cross-correlation function was estimated by computing a 
+smoothing spline for the ensemble of average cross-correlation data from different cells. The 
+variance of the smoothing spline approximation and hence of the location of the maximum 
+correlation was calculated by a non-parametric bootstrap method53. In this method the 
+residuals of the approximated spline 2000 bootstrap samples were taken to reconstruct 2000 
+cross-correlation samples. From this sample pool, local variation of the spline around mean, 
+variation in maximum correlation coefficient, and variation in location of the maximum 
+correlation (time lag) were inferred. The 95% confidence interval for the estimated common 
+cross-correlation was obtained in each location as the interval containing 95% of the 
+bootstrapped spline samples.
+Temporal auto-correlation of protrusions/retractions was computed by cross-correlation of 
+edge velocity with itself. To analyze the difference in the duration of protrusions/retractions 
+we measured the peak width in the autocorrelation plot at an arbitrarily chosen correlation 
+value of 0.2.
+Protrusion and retraction length scale evaluation
+Protrusions and retraction length scale is the distance along the edge of the cell over which 
+protrusion and retraction events become statistically independent from each other. Edge 
+Tkachenko et al. Page 10
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+movements are defined as independent when the spatial auto-correlation level of leading 
+edge movements falls below 50% of its maximum value. For each cell, the spatial auto-
+correlation of edge movements where obtained by time-averaging the Pearson correlation 
+coefficient at different spatial lags along the edge over the entire duration of the movie. A 
+characteristic spatial auto-correlation of edge movements was calculated by fitting a 
+smoothing spline to the ensemble of the auto-correlation data from different cells. The 
+characteristic protrusion and retraction length scale was calculated from the full width at half 
+maximum (FWHM) of the characteristic spatial auto-correlation curve.
+Statistical analysis
+Averages and SEMs were calculated and are shown in the graphs. Respective n values are 
+shown in the figure legends. The indicated P values were obtained with two-tailed Student’s 
+t-tests.
+Supplementary Material
+Refer to Web version on PubMed Central for supplementary material.
+Acknowledgements
+Supported by Grants from the NIH (AR27214(MHG), HL31950(MHG), GM071868 (GD), F32 HL094012-01 
+(E.T.) and the Cell Migration Consortium(MHG,GD).
+References
+1. Giannone G, et al. Periodic lamellipodial contractions correlate with rearward actin waves. Cell. 
+2004; 116:431–443. [PubMed: 15016377] 
+2. Machacek M, Danuser G. Morphodynamic profiling of protrusion phenotypes. Biophys J. 2006; 
+90:1439–1452. [PubMed: 16326902] 
+3. Ji L, Lim J, Danuser G. Fluctuations of intracellular forces during cell protrusion. Nat Cell Biol. 
+2008; 10:1393–1400. [PubMed: 19011623] 
+4. Giannone G, et al. Lamellipodial actin mechanically links myosin activity with adhesion-site 
+formation. Cell. 2007; 128:561–575. [PubMed: 17289574] 
+5. Ponti A, Machacek M, Gupton SL, Waterman-Storer CM, Danuser G. Two distinct actin networks 
+drive the protrusion of migrating cells. Science. 2004; 305:1782–1786. [PubMed: 15375270] 
+6. Lim CJ, et al. Integrin-mediated protein kinase A activation at the leading edge of migrating cells. 
+Mol Biol Cell. 2008; 19:4930–4941. [PubMed: 18784251] 
+7. Paulucci-Holthauzen AA, et al. Spatial distribution of protein kinase A activity during cell migration 
+is mediated by A-kinase anchoring protein AKAP Lbc. J Biol Chem. 2009; 284:5956–5967. 
+[PubMed: 19106088] 
+8. Edin ML, Howe AK, Juliano RL. Inhibition of PKA blocks fibroblast migration in response to 
+growth factors. Exp Cell Res. 2001; 270:214–222. [PubMed: 11640885] 
+9. Goldfinger LE, Han J, Kiosses WB, Howe AK, Ginsberg MH. Spatial restriction of alpha4 integrin 
+phosphorylation regulates lamellipodial stability and alpha4beta1-dependent cell migration. J Cell 
+Biol. 2003; 162:731–741. [PubMed: 12913113] 
+10. Howe AK, Baldor LC, Hogan BP. Spatial regulation of the cAMP-dependent protein kinase during 
+chemotactic cell migration. Proc Natl Acad Sci U S A. 2005; 102:14320–14325. [PubMed: 
+16176981] 
+11. O’Connor KL, Shaw LM, Mercurio AM. Release of cAMP gating by the alpha6beta4 integrin 
+stimulates lamellae formation and the chemotactic migration of invasive carcinoma cells. J Cell 
+Biol. 1998; 143:1749–1760. [PubMed: 9852165] 
+Tkachenko et al. Page 11
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+12. Murray AJ, Tucker SJ, Shewan DA. cAMP-dependent axon guidance is distinctly regulated by 
+Epac and protein kinase A. J Neurosci. 2009; 29:15434–15444. [PubMed: 20007468] 
+13. Song BH, Choi SC, Han JK. Local activation of protein kinase A inhibits morphogenetic 
+movements during Xenopus gastrulation. Dev Dyn. 2003; 227:91–103. [PubMed: 12701102] 
+14. Schaar BT, Kinoshita K, McConnell SK. Doublecortin microtubule affinity is regulated by a 
+balance of kinase and phosphatase activity at the leading edge of migrating neurons. Neuron. 
+2004; 41:203–213. [PubMed: 14741102] 
+15. Deming PB, Campbell SL, Baldor LC, Howe AK. Protein kinase A regulates 3-
+phosphatidylinositide dynamics during platelet-derived growth factor-induced membrane ruffling 
+and chemotaxis. J Biol Chem. 2008; 283:35199–35211. [PubMed: 18936099] 
+16. O’Connor KL, Nguyen BK, Mercurio AM. RhoA function in lamellae formation and migration is 
+regulated by the alpha6beta4 integrin and cAMP metabolism. J Cell Biol. 2000; 148:253–258. 
+[PubMed: 10648558] 
+17. Howe AK. Regulation of actin-based cell migration by cAMP/PKA. Biochim Biophys Acta. 2004; 
+1692:159–174. [PubMed: 15246685] 
+18. Lang P, et al. Protein kinase A phosphorylation of RhoA mediates the morphological and 
+functional effects of cyclic AMP in cytotoxic lymphocytes. Embo J. 1996; 15:510–519. [PubMed: 
+8599934] 
+19. DerMardirossian C, Bokoch GM. GDIs: central regulatory molecules in Rho GTPase activation. 
+Trends Cell Biol. 2005; 15:356–363. [PubMed: 15921909] 
+20. DerMardirossian C, Rocklin G, Seo JY, Bokoch GM. Phosphorylation of RhoGDI by Src regulates 
+Rho GTPase binding and cytosol-membrane cycling. Mol Biol Cell. 2006; 17:4760–4768. 
+[PubMed: 16943322] 
+21. Ueda T, Kikuchi A, Ohga N, Yamamoto J, Takai Y. Purification and characterization from bovine 
+brain cytosol of a novel regulatory protein inhibiting the dissociation of GDP from and the 
+subsequent binding of GTP to rhoB p20, a ras p21-like GTP-binding protein. J Biol Chem. 1990; 
+265:9373–9380. [PubMed: 2111820] 
+22. Knighton DR, et al. Structure of a peptide inhibitor bound to the catalytic subunit of cyclic 
+adenosine monophosphate-dependent protein kinase. Science. 1991; 253:414–420. [PubMed: 
+1862343] 
+23. Taylor SS, et al. Dynamics of signaling by PKA. Biochim Biophys Acta. 2005; 1754:25–37. 
+[PubMed: 16214430] 
+24. Burns-Hamuro LL, et al. Designing isoform-specific peptide disruptors of protein kinase A 
+localization. Proc Natl Acad Sci U S A. 2003; 100:4072–4077. [PubMed: 12646696] 
+25. Allen MD, Zhang J. Subcellular dynamics of protein kinase A activity visualized by FRET-based 
+reporters. Biochem Biophys Res Commun. 2006; 348:716–721. [PubMed: 16895723] 
+26. Machacek M, et al. Coordination of Rho GTPase activities during cell protrusion. Nature. 2009
+27. Nakamura T, Aoki K, Matsuda M. Monitoring spatio-temporal regulation of Ras and Rho GTPase 
+with GFP-based FRET probes. Methods. 2005; 37:146–153. [PubMed: 16288890] 
+28. Pertz O, Hodgson L, Klemke RL, Hahn KM. Spatiotemporal dynamics of RhoA activity in 
+migrating cells. Nature. 2006; 440:1069–1072. [PubMed: 16547516] 
+29. Boulter E, et al. Regulation of Rho GTPase crosstalk, degradation and activity by RhoGDI1. Nat 
+Cell Biol. 2010; 12:477–483. [PubMed: 20400958] 
+30. Ho TT, Merajver SD, Lapiere CM, Nusgens BV, Deroanne CF. RhoA-GDP regulates RhoB 
+protein stability Potential involvement of RhoGDIalpha. J Biol Chem. 2008; 283:21588–21598. 
+[PubMed: 18524772] 
+31. Machacek M, et al. Coordination of Rho GTPase activities during cell protrusion. Nature. 2009; 
+461:99–103. [PubMed: 19693013] 
+32. Ridley AJ. Rho GTPases and actin dynamics in membrane protrusions and vesicle trafficking. 
+Trends Cell Biol. 2006; 16:522–529. [PubMed: 16949823] 
+33. Manganello JM, Huang JS, Kozasa T, Voyno-Yasenetskaya TA, Le Breton GC. Protein kinase A-
+mediated phosphorylation of the Galpha13 switch I region alters the Galphabetagamma13-G 
+protein-coupled receptor complex and inhibits Rho activation. J Biol Chem. 2003; 278:124–130. 
+[PubMed: 12399457] 
+Tkachenko et al. Page 12
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+34. Diviani D, Baisamy L, Appert-Collin A. AKAP-Lbc: a molecular scaffold for the integration of 
+cyclic AMP and Rho transduction pathways. Eur J Cell Biol. 2006; 85:603–610. [PubMed: 
+16460837] 
+35. Laudanna C, Campbell JJ, Butcher EC. Elevation of intracellular cAMP inhibits RhoA activation 
+and integrin-dependent leukocyte adhesion induced by chemoattractants. J Biol Chem. 1997; 
+272:24141–24144. [PubMed: 9305861] 
+36. Nusser N, et al. Serine phosphorylation differentially affects RhoA binding to effectors: 
+implications to NGF-induced neurite outgrowth. Cell Signal. 2006; 18:704–714. [PubMed: 
+16109481] 
+37. Hancock JF. Lipid rafts: contentious only from simplistic standpoints. Nat Rev Mol Cell Biol. 
+2006; 7:456–462. [PubMed: 16625153] 
+38. Dransart E, Morin A, Cherfils J, Olofsson B. RhoGDI-3, a promising system to investigate the 
+regulatory function of rhoGDIs: uncoupling of inhibitory and shuttling functions of rhoGDIs. 
+Biochem Soc Trans. 2005; 33:623–626. [PubMed: 16042558] 
+39. Gonzalez AM, Claiborne J, Jones JC. Integrin cross-talk in endothelial cells is regulated by protein 
+kinase A and protein phosphatase 1. J Biol Chem. 2008; 283:31849–31860. [PubMed: 18806263] 
+40. Lavandero S, et al. Changes in cyclic AMP dependent protein kinase and active stiffness in the rat 
+volume overload model of heart hypertrophy. Cardiovasc Res. 1993; 27:1634–1638. [PubMed: 
+8287442] 
+41. Gupton SL, Waterman-Storer CM. Spatiotemporal feedback between actomyosin and focal-
+adhesion systems optimizes rapid cell migration. Cell. 2006; 125:1361–1374. [PubMed: 
+16814721] 
+42. Gildea JJ, et al. RhoGDI2 is an invasion and metastasis suppressor gene in human cancer. Cancer 
+Res. 2002; 62:6418–6423. [PubMed: 12438227] 
+43. Wu W, Graves LM, Gill GN, Parsons SJ, Samet JM. Src-dependent phosphorylation of the 
+epidermal growth factor receptor on tyrosine 845 is required for zinc-induced Ras activation. J 
+Biol Chem. 2002; 277:24252–24257. [PubMed: 11983694] 
+44. Zhao L, Wang H, Li J, Liu Y, Ding Y. Overexpression of Rho GDP-dissociation inhibitor alpha is 
+associated with tumor progression and poor prognosis of colorectal cancer. J Proteome Res. 2008; 
+7:3994–4003. [PubMed: 18651761] 
+45. Fukumoto Y, et al. Molecular cloning and characterization of a novel type of regulatory protein 
+(GDI) for the rho proteins, ras p21-like small GTP-binding proteins. Oncogene. 1990; 5:1321–
+1328. [PubMed: 2120668] 
+46. Kita-Matsuo H, et al. Lentiviral vectors and protocols for creation of stable hESC lines for 
+fluorescent tracking and drug resistance selection of cardiomyocytes. PLoS ONE . 2009; 4:5046.
+47. Shu X, Shaner NC, Yarbrough CA, Tsien RY, Remington SJ. Novel chromophores and buried 
+charges control color in mFruits. Biochemistry. 2006; 45:9639–9647. [PubMed: 16893165] 
+48. Lim CJ, et al. Alpha4 integrins are type I cAMP-dependent protein kinase-anchoring proteins. Nat 
+Cell Biol. 2007; 9:415–421. [PubMed: 17369818] 
+49. Tkachenko E, Gutierrez E, Ginsberg MH, Groisman A. An easy to assemble microfluidic perfusion 
+device with a magnetic clamp. Lab Chip. 2009; 9:1085–1095. [PubMed: 19350090] 
+50. Thery M, Piel M. Adhesive micropatterns for cells: a microcontact printing protocol. CSH Protoc 
+2009. 2009 pdb prot5255. 
+51. Nakamura, T.; Kurokawa, K.; Kiyokawa, E.; Matsuda, M.; William, E.; Balch, C.J. D. a. A. H. 
+Methods in Enzymology. Vol. 406. Academic Press; 2006. p. 315
+52. Hodgson L, Nalbant P, Shen F, Hahn K. Imaging and photobleach correction of Mero-CBD, sensor 
+of endogenous Cdc42 activation. Methods Enzymol. 2006; 406:140–156. [PubMed: 16472656] 
+53. Efron B, Tibshirani R. An Introduction to the bootstrap. (Chapman & Hall, 1993). 
+Tkachenko et al. Page 13
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 1. PKA controls the characteristic time and magnitude of protrusive activity
+a) PtK1 cell transfected with cDNA encoding membrane targeted GFP-CAAX was 
+visualized by fluorescence microcopy and the localization of the GFP was used to define the 
+cell edge; the multiple intracellular vesicular structures presumably contain newly-
+synthesized GFP-CAAX en route to the plasma membrane. Cell transfected with mCherry-
+PKI were identifie d by mCherry fluorescence. The red box indicates the region analyzed in 
+the PKI-expressing cell in (b). Scale bar is 10 µm. b) Contours of the leading edges of two 
+cells from series of images taken with 10 sec intervals over 50 min, with the color of the 
+contour showing the time when the image was taken. c) Velocity maps of the protrusions 
+along the cell leading edge, as evaluated from the evolution from the edge contours in (b). In 
+the two upper panels, the abscissa indicates time, the ordinate indicates the position along 
+the edge in terms of the segment number (left) and the absolute distance (right), and the 
+color-coding of the diagram shows the local edge protrusion velocity ranging from −50 
+(blue) to 50 (red) nm/sec. Oblique arrows (black and white) indicate transverse waves of 
+protrusion propagating along the cell edge. The bottom panel is a plot of the edge velocity of 
+the segments marked by the white dashed lines in the two upper panels. Similar maps were 
+observed for mono and multi-nucleate PTK1 cells. d) Temporal auto-correlation of 
+protrusion velocities. In control cell, protrusion and retraction events repeat every 130 sec 
+(black arrow). Expression of PKI resulted in cycles of 820 sec (red arrow).
+Tkachenko et al. Page 14
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 2. Temporal correlation of PKA activity with cell protrusion
+a) Membrane-targeted FRET reporter of PKA activity was used to identify the cell edge 
+(left) and to monitor PKA activity (right). Red box shows the region that was used for the 
+analysis of PKA activity in protrusions. Scale bar is 10 µm. b) The cell edge was divided 
+into segments of 2–3 µm long in accordance with the length scale of protrusion events (see 
+text). Red and blue vectors correspond to protrusions and retractions, respectively. Cell edge 
+displacements were calculated every 0.6 µm and averaged for each segment. For each 
+segment, a series of consecutive 1µm deep sampling windows were defined with the first 
+window adjacent to the edge. c) PKA activities (color and height) within 1 µm of the cell 
+edge were measured as FRET ratios of pmAKAR3 (range = 1.8 (blue) to 2.8 (red)) at 10 sec 
+intervals over a 720 sec interval for different segments. d) The leading edge position was 
+assessed from cell images taken over 720 sec at 10 sec intervals and was used to calculate 
+the protrusion or retraction velocity (color and height) as a function of time (abscissa) for 
+each segment. Velocity values are color-coded from −50 nm/sec (blue) to 50 nm/sec (red). 
+e) Spline fits representing average temporal autocorrelation of protrusions in a cell 
+expressing the PKA FRET reporter and in control cells (n=7, 4 experiments). f) Spline fits 
+representing temporal cross-correlation between the protrusion velocity and PKA activity at 
+different distances from the cell edge (n=3, 3 experiments). Black crosses show the 95% 
+confidence intervals for the location of cross-correlation peaks.
+Tkachenko et al. Page 15
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 3. PKA phosphorylation of RhoA regulates the dynamics of RhoA activity at the cell edge
+a) Average temporal cross-correlations between the protrusion velocity and activity of 
+various enzymes: PKA (blue line, n=6, 4 experiments), RhoA (red line, n=5, 4 experiments), 
+and RhoA(S188A) mutant (green line, n=4, 3 experiments). Black crosses show the 95% 
+confidence intervals for the strongest correlations (positive or negative). Peak of PKA 
+activity was 12 sec, [CI ±18] after maximal protrusion velocity, whereas peak of RhoA 
+activity occurred 21.5 sec, [CI ±11] after maximal protrusion velocity. RhoA(S188A) 
+activity had a negative correlation with protrusion velocity with a delay of 40 sec, [CI ±18]. 
+b) Temporal cross-correlation of protrusion velocity with RhoA activity in cells co-
+expressing RhoGDI with RhoA wild type (dashed red line, n=3, 2 exp) or RhoA(S188A) 
+(dashed green line, n=5, 3 experiments) FRET reporters. Note the positive correlation of 
+Tkachenko et al. Page 16
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+maximal activities of both RhoA (−27 sec, [CI ±16] and RhoA(S188A) (−31.5 sec, [CI 
+±16] ) with protrusion velocity. c) Average temporal autocorrelation of protrusion velocity 
+in cells expressing the PKA, RhoA, and RhoA(S188A) activity reporters is compared with 
+cells expressing eGFP-CAAX construct (n=6). d) Average temporal autocorrelation of 
+protrusion velocity in a cell co-expressing RhoGDI with RhoA or RhoA(S188A) activity 
+reporters, in comparison with cells co-expressing RhoGDI with eGFP-CAAX (n=5, 2 
+experiments).
+Tkachenko et al. Page 17
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 4. Increased RhoGDI complements the effect of over-expression of RhoA(S188A) on 
+protrusion duration
+a) Protrusion-velocity maps of the leading edge of a control cell transfected with empty 
+plasmid and cells over-expressing RhoA(S188A) without and with RhoGDI. The ordinate 
+indicates the edge segment number (left) and the distance along the edge in µm (right). The 
+abscissa indicates time. Velocity values are color-coded from −50 nm/sec (blue) to 50 
+nm/sec (red). b) Protrusion velocity is plotted against time for the segments indicated by the 
+white dashed lines in (a). c) Duration of protrusions in cells transfected with empty plasmid 
+Tkachenko et al. Page 18
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+(n=7, 4 experiments), cells over-expressing RhoA(S188A) (n=6, 4 experiments), RhoGDI 
+(n=5, 2 experiments), and RhoA(S188A) together with RhoGDI (n=6, 4 experiments).
+Tkachenko et al. Page 19
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 5. Increased RhoGDI does not complement the effect of over-expression of RhoA(R68E) 
+on protrusion duration
+a) Maps of protrusion velocity of the leading edge of a control cell transfected with an 
+empty plasmid and cells over-expressing RhoA(R68E) without and with RhoGDI. The 
+ordinate indicates the edge segment number (left) and the distance along the edge in µm 
+(right). The abscissa indicates time. Velocity values are color-coded from −50 nm/sec (blue) 
+to 50 nm/sec (red). b) Protrusion velocity is plotted against time for the segments indicated 
+by the white dashed lines in (a). c) Duration of protrusions in cells transfected with empty 
+Tkachenko et al. Page 20
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+plasmid (n=7), cell over-expressing RhoA(R68E) (n=6, 3 experiments), and RhoA(R68E) 
+together with RhoGDI (n=8, 4 experiments).
+Tkachenko et al. Page 21
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 6. Over-expression of RhoGDI compensates for the effect of PKA inhibition on 
+protrusion morphodynamics
+a) Protrusion-velocity maps of the leading edge of a control cell transfected with an empty 
+plasmid and cells over-expressing PKI without and with RhoGDI. The ordinate indicates the 
+edge segment number (left) and the distance along the edge in µm (right). The abscissa 
+indicates time. Velocity values are color-coded from −50 nm/sec (blue) to 50 nm/sec (red). 
+b) Protrusion-retraction velocity plot at the segments indicated by the white dashed lines in 
+(a). c) Duration of protrusions in control cells transfected with empty plasmid (n=7), cells 
+Tkachenko et al. Page 22
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+over-expressing PKI (n=9, 4 experiments), and over-expressing both PKI and RhoGDI (n=7, 
+4 experiments).
+Tkachenko et al. Page 23
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+Figure 7. PKA activation requires both protrusion and adhesion of the leading edge to create a 
+self-inhibiting feedback loop
+a) PtK1 cell expressing PKA activity reporter were plated on micropatterned substrates, in 
+which 16 µm wide stripes of fibronectin were separated by 16µm stripes of inert polylysine-
+polyethylene glycol (PLL-PEG). The leftmost panel illustrates the patterning of the stripes 
+as defined by the localization of fluorescently-labeled fibronectin and dotted lines in the 
+middle and right panel show the borders of the stripes. The localization of the FRET probe 
+in the middle panel (green) was used to identify the cell edge in the region outlined by white 
+box. The rightmost panel depicts the PKA activity displayed as a color-coded FRET ratio at 
+Tkachenko et al. Page 24
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript
+the first time point (range =3 (blue) to 5.5 (red)). Scale bar is 10 µm. b) Top panel: a 
+morphodynamic protrusion map of the region in the white box in panel b color-coded from 
+−50 nm/sec (blue) to 50 nm/sec (red). The white dashed lines outline the borders between 
+adhesive (fibronectin) and non-adhesive (PLL-PEG) substrates. Protrusive domains 
+indicated by arrows show the physical continuity of protrusions between the adherent and 
+non-adherent zones. Bottom panel: a PKA activity map as FRET ratios of pmAKAR3 (range 
+=3 (blue) to 5.5 (red)) within 1µm from the cell edge. PKA activity is absent in the non-
+adherent zone. c) PKA, RhoA, and RhoGDI form a protrusion-retraction pacemaker. RhoA 
+activity initiates protrusion of the adherent leading edge resulting in PKA activation. PKA 
+phosphorylates RhoA at Ser188, leading to increased affinity for RhoGDI. RhoGDI binding 
+both removes RhoA from the membrane and interferes with its coupling to effectors 
+resulting in termination of protrusions, thereby completing a self-inhibiting negative 
+feedback loop that acts as a pacemaker of the protrusion-retraction cycle. When PKA is 
+inhibited or RhoA over-expression exceeds available RhoGDI, protrusion duration and 
+amplitude are markedly increased. This much slower cycle suggests the existence of a 
+second slower default pacemaker, such as the RhoA GTP-GDP cycle depicted in light gray.
+Tkachenko et al. Page 25
+Nat Cell Biol. Author manuscript; available in PMC 2013 August 18.
+Author Manuscript Author Manuscript Author Manuscript Author Manuscript

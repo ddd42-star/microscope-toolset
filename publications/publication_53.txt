@@ -1,0 +1,1126 @@
+Developmental Cell
+Article
+GEF-H1 Modulates Localized RhoA Activation
+during Cytokinesis under the Control of Mitotic
+Kinases
+Jo¨ rg Birkenfeld,1,4 Perihan Nalbant,1 Benjamin P. Bohl,1 Olivier Pertz,2 Klaus M. Hahn,3 and Gary M. Bokoch1,*
+1 Departments of Immunology and Cell Biology, The Scripps Research Institute, 10550 North Torrey Pines Road,
+La Jolla, CA 92037, USA
+2 Department of Pathology and Moores Cancer Center, Basic Science Building, University of California, San Diego,
+9500 Gilman Drive, MC 0612, La Jolla, CA 92037, USA
+3 Department of Pharmacology, University of North Carolina, CB7365, Mary Ellen Jones Building, Chapel Hill, NC 27599, USA
+4 Present address: Institut fu¨ r Biochemie und Molekularbiologie II, Klinikum der Heinrich-Heine-Universita¨ t, Universita¨ tsstr. 1,
+D-40225 Du¨ sseldorf, Germany.
+*Correspondence: bokoch@scripps.edu
+DOI 10.1016/j.devcel.2007.03.014
+SUMMARY
+Formation of the mitotic cleavage furrow is de-
+pendent upon both microtubules and activity
+of the small GTPase RhoA. GEF-H1 is a micro-
+tubule-regulated exchange factor that couples
+microtubule dynamics to RhoA activation.
+GEF-H1 localized to the mitotic apparatus in
+HeLa cells, particularly at the tips of cortical mi-
+crotubules and the midbody, and perturbation
+of GEF-H1 function induced mitotic aberrations,
+including asymmetric furrowing, membrane
+blebbing, and impaired cytokinesis. The mitotic
+kinases Aurora A/B and Cdk1/Cyclin B phos-
+phorylate GEF-H1, thereby inhibiting GEF-H1
+catalytic activity. Dephosphorylation of GEF-H1
+occurs just prior to cytokinesis, accompanied
+by GEF-H1-dependent GTP loading on RhoA.
+Using a live cell biosensor, we demonstrate dis-
+tinct roles for GEF-H1 and Ect2 in regulating Rho
+activity in the cleavage furrow, with GEF-H1 cat-
+alyzing Rho activation in response to Ect2-
+dependent localization and initiation of cell
+cleavage. Our results identify a GEF-H1-
+dependent mechanism to modulate localized
+RhoA activation during cytokinesis under the
+control of mitotic kinases.
+INTRODUCTION
+GEF-H1 and its mouse homolog Lfc represent novel mem-
+bers of the Dbl family of guanine nucleotide exchange fac-
+tors (GEFs) with RhoA-speciﬁc enzymatic activity (Krendel
+et al., 2002; Ren et al., 1998). Subcellular localization anal-
+ysis demonstrated that GEF-H1 is associated with micro-
+tubules (MTs), and that MT depolymerization leads to
+GEF-H1 activation, accompanied by a RhoA-dependent
+reorganization of the actin cytoskeleton ( Krendel et al.,
+2002). Thus, GEF-H1 regulation by MTs provides a
+novel mechanism to link RhoA-controlled cellular activities
+to MT depolymerization. Because GEF-H1 activity is de-
+pendent on the polymerization state of MTs, we specu-
+lated that the extensive MT rearrangements that occur
+during mitosis might affect GEF-H1 and, thereby, RhoA
+signaling.
+The small GTPase RhoA plays a central role in regulat-
+ing the formation of the actomyosin cleavage furrow (CF)
+during cell division. When RhoA is depleted genetically
+or through biochemical means, formation of the CF is pre-
+vented (Drechsel et al., 1997; Kishi et al., 1993; O’Connell
+et al., 1999). Moreover, the localization of RhoA activity to
+a precisely bounded zone seems to be critical for forma-
+tion of the contractile apparatus necessary for cell cleav-
+age (Bement et al., 2005). CF formation thus results from
+the local activation of RhoA in many cell types ( Piekny
+et al., 2005 ). However, in Rat-1 ( Yoshizaki et al., 2004 )
+and Rat-2 ( Bakal et al., 2005 ) cells, inhibition of RhoA
+does not prevent cytokinesis, but appears to exert effects
+on early mitotic spindle formation. Thus, the requirements
+for RhoA during cytokinesis appear to vary from cell type
+to cell type.
+Studies manipulating the position or the integrity of the
+mitotic spindle have indicated that spindle MTs send CF
+initiation signals to the cell cortex to regulate the assembly
+and function of the contractile ring (Alsop and Zhang,
+2004; Rappaport, 1997). In particular, astral MTs emanat-
+ing from the spindle poles, and antiparallel MT bundles be-
+tween separating chromosomes (i.e., the midzone spin-
+dle), have crucial roles in activating cortical regions,
+most likely by controlling localized activation of RhoA at
+the cell equator (D’Avino et al., 2005; Glotzer, 2004; Man-
+dato et al., 2000). However, the MT-regulated signals and
+mechanistic principles underlying RhoA activation during
+cytokinesis are poorly understood.
+Because small GTPase activation requires the action of
+speciﬁc GEFs, it is conceivable that MT signaling may im-
+pinge on Rho-selective GEFs. Ect2 represents such an
+Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc. 699
+i An update to this article is included at the end
+activator for Rho GTPases that has been implicated in cell
+division (Tatsumoto et al., 1999 ). There is accumulating
+evidence that the primary role of Ect2 is to ensure the lo-
+calized concentration of RhoA at the CF ( Kamijo et al.,
+2006; Nishimura and Yonemura, 2006; Yuce et al.,
+2005). However, whether Ect2 catalytic activity is required
+to activate RhoA during cytokinesis in mammalian cells
+remains unclear.
+Cdk1/Cyclin B and Aurora kinases have emerged as
+major regulators of mitotic progression through their abil-
+ity to phosphorylate numerous critical mitotic modulators
+(Ferrari, 2006; Nigg, 1995, 2001). Several lines of evidence
+have implicated mitotic kinases in the control of RhoA
+activity during cell division. Cdk1/Cyclin B modulates
+the activity of Ect2 during cytokinesis (Hara et al., 2006;
+Niiya et al., 2006), whereas phosphorylation by Aurora B
+is required to confer RhoA-speciﬁc GAP activity to
+MgcRacGAP in the same context (Minoshima et al.,
+2003). In the present work, we show that GEF-H1 is phos-
+phorylated during mitosis by both Aurora A/B and Cdk1/
+Cyclin B, and that phosphorylation of GEF-H1 during M
+phase coincides with reduced catalytic activity. GEF-H1
+dephosphorylation occurs at the onset of cytokinesis,
+and is accompanied by GEF-H1-dependent GTP loading
+on RhoA. Perturbation of endogenous GEF-H1 by both
+gene knockdown and overexpression of inhibitory mu-
+tants caused impairment of HeLa cell cytokinesis. Exami-
+nation of RhoA activation dynamics in HeLa cells stably
+expressing a ﬂuorescent resonance energy transfer
+(FRET)-based RhoA biosensor indicates an important reg-
+ulatory role for GEF-H1 in the activation of RhoA during
+cytokinesis.
+RESULTS
+GEF-H1 Subcellular Distribution Correlates
+with CF Formation
+Using afﬁnity-puriﬁed antibodies speciﬁc for GEF-H1
+(Zenke et al., 2004 ), we observed that GEF-H1 accumu-
+lates at the mitotic spindle during cell division (see
+Figure S1A in the Supplemental Data available with this
+article online). Detailed analysis of the subcellular distribu-
+tion of GEF-H1 during mitosis in asynchronous HeLa cells
+revealed that a substantial fraction of GEF-H1 localizes to
+the spindle apparatus throughout all stages of mitosis
+(Figure 1A). During telophase, a subset of GEF-H1 immu-
+noreactivity was enriched in a narrow equatorial band
+comprised of aligned short segments at sites of CF forma-
+tion, most likely representing overlapping plus ends of
+equatorial astral MTs (Figure 1A, telophase I). With the fur-
+row advancing inward, GEF-H1 segments became more
+condensed into a ring-like structure encompassing the
+Figure 1. Subcellular Localization of Endogenous GEF-H1
+during Mitosis
+(A) GEF-H1 is associated with the spindle apparatus throughout mito-
+sis. Asynchronous HeLa cells were ﬁxed with methanol/acetone and
+quadruple-stained for endogenous GEF-H1 (red channel), tubulin
+(green channel), actin (blue channel), and DNA (yellow). The scale
+bar represents 20mm.
+(B) GEF-H1 localizes to the tips of cortical MTs. Asynchronous HeLa
+cells were extracted for soluble tubulin, ﬁxed as above, and stained us-
+ing anti-pGEF-H1 (green) and anti-tubulin (red) antibodies or CREST se-
+rum. Boxed regions are shown in higher magniﬁcation. Confocal micro-
+graphs (single slicesof 0.54mm thickness) were analyzed for colocalized
+data points (displayed as white overlays in the colocalization panel).
+(C) During cytokinesis, GEF-H1 forms an equatorial ring encompassed
+by contractile actin structures. Confocal microscopy of mitotic HeLa
+cells stained with anti-GEF-H1 (green) and anti-actin (red) antibodies.
+Indicated regions (white arrows) are shown in higher magniﬁcation in
+the inserts.
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+700 Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc.
+midzone (Figure 1A, telophase II). Interestingly, our GEF-
+H1 antibodies did not stain the central spindle, suggesting
+that GEF-H1 distribution is restricted to astral and kineto-
+chore MTs (see alsoFigure 1B). Further examination using
+laser scanning confocal microscopy showed that GEF-H1
+immunoreactivity is enriched at the tips of spindle
+MTs (Figure 1B, tubulin panels; Figures S1 C and S1D).
+We noticed that MT tip-localized GEF-H1 was more efﬁ-
+ciently detected by a phosphorylation-speciﬁc GEF-H1
+antibody (Figure 1 B, pGEF-H1 panels) than by a non-
+phospho-GEF-H1 antibody (Figure S1C), possibly due to
+differences in epitope accessibility upon phosphorylation
+(see below). To visualize GEF-H1 distribution relative to
+centromeres, we stained metaphase and telophase cells
+with human CREST serum, which detects the centromere
+protein CENP-A (Figure 1B, CREST panels). In metaphase
+cells, GEF-H1-positive dots at MTs aligned juxtaposed to
+the centromeres. Later in telophase, when the chromo-
+somes moved pole-ward, GEF-H1 dots became com-
+pacted into a single band in the midzone region.
+Double-labeling experiments revealed that GEF-H1 and
+actin form a double-ring structure (Figure 1C, merge chan-
+nel) composed of an internal GEF-H1 immunoreactive cir-
+cle (Figure 1C, green channel) associated with the tubulin
+cytoskeleton and aligned with the inner face of the con-
+tractile actomyosin ring ( Figure 1 C, red channel). To-
+gether, these results indicate that GEF-H1 localizes to
+structures critical for CF formation and ingression,
+namely, cortical MTs and the midbody region.
+Perturbation of GEF-H1 Function Causes Defects
+in Cytokinesis
+If GEF-H1 is an important regulator of contractile ring for-
+mation and cytokinesis, then perturbation of endogenous
+GEF-H1 function should increase the extent of multinu-
+cleation as an indicator of failed cytokinesis. Indeed,
+siRNA-mediated depletion of endogenous GEF-H1 signif-
+icantly increased the formation of multinucleated cells
+(18.9% ± 6.4%) compared with control (CTRL) siRNA-
+transfected cells (8.4% ± 3.7%) (Figure 2A). As a positive
+control for multinucleation, we also depleted cells of Ect2:
+similar to previously published studies ( Kim et al., 2005),
+the number of nuclei was markedly increased in Ect2
+siRNA-treated cells (55% ± 5.3%; see alsoSupplemental
+Data).
+To corroborate the siRNA depletion data, we analyzed
+the consequences of overexpression of GEF-H1 inhibitory
+mutants on cell division.Figure 2B shows that overexpres-
+sion of a non-MT-associated, enzymatically inactive GEF-
+H1 mutant (EGFP-GEF-H1C53R+DHmut) had a greater
+effect on multinucleation than an MT-associated domi-
+nant-negative (d/n) EGFP-GEF-H1DH mut construct
+(26.9% ± 4.9% versus 12.6% ± 2.4%, compared to
+3.8% ± 1.1% for EGFP alone-expressing cells). These ﬁnd-
+ings are consistent with data showing that d/n GEF-H1 mu-
+tants defective in MT binding block endogenous RhoA
+activation more efﬁciently than do MT-bound forms,
+supporting the idea that endogenous GEF-H1 is most ac-
+tive when released from the tubulin cytoskeleton (Krendel
+Figure 2. Multinucleation Caused by
+GEF-H1 Perturbation
+(A) Multinucleated cells were found at 48 hr
+after transfection with GEF-H1 siRNA. Values
+shown are the means from four independent
+experiments in which over 1000 cells were
+counted per experiment; error bars indicate
+±SEM. For statistical analysis, all data were
+evaluated by two-tailed Student’s t test. Values
+signiﬁcantly different from controls (p% 0.01)
+are marked with an asterisk. Cells harboring
+more than one nucleus are indicated by an as-
+terisk in the micrograph. The scale bar repre-
+sents 20mm.
+(B) Overexpression of GEF-H1 inhibitory mu-
+tants induced multinucleation. The number of
+multinucleated cells as a percentage of the
+total cell population expressing the EGFP-
+tagged constructs was quantiﬁed in HeLa cells
+48 hr after transfection. A minimum of 100 cells
+from each of three independent experiments
+was scored for each construct. Values signiﬁ-
+cantly different from EGFP-expressing cells
+are marked with one (p%0.01) or two asterisks
+(p % 0.001). Micrographs on the right illustrate
+expression patterns of the different constructs.
+Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc. 701
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+et al., 2002; Zenke et al., 2004). Thus, both multinucleation
+caused by ablation of endogenous GEF-H1 and via over-
+expression of GEF-H1 inhibitory mutants suggest that
+perturbation of GEF-H1 impairs cytokinesis.
+GEF-H1 Depletion Induces Membrane Instability
+and Ectopic Furrowing during Cytokinesis
+Prolonged synchronization with nocodazole (noc) was fre-
+quently associated with cell death in GEF-H1 siRNA-
+treated cells ( Figure S2 B). Under milder conditions in
+which the apoptotic phenotype was attenuated (see Ex-
+perimental Procedures), we still observed that more cells
+displayed cortical aberrations during early mitotic stages
+when exposed to GEF-H1 siRNA (Figure 3 B), although
+the majority of cells progressed to later stages of mitosis,
+and chromosome alignment, segregation, and furrow ini-
+tiation appeared normal in both GEF-H1- and control-
+depleted cells (Figure S8; Movies S1–S3). As the furrow
+started to constrict, about two thirds of the progressing
+GEF-H1-depleted cells (i.e., 40.8% of all cells) exhibited
+membrane aberrations, including excessive cortical bleb-
+bing and the formation of unstable ectopic furrows ( Fig-
+ures 3 C–3E; Movie S2 ). Interestingly, uncoordinated
+furrowing and plasma membrane instabilities did not
+necessarily culminate in cytokinesis failure. Instead, ec-
+topic furrows regressed or joined with a robust central fur-
+row, while other uncoordinated membrane activities along
+the cortex abrogated upon daughter cell separation
+(24.8% ± 4.7%; Figure 3C).
+In about 16% ± 6% of GEF-H1-depleted cells, abnormal
+membrane activities could not be compensated and
+caused impairment of daughter cell abscission and sepa-
+ration, leading to the formation of multinucleated cells (20
+out of 144 cells;Figure 3D; Movie S3) or total collapse of
+the daughter cells (3 out of 144 cells; Figure 3E). In con-
+trast, the vast majority of cells expressing control siRNA
+did not exhibit membrane instabilities, and passed nor-
+mally through cell division ( Figure 3 A). Although some
+blebbing occurred in control cells, it was much less pro-
+nounced than observed upon GEF-H1 ablation, and was
+usually conﬁned to the cell poles. Downregulation of
+Ect2 induced severe cytokinetic defects, where 38.4% ±
+1% (n = 54 cells) of the cells analyzed were not able to per-
+form cleavage (data not shown). Multinucleation in this
+case, however, was not associated with cortical instabil-
+ities but solely with defects in CF formation and ingression
+Figure 3. Downregulation of GEF-H1 Causes Mitotic Aberrations
+Distribution of mitotic phenotypes in GEF-H1- (GEF-H1 siRNA) or control siRNA- (CTRL siRNA) transfected cells. Classiﬁcation of phenotypes: (A)
+regular cytokinesis; (B) collapsing: cortical hyperactivity during metaphase, ﬁnally collapsing; (C) instability: membranous aberrations arou nd the
+CF without impairment of cytokinesis; (D and E) failed cytokinesis: membranous aberrations during cytokinesis that are not compensated and
+gave rise to cytokinesis failure. Values are given as percentage of total cells, with error bars indicating ±SEM. Actual numbers are indicated. In 4 in-
+dependent experiments, a total of 144 GEF-H1-depleted and 114 control-depleted cells were scored (*p % 0.05; **p % 0.005; ***p % 0.0005).
+702 Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc.
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+(Figure S3). Overall, these results indicate distinct roles for
+Ect2 and GEF-H1 in cytokinesis and suggest that Ect2 is
+essential for early events occurring during CF induction,
+whereas GEF-H1 activity is important to coordinate corti-
+cal activities during CF ingression.
+GEF-H1 Is Phosphorylated Early in Mitosis
+by Aurora A Kinase
+Using phospho-speciﬁc antibodies raised against the
+pSer885 epitope, we observed high levels of endogenous
+phospho-GEF-H1 in lysates from noc-arrested mitotic
+HeLa cells (Figure 4A, upper panel), with a concomitant in-
+crease in 14-3-3 binding (Figure S5B). In contrast, GEF-H1
+phosphorylation and 14-3-3 binding were nearly unde-
+tectable in asynchronous HeLa cell lysates. When syn-
+chronized HeLa cells were allowed to progress through
+mitosis, a dramatic decrease in the amount of phosphor-
+ylated GEF-H1 was observed at 90 min after release,
+when the majority of cells entered telophase and under-
+went cytokinesis ( Gohla et al., 2005 )( Figure 4 A, lower
+panel). Dephosphorylation of GEF-H1 coincided with pro-
+teolysis of Cyclin B1, which starts at metaphase/ana-
+phase and is required for M phase exit ( Clute and Pines,
+1999). Phosphorylation of GEF-H1 at Ser885 was no longer
+detectable 180 min after release from the noc block, when
+most of the cells were in G1 phase. These results demon-
+strate that GEF-H1 is phosphorylated early during mitosis
+and undergoes speciﬁc dephosphorylation prior to the
+ﬁnal stages of cell division.
+Examination of the subcellular distribution of Ser 885-
+phosphorylated GEF-H1 in mitotic cells showed that im-
+munoreactivity speciﬁcally accumulated at the polar re-
+gions of the spindle apparatus ( Figure 4B; Figure S4A).
+This suggested that GEF-H1 might be phosphorylated
+by kinases associated with centrosomal structures such
+as Aurora A ( Andrews et al., 2003 ). As shown in
+Figure 4C, phospho-GEF-H1 indeed accumulated in Au-
+rora A-positive double spots, which correspond to the du-
+plicated centrosomes. In contrast, these structures were
+poorly stained using non-phospho-GEF-H1 antibody, per-
+haps due to steric hindrance of antibody access. We
+therefore veriﬁed the presence of GEF-H1 in centrosomes
+after EGFP-GEF-H1 plasmid microinjection into thymi-
+dine-synchronized HeLa cells (Figure 4D). Because phos-
+pho-GEF-H1 antibodies and EGFP-GEF-H1 minimally
+stained centrosomes of interphase cells (data not shown),
+this suggests that GEF-H1 is recruited to centrosomes
+during early mitotic events, perhaps coincident with
+phosphorylation by Aurora A.
+We next tested whether endogenous Aurora A kinase
+and GEF-H1 form a complex in live cells. Immunoprecipi-
+tation of GEF-H1 resulted in coprecipitation of Aurora A
+kinase (Figure 4E), whereas no coprecipitation was ob-
+served from GEF-H1-depleted cell lysates or with control
+IgG. In addition, Ser 885 phosphorylation of GEF-H1
+in vivo was abolished by blocking the activities of the cen-
+trosomal kinases Aurora A and the Cdk1/Cyclin B complex
+but not by PKA or GSK3b (Figure 5), indicating that GEF-H1
+phosphorylation during mitosis involves the mitotic
+kinases Aurora A/B and Cdk1/Cyclin B. We also found
+that inhibition of Aurora B, a paralog of Aurora A that local-
+izes to centromeres, abolished GEF-H1 phosphorylation
+later in mitosis (see Figure S4D). In vitro kinase assays
+showed that Aurora A directly phosphorylates GEF-H1 at
+Ser885, whereas Cdk1/Cyclin B (or Aurora B) surprisingly
+modiﬁed Ser959 instead (Figures S4C and S4D). Together,
+these results indicate speciﬁc interactions between Aurora
+A and GEF-H1 during cell division and identify the C termi-
+nus as the major phosphoacceptor region on GEF-H1.
+GEF-H1 Is Activated by Dephosphorylation
+to Promote GTP Loading on RhoA
+We examined whether phosphorylation could regulate the
+enzymatic activity of GEF-H1 in mitotic cells. Using Caly-
+culin A, a cell-permeable inhibitor of protein phospha-
+tases, we increased the levels of phosphorylated EGFP-
+GEF-H1 in transfected cells ( Figure 6 A). EGFP-GEF-H1
+immunoprecipitates from these cells were then treated
+with calf intestinal phosphatase (CIP) ± phosphatase in-
+hibitors, and used to catalyze the exchange of GDP for
+[35S]GTPgS on RhoA. While immunoprecipitates with
+high amounts of phospho-GEF-H1 did not catalyze nucle-
+otide exchange on RhoA ( Figure 6 B, CIP+Inh), the de-
+phosphorylation of GEF-H1 coincided with a dramatic in-
+crease in nucleotide exchange activity (Figure 6B, CIP),
+similar to the maximum exchange obtainable.
+To determine whether phosphorylation of GEF-H1 at
+Ser885 and/or Ser959 regulated GEF-H1 activity in the con-
+text of mitosis, we expressed GEF-H1 phosphorylation
+mutants in metaphase-synchronized HeLa cells and mea-
+sured GTP-bound RhoA. The increase in GTP-RhoA ob-
+served in mitotic lysates expressing wild-type GEF-H1
+(compare with EGFP control) was used as a reference
+(Figure 6 C, 100%). Overexpression of the phosphomi-
+metic S885D single mutant signiﬁcantly increased GTP-
+RhoA as compared to cells expressing EGFP alone,
+whereas the S959D single mutant also increased GTP-
+RhoA but was somewhat less active (Figure 6C). Phos-
+phorylation-deﬁcient GEF-H1 S885A and S959A mutants
+also induced RhoA activation similar to WT GEF-H1
+(Figure S5C). In contrast, overexpression of the phospho-
+mimetic double mutant SS885/959DD clearly did not sig-
+niﬁcantly increase GTP-RhoA over control levels. These
+data suggest that both Aurora A and Cdk1/Cyclin B-medi-
+ated phosphorylation are necessary for full negative regu-
+lation of GEF-H1 activity during early stages of mitosis.
+The phosphorylation of Ser885 in GEF-H1 is known to in-
+duce binding of 14-3-3 protein to GEF-H1 ( Zenke et al.,
+2004), and we observed that 14-3-3 was associated with
+GEF-H1 in mitotic cell lysates ( Figure S5B). Thus, part of
+the inhibitory effect of Aurora A-induced Ser885 phosphor-
+ylation in vivo may result from the stimulation of 14-3-3
+binding to GEF-H1.
+GEF-H1 Depletion Alters RhoA Activation Dynamics
+during Cytokinesis in Live Cells
+GEF-H1 is not phosphorylated and therefore most proba-
+bly exists as an active form during telophase, a time point
+Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc. 703
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+704 Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc.
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+when mitotic cells form the CF in a RhoA-dependent man-
+ner. To test whether GEF-H1 is involved in the activation of
+RhoA in telophase, we depleted HeLa cells of endogenous
+GEF-H1 and Ect2 using siRNA. Similar to cells in inter-
+phase (Figure S6B), GEF-H1 expression in mitotic cells
+was suppressed by approximately 79% (±15, 8%), while
+Ect2 siRNA-induced knockdown was nearly complete,
+with 4% (±3, 4%) protein expression remaining (Figure 7A,
+graph). Determination of GTP-RhoA accumulation in syn-
+chronized, siRNA-treated cells showed that control
+siRNA-treated cells exhibited increased GTP-bound
+RhoA during telophase (Figures 7A and 7B, CTRL siRNA).
+Depletion of Ect2 did not alter GTP-RhoA formation during
+telophase (Ect2 siRNA), which was surprising considering
+the known requirement for Ect2 to localize RhoA to the
+equatorial cortex prior to CF ingression. In contrast,
+GEF-H1 depletion led to a strong reduction in the amount
+of activated RhoA during telophase, while RhoA activation
+remained largely unaffected during prophase and meta-
+phase (GEF-H1 siRNA). However, for both GEF-H1- and
+Ect2-ablated cells, high levels of RhoA activation were de-
+tected at 180 min, further suggesting hampered exit from
+mitosis. Taken together, these data indicate that GEF-H1
+is involved in the activation of RhoA during cytokinesis.
+To test the hypothesis that GEF-H1-induced mitotic ab-
+errations involve perturbed RhoA activation, we generated
+cells stably expressing a single-chain FRET-based bio-
+sensor that responds to GTP loading on RhoA (Pertz
+et al., 2006)( Figure 7C). Analogous to endogenous RhoA
+in trichloroacetic acid (TCA)-ﬁxed cells ( Yonemura et al.,
+2004), CFP ﬂuorescence of the biosensor concentrates
+at the equatorial cortex at the onset of furrowing
+(Figure 7D, CFP panel, anaphase) and during membrane
+ingression (telophase I + II), indicating that it likely reﬂects
+regulation of endogenous RhoA. We examined spatiotem-
+poral changes in the activity of HeLa cell RhoA during cy-
+tokinesis (Figure 7E; Figure S10). Images were taken from
+biosensor-expressing cells that entered anaphase, as evi-
+denced by initiation of chromosome separation. The emis-
+sion ratio FRET/CFP was used to represent RhoA activa-
+tion, as described (Pertz et al., 2006 ). In control cells,
+activated RhoA was found to accumulate at the equatorial
+cortex during anaphase ( Figure 7E, CTRL siRNA, FRET
+panel, time point 0). As furrowing progressed, RhoA activ-
+ity increased in the CF, reaching a peak level in the late
+phase of cytokinesis when the midbody matrix was
+formed and daughter cells started to separate (13 out of
+15 cells analyzed) (here, time point 21.42). In cells treated
+with GEF-H1 siRNA, early cortical activation of RhoA was
+not affected (Figure 7E, GEF-H1 siRNA, FRET panel, time
+points 0–10.17). However, as constriction proceeded,
+Figure 4. Association of GEF-H1 with Aurora A
+(A) Upper panel: GEF-H1 is phosphorylated at the onset of mitosis. HeLa cells were incubated with 100 ng/ml noc for 16 hr. Rounded mitotic cells,
+harvested by mechanical knockoff (mit.), and remaining adherent interphase cells (int.) were lysed and analyzed by immunoblotting with anti-pGEF-
+H1 or anti-GEF-H1 antibodies. Lysates from asynchronous (async.) or Pak1-transfected (PAK1; pSer885 control) HeLa cells were used as controls.
+Lower panel: dephosphorylation of GEF-H1 during telophase/cytokinesis. HeLa cells were synchronized in mitosis by thymidine and noc, collected
+by knockoff, and replated on poly-L-lysine-coated culture dishes. Lysates were analyzed by anti-pGEF-H1 or anti-GEF-H1 immunoblotting at the
+indicated time points. The degradation of Cyclin B was used as an additional marker for cell synchrony. 14-3-3z controls were included to conﬁrm
+comparable protein loading.
+(B) Immunolocalization of Ser885-phosphorylated GEF-H1 in mitotic cells. Asynchronous HeLa cells were ﬁxed and stained for GEF-H1 (red channel),
+tubulin (green channel), and DNA (DAPI) as described in Figure 1.
+(C) pGEF-H1 colocalizes with Aurora A in centrosomes. HeLa cells in prophase were costained for Aurora A (red channel) and either GEF-H1 or pGEF-
+H1 (green channels). DNA was detected by DAPI staining. Yellow color (merged image) indicates colocalization of pGEF-H1 with Aurora A in centro-
+somes.
+(D) Centrosome localization of EGFP-GEF-H1. HeLa cells were microinjected with plasmid DNA encoding EGFP-GEF-H1 and analyzed by time-lapse
+video ﬂuorescence microscopy. Arrows indicate the position of the centrosomes.
+(E) GEF-H1 interacts with Aurora A in vivo. Immunoprecipitation of GEF-H1-depleted (GEF-H1 siRNA) or control-depleted (CTRL siRNA) mitotic
+lysates with either anti-GEF-H1 antibodies or control IgG after DSP crosslinking. The resulting immunoprecipitates were isolated, separated on
+SDS-PAGE, and immunoblotted with anti-Aurora A antibody. Lysate lanes shown represent 10% of input lysate. WB, western blot.
+Figure 5. Phosphorylation of GEF-H1 by Mitotic Kinases
+Aurora A and Cdk1/Cyclin B
+Inhibition of Aurora kinases and Cdk1/Cyclin B abolish GEF-H1 phos-
+phorylation during mitosis. Before adherence, harvested synchronized
+HeLa cells were inhibitor treated for 15 min during release into fresh
+culture medium (w/o nocodazole) supplemented with the same inhib-
+itors (at denoted concentrations and speciﬁcities). Inhibitors used here
+are speciﬁc for serine-threonine kinases that are either predicted by
+the Scansite algorithm ( http://scansite.mit.edu) to phosphorylate
+GEF-H1 (PKA, GSK3b; data not shown) or are required for the control
+and timing of mitotic progression (Aurora A/B, Cdk1/Cyclin B) (Ferrari,
+2006; Nigg, 2001). At the indicated times (after adherence), cells were
+lysed and analyzed by anti-pGEF-H1 and anti-GEF-H1 immunoblot-
+ting.
+Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc. 705
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+RhoA activation in the forming CF decreased. Of particular
+interest, in 62% of the cells analyzed (8 out of 13), localized
+RhoA activation was strongly diminished at late stages of
+cytokinesis shortly before midbody formation, although
+RhoA protein was still concentrated at sites of cleavage
+as in control cells (CFP + FRET panels, time points
+12.06–19.20). The loss of localized RhoA activation in
+the CF was correlated with dramatic cortical blebbing
+and aberrant membrane activities, as described (Figure 3)
+(see also Figure S10).
+In contrast, in Ect2-depleted cells, CFP ﬂuorescence of
+the RhoA biosensor was no longer accumulated at equa-
+torial sites of CF formation (Ect2 siRNA, CFP panels). In-
+stead, the biosensor was randomly distributed along the
+cell periphery, correlated with strong but unlocalized cor-
+tical activation of RhoA throughout all stages of mitosis
+analyzed (Ect2 siRNA, FRET panels) (5 out of 6 cells ana-
+lyzed). RhoA activation in the CF was only marginal (FRET
+panels, time points 19.20–22.24). Concomitantly, CF for-
+mation and constriction was either markedly slowed
+(Figure 7E, Ect2 siRNA, DIC panels) or incomplete and of-
+ten resulted in regression of the CF and binucleated cells
+(see Figure S10 , Ect2 siRNA, DIC panels; see also
+Figure S3B). In combination with the pull-down activity as-
+say data presented, these results demonstrate distinct
+roles for GEF-H1 and Ect2 in RhoA activation during cyto-
+kinesis. Whereas Ect2 appears to initially direct the local-
+ization of RhoA protein to equatorial sites prior to CF for-
+mation, GEF-H1 participates in GTP loading of RhoA
+after furrowing has been induced.
+Figure 6. Dephosphorylation Stimulates
+GEF-H1 Enzymatic Activity
+(A) Calyculin A induces phosphorylation of
+GEF-H1 in vivo. HeLa cells were treated with
+100 nM Calyculin A or DMSO for 45 min. The
+amount of phospho-GEF-H1 in the different ly-
+sates was analyzed by immunoblotting with
+anti-pGEF-H1 antibodies.
+(B) Increase of GEF-H1 guanine nucleotide ex-
+change activity in vitro after dephosphoryla-
+tion. EGFP-GEF-H1 immunoprecipitates from
+Calyculin A-stimulated HeLa cells were treated
+with calf intestine alkaline phosphatase (CIP) in
+the presence (CIP+inh) or absence (CIP) of
+phosphatase inhibitors and subjected to
+in vitro GEF assays as inExperimental Proce-
+dures. The level of nucleotide binding in the
+presence of EDTA was set to 100%. pGEF-
+H1 levels in the immunoprecipitates after CIP
+treatment were analyzed by anti-pGEF-H1 im-
+munoblotting (insert). Each value represents
+the mean (±SEM) of three independent experi-
+ments. The asterisks indicate values signiﬁ-
+cantly different from EDTA controls (p%
+0.0001).
+(C) Effects of GEF-H1 derivatives on accumu-
+lation of GTP-bound RhoA during mitosis.
+HeLa cells were transfected with the indicated
+EGFP-tagged expression vectors coding for
+different GEF-H1 mutants or EGFP alone for
+24 hr. Following a 15 hr synchronization pe-
+riod with 100 ng/ml noc, cells were released
+into fresh medium for 45 min prior to lysis.
+Subsequently, the GTP-bound fraction of
+RhoA was extracted from the lysates by
+GST-RBD. The amount of RhoA bound to
+GST-RBD (GTP-RhoA) and the level of RhoA
+expression (total RhoA) in whole-cell lysates
+were determined by immunoblotting using
+anti-RhoA antibodies. RhoA activation was
+expressed as percent activation relative to
+the EGFP-GEF-H1 WT-transfected control
+(set to 100%). Each data point represents
+the mean (±SEM) of at least three indepen-
+dent experiments. The asterisks indicate
+values signiﬁcantly different from EGFP-
+GEF-H1 WT controls (p % 0.01). The dashed line marks the level of GTP-RhoA in EGFP-expressing cells. All values were normalized for expres-
+sion efﬁciency of the individual constructs (anti-EGFP immunoblotting) and total RhoA levels by densitometric analysis as in (A). PonceauS staining
+was used to determine the amount of GST-RBD in the reaction.
+706 Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc.
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+DISCUSSION
+GEF-H1 Localization May Link Cortical Activation
+of RhoA to MTs
+Microtubule-derived signals are important for RhoA trans-
+location to and activation at the equatorial cortex to allow
+positioned assembly and contraction of the actomyosin
+CF (Bement et al., 2005 ). We have shown in this study
+that GEF-H1 meets important requirements for a regulator
+of RhoA activation at the cell cortex. First, GEF-H1 local-
+izes to the tips of cortical MTs of the mitotic spindle,
+thereby placing its catalytic activity in close proximity to
+the cell cortex ( Figure 1). Second, as the mitotic spindle
+becomes compressed by the ingressing cortex, short
+GEF-H1 immunoreactive segments in the equatorial plane
+adopt a condensed circular structure that is aligned with
+the inner face of the actomyosin contractile ring. A similar
+structure has been described inDrosophila that is made
+up of GAP50C-PAV, linking the MT network with the acto-
+myosin contractile ring through interaction with the Ect2
+homolog Pbl ( Somers and Saint, 2003 ). GEF-H1 could
+therefore represent another structural element to link
+MTs with the cell cortex in mammalian cells.
+GEF-H1 Is a Target of Aurora A and Cdk1/Cyclin B
+Kinases during Early Mitosis
+In the present work, we have established the mitotic ki-
+nases Aurora A/B and Cdk1/Cyclin B as important regula-
+tors of GEF-H1 activity during cell division. We identiﬁed
+Ser885 of GEF-H1 as the principal phospho-acceptor site
+for Aurora A ( Figure S4 B) and Ser 959 as the primary
+Cdk1/Cyclin B GEF-H1 phosphorylation site. It is possible
+that upon mitotic entry, phosphorylation by Cdk1/Cyclin B
+induces a conformational change in the GEF-H1 C-termi-
+nal regulatory domain allowing Aurora A to access and
+phosphorylate Ser885, which would be otherwise masked
+by structural constraints. Similar regulation has been
+described for Ect2 in which prephosphorylation by Cdk1/
+Cyclin B stimulated the association of Ect2 with Polo-like
+kinase 1, likely by releasing Ect2 from intramolecular auto-
+inhibitory interactions (Hara et al., 2006).
+Reducing GEF-H1 phosphorylation by phosphatase
+treatment resulted in increased guanine nucleotide ex-
+change activity of WT GEF-H1 (Figure 6B). Consistently,
+phosphomimetic Ser 885D/Ser959D double mutants of
+GEF-H1 signiﬁcantly exhibited less RhoA activation in mi-
+totic lysates (Figure 6C). We conclude that phosphoryla-
+tion of GEF-H1 during cell division negatively regulates
+its enzymatic activity. Our results do not address whether
+phosphorylation might inhibit GEF-H1 activity by affecting
+MT binding. However, the reduction in exchange activity
+may involve 14-3-3 protein binding induced by Ser 885
+phosphorylation (Zenke et al., 2004), as we have observed
+association of 14-3-3 with GEF-H1 in mitotic cell immuno-
+precipitates (Figure S5B). Because MT depolymerization
+rapidly activates GEF-H1 to enhance cell contractility
+(Krendel et al., 2002 ), GEF-H1-induced contractions
+would likely interfere with cortical stabilization required
+for mitotic cell rounding. Given that the interphase-mitosis
+transition is accompanied by a rapid breakdown of the cy-
+toplasmic MT network (Zhai et al., 1996), immediate inac-
+tivation of GEF-H1 (by phosphorylation) may be necessary
+for mitotic rounding.
+GEF-H1 and Ect2 Mediate Different Aspects of RhoA
+Activation during Cytokinesis
+Ect2 is essential for RhoA localization at the equatorial
+cortex, a prerequisite for CF formation and ingression
+(Nishimura and Yonemura, 2006; Yuce et al., 2005). Inhibi-
+tion of Ect2 often relies on overexpression of the inhibitory
+N terminus (Saito et al., 2004), and mitotic cells expressing
+Ect2-N show reduced RhoA activation during cytokinesis
+(Kimura et al., 2000). It is not clear, however, whether the
+reduced GTP loading on RhoA is due to interference with
+Ect2 exchange activity, as opposed to the activation and/
+or localization of other GEFs (e.g., GEF-H1) that might be
+triggered by full-length Ect2. Accordingly, N-terminal mu-
+tants of Ect2 that retained full GEF activity in vitro failed to
+rescue the cytokinesis defect in cells depleted of endoge-
+nous Ect2, suggesting that recruitment of additional regu-
+lators apart from Ect2 exchange activity itself is crucial for
+RhoA activation. We observed that siRNA-mediated de-
+pletion of Ect2, while quite effective (see Figure S6), did
+not interfere with bulk RhoA activation during telophase
+(Figures 7A and 7B), also indicating that Ect2 does not di-
+rectly activate RhoA. In clear contrast, while inhibition of
+GEF-H1 did not affect recruitment of RhoA and other
+regulators of cytokinesis to cortical regions (Figure 7 E;
+Figure S7), ablation of GEF-H1 caused a strong decrease
+in overall RhoA activation during telophase ( Figures 7 A
+and 7E). Furthermore, we observe that the activation pro-
+ﬁle of GEF-H1 during mitosis is inversely correlated to that
+of Ect2. Whereas GEF-H1 is inhibited during early stages
+of mitosis and is activated by dephosphorylation during
+cytokinesis (this study), phosphorylation increases the
+catalytic activity of Ect2 in vitro ( Tatsumoto et al., 1999 )
+and in M phase cells ( Hara et al., 2006; Niiya et al.,
+2006). This indicates distinct roles for GEF-H1 and Ect2
+during cell division.
+Inhibition of GEF-H1 Causes Late Defects in
+Cytokinesis that Correlate with Decreased
+RhoA Activation at the CF
+Using time-lapse video microscopy, we identiﬁed aberra-
+tions during CF formation in cells treated with GEF-H1-
+speciﬁc RNAi duplexes. A majority of the GEF-H1-de-
+pleted cells demonstrated loss of membrane stability in
+the CF during late stages of mitosis after normal furrow in-
+duction (Figures 3C and 3D). These perturbations did not
+necessarily coincide with cytokinesis failure, as membra-
+nous aberrations often subsided, and a compact midbody
+bridge formed (Figure 3 C). The membrane phenotype
+observed here is reminiscent of the depletion of either the
+actin bundling protein anillin or the RhoA effector citron
+kinase (D’Avino et al., 2004; Echard et al., 2004 ), whose
+downregulation led to reduced cortical stability of the
+cleavage plane and, later, the intercellular midbody bridge
+(Echard et al., 2004). This resulted in the loss of membrane
+Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc. 707
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+Figure 7. GEF-H1 Modulates RhoA Activation in Mitotic Cells
+(A and B) Cell cycle-associated changes in the level of GTP-RhoA after GEF-H1 depletion. Synchronized HeLa cells were subjected to GST-RBD pull-
+down assays to detect GTP-RhoA during different stages of mitosis in lysates depleted of GEF-H1 or Ect2, or control-depleted lysates. A represen-
+tative experiment is shown in (A). At least four independent assays for each condition were used to quantify the activation proﬁle of RhoA as in
+708 Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc.
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+attachment to this structure, causing a blebbing pheno-
+type. As GEF-H1 might be important for both linking corti-
+cal components (e.g., anillin-bundled actin ﬁlaments of the
+contractile ring) to the mitotic spindle as well as regulating
+the activity of RhoA effector proteins in the context of con-
+tractile ring formation and ingression, our ﬁndings are con-
+sistent with GEF-H1 RNAi-induced aberrations of the CF.
+Using a FRET-based biosensor, we detected high RhoA
+activity at sites of constriction and in the CF during all
+stages of cytokinesis (Figure 7E; Figure S10). In contrast,
+Yoshizaki et al. (2003) were not able to detect high levels
+of RhoA activation in the CF of HeLa cells using their
+FRET-based Raichu-RhoA probes. These conﬂicting ob-
+servations may be explained by the inherent insensitivity
+of Raichu probes to RhoGDI regulation, as well their con-
+stitutive localization to membranes ( Nakamura et al.,
+2005; Yoshizaki et al., 2003, 2004 ). The localization of
+the RhoA biosensor (Pertz et al., 2006) used in this study
+coincides with that of endogenous RhoA, perhaps due
+to its normal binding to RhoGDI, which controls reversible
+RhoA membrane targeting (DerMardirossian and Bokoch,
+2005). In fact, RhoGDI activity appears to be important for
+RhoA function during cytokinesis, as cells lacking RhoGDI
+are multinucleated (Rivero et al., 2002). We conclude that
+the patterns of RhoA activity we detect reﬂect the endog-
+enous RhoA activation proﬁle and, hence, increase in the
+CF during cytokinesis.
+GEF-H1 ablation in HeLa cells causes a decrease in
+RhoA activation during late stages of cytokinesis, as dem-
+onstrated in this paper by FRET and Rho binding domain
+(RBD) afﬁnity-based assays (Figures 7 A and 7E). Early
+cortical RhoA activation was, however, not perturbed by
+reducing GEF-H1 protein levels. Therefore, GEF-H1 may
+act as a modulator of late mitosis to ensure that midbody
+formation and daughter cell abscission occur correctly.
+From this perspective, GEF-H1 might be involved in sus-
+taining high RhoA activity in the CF to ensure contractility
+and cortical stiffness (O’Connell et al., 1999). By providing
+cortical tension in the CF, this would also guarantee that
+polarized daughter cell spreading is initiated from the
+poles and migration occurs in opposite directions. Loss
+of tension in the CF would consequently coincide with
+plasma membrane instabilities, especially as new mem-
+brane material might still be added to the CF to adjust
+the normally high furrow cortical tensions. Reduced
+RhoA activation in the CF caused by GEF-H1 depletion
+is therefore consistent with the observed membrane per-
+turbations during cell cleavage. In contrast to our results,
+Bakal et al. (2005) observed that Lfc, the mouse homolog
+of GEF-H1, had an early inﬂuence on mitotic spindle as-
+sembly in Rat-2 cells. We clearly established here that
+early mitotic effects, including mitotic spindle formation,
+are not observed upon disruption of GEF-H1 function in
+HeLa cells ( Figure S8). We note that Bakal et al. (2005)
+did not directly assess the regulation of RhoA activity in
+Rat-2 cells by Lfc, precluding comparisons of how RhoA
+activation might inﬂuence the phenotypic differences ob-
+served. However, such differences in GEF-H1/Lfc function
+may be accounted for by a number of variables, including
+differences in the adherent properties of the cells used, in
+regulatory mechanisms modulating GEF activity, or by in-
+trinsic differences in mitotic mechanisms that have been
+noted between cells (Burgess and Chang, 2005).
+Our data also establish that Ect2 and GEF-H1 mediate
+different aspects of RhoA activation at the cell cortex in
+HeLa cells. Bulk RhoA activation is not affected by Ect2
+depletion, and RhoA activation appears to be mislocal-
+ized, rather than diminished (Figure 7E; Figure S10). This
+suggests that Ect2 does not directly catalyze GTP loading
+on RhoA during cytokinesis. We propose that Ect2 serves
+as a core signaling platform essential for the recruitment of
+important modules of the cleavage machinery such as
+RhoA and its regulators to equatorial sites (seeFigure S9).
+Interactions of Ect2 with several components implicated in
+the regulation of actomyosin-based contractility of the CF
+are known ( Chalamalasetty et al., 2006; Kamijo et al.,
+2006; Yuce et al., 2005). Consequently, loss of Ect2 would
+cause delocalization of cleavage factors from the equator,
+resulting in dispersed RhoA activation around the cortex.
+In good agreement, as a result of Ect2 siRNA treatment,
+RhoA activation is no longer concentrated at the CF and
+becomes scattered around the cell cortex, as indicated
+by our FRET experiments. We suggest that once a
+RhoA-containing signaling complex is assembled and ac-
+tivated at the cell cortex in an MT- and Ect2-dependent
+manner, RhoA cycling is intensiﬁed by localized activation
+Figure 6D (B). The amount of GTP-RhoA at 45 min after noc release was set to 100%. All values were normalized for the total amount of RhoA. Error
+bars indicate ±SEM ([A]; graph). The remaining expression of GEF-H1 and Ect2 in the mitotic lysates were quantitated densitometrically after immu-
+noblotting and normalized to CTRL siRNA-treated cells. Values represent the mean of four independent determinations ± SEM. Note that Ect2 ab-
+lation was more efﬁcient than depletion of GEF-H1.
+(C) HeLa cells stably transfected with a FRET-based RhoA biosensor were analyzed for expression of the latter by live microscopy (upper panel; CFP
+channel) and immunoblotting of respective lysates using anti-RhoA antibodies (lower panel). Biosensor expression was/C242-fold increased over en-
+dogenous RhoA levels as determined by densitometric analysis.
+(D) Localization of the RhoA biosensor in live cells during cytokinesis. The subcellular distribution of the RhoA biosensor in live cells (CFP panel)was
+compared to that of endogenous RhoA in TCA-ﬁxed cells during different stages of mitosis. Fixed cells were stained with anti-RhoA (green) and anti-
+tubulin (red) antibodies and DAPI (blue) for DNA.
+(E) RhoA activation patterns during cytokinesis. HeLa cells stably expressing the RhoA biosensor were transfected with the indicated siRNAs for 30 hr
+before progression through cytokinesis was analyzed by DIC microscopy and FRET/CFP ratio imaging to represent FRET efﬁciency (FRET). The lo-
+calization of the biosensor is shown in the CFP channel. FRET pictures denote activation patterns of the biosensor. All images are processed and
+scaled identically so that regions of intense RhoA activity are shown in red. The elapsed time is denoted at the bottom right corners of each picture.
+A representative image of at least six similar images acquired for each condition is shown. White arrows indicate equatorial regions with high RhoA
+activation in CTRL-depleted cells and reduced RhoA activation in GEF-H1- and Ect2 siRNA-treated cells during late stages of cytokinesis. The
+asterisks indicate regions of aberrant membrane activities in cells treated with GEF-H1 siRNA.
+Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc. 709
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+of GTPase regulators such as GEF-H1. Accordingly, per-
+turbation of GEF-H1 was accompanied by late cytokinetic
+defects but did not affect localization of RhoA and other
+regulators of cytokinesis (Figure S7).
+Because CF induction was not affected by GEF-H1 de-
+pletion, this also suggests the existence of additional
+RhoA activators. Recently, a new exchange factor, Myo-
+GEF (Wu et al., 2006), was identiﬁed that associates with
+nonmuscle myosin II and whose depletion also causes
+multinucleation. For the future, it will be interesting to an-
+alyze how different RhoA GEFs are coordinated through
+MTs, mitotic kinases, and associated signaling factors to
+modulate and ﬁne tune different aspects of mammalian
+cell contractile ring formation and constriction.
+EXPERIMENTAL PROCEDURES
+Expression Constructs
+EGFP-GEF-H1 full-length constructs in the mammalian expression
+vector pCMV5 and GST-tagged individual domain constructs of
+GEF-H1 in the bacterial expression vector pGEX-KG have been de-
+scribed (Krendel et al., 2002; Zenke et al., 2004 ). An EGFP-GEF-H1
+C53R/Y393A construct was generated by inserting an N-terminal
+KpnI/BstBI fragment including the C53R mutation into a KpnI/BstBI
+cut pCMV5-EGFP-GEF-H1 DHmut vector which contained the Y393A
+mutation ( Krendel et al., 2002 ). Phosphomimetic (S885D, S959D,
+SS885/959DD) and nonphosphorylatable GEF-H1 mutants (S885A,
+S959A, SS885/959AA) were generated by site-directed mutagenesis
+and conﬁrmed by sequencing.
+Antibodies
+Generation and afﬁnity puriﬁcation of the polyclonal anti-GEF-H1 anti-
+body used in this study has been described (Zenke et al., 2004). The
+polyclonal anti-pS885 GEF-H1 antibody was from Cell Signaling Tech-
+nology. Both anti-GEF-H1 antibodies were used at 1:1000 in immuno-
+blots and 1:100 in IF experiments. Additional antibodies used in this
+work are detailed inSupplemental Data.
+RNAi Interference
+GEF-H1- and Ect2-directed pools of four individual siRNA duplex oli-
+gonucleotides (SMARTpool reagent) were purchased from Dharma-
+con RNA Technologies and selected according to the SMARTselection
+algorithm (seeSupplemental Data ). siRNA pools were transfected
+using LipofectAmine 2000 (Invitrogen), as indicated in Supplemental
+Data.
+Cell Culture, DNA Transfections, Synchronization,
+and Drug Treatments
+HeLa cells were cultured in Dulbecco’s modiﬁed Eagle’s medium
+(DMEM) containing 8% fetal bovine serum, 10 mM glutamine,
+10 mM HEPES, and antibiotics (100 U/ml penicillin G and 100mg/ml
+streptomycin). For biochemical analysis, cells were grown in 10 cm
+dishes and transfected with 5–10mg EGFP-tagged GEF-H1 constructs
+using LipofectAmine 2000 per the manufacturer. For immunostaining,
+HeLa cells were grown on glass in 24-well plates and transfected with
+0.1–0.5 mg plasmid DNA using LipofectAmine Plus reagent (Invitrogen),
+per the manufacturer’s recommendations.
+Cell synchronization in prometaphase was achieved by the thymi-
+dine/nocodazole method and mitotic cells were processed as previ-
+ously described, with minor modiﬁcations (Gohla et al., 2005 ); see
+Supplemental Data.
+Aurora A kinase activity was inhibited with 5 mM ZM477439 (kindly
+provided by Astra Zeneca), Aurora B with 0.5 mM Hesperadin (a gift
+of Boehringer Ingelheim), Cdk1/Cyclin B with either 10 mM Purvalanol
+A (Calbiochem) or 200 nM BMI-1026 (kindly provided by Kyung Lee,
+NCI), protein kinase A was blocked with 10 mM H89 (Calbiochem),
+and GSK3 with 10 mM SB216763 (Tocris). Solvent (DMSO) controls
+were performed in parallel.
+Immunoﬂuorescence and Microscopy
+For microscopic observations, HeLa cells were grown on glass cover-
+slips in 24-well plates in DMEM containing 8% fetal calf serum and
+transfected as described above. For localization of endogenous
+GEF-H1, cells were ﬁxed in ice-cold MeOH or MeOH/acetone (50:50)
+for 20 min. To enhance visualization of GEF-H1 at MTs, soluble cellular
+components were extracted for 30 s in extraction buffer (80 mM PIPES
+[pH 6.8], 1 mM MgCl2, 4 mM EGTA, 10 mM Taxol, 0.5% [w/v] Triton
+X-100) prior to ﬁxation. To stain for endogenous RhoA, cells were ﬁxed
+in 10% TCA at 4/C14C( Yonemura et al., 2004). Cells were processed for
+immunoﬂuorescence staining according to Gohla et al. (2005) using
+Alexa 488 and Alexa 568 secondary antibody conjugates. DNA was
+visualized with DAPI (1:2000; Sigma). Quadruple stainings were
+obtained using biotinylated phalloidin together with Alexa 750-labeled
+streptavidin in accordance with the manufacturer’s suggestions
+(Molecular Probes).
+Dominant-negative (d/n) GEF-H1 mutants were transfected as
+above and ﬁxed in ice-cold MeOH. Only those cells that expressed
+the EGFP fusion proteins of interest at comparable levels (similar to
+cells expressing EGFP alone) were scored. For this study, multinucle-
+ated cells were deﬁned as cells with more than one nucleus, including
+lobulated and macro- and micronuclei (Gohla et al., 2005).
+Live Cell Imaging
+Live cell imaging of dividing cells was performed in a sealed chamber
+at 37/C14C on a Nikon TE2000-U microscope with a 403/1.3 oil objective
+and differential interference contrast (DIC) optics. Multidimensional
+acquisition was controlled by MetaMorph software. For RNAi experi-
+ments, cells were transfected with siRNA duplexes for 24 hr and
+then synchronized with 100 ng/ml noc for 6–9 hr. After a 45 min release
+period in fresh medium, mitotic cells were imaged every 20 s for a
+period of 7 hr.
+RhoA Activation in Dividing Cells
+A HeLa cell line stably expressing a RhoA biosensor (Pertz et al., 2006)
+was generated by cotransfecting 4 mg RhoA biosensor plasmid DNA
+together with 1mg pPURO vector (Clontech). Stable clonal populations
+were isolated based on puromycin resistance and YFP ﬂuorescence,
+then further puriﬁed by cell sorting (FACS). FRET imaging was per-
+formed as described (Pertz et al., 2006); see also Supplemental Data.
+Wild-type HeLa cells or HeLa cells transfected for 24 hr with EGFP-
+GEF-H1 constructs or siRNA were synchronized with thymidine/noc or
+noc alone, respectively (see text) and released for the indicated times
+in fresh medium prior to performing Rhotekin RBD pull-down assays to
+quantify GTP-RhoA (Ren and Schwartz, 2000).
+Kinase Assays
+Active His-tagged Aurora A/B and Cdk1/Cyclin B kinases were pur-
+chased from Upstate Cell Signaling Solutions. In vitro phosphorylation
+assays were carried out as described (Knaus et al., 1995); see Supple-
+mental Data for details.
+Phosphatase Treatment, (Co)Immunoprecipitation, and In Vitro
+Exchange Assays
+Phosphatase treatments, chemical crosslinking with dithiobissuccini-
+midylpropionate (DSP), coimmunoprecipitation, and in vitro exchange
+assays are detailed inSupplemental Data or described elsewhere
+(Krendel et al., 2002; Zenke et al., 2004).
+Supplemental Data
+Supplemental Data include ten ﬁgures, three movies, and Supplemen-
+tal Experimental Procedures and are available athttp://www.
+developmentalcell.com/cgi/content/full/12/5/699/DC1/.
+710 Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc.
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+ACKNOWLEDGMENTS
+We thank B. Anliker and C. Roberson for critical reading and com-
+ments on the manuscript. We are grateful to K. Matter (London, UK),
+C. Der (University of North Carolina, Chapel Hill), Claire Crafter (Astra
+Zeneca), Kyung S. Lee (NCI), and Boehringer Ingelheim for kindly pro-
+viding reagents, and to R. Rottapel (Toronto, Canada) for sharing un-
+published data. This work was supported by NIH grant GM39434 (to
+G.M.B.) and postdoctoral fellowships by the Deutsche Forschungsge-
+meinschaft (DFG) (Bi814/1-1) and the American Heart Association
+(0425020Y) (to J.B.).
+Received: July 18, 2006
+Revised: December 21, 2006
+Accepted: March 19, 2007
+Published: May 7, 2007
+REFERENCES
+Alsop, G.B., and Zhang, D. (2004). Microtubules continuously dictate
+distribution of actin ﬁlaments and positioning of cell cleavage in grass-
+hopper spermatocytes. J. Cell Sci.117, 1591–1602.
+Andrews, P.D., Knatko, E., Moore, W.J., and Swedlow, J.R. (2003). Mi-
+totic mechanics: the auroras come into view. Curr. Opin. Cell Biol.15,
+672–683.
+Bakal, C.J., Finan, D., LaRose, J., Wells, C.D., Gish, G., Kulkarni, S.,
+DeSepulveda, P., Wilde, A., and Rottapel, R. (2005). The Rho GTP ex-
+change factor Lfc promotes spindle assembly in early mitosis. Proc.
+Natl. Acad. Sci. USA102, 9529–9534.
+Bement, W.M., Benink, H.A., and von Dassow, G. (2005). A microtu-
+bule-dependent zone of active RhoA during cleavage plane speciﬁca-
+tion. J. Cell Biol.170, 91–101.
+Burgess, D.R., and Chang, F. (2005). Site selection for the cleavage
+furrow at cytokinesis. Trends Cell Biol. 15, 156–162.
+Chalamalasetty, R.B., Hummer, S., Nigg, E.A., and Sillje, H.H. (2006).
+Inﬂuence of human Ect2 depletion and overexpression on cleavage
+furrow formation and abscission. J. Cell Sci.119, 3008–3019.
+Clute, P., and Pines, J. (1999). Temporal and spatial control of cyclin
+B1 destruction in metaphase. Nat. Cell Biol. 1, 82–87.
+D’Avino, P.P., Savoian, M.S., and Glover, D.M. (2004). Mutations in
+sticky lead to defective organization of the contractile ring during cyto-
+kinesis and are enhanced by Rho and suppressed by Rac. J. Cell Biol.
+166, 61–71.
+D’Avino, P.P., Savoian, M.S., and Glover, D.M. (2005). Cleavage furrow
+formation and ingression during animal cytokinesis: a microtubule leg-
+acy. J. Cell Sci.118, 1549–1558.
+DerMardirossian, C., and Bokoch, G.M. (2005). GDIs: central regula-
+tory molecules in Rho GTPase activation. Trends Cell Biol. 15, 356–
+363.
+Drechsel, D.N., Hyman, A.A., Hall, A., and Glotzer, M. (1997). A require-
+ment for Rho and Cdc42 during cytokinesis inXenopus embryos. Curr.
+Biol. 7, 12–23.
+Echard, A., Hickson, G.R., Foley, E., and O’Farrell, P.H. (2004). Termi-
+nal cytokinesis events uncovered after an RNAi screen. Curr. Biol.14,
+1685–1693.
+Ferrari, S. (2006). Protein kinases controlling the onset of mitosis. Cell.
+Mol. Life Sci. 63, 781–795.
+Glotzer, M. (2004). Cleavage furrow positioning. J. Cell Biol.164, 347–
+351.
+Gohla, A., Birkenfeld, J., and Bokoch, G.M. (2005). Chronophin, a novel
+HAD-type serine protein phosphatase, regulates coﬁlin-dependent ac-
+tin dynamics. Nat. Cell Biol.7, 21–29.
+Hara, T., Abe, M., Inoue, H., Yu, L.R., Veenstra, T.D., Kang, Y.H., Lee,
+K.S., and Miki, T. (2006). Cytokinesis regulator ECT2 changes its con-
+formation through phosphorylation at Thr-341 in G2/M phase. Onco-
+gene 25, 566–578.
+Kamijo, K., Ohara, N., Abe, M., Uchimura, T., Hosoya, H., Lee, J.S.,
+and Miki, T. (2006). Dissecting the role of Rho-mediated signaling in
+contractile ring formation. Mol. Biol. Cell17, 43–55.
+Kim, J.E., Billadeau, D.D., and Chen, J. (2005). The tandem BRCT do-
+mains of Ect2 are required for both negative and positive regulation of
+Ect2 in cytokinesis. J. Biol. Chem. 280, 5733–5739.
+Kimura, K., Tsuji, T., Takada, Y., Miki, T., and Narumiya, S. (2000). Ac-
+cumulation of GTP-bound RhoA during cytokinesis and a critical role of
+ECT2 in this accumulation. J. Biol. Chem.275, 17233–17236.
+Kishi, K., Sasaki, T., Kuroda, S., Itoh, T., and Takai, Y. (1993). Regula-
+tion of cytoplasmic division of Xenopus embryo by rho p21 and its in-
+hibitory GDP/GTP exchange protein (rho GDI). J. Cell Biol.120, 1187–
+1195.
+Knaus, U.G., Morris, S., Dong, H.J., Chernoff, J., and Bokoch, G.M.
+(1995). Regulation of human leukocyte p21-activated kinases through
+G protein-coupled receptors. Science 269, 221–223.
+Krendel, M., Zenke, F.T., and Bokoch, G.M. (2002). Nucleotide ex-
+change factor GEF-H1 mediates cross-talk between microtubules
+and the actin cytoskeleton. Nat. Cell Biol. 4, 294–301.
+Mandato, C.A., Benink, H.A., and Bement, W.M. (2000). Microtubule-
+actomyosin interactions in cortical ﬂow and cytokinesis. Cell Motil. Cy-
+toskeleton45, 87–92.
+Minoshima, Y., Kawashima, T., Hirose, K., Tonozuka, Y., Kawajiri, A.,
+Bao, Y.C., Deng, X., Tatsuka, M., Narumiya, S., May, W.S., Jr., et al.
+(2003). Phosphorylation by aurora B converts MgcRacGAP to a Rho-
+GAP during cytokinesis. Dev. Cell4, 549–560.
+Nakamura, T., Aoki, K., and Matsuda, M. (2005). Monitoring spatio-
+temporal regulation of Ras and Rho GTPase with GFP-based FRET
+probes. Methods37, 146–153.
+Nigg, E.A. (1995). Cyclin-dependent protein kinases: key regulators of
+the eukaryotic cell cycle. Bioessays 17, 471–480.
+Nigg, E.A. (2001). Mitotic kinases as regulators of cell division and its
+checkpoints. Nat. Rev. Mol. Cell Biol. 2, 21–32.
+Niiya, F., Tatsumoto, T., Lee, K.S., and Miki, T. (2006). Phosphorylation
+of the cytokinesis regulator ECT2 at G2/M phase stimulates associa-
+tion of the mitotic kinase Plk1 and accumulation of GTP-bound
+RhoA. Oncogene25, 827–837.
+Nishimura, Y., and Yonemura, S. (2006). Centralspindlin regulates
+ECT2 and RhoA accumulation at the equatorial cortex during cytokine-
+sis. J. Cell Sci.119, 104–114.
+O’Connell, C.B., Wheatley, S.P., Ahmed, S., and Wang, Y.L. (1999).
+The small GTP-binding protein rho regulates cortical activities in cul-
+tured cells during division. J. Cell Biol. 144, 305–313.
+Pertz, O., Hodgson, L., Klemke, R.L., and Hahn, K.M. (2006). Spatio-
+temporal dynamics of RhoA activity in migrating cells. Nature 440,
+1069–1072.
+Piekny, A., Werner, M., and Glotzer, M. (2005). Cytokinesis: welcome
+to the Rho zone. Trends Cell Biol. 15, 651–658.
+Rappaport, R. (1997). Cleavage furrow establishment by the moving
+mitotic apparatus. Dev. Growth Differ. 39, 221–226.
+Ren, X.D., and Schwartz, M.A. (2000). Determination of GTP loading on
+Rho. Methods Enzymol. 325, 264–272.
+Ren, Y., Li, R., Zheng, Y., and Busch, H. (1998). Cloning and character-
+ization of GEF-H1, a microtubule-associated guanine nucleotide ex-
+change factor for Rac and Rho GTPases. J. Biol. Chem.273, 34954–
+34960.
+Rivero, F., Illenberger, D., Somesh, B.P., Dislich, H., Adam, N., and
+Meyer, A.K. (2002). Defects in cytokinesis, actin reorganization and
+the contractile vacuole in cells deﬁcient in RhoGDI. EMBO J.21,
+4539–4549.
+Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc. 711
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+Saito, S., Liu, X.F., Kamijo, K., Raziuddin, R., Tatsumoto, T., Okamoto,
+I., Chen, X., Lee, C.C., Lorenzi, M.V., Ohara, N., and Miki, T. (2004). De-
+regulation and mislocalization of the cytokinesis regulator ECT2 acti-
+vate the Rho signaling pathways leading to malignant transformation.
+J. Biol. Chem.279, 7169–7179.
+Somers, W.G., and Saint, R. (2003). A RhoGEF and Rho family
+GTPase-activating protein complex links the contractile ring to cortical
+microtubules at the onset of cytokinesis. Dev. Cell4, 29–39.
+Tatsumoto, T., Xie, X., Blumenthal, R., Okamoto, I., and Miki, T. (1999).
+Human ECT2 is an exchange factor for Rho GTPases, phosphorylated
+in G2/M phases, and involved in cytokinesis. J. Cell Biol.147, 921–928.
+Wu, D., Asiedu, M., Adelstein, R.S., and Wei, Q. (2006). A novel gua-
+nine nucleotide exchange factor MyoGEF is required for cytokinesis.
+Cell Cycle5, 1234–1239.
+Yonemura, S., Hirao-Minakuchi, K., and Nishimura, Y. (2004). Rho lo-
+calization in cells and tissues. Exp. Cell Res. 295, 300–314.
+Yoshizaki, H., Ohba, Y., Kurokawa, K., Itoh, R.E., Nakamura, T.,
+Mochizuki, N., Nagashima, K., and Matsuda, M. (2003). Activity of
+Rho-family GTPases during cell division as visualized with FRET-
+based probes. J. Cell Biol. 162, 223–232.
+Yoshizaki, H., Ohba, Y., Parrini, M.C., Dulyaninova, N.G., Bresnick,
+A.R., Mochizuki, N., and Matsuda, M. (2004). Cell type-speciﬁc regula-
+tion of RhoA activity during cytokinesis. J. Biol. Chem. 279, 44756–
+44762.
+Yuce, O., Piekny, A., and Glotzer, M. (2005). An ECT2-centralspindlin
+complex regulates the localization and function of RhoA. J. Cell Biol.
+170, 571–582.
+Zenke, F.T., Krendel, M., DerMardirossian, C., King, C.C., Bohl, B.P.,
+and Bokoch, G.M. (2004). p21-activated kinase 1 phosphorylates
+and regulates 14-3-3 binding to GEF-H1, a microtubule-localized
+Rho exchange factor. J. Biol. Chem.279, 18392–18400.
+Zhai, Y., Kronebusch, P.J., Simon, P.M., and Borisy, G.G. (1996). Mi-
+crotubule dynamics at the G2/M transition: abrupt breakdown of cyto-
+plasmic microtubules at nuclear envelope breakdown and implications
+for spindle morphogenesis. J. Cell Biol.135, 201–214.
+712 Developmental Cell 12, 699–712, May 2007 ª2007 Elsevier Inc.
+Developmental Cell
+GEF-H1 Regulates Rho Activity in HeLa Cell Mitosis
+Update
+Developmental Cell
+Volume 12, Issue 6, 5 June 2007, Page 1007
+ https://doi.org/10.1016/j.devcel.2007.05.013DOI:
+Developmental Cell
+Erratum
+GEF-H1 Modulates Localized RhoA Activation during
+Cytokinesis under the Control of Mitotic Kinases
+Jo¨ rg Birkenfeld, Perihan Nalbant, Benjamin P. Bohl, Olivier Pertz, Klaus M. Hahn, and Gary M. Bokoch*
+*Correspondence: bokoch@scripps.edu
+DOI 10.1016/j.devcel.2007.05.013
+(Developmental Cell12, 699–712; May 8, 2007)
+The following sentences were omitted from the acknowledgments: Dr. Birkenfeld performed a portion of this study at the
+Institut fu¨ r Biochemie und Molekularbiologie II, Klinkum der Heinrich-Heine-Universita¨ t, Dusseldorf, Germany. In addition to
+the grant support already cited, this project was supported by Cell Migration Consortium Grant No U54 GM064346 from
+NIGMS to KMH. This was manuscript #18108-IMM from The Scripps Research Institute.
+Developmental Cell12, 1007, June 2007ª2007 Elsevier Inc. 1007

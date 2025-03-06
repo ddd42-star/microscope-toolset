@@ -1,0 +1,616 @@
+ChemiCal Biology of memBranes and signaling CHIMIA 2021, 75, No. 12 1017
+doi:10.2533/chimia.2021.1017 Chimia 75 (2021) 1017–1021 © R. Loewith, A. Roux, O. Pertz
+*Correspondence: Prof. R. Loewithab, Robbie.Loewith@unige.ch, Dr. A. Rouxac,
+Aurélien.Roux@unige.ch, Dr. O. Pertzd, Olivier.Pertz@izb.unibe.ch
+aNational Centre for Competence in Research in Chemical Biology;
+bDepartment of Molecular Biology, University of Geneva;
+cDepartment of Biochemistry, University of Geneva,
+dInstitute of Cell Biology, University of Bern
+Chemical-Biology-derived in vivo Sensors:
+Past, Present, and Future
+Robbie Loewith*ab, Aurélien Roux*ac, and Olivier Pertz*d
+Abstract: To understand the complex biochemistry and biophysics of biological systems, one needs to be able
+to monitor local concentrations of molecules, physical properties of macromolecular assemblies and activation
+status of signaling pathways, in real time, within single cells, and at high spatio-temporal resolution. Here we look
+at the tools that have been / are being / need to be provided by chemical biology to address these challenges.
+In particular, we highlight the utility of molecular probes that help to better measure mechanical forces and flux
+through key signalling pathways. Chemical biology can be used to both build biosensors to visualize, but also
+actuators to perturb biological processes. An emergent theme is the possibility to multiplex measurements of
+multiple cellular processes. Advances in microscopy automation now allow us to acquire datasets for 1000’s of
+cells. This produces high dimensional datasets that require computer vision approaches that automate image
+analysis. The high dimensionality of these datasets are often not immediately accessible to human intuition, and,
+similarly to ‘omics technologies, require statistical approaches for their exploitation. The field of biosensor imag-
+ing is therefore experiencing a multidisciplinary transition that will enable it to realize its full potential as a tool to
+provide a deeper appreciation of cell physiology.
+Keywords: Biophysics · Biosensor · Machine learning · Signaling dynamics · Single cell biology
+Robbie Loewith studied biochemistry,
+molecular biology and genetics at the
+University of Guelph, ON, Canada where
+he received his BSc. For his PhD, he
+moved to the University of Calgary, AB,
+Canada where he studied in the department
+of Biochemistry and Molecular Biology,
+graduating in 2000. He then moved to
+Basel, Switzerland, for post-doctoral work
+under the mentorship of Prof. Michael Hall.
+During this time he discovered that TOR (Target Of Rapamycin),
+a protein kinase that governs cell growth in virtually all eukary-
+otes, functions as part of two, distinct, multiprotein complexes. In
+2005, still intrigued by TOR signalling, he started his own inde-
+pendent group at the University of Geneva where he is now a full
+professor in the Department of Molecular Biology and Director
+of the National Centre for Competence in Research in Chemical
+Biology (NCCR Chemical Biology). While rapamycin-sensitive
+TOR Complex 1 (TORC1) is well established to be regulated
+downstream of nutrient cues, the Loewith lab, in collaboration
+with the Roux lab, recently discovered that rapamycin-insensitive
+TORC2 functions in a homeostatic feedback loop to maintain ten-
+sile properties of the plasma membrane. Study of this unanticipat-
+ed role of TORC2 in mechanotransduction as well as determina-
+tion of electron cryo-microscopy structures of the TOR complexes
+and their regulators are presently major foci of the Loewith group.
+Aurélien Roux studied molecularbiology at
+theEcoleNormaleSupérieuredeLyon,France
+(BSc2000)andphysicsattheUniversitéParis
+6-Denis Diderot, Paris, France (MSc 2001,
+PhD 2004). He then moved to Yale for post-
+doctoralwork underthe mentorshipof Pietro
+De Camilli. In 2007 he returned to Europe,
+first to the Institut Curie, Paris, France as a
+CNRS staff scientistand then, in 2010, to the
+University of Geneva where he is now a full
+professorin the departmentof Biochemistry. His lab aims to under-
+stand how the unique physical properties of lipid membranes and
+epitheliarespectively contribute to membranetraffic and organogen-
+esis.Tothese ends, they employ in vitro modelsto measurerelevant
+physical parameters,such as forces, rigidity, tension, and diffusion
+constants, and in vivo biosensors to probe how membrane tension
+effects cellular signaling and membrane trafficking.
+Olivier Pertz studied biology at the
+University of Lausanne and then biophysics
+at the University of Basel where he received
+his PhD in 1999. For his post-doctoral work
+he moved to the Scripps Research Institute,
+CA, USA, and in 2004 he became a Staff
+Scientist at the University of California
+San Diego, CA, USA. He then returned
+to the University of Basel as an Assistant
+professor in 2015 and since 2016 he is an
+Associate professor at the University of Bern in the Institute of
+Cell biology. His lab studies the spatio-temporal aspects of signal-
+ing events that regulate Cell Morphogenesis and Fate Decisions
+using novel quantitative approaches to measure/manipulate sig-
+naling dynamics at biologically relevant time/length scales.
+Brief Introduction
+The study of molecular cell biology has been aided tremen-
+dously by the development of chemical tools that label cellu-
+
+1018 CHIMIA 2021, 75, No. 12 ChemiCal Biology of memBranes and signaling
+Sensing of Molecular Crowding
+A good example of the sensing of a physical property is the
+sensing of molecular crowding. The past few years have seen an
+increasing appreciation for the importance of molecular crowd-
+ing in a variety of cellular processes ranging from controlling the
+kinetics of biochemical reactions to regulating flux and dispersion
+of information.[14] Specifically, formation of membraneless or-
+ganelles by liquid–liquid phase separation (LLPS) is now realized
+to be a ubiquitous process to organize cellular content. LLPS is a
+dynamic process wherein proteins or nucleic acids self-assemble
+into amorphous structures that locally alter diffusion properties.
+LLPS of a given protein is relatively easy to follow with fluores-
+cent tags although the fluorescent properties of these tags may
+be altered upon entry into the condensed state (where pH and
+physical proximity of fluorophores may lead to signal quenching)
+making quantitation challenging. LLPS of nucleic acids can be
+followed via a number of approaches including bisbenzimide dyes
+whose UV-induced fluorescence increases 30-fold upon binding
+to nucleic acid. Various fluorescence in situ hybridization tech-
+niques also exist. RNAs can also be detected in vivo by inserting
+sequences that are specifically recognized by RNA-binding pro-
+teins which themselves can be fluorescently labelled.
+LLPS is triggered by several factors including REDOX,
+pH, temperature, and, of course, cytoplasmic concentration.
+Cytoplasmic concentration or viscosity was recently shown
+to be regulated downstream of Target Of Rapamycin (TOR)
+signaling.[15] To measure cytoplasmic viscosity, the authors used
+microrheology. Specifically, they expressed genetically encoded
+multimeric nanoparticles in cells and by single-molecule tracking
+using time-lapse fluorescence microscopy imaging, determined
+diffusion coefficients and derived the viscosity of the cytoplasm.
+By altering cytoplasmic crowding TOR could influence the LLPS
+of multiple factors. Intriguingly, cytoplasmic dynamics can also
+be manipulated experimentally. Focused-light-induced cytoplas-
+mic streaming (FLUCS) uses a laser to induce hydrodynamic
+flows within the cytosplasm.[16] With this technique, one can probe
+the functions of cytoplasmic flows and the material properties of
+structures such as centrosomes. The combination of FLUCS with
+microrheology and LLPS detection promises to yield exciting in-
+sights into the function of phase separation of specific factors.
+Sensing of Membrane Tension
+Lipid membranes have unique biophysical properties impor-
+tant for cell viability and dissecting how these various properties
+contribute to diverse cell functions has also become an important
+focus in cell biology. Lipid membranes are 2D fluids which can be
+deformed through stretching, causing tension, bending, causing
+curvature, and shearing, causing viscous flows. Thus, measuring
+tension, curvature and viscosity of lipid membranes is gaining
+increasing interest in cell biology. Owing to their hydrophobic-
+ity, lipid membranes are easy targets for appropriately-designed
+chemical compounds. Indeed, chemical biology approaches have
+provided new tools for measuring these properties. A good ex-
+ample is the ability to assess lipid order, the property of lipids to
+form domains of different phases, thereby segregating membrane
+components.[17] Lipid order changes the hydration of lipids, which
+is then reported by shifts in the fluorescence emission spectra of
+Laurdan, a simple fluorescent molecule, and one of the first ex-
+amples of a chemical probe sensitive to membrane biophysical
+properties. These molecules are solvatochromic push-pull probes,
+meaning that they have one electron-donor group, and one elec-
+tron-receptor group. The efficiency of the electron transfer be-
+tween the two groups affects fluorescence spectra, and depends
+on the solvation state of the molecule.[18]
+More complex molecules are required to measure other bio-
+physicalparameters.Molecularrotors,whichrotatewithBrownian
+motion, can locally probe the mobility of molecules within the
+lar factors and/or alter their activities. Indeed, from vital stains
+and radio-labelled metabolites, to small-molecule agonists, an-
+tagonists and active-site and allosteric inhibitors, cell biology is
+built on the development of reagents with designed properties to
+measure and perturb activities of biomolecules with high spatio-
+temporal resolution. These chemistry-backed advances are often
+developed hand-in-hand with molecular biology tools, a classic
+example being the ‘magic bullet for kinases’ – the engineering
+of the ‘gatekeeper’ residue in the catalytic pocket as a generic
+approach to inhibit the enzymatic activity of virtually any protein
+kinase of interest.[1] Subsequent examples include the genera-
+tion of genetically-encoded, self-labeling protein tags such as the
+Halo, SNAP and CLIP tags,[2] and rapamycin-based protein di-
+merization systems such as the anchor-away,[3] or knock-sideways
+systems.[4] Optogenetics[5] represents an important variation on
+this chemical biology theme wherein cellular activities are ma-
+nipulated by light rather than small molecules. Speaking of light,
+combining the now rich palette of fluorescent and bioluminescent
+proteins with fluorescent dyes incorporated onto self-labeling
+proteins offers opportunities to manipulate and monitor multiple
+processes simultaneously.
+Figuratively and literally, the future looks bright. So what are
+the next challenges? As outlined below, many areas of cell biol-
+ogy are just now starting to benefit from the amazing power of
+chemical biology, while other areas still await the design of clever
+tools. We briefly review currently-available, state-of-the-art tech-
+nologies, and provide some examples of how these tools have
+revolutionized our understanding of biology. Biosensor imaging
+now allows spectral multiplexing and is compatible with high-
+throughput imaging. This now produces high dimensional datas-
+ets analogous to ‘omics methods. We discuss emerging computer
+vision approaches to analyze these large imaging datasets, and
+some of the statistical approaches to make sense of these complex
+data. By presenting recent innovative solutions, we hope that this
+review will inspire development of new tools to address currently
+difficult-to-access cell biology phenomena.
+What Can Be Sensed?
+There is now an incredible diversity of biosensors available
+and we make no attempt here to be comprehensive – rather, we
+begin with examples that typify what can be sensed and, by infer-
+ence, what should be possible to sense in the near future.
+Sensing of Ions and Metabolites
+An early example of the power of biosensors was the devel-
+opment of Ca2+-sensitive dyes and genetically encoded calcium
+indicators. These tools have produced incredible images of Ca2+
+‘puffs’ and ‘sparks’[6] in real-time with sub-micron resolution,
+and, combined with state-of-the-art microscopy techniques, have
+been used to monitor nerve firing in deep tissues.[7] The latest
+variations include development of pH-correctable Ca2+ sensors
+that enable accurate Ca2+ measurements in acidic organelles.[8]
+Ca2+ sensing is reviewed extensively in the literature and not
+discussed further here; rather it serves as a high-water mark for
+what biosensors can achieve. Indeed, the remarkable successes
+in sensing Ca2+ inspired the creation of sensors of chloride,[9]
+Cu+[10] as well as important metabolites such as cAMP[11] and
+nicotinamide adenine dinucleotides. [12] Other analyte sensors
+are sure to follow.[13]
+Going beyond Sensing of Analytes
+Ion flux and metabolic conversions are clearly essential to life,
+but biological phenomena are also constrained by physics.
+Although biochemical determinations are relatively accessi-
+ble, assessing biophysical properties of cells continues to be much
+more challenging and represents an area where biosensors begin
+to have tremendous impact.
+ChemiCal Biology of memBranes and signaling CHIMIA 2021, 75, No. 12 1019
+present challenge is to understand how the feedback circuitry of
+signaling networks can produce rich sets of dynamic signaling
+behaviours. This is particularly important as corruption of the
+signaling flux through these pathways typically leads to grave
+diseases including metabolic syndrome and cancer. Biosensor
+imaging now provides a handle to study these signaling dynamics
+at the single cell level, at relevant time and length scales, in native
+and pathophysiological states.
+A prime example of how biosensor imaging has revolution-
+ized our understanding of the dynamic behaviour of a signaling
+pathway is the MAPK/ERK (Mitogen-activated protein kinase/
+Extracellular signal-regulated kinase) pathway. The importance
+of ERK dynamics was initially hinted at by biochemical observa-
+tions that different growth factors induce different ERK dynam-
+ics to control fates such as proliferation and differentiation.[24]
+Since then, measurements of single-cell ERK dynamics using
+biosensors have revealed that a rich set of dynamic ERK activ-
+ity patterns can emerge in different cell systems. These include
+transient, sustained, pulsatile and oscillatory ERK dynamics.[25]
+Heterogeneous signaling behaviours are typically observed with-
+in different cells of the population. These have been averaged out
+during classic population-average biochemical assays. At the cell
+population scale, collective behaviours such as waves of ERK
+pulses can be observed in epithelia during wound healing[26] or
+apoptotic cell extrusion.[27] The biosensor technology has there-
+fore unveiled several complex behaviours that redefines the cur-
+rent MAPK signaling paradigms that have emerged using mostly
+classic biochemical approaches. Understanding this complex bi-
+ology will require the complete arsenal of chemical biology-based
+biosensors and actuators to systematically measure and perturb
+different nodes of the MAPK network. These quantitative data
+will inform mathematical models to provide a true quantitative
+view of this pathway. Similar results are emerging for other sig-
+naling pathways.
+Which chemical biology biosensors and actuators need to be
+built, and how can they be used to study a signaling network of
+choice? On one hand, we will need a large palette of biosensors
+to measure the dynamics of signal flux through multiple signal-
+ing nodes in response to standardized inputs. Chemical biology
+can provide the spectral flexibility to perform multiplexed mea-
+surements of multiple signaling activities simultaneously. For
+example, outside of the context of MAPK biology, simultaneous
+single-cell measurements of RhoA and Cdc42 GTPase activities
+were made possible by a combination of a genetically-encoded
+fluorescence resonance energy transfer-based reporter together
+with a cyanine-labeled domain-based biosensor.[28] The realiza-
+tion that signaling networks fluctuate on timescales of minutes or
+seconds means that we need to rethink our traditional perturbation
+toolkit (drug, RNA interference, gene editing, etc.), as such long-
+term perturbations often lead to complete rewiring of the signaling
+system. Thus, true understanding of these temporal processes re-
+quires not only the ability to measure but also the ability to perturb
+them at these specific timescales. For example, temporally vary-
+ing the signaling input, using microfluidics technology to chal-
+lenge cells with growth factor pulses of varying concentration,
+duration or frequency, and systematically measuring the signaling
+output, coupled with mathematical modelling, has greatly refined
+our understanding of the MAPK network circuitry.[25b] Similar ap-
+proaches using a combination of signaling optogenetics and bio-
+sensor imaging have provided higher throughput for measuring
+such signaling input-output responses.[29] The existence of opto-
+genetic actuators that can activate ERK at different levels within
+the MAPK network, e.g. RAS,[30] RAF,[31] or MEK,[32] provides
+opportunity to systematically map the flow of signaling in this
+cascade. Here again, a chemical biology approach can produce
+flexible perturbation tools, such as actuators or rapamycin-based
+knocksideways approaches, that can allow one to systematically
+membrane, and are thus excellent reporters of membrane viscos-
+ity (or fluidity).[19] In this case, the electron transfer between the
+fluorophore and the rest of the molecule depends on the speed at
+which the fluorophore rotates, which depends, in turn, on viscos-
+ity. Many fluorescent molecules can be used as molecular rotors,
+and, in many cases, the electron-transfer affects the fluorescence
+lifetime, which provides a useful way to do fluorescence measure-
+ments independent of the dye concentration.
+Recently, molecular rotors have been proposed to report mem-
+brane tension, the surface force opposing membrane extension.[19]
+But the most prominent advance in measuring membrane tension
+with fluorescent dyes has been made with the design of flipper
+molecules.[20] Flippers are also push-pull probes, with electron
+transfer also affecting fluorescence lifetime. But instead of rotat-
+ing, two planar fluorophores linked through a single carbon bond
+are kept out of planar alignment through electrostatic repulsion
+between additional groups. Mechanical pressure exerted by sur-
+rounding molecules – e.g. lipid acyl chains – can planarize the
+two fluorophores. Thus, flippers are real mechano-sensing mole-
+cules, directly reporting the pressure on their chemical structures.
+As membrane tension varies the pressure exerted on lipid acyl
+chains, flippers inserted in artificial and cellular membranes can
+report changes of tension through changes of their fluorescent
+lifetime.[21] However, for both rotors and flippers, fluorescence
+properties are strongly affected by lipid composition, lipid order,
+and phase segregation state of the membrane being probed.
+It remains a challenge to measure membrane curvature with
+fluorescent membrane dyes. One feature of curvature that could
+be exploited for curvature sensing is the opposite tensions in the
+two leaflets of the curved membrane, one being stretched, the
+other one being compressed. However, as the sum of expected
+tension changes from both leaflets is null, curvature sensing
+would require leaflet-specific dye targeting. Also, curvature oc-
+curs on length scales much larger than the lipid/molecule size,
+which makes single lipids insensitive to curvature,[22] but larger
+lipid domains, forming close to a demixing point, are sensitive
+to curvature.
+Sensing of Cytoskeletal Forces
+Beyond membrane tension, forces exerted by the cytoskeleton
+are also of strong interest to cell biologists. Chemical Biology
+tools that could measure forces along actin or microtubule fila-
+ment lengths, or at their tips, would be extremely useful to help
+follow, for example, the force fields acting in lamellipodia of
+migrating cells, during the formation and the separation of the
+mitotic spindle, or during constriction of the contractile ring of
+the cleavage furrow during cytokinesis. One could imagine visu-
+alizing force fields in large cytoskeletal structures, and correlating
+this to the force fields with cell movements, or cell shape chang-
+es. One strategy could be to exploit chemical groups of natural
+products that specifically target filamentous forms of cytoskel-
+etal proteins, such as jasplakinolide for actin-F, or taxol for tubu-
+lin. Linking two protomers with a biomechanical sensing spacer
+could report forces applied to neighbouring subunits within the
+filament structure. This could be a folded FRET reporter that un-
+folds upon stretch, or, a series of fluorophores and quenchers that
+change fluorescence upon compression. This would extend new
+possibilities to the field of mechanobiology, both at the single cell
+level, and at the tissue level.
+Sensing of Signaling Pathways
+Cells have developed highly specialized signaling networks to
+translate external (chemokines, mechanical cues, etc.) and inter-
+nal (metabolic state, mechanical state, etc.) inputs into signaling
+outputs that specify fate decisions such as proliferation, death,
+survival or motility. An emerging picture is that signaling dynam-
+ics rather than static steady states regulate fate decisions.[23] The
+1020 CHIMIA 2021, 75, No. 12 ChemiCal Biology of memBranes and signaling
+These image analysis pipelines provide the opportunity to ex-
+tract the signaling time-series within thousands of single cells (or
+at specific subcellular locations within single cells). Very often,
+averages of the intrinsically heterogeneous signaling activities
+within a population are still computed to generate initial intuition
+about signaling networks. The caveat of this approach however is
+that it does not resolve subtle signaling patterns that arise due to
+extrinsic or intrinsic noise within biochemical pathways – essen-
+tial information when dissecting such signaling pathways. While
+bioinformatics pipelines to analyze single-cell RNAseq data are
+now mainstream, such pipelines are just emerging in the field of
+single-cell biosensor time-series. One approach to mine signal-
+ing trajectories datasets requires initial human evaluation of the
+signaling trajectories and crafting of human-intuitive features that
+captures properties from the signaling time-series (Fig. 1). For ex-
+ample, in a dataset of pulsatile ERK activity, this could capture the
+amplitude, the width, and frequency of ERK pulses.[38] Plotting
+these features can then provide intuition regarding the different fi-
+nite signaling states within cells of a population. However, having
+to browse through many single-cell trajectories, in response to dif-
+ferent perturbations, can quickly prove overwhelming to human
+intuition. A complementary, purely data-driven approach there-
+fore consists of using convolutional neuronal networks (CNN)
+to identify patterns in signaling time-series in different perturbed
+states (Fig. 1).[39] This approach can then identify prototype sig-
+naling trajectories that capture the most discriminative features
+relevant to a signaling state, which are often different than the
+population average. Another advantage of this approach is that it
+allows to project the signaling trajectories in a low dimensional
+space that provides intuition about the heterogeneity and similar-
+ity of different single-cell signaling states in response to different
+perturbations. This provides a new way to interact with high di-
+mensional datasets signaling time-series enabling intuitive explo-
+ration of large datasets and thus hypotheses about the underlying
+biology. This approach has revealed the existence of a variety of
+ERK/AKT single-cell activity dynamics in response to a large
+variety of growth factors that signal through different receptor ty-
+rosine kinases.[39] These examples showcase how scalable chemi-
+cal biology-based biosensor and actuators, when interfaced with
+perturb signaling at relevant timescales. The fact that some of
+these chemical biology tools are ‘dark’, e.g. rapamycin-based
+systems, nicely complement multiplexed measurements/pertur-
+bations of fluorescence/optogenetics-based biosensors/actuator
+systems. Automation of the application of perturbations can be
+performed using microfluidic platforms that can be programmed
+to perform many experiments simultaneously or sequentially.[33]
+Integration of chemical biology techniques with programmable
+microfluidics and automated imaging therefore can provide the
+ability to comprehensively perturb and measure biological sys-
+tems at relevant time and length scales.
+Challenges Inherent to Large Biosensor Image
+Datasets
+The approaches mentioned above, when combined with auto-
+mated microscopy, now provide the opportunity to image thou-
+sands of single cells in different perturbed states. This yields
+large datasets of similar or even larger complexity and size than
+sequencing-based bioinformatics. The emergent challenge now
+becomes the ability to effectively exploit these data. Many open-
+source image analysis platforms have recently emerged to tackle
+this issue. This includes packages such as Fiji,[34] CellProfiler,[35]
+and Ilastik[36] to cite a few. Among many other tasks, these pipe-
+lines can perform segmentation and tracking of objects that al-
+lows for extraction of single-cell time-series. Machine learning
+approaches, based on user-annotated datasets, can segment spe-
+cific regions of interest (ROIs) directly on images (for example
+nuclei). This bypasses classic ‘threshold’-based segmentation ap-
+proaches that typically do not perform well in low signal to noise
+images. In a setting in which a high volume of images must be
+analyzed, intensive computational resources might be required. A
+solution to this need is the usage of cloud-based computational
+resources such as Google Colab (https://colab.research.google.
+com). ZeroCostDL4MIC, for example, provides a framework to
+perform different deep learning-based image analysis tasks di-
+rectly on Google Colab, without extensive need for programming
+expertise.[37] This rapidly evolving portfolio of computational re-
+sources provides a low barrier access to image analysis accessible
+to people with little programming experience.
+Time [min]
+Signaling activity
+...
+CNN
+featuresConvolutional
+layer
+OUTPUT
+classification
+...
+Projection in al ow
+dimensionals pace
+Prototype
+trajectories
+per class
+Human-craftedf eature based
+approach
+Data driven machine learning approach xTSNE
+yTSNE
+Time [min]
+Signaling
+activity
+peak amplitude
+peak width
+peak frequency
+Class 1C lass 2C lass 3
+Time [min]
+Signaling activity
+Time [min]
+Signaling activity
+Computer visionp ipeline Single-cell
+trajectories
+Single-cell
+trajectories
+Fig. 1. Typical analysis pipeline for biosensor time-series datasets. Upper left panel. Images acquired using automated time-lapse microscopy are
+analyzed using a combination of image analysis pipelines, and yield large volumes of time-series datasets. One approach (upper right panel) in-
+volves human inspection of the time-series and formulation of a number of features that might capture different properties of the time-series. An ad-
+vantage of this approach is that it is directly interpretable by human intuition. Another approach (lower panel) involves classiﬁcation of time-series in
+response to different perturbations using convolutional neural networks (CNN). This produces a latent space of CNN features that can be projected
+in a low dimensional space that provides intuition about different classes (e.g. dynamic signaling behaviours). This can be used to extract prototype
+signaling trajectories relevant to a perturbation. This approach provides hypotheses about signaling behaviours, and is amenable to large datasets.
+ChemiCal Biology of memBranes and signaling CHIMIA 2021, 75, No. 12 1021
+modern imaging, image and statistical analysis pipelines, will be
+able to comprehensively explore signaling networks.
+Conclusions
+Chemical Biology has made huge advances in enabling sci-
+entists to monitor critical biochemical parameters in vivo and in
+real time. Excitingly, next generation biosensors are now coming
+online to monitor critical biophysical parameters, although the
+need for new tools in this domain remains. The ability to perform
+multiplexed measurements in response to perturbations applied at
+adequate time and length scales have the potential to highly en-
+hance our understanding of cellular processes. Biosensor imaging
+produces increasingly complex high dimensional datasets as com-
+plex as those obtained with ‘omics approaches. Computational
+methods are now also being produced for such kinds of datasets.
+The analysis of these cellular processes, at adequate spatial and
+temporal scales, and at scale will provide the quantitative data
+for a more exhaustive understanding of cellular processes, which
+are also amenable to mathematical modelling. The future will see
+probes that work in tissues, organs and even individuals.
+Acknowledgements
+This work was supported by grants from the Swiss National Science
+Foundation (RL, OP, AR), the NCCR Chemical Biology (RL, AR),
+Human Frontier Science Program (OP), and the Swiss Cancer League
+(OP). We are grateful to Coralie Dessauges for help producing Fig. 1.
+Received: October 27, 2021
+[1] A. C. Bishop, O. Buzko, K. M. Shokat, Trends Cell Biol. 2001, 11, 167.
+[2] J. Wilhelm, S. Kuhn, M. Tarnawski, G. Gotthard, J. Tunnermann, T.Tanzer, J.
+Karpenko, N. Mertes, L. Xue, U. Uhrig, J. Reinstein, J. Hiblot, K. Johnsson,
+Biochemistry 2021, 60, 2560, https://doi.org/10.1021/acs.biochem.1c00258.
+[3] H. Haruki, J. Nishikawa, U. K. Laemmli, Mol. Cell 2008, 31, 925,
+https://doi.org/10.1016/j.molcel.2008.07.020.
+[4] M. S. Robinson, D. A. Sahlender, S. D. Foster, Dev. Cell 2010, 18, 324,
+https://doi.org/10.1016/j.devcel.2009.12.015.
+[5] C. P. O’Banion, D. S. Lawrence, ChemBioChem 2018, 19, 1201,
+https://doi.org/10.1002/cbic.201800013.
+[6] https://www.youtube.com/watch?v=7LyZkNeyw9s.
+[7] W. Yang, R. Yuste, Nat. Methods 2017, 14, 349,
+https://doi.org/10.1038/nmeth.4230.
+[8] N. Narayanaswamy, K. Chakraborty, A. Saminathan, E. Zeichner,
+K. Leung, J. Devany, Y. Krishnan, Nat. Methods 2019, 16, 95,
+https://doi.org/10.1038/s41592-018-0232-7.
+[9] M. Zajac, K. Chakraborty, S. Saha, V. Mahadevan, D. T.
+Infield, A. Accardi, Z. Qiu, Y. Krishnan, J. Cell Sci. 2020, 133,
+https://doi.org/10.1242/jcs.240390.
+[10] M. Priessner, P. A. Summers, B. W. Lewis, M. Sastre, L. Ying, M.
+K. Kuimova, R. Vilar, Angew. Chem. Int. Ed. 2021, 60, 23148,
+https://doi.org/10.1002/anie.202109349.
+[11] N. Kim, S. Shin, S. W. Bae, Biosensors 2021, 11,
+https://doi.org/10.3390/bios11020039.
+[12] O. Sallin, L. Reymond, C. Gondrand, F. Raith, B. Koch, K. Johnsson, eLife
+2018, 7, https://doi.org/10.7554/eLife.32638.
+[13] J. A. Kaczmarski, J. A. Mitchell, M. A. Spence, V. Vongsouthi,
+C. J. Jackson, Curr. Opin. Struct. Biol. 2019, 57, 31,
+https://doi.org/10.1016/j.sbi.2019.01.013.
+[14] M. Hondele, S. Heinrich, P.De Los Rios, K. Weis, Emer. Top. Life Sci. 2020,
+4, 331, https://doi.org/10.1042/ETLS20190190.
+[15] M. Delarue, G. P. Brittingham, S. Pfeffer, I. V. Surovtsev, S. Pinglay, K. J.
+Kennedy, M. Schaffer, J. I. Gutierrez, D. Sang, G. Poterewicz, J. K. Chung,
+J. M. Plitzko, J. T. Groves, C. Jacobs-Wagner, B. D. Engel, L. J. Holt, Cell
+2018, 174, 338, https://doi.org/10.1016/j.cell.2018.05.042.
+[16] a) M. Mittasch, P. Gross, M. Nestler, A. W. Fritsch, C. Iserman, M. Kar,
+M. Munder, A. Voigt, S. Alberti, S. W. Grill, M. Kreysing, Nat. Cell
+Biol. 2018, 20, 344, https://doi.org/10.1038/s41556-017-0032-9; b) M.
+Mittasch, V. M. Tran, M. U. Rios, A. W. Fritsch, S. J. Enos, B. Ferreira
+Gomes, A. Bond, M. Kreysing, J. B. Woodruff, J. Cell Biol. 2020, 219,
+https://doi.org/10.1083/jcb.201912036.
+[17] A. S. Klymchenko, Acc. Chem. Res. 2017, 50, 366,
+https://doi.org/10.1021/acs.accounts.6b00517.
+[18] Y. Niko, A. S. Klymchenko, J. Biochem. 2021, 170, 163,
+https://doi.org/10.1093/jb/mvab078.
+[19] M. Paez-Perez, I. Lopez-Duarte, A. Vysniauskas, N. J. Brooks, M. K.
+Kuimova, Chem. Sci. 2020, 12, 2604, https://doi.org/10.1039/d0sc05874b.
+[20] a) M. Dal Molin, Q. Verolet, A. Colom, R. Letrun, E. Derivery, M. Gonzalez-
+Gaitan, E. Vauthey, A. Roux, N. Sakai, S. Matile, J. Am. Chem. Soc. 2015,
+137, 568, https://doi.org/10.1021/ja5107018; b) L. Assies, J. García-Calvo,
+F. Piazzolla, S. Sanchez, T. Kato, L. Reymond, A. Goujon, A. Colom, J.
+López-Andarias, K. Straková, D. Mahecic, V.Mercier, M. Riggi, N. Jiménez-
+Rojo, C. Roffay, G. Licari, M. Tsemperouli, F. Neuhaus, A. Fürstenberg,
+E. Vauthey, S. Hoogendoorn, M. Gonzalez-Gaitan, A. Zumbuehl, K.
+Sugihara, J. Gruenberg, H. Riezman, R. Loewith, S. Manley, A. Roux,
+N. Winssinger, N. Sakai, S. Pitsch, S. Matile, CHIMIA 2021, 75, 1004,
+https://doi.org/10.2533/chimia.2021.1004.
+[21] A. Colom, E. Derivery, S. Soleimanpour, C. Tomba, M. Dal Molin, N.
+Sakai, M. González-Gaitán, S. Matile, A. Roux, Nat. Chem. 2018, in press,
+https://doi.org/10.1038/s41557-018-0127-3.
+[22] B. Sorre, PhD Thesis, 2010, http://www.theses.fr/2010PA077021.
+[23] J. E. Purvis, G. Lahav, Cell 2013, 152, 945,
+https://doi.org/10.1016/j.cell.2013.02.005.
+[24] R. Avraham, Y. Yarden, Nat. Rev. Mol. Cell Biol. 2011, 12, 104,
+https://doi.org/10.1038/nrm3048.
+[25] a) J. G. Albeck, G. B. Mills, J. S. Brugge, Mol. Cell 2013, 49, 249,
+https://doi.org/10.1016/j.molcel.2012.11.002; b) Y. Blum, J. Mikelson, M.
+Dobrzynski, H. Ryu, M. A. Jacques, N. L. Jeon, M. Khammash, O. Pertz,
+Mol. Syst. Biol. 2019, 15, e8947, https://doi.org/10.15252/msb.20198947.
+[26] N. Hino, L. Rossetti, A. Marin-Llaurado, K. Aoki, X.
+Trepat, M. Matsuda, T. Hirashima, Dev. Cell 2020, 53, 646,
+https://doi.org/10.1016/j.devcel.2020.05.011.
+[27] P. A. Gagliardi, M. Dobrzynski, M. A. Jacques, C. Dessauges, P. Ender,
+Y. Blum, R. M. Hughes, A. R. Cohen, O. Pertz, Dev. Cell 2021, 56, 1712,
+https://doi.org/10.1016/j.devcel.2021.05.007.
+[28] M. Machacek, L. Hodgson, C. Welch, H. Elliott, O. Pertz, P. Nalbant, A.
+Abell, G. L. Johnson, K. M. Hahn, G. Danuser, Nature 2009, 461, 99,
+https://doi.org/10.1038/nature08242.
+[29] C. Dessauges, J. Mikelson, M. Dobrzynski, M.-A. Jacques, A.
+Frismantiene, P. A. Gagliardi, M. Khammash, O. Pertz, bioRxiv 2021,
+https://doi.org/10.1101/2021.07.27.453955.
+[30] M. Z. Wilson, P. T. Ravindran, W. A. Lim, J. E. Toettcher, Mol. Cell 2017,
+67, 757, https://doi.org/10.1016/j.molcel.2017.07.016.
+[31] K. Aoki, Y. Kumagai, A. Sakurai, N. Komatsu, Y. Fujita,
+C. Shionyu, M. Matsuda, Mol. Cell 2013, 52, 529,
+https://doi.org/10.1016/j.molcel.2013.09.015.
+[32] A. L. Patel, E. Yeung, S. E. McGuire, A. Y. Wu, J. E. Toettcher, R. D.
+Burdine, S. Y. Shvartsman, Proc. Natl. Acad. Sci. USA 2019, 116, 25756,
+https://doi.org/10.1073/pnas.1912320116.
+[33] S. Tay, J. J. Hughey, T. K. Lee, T. Lipniacki, S. R. Quake, M. W. Covert,
+Nature 2010, 466, 267, https://doi.org/10.1038/nature09145.
+[34] J. Schindelin, I. Arganda-Carreras, E. Frise, V. Kaynig, M. Longair, T.
+Pietzsch, S. Preibisch, C. Rueden, S. Saalfeld, B. Schmid, J. Y. Tinevez, D.
+J. White, V.Hartenstein, K. Eliceiri, P.Tomancak, A. Cardona, Nat. Methods
+2012, 9, 676, https://doi.org/10.1038/nmeth.2019.
+[35] L. Kamentsky,T.R. Jones, A. Fraser, M. A. Bray, D. J. Logan, K. L. Madden,
+V. Ljosa, C. Rueden, K. W. Eliceiri, A. E. Carpenter, Bioinformatics 2011,
+27, 1179, https://doi.org/10.1093/bioinformatics/btr095.
+[36] S. Berg, D. Kutra, T. Kroeger, C. N. Straehle, B. X. Kausler, C.
+Haubold, M. Schiegg, J. Ales, T. Beier, M. Rudy, K. Eren, J. I.
+Cervantes, B. Xu, F. Beuttenmueller, A. Wolny, C. Zhang, U.
+Koethe, F. A. Hamprecht, A. Kreshuk, Nat. Methods 2019, 16, 1226,
+https://doi.org/10.1038/s41592-019-0582-9.
+[37] L. von Chamier, R. F. Laine, J. Jukkala, C. Spahn, D. Krentzel, E. Nehme,
+M. Lerche, S. Hernandez-Perez, P. K. Mattila, E. Karinou, S. Holden, A.
+C. Solak, A. Krull, T. O. Buchholz, M. L. Jones, L. A. Royer, C. Leterrier,
+Y. Shechtman, F. Jug, M. Heilemann, G. Jacquemet, R. Henriques, Nat.
+Commun. 2021, 12, 2276, https://doi.org/10.1038/s41467-021-22518-0.
+[38] T. E. Gillies, M. Pargett, M. Minguet, A. E. Davies, J. G. Albeck, Cell Syst.
+2017, 5, 549, https://doi.org/10.1016/j.cels.2017.10.019.
+[39] M. A. Jacques, M. Dobrzynski, P.A. Gagliardi, R. Sznitman, O. Pertz, Mol.
+Syst. Biol. 2021, 17, e10026, https://doi.org/10.15252/msb.202010026.
+License and Terms
+This is an Open Access article under the
+terms of the Creative Commons Attribution
+License CC BY 4.0. The material may not
+be used for commercial purposes.
+The license is subject to the CHIMIA terms and conditions: (http://
+chimia.ch/component/sppagebuilder/?view=page&id=12).
+The definitive version of this article is the electronic one that can be
+found at https://doi.org/10.2533/chimia.2021.1017

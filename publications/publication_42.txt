@@ -1,0 +1,538 @@
+Zurich Open Repository and
+Archive
+University of Zurich
+University Library
+Strickhofstrasse 39
+CH-8057 Zurich
+www.zora.uzh.ch
+Year: 2011
+Automated quantification of morphodynamics for high-throughput live cell
+time-lapse dataset
+Gonzalez, German ; Fusco, Ludovico ; Benmansour, Fethallah ; Fua, Pascal ; Pertz, Olivier ; Smith, Kevin
+Posted at the Zurich Open Repository and Archive, University of Zurich
+ZORA URL: https://doi.org/10.5167/uzh-76548
+Published Research Report
+Originally published at:
+Gonzalez, German; Fusco, Ludovico; Benmansour, Fethallah; Fua, Pascal; Pertz, Olivier; Smith, Kevin (2011). Au-
+tomated quantification of morphodynamics for high-throughput live cell time-lapse dataset. Lausanne, Switzer-
+land: EPF Lausanne.
+AUTOMA TED QU ANTIFICA TION OF MORPHODYNAMICS FOR HIGH-THROUGHPUT
+LIVE CELL TIME-LAPSE DA T ASETS
+Germ ´an Gonz ´alez1, Ludovico Fusco2, F ethallah Benmansour3, P ascal Fua3, Olivier P ertz2, Kevin Smith4
+1 Research Laboratory of Electronics, MIT 2 Institute of Biochemistry , University of Basel
+3 Computer V ision Lab, EPFL 4 Light Microscopy and Screening Center, ETHZ
+ABSTRACT
+W e present a fully automatic method to track and quantify
+the morphodynamics of differentiating neurons in ﬂuores-
+cence time-lapse datasets. Previous high-throughput studies
+have been limited to static analysis or simple behavior. Our
+approach opens the door to rich dynamic analysis of complex
+cellular behavior in high-throughput time-lapse data. It is
+capable of robustly detecting, tracking, and segmenting all
+the components of the neuron including the nucleus, soma,
+neurites, and ﬁlopodia. It was designed to be efﬁcient enough
+to handle the massive amount of data from a high-throughput
+screen. Each image is processed in approximately two sec-
+onds on a notebook computer. T o validate the approach,
+we applied our method to over 500 neuronal differentiation
+videos from a small-scale RNAi screen. Our fully automated
+analysis of over 7,000 neurons quantiﬁes and conﬁrms with
+strong statistical signiﬁcance static and dynamic behaviors
+that had been previously observed by biologists, but never
+measured.
+Index T erms— Molecular and cellular screening; Image
+sequence processing; Fluorescence microscopy
+1. INTRODUCTION AND RELA TED WORK
+The process of forming functional connections between neu-
+rons is complex and dynamic. Time-lapse microscopy has
+revealed that differentiating neurons undergo a large range of
+dynamic processes including cell body motility , ﬁlopodial dy-
+namics, and repeated cycles of neurite growth and retraction.
+Of critical importance is the process by which axons and den-
+drites are formed in which a neurite ceases retracting, extends
+a long distance, and forms a connection. Such dynamic events
+are governed by a complex protein network that coordinates
+dynamic functions within the cytoskeleton, membrane, etc.
+Powerful tools such as RNA interference (RNAi) technol-
+ogy , ﬂuorescent protein labeling, image processing, and auto-
+mated high-throughput microscopy have opened the door for
+large scale perturbation studies to help investigate such pro-
+cesses. RNAi screens have already led to novel insights into
+a number of cellular processes such as cell migration [
+1] and
+endocytosis [ 2]. However, limitations in image processing
+have restricted most investigations to static image analysis.
+Knowledge of dynamics is essential if we are to un-
+derstand complex processes such as neuron morphogene-
+sis. However, designing algorithms to quantify dynamic
+behaviors is challenging, and automatic methods have ap-
+peared only very recently . State-of-the-art high-throughput
+techniques have successfully quantiﬁed morphodynamics of
+HeLA cancer cells in an effort to understand mitosis [
+3, 4]
+However, the morphology and dynamics of cells in previous
+studies are simple compared to neurons, whose highly de-
+formable neurites that branch, expand, retract, and collapse.
+In this paper, we propose a fully automatic method to de-
+tect, track, and segment every component of the neuron (nu-
+cleus, soma, neurites, and ﬁlopodia), as well as quantify their
+dynamic behaviors in ways that were previously not possible.
+Our approach begins with a tracking step that detects nuclei
+at each time step and associates nuclei belonging to the same
+neuron throughout the time-lapse sequence. Using tracked
+nuclei as seed points, a region-growing algorithm segments
+the neuron’s soma. The somata are used to initialize a joint
+segmentation of the entire structure of all neurons in an image
+using a probabilistic method based on shortest path computa-
+tions. A graph describing the morphology of the neurites is
+extracted from this segmentation. Each neurite tree is tracked
+by association, and ﬁlopodia are detected by analyzing the
+topology of the tracked neurites. Finally , a set of 156 mor-
+phodynamic features is extracted, quantifying the behavior of
+the each neuron in the video.
+As demonstrated in Fig.
+1, our approach extracts the
+neurons’ dynamic morphology accurately and reliably . T o
+validate our approach, we ran our algorithm on a small-scale
+siRNA screen of 5 genes (3 siRNAs/gene). Our analysis
+conﬁrmed steady-state phenotypes obtained previously using
+MetaMorphTM [
+5]. W e also quantiﬁed dynamic behaviors
+that were previously observed, but never measured [ 5], and
+uncovered new behaviors which are only apparent through
+dynamic analysis.
+t = 80 min t = 170 min t = 260 min
+Fig. 1 : Our approach tracks and extracts the morphology of the entire neuron. The top row contains results from an experiment with inhibited MAP2K7
+function. Tracked neurons are marked by a unique color and id. Nuclei are denoted by ﬁlled ellipsoids, somata as contours, and neurites as trees. The
+bottom shows details from above: the original image on the left and neurites marked with various colors on the right. Filopodia are marked in red. Our
+approach performs well even in challenging situations where neurons appear in close proximity . Note: contrast has been enhanced for visibility . Cells deemed
+uninteresting by the biologist (e.g. faint staining or a short lifetime) can optionally be ignored by the system to improve measurement quality .
+2. HIGH-THROUGHPUT TRACKING AND
+SEGMENT A TION
+The input to our approach is a series of T images I =
+{I1, . . . , I t, . . . , I T } from which we extract K nucleus detec-
+tions dk
+t. The tracking step described in Sec.
+2.2 associates
+valid detections across time steps while rejecting spurious de-
+tections. Since each neuron contains only one nucleus, there
+is a one-to-one mapping between each valid nucleus detec-
+tionci
+tand a neuron Xi
+t . Thus, the tracking task is to provide
+a set of neuron detections X i = {Xi
+a, . . . , X i
+t , . . . , X i
+b}
+deﬁning an individual neuron i from time t = a to t =
+b. As depicted in Fig.
+2, each neuron detection Xi
+t is
+composed of a nucleus ci
+t, a soma si
+t, a set of J neurites
+{ni, 1
+t , . . . , n i,j
+t, . . . , n i,J
+t}, and a set of L ﬁlopodia associated
+with each neurite F i,j
+t = {fi,j, 1
+t , . . . , f i,j,l
+t , . . . , f i,j,L
+t } so
+that Ni
+t = {(ni, 1
+t , F i, 1
+t ), . . . , (ni,j
+t, F i,j
+t )}. Thus, a complete
+neuron i at time step t is described by Xi
+t = {ci
+t, si
+t, N i
+t }.
+2.1. Nuclei and Somata Detection and Segmentation
+The ﬁrst step in our approach is to extract a set of nucleus
+detections{d1, . . . , d K } over the image series. W e worked
+with two-channel images where the cytoskeleton is marked
+with Lifeact-GFP and nuclei are marked with NLS-mCherry .
+The nuclei can be reliably detected and segmented by sim-
+ply thresholding the NLS-mCherry channel and performing a
+morphological ﬁlling operation. Alternatively , one could ap-
+ply a fast machine learning detector such as the one in [
+6].
+Using the nuclei as seed points, somata are segmented as
+follows. A list of pixels neighboring the current soma seg-
+mentation is maintained. At each iteration, the neighbor with
+the smallest weighted distance to the centroid of the seed nu-
+cleus detectionD = λ||u − dk||+ |I(u) − ˆI(dk)|is added
+to the soma so long as D < Y , where u is a location in the
+image, I(u) is the pixel intensity at that location, ˆI(dk) is the
+mean intensity of detection dk, and Y is a threshold.
+2.2. Efﬁcient T racking of Nucleus Detections
+The tracking algorithm searches through the full set of nuclei
+detections and iteratively associates the most similar pairs of
+detections, returning lists of valid detections corresponding
+to each neuronX i. This is accomplished by constructing a
+graph G = ( D, E) where each node dk
+t ∈ D corresponds to
+a detection. For each detection dk
+tin time step t, edges e ∈
+E are formed between dk
+t and all past and future detections
+within a time window W . A weight we is assigned to each
+edge ek,l connecting dk
+t and dl
+t. The weight we relates to
+spatial distances, temporal distances, and a shape measure:
+we = α||dk
+t1 − dl
+t2||+ β|t1 − t2|+ γf (νk
+t1, νl
+t2), where νk is
+a shape feature vector containing dk
+t’s area, perimeter, mean
+intensity , and major and minor axis lengths of a ﬁtted ellipse.
+fevaluates differences between a feature a extracted from
+dk
+t and dl
+t as f(ak, al) = |ak − al|/|ak + al|. The tracking
+solution corresponds to a set of edges E′ ⊂ E with maximal
+edge weight Q that forms a set of disconnected tracks T and
+minimizes the cost function ∑
+e∈T we.
+T o minimize this cost function, we adopt a greedy selec-
+tion algorithm, summarized in Fig.
+3, that iteratively selects
+an edge with minimum cost ˆwe and adds it to the set L re-
+moving future and past connections from the detections ek,l
+connects. The algorithm iterates until the minimum cost ˆwe
+is greater than a threshold Q. Each track i is then associated
+with a neuron identity X i.
+2.3. Neuron Segmentation and Neurite T ree Extraction
+Given an imageIt and the set of somata present in it St =
+{s1
+t. . . s m
+t}, our goal is to associate to each pixel u a label
+Jt(u) that indicates to which neuron (soma) it belongs, if any .
+X
+t t + 1
+i=1
+t
+X
+i=2
+t
+X
+i=1
+t+1
+X
+i=2
+t+1
+1
+d
+c
+i=1
+t
+s
+i=1
+t
+N
+i=1,j=1
+t
+N
+i=1,j=2
+t
+s
+i=1
+t+1
+c
+i=1
+t+1
+N
+i=1,j=1
+t+1
+N
+i=1,j=2
+t+1
+...
+Fig. 2 : Neuron tracking notation. At time t a neuron i detection
+Xi
+t = {ci
+t, s i
+t, N i
+t } contains a nucleus ci
+t, a soma si
+t, and a set of neurite-
+ﬁlopodia tuples Ni
+t = {(ni,1
+t , F i,1
+t ), . . . , (ni,j
+t, F i,j
+t ), . . . , (ni,J
+t, F i,J
+t )}
+which contains J neurites and their associated ﬁlopodia shown in red for
+j = 1 and green for j = 2 . A spurious nucleus detection d1 is also
+shown. A neuron i is deﬁned by a time-series of neuron detections X i =
+{Xi
+a, . . . , X i
+t , . . . , X i
+b}. The tracking returns a set X i for each neuron.
+The probability of Jt(u) can be deduced using Bayes’ rule,
+P (Jt(u) = i|St, It) = P (St, It|Jt(u) = i)
+∑ m
+η=1 P (St, It|Jt(u) = η), (1)
+where we assume a uniform distribution on P (Jt(u)). The
+numerator is modeled as the probability of the path L that
+connects maximally pixel u to soma si
+t, P (St, It|Jt(u) =
+i) = max L:u→si
+t
+∏
+{lr }∈L P (It(r)|lr), where lr are indica-
+tor variables for the locations forming the path L. W e chose
+this model since it produces connected components and an
+optimal maxima can be found by minimizing its negative like-
+lihood using Dijkstra’s shortest path.
+T o optimize this function, we map the image It to a graph
+Gi
+t = ( V, E ) whose vertices u are the pixels in It and whose
+directed edges er,v connect each pixel to its four neighbors.
+W e assign to each edge a weight wr,v = − logP (It(v)|v).
+P (It(v)|v) represents the probability that a neurite traverses
+a node v. It is obtained by applying a sigmoid function to the
+output of the tubularity ﬁlter of [
+7]. The parameters of the
+sigmoid function are estimated using maximum likelihood.
+Finally , we deﬁne the set of neurite pixelsUt
+n as those that
+connect to any soma with a higher probability than ǫ. W e pre-
+dict their labels as the ones that maximize Eq.
+1. The set of
+pixels associated to neuron Xi
+t is the union of the neurites and
+the soma associated with i, Ut
+i = {u ∈ Ut
+n|Jt(u) = i} ∪ si
+t.
+T o reduce the neurite segmentation to a tree, we skeletonize
+the neuron and deﬁne as root node the pixel of the skeleton
+closest to the centroid of the nucleus. W e instantiate a Min-
+imum Spanning Tree from the root and create a neurite tree
+whenever the spanning tree exits the soma.
+2.4. Neurite T racking and Filopodia Detection
+The identity of neurites is tracked across the frames of the
+time-lapse videos by applying the algorithm described in
+Sec
+2.2, but using the centroids of the neurite trees instead
+of the centroids of nuclei, with the additional constraint that
+edges may only exist between neurites that emanate from the
+same soma. Filopodia are detected by starting at each leaf
+node in a neurite and traversing the tree until a branch point
+is reached. If the distance traversed is less than a threshold
+Tf , the traversed locations are considered to be ﬁlopodia.
+t t+1 t+2t-1
+d
+k
+t d
+l
+t
+t t+1 t+2t-1
+d
+k
+t d
+l
+t
+t t+1 t+2t-1
+d
+k
+t d
+l
+t
+k,l
+e
+(a) (b) (c)
+k,l
+e
+Fig. 3 : Efﬁcient tracking by association. (a) A graph is built by fully con-
+necting each detection to all future and past detections within a time window
+W. In this simpliﬁed diagram, only dk
+t’s edges are shown and W =2. (b)
+Each iteration, the edge ˆek,l with minimum cost ˆwe is added to E′. Edges
+connecting dk
+tto future detections are removed from E. (c) Edges connecting
+dl
+tto the past are removed from E. The process is repeated until ˆwe > Q .
+3. EXTRACTING MORPHODYNAMIC FEA TURES
+Our neuron tracking, segmentation and delineation method
+produces sets of graphs linking detections, contours, and trees
+to deﬁne each neuron over time. This data structure is not im-
+mediately useful for quantifying dynamic behaviors. T o facil-
+itate the analysis, we extract a set of156 informative features
+from our data structure to quantify morphodynamics, which
+are too numerous to list here. A few examples for the nu-
+cleus and soma include: area, perimeter, Lifeact-GFP inten-
+sity , NLS-mCherry intensity , speed, acceleration, total dis-
+tance traveled, time spent expanding/contracting, frequency
+of expansion. For neurites: number of branches, distance
+from tip to soma, ﬁlopodia length, number of ﬁlopodia, major
+axis, minor axis and eccentricity of an ellipse ﬁtted to the neu-
+rite, total length, time spent expanding/contracting, frequency
+of expansion. W e also compute change-over-time for each of
+the features mentioned above (denoted by∆ ).
+4. RESUL TS
+W e applied our approach to data from a small-scale siRNA
+screen in which the functions of 5 genes were inhibited: Sr-
+GAP2, MAP2K7, RhoA, Trio, and Net. Three siRNAs were
+applied for each gene, producing a total of 17 experiments in-
+cluding 2 controls. 30 videos per experiment were obtained
+over the course of 3 days, with images taken at 20× magniﬁ-
+cation in 10 minute intervals. A total of 510 videos were col-
+lected, each containing approximately 100 2-channel images
+of696 × 520 resolution. W e tracked and segmented a total of
+7,298 neurons (33,213 neurites), extracting morphodynamic
+features for each. V ideo were processed in under 210 s, on
+average, using a notebook computer. The entire screen was
+processed in just a few hours using conventional PCs.
+4.1. Analysis
+Our goals were to reproduce the ﬁndings of [
+5], quantify pre-
+viously observed but unmeasured morphodynamics, and un-
+cover new dynamic behaviors. A brief summary of our ﬁnd-
+ings is provided below and in Fig
+4. Reported ﬁndings are
+statistically signiﬁcant, with p-values << 0.05.
+Our analysis conﬁrmed several effects previously ob-
+served through static image analysis in [ 5]. In particular,
+(a) Maximum Distance from Neurite Tip to Soma (b) ∆ Neurite Elongation (c) Nucleus Speed
+0 20 40 60 80 100 120 140 160 180 200
+Control
+RhoA_1
+RhoA_2
+RhoA_3
+Map2K7_1
+Map2K7_2
+Map2K7_3
+SrGAP2_1
+SrGAP2_2
+SrGAP2_3
+33 1
+38 1e−59
+42 2e−90
+43 5e−115
+27 2e−42
+32 6e−14
+35 1
+35 0.2
+37 9e−05
+42 3e−89
+% P
+0 0.02 0.04 0.06 0.08 0.1 0.12 0.14 0.16 0.18
+Control
+RhoA_1
+RhoA_2
+RhoA_3
+33 1
+31 2e−07
+30 3e−10
+31 0.0006
+% P
+0 0.02 0.04 0.06 0.08 0.1 0.12 0.14 0.16 0.18 0.2
+Control
+RhoA_1
+RhoA_2
+RhoA_3
+Map2K7_1
+Map2K7_2
+Map2K7_3
+42 1
+31 2e−64
+24 2e−220
+27 2e−134
+46 1e−64
+52 9e−102
+50 6e−64
+% P
+µ m Elongation µ m/min
+Fig. 4 : Morphodynamic analysis of 3 of the 156 informative features extracted through our analysis. The control is marked in gray . Black dots indicate
+collected data points. Red bars indicate the mean, green bars indicate standard deviation. The control mean is shown by a blue line. V alues under the %
+column show the percentage of data points above the control mean. The P column reports the statisical signifcance measured by the student-t test p-value.
+(a) Our analysis conﬁrmed the ﬁnding from [ 5] that RhoA and SrGAP2 loss results in longer neurites, and Map2K7 loss results in shorter neurites. (b) The
+decrease in mean neurite elongation associated with loss of RhoA quantiﬁes the observation that RhoA loss limits the cell’s ability to retract neurites. Neurites
+of neurons without RhoA produce more lateral branches, therefore their elongation is decreased.(c) Our analysis revealed that loss of Map2K7 and RhoA led
+to an enhancement/retardation of nucleus speed, which was impossible to observe through static analysis.
+RhoA loss of function resulted in fewer but longer neurites
+than the control. SrGap loss was found to have longer neu-
+rites, and Map2K7 loss was found to have more neurites but
+of shorter length. These ﬁndings were conﬁrmed by static
+measures from our experiments: the mean longest neurite
+length – control22.6µm, RhoA-3 32µm, SrGap2-1 28.9µm,
+and Map2K7-1 19.5µm (see Fig.
+4a); and by a dynamic mea-
+sure – the mean number of neurites belonging a neuron over
+its lifetime: control 3.4, RhoA 3.1, and Map2K7-1 3.9.
+It had been previously observed, but never quantiﬁed, that
+loss of SrGap2 function produces a high number of ﬁlopo-
+dia, and that RhoA loss results in neurites that easily extend
+but have difﬁculty retracting. Morphodynamic features from
+our analysis conﬁrmed these observations. Mean number of
+ﬁlopodia detected per neurite over its lifetime was6.69 in the
+control and 8.81 for SrGap-3. The mean change in elongation
+as measured by an ellipse ﬁtted to the neurite was 5.7% for
+the control and 5.3% for RhoA-1 (see Fig.
+4b). While this
+difference may seem small, it is statiscially signiﬁcant due to
+the large amount of data collected (p-value of 2 × 10−7).
+Our quantitative analysis revealed new morphodynamics
+which were not obvious to human observers. W e found that
+RhoA function loss slowed neuron motility and Map2K7 in-
+creased it. Control cells moved at .30µm/min, RhoA moved
+at .23 µm/min, and Map2K7-2 moved at .37 µm/min (see
+Fig.
+4c). W e also found that RhoA and SrGap increased the
+branching of the neurites. Over the course of a neurites life-
+time, the maximum number of branches in a control neuron
+was 14.5, 19.44 for RhoA-3, and 21.39 for SrGap2-3.
+5. CONCLUSION
+W e have described a fully automatic method to track and
+quantify the morphodynamics of differentiating neurons in
+ﬂuorescence time-lapse datasets. Our approach is capable of
+robustly detecting, tracking, and extracting the morphology
+of the entire neuron including the nucleus, soma, neurites,
+and ﬁlopodia. Previous efforts to analyze high-throughput
+screens have been limited to static images or simple cell
+behavior, whereas our approach provides researchers with a
+rich dynamic analysis of complex cellular behavior in high-
+throughput time-lapse data. From the rich set of 156 features
+we extract in our experiments we are able to to 1) corrobo-
+rate previous ﬁndings by biologists, 2) quantify previously
+observed neuronal behavior and 3) infer new unobserved
+behaviour, all with strong statistical signiﬁcance.
+Acknowledgments
+This work was supported in part by the SNF Sinergia
+grant “Understanding Brain Morphogenesis”, the Madrid-
+MIT M+V isi´on consortium for biomedical research, and Sys-
+temsX.ch, the Swiss national initiative for Systems Biology ,
+through the SyBIT project.
+6. REFERENCES
+[1] C. Bakal and et al., “Quantitative Morphological Signatures Deﬁne Lo-
+cal Signaling Networks Regulating Cell Morphology , ” Science, vol. 316,
+pp. 1753–1756, 2007.
+[2] C. Collinet and et al., “Systems Survey of Endocytosis by Multipara-
+metric Image Analysis, ” Nature, vol. 464, pp. 243–249, 2010.
+[3] M. Held and et al., “Cellcognition: Time-Resolved Phenotype Annota-
+tion in High-Throughput Live Cell Imaging, ” Nature Methods, vol. 9,
+no. 7, pp. 747–754, 2010.
+[4] B. Neumann and E. Al, “Phenotypic Proﬁling of the Human Genome
+by Time-Lapse Microscopy Reveals Cell Division Genes, ” Nature, vol.
+464, pp. 721–727, 2010.
+[5] O.C. Pertz, Y . W ang, F . Y ang, W . W ang, L.J. Gay , M.A. Gristenko, T .R.
+Clauss, D.J. Anderson, T . Liu, K.J. Auberry , D.G. Camp, R.D. Smith,
+and R.L. Klemke, “Spatial Mapping of the Neurite and Soma Proteomes
+Reveals a Functional Cdc42/rac Regulatory Network, ” vol. 105, pp.
+1931–1936, 2008.
+[6] K. Smith, A. Carleton, and V . Lepetit, “Fast Ray Features for Learning
+Irregular Shapes, ” in ICCV, 2009, pp. 397–404.
+[7] A.F . Frangi, W .J. Niessen, K.L. V incken, and M.A. V iergever, “Multi-
+scale V essel Enhancement Filtering, ” Lecture Notes in Computer Sci-
+ence, vol. 1496, pp. 130–137, 1998.

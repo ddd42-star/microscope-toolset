@@ -1,0 +1,1174 @@
+1
+Scientific  RepoRts  | 6:21901 | DOI: 10.1038/srep21901
+www.nature.com/scientificreports
+Spatio-temporal co-ordination of 
+RhoA, Rac1 and Cdc42 activation 
+during prototypical edge protrusion 
+and retraction dynamics
+Katrin Martin1, Andreas Reimann1,†, Rafael D. Fritz1, Hyunryul Ryu2,3, Noo Li Jeon 2,3  
+& Olivier Pertz1,‡,
+The three canonical Rho GTPases RhoA, Rac1 and Cdc42 co-ordinate cytoskeletal dynamics. Recent 
+studies indicate that all three Rho GTPases are activated at the leading edge of motile fibroblasts, 
+where their activity fluctuates at subminute time and micrometer length scales. Here, we use a 
+microfluidic chip to acutely manipulate fibroblast edge dynamics by applying pulses of platelet-derived 
+growth factor (PDGF) or the Rho kinase inhibitor Y-27632 (which lowers contractility). This induces 
+acute and robust membrane protrusion and retraction events, that exhibit stereotyped cytoskeletal 
+dynamics, allowing us to fairly compare specific morphodynamic states across experiments. Using 
+a novel Cdc42, as well as previously described, second generation RhoA and Rac1 biosensors, we 
+observe distinct spatio-temporal signaling programs that involve all three Rho GTPases, during 
+protrusion/retraction edge dynamics. Our results suggest that Rac1, Cdc42 and RhoA regulate different 
+cytoskeletal and adhesion processes to fine tune the highly plastic edge protrusion/retraction dynamics 
+that power cell motility.
+Rho GTPases regulate the actin and adhesion dynamics that power cell motility. Initial models have proposed 
+that Rac1 controls membrane protrusion, Cdc42 regulates filopodia and polarity, and RhoA promotes myosin 
+contractility during tail retraction 1. Measurements of spatio-temporal Rho GTPase activation dynamics using 
+fluorescence resonance energy transfer (FRET)-based biosensors have challenged this classic model. All three 
+Rho GTPases have been observed to be active at the leading edge of motile fibroblasts2–6. Furthermore, distinct 
+Rho GTPase activity pools can be simultaneously activated at different subcellular locations - RhoA activity is 
+associated with protrusion, tail retraction, and ruffling5; Cdc42 is activated in protrusions, filopodia, and at the 
+Golgi4; Rac1 activity occurs during protrusion and ruffling3, but also controls invadopodia disassembly7. At the 
+leading edge, the RhoA GTPase activation pattern can also depend on a specific stimulus – while fibronectin 
+induces protrusions with high RhoA activity, platelet-derived growth factor (PDGF) leads to protrusions with 
+reduced RhoA activity5. A correct understanding of spatio-temporal Rho GTPase activation dynamics therefore 
+requires us to focus on context-dependent, specific subcellular morphodynamic processes, rather than on the 
+entire cell8,9. Consistently, computational multiplexing of Rho GTPase activation dynamics has revealed precise, 
+subminute time and micrometer length scale, co-ordination of RhoA, Rac1 and Cdc42 activities during edge 
+protrusion/retraction cycles10. Specific patterns of RhoA, Rac1 and Cdc42 activation can also be observed at the 
+leading edge of HT1080 fibrosarcoma cells11. Further, spatio-temporal signaling programs involving more than 
+one Rho GTPase have been documented during Xenopus Laevis oocyte wounding8, or macropinocytosis12. While 
+we start to unravel the diversity of spatio-temporal Rho GTPase signaling programs in different morphodynamic 
+processes, their inherent complexity impedes a clear understanding of how they regulate cytoskeletal dynamics. 
+Here, we take a reductionist approach, in which we study RhoA, Rac1 and Cdc42 GTPase activation dynamics 
+1Dept. of Biomedicine, University of Basel, Mattenstrasse 28, 4058 Basel, Switzerland. 2School of Mechanical 
+and Aerospace Engineering, Seoul National University, Seoul, 151-742, Republic of Korea. 3Institute of Advanced 
+Machinery and Design, Seoul National University, Seoul, 151-742, Republic of Korea. †Present address: Department 
+of Biosystems, Science and Engineering (D-BSSE), ETH Zurich, Mattenstrasse 26, 4058 Basel, Switzerland. ‡Present 
+address: Institute for Cell Biology, University of Bern, Baltzerstrasse 4, 3012 Bern, Switzerland. Correspondence and 
+requests for materials should be addressed to O.P . (email: olivier.pertz@izb.unibe.ch)
+Received: 01 October 2015
+accepted: 05 January 2016
+Published: 25 February 2016
+OPEN
+www.nature.com/scientificreports/
+2
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+during robust, prototypical edge protrusion/retraction events. This provides novel insight into how the three Rho 
+GTPases co-operate to fine tune the cytoskeletal dynamics that power edge motility.
+Results
+Pulsed PDGF/Y-27632 application induces robust protrusion and retraction states. We used 
+a flow-based, programmable microfluidic device (Fig. S1A) to manipulate edge dynamics through a 30 minutes 
+pulse of growth factors/drugs that elicit cytoskeletal responses. REF52 rat embryonic fibroblasts were seeded 
+in fibronectin-coated microfluidic devices for one hour, leading to an isotropic spreading state. Throughout all 
+experiments, we co-imaged an Alexa 647-labeled dextran as a quality control for compound application/removal 
+(Fig. S1B). The low level of flow in our microfluidic platform did not affect edge morphodynamics (Fig. S1C,D). 
+In contrast, application of PDGF induced robust edge protrusion, while its removal led to immediate edge retrac-
+tion (Fig. S1C,D, Movie S1). We focused on two distinct stimuli to manipulate cell edge dynamics. First, we stud-
+ied PDGF because it induces robust protrusion with low RhoA activity5,13, raising the question which Rac1/Cdc42 
+activation dynamics could be associated with this morphodynamic state. Second, we used the Rho kinase-specific 
+drug Y-2763214 that leads to protrusion by reducing intracellular contractility, and thus bypasses the need for an 
+extracellular signal. This might provide insight into how an internal cytoskeletal state is interpreted to activate 
+signaling responses.
+To get insight in the edge morphodynamics evoked by a PDGF or Y-27632 pulse, we tracked edge velocities 
+during three distinct motility states: 1. 30 minutes before pulse application, 30 minutes of PDGF +  Y-27632 pulse, 
+30 minutes immediately after PDGF/Y-27632/PDGF +  Y-27632 washout. These three different edge motility 
+states were timelapsed with a two minute time resolution. Before pulse application, a steady-state consisting of 
+poorly protruding/retracting edges was observed (Fig. 1A,B). Previous analysis of steady-state edge dynamics had 
+revealed cycles of protrusions and retractions, both with a persistence time of approximately 80 seconds15. Upon 
+PDGF application, an almost isotropic burst of membrane protrusion persisted for a couple of minutes, until the 
+edge stalled (Fig. 1A, Movie S1). PDGF withdrawal then led to edge retraction, again on a time scale of multiple 
+minutes. In contrast, Y-27632 induced protrusions without a characteristic stalling phase (Fig. 1B, Movie S2).  
+Edge retraction then immediately occurred after Y-27632 removal. These two distinct edge dynamics were also 
+obvious when cell area was evaluated over time (Fig. 1C). Stimulation with both PDGF and Y-27632 recapitulated 
+the Y-27632-evoked morphodynamics (Fig. S2A,B). These results indicate that our microfluidic platform induces 
+robust protrusion and retraction events that occur on a different timescale than the edge dynamics observed at 
+steady-state (e.g. multiple minutes rather than tens of seconds). Furthermore, distinct edge dynamics are evoked 
+by the two stimuli. Upon combined PDGF +  Y-27632 stimulation, identical edge motility behaviors as in response 
+to Y-27632 alone are observed.
+Specific F-actin and adhesion dynamics correlate with prototypical edge protrusion/retraction 
+events. We then evaluated cytoskeletal dynamics associated with steady, protrusion, stalling or retraction 
+phases. Importantly, these dynamic states were not homogeneous across the cell edge. We therefore systemati -
+cally gated our analysis on edge positions at which robust dynamic states occurred. In subsequent experiments, 
+in which additional markers and FRET biosensors were imaged, we systematically monitored F-actin dynamics 
+using Lifeact-mCherry, allowing for correlation across experiments. Different markers and biosensors were deliv-
+ered using lentiviral and/or adenoviral vectors, enabling homogeneous and finely-tuned expression levels, not 
+detrimental to cell function.
+Analysis of F-actin dynamics during the steady-state phase revealed a prominent array of radial stress fib-
+ers16,17 , indicating the presence of robust, actin retrograde flow in the lamella (Fig. 1D, Movie S1). Upon 
+PDGF-induced membrane protrusion, this lamellar radial stress fiber network decompacted, and diminished in 
+intensity. This was accompanied by formation of a robust lamellipodial network throughout, and directly at the 
+cell edge (Fig. 1D). During the stalling phase, a radial stress fiber array then re-enforced about ten micrometers 
+from the edge, while the edge lamellipodial network subsisted (Fig. 1D). PDGF withdrawal-induced retraction 
+was characterized by lamellipodium disappearance, formation of edge retraction fibers, and condensation of the 
+radial stress fiber lamellar network (Fig. 1D).
+Y-27632 application led to immediate loss of the lamellar radial stress fibers, associated with strong protru-
+sion propelled by lamellipodial networks (Fig. 1E, Movie S2). Edge retraction was again characterized by loss of 
+the lamellipodial network, appearance of retraction fibers, as well as reformation of a lamellar radial stress fiber 
+network. Both in response to PDGF or Y-27632 washout-triggered edge retraction, the intensity of the lamellar 
+radial stress fibers network did however not recover to pre-pulse levels (Fig. 1F).
+We then co-imaged F-actin and adhesion dynamics (V ASP-GFP) in response to PDGF or Y-27632 pulses 
+(Fig. 2A,C, left panels). At steady edges, elongated focal adhesions with characteristic centripetal sliding were 
+observed. This is consistent with the robust actin retrograde flow that induces efficient conversion of focal com-
+plexes to focal adhesions (Fig. 2A,B, Movie S3). PDGF-evoked membrane protrusion led to formation of focal 
+complexes that remained immobile with respect to the substrate, but then matured into focal adhesions during 
+stalling. During edge retraction, these focal adhesions then increasingly elongated, and exhibited robust centrip-
+etal sliding.
+Y-27632 led to immediate focal adhesions dissolution, leaving only small remnant adhesions (Fig. 2C,D, Movie S4).  
+During retraction, focal adhesions were again formed from the remnant adhesion templates. Evaluation of 
+V ASP-GFP fluorescence intensities revealed a potent decrease in adhesion density in response to both PDGF 
+and Y-27632, that however recovered to some extent during retraction, but never to pre-pulse levels (Fig. 2E,F).
+Consistently with the finding of similar edge dynamics for both Y-27632, and PDGF +  Y-27632 stimulation, 
+identical F-actin (Fig. S2C,D) and adhesion dynamics (Fig. S2E,F) were again observed for both edge motility 
+www.nature.com/scientificreports/
+3
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+A
+Velocity 00:02 
+00:50 
+01:02
+02:06
+Normalized Position
+Time [min]
+0PDGF  
+1
+-0.1 0.1
+Velocity [µm/min]
+0
+134
+Retraction Protrusion
+00:42
+01:22
+00:02 Velocity
+Normalized Position
+Time [min]
+0Y-27632
+1
+-0.2 0.2
+Velocity [µm/min]
+0
+90
+Retraction Protrusion
+B
+0 20 40 60 80
+1.0
+1.1
+1.2
+1.3
+1.4
+1.5
+Time [min]
+Normalized Area
+32
+PDGF
+Y-27632
+Stimulation
+D
+E
+C
+F-actin  00:02
+00:50
+02:06
+01:02
+PDGF
+∆t = 2 min
+time = 02:12
+ProtrusionStallingRetraction
+F-actin  Steady-state
+F-actin  
+00:02 
+00:50 
+01:02
+02:06
+ProtrusionRetraction
+F-actin  Steady-state
+00:42
+01:22
+F-actin  
+00:02 
+00:02
+00:42
+01:22
+Y-27632
+∆t = 2 min
+time = 01:30
+F-actin  
+0 20 40 60 80
+0.80
+0.85
+0.90
+0.95
+1.00
+1.05
+32
+Time [min]
+Normalized Intensity
+Stimulation
+F
+PDGF
+Y-27632
+4.00
+1.00
+8.25
+1.00
+Figure 1. PDGF/Y-27632 pulse-induced edge and F-actin dynamics. (A,B) Quantification of edge dynamics 
+upon PDGF (A) or Y-27632 (B) stimulation. The ADAPT Image J plugin30 was used to extract edge dynamics 
+and velocities using the Lifeact-mCherry signal. Left panel: cell outlines display color-coded protrusion/
+retraction velocities (Time scale: hours:minutes). Right panel: velocity maps along the entire cell edge at 
+normalized positions. Black dashed contours indicate specific cell outlines shown in the left panel. Color-code 
+according to the scale bar. (C) Cell area dynamics in response to PDGF or Y-27632. Cell area was measured 
+www.nature.com/scientificreports/
+4
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+states. Together, these results indicate that specific F-actin and adhesion dynamics correlate with different edge 
+motility states that are induced by PDGF , Y-27632, or combined application of PDGF +  Y-27632.
+Construction of a FRET-based, Cdc42 activity biosensor. To visualize Rac1, Cdc42, and RhoA activi-
+ties, we used FRET-based biosensors. Multiple existing FRET-based biosensors report on RhoA, Rac1 and Cdc42 
+activation dynamics2,4–7,13,18 with different levels of sensitivity. However, some of these probes are constitutively 
+tethered to the plasma-membrane2,6, and therefore cannot integrate any level of regulation exerted by Rho gua-
+nine nucleotide dissociation inhibitor (RhoGDI). At least for RhoA, this has been shown to be crucial to faithfully 
+capture Rho GTPase activity patterns in time and space13. Using our cpFRET toolkit, which is based on a bio-
+sensor library with circularly permutated (cp) donor and acceptor fluorophores, we have previously constructed 
+more sensitive, second generation, RhoA13, and Rac1 19 biosensors (called RhoA-2G and Rac1-2G). We now 
+report on the construction of a second generation, Cdc42-2G biosensor. For that purpose, we used a biosensor 
+design that was successful in producing improved RhoA and Rac1 biosensors. This design includes wild type and 
+four cps of the mTFP1 donor and Venus acceptor fluorophores, the W ASP CRIB domain (amino-acids 201-314) 
+to detect Cdc42 GTP-loading4, and Cdc42 at the C-terminus (Fig. 3A).
+Screening of the library yielded three sensor constructs (mTFP1/cp227-Venus/cp157, mTFP1/cp227-Venus/
+cp195, mTFP1/cp175-Venus/wt) that displayed a robust change in emission ratio (ER) between ON and OFF 
+states (Fig. 3B and S3A). We discarded the mTFP1/cp175-Venus/wt biosensor because mTFP1/cp175 displays 
+a lower brightness than mTFP1/cp22713. Because the two remaining biosensors both contained mTFP1/cp227, 
+we then arbitrarily chose the mTFP1/cp227-Venus/cp195 sensor variant for further investigation (Fig. S3B). 
+Cdc42-2G showed a pronounced inversion of the donor and FRET emissions in the ON and OFF states (Fig. 3C), 
+and appropriately responded to mutations that affect nucleotide loading (G12V and T17N) or effector interaction 
+(Y40C)20 (Fig. 3D, S3C). Cdc42-2G responded to co-expression of Cdc42-competent Rho GTPase activating 
+proteins (GAPs) such as a truncated form of CdGAP (CdGAP ∆N) or p50RhoGAP , but not the Rap1-specific 
+RapGAP (Fig. 3E). Due to its specific design, Cdc42-2G also responded to RhoGDI. This drop of activity could 
+then be rescued by co-expression of the Cdc42-competent guanine nucleotide exchange factor (GEF) Dbl, but not 
+by non Cdc42-competent GEFs like Etc2 (RhoA-specific), Vav1 (Rac1-specific) or C3G (Rap1-specific). Finally, 
+we analyzed the spatial Cdc42 activation patterns in living cells. As observed earlier 4,18, Cdc42-2G detected 
+broad Cdc42 activation at the cell edge (Fig. 3F). The Cdc42-2G T17N mutant, which retained a similar subcel-
+lular localization as Cdc42-2G, however yielded a flat emission ratio profile (Fig. 3F ,G). This indicates that the 
+Cdc42-2G sensor faithfully reflects Cdc42 activation pattern independently of cell geometry. A sequence map of 
+Cdc42-2G is provided in Fig. S3D.
+Spatio-temporal Rho GTPase activation dynamics associated with prototypical protrusion/
+retraction events.  We then monitored the activity of each Rho GTPase simultaneously with F-actin dynam-
+ics, and analyzed Rho GTPase activity fluctuations using kymograph analysis (Fig. 4A). Visual inspection guided 
+us in identifying specific regions of interest (ROIs) within the kymograph, to quantify temporal averages of Rho 
+GTPase activity during specific signaling states (Fig. 4B). Based on these measurements, a schematic representa-
+tion of Rho GTPase activity fluctuation is presented (Fig. 4C). We also plotted the mean ER value across the 
+whole kymograph, to provide an idea of the relative changes of local versus basal Rho GTPase activity (Figs 4 and 
+5B,E,H, grey boxplot).
+As previously shown 15, a broad gradient of RhoA activity spanning several micrometers from the edge 
+inwards, occurred at the steady-state (Fig. 4A–C, Movie S5). PDGF-induced protrusion led to rapid RhoA inhi-
+bition throughout the cell. During subsequent stalling, RhoA activity then re-appeared at the leading edge. RhoA 
+activity then remained ON during membrane retraction. At steady-state, basal levels of Rac1 activity occurred 
+throughout the cell (Fig. 4D–F , Movie S6). During protrusion, Rac1 activity immediately increased and con-
+centrated in a more focused edge-proximal region, and remained ON during stalling. During retraction, the 
+edge-proximal Rac1 activity zone immediately switched OFF , and a second zone of edge-distal Rac1 activity 
+appeared. These results suggest the existence of two distinct Rac1 activity pools that are differently regulated dur-
+ing protrusion and retraction. At steady-state, Cdc42 was activated in a broad zone at the leading edge (Fig. 4G–I, 
+Movie S7). Cdc42 activity then intensified during PDGF-induced protrusion, stalling and retraction.
+Identical measurements in response to Y-27632 revealed a slightly different scenario. Differently from 
+PDGF-triggered protrusions, RhoA activity remained ON throughout the different morphodynamic events 
+(Fig. 5A–C, Movie S8). In contrast, similar Rac1 and Cdc42 activation dynamics as in response to PDGF were 
+observed (Fig. 5D–I, Movies S9,10). Consistently with identical edge morphodynamics as well as F-actin and 
+adhesion dynamics evoked by Y-27632 or PDGF +  Y-27632 stimulation, similar spatio-temporal Rho GTPase 
+activation dynamics were observed by both stimulation protocols (Fig. S4). These results indicate the existence 
+using ADAPT, and normalized to t =  0′. Average area ±  s.e.m (PDGF: n =  12 cells, Y-27632: n =  13 cells).  
+(D,E) F-actin dynamics during protrusion/retraction in response to PDGF (D) or Y-27632 (E). F-actin signals 
+are color-coded for signal intensity or shown in inverted black and white (ibw) contrast. Color-code according 
+to the scale bar. Left panel: F-actin signal (color-coded) of representative whole cells (left), as well as magnified 
+insets (successively corresponding to the white and black dashed boxes). White solid lines represent ROIs used 
+for kymograph analysis. Right panel: Kymograph analysis of F-actin dynamics during the PDGF/Y-27632 pulse. 
+(F) Quantification of F-actin fluctuations. Whole cell lifeact-mCherry fluorescence intensity was averaged in 
+response to a PDGF/Y-27632 pulse. Intensities were normalized to t =  0′. Average intensity ±  s.e.m (PDGF: 
+n =  5 cells; Y-27632: n =  5 cells) Scale bars: (A,B,D,E) 10 μ m.
+www.nature.com/scientificreports/
+5
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+A
+F-actin F-actin
+∆t= 2 min
+t=02:10
+PDGF
+Steady-state
+VASP 
+(TIRF)
+00:32
+00:38
+00:44
+00:48
+00:54
+01:00
+01:02
+01:08
+01:14
+01:58
+02:04
+02:10
+Protrusion Stalling Retraction
+E PDGF
+Steady
+Protrusion
+Stal
+ling
+Retr
+action
+0
+1
+2
+3Normalized Intensity
+******
+*********
+F Y-27632
+Stead
+y
+ProtrusionRetr
+action
+0
+1
+2
+3Normalized Intensity
+***
+***
+***
+C
+VASP 
+(TIRF)
+00:24
+00:30
+00:54
+01:00
+01:24
+01:30
+00:18 00:48 01:18
+Steady-stateP rotrusionR etraction
+Y-27632
+F-actin
+∆t= 2 min
+t=01:30
+F-actin
+Steady-state Protrusion Stalling Retraction
+VASP (TIRF)
+∆t= 2 min
+t=02:10
+PDGF
+B
+D
+Y-27632
+∆t= 2 min
+t=01:30
+Steady-state Protrusion Retraction
+VASP (TIRF)
+5.83
+1.00
+60.00
+1.00
+Figure 2. PDGF/Y-27632 pulse-induced adhesion dynamics. (A–D) Representative adhesion dynamics in 
+response to a PDGF (A,B) or a Y-27632 (C,D) pulse. Cells expressing Lifeact-mCherry/V ASP-GFP were imaged 
+using epifluorescence (Lifeact) and TIRF (V ASP) microscopy. In the insets, a dashed crosshair provides a virtual 
+reference for visual inspection of the motile behavior of the adhesions. (A,C) Left panels depicts a micrograph 
+(ibw contrast) and a Kymograph (color coded for fluorescence intensity) analysis of the F-actin signal along 
+the dotted line. Right panels depict magnified insets of V ASP-GFP signals in specific morphodynamic phases 
+(from the solid line box in the left panel). V ASP-GFP signal is color-coded for fluorescence intensity. Color-code 
+according to the scale bar. Time scale: hours:minutes. (B,D) Kymograph analysis of adhesion dynamics in ibw 
+contrast. Magnifications of selected insets from the kymograph (depicted by color-coded boxes corresponding 
+to prototypical morphodynamic states) are also shown. Note that all the images have been scaled identically 
+www.nature.com/scientificreports/
+6
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+of finely regulated spatio-temporal RhoA, Rac1 and Cdc42 signaling programs that correlate with the different 
+F-actin and adhesion dynamics evoked by the different stimuli. A summary of the different edge motility states as 
+well as their associated F-actin, adhesion and Rho GTPase activation dynamics is shown in Fig. 6.
+Discussion
+Recent reports have documented complex Rho GTPase signaling programs that regulate leading edge dynamics, 
+and that fluctuate at length and time scales of single microns and tens of seconds9–11. With respect to more classic 
+models, this reveals an unanticipated degree of complexity, in which the different Rho GTPases most likely acti-
+vate different effector pathways in time and space, to fine tune cytoskeletal and adhesion dynamics that enable 
+leading edge motility. Understanding this signaling complexity requires reductionist approaches that allow us to 
+gate on specific morphodynamic events (e.g. leading edge motility versus tail retraction,…). Because these com-
+plex signaling programs correlate with rapid and heterogeneous dynamic edge motility states, computer vision 
+and statistical analyses are required to extract the subtle Rho GTPase signaling patterns, and merge them into 
+statistically-relevant datasets10,11. Here, we use a microfluidic device to induce robust prototypical edge motility 
+behaviors, bypassing cellular heterogeneity to some extent, and allowing us to analyze signaling dynamics using 
+more simple methods. We use our approach to dissect specific Rho GTPase signaling states that are associated 
+with distinct edge motility, F-actin and adhesion dynamics. These prototypical edge motility, and their associated 
+signaling states, operate at a time scale of multiple minutes rather than ten seconds as those observed during 
+fibroblast edge dynamics evoked by simple integrin engagement10.
+F-actin and adhesion dynamics correlating with different edge motility states.  Our approach 
+reveals stereotypic cytoskeletal and adhesion dynamics associated with the integrin-triggered, poorly motile 
+steady state, and the more robust protrusion and retraction edge motility states induced by PDGF or Y-27632 
+pulses (Fig. 6A). At steady-state, REF52 cells display robust lamellar actin retrograde flow, most likely in equilib-
+rium with actin polymerization, leading to low net protrusion. This is visible from the robust retrograde flow of 
+radial stress fibers, accompanied by robust focal adhesion maturation. During PDGF-evoked, steady protrusion, 
+the lamellar F-actin network decreases in intensity (as evidenced by a decrease in the intensity of radial stress fib-
+ers), and a clear lamellipodial F-actin network is formed. Consistently, this is accompanied with formation of focal 
+complexes that do not mature into focal adhesions. Together, these data strongly suggest decreased myosin-based 
+contractility during PDGF-evoked membrane protrusion. After a couple of minutes, the PDGF-induced edge 
+stalls. We propose that edge geometry/mechanical cues are sensed to activate a mechanical feedback that limits 
+membrane extension, possibly enabling not to overwhelm the limited membrane supply required for protrusion. 
+This correlates with re-enforcement of radial stress fibers, and focal adhesion maturation, indicative of increased 
+myosin-based contractility. However, a robust lamellipodial network can still be observed. We therefore propose 
+that an equilibrium between lamellipodial actin polymerization and lamellar actin retrograde flow leads to PDGF 
+edge stalling. Upon PDGF removal, loss of the protrusive lamellipodial actin network, together with continuous 
+lamellar retrograde actin flow correlates with robust edge retraction.
+In contrast to PDGF , Y-27632 triggers very robust edge protrusion without a stalling phase (Fig. 6A). This 
+correlates with formation of robust lamellipodial networks, as well as with an instantaneous loss of lamellar actin 
+retrograde flow, evidently due to inhibition of Rho kinase and myosin-based contractility. This is visible due to 
+disappearance of radial stress fibers, and dissolution of focal adhesions, with only some small remnant adhesions 
+remaining. Compromised mechanosensing due to Y-27632 might also not enable to evoke the stalling phase 
+observed when membrane protrusion is activated using PDGF . Simultaneous stimulation of cells with a pulse of 
+PDGF and Y-27632 evoke identical edge motility, cytoskeletal and adhesions dynamics than Y-27632 alone, indicat-
+ing that compromised mechanosensing is dominant over chemotropic, PDGF-induced responses (Figs S2 and S4).  
+Not surprisingly, this indicates that mechanosensitive signaling also feeds in the regulation of chemotropic 
+responses. Upon Y-27632 removal, lamellipodial F-actin networks disappear, while lamellar networks re-appear, 
+correlating with edge retraction.
+Together, these results suggest that the robust prototypical edge motility states we can induce originate from 
+the interplay of the lamellipodial and lamellar actin networks. Tuning of the strength of both cytoskeletal net-
+works ultimately dictates the edge motility state of the cell.
+Spatio-temporal Rho GTPase activation dynamics associated to prototypical edge motility 
+states. Rather than a universal signaling modality regulating leading egde motility, our results indicate the 
+existence of sophisticated spatio-temporal Rho GTPase signaling networks regulating edge protrusion and retrac-
+tion. These depend both, on external cues (integrin versus growth factor signaling) and intrinsic cytoskeletal 
+properties (the contractile state of the cell). This might enable to fine tune the cytoskeletal dynamics inherent to 
+different edge motility states. While our approach remains purely correlative, our results suggest that the complex 
+interplay between Rho GTPases might control the balance between lamellipodial actin polymerization versus 
+for a fair comparison of fluorescence intensities. (E,F) Quantification of adhesion fluorescence intensity in 
+response to a PDGF (E) or a Y-27632 (F) pulse. Single adhesions were segmented using the Focal Adhesion 
+Analysis Server (FAAS)31. Average fluorescence intensities were computed, and normalized to the pre-pulse, 
+steady-state. Boxplots with median, interquartile (box) and 1.5 IQR (whiskers) range with of the fluorescence 
+intensity distributions are shown (PDGF: n =  6 cells, 1300–1600 adhesions per condition; Y-27632: n =  7 cells, 
+650–1850 adhesions per condition; Non-gaussian distribution, Kruskal-Wallis test followed by Dunn’s multiple 
+comparison post-test.; α  =  0.05; ***p <  0.0001). Scale bars: (A,C) 10 μ m. (B,D) 5 μ m.
+www.nature.com/scientificreports/
+7
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+A
+C
+E
+FG
+Cdc42-2G biosensor
+480 500 520 540 560 580 600
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0Normalized fluorescence [a.u.]
+Wavelength [nm]
+Cdc42Venus wt
+cp175
+cp159
+cp227
+cp105 cp159
+cp173
+cp195
+cp229
+mTFP1 wt WASP
+Cdc42-2G biosensor
+mTFP1/cp227-Venus/cp195
+B 105 159 175 227 wtmTFP1 cp
+Venus cp
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6∆R/R₀
+157 195173 229 wt
+D
+WT G12V T17N Y40C
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2 *
+**
+ns
+ns
+Normalized emission ratio [a.u.]
+Cdc42-2G biosensor
+Cdc42-2G (ON)
+Cdc42-2G + RhoGDI (OFF)
+Sensor intensity [a.u.]
+Sensor activation [ratio; a.u.]
+01 02 03 04 05 0
+0 1.08
+1.23
+1.39
+1.54
+1.70
+1.85
+Distance [µm]
+2
+4
+6
+8
+10
+12 Cdc42-2G T17N
+Cdc42-2G WT
+0
+10
+20
+30
+40
+50
+1.08
+1.23
+1.39
+1.54
+1.70
+1.85
+ActivationIntensity
+Sensor activationSensor distribution
+Cdc42-2G WT Cdc42-2G T17N
+1.91.0
+***
+*** ***
+*
+ns
+ns
+ns
+ns
+Normalized emission ratio [a.u.]0.0
+0.2
+0.6
+0.8
+1.0
+1.2
++ RhoGDI
+Cdc42-2G
++ CdGAP
+ ∆N
++ p50RhoGA
+P
++ Rap GAP+ RhoGDI
++ Dbl + Vav1+ Ect2 + C3G
+Figure 3. Construction and characterization of a genetically-encoded Cdc42 FRET biosensor. (A) Schematics 
+of the 25 constructs of the Cdc42-2G biosensor library. (B,C) Fluorometry-based screening of the Cdc42 
+biosensor library. (B) A suspension of HEK293FT cells expressing Cdc42-2G alone (ON state) was measured. 
+Δ R/R0 values represent changes in FRET efficiency between the ON or OFF states. Key indicates the specific 
+mTFP1 and Venus mutants screened. Arrow indicates the selected biosensor. (C) Fluorescence spectrum 
+of the selected Cdc42-2G biosensor. Spectrum is normalized by the area under the curve. (D) Evaluation of 
+www.nature.com/scientificreports/
+8
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+lamellar actin retrograde flow during edge protrusion, stalling or retraction episodes. Indeed, we can at present 
+only speculate about the possible effector pathways that are switched on in time and space by the different Rho 
+GTPases. A summary of the spatio-temporal Rho GTPase activation dynamics during the different edge dynam-
+ics are shown in Fig. 6A,B.
+During steady-state, relatively silent edge motility, broad zones of basal Rac1/Cdc42 activities might regulate 
+actin polymerization by activation of Wave/W ASP and Arp2/3 proteins21, while the broad zone of RhoA activity 
+might control lamellar myosin II-dependent actin through Rho kinases22. Consistently, in REF52 cells, lamellar 
+actin retrograde flow and the broad gradient of RhoA activity also correlate with phosphorylated myosin light 
+chain23. We propose that the interplay of both signaling activities, and their antagonistic downstream cytoskeletal 
+networks explains the poor net edge protrusion.
+During PDGF-evoked membrane protrusion, Rac1 and Cdc42 get activated beyond their steady-state levels, 
+in regions that are more focused at the leading edge, while RhoA activity immediately decreases. Increased (Rac1/
+Cdc42-dependent) Arp2/3 activation, coupled with decreased (RhoA-dependent) myosin-based retrograde flow 
+might then explain the steady membrane protrusion observed during that phase. These observations suggest 
+that the widely described Rac1/RhoA antagonism24 might take place in this specific cellular context. The almost 
+immediate decrease in RhoA activity upon PDGF stimulation suggests the involvement of a rapidly diffusible 
+secondary messenger that might consist of reactive oxygen species, that have previously been described to medi-
+ate the Rac1/RhoA antagonism25. The finding that Rac1 and RhoA activity zones overlap during steady state 
+protrusion, stalling, and Y-27632-evoked protrusion, suggest that the Rac1/RhoA antagonism is not a universal 
+signaling mechanism, but occurs within specific cellular contexts.
+During stalling, Rac1/Cdc42 activity and a lamellipodium remain present. However, a potential mechanosen-
+sitive pathway26, seems to re-activate RhoA and re-enforce actin retrograde flow to counteract actin polymeri-
+zation and stall the edge. Edge retraction then correlates with loss of edge-proximal Rac1 activity, and activation 
+of a second, edge-distal, Rac1 pool. RhoA, and surprisingly also Cdc42 remain active. An attractive possibility is 
+that edge-proximal Rac1 inactivation, correlates with loss of Wave/Arp2/3-mediated activation of lamellipodial 
+actin polymerization. In presence of continuous RhoA-mediated actin retrograde flow, edge motility is tipped 
+towards retraction. The significance of continuous Cdc42 activity during retraction is less clear. One scenario is 
+that Cdc42 switches to another effector such as myotonic dystrophy related kinase MRCK, which can co-operate 
+with Rho/Rho kinase signaling to control myosin light chain phosphorylation, and thus contractility27. The signif-
+icance of the appearance of an edge-distal Rac1 activity pool that correlates with retraction is also non-intuitive. 
+However, at this subcellular location, the use of a different effector such as p21 activated kinase (PAK) could feed 
+into the cofilin pathway. Such a spatio-temporal Rac1 signaling network has recently been linked to actin depo-
+lymerization during invadosome disassembly7.
+Our Y-27632 experiments revealed similar spatio-temporal Rac1/Cdc42 activity patterns as for PDGF , show-
+ing that these GTPases can sense intracellular variations in contractility, and feed into the regulation of mem-
+brane protrusion. RhoA however remained switched ON throughout all morphodynamic phases, even during 
+membrane protrusion. In the latter case, it is important to notice that RhoA won’t contribute to contractile sig-
+naling since its effector, Rho kinase, is inhibited. Consistently with previous reports 26,28, these results suggest 
+that compromised mechanosensing in absence of contractility results in an inability to tune RhoA activation 
+dynamics. We show that simultaneous PDGF and Y-27632 pulse lead to identical edge, cytoskeletal, adhesion, 
+and spatio-temporal Rho GTPase signaling dynamics as a simple Y-27632 pulse does. These results underline the 
+importance of mechanosensitive pathways for spatio-temporal control of Rho GTPase activation.
+Our results, as well as previous work that has focused on fibroblast edge dynamics that fluctuate on a more 
+rapid timescale10 indicate a high degree of complexity of Rho GTPase signaling during fibroblast cell migration. 
+The coming task will now be to characterize the GEFs/GAPs that dynamically shape spatio-temporal patterns of 
+Rho GTPase activity, the mechanisms of the crosstalk between Rho GTPases, and the specific effector pathways 
+that are associated with each Rho GTPase pool to fine tune the different cytoskeletal networks that produce spe-
+cific edge motility behaviors. Because Rho GTPase activation dynamics fluctuate at second/minute timescales, 
+adequate dissection of this signaling complexity will require optogenetic/chemical biology tools that enable to 
+apply perturbations and manipulate signaling dynamics at these specific timescales.
+Material and methods
+Cdc42 biosensor generation.  The Cdc42 FRET biosensor was constructed using the cpFRET toolkit (Fritz 
+et al., 2013). Based on the design of the most sensitive second generation RhoA sensor, we constructed 25 sensor 
+variants consisting of mTFP1 wt and four circular permutations (cps), the CRIB effector domain of W ASP (amino 
+acids 201–314; custom gene synthesis; GenScript), a 64 amino acid linker, Venus wt and four cps and Cdc42 itself 
+(custom gene synthesis; GenScript). The design including restriction sites used for cloning as well as the sequence 
+Cdc42-2G mutants. Indicated mutants were transfected and analyzed by fluorometry. n =  2 experiments. 
+Gaussian distribution; Bonferroni’s multiple comparison test; α  =  0.05; *P <  0.05; **P <  0.001. (E) Evaluation 
+of Cdc42-2G response to upstream regulators. Transfected HEK293FT cells were analyzed in 96-well plates by 
+high content microscopy. Average ER of multiple cells was calculated on a per-field of view basis. Bars represent 
+average ±  s.e.m. n ≥16 fields of view containing ≥100 cells each. Gaussian distribution; Bonferroni’s multiple 
+comparison test; α  =  0.05; *P <  0.05; ***P <  0.0001. (F) Evaluation of wild-type and T17N mutant Cdc42-2G 
+biosensors in REF52 fibroblasts. ER (top) and biosensor distribution (donor channel; bottom) are shown.  
+(G) Fluorescence intensity and ER profiles across lines shown in (F). ERs are scaled identically in both cells. Scale 
+bar: (F) 10 μ m.
+www.nature.com/scientificreports/
+9
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+Ratio Cdc42-2GF-actin
+A
+Ratio RhoA-2GF-actin
+RetractionSteady-state Protrusion Stalling
+00:28 00:52 01:12 01:40
+Ratio Rac1-2GF-actin
+RetractionSteady-state Protrusion Stalling
+00:20 00:42 00:56 01:16
+RetractionSteady-state Protrusion Stalling
+00:20 01:04 01:20 01:40
+D
+highlow
+RhoA Activity
+Edge motion
+Time
+Steady-state
+Protrusion
+Stalling Retraction
+RhoAC
+G
+highlow
+Rac1 Activity
+Edge motion
+Time
+Steady-state
+Protrusion
+Stalling Retraction
+F Rac1
+highlow
+Cdc42 Activity
+Edge motion
+Time
+Steady-state
+Protrusion
+Stalling Retraction
+I Cdc42
+F-actinRatio RhoA-2G
+00:28
+00:52
+01:40
+01:12PDGF
+∆t= 2 min
+t=02:10
+F-actinRatio Rac1-2G
+00:20
+00:42
+01:16
+00:56
+Steady-state
+Protrusion
+Retraction
+Stallin
+g
+PDGF
+∆t= 2 min
+t=01:30
+F-actinRatio Cdc42-2G
+00:20
+01:04
+01:20
+01:40
+Steady-state
+Protrusion
+Retraction
+Stallin
+g
+∆t= 2 min
+t=02:10
+Steady-state
+Protrusion
+Retraction
+Stalling
+B
+Edge motion
+Time
+Tota
+l
+Steady
+Protrusi
+on
+Stalling
+Retraction
+1.05
+1.10
+1.15
+Normalized Ratio
+** *
+***
+1.00
+* **
+E
+Edge motion
+Time
+Tota
+l
+Steady 
+fron
+t
+Steady 
+back
+Protrusion front
+Prot
+rusion back
+Stallin
+g fron
+t
+Stalling back
+Retraction fron
+t
+Retraction back
+1.05
+1.10
+1.15
+Normalized Ratio
+* *** ******
+*** ******
+*
+*** *
+PDGF
+Edge motion
+Time
+H
+To
+tal
+Stea
+dy
+Protrusion
+ front
+Protrusion 
+back
+Stalling fron
+t
+Stalling
+ back
+Retraction
+ front
+Re
+traction 
+back
+1.0
+1.1
+1.2
+1.3
+Normalized Ratio *
+** ** *
+**
+*
+***
+1.24
+1.00
+1.19
+1.00
+1.33
+1.00
+1.00
+Figure 4. PDGF pulse-induced spatio-temporal Rho GTPase activation dynamics. (A,D,G) Spatio-temporal 
+RhoA (A), Rac1 (D) and Cdc42 (G) activation simultaneously measured with F-actin dynamics. Left panel: 
+Rho GTPase activation and F-actin signals representative of prototypical morphodynamic states. ERs are color-
+coded (top), and F-actin signals are shown in ibw contrast (bottom). Right panel: Kymograph analysis of ERs, 
+and F-actin (color-coded for fluorescence intensity) along the red line shown in the micrographs. Time scale: 
+hours:minutes. (B,E,H) Quantification of Rho GTPase signaling states. Left panel: schematic representation 
+www.nature.com/scientificreports/
+10
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+of the second generation Cdc42 (Cdc42-2G) sensor is shown in Fig. S3. This biosensor design preserves the 
+C-terminal lipid modification of Cdc42, which renders the GTPase sensitive to the regulation by RhoGDI. This 
+is a prerequisite to faithfully capture the spatiotemporal activation pattern of endogenous GTPases as observed 
+previously13. The most sensitive Cdc42-2G sensor containing mTFP1/cp227 and Venus/cp195 was shuttled from 
+pTriEx into the pAd/CMV/V5-DEST Gateway®  Vector according to the manufacturers instructions (Invitrogen). 
+The dominant negative (T17N) and effector (Y40C) mutations as well as the dominant positive (G12V) mutation 
+were generated by site-directed mutagenesis (Stratagene).
+Cdc42 FRET biosensor characterization by fluorometry and microscopy.  Analysis of the fluores-
+cence emission spectra of the Cdc42 biosensor library and Cdc42-2G dominant positive and negative mutants 
+were performed on a fluorometer (Perkin Elmer LS50b). Typically, 2 ×  105 HEK293FT cells were seeded into a 
+12-well cell culture plate and transfected with 100 ng of biosensor, 400 ng of RhoGDI or GAPs and 1000 ng of 
+GEFs using Metafectene (Biontex). After 48  hours, cells were detached with brief trypsin treatment and resus -
+pended in ice-cold PBS. Cell suspensions were measured in a quartz cuvette. Cdc42 sensor was excited at 460 nm 
+and emission spectra were recorded from 480–600 nm with a step of 0.5 nm. Spectra were background-subtracted 
+with the spectra of non-transfected cells and normalized according to their spectrum integral. Relative FRET 
+was calculated by dividing the normalized fluorescence intensity of Venus at its emission peak (528 nm) by the 
+normalized fluorescence intensity of mTFP1 at its emission peak (492 nm). The response of the Cdc42-2G sensor 
+to GEFs and GAPs was analyzed by microscopy. HEK293FT cells were seeded into 96-well plate (Falcon) coated 
+with 10 μ g/ml Poly-L-lysine and transfected as described above. 9 fields of view were acquired per experiment 
+using a Plan Apo 10x objective and the Screening Acquisition Module in MetaMorph (Molecular Devices) and 
+the average ratio per field of view was than calculated from ≥ 100 cells.
+Cell culture, generation of stable cell lines and infection with adenoviral vectors.  Rat embry-
+onic fibroblasts (REF52) were cultured in Dulbecco’s modified eagle medium (DMEM; Sigma) supplemented 
+with 10% fetal bovine serum (FBS; Sigma), 100 U/ml penicillin/ streptomycin (Sigma) and 4 mM L-Glutamine 
+(Sigma). For serum starvation and imaging, Ham’s Nutrient Mixture F12 (Ham’s F12, Sigma), supplemented with 
+0.5% FBS and 0.5% bovine serum albumin (BSA; Sigma), 100 U/ml penicillin/ streptomycin, 4 mM L-Glutamine 
+was used.
+Stable cell lines expressing V ASP-GFP , or the RhoA FRET biosensor RhoA2G were described previously15. 
+Similarly, stable cell lines expressing Paxillin-mCherry were constructed. For simultaneous imaging of F-actin 
+dynamics, these stable cells were infected with an adenovirus encoding Lifeact-mCherry15. Long term expression 
+of Rac1-2G19, and Cdc42-2G (this study) using lentiviral transduction led to obvious cell morphological aber -
+rations. This problem was solved by short-term biosensor expression using adenoviral vectors. In these exper -
+iments, double infections with adenoviruses encoding for Rac1-2G or Cdc42-2G, and Lifeact-mCherry were 
+performed. Adenoviral particles from crude packaging cell lysates were frozen as aliquots. After titration, these 
+crude lysates were used at appropriate concentration for cell infection. REF52 cells were infected for 16 hours, and 
+switched to complete medium for 24 hours. Cells were then seeded in microfluidic devices in starving medium, 
+and imaging started one hour post-seeding.
+Construction and handling of microfluidic devices.  We used a modified version of a 
+previously-described microfluidic circuit to apply chemokine gradient to cells29. Slight modifications of the con-
+struction of the microfluidic circuit allowed us to deliver growth factor pulses. The microfluidic silicon master 
+was replicated from a Silicon wafer with SU-8 micro-structures. The silicon master mold was composed of two 40 
+μ m and 100 μ m thickness layers of photoresist. First, the plasma treated Silicon wafer was spin-coated with SU-8 
+100 (Microchem, USA) negative thick photoresist until a height of 40 μ m was achieved. After baking at 65 °C for 
+5′ and 95 °C for 20′, the wafer was exposed to 405 nm ultraviolet light (Shinu MST, Korea) with a 250 mJ dose and 
+masked by the negative film mask (Han&All Tech, Korea). After this first round of exposure, the wafer was baked 
+again at 65 °C for 1′ and 95 °C for 10′. SU-8 developer (Microchem, USA) was then used to remove the unexposed 
+part of the photoresist. For deposition of the second photoresist layer, the film mask for the second master was 
+correctly positioned using the alignment pattern on the first layer of the wafer. The photoresist for the second 
+layer was then spin-coated until a 100 μ m thickness was achieved. The wafer was baked at 65 °C for 10′ and 95 °C 
+for 30′, and exposed to 500 mJ of 405 nm UV light. After a final baking step at 65 °C for 1′ and 95 °C for 10′, the 
+wafer was dipped into the developer, and baked to evaporate the residual solvents on the top.
+Polydimethylsiloxane (PDMS) was used to replicate the master. The precursor (Sylgard 184, Dow Corning) 
+was mixed at a 10:1 ratio and degassed in a vacuum chamber for 5′. 7 g precursor was then poured on the top of 
+the master, and solidified at 80 °C in a dry oven for 30′. The plastic reservoir from a 8-well strip (Evergreen sci, 
+of kymograph ROIs that were used to quantify Rho GTPase activity. Right panel: Boxplots of ROI-averaged 
+ERs, with median, interquartile (box) and 1.5 IQR (whiskers). ERs were normalized by the average of the 10% 
+pixels with lowest ERs, representing basal Rho GTPase activity within the cell, enabling to compare ERs across 
+different biosensors. Total averaged ERs (grey box) were not included in statistical analysis; RhoA: n =  5 cells, 
+8 to 21 measurements per dynamic event, Rac1: n =  6 cells, 10 to 11 measurements per dynamic event. Non-
+gaussian distribution; Kruskal-Wallis test followed by Dunn’s multiple comparison post-test; α  =  0.05; *P <  0.05, 
+**P <  0.001, ***P <  0.0001, non-indicated pairs show no significance; Cdc42: n =  5 cells 8 to 15 measurements 
+per dynamic event. Gaussian distribution; Bonferroni’s multiple comparison test; α  =  0.05; *P <  0.05, 
+**P <  0.001, ***P <  0.0001, non-indicated pairs show no significance. (C,F,I) Schematic representation of RhoA 
+(C), Rac1 (F) and Cdc42 (I) activation patterns related to edge dynamics. All scale bars: 10 μ m.
+www.nature.com/scientificreports/
+11
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+00:20
+00:42
+01:28
+Steady-state
+Protrusion
+Y-27632
+F-actinRatio Rac1-2G
+∆t= 2 min
+t=01:30
+00:20
+00:36
+01:12
+Steady-state
+Protrusion
+Retraction
+Y-27632
+F-actinRatio Cdc42-2G
+∆t= 2 min
+t=01:30
+F-actinRatio RhoA-2G
+00:20
+00:42
+01:28 Y-27632
+∆t= 2 min
+t=01:30
+Steady-state
+Protrusion
+Retraction
+Edge motion
+Time
+B
+Edge motion
+Time
+E
+Tota
+l
+Steady fron
+t
+Steady ce
+llcent
+er
+Protrusion 
+front
+Protrusion ba
+ck
+Retra
+ction fr
+ont
+Retraction
+ back
+1.00
+1.05
+1.10
+1.15
+Normalized Ratio
+*****
+*
+*** **
+*** *
+***
+H
+To
+tal
+Steady
+Prot
+rusion 
+front
+Protrusion 
+bac
+k
+Retr
+action
+ fron
+t
+Retraction ba
+ck
+1.0
+1.1
+1.2
+1.3
+Normalized Ratio ***
+*
+***
+***
+* **
+Edge motion
+Time
+Ratio RhoA-2GF-actin
+Protrusion
+00:42
+Retraction
+01:28
+Steady-state
+00:20
+Ratio Cdc42-2GF-actin
+RetractionSteady-state Protrusion
+00:20 00:36 01:12
+Ratio Rac1-2GF-actin
+RetractionSteady-state Protrusion
+00:20 01:2800:42
+A
+D
+G
+C
+highlow
+RhoA Activity
+Edge motion
+Time
+Steady-stateP rotrusion Retraction
+RhoA
+F
+Steady state Protrusion Retraction
+highlow
+Rac1 Activity
+Edge motion
+Time
+Rac1
+I
+highlow
+Cdc42 Activity
+Edge motion
+Time
+Steady-state Protrusion Retraction
+Cdc42
+1.29
+1.00
+1.29
+1.00
+1.29
+1.00
+Tota
+l
+Stead
+y
+Protrusi
+on
+Retraction
+1.05
+1.10
+1.15
+Normalized Ratio
+1.00
+Retraction
+Figure 5. Y-27632 pulse-induced spatio-temporal Rho GTPase activation dynamics. Legend identical 
+to Fig. 4. (A,D,G) Spatio-temporal RhoA (A), Rac1 (D) and Cdc42 (G) activation simultaneously measured 
+with F-actin dynamics. (B,E,H) Quantification of Rho GTPase signaling states. Total averaged ERs (grey box) 
+were not included in statistical analysis; RhoA: n =  6 cells, 11 to 20 measurements per dynamic event, Rac1: 
+n =  5 cells, 10 to 11 measurements per dynamic event, Cdc42: n =  6 cells 13 to 17 measurements per dynamic 
+event. Non-gaussian distribution, Kruskal-Wallis test followed by Dunn’s multiple comparison post-test; 
+α  =  0.05; *P <  0.05, **P <  0.001, ***P <  0.0001. Non-indicated pairs show no significance. (C,F,I) Schematic 
+representation of RhoA (C), Rac1 (F) and Cdc42 (I) activation patterns related to edge dynamics.
+www.nature.com/scientificreports/
+12
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+USA) was then glued on top of the microfluidic device using precursor. These reservoirs contain the medium and 
+growth factors, and allow us to connect the microfluidic device to the ONIX pressure pump (Millipore). An addi-
+tional layer of 30 gr. of precursor was added to seal the plastic reservoir. As shown in Supplementary Information 
+Fig. 1A, the PDMS replica was cut and punched. Glass coverslips (50 ×  70 mm) were thoroughly washed with 
+anhydrous ethanol and demineralized water subsequently. PDMS devices were placed bottom side up together 
+with dried coverslips into a CUTE plasma oven (Femto Science) and plasma treated at 100% power for 1′. After 
+plasma treatment, the PDMS device was mounted on the glass coverslip and further incubated for 15′  at 70 °C 
+to enhance efficiency of covalent bonding. Devices were then coated with 20 μ g/ml fibronectin, and stored over 
+night at 4 °C prior to imaging experiments.
+Live cell imaging. One hour prior to imaging, cells were reseeded subconfluently on fibronectin-coated 
+microfluidic devices under serum starving conditions using Ham’s F12 starvation medium. Tubing connected to 
+a pressure pump (ONIX, Millipore) was plugged to the inlets of the device and outlet reservoirs were covered with 
+Parafilm to minimize medium evaporation.
+One out of the two inlets of each device was filled with Ham’s F12 medium alone, while the other was loaded 
+with Ham’s F12 supplemented with 4 μ M 10 kDa Dextran-Alexa 647 (Invitrogen), 40 ng/ml of PDGF or 10 μ g/ml 
+Y27632, respectively. Immediately after, pressure of 0.5 psi on the reservoir was applied on the inlet containing 
+only medium to prevent diffusion of PDGF or Y27632 into the cell chamber of the microfluidic device. During 
+the PDGF/Y-27632 pulse experiments, medium exchanges were performed applying 1 psi for two minutes and 
+further pressure was reduced to 0.5 psi for medium maintenance.
+All imaging experiments were performed on an Eclipse Ti inverted fluorescence microscope (Nikon) with 
+Plan Apo VC λ  Oil 60× (NA 1.4), Apo TIRF 60 × Oil (NA 1.49) or Plan Apo Lambda DM Air 40 × (NA 0.95) 
+Protrusion
+PDGF Y-27632
+no net edge 
+motion
+Steady-state Stalling Retraction
+RhoA
+Protrusion
++ net edge 
+motion
+no net edge 
+motion
++ net edge 
+motion
+- net edge 
+motion
+Lamellipodial 
+protrusion
+Lamellar 
+contraction 
+F-actin-/ Edge 
+Dynamics
+Adhesion
+Dynamics
+Activation Patterns of Rho GTPases
+Rac1Cdc42
+A
+Focal complexes
+Focal adhesions
+Edge motion
+Steady-state Protrusion Retraction
+Rac1
+Cdc42
+RhoA
+Time
+BC
+Steady-state Stalling Retraction
+Edge motion
+Time
+Protrusion
+Rac1
+Cdc42
+RhoA
+PDGF Y-27632
+Figure 6. Summary of edge/F-actin and adhesion dynamics in relation to Rho GTPase activation states. 
+(A) F-actin and adhesion dynamics are schematically summarized for particular dynamic events (steady state, 
+protrusion, stalling and retraction). First row: Dashed arrows in orientation of motions generated either by the 
+propulsive lamellipodium (green) at the cell periphery or the contractile lamella (red) adjacent to the latter. 
+Adhesion dynamics are displayed in the second row, relating the fate of focal complexes (green) as well as focal 
+adhesions (red) to the respective dynamic state. Below, a scheme summarizes Rho GTPase activation states in a 
+qualitative way, referring to previously depicted edge-/F-actin and adhesion dynamics (RhoA, yellow; Rac1, red; 
+Cdc42,blue). (B,C) Observations of spatio-temporal Rho GTPase activation throughout the course of PDGF (B) 
+or Y-27632 (C) pulse experiments are summarized side by side in schematic kymographs.
+www.nature.com/scientificreports/
+13
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+objectives controlled by MetaMorph (Molecular Devices) software. Laser-based autofocus was used through-
+out the experiments. A CoolLED lamp with 440 nm (mTeal excitation), or GYR LEDs (mCherry or Alexa647 
+excitation) were used as light sources with appropriate excitation filters. FRET experiments were performed 
+as described elsewhere13. For TIRF imaging, 491 or 561 nm solid-state laser diodes integrated within a TIRF 
+illumination system were used (Roper Scientific). FRET/mCherry illumination experiments were acquired 
+using a Hamamatsu Orca R2 CCD camera. GFP/mCherry TIRF imaging experiments were acquired using a 
+Photometrics Evolve EMCCD. All images were acquired at 16-bit depth.
+Image Analysis. Basic image analysis and processing was performed using MetaMorph software. FRET 
+data were analyzed as described elsewhere 13. Edge velocities were assessed using the ImageJ plugin ADAPT 30. 
+Adhesion intensities at distinct dynamic events were analyzed employing the Focal Adhesion Analysis Server 
+(FAAS)31.
+References
+1. Nobes, C. D. & Hall, A. Rho, rac, and cdc42 GTPases regulate the assembly of multimolecular focal complexes associated with actin 
+stress fibers, lamellipodia, and filopodia. Cell 81, 53–62 (1995).
+2. Itoh, R. E. et al. Activation of rac and cdc42 video imaged by fluorescent resonance energy transfer-based single-molecule probes in 
+the membrane of living cells. Molecular and cellular biology 22, 6582–6591 (2002).
+3. Kraynov, V . S. Localized Rac Activation Dynamics Visualized in Living Cells. Science  290, 333–337, doi: 10.1126/
+science.290.5490.333 (2000).
+4. Nalbant, P ., Hodgson, L., Kraynov, V ., Toutchkine, A. & Hahn, K. M. Activation of endogenous Cdc42 visualized in living cells. 
+Science 305, 1615–1619 (2004).
+5. Pertz, O., Hodgson, L., Klemke, R. L. & Hahn, K. M. Spatiotemporal dynamics of RhoA activity in migrating cells. Nature  440, 
+1069–1072 (2006).
+6. Kurokawa, K. & Matsuda, M. Localized RhoA activation as a requirement for the induction of membrane ruffling. Mol Biol Cell 16, 
+4294–4303, doi: 10.1091/mbc.E04-12-1076 (2005).
+7. Moshfegh, Y ., Bravo-Cordero, J. J., Miskolci, V ., Condeelis, J. & Hodgson, L. A Trio-Rac1-Pak1 signalling axis drives invadopodia 
+disassembly. Nat Cell Biol 16, 574–586, doi: 10.1038/ncb2972 (2014).
+8. Bement, W . M. & von Dassow, G. Single cell pattern formation and transient cytoskeletal arrays. Current opinion in cell biology 26, 
+51–59 (2014).
+9. Pertz, O. Spatio-temporal Rho GTPase signaling–where are we now? Journal of cell science 123, 1841–1850 (2010).
+10. Machacek, M. et al. Coordination of Rho GTPase activities during cell protrusion. Nature 461, 99–103 (2009).
+11. Tsukada, Y . et al. Quantification of local morphodynamics and local GTPase activity by edge evolution tracking. PLoS computational 
+biology 4, e1000223 (2008).
+12. Swanson, J. A. Shaping cups into phagosomes and macropinosomes. Nature reviews Molecular cell biology 9, 639–649 (2008).
+13. Fritz, R. D. et al. A versatile toolkit to produce sensitive FRET biosensors to visualize signaling in time and space. Science signaling 
+6, rs12-rs12 (2013).
+14. Uehata, M. et al. Calcium sensitization of smooth muscle mediated by a Rho-associated protein kinase in hypertension. Nature 389, 
+990–994 (1997).
+15. Martin, K., Vilela, M., Jeon, N. L., Danuser, G. & Pertz, O. A growth factor-induced, spatially organizing cytoskeletal module enables 
+rapid and persistent fibroblast migration. Developmental cell 30, 701–716 (2014).
+16. Oakes, P . W ., Beckham, Y ., Stricker, J. & Gardel, M. L. Tension is required but not sufficient for focal adhesion maturation without a 
+stress fiber template. J Cell Biol 196, 363–374, doi: 10.1083/jcb.201107042 (2012).
+17. Hotulainen, P . & Lappalainen, P . Stress fibers are generated by two distinct actin assembly mechanisms in motile cells. The Journal of 
+cell biology 173, 383–394 (2006).
+18. Hanna, S., Miskolci, V ., Cox, D. & Hodgson, L. A new genetically encoded single-chain biosensor for Cdc42 based on FRET, useful 
+for live-cell imaging. PLoS One 9, e96469, doi: 10.1371/journal.pone.0096469 (2014).
+19. Fritz, R. D. et al. SrGAP2-dependent integration of membrane geometry and slit-robo-repulsive cues regulates fibroblast contact 
+inhibition of locomotion. Developmental cell 35, 78–92 (2015).
+20. Manser, E. et al. Expression of constitutively active alpha-PAK reveals effects of the kinase on actin and focal complexes. Molecular 
+and cellular biology 17, 1129–1143 (1997).
+21. Ridley, A. J. Life at the leading edge. Cell 145, 1012–1022, doi: 10.1016/j.cell.2011.06.010 (2011).
+22. Amano, M., Fukata, Y . & Kaibuchi, K. Regulation and functions of Rho-associated kinase. Experimental cell research 261, 44–51,  
+doi: 10.1006/excr.2000.5046 (2000).
+23. Martin, K., Vilela, M., Jeon, N. L., Danuser, G. & Pertz, O. A growth factor-induced, spatially organizing cytoskeletal module enables 
+rapid and persistent fibroblast migration. Dev Cell 30, 701–716, doi: 10.1016/j.devcel.2014.07.022 (2014).
+24. Guilluy, C., Garcia-Mata, R. & Burridge, K. Rho protein crosstalk: another social network? Trends in cell biology 21, 718–726,  
+doi: 10.1016/j.tcb.2011.08.002 (2011).
+25. Nimnual, A. S., Taylor, L. J. & Bar-Sagi, D. Redox-dependent downregulation of Rho by Rac. Nature cell biology 5, 236–241 (2003).
+26. Lessey, E. C., Guilluy, C. & Burridge, K. From mechanical force to RhoA activation. Biochemistry 51, 7420–7432 (2012).
+27. Wilkinson, S., Paterson, H. F . & Marshall, C. J. Cdc42–MRCK and Rho–ROCK signalling cooperate in myosin phosphorylation and 
+cell invasion. Nature cell biology 7, 255–261 (2005).
+28. Bhadriraju, K. et al. Activation of ROCK by RhoA is regulated by cell adhesion, shape, and cytoskeletal tension. Experimental cell 
+research 313, 3616–3623 (2007).
+29. Lee, S. S. et al. Quantitative and dynamic assay of single cell chemotaxis. Integrative Biology 4, 381–390 (2012).
+30. Barry, D. J., Durkin, C. H., Abella, J. V . & Way, M. Open source software for quantification of cell migration, protrusions, and 
+fluorescence intensities. The Journal of cell biology 209, 163–180 (2015).
+31. Berginski, M. E. & Gomez, S. M. The Focal Adhesion Analysis Server: a web tool for analyzing focal adhesion dynamics. 
+F1000Research 2 (2013).
+Acknowledgements
+We are grateful to Gemma Roest for performing imaging of Cdc42-2G biosensor mutants, and Andrea Erni for 
+drawing the Cdc42-2G map. This work was supported by grants from the Swiss National Science Foundation to 
+O.P . from the Human Frontier Science Program to O.P . and N.L.J. and from the Swiss Cancer League to O.P .
+www.nature.com/scientificreports/
+14
+Scientific  RepoRts | 6:21901 | DOI: 10.1038/srep21901
+Author Contributions
+K.M. and O.P . conceived the study. K.M. performed all live cell imaging experiments. R.D.F . and A.R. constructed 
+and characterized the Cdc42 biosensor. H.R. and N.L.J. conceived the microfluidic device. K.M. and O.P . wrote 
+the paper.
+Additional Information
+Supplementary information accompanies this paper at http://www.nature.com/srep
+Competing financial interests: The authors declare no competing financial interests.
+How to cite this article: Martin, K. et al. Spatio-temporal co-ordination of RhoA, Rac1 and Cdc42 activation 
+during prototypical edge protrusion and retraction dynamics. Sci. Rep. 6, 21901; doi: 10.1038/srep21901 (2016).
+This work is licensed under a Creative Commons Attribution 4.0 International License. The images 
+or other third party material in this article are included in the article’s Creative Commons license, 
+unless indicated otherwise in the credit line; if the material is not included under the Creative Commons license, 
+users will need to obtain permission from the license holder to reproduce the material. To view a copy of this 
+license, visit http://creativecommons.org/licenses/by/4.0/

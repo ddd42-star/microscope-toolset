@@ -1,0 +1,682 @@
+RhoA/ROCK-mediated switching between Cdc42- and Rac1-
+dependent protrusion in MTLn3 carcinoma cells
+Mirvat El-Sibai1, Olivier Pertz4, Huan Pang1, Shu-Chin Yip1, Mike Lorenz2, Marc
+Symons2,3, John S. Condeelis2,6, Klaus M. Hahn5, and Jonathan M. Backer1,*
+1 Molecular Pharmacology, Albert Einstein College of Medicine, 1300 Morris Park Avenue, Bronx, NY 10461,
+USA
+2 Anatomy and Structural Biology, Albert Einstein College of Medicine, 1300 Morris Park Avenue, Bronx,
+NY 10461, USA
+3 Center for Oncology and Cell Biology, The Feinstein Institute for Medical Research at North Shore-LIJ,
+North Shore University Hospital, Manhasset, NY 11030, USA
+4 Immunology, Scripps Research Institute, 10550 North Torrey Pines Road La Jolla, CA 92037, USA
+5 Pharmacology, University of North Carolina School of Medicine CB7365, Chapel Hill, NC27599, USA
+6 Analytical Imaging Facility, Albert Einstein College of Medicine, Bronx, NY10461
+Abstract
+Rho GTPases are versatile regulators of cell shape that act on the actin cytoskeleton. Studies using
+Rho GTPase mutants have shown that, in some cells, Rac1 and Cdc42 regulate the formation of
+lamellipodia and filopodia, respectively at the leading edge, whereas RhoA mediates contraction at
+the rear of moving cells. However, recent reports have described a zone of RhoA/ROCK activation
+at the front of cells undergoing motility. In this study, we use a FRET-based RhoA biosensor to show
+that RhoA activation localizes to the leading edge of EGF-stimulated cells. Inhibition of Rho or
+ROCK enhanced protrusion, yet markedly inhibited cell motility; these changes correlated with a
+marked activation of Rac-1 at the cell edge. Surprisingly, whereas EGF-stimulated protrusion in
+control MTLn3 cells is Rac-independent and Cdc42-dependent, the opposite pattern is observed in
+MTLn3 cells after inhibition of ROCK. Thus, Rho and ROCK suppress Rac-1 activation at the leading
+edge, and inhibition of ROCK causes a switch between Cdc42 and Rac-1 as the dominant Rho GTPase
+driving protrusion in carcinoma cells. These data describe a novel role for Rho in coordinating
+signaling by Rac and Cdc42.
+Keywords
+RhoA; ROCK; Rac; EGF; metastasis
+* Corresponding Author: Jonathan M. Backer, M.D. Department of Molecular Pharmacology, Albert Einstein College of medicine, 1300
+Morris Park Avenue, Bronx, NY 10461, Tel: (718) 430 - 2124, Fax: (718) 430 - 3749, E-mail: backer@aecom.yu.edu.
+Publisher's Disclaimer: This is a PDF file of an unedited manuscript that has been accepted for publication. As a service to our customers
+we are providing this early version of the manuscript. The manuscript will undergo copyediting, typesetting, and review of the resulting
+proof before it is published in its final citable form. Please note that during the production process errors may be discovered which could
+affect the content, and all legal disclaimers that apply to the journal pertain.
+NIH Public Access
+Author Manuscript
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+Published in final edited form as:
+Exp Cell Res. 2008 April 15; 314(7): 1540±1552. doi:10.1016/j.yexcr.2008.01.016.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Introduction
+Motility is a fundamental property of cells and is essential for physiological and pathological
+events, including embryonic development, immune responses, wound healing, and tumor
+metastasis. Motility towards a chemoattractant starts with the initial detection of a
+chemoattractant source, which leads to the reorientation of the intracellular signaling
+machinery such that the cell is committed to a given direction [1]. This is followed by the
+localized extension of an actin-rich structure, such as a lamellipod, which propels the cell
+towards the chemoattractant [2]. The steps that follow include adhesion of the lamellae to the
+extracellular matrix, development of contractile force, de-adhesion of focal adhesions at the
+tail of the cell, and contraction causing tail retraction toward the leading lamellae [3].
+Rho family GTPases are molecular switches that couple the detection of chemoattractants to
+actin polymerization [4]. Studies using constitutively active and dominant negative forms of
+Rho GTPases have shown that, in some cells, Rac1, Cdc42 and Rho regulate the formation of
+lamellipodia, filopodia and stress fibers, respectively [5]. Rac1 and Cdc42 regulate actin
+polymerization through the indirect or direct activation of Scar/WAVE and WASP/N-WASP
+nucleation promoting factors that activate the Arp2/3 complex [6,7]. Rho also plays a positive
+role in the regulation of cell motility. Indeed, the inhibition of Rho, through the microinjection
+of the Rho inhibitor, Clostridium botulinum ADP-ribosyltransferase C3 (C3T), inhibits cell
+motility in many cell systems [8,9]. Initially, the role of RhoA during cell motility was thought
+to be restricted to the generation of contractile force and focal adhesion turnover needed for
+tail retraction [10,11]. This is achieved through its downstream effector, the serine/threonine
+kinase p160ROCK, which leads to myosin phosphorylation and actin-myosin contractility
+[12]. Based on the antagonism between Rho/ROCK and Rac, it was originally postulated that
+RhoA activity at the front of a migrating cell was incompatible with membrane protrusion
+[10,13].
+This model has been challenged by recent studies using fluorescence-based biosensors and
+other methods to visualize the subcellular distribution of Rho GTPase activity [14–16]. Recent
+reports have described a zone of RhoA/ROCK activation at the leading edge of cells [14,17–
+19]. Although the precise role of RhoA at the leading edge of cells is still elusive, many
+downstream effectors from RhoA could be directly involved in cell protrusion. Through
+ROCK, RhoA leads to focal adhesion formation, which stabilizes the leading lamellae during
+cell protrusion [20]. ROCK is required for myosin-based contractility at the front of invading
+carcinoma cells [21]. RhoA/ROCK also phosphorylates and activates LIMK and could lead to
+cofilin inhibition and actin filament stabilization [22]. Finally, RhoA signals to mDia, a potent
+actin nucleator that could play a role in lamellipod formation [23].
+In this report we examine the role of the Rho/p160ROCK pathway during actin-based
+protrusion in EGF-stimulated carcinoma cells. We show that RhoA activation is kinetically
+correlated with actin nucleation, and occurs in a broad band that extends throughout the
+protruding lamellipod and into the lamellar region. Inhibition of Rho or p160ROCK leads to
+increased protrusion but decreased motility. Moreover, inhibition of ROCK leads to a switch
+in the Rho GTPase that regulates protrusion: protrusion in control MTLn3 requires Cdc42 but
+not Rac, whereas protrusion in cells treated with ROCK inhibitor requires Rac-1 but not Cdc42.
+Thus, activation of Rho/ROCK at the cell edge coordinates the coupling of Cdc42 and Rac-1
+to the actin cytoskeleton.
+El-Sibai et al. Page 2
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Materials and Methods
+Cell Culture
+Rat mammary adenocarcinoma cells, MTLn3 cells, were cultured in α-MEM media
+supplemented with 5% FBS as previously described [24]. MTC cells expressing the human
+EGF receptor have been previously described [25]. For microscopy experiments, cells were
+plated on coverslips coated with rat tail type 1 collagen (BD Biosciences, Bedford MA) or on
+collagen-coated dishes (MatTek Corporation) 24 hours prior to the experiment. The cells were
+then starved in L15 media (GIBCO BRL) with 0.35% BSA for 3 hours, and stimulated with a
+final concentration of 5nM murine epidermal growth factor for various times (EGF; Upstate
+biotechnology, Lake Placid, NY).
+Antibodies and reagents
+Mouse monoclonal anti-Rho antibody (clone 55), rabbit monoclonal anti-Rho antibody (clone
+3L74), mouse monoclonal anti-Rac antibody (clone 23A8), and the mouse monoclonal anti-
+Paxillin (clone 5H11) were purchased from Upstate Biotechnology. The rabbit polyclonal anti-
+Cdc42 antibody (sc-87) was obtained from Santa Cruz Biotechnology (Santa Cruz, CA). The
+Cy5-conjugated anti-biotin was obtained from Jackson ImmunoResearch Laboratories (West
+Grove, PA). Rhodamine Phalloidin, Alexa fluor 488-conjugated Dextran and fluorescent
+secondary antibodies were obtained from Molecular Probes (Eugene, OR). The ROCK
+inhibitor, Y27632, was obtained from Calbiochem-Novabiochem Co (San Diego, CA). The
+selective myosin II inhibitor, blebbistatin, was purchased from Sigma (St Louis, MO). Wild
+type Rac and RacQ61L were in eGFP-pcDNA3 vectors. The GFP-Vinculin was a generous
+gift from Dr. Stefan Huettelmaier.
+Cell Transfection with small interfering RNA
+Rac1 siRNA [26] and Cdc42 siRNA[27] were previously described. The Rac1 siRNA oligo
+was: 5′-AAAGAGAUCGGUGCUGUCAAA-3′. Alternatively, a collection of four siRNA
+(Dharmicon Smartpools) was used. The Cdc42 siRNA oligo was: 5′-
+AAAGACTCCTTTCTTGCTTGT-3′. MTLn3 cells were transfected with 100nM Rac or
+Cdc42 siRNA or with control siRNA sequences targeting GL2 luciferase[28] (Ambion) for 48
+hours prior to the day of the experiment using Oligofectamine (Invitrogen) as described by the
+manufacturer. Rac and Cdc42 suppression of protein levels was analyzed by Western blotting
+using antibodies against total Rac and Cdc42 respectively.
+Protein purification
+pGEX-2T human PAK GTPase-binding domain (hPAK residues 67–150, CRIB domain),
+pGEX-2T RhoA binding domain of Rhotekin (residues 7–89, RBD), pGEX-full length C3
+transferase (Rho inhibitor, C3T a generous gift from Dr. Judy Meinkoth, Univ. Pennsylvania)
+and the pGEX-full length Rho were expressed in Escherichia Coli as GST fusion proteins. The
+proteins were purified by binding to glutathione-Sepharose (Amersham Biosciences). The
+purity and concentration of the proteins was determined by SDS-PAGE and Coomassie Blue
+staining.
+Pull-down assays and Western Blots
+MTLn3 cells were starved for 3 hours, stimulated with EGF for various times and stopped by
+the addition of ice cold PBS containing with 1 mM sodium orthovanadate. The cells were lysed
+and incubated with GST-CRIB (for Rac) or GST-RBD (for Rho). Rho and Rac were detected
+by Western Blotting using the anti-Rho (rabbit) and anti-Rac antibodies, and imaged and
+quantitated using a LICOR Odyssey system.
+El-Sibai et al. Page 3
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+C3T inhibition of Rho
+Cells were microinjected using an Eppendorf 5171/5242 semi-automatic micromanipulator/
+microinjector. MTLn3 cells were starved for 2 hours then injected with 150 μg/ml of the C3T
+protein along with Alexa fluor 488-conjugated Dextran or with 150 μg/ml IgG in PBS. The
+cells were left to recover for 1 hour then stimulated with EGF.
+Immunofluorescence
+After EGF stimulation, cells were permeabilized with saponin and fixed as previously
+described[29] for 30 min at 37°C. Cells were then rinsed with PBS, and aldehyde
+autofluorescence was quenched with 1mg/ml NaBH4. For blocking, cells were incubated with
+1% BSA/1%FBS in PBS for 30 min. Cells were stained with primary antibodies for 2 hours
+and with secondary antibodies for 2 hours. For the pre-absorption experiments, cells were
+stained with anti-Rho (mouse) pre-incubated in solution with GST alone or with GST-RhoA
+for 1 hr at 4°C prior to staining. All fluorescent images were taken using a 60 X 1.4 NA infinity-
+corrected optics on a Nikon Eclipse microscope supplemented with a computer-driven Roper
+cooled CCD camera and operated by IPLab Spectrum software (VayTek). We have previously
+shown, using atomic force microscopy, that the height of the lamellipod in EGF-stimulated
+MTLn3 cells is approximately 600–800 nm (Rotsch et al., 2001). Thus, the entire lamellipod
+is within one optical section and the use of confocal microscopy was not necessary. For image
+analysis, all digital images were imported in image J software (National Institutes of Health,
+USA). For fluorescent quantification, images were analyzed using a previously described
+macro [30].
+Live upshift and motility assay
+For live protrusion analysis, starved cells were stimulated with EGF and analyzed by time-
+lapse microscopy every 20 seconds. For motility analysis, images were collected every 60
+seconds for 2 hours using a 20X objective in serum and their rate of movement quantitated
+using ImageJ and DIAS computational software [31]. Optimal temperature and CO2 control
+were maintained using an inverted Olympus IX70 microscope mounted in an incubation
+chamber.
+RhoA FRET biosensor imaging and analysis
+MTLn3 cells were transfected with 1μg of the RhoA fluorescence resonance energy transfer
+(FRET)-based biosensor plasmid [14], which shows an increase in FRET ratio with GTP-
+loading of RhoA, using Fugene6 (Roche, Switzerland) for 24 hr as described by the
+manufacturer. The biosensor consists of (from the N-terminus) the Rho binding domain (RBD)
+of the effector Rhotekin, a cyan fluorescent protein (CFP), a protease resistant 17mer
+unstructured linker, a yellow florescent protein (YFP) domain, and a full length RhoA [14].
+Activation of RhoA can be determined as a ratio of the FRET image over the CFP image
+[32]. FRET image sequences were obtained with an automated Olympus IX70 microscope
+equipped with filter wheels in the excitation and emission light path and coupled to a cooled
+SensiCam QE CCD camera (Cooke Corp., MI). CFP was excited using a S430/25 filter with
+a Sutter DG4 illuminator (Sutter Instruments, Novato, CA) and the fluorescence detected with
+a S470/30 (donor image) or S535/30 (FRET image) emission filter. YFP was imaged with
+exciter S500/20 and emitter S535/30 (YFP image). In all cases a dual-band dichroic mirror
+86002v2bs was used (Chroma Technology Corp., VT). Images were background corrected and
+the YFP images were thresholded to generate a binary mask with values of 1 within the cell
+and 0 for the background. Similar results were obtained when the mask was generated using
+the YFP image to define the cell edge. This was used to remove the background from ratio
+calculations, by multiplying CFP and FRET images by the mask. The increase in FRET signal
+due to activation of RhoA was detected by dividing the FRET image (CFP excitation- YFP
+El-Sibai et al. Page 4
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+emission) by the donor image (CFP excitation- CFP emission). Acquisition and FRET analyses
+were done with IP Lab v3.51 (Scanalytics Inc., VA). Live FRET time-lapse movies were
+collected using a DualView image splitter (Optical Insights, LLC, Tucson, AZ). The live
+imaging was done with 4X4 binning to minimize exposure time, photobleaching and
+registration artifacts. FRET signals were quantified by averaging the mean FRET ratio in
+regions of interest in cells stimulated for various times. Procedures were based on those
+previously described [14].
+Results
+Spatial and temporal analysis of Rho activation in EGF-stimulated carcinoma cells
+In order to understand the involvement of RhoA in the events leading to cell protrusion, we
+studied the kinetics and subcellular distribution of RhoA activation in MTLn3 carcinoma cells;
+expression of RhoC is undetectable by western blot in these cells (data not shown). The
+activation of total cellular Rho was examined in a pull-down assay using GST fused to the Rho
+binding domain (RBD) from Rhotekin [33]. In EGF-stimulated MTLn3 cells, Rho followed a
+biphasic activation profile (Fig 1A), with an initial peak of activation at 60 seconds. Rho
+activation dropped to near basal levels by 100 seconds, but then increased again after 180
+seconds of EGF stimulation. These kinetics coincide with the kinetics of actin polymerization
+in MTLn3 cells, which also shows transients at 1 and 3 minutes [2]. Interestingly, the
+localization of Rho at 1 versus 3 min was different. At 1 min, Rho was localized to a narrow
+band that extended approximately 0.5 μm into the cell (Fig 1B middle panel), which is the zone
+of f-actin accumulation in EGF-stimulated MTLn3 cells [34]. We presume that this is staining
+pattern is largely due to RhoA, since RhoB is confined to endosomes [35]. However, by 3
+minutes, anti-Rho staining is localized to a broader region that began approximately 0.5 μm
+behind the leading edge and extended 2 μm into the cell (Fig. 1B right panel). Previous studies
+have suggested that this zone includes the tropomyosin-rich lamellar region [30,36]. Anti-Rho
+staining was also observed in numerous punctate structures, which could result from RhoB in
+endosomal structures. These data are consistent with previous observations of a small fraction
+of RhoA in the plasma membrane [35]. Anti-Rho staining was specific, as it was abolished by
+pre-absorption with GST-RhoA (Fig 1C) but not GST (data not shown).
+To directly visualize active RhoA in carcinoma cells, we used a single chain CFP/YFP FRET
+biosensor (Fig. S1A) [14]. Control experiments demonstrated that the probe for RhoA
+activation is inhibited by microinjection of C3T (Fig S1B and S1C), and that biosensor
+expression does not perturb EGF-stimulated cytoskeletal responses (S1D). Analysis of the
+FRET signal at various probe expression levels revealed a slight increase at high levels of probe
+expression (Fig S1E). Analysis was therefore restricted to cells expressing moderate levels of
+the biosensor (≤ 400 a.u./cell).
+We first analyzed RhoA activation in MTLn3 cells under steady-state conditions, moving
+randomly in 5% serum, using live time-lapse FRET ratio imaging. RhoA activation was found
+to localize to the protruding edges of spontaneously moving cells (Figure 1D, upper panel and
+Supplemental movie S1). These images unambiguously define newly formed protrusion, and
+confirm the localization of RhoA to these sites. In order to obtain higher temporal resolution
+of RhoA activation, we collected time-lapse images of cells after acute EGF stimulation. RhoA
+activation was biphasic, with peaks of activity at 1 and 3 min at the tip of actively protruding
+lamellipodia (Figure 1D, lower panel, Fig. 1E, and Supplemental Movie S2).
+Inhibition of the Rho/ROCK pathway leads to decreased motility but enhanced protrusion
+The finding of RhoA activation at the front of protruding MTLn3 cells suggested a role in
+motility that is not confined to the regulation of tail retraction. We therefore tested the effects
+El-Sibai et al. Page 5
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+of inhibiting Rho and its downstream effector p160ROCK [37] on cell motility. Inhibition of
+either Rho by microinjection of cells with C3T led to a substantial decrease in cell motility in
+serum (Table 1). Similarly results were obtained in cells treated with the ROCK inhibitor
+Y27632. (Although Y27632 inhibits Rock-I, Rock-II, and PRK, its affects on wound healing
+and protrusion are mimicked by knockdown of ROCK-I but not ROCK-II or PRK-2 [38]).
+Whereas control cells undergoing cell motility in serum extended lamellipodia preferentially
+in the direction of movement, the C3T-injected cells and the Y27632-treated cells protruded
+in all directions and adopted a round flat morphology, which led to the cells being nearly
+stationary (Supplemental movies S3 and S4).
+We next measured the effect of Rho/ROCK inhibition on acute EGF-stimulated protrusion.
+MTLn3 cells stimulated with EGF show an increase in cell area due to actin-mediated
+protrusion. In contrast, MTLn3 cells microinjected with the Rho inhibitor C3T showed a basal
+cell area that was comparable to the final area of control EGF-stimulated cells; C3T-injected
+cells extended only slightly more in response to EGF (Figure 2A and 2B). Actin staining of
+the EGF-stimulated C3T-microinjected cells showed a loss of actin stress fibers, but still show
+an accumulation of F-actin at the cell edge (Fig. 2A). These data suggest that inhibition of Rho
+is sufficient to induce protrusion in MTLn3 cells. A related phenotype was seen in cells treated
+with the ROCK inhibitor Y27632. While treatment of cells with Y27632 had no effect on the
+cell area of unstimulated cells, Y27632-treated cells showed hyperextension in response to
+EGF stimulation (Figures 2C, 2D). This phenotype was not seen in a previous study using
+lower doses of Y27632 that were sufficient to inhibit cofilin phosphorylation but only partially
+inhibited ROCK, as assessed by residual EGF-stimulated LIM kinase phosphorylation [39].
+Thus, inhibition of Rho or ROCK led to basal or EGF-stimulated hyperextension, respectively.
+The broad area of RhoA activation that we detected after 3 min of EGF stimulation is similar
+to the localization of phosphorylated myosin light chain, which is regulated by myosin light
+chain kinase and ROCK [40]. To test whether the effect of Rho/ROCK inhibition on protrusion
+was due to a disruption of the contractile apparatus, we treated the cells with the myosin light
+chain kinase inhibitor ML-7. However, no changes in basal or EGF-stimulated protrusion were
+observed (Fig. S2.A); controls showed that the drug was active, as it blocked myosin light
+chain phosphorylation in EGF-stimulated MDA-MB-231 cells (Fig. S2.B) [41]. Similarly, we
+saw no effects on overall EGF receptor signaling, as measured by activation of Akt and Erk
+(Fig. S2.C).
+Inhibition of ROCK hyperactivates Rac
+The hyperprotrusion caused by inhibition of ROCK (Fig. 3A, panel 3) resembles the phenotype
+of MTLn3 cells expressing constitutively active Rac1, which leads to constitutive protrusion
+(Fig. 3A, panel 4) but decreased motility (Table 2). We therefore tested whether Rho inhibition
+might enhance protrusion through affects on Rac1 (Rac 2 and Rac 3 expression is barely
+detectable in MTLn3 cells [26]). MTLn3 cells microinjected with C3T (Fig. 3B, right panels)
+or treated with the ROCK inhibitor (Fig. 3C, right panels) showed a pronounced increase in
+Rac localization to the cell edge after 3 minutes of EGF stimulation. Rac localized to a broad
+area that spans the newly formed protrusion, reminiscent of the localization of activated RhoA
+in cells stimulated with EGF for 3 minutes (Figure 1B). The enhanced Rac localization at the
+cell edge reflected an increase in Rac activation, as measured by a Rac pull-down assay (Fig.
+3D). In contrast, neither Cdc42 localization (data not shown) nor activation (Fig. S3) were
+affected by ROCK inhibition, similar to results in fibroblasts [42].
+Rac mediates the formation of focal complexes, which then undergo Rho-mediated maturation
+into focal adhesions [13]. Given the hyperactivation of Rac in Y27632-treated cells, we
+examined the effects of ROCK inhibition of the EGF-stimulated formation of adhesive
+structures. In control cells stimulated with EGF for 3 min and stained for paxillin, a mixture
+El-Sibai et al. Page 6
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+of focal complexes at the cell periphery and focal adhesions in the lamellar region of the cell
+can be seen (Fig. 4A, top panels). However, treatment of cells with Y27632 lead to a marked
+increase in focal complexes and a near total loss of focal adhesions (Figure 4A, bottom panels).
+The increase in focal complexes was presumably due to Rac hyperactivation, since knockdown
+of Rac1 abolished focal complex formation and focal adhesions in both control and Y27632-
+treated cells (Fig. 4B).
+Inhibition of ROCK leads to a switch from Cdc42-dependent to Rac1-dependent protrusion
+We have previously shown that in control MTLn3 cells, EGF-stimulated protrusion is
+unaffected by knockdown of Rac1 [43], but is inhibited by knockdown of Cdc42 [24]. Given
+the dramatic increase in Rac1 activation caused by inhibition of ROCK, we tested whether the
+functional roles of Rac and Cdcd42 were altered in Y27632-treated cells. As previously noted,
+knockdown of Rac1 (Fig. 5A) has minimal effect on protrusion in MTLn3 cells (Figure 5C,
+white versus light grey bars). However, protrusion in the presence of Y27632 was markedly
+suppressed by Rac1 knockdown (Figure 5B, and 5C, dark grey versus black bars). These data
+were replicated using a distinct pool of four Rac1 siRNA oligos (Fig. S4A). Similarly, as
+previously reported, knockdown of Cdc42 in control MTLn3 cells markedly suppresses EGF-
+stimulated protrusion (Fig. 6B, white versus light grey bars). However, Cdc42 knockdown
+cells treated with Y27632 still showed enhanced protrusion relative to control cells (Fig. 6A
+and 6B, black versus white bars). Some inhibition of protrusion by Cdc42 knockdown is seen
+at 1 min, but this may be secondary to an inhibition of Rac membrane translocation that is seen
+at 1 but not 3 min (Fig. S4B). As previously shown [24], Cdc42 knockdown in control MTLn3
+cells leads to a complete loss of the lamellipodial region, as the tropomyosin-rich lamellar
+region [30,36] extends to the cell edge (Fig. 6C, left panels). In contrast, the tropomyosin free,
+Arp2/3-rich lamellipodial compartment is clearly visible in both control and Cdc42 knockdown
+cells treated with Y27632 (Fig. 6C, right hand panels). Thus, Cdc42 is required for protrusion
+and maintenance of normal lamellipodial architecture is control cells, and this dependence is
+eliminated by inhibition of ROCK.
+MTC cells show decreased Rho activation and Rac-dependent protrusion
+To test the hypothesis that Cdc42-dependent and Rac-independent protrusion in MTLn3 cells
+is related to high Rho activity, we examined the related non-metastatic carcinoma line, MTC
+[44,45]. MTC cells have previously been shown to move faster and to be more intrinsically
+polarized than MTLn3 cells [46]. Since native MTC cells do not respond to EGF, we used cells
+expressing the EGF receptor [25].
+As shown in Fig. 7A and Supplemental Movie S5, MTC cells moving in serum show decreased
+levels of RhoA activation at the edge of protrusions as compared to MTLn3 cells. Similarly,
+both GTP-bound and total Rho is decreased in MTC cells relative to MTLn3 cells in a pull-
+down assay (Fig. 7B). We next tested whether inhibition of ROCK would lead to an increase
+in Rac activation, as it did in MTLn3 cells. Interestingly, we found that Rac activity in MTC
+cells was elevated as compared to MTLn3 cells, and was unaffected by inhibition of ROCK;
+EGF-stimulated Rac activity in MTC cells was similar to EGF-Rac activity in Y27632-treated
+MTLn3 cells. Thus, in MTC cells we find decreased RhoA activity, increased Rac activity,
+and a failure of ROCK inhibition to lead to additional activation Rac.
+Given that finding of low RhoA activity and high Rac activity in MTC cells relative to MTLn3
+cells, we tested whether Rac would be required for protrusion in MTC cells. We knocked down
+Rac1 expression in MTC cells (Fig. 7D) and recorded time-lapse images of control or Rac1
+siRNA-treated cells (Supplemental Movie S6; representative images in Fig. 7E). MTC cells
+treated with Rac1 siRNA were less well spread than cells treated with control siRNA, and in
+contrast to MTLn3 cells [26], showed a marked decrease in EGF-stimulated protrusion (Fig.
+El-Sibai et al. Page 7
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+7F). Thus, in MTLn3 cells, where we find increased RhoA activity and decreased Rac activity,
+protrusion is Cdc42-dependent and Rac-independent [24,26]; Rac activity and Rac-dependent
+protrusion is restored upon inhibition of ROCK (Fig. 6). In contrast, MTC cells exhibit
+decreased RhoA activity, increased Rac activity, and Rac-dependent protrusion (Fig. 7). These
+data suggest that RhoA-mediated inhibition of Rac activity determines the relative contribution
+of Rac and Cdc42 to EGF-stimulated protrusion.
+Discussion
+In this report, we have examined the role of RhoA in MTLn3 rat adenocarcinoma cells. We
+find that RhoA follows a biphasic activation profile in EGF-stimulated cells, with an early
+activation peak at 1 minute and a late phase of activation after 3 minutes. Thus, RhoA activation
+is coincident with barbed end formation in MTLn3 cells in response to EGF stimulation [2].
+The finding of activated RhoA in EGF-stimulated protrusions is consistent with recent reports
+implicating RhoA activity at the leading edge of moving cells [17,19,47,48].
+In MTLn3 carcinoma cells, EGF-stimulated lamellipodial protrusion requires activation of Ras
+and Cdc42, but not Rac [24,43]. This is in contrast to fibroblasts, where Rac but not Cdc42 is
+the major positive regulator of protrusion [5]. Interestingly, we find that Rho and ROCK are
+not required for protrusion, and their inhibition in fact leads to an increase in protrusion. Instead,
+Rho and ROCK regulate the coupling of Rac versus Cdc42 to the protrusive machinery. Thus,
+in control MTLn3 cells, knockdown of Cdc42 but not Rac inhibits protrusion, whereas in
+Y27632-treated MTLn3 cells, knockdown of Rac1 but not Cdc42 blocks protrusion. The Rho/
+ROCK-mediated maintenance of Cdc42-dependent protrusion is apparently due to its
+inhibition of Rac-1, since inhibition of ROCK markedly increases Rac1 activity but has little
+effect on Cdc42. Rho-Rac antagonism has been observed in other cell models [49] and may
+reflect activation of a Rac GAP such as FilGAP, which is activated by RhoA and ROCK
+[50]. However, a role for Rho in switching a cell between Cdc42- versus Rac-mediated
+protrusion has not been previously described.
+The phenotypes of Rho and ROCK inhibition are not identical: Rho inhibition led to
+constitutive circumferential protrusion, whereas ROCK inhibition led to an exaggeration of
+EGF-stimulated protrusion. This difference presumably reflects the contribution of additional
+downstream Rho effectors that are not affected by inhibition of ROCK, which might inhibit
+protrusion under basal conditions but enhance protrusion during EGF stimulation.
+Despite increased protrusion, inhibition of Rho or ROCK leads to decreased motility in 2D
+culture, consistent with data from colon cancer cells [51] but different from studies in MDA-
+MB-231 adenocarcinoma cells [52]. The loss of motility in C3T- or Y27632-treated MTLn3
+cells could be in part due to excessive Rac activation, as expression of a constitutively active
+Rac mutant in MTLn3 (Table 2) and other cells lines [53] leads to a symmetrical,
+circumferential protrusion and decreased motility. The effects of Rho/ROCK inhibition on
+motility could also be due in part to changes in the regulation of adhesive structures, as
+maturation of focal adhesions is blocked by inhibition of ROCK, consistent with previous
+studies [13].
+Our data suggest a model in which variation in the amplitude of RhoA signaling can regulate
+motility through its inhibitory effects of Rac1. Thus, cells with lower levels of RhoA activity
+may show an increased Rac activity and a greater dependence on Rac for control of protrusion.
+Consistent with this model, we find that MTC carcinoma cells, a non-metastatic cell line closely
+related to MTLn3 cells, shows lower RhoA activity, higher Rac activity, and Rac-dependent
+protrusion. Thus, variation in the amplitude of Rho/ROCK activation in response to
+chemotactic stimuli may orchestrate the relative roles of Rac1 and Cdc42 during protrusion.
+El-Sibai et al. Page 8
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Supplementary Material
+Refer to Web version on PubMed Central for supplementary material.
+Acknowledgements
+The authors would like to thank the Analytical Imaging Facility at Albert Einstein College of Medicine, particularly
+Mr. Michael Cammer for valuable discussions and technical help with image analysis. We would also like to thank
+Dr. Stefan Huettelmaier for providing the GFP-vinculin and Dr. Anne Bresnick, Dr. Jeff Segall, and Dr. Louis Hodgson
+for valuable discussions. This work was supported by National Institutes of Health grant CA 100324 (J.C. and J.M.B.)
+and a grant from the Janey Fund (J.M.B.).
+References
+1. Devreotes P, Janetopoulos C. Eukaryotic chemotaxis: distinctions between directional sensing and
+polarization. J Biol Chem 2003;278:20445–20448. [PubMed: 12672811]
+2. Chan AY, Raft S, Bailly M, Wyckoff JB, Segall JE, Condeelis JS. EGF stimulates an increase in actin
+nucleation and filament number at the leading edge of the lamellipod in mammary adenocarcinoma
+cells. J Cell Sci 1998;111(Pt 2):199–211. [PubMed: 9405304]
+3. Condeelis JS, Wyckoff JB, Bailly M, Pestell R, Lawrence D, Backer J, Segall JE. Lamellipodia in
+invasion. Semin Cancer Biol 2001;11:119–128. [PubMed: 11322831]
+4. Ridley AJ. Rho family proteins: coordinating cell responses. Trends Cell Biol 2001;11:471–477.
+[PubMed: 11719051]
+5. Nobes CD, Hall A. Rho, rac, and cdc42 GTPases regulate the assembly of multimolecular focal
+complexes associated with actin stress fibers, lamellipodia, and filopodia. Cell 1995;81:53–62.
+[PubMed: 7536630]
+6. Eden S, Rohatgi R, Podtelejnikov AV, Mann M, Kirschner MW. Mechanism of regulation of WAVE1-
+induced actin nucleation by Rac1 and Nck. Nature 2002;418:790–793. [PubMed: 12181570]
+7. Rohatgi R, Ma L, Miki H, Lopez M, Kirchhausen T, Takenawa T, Kirschner MW. The interaction
+between N-WASP and the Arp2/3 complex links Cdc42-dependent signals to actin assembly. Cell
+1999;97:221–231. [PubMed: 10219243]
+8. Takaishi K, Kikuchi A, Kuroda S, Kotani K, Sasaki T, Takai Y. Involvement of rho p21 and its
+inhibitory GDP/GTP exchange protein (rho GDI) in cell motility. Mol Cell Biol 1993;13:72–79.
+[PubMed: 8417362]
+9. Hakuma N, Kinoshita I, Shimizu Y, Yamazaki K, Yoshida K, Nishimura M, Dosaka-Akita H. E1AF/
+PEA3 activates the Rho/Rho-associated kinase pathway to increase the malignancy potential of non-
+small-cell lung cancer cells. Cancer Res 2005;65:10776–10782. [PubMed: 16322223]
+10. Worthylake RA, Lemoine S, Watson JM, Burridge K. RhoA is required for monocyte tail retraction
+during transendothelial migration. J Cell Biol 2001;154:147–160. [PubMed: 11448997]
+11. Raftopoulou M, Hall A. Cell migration: Rho GTPases lead the way. Dev Biol 2004;265:23–32.
+[PubMed: 14697350]
+12. Chrzanowska-Wodnicka M, Burridge K. Rho-stimulated contractility drives the formation of stress
+fibers and focal adhesions. J Cell Biol 1996;133:1403–1415. [PubMed: 8682874]
+13. Rottner K, Hall A, Small JV. Interplay between Rac and Rho in the control of substrate contact
+dynamics. Curr Biol 1999;9:640–648. [PubMed: 10375527]
+14. Pertz O, Hodgson L, Klemke RL, Hahn KM. Spatiotemporal dynamics of RhoA activity in migrating
+cells. Nature 2006;440:1069–1072. [PubMed: 16547516]
+15. Pertz O, Hahn KM. Designing biosensors for Rho family proteins--deciphering the dynamics of Rho
+family GTPase activation in living cells. J Cell Sci 2004;117:1313–1318. [PubMed: 15020671]
+16. Benink HA, Bement WM. Concentric zones of active RhoA and Cdc42 around single cell wounds.
+J Cell Biol 2005;168:429–439. [PubMed: 15684032]
+17. O’Connor KL, Nguyen BK, Mercurio AM. RhoA function in lamellae formation and migration is
+regulated by the alpha6beta4 integrin and cAMP metabolism. J Cell Biol 2000;148:253–258.
+[PubMed: 10648558]
+El-Sibai et al. Page 9
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+18. Cho SY, Klemke RL. Purification of pseudopodia from polarized cells reveals redistribution and
+activation of Rac through assembly of a CAS/Crk scaffold. J Cell Biol 2002;156:725–736. [PubMed:
+11839772]
+19. Kurokawa K, Matsuda M. Localized RhoA activation as a requirement for the induction of membrane
+ruffling. Mol Biol Cell 2005;16:4294–4303. [PubMed: 15987744]
+20. Amano M, Chihara K, Kimura K, Fukata Y, Nakamura N, Matsuura Y, Kaibuchi K. Formation of
+actin stress fibers and focal adhesions enhanced by Rho-kinase. Science 1997;275:1308–1311.
+[PubMed: 9036856]
+21. Wyckoff JB, Pinner SE, Gschmeissner S, Condeelis JS, Sahai E. ROCK- and myosin-dependent
+matrix deformation enables protease-independent tumor-cell invasion in vivo. Curr Biol
+2006;16:1515–1523. [PubMed: 16890527]
+22. Maekawa M, Ishizaki T, Boku S, Watanabe N, Fujita A, Iwamatsu A, Obinata T, Ohashi K, Mizuno
+K, Narumiya S. Signaling from Rho to the actin cytoskeleton through protein kinases ROCK and
+LIM-kinase. Science 1999;285:895–898. [PubMed: 10436159]
+23. Higashida C, Miyoshi T, Fujita A, Oceguera-Yanez F, Monypenny J, Andou Y, Narumiya S,
+Watanabe N. Actin polymerization-driven molecular movement of mDia1 in living cells. Science
+2004;303:2007–2010. [PubMed: 15044801]
+24. El-Sibai M, Nalbant P, Pang H, Flinn RJ, Sarimento C, Macaluso F, Cammer M, Condeelis JS, Hahn
+KM, Backer JM. Cdc42 is Required for EGF-Stimulated Protrusion and Motility in MTLn3
+Carcinoma Cells. J Cell Sci 2007;120:3465–3474. [PubMed: 17855387]
+25. Wyckoff JB, Insel L, Khazaie K, Lichtner RB, Condeelis JS, Segall JE. Suppression of ruffling by
+the EGF receptor in chemotactic cells. Exp Cell Res 1998;242:100–109. [PubMed: 9665807]
+26. Yip SC, El-Sibai M, Coniglio SJ, Mouneimne G, Eddy RJ, Drees BE, Neilsen PO, Goswami S,
+Symons M, Condeelis JS, Backer JM. The distinct roles of Ras and Rac in PI 3-kinase-dependent
+protrusion during EGF-stimulated cell migration. J Cell Sci 2007;120:3138–3146. [PubMed:
+17698922]
+27. Yamaguchi H, Lorenz M, Kempiak S, Sarmiento C, Coniglio S, Symons M, Segall J, Eddy R, Miki
+H, Takenawa T, Condeelis J. Molecular mechanisms of invadopodium formation: the role of the N-
+WASP-Arp2/3 complex pathway and cofilin. J Cell Biol 2005;168:441–452. [PubMed: 15684033]
+28. Chan AY, Coniglio SJ, Chuang YY, Michaelson D, Knaus UG, Philips MR, Symons M. Roles of the
+Rac1 and Rac3 GTPases in human tumor cell invasion. Oncogene 2005;24:7821–7829. [PubMed:
+16027728]
+29. Eddy RJ, Pierini LM, Matsumura F, Maxfield FR. Ca2+-dependent myosin II activation is required
+for uropod retraction during neutrophil migration. J Cell Sci 2000;113(Pt 7):1287–1298. [PubMed:
+10704379]
+30. DesMarais V, Ichetovkin I, Condeelis J, Hitchcock-DeGregori SE. Spatial regulation of actin
+dynamics: a tropomyosin-free, actin-rich compartment at the leading edge. J Cell Sci 2002;115:4649–
+4660. [PubMed: 12415009]
+31. Wessels D, Voss E, Von Bergen N, Burns R, Stites J, Soll DR. A computer-assisted system for
+reconstructing and interpreting the dynamic three-dimensional relationships of the outer surface,
+nucleus and pseudopods of crawling cells. Cell Motil Cytoskeleton 1998;41:225–246. [PubMed:
+9829777]
+32. Miyawaki A, Tsien RY. Monitoring protein conformations and interactions by fluorescence resonance
+energy transfer between mutants of green fluorescent protein. Methods Enzymol 2000;327:472–500.
+[PubMed: 11045004]
+33. Ren XD, Kiosses WB, Schwartz MA. Regulation of the small GTP-binding protein Rho by cell
+adhesion and the cytoskeleton. EMBO J 1999;18:578–585. [PubMed: 9927417]
+34. Bailly M, Condeelis JS, Segall JE. Chemoattractant-induced lamellipod extension. Microsc Res Tech
+1998;43:433–443. [PubMed: 9858340]
+35. Adamson P, Paterson HF, Hall A. Intracellular localization of the P21rho proteins. J Cell Biol
+1992;119:617–627. [PubMed: 1383236]
+36. Gupton SL, Anderson KL, Kole TP, Fischer RS, Ponti A, Hitchcock-DeGregori SE, Danuser G,
+Fowler VM, Wirtz D, Hanein D, Waterman-Storer CM. Cell migration without a lamellipodium:
+El-Sibai et al. Page 10
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+translation of actin dynamics into cell movement mediated by tropomyosin. J Cell Biol
+2005;168:619–631. [PubMed: 15716379]
+37. Worthylake RA, Burridge K. RhoA and ROCK promote migration by limiting membrane protrusions.
+J Biol Chem 2003;278:13578–13584. [PubMed: 12574166]
+38. Darenfed H, Dayanandan B, Zhang T, Hsieh SH, Fournier AE, Mandato CA. Molecular
+characterization of the effects of Y-27632. Cell Motil Cytoskeleton 2007;64:97–109. [PubMed:
+17009325]
+39. Song X, Chen X, Yamaguchi H, Mouneimne G, Condeelis JS, Eddy RJ. Initiation of cofilin activity
+in response to EGF is uncoupled from cofilin phosphorylation and dephosphorylation in carcinoma
+cells. J Cell Sci 2006;119:2871–2881. [PubMed: 16803871]
+40. Matsumura F, Ono S, Yamakita Y, Totsukawa G, Yamashiro S. Specific localization of serine 19
+phosphorylated myosin II during cell locomotion and mitosis of cultured cells. J Cell Biol
+1998;140:119–129. [PubMed: 9425160]
+41. Dulyaninova NG, House RP, Betapudi V, Bresnick AR. Myosin-IIA Heavy-Chain Phosphorylation
+Regulates the Motility of MDA-MB-231 Carcinoma Cells. Mol Biol Cell 2007;18:3144–3155.
+[PubMed: 17567956]
+42. Nalbant P, Hodgson L, Kraynov V, Toutchkine A, Hahn KM. Activation of endogenous Cdc42
+visualized in living cells. Science 2004;305:1615–1619. [PubMed: 15361624]
+43. Yip SC, Backer JM, et al. The Distinct Roles of Ras and Rac in PI 3-Kinase Dependent Protrusion
+During EGF-Stimulated Cell Migration. Journal of Cell Science. 2007(in press)
+44. Neri A, Welch D, Kawaguchi T, Nicolson GL. Development and biologic properties of malignant
+cell sublines and clones of a spontaneously metastasizing rat mammary adenocarcinoma. J Natl
+Cancer Inst 1982;68:507–517. [PubMed: 6950180]
+45. Wyckoff JB, Jones JG, Condeelis JS, Segall JE. A critical step in metastasis: in vivo analysis of
+intravasation at the primary tumor. Cancer Res 2000;60:2504–2511. [PubMed: 10811132]
+46. Shestakova EA, Wyckoff J, Jones J, Singer RH, Condeelis J. Correlation of beta-actin messenger
+RNA localization with metastatic potential in rat adenocarcinoma cell lines. Cancer Res
+1999;59:1202–1205. [PubMed: 10096548]
+47. Kurokawa K, Nakamura T, Aoki K, Matsuda M. Mechanism and role of localized activation of Rho-
+family GTPases in growth factor-stimulated fibroblasts and neuronal cells. Biochem Soc Trans
+2005;33:631–634. [PubMed: 16042560]
+48. Nishiyama T, Sasaki T, Takaishi K, Kato M, Yaku H, Araki K, Matsuura Y, Takai Y. rac p21 is
+involved in insulin-induced membrane ruffling and rho p21 is involved in hepatocyte growth factor-
+and 12-O-tetradecanoylphorbol-13-acetate (TPA)-induced membrane ruffling in KB cells. Mol Cell
+Biol 1994;14:2447–2456. [PubMed: 8139548]
+49. Kozma R, Sarner S, Ahmed S, Lim L. Rho family GTPases and neuronal growth cone remodelling:
+Relationship between increased complexity induced by Cdc42Hs, Rac1, and acetylcholine and
+collapse induced by RhoA and lysophosphatidic acid. Mol Cell Biol 1997;17:1201–1211. [PubMed:
+9032247]
+50. Ohta Y, Hartwig JH, Stossel TP. FilGAP, a Rho- and ROCK-regulated GAP for Rac binds filamin
+A to control actin remodelling. Nat Cell Biol 2006;8:803–814. [PubMed: 16862148]
+51. Croft DR, Sahai E, Mavria G, Li S, Tsai J, Lee WM, Marshall CJ, Olson MF. Conditional ROCK
+activation in vivo induces tumor cell dissemination and angiogenesis. Cancer Res 2004;64:8994–
+9001. [PubMed: 15604264]
+52. Torka R, Thuma F, Herzog V, Kirfel G. ROCK signaling mediates the adoption of different modes
+of migration and invasion in human mammary epithelial tumor cells. Exp Cell Res 2006;312:3857–
+3871. [PubMed: 17010335]
+53. Pankov R, Endo Y, Even-Ram S, Araki M, Clark K, Cukierman E, Matsumoto K, Yamada KM. A
+Rac switch regulates random versus directionally persistent cell migration. J Cell Biol 2005;170:793–
+802. [PubMed: 16129786]
+El-Sibai et al. Page 11
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 1. Rho activation in EGF-stimulated carcinoma cells
+MTLn3 cells were starved for 3 hrs and stimulated with 5 nM EGF at 37°C for the indicated
+times. A) Representative Western blot of a GST-RBD pull-down showing Rho activation in
+MTLn3 cells. The lower gel shows the amount of total Rho in cell lysates. B) Representative
+fluorescent micrographs of MTLn3 cells stimulated with EGF and immunostained with anti-
+Rho antibody. C) Immunostaining of MTLn3 cells with anti-Rho antibody pre-absorbed with
+GST-Rho. D) Upper panels: Time-lapse FRET imaging of MTLn3 cells expressing the RhoA
+biosensor, moving randomly in 5% serum. Cells were imaged for CFP and FRET every minute
+for 30 minutes and the FRET/CFP ratios obtained (movie S1). Lower panels: FRET/CFP ratio
+of MTLn3 cells expressing the RhoA biosensor and stimulated with EGF. Images were
+collected every 20 seconds (movie S2 and S3). E) Measurements of the mean FRET ratio (ROI
+of 3 μm behind the leading edge) at various times after EGF stimulation, taken from the time
+lapse images. Data are the mean +/− SEM from 10 different cells. Scale bar is 10 μm.
+El-Sibai et al. Page 12
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 2. Inhibition of Rho/ROCK leads to an increase in cell area
+A) Starved cells were microinjected with 488 Alexa-Dextran along with IgG control (upper
+panels) or with 150 μg/ml C3T along with Dextran (lower panels), allowed to recover for 1h,
+then fixed and stained with Rhodamine phalloidin. Left-hand panels show the 488Alexa
+fluorescence in microinjected cells and right-hand panels show f-actin staining. B) Control,
+IgG/dextran or C3T/dextran injected cells were stimulated with EGF and time lapses were
+performed, collecting images every 20 seconds. The surface area of control or injected cells
+was determined, and normalized to cells at time 0 before stimulation. Data are the mean +/−
+SEM from 20 cells. C) MTLn3 cells, plated on collagen, were starved for 3 hours and treated
+without or with 25 μM of Y27632 for 30 min. Cells are then stimulated with EGF for 0, 1 and
+3 min, fixed and stained with Rhodamine Phalloidin. D) Quantitation of the surface areas of
+cells treated as in panel C, plotted as fold increase relative to control cells. The data are the
+mean from 3 +/− SEM from 3 different experiments (15 cells/experiment). Scale bar is 10
+μm.
+El-Sibai et al. Page 13
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 3. Inhibition of RhoA/ROCK leads to Rac hyperactivation and increased membrane
+localization
+A) Rhodamine phalloidin staining of cells transfected with vector alone (first two panels),
+transfected with vector and treated with Y27632 (third panel) or transfected with RacQ61L
+(last panel to the right). Cells were starved for 3 hours, stimulated with EGF for 0 or 3 minutes,
+and stained with Rhodamine phalloidin. B) Representative micrographs of starved cells
+microinjected with 488Alexa-Dextran and IgG (upper panels) or 150 μg/ml C3T (lower
+panels). Cells were stimulated with EGF for 0 or 3 minutes and stained with anti-Rac antibodies.
+C) Representative micrographs of starved cells treated without or with carrier (upper panels)
+or Y27632 (25 μM; lower panels) for 30 min. Cells were stimulated with EGF for 0 or 3 minutes
+and stained with anti-Rac antibodies. D) GST-CRIB pull-down from control or Y27632-treated
+cells were blotted with anti-Rac antibody. The lanes for each blot (GTP and total Rac) were
+taken from the same gel.
+El-Sibai et al. Page 14
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 4. ROCK inhibition blocks maturation of focal complexes to focal adhesions
+A. MTLn3 cells were starved for 3 hours, and then treated with carrier (upper panels) or with
+25 μM of Y27632 (lower panels) for 30 minutes. Representative micrographs show cells
+stimulated with EGF for 0 or 3 minutes and stained for paxillin. B) Representative micrographs
+of MTLn3 cells transfected with Rac siRNA and treated with carrier (upper panel) or Y27632
+(lower panel), stimulated with EGF for 3 minutes, and stained for paxillin.
+El-Sibai et al. Page 15
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 5. EGF-stimulated protrusion in Y27632-treated cells is Rac dependent
+A) MTLn3 cells were transfected with control or Rac siRNA. Representative Western Blot
+showing the expression of Rac (upper panel) and Cdc42 (lower panel). B) Luciferase (upper
+panels) and Rac1 (lower panels) siRNA-treated cells were either incubated without or with 25
+μM Y27632 for 30 min. The cells were then stimulated for 0, 1 and 3 minutes with EGF. The
+representative micrographs show cells stimulated for 3 minutes and stained with Rhodamine
+Phalloidin C) Quantitation of cells from (B) stimulated with EGF for 0,1 or 3 min. The data
+are normalized to the area of unstimulated control cells, and are the mean +/− SEM from at
+least 45 cells from three distinct experiments. Scale bar is 10 μm.
+El-Sibai et al. Page 16
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 6. EGF-stimulated protrusion in Y27632-treated cells is Cdc42-independent
+A) MTLn3 cells were transfected with Luciferase (upper panels) or with Cdc42 (lower panels)
+siRNA. Cells were starved for 3 hrs, treated with carrier (left panels) or 25 μM Y27632 (right
+panels) for 30 min, and stimulated for 0, 1 and 3 minutes with EGF. The representative
+micrographs show cells stimulated for 3 minutes and stained with Rhodamine Phalloidin. B)
+Quantitation of cells from (A) stimulated with EGF for 0,1 or 3 min. The data are normalized
+to the area of unstimulated control cells, and are the mean +/− SEM from at least 45 cells. Scale
+bar is 10 μm. C) MTLn3 cells were transfected with Luciferase (upper panels) or with Cdc42
+(lower panels) siRNA. Cells were starved for 3 hrs, treated with carrier (left panels) or 25 μM
+Y27632 (right panels) for 30 min, and stimulated for 3 minutes with EGF. The cells were fixed
+and stained with anti-tropomyosin (green) or anti-p34 (red) antibodies.
+El-Sibai et al. Page 17
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+Figure 7. MTC cells have decreased RhoA activity, increased Rac activity, and show Rac-dependent
+protrusion
+A) Time-lapse FRET imaging of MTC cells (upper panels) or MTLn3 cells (lower panels)
+expressing the RhoA biosensor, moving randomly in 5% serum. Cells were imaged for CFP
+and FRET every minute for 30 minutes and the FRET/CFP ratios obtained (movie S6). The
+data are representative of two independent experiments, and five time lapse series. B)
+Representative Western blot of a GST-RBD pull-down showing Rho activation in MTC and
+MTLn3 cells. The lower gels show the amount of total Rho in cell lysates. The data are
+representative of two independent experiments. C) GST-CRIB pull-downs from MTC or
+MTLn3 cells, treated with carrier or Y27632-treated, and blotted with anti-Rac antibody.
+Lower gels show total Rac in cell lysates. The data are representative of two independent
+experiments. D) Anti-Rac blot of lysates from control or Rac1 siRNA-treated MTC cells. E)
+Representative frames from time-lapse images of control or Rac1 siRNA-treated MTC cells,
+stimulated with EGF for 0 or 3 min (from Movie S7). F) Surface area of control or Rac1 siRNA-
+treated MTC cells, after stimulation with EGF. The data show the mean ± SEM from 10 cells
+per condition, from two separate experiments.
+El-Sibai et al. Page 18
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+El-Sibai et al. Page 19
+Table 1
+Inhibition of the Rho/ROCK pathway inhibits the motility of carcinoma cells
+MTLn3 cells were microinjected with IgG or with C3T (150 μg/ml) (movie S4) or treated without or with 25 μM
+Y27632 for 30 min (movie S5). The cells were imaged in medium containing 5 % FBS for 2 hours. The time interval
+between successive frames was 1 min. Motility parameters were calculated using DIAS software [28], and the data are
+the mean ± SEM from 15–40 cells per condition.
+Total path (μm) Net path (μm)
+IgG control 82.14 +/− 5.5 46.28+− 4.1
+C3T 46.01 +/− 5.1 12.64 +/− 1.8
+p < 0.5 p < 0.05
+control 57.18 +/− 2.6 24.76 +/− 1.7
+Y27632 36.45 +/− 1.2 7.25 +/− 0.7
+p < 0.00005 p < 0.0005
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.
+NIH-PA Author Manuscript NIH-PA Author Manuscript NIH-PA Author Manuscript
+El-Sibai et al. Page 20
+Table 2
+expression of constitutively active Rac inhibits the motility of carcinoma cells
+MTLn3 cells were transfected with GFP-CA-Rac. The cells were imaged in medium containing 5 % FBS for 2 hours.
+The time interval between successive frames was 1 min. Motility parameters were calculated using DIAS software
+[28], and the data are the mean ± SEM from 15 cells per condition.
+Total path (μm) Net path (μm)
+control vector 76.13 +/− 6.3 30.62 +/− 2.4
+CARac 21.12 +/− 1.5 8.71 +/− 6.2
+p < 0.05 p <0.05
+Exp Cell Res. Author manuscript; available in PMC 2009 May 6.

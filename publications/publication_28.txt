@@ -1,0 +1,3131 @@
+1 
+ 
+Spatial Organization of Rho GTPase signaling  
+by RhoGEF/RhoGAP proteins 
+ 
+Paul M. Müller 1*, Juliane Rademacher 1*, Richard D. Bagshaw 2*, Keziban M. Alp 1, Girolamo 
+Giudice3, Louise E. Heinrich5, Carolin Barth1, Rebecca L. Eccles1, Marta Sanchez-Castro2, Lennart 
+Brandenburg1, Geraldine Mbamalu2, Monika Tucholska2, Lisa Spatt1, Celina Wortmann1, Maciej 
+T. Czajkowski1,4, Robert-William Welke 1, Sunqu Zhang 2, Vivian Nguyen 2, Trendelina Rrustemi 1, 
+Philipp Trnka 1, Kiara Freitag 1, Brett Larsen 2, Oliver Popp 1,4, Philipp Mertins 1,4, Chris Bakal 5, 
+Anne-Claude Gingras 2,7, Olivier Pertz 6, Frederick P. Roth 2,8,9, Karen Colwill 2, Tony Pawson 2,7†, 
+Evangelia Petsalaki2,3+, Oliver Rocks1,2+ 
+ 
+1 Max-Delbrück-Center for Molecular Medicine, Robert-Rössle-Strasse 10, 13125 Berlin, Germany 
+2 Lunenfeld-Tanenbaum Research Institute, Sinai Health System, 600 University Avenue, Toronto, Ontario M5G 
+1X5, Canada  
+3 EMBL-EBI, Wellcome Trust Genome Campus, Hinxton, Cambridgeshire, CB10 1SD, UK 
+4 Berlin Institute of Health (BIH), Kapelle-Ufer 2, 10117 Berlin, Germany  
+5 Institute of Cancer Research, Chester Beatty Laboratories, 237 Fulham Road. London SW7 3RP, UK 
+6 Institute of Cell Biology, University of Bern, Baltzerstrasse 4 6, 3012 Bern, Switzerland 
+7 Department of Molecular Genetics, University of Toronto, Toronto, ON, Canada 
+8 Donnelly Centre and Departments of Molecular Genetics and Computer Science, University of Toronto, Toronto, 
+Ontario M5S 3E1, Canada 
+9 Canadian Institute for Advanced Research, Toronto, Ontario M5G 1Z8, Canada 
+* these authors contributed equally 
+† Deceased  
++ corresponding author: Email: oliver.rocks@mdc-berlin.de (O.R.); petsalaki@ebi.ac.uk (E.P.)   
+ 
+Keywords: Rho GTPases, guanine nucleotide exchange factors (GEFs), GTPase activating proteins (GAPs), 
+spatiotemporal control, cytoskeleton, focal adhesions, mass spectrometry, total internal reflection fluorescence 
+(TIRF) microscopy, biosensors, fluorescence resonance energy transfer (FRET), ARHGEF11, ARHGEF12, C-DOCK, 
+LRCH
+ 
+  
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+2 
+ 
+Abstract 
+Rho GTPases control cell morphogenesis and thus fundamental processes in all eukaryotes. 
+They are regulated by 145 RhoGEF and RhoGAP multi-domain proteins in humans. How the 
+Rho signaling system is organized to generate localized responses in cells and prevent their 
+spreading is not understood. Here, we systematically characterized the substrate specificities, 
+localization and interactome of the RhoGEFs/RhoGAPs and revealed their critical role in 
+contextualizing and spatially delimiting Rho signaling. They localize to multiple compartments 
+providing positional information, are extensively interconnected to jointly coordinate their 
+signaling networks and are widely autoinhibited to remain sensitive to local activation. 
+RhoGAPs exhibit lower substrate specificity than RhoGEFs and may contribute to preserving 
+Rho activity gradients. Our approach led us to uncover a multi-RhoGEF complex downstream of 
+G-protein-coupled receptors controlling a Cdc42/RhoA crosstalk. The spatial organization of 
+Rho signaling thus differs from other small GTPases and expands the repertoire of mechanisms 
+governing localized signaling activity.  
+ 
+ 
+ 
+ 
+ 
+  
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+3 
+ 
+Rho GTPases coordinate changes in cytoskeletal architecture to regulate cell shape. They drive 
+fundamental aspects of cell behavior in all eukaryotes, including motility, cytokinesis and tissue 
+morphogenesis(1, 2). Defects in Rho signaling have been widely found in cancer metastasis and 
+other serious diseases( 3). Rho proteins typically cycle between an inactive GDP-bound and an 
+active GTP-bound form( 4). Upon activation, they bind effector proteins to elicit cytoskeletal 
+remodeling. Their activity cycle is initiated by guanine nucleotide exchange factors 
+(RhoGEFs)(5, 6) and terminated by GTPase activating proteins (RhoGAPs)( 7). In addition, 
+guanine nucleotide dissociation inhibitors (RhoGDIs) sequester the GTPases in the cytosol to 
+render them inactive(8). With 145 members, the RhoGEF/RhoGAP multi-domain proteins by 
+far outnumber the 12 classical Rho GTPase switch proteins they regulate, allowing for complex 
+control of Rho signaling activity and specificity (Fig. S1).  
+Rho signaling responses in cells are highly localized. A critical aspect of Rho biology is therefore 
+its spatiotemporal control( 9). Rho activities have been observed in distinct subcellular 
+zones(10–13), with several GTPases operating simultaneously. Cell morphogenesis thus 
+involves the concerted action of multiple Rho family members and their regulators, which 
+together form complex local networks(14, 15). However, our knowledge how the Rho signaling 
+system is orchestrated to give rise to such spatially confined cell responses is limited and stems 
+from studies on individual Rho regulators, while a systems-level view is lacking.  
+Here, we undertook a comprehensive characterization of the RhoGEFs and RhoGAPs, including 
+their substrate specificities, subcellular localization and interactomes. Our study places the 
+regulators in functional context and enabled us to uncover emergent spatial organization 
+principles that contribute to our understanding how Rho activity zones are dynamically 
+maintained in cells. 
+ 
+RhoGAPs exhibit lower substrate selectivity than RhoGEFs in a family-wide activity screen 
+We generated an expression library comprising 141 mammalian full-length RhoGEF/RhoGAP 
+cDNAs, almost all of which represent the longest isoform known to exist (Fig. S1; Table S1).  
+As a first step, we systematically characterized the substrate specificities of the regulators to 
+link them to their downstream pathways. An extensive literature survey and curation of 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+4 
+ 
+claimed specificities revealed an incomplete data landscape with a high degree of conflict 
+between reports (Table S2, Supplementary Text), highlighting the need for a standardized 
+comprehensive analysis. We therefore developed a screening-compatible automated live-cell 
+imaging assay using the latest generation of FRET-based biosensors for the canonical GTPases 
+RhoA, Rac1 and Cdc42( 16–18) (Fig. S2C-H). This approach enables the analysis of full-length 
+regulators in their native cellular environment. We found catalytic activities for 45 out of 75 
+RhoGEFs and for 48 out of 63 RhoGAPs tested. In addition, the dual GEF/GAP proteins ABR and 
+BCR both exhibited GAP activity (Fig. 1, Fig. S2A,B, Table S2). The active regulators included 
+proteins whose substrate specificity was exclusive to one target (35 RhoGEFs, 31 RhoGAPs) but 
+also many that regulated multiple Rho GTPases (10 RhoGEFs, 19 RhoGAPs). Our results thus 
+not only reveal extensive promiscuity among the regulators, but also that in the GDP/GTP 
+reaction cycle the inactivating RhoGAPs are less selective than the activating RhoGEFs (p-
+value=0.02)(Table S2). Promiscuity has been predominantly reported in the co-regulation of 
+Cdc42 and Rac1, presumably because they control related cytoskeletal processes such as the 
+formation of actin-rich protrusions at the leading edge ( 19, 20). However, we found a similar 
+number of regulators that control RhoA together with Cdc42 and/or Rac1 (18 and 17 vs. 16), 
+and thus GTPase combinations that elicit more diverse downstream responses, including RhoA-
+dependent regulation of actomyosin contractility. While we see high overall agreement of 
+identified substrate specificities with existing data (70%, Table S2), we describe 10 novel 
+activities. PLEKHG4B, for instance, is a strong exclusive Cdc42 GEF (see also Fig. 5) and SYDE2 a 
+Rac1-specific GAP
+. The screen also revealed discrepancies with literature. The previously 
+proposed representative Cdc42-specific GAPs ARHGAP1, ARHGAP17 or ARHGAP31 showed 
+either no activity towards this GTPase in our assay or rather inactivated Rac1 more efficiently. 
+In fact, none of the GAPs tested exhibited exclusive substrate specificity for Cdc42, although 21 
+GAPs promiscuously regulated Cdc42. By contrast, we found exclusive Cdc42 activity for a total 
+of 12 GEFs.  
+Autoinhibition is a common feature of RhoGEFs and RhoGAPs 
+Some RhoGEFs and RhoGAPs displayed minimal or no activity in our screen. A requirement for 
+release from autoinhibition via mechanisms such as phosphorylation, protein or lipid 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+5 
+ 
+interactions may account for the observed inactivity( 21). To study whether autoinhibition is a 
+general mechanism in controlling the Rho regulators we included shorter forms of 9 RhoGEFs 
+and 10 RhoGAPs, which lack potential regulatory elements present in the longest isoforms. 13 
+of the shorter proteins indeed exhibited a higher catalytic efficiency than their longer 
+counterparts (Fig. 2). ARHGAP9 normally only exhibits catalytic activity towards Rac1 as its 
+longest isoform. Surprisingly, isoform 3, lacking an N-terminal SH3 domain, also inactivated 
+Cdc42, suggesting that autoregulatory features might also affect the substrate selectivity of 
+Rho regulators. Overall, our data shows that RhoGEFs and RhoGAPs are widely subject to 
+autoinhibition. 
+RhoGEFs and RhoGAPs display diverse spatial distribution in cells  
+To understand how RhoGEFs and RhoGAPs provide spatial information to Rho signaling, we 
+mapped the subcellular distribution of all 141 regulators in our library. We first used confocal 
+live-cell microscopy to screen YFP fusion proteins in MDCK epithelial cell. This analysis revealed 
+that over half of RhoGEFs and RhoGAPs (76/141) inherently localize to one or more distinct 
+structures at steady-state, collectively decorating virtually all cellular compartments (Fig. 3A, 
+Fig. S3, Table S3). For two proteins, ARHGAP9 and MCF2L2, we observed dependence of 
+localization on the position of the fluorescent protein tag (Fig. S3).
+ Interestingly, ARHGAP9-YFP 
+localized to mitochondria while YFP-ARHGAP9 was enriched at cell junctions, perhaps because 
+the N-terminal YFP fusion disrupted a mitochondrial targeting signal predicted for ARHGAP9 
+residues 1-14 (PredSL tool( 22)). Indeed, ARHGAP9-YFP isoform 3, lacking residues 1-181, did 
+not localize to mitochondria. We identified eight other cases in which different isoforms 
+exhibited distinct localization patterns (Fig. S3). 
+Focal adhesions are major sites of Rho GTPase regulation  
+To enhance the ability to resolve RhoGEF/RhoGAP localization to focal adhesions, a key site of 
+cytoskeletal dynamics, we used total internal reflection fluorescence (TIRF) microscopy in COS-
+7 cells. This led to the identification of an unexpected one fourth (37) of all RhoGEFs and 
+RhoGAPs that clearly associated with these structures, as determined by colocalization with 
+the adhesion marker Paxillin. Efforts to define the components of integrin adhesions have 
+already revealed a prevalence of Rho signaling network proteins( 23, 24). 9 RhoGEFs/RhoGAPs 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+6 
+ 
+were previously proposed to be an integral part of the adhesome (adhesome.org), of which we 
+confirmed six. For 24 proteins identified in our screen no evidence for focal adhesion 
+localization existed in literature (Table S3), among them well-studied regulators such as SOS, 
+TRIO, CHN2 and KALRN (Fig. 3B, Fig. S4). Our data thus indicates that intricately tuned Rho 
+signaling is more crucial in the control of cell-matrix adhesion than previously assumed.  
+Notably, six regulators exhibited a distinct microlocalization with a pericentric enrichment 
+juxtapositioned to focal adhesions and a fluorescence intensity minimum in the center (Fig. 
+S5). We also found that RhoGEFs and RhoGAPs with activity towards Rac1 were 
+overrepresented at focal adhesions compared to RhoA and Cdc42 (Fig. S6, Tables S2, S3). 
+Prevalence of actin-associated RhoGEFs and RhoGAPs  
+Next, we focused on identifying regulators associating with actin. We treated cells with 
+Cytochalasin D, an agent that disrupts the actin network and induces the appearance of 
+phalloidin-reactive filamentous foci ( 25). By scoring transiently expressed RhoGEFs and 
+RhoGAPs for their colocalization with these foci, we identified 34 actin-associated proteins, 
+including 23 regulators that have previously not been reported to bind actin, such as DOCK1, 
+ITSN2 and ARHGAP5 (Fig. 3C and Fig. S7). This finding emphasizes the importance of close 
+proximity of Rho regulators to actin to locally sense and control cytoskeletal dynamics. 
+RhoGEFs and RhoGAPs with activity towards Cdc42 were overrepresented for association with 
+actin relative to RhoA and Rac1 (Fig. S6).  
+ 
+Overall, we found 70% (99/141) of the overexpressed RhoGEF/RhoGAP proteins enriched at 
+distinct subcellular compartments (Fig. 3D, Table S3). The vast majority of regulators thereby 
+localize to structures previously shown to harbor Rho signaling. Notably, additional ‘non-
+canonical’ locations, comprising the Golgi, mitochondria, lysosomes, endomembranes and the 
+endoplasmic reticulum, were only decorated by RhoGAPs. We thus did not find evidence for 
+Rho activation at these structures. Compared to a control set of proteins from the Cell Atlas 
+study (26), significantly more proteins in our screen localized to focal adhesions, actin and the 
+plasma membrane (p-values < 2.2e-16, < 2.2e-16, 4.154e-07 and odds ratios=30.2, 14.5 and 2.9 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+7 
+ 
+respectively). Compared to a study that assessed localization in a similar manner as our 
+study(27), the RhoGEFs/RhoGAPs in our set were significantly enriched in terms of discrete 
+localization (i.e. not cytoplasm or nucleus; p-value=4.083e-09, odds ratio=3.0). For 27 (19%) of 
+the regulators in our collection, there were no previous reports describing their localization, 
+and 28 (20%) and 53 (37.5%) were not annotated in the Cell Atlas and Uniprot databases, 
+respectively. For 38 proteins (27%) the localizations we found were different from those 
+reported (Table S3). Together, our data provides a cellular heat-map of Rho regulation and 
+establishes the critical role of the RhoGEFs/RhoGAPs in conveying spatial context to Rho 
+signaling.  
+Using high-content microscopy( 28), we found only a limited relationship between the 
+substrate specificities and overexpression phenotypes of the RhoGEFs/RhoGAPs 
+(Supplementary Text
+). Their expression thus results in a continuum of cell morphologies that 
+contrasts the clear-cut phenotypes observed upon global expression of activated forms of the 
+Rho GTPases( 29), reflecting the promiscuity and differential subcellular distribution of the 
+RhoGEFs and RhoGAPs. 
+Interactome analysis reveals that many RhoGEFs/RhoGAPs associate in complexes 
+Next, we used affinity purification coupled to mass spectrometry to obtain a comprehensive 
+network of 1292 interactions (silver set; 1082 novel) among 863 unique proteins (Fig. 4A, Table 
+S4). Our dataset explores a so far largely uncharted part of the human interactome and 
+connects Rho GTPases to several signaling pathways( 30) and functional complexes involved in 
+linking the actin cytoskeleton to critical cell functions (Fig. 4A, Fig. S8). Notably, in addition to 
+20 interactions between RhoGEFs or RhoGAPs and Rho effector proteins and 24 interactions 
+with small GTPases, our network includes 66 unique interactions between RhoGEFs/RhoGAPs 
+themselves, indicating a previously unrecognized extensive crosstalk among the Rho regulators 
+(Fig. 4B, enrichment p-value for all <<0.001; Fig. S9). Both homo- and heterotypic interactions 
+occurred, with fewer complexes between RhoGAPs (24 GEF/GAP, 28 GEF/GEF, 11 GAP/GAP 
+and 3 GEF-ABR or GEF-BCR). Connections include complexes that localize to the same cellular 
+compartment, such as FARP2-VAV1 on focal adhesions or ARHGAP28-SYDE1 on actin filaments, 
+where they may act in concert to fine-tune Rho responses (Fig. 4B).  
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+8 
+ 
+Protein complexes controlling RhoGEF/RhoGAP localization 
+We found that the interactomes of focal adhesion-associated RhoGEFs/RhoGAPs are enriched 
+in components of the adhesome( 24) (Table S4, p-value=2.5e-08) and asked whether we could 
+identify interactors that are responsible for their local recruitment. We selected ARHGAP39, a 
+neuronal RacGAP controlling synaptic plasticity(31), and confirmed its interaction with PEAK1, 
+a kinase implicated in cancer progression. PEAK1 also localized to focal complexes, as 
+previously reported(32). The interaction critically involves a WW domain of ARHGAP39: when 
+this domain is disrupted by a Y81A point mutation, it not only fails to associate with PEAK1 but 
+is also no longer recruited to focal adhesions(Fig. S10). Likewise, the interactome of actin-
+localized regulators is enriched in actin-binding proteins (p-value=1e-13), whose function may 
+be to similarly recruit these RhoGEFs/RhoGAPs (Table S4, Supplementary Text). C-DOCK 
+RhoGEF subfamily regulators (DOCK6-8) were highly interconnected with the four members of 
+the LRCH protein family (Fig. S11, Table S4). Indeed, we found a striking relocalization of the 
+three RhoGEFs from the cytosol to the sites of LRCH expression: peripheral actin filaments and 
+the endoplasmic reticulum. Given that RhoGEFs/RhoGAPs and their interactors are significantly 
+enriched for PDZ, SH2, WW and SH3 domains (p-values <<0.01), which are common in scaffold 
+or adaptor proteins, such recruitment likely affects the cellular distribution also of other Rho 
+regulators.   
+A multi-RhoGEF complex downstream of GPCR signaling mediates Rho GTPase crosstalk 
+To further study the interplay between Rho regulators, we functionally characterized a multi-
+RhoGEF complex identified in our proteomics analysis: the interaction between the yet 
+undescribed RhoGEF PLEKHG4B and ARHGEF11 and ARHGEF12, two well-studied activators of 
+RhoA signaling downstream of G protein-coupled receptors (GPCR) that have been shown to 
+be essential for chemokine signaling-driven tumor cell invasion( 33, 34) (Fig. 4B, Fig. 5A, Fig. 
+S12A). ARHGEF11/12 are engaged at the membrane upon GPCR stimulation when activated 
+heterotrimeric Gɑ12 and Gɑ13 subunits bind to the RGS (regulator of G protein signaling) 
+domains of the GEFs( 35). PLEKHG4B is one of the eight members of the Pleckstrin homology 
+domain containing family G (PLEKHG) proteins. The N-termini of the three proteins are critical 
+to this interaction (Fig. 5B). While ARHGEF11 and ARHGEF12 are RhoA-specific, PLEKHG4B 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+9 
+ 
+selectively activated Cdc42 (Fig. 5C) and thus draws an additional Rho GTPase substrate into 
+this multi-GEF assembly. We observed that PLEKHG4B is another RhoGEF that is subject to 
+autoinhibition, as the truncation of the N-terminus of PLEKHG4B increased its Cdc42 GEF 
+activity compared to the full-length form (Fig. 5E, Fig. S12B). An increase in the Cdc42 GEF 
+activity of full-length PLEKHG4B appeared when we added either N-terminal fragments of 
+ARHGEF11 or ARHGEF12 or catalytically inactive mutants (Fig. 5C-E). This suggests that binding 
+to its partner GEFs releases the autoinhibition of PLEKHG4B. Conversely, coexpressing an N-
+terminal fragment of PLEKHG4B or its GEF-inactive mutant strongly decreased the catalytic 
+activities of ARHGEF11 and ARHGEF12 towards RhoA (Fig. 5D,F). The three proteins thus 
+mutually control one another’s GEF activities. In the context of the GPCR signaling pathway, 
+both ARHGEF11 and ARHGEF12 selectively associated with constitutively active Gɑ13QL, as 
+expected. Addition of PLEKHG4B, however, inhibited this interaction (Fig. 5G, upper panels). 
+Fittingly, while the expression of Gɑ13QL robustly activated downstream Rho signaling through 
+engagement of the endogenous RGS domain-containing RhoGEFs, this response was inhibited 
+by the dominant negative ARHGEF11 N-terminus that competes with the endogenous GEFs for 
+Gɑ13 binding( 36). Importantly, the N-terminus of PLEKHG4B, also capable of binding to 
+ARHGEF11/12, caused an equally strong inhibition of Gɑ13 signaling.  
+To our knowledge, this is the first description of a multi-Rho regulator assembly, consisting of 
+exchange factors with different GTPase specificities. In complex, ARHGEF11 and ARHGEF12 
+enhance the Cdc42 GEF activity of PLEKHG4B. In return, PLEKHG4B inhibits ARHGEF11/12-
+mediated RhoA activation in two ways: directly by reducing their catalytic activity, and 
+indirectly by perturbing their engagement with Gɑ12/13. We thus provide a proof of concept 
+for a novel mechanism of cross-talk among Rho GTPases in a pathway implicated in cancer 
+metastasis, that was previously thought to only activate RhoA(37) (Fig. 5H).  
+ 
+Discussion 
+Rho GTPases orchestrate complex morphodynamic cell behaviors. A fundamental question is 
+how the underlying highly localized processes are spatially maintained while the components 
+of the Rho signaling system are subject to entropic leakage. Recent studies have challenged the 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+10 
+ 
+perception of Rho signaling as a static, linear and ‘GTPase-centric’ process, in which a 
+membrane-bound GTPase is sequentially regulated by a GEF and a GAP to control one specific 
+cytoskeletal structure( 12, 13, 38, 39). Here, we provide the first systems-level study of 
+RhoGEF/RhoGAP function that establishes the framework for a dynamic ‘regulator-centric’ 
+concept. A critical function of the RhoGEFs and RhoGAPs is to contextualize and spatially 
+delimit the Rho signaling networks. They do so by providing positional cues based on the 
+placement of the enzymes on dedicated supramolecular structures and the assembly of 
+additional signaling proteins. Our data establishes focal adhesions and actin filaments as 
+additional major sites of Rho signaling regulation. 
+We found that many regulators associate to collaborative networks, such as the 
+PLEKHG4B/ARHGEF11/ARHGEF12 complex characterized here. This cooperativity of the 
+RhoGEFs/RhoGAPs, together with their promiscuity towards their substrates, increases their 
+combinatorial possibilities to engage multiple Rho family members simultaneously, and to fine-
+tune their activities. Most regulators are autoinhibited, presumably due to the back-folding of 
+adjacent regions onto the catalytic domains, thereby preventing access to substrates( 40–42). 
+This suggests that the RhoGEFs/RhoGAPs are poised to respond to context-specific upstream 
+stimuli and feedback regulation, a mechanism that can further spatially confine the activity of 
+the regulators to micrometer-size zones while localizing on supramolecular structures. 
+Diffusion spreads the activated GTPases from their source and thereby the local 
+morphogenetic signals. This is balanced by an efficient turnover of the GDP/GTP cycle, 
+mediated by the action of RhoGAPs in the vicinity of the activated GTPases. RhoGAPs are more 
+promiscuous than RhoGEFs, a finding that is in agreement with previous biochemical studies 
+on selected regulators( 43, 44). They are also less interconnected in homotypic GAP/GAP 
+complexes and have significantly fewer domains than RhoGEFs (p-value=5e-04), and are thus 
+potentially more autonomous from regulation. Moreover, only RhoGAPs localize to ‘non-
+canonical’ structures that are not reported to host Rho signaling. These properties may 
+contribute to a housekeeping function of the RhoGAPs, allowing them to efficiently reset the 
+basal state of the GDP/GTP cycle and thus to prevent signals from leaking to the cell volume. 
+This is reminiscent of other fundamental reaction cycles driven by the activities of opposing 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+11 
+ 
+enzymes. Inactivating protein phosphatases, for example, also tend to display lower sequence 
+selectivity than their kinase counterparts( 45). RhoGDIs finally ensure the re-cycling of Rho 
+GTPases through the confined activity zones.  
+The lack of Cdc42-GAP specificity is surprising. Cdc42 activity often peaks at early stages of 
+cellular morphogenesis, for instance during cell polarization, protrusion or adhesion and may 
+have a unique initiating role in these processes. A failsafe termination of the underlying 
+signaling programs may require the rigorous simultaneous inactivation of the entire cascade of 
+Rho GTPases involved, including Rac1 and RhoA. 
+The mechanisms governing local Rho signaling are fundamentally different from those in place 
+in the Ras GTPase system, with only about 16 GEFs/GAPs( 46). Here, spatial organization does 
+not require the contribution of opposing regulators but instead arises from cycles of lipid 
+anchoring and membrane release of the Ras proteins( 47–49). The organization principles 
+presented in this study thus add to the emerging landscape of mechanisms controlling 
+localized activities of small GTPases.  
+This integrated study provides a basis by which the complexity of spatio-temporal control of 
+Rho signaling can be further dissected and rules by which cells regulate context-specific 
+functions can be explored. 
+ 
+Supplemental Information 
+Supplemental Information includes 14 figures, 4 tables and 2 data files. This and extended 
+information can be found at Biostudies:S-BSST160 (51) and at http://the-rhome.com. The mass 
+spectrometry proteomics data from the Q Exactive HF-X run have been deposited to the 
+ProteomeXchange Consortium via the PRIDE ( 52) partner repository with the dataset identifier 
+PXD010084. The rest of the mass spectrometry proteomics data have been deposited under 
+the dataset identifier PXD010144. 
+ 
+Author Contributions 
+Conceptualization: P.M.M., R.D.B., T.P., E.P., and O.R.; Methodology: P.M.M. (FRET and TIRF 
+screen), O.R., C.W. (confocal screen), R.D.B., K.M.A., V.N., M.S., M.T., O. Popp and B.L. (Mass 
+Spectrometry), J.R. (case study, Cytochalasin D screen), L.E.H., R.D.B., P.M.M., O.R., C. Bakal, 
+E.P. (computational methods), S.Z., L.S., L.B., G.M., T.R., K.F., J.R. and P.T. (library); Analysis: 
+E.P., P.M.M., J.R., R.D.B. and O.R.; Software: E.P., G.G. and P.M.M.; Investigation: R.L.E., L.B., 
+M.T.C., C. Barth, R.W.W. and P.T.; Data Curation: E.P., P.M.M., R.D.B., J.R. and O.R.; Resources: 
+K.C. and O. Pertz; Writing: O.R. with contributions of E.P. and P.M.M; Partial Supervision and 
+Project Administration: E.P., K.C., P.M., F.P.R. and T.P.; Supervision: O.R. 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+12 
+ 
+Acknowledgements 
+This work is dedicated to the memory of our dear mentor, Tony Pawson, without whom this 
+study would not have been initiated. We thank O. Daumke, R. Hodge, D. Panakova and P. 
+Bieling for critically reading the manuscript and R.D. Fritz for helpful discussions. We thank I. 
+Laue, D. Heidler and the rest of the Rocks lab for technical assistance. We thank the MDC 
+Advanced Light Microscopy Facility for technical assistance. This work was supported by the 
+Human Frontier Science Program (LT000759/2008-L) (to O.R.), the CIHR Post-doctoral 
+fellowship award (to R.D.B.), the Cancer Research UK (CRUK) Programme Foundation Award 
+(C37275/A20146) and the Stand Up to Cancer campaign for Cancer Research UK (to C.B.), 
+Genome Canada through Ontario Genomics, the Ontario Government (ORF GL2-025) and the 
+Terry Fox Research Institute (to T.P). Interaction proteomics at the Lunenfeld-Tanenbaum 
+Research Institute was performed at the Network Biology Collaborative Centre, currently 
+supported by Genome Canada and Ontario Genomics (OGI-139).F.P.R. and E.P. were supported 
+by the Canada Excellence Research Chairs Program, the Krembil Foundation, the Avon 
+Foundation and by the NIH/NHGRI Center of Excellence in Genomic Science program 
+(HG004233). 
+ 
+References 
+1.  A. B. Jaffe, A. Hall, Rho GTPases: biochemistry and biology. Annu. Rev. Cell Dev. Biol.  21, 
+247–269 (2005). 
+2.  S. J. Heasman, A. J. Ridley, Mammalian Rho GTPases: new insights into their functions 
+from in vivo studies. Nat. Rev. Mol. Cell Biol. 9, 690–701 (2008). 
+3.  A. P. Porter, A. Papaioannou, A. Malliri, Deregulation of Rho GTPases in cancer. Small 
+GTPases. 7, 123–138 (2016). 
+4.  J. L. Bos, H. Rehmann, A. Wittinghofer, GEFs and GAPs: critical elements in the control of 
+small G proteins. Cell. 129, 865–877 (2007). 
+5.  R. García-Mata, K. Burridge, Catching a GEF by its tail. Trends Cell Biol.  17, 36–43 (2007). 
+6.  K. L. Rossman, C. J. Der, J. Sondek, GEF means go: turning on RHO GTPases with guanine 
+nucleotide-exchange factors. Nat. Rev. Mol. Cell Biol. 6, 167–180 (2005). 
+7.  J. Tcherkezian, N. Lamarche-Vane, Current knowledge of the large RhoGAP family of 
+proteins. Biol. Cell. 99, 67–86 (2007). 
+8.  R. Garcia-Mata, E. Boulter, K. Burridge, The “invisible hand”: regulation of RHO GTPases by 
+RHOGDIs. Nat. Rev. Mol. Cell Biol. 12, 493–504 (2011). 
+9.  O. Pertz, Spatio-temporal Rho GTPase signaling - where are we now? J. Cell Sci.  123, 
+1841–1850 (2010). 
+10.  M. Machacek et al. , Coordination of Rho GTPase activities during cell protrusion. Nature. 
+461, 99–103 (2009). 
+11.  R. D. Fritz et al. , A Versatile Toolkit to Produce Sensitive FRET Biosensors to Visualize 
+Signaling in Time and Space. Sci. Signal. 6, rs12–rs12 (2013). 
+12.  H. A. Benink, W. M. Bement, Concentric zones of active RhoA and Cdc42 around single cell 
+wounds. J. Cell Biol. 168, 429–439 (2005). 
+13.  J. J. Bravo-Cordero et al., A novel spatiotemporal RhoC activation pathway locally 
+regulates cofilin activity at invadopodia. Curr. Biol. 21, 635–644 (2011). 
+14.  C. Guilluy, R. Garcia-Mata, K. Burridge, Rho protein crosstalk: another social network? 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+13 
+ 
+Trends Cell Biol. 21, 718–726 (2011). 
+15.  P. Devreotes, A. R. Horwitz, Signaling networks that regulate cell migration. Cold Spring 
+Harb. Perspect. Biol. 7, a005959 (2015). 
+16.  R. D. Fritz et al. , SrGAP2-Dependent Integration of Membrane Geometry and Slit-Robo-
+Repulsive Cues Regulates Fibroblast Contact Inhibition of Locomotion. Dev. Cell. 35, 78–92 
+(2015). 
+17.  R. D. Fritz et al. , A Versatile Toolkit to Produce Sensitive FRET Biosensors to Visualize 
+Signaling in Time and Space. Sci. Signal. 6, rs12–rs12 (2013). 
+18.  K. Martin et al., Spatio-temporal co-ordination of RhoA, Rac1 and Cdc42 activation during 
+prototypical edge protrusion and retraction dynamics. Sci. Rep. 6, 21901 (2016). 
+19.  C. D. Lawson, A. J. Ridley, Rho GTPase signaling complexes in cell migration and invasion. 
+J. Cell Biol. 217, 447–457 (2018). 
+20.  A. B. Jaffe, A. Hall, Rho GTPases: biochemistry and biology. Annu. Rev. Cell Dev. Biol.  21, 
+247–269 (2005). 
+21.  J. Cherfils, M. Zeghouf, Regulation of small GTPases by GEFs, GAPs, and GDIs. Physiol. Rev.  
+93, 269–309 (2013). 
+22.  E. I. Petsalaki, P. G. Bagos, Z. I. Litou, S. J. Hamodrakas, PredSL: a tool for the N-terminal 
+sequence-based prediction of protein subcellular localization. Genomics Proteomics 
+Bioinformatics. 4, 48–55 (2006). 
+23.  S. E. Winograd-Katz, R. Fässler, B. Geiger, K. R. Legate, The integrin adhesome: from genes 
+and proteins to human disease. Nat. Rev. Mol. Cell Biol. 15, 273–288 (2014). 
+24.  R. Zaidel-Bar, S. Itzkovitz, A. Ma’ayan, R. Iyengar, B. Geiger, Functional atlas of the integrin 
+adhesome. Nat. Cell Biol. 9, 858–867 (2007). 
+25.  M. Schliwa, Action of cytochalasin D on cytoskeletal networks. J. Cell Biol.  92, 79–91 
+(1982). 
+26.  P. J. Thul et al. , A subcellular map of the human proteome. Science. 356 (2017), 
+doi:10.1126/science.aal3321. 
+27.  J. C. Simpson, R. Wellenreuther, A. Poustka, R. Pepperkok, S. Wiemann, Systematic 
+subcellular localization of novel proteins identified by large-scale cDNA sequencing. EMBO 
+Rep. 1, 287–292 (2000). 
+28.  C. Bakal, J. Aach, G. Church, N. Perrimon, Quantitative morphological signatures define 
+local signaling networks regulating cell morphology. Science. 316, 1753–1756 (2007). 
+29.  A. Hall, Rho GTPases and the Actin Cytoskeleton. Science . 279, 509–514 (1998). 
+30.  R. L. Eccles et al., Bimodal antagonism of PKA signalling by ARHGAP36. Nat. Commun. 7, 
+12963 (2016). 
+31.  J.-Y. Lee et al. , Important roles of Vilse in dendritic architecture and synaptic plasticity. Sci. 
+Rep. 7, 45646 (2017). 
+32.  Y. Wang et al., Pseudopodium-enriched atypical kinase 1 regulates the cytoskeleton and 
+cancer progression. Proceedings of the National Academy of Sciences. 107, 10920–10925 
+(2010). 
+33.  H. Yagi et al. , A synthetic biology approach reveals a CXCR4-G13-Rho signaling axis driving 
+transendothelial migration of metastatic breast cancer cells. Sci. Signal. 4, ra60 (2011). 
+34.  A. P. Struckhoff et al. , PDZ-RhoGEF is essential for CXCR4-driven breast tumor cell motility 
+through spatial regulation of RhoA. J. Cell Sci. 126, 4514–4526 (2013). 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+14 
+ 
+35.  P. C. Sternweis et al., Regulation of Rho guanine nucleotide exchange factors by G 
+proteins. Adv. Protein Chem. 74, 189–228 (2007). 
+36.  S. Fukuhara, H. Chikumi, J. S. Gutkind, Leukemia-associated Rho guanine nucleotide 
+exchange factor (LARG) links heterotrimeric G proteins of the G(12) family to Rho. FEBS 
+Lett. 485, 183–188 (2000). 
+37.  D. Diviani, J. Soderling, J. D. Scott, AKAP-Lbc Anchors Protein Kinase A and Nucleates 
+Gα12-selective Rho-mediated Stress Fiber Formation. J. Biol. Chem. 276, 44247–44257 
+(2001). 
+38.  M. Machacek et al. , Coordination of Rho GTPase activities during cell protrusion. Nature. 
+461, 99–103 (2009). 
+39.  R. D. Fritz et al. , A Versatile Toolkit to Produce Sensitive FRET Biosensors to Visualize 
+Signaling in Time and Space. Sci. Signal. 6, rs12–rs12 (2013). 
+40.  R. J. Rojas et al. , GαqDirectly Activates p63RhoGEF and Trio via a Conserved Extension of 
+the Dbl Homology-associated Pleckstrin Homology Domain. J. Biol. Chem. 282, 29201–
+29210 (2007). 
+41.  B. Canagarajah et al., Structural mechanism for lipid activation of the Rac-specific GAP, 
+beta2-chimaerin. Cell. 119, 407–418 (2004). 
+42.  N. Mitin et al. , Release of autoinhibition of ASEF by APC leads to CDC42 activation and 
+tumor suppression. Nat. Struct. Mol. Biol. 14, 814–823 (2007). 
+43.  M. Jaiswal, R. Dvorsky, M. R. Ahmadian, Deciphering the molecular and functional basis of 
+Dbl family proteins: a novel systematic approach toward classification of selective 
+activation of the Rho family proteins. J. Biol. Chem. 288, 4486–4500 (2013). 
+44.  E. Amin et al. , Deciphering the Molecular and Functional Basis of RHOGAP Family 
+Proteins: A SYSTEMATIC APPROACH TOWARD SELECTIVE INACTIVATION OF RHO FAMILY 
+PROTEINS. J. Biol. Chem. 291, 20353–20371 (2016). 
+45.  I. Smoly, N. Shemesh, M. Ziv-Ukelson, A. Ben-Zvi, E. Yeger-Lotem, An Asymmetrically 
+Balanced Organization of Kinases versus Phosphatases across Eukaryotes Determines 
+Their Distinct Impacts. PLoS Comput. Biol. 13, e1005221 (2017). 
+46.  A. Hennig, R. Markwart, M. A. Esparza-Franco, G. Ladds, I. Rubio, Ras activation revisited: 
+role of GEF and GAP systems. Biol. Chem. 396, 831–848 (2015). 
+47.  O. Rocks et al. , The palmitoylation machinery is a spatially organizing system for 
+peripheral membrane proteins. Cell. 141, 458–471 (2010). 
+48.  A. Lorentzen, A. Kinkhabwala, O. Rocks, N. Vartak, P. I. H. Bastiaens, Regulation of Ras 
+localization by acylation enables a mode of intracellular signal propagation. Sci. Signal. 3, 
+ra68 (2010). 
+49.  M. Schmick et al. , KRas localizes to the plasma membrane by spatial cycles of 
+solubilization, trapping and vesicular transport. Cell. 157, 459–471 (2014). 
+50.  P. Sterpetti et al., Activation of the Lbc Rho exchange factor proto-oncogene by truncation 
+of an extended C terminus that regulates transformation and targeting. Mol. Cell. Biol. 19, 
+1334–1345 (1999). 
+51.  J. McEntyre, U. Sarkans, A. Brazma, The BioStudies database. Mol. Syst. Biol.  11, 847 
+(2015). 
+52.  J. A. Vizcaíno et al., 2016 update of the PRIDE database and its related tools. Nucleic Acids 
+Res. 44, D447–56 (2016). 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+-1.4
+-1.2
+-1.0
+-0.8
+-0.6
+-0.4
+-0.2
+0.0
+CONTROL
+ARAP1
+ARAP2
+ARAP3
+ARHGAP1
+ARHGAP4
+ARHGAP5ARHGAP6ARHGAP8ARHGAP9ARHGAP10
+ARHGAP11A
+ARHGAP11B
+ARHGAP12
+ARHGAP15
+ARHGAP17
+ARHGAP18
+ARHGAP19
+ARHGAP20
+ARHGAP21
+ARHGAP22
+ARHGAP23
+ARHGAP24
+ARHGAP25
+ARHGAP26
+ARHGAP27ARHGAP28ARHGAP29
+ARHGAP30
+ARHGAP31
+ARHGAP32ARHGAP33ARHGAP35ARHGAP36ARHGAP39ARHGAP40ARHGAP44
+ARHGAP45
+CHN1
+CHN2
+DEPDC1
+DEPDC1B
+DLC1
+FAM13AFAM13BGMIPINPP5BMYO9A
+MYO9B
+OCRL
+OPHN1
+PIK3R1
+PIK3R2
+RACGAP1
+RALBP1
+SH3BP1
+SRGAP1
+SRGAP2
+SRGAP3
+STARD8
+STARD13
+SYDE1
+SYDE2
+TAGAP
+ABR
+BCR
+ 
+               
+RhoA
+ Rac1
+ Cdc42
+**
+**
+*
+** **
+*
+*
+*
+* *
+*
+*
+**
+* *
+*
+***
+*
+***
+** *
+*
+*
+***
+***
+*
+** * * **
+*
+* *
+* * ** ***
+*
+***
+*
+*
+*
+*
+**
+*
+**
+*
+* **
+* *
+-∆R/∆RMAX
+Figure 1
+A
+B
+AKAP13, ARHGEF1, ARHGEF2, ARHGEF3, ARHGEF4, ARHGEF5, ARHGEF10, ARHGEF1 1, 
+ARHGEF12, ARHGEF15, ARHGEF17, ARHGEF19, ARHGEF25, ARHGEF28, ECT2, MCF2, MCF2L, 
+NET1, NGEF, PLEKHG5, PLEKHG6, PREX2, RASGRF2, VAV1, VAV2, VAV3
+ARHGEF10, DOCK3, DOCK10, FGD5, MCF2, PLEKHG6, PREX1, PREX2, RASGRF2, TIAM1, 
+TIAM2, 
+TRIO, VAV1, VAV2
+ARHGEF4, ARHGEF9, ARHGEF10, ARHGEF15, ARHGEF26, DNMBP, FGD1, FGD2, FGD3, FGD4, 
+MCF2, MCF2L, PLEKHG1, PLEKHG3, PLEKHG4, PLEKHG4B, PREX2, RASGRF2, SP
+ATA13
+ARAP2, ARHGAP1, ARHGAP5, ARHGAP6, ARHGAP8, ARHGAP10, ARHGAP11A, ARHGAP11B, 
+ARHGAP19, ARHGAP20, ARHGAP21, ARHGAP22, ARHGAP23, ARHGAP26, ARHGAP28, 
+ARHGAP29, ARHGAP30, ARHGAP31, ARHGAP35, ARHGAP40, DLC1, GMIP, MYO9A, MYO9B, 
+STARD8, STARD13, TAGAP
+ARAP1, ARAP2, ARAP3, ARHGAP4, ARHGAP9, ARHGAP12, ARHGAP15, ARHGAP20, ARHGAP22, 
+ARHGAP23, ARHGAP27, ARHGAP30, ARHGAP31, ARHGAP33, ARHGAP35, ARHGAP39, 
+ARHGAP44, CHN1, CHN2, FAM13A, FAM13B, GMIP, MYO9B, RACGAP1, RALBP1, SH3BP1, 
+SRGAP1, SRGAP2, SRGAP3, SYDE2, TAGAP, ABR, BCR
+ARAP1, ARAP2, ARAP3, ARHGAP1, ARHGAP11B, ARHGAP20, ARHGAP22, ARHGAP30, 
+ARHGAP31, ARHGAP39, ARHGAP40, FAM13B, GMIP, MYO9B, SRGAP2, STARD8
+RhoA
+26
+Rac1
+14
+Cdc42
+19
+16
+7
+12
+3
+3
+0
+4
+59 activities
+by 45 RhoGEFs
+RhoA
+27
+Rac1
+33
+Cdc42
+16
+13
+18
+0
+3
+4
+5
+7
+76 activities
+by 50 RhoGAPs
+∆R/∆RMAX
+RhoA
+ Rac1
+ Cdc42
+CONTROL
+A
+K
+A
+P
+1
+3
+A
+L
+S
+2
+A
+RHGE
+F
+1
+A
+RHGE
+F
+2
+A
+RHGE
+F
+3
+A
+RHGE
+F
+4
+A
+RHGE
+F
+5
+A
+RHGE
+F
+6
+A
+RHGE
+F
+7
+A
+RHGE
+F
+9
+A
+RHGE
+F
+1
+0
+A
+RHGE
+F
+1
+0
+L
+A
+RHGE
+F
+1
+1
+A
+RHGE
+F
+1
+2
+A
+RHGE
+F
+1
+5
+A
+RHGE
+F
+1
+6
+A
+RHGE
+F
+1
+7
+A
+RHGE
+F
+1
+8
+A
+RHGE
+F
+1
+9
+A
+RHGE
+F
+2
+5
+A
+RHGE
+F
+2
+6
+A
+RHGE
+F
+2
+8
+A
+RHGE
+F
+3
+9
+A
+RHGE
+F
+4
+0
+DNM
+B
+P
+DOCK
+1
+DOCK
+2
+DOCK
+3
+DOCK
+4
+DOCK
+5
+DOCK
+6
+DOCK
+7
+DOCK
+8
+DOCK
+9
+DOCK
+1
+0
+DOCK
+1
+1
+E
+CT
+2
+E
+CT
+2
+L
+F
+A
+RP
+1
+F
+A
+RP
+2
+F
+GD1
+F
+GD2
+F
+GD3
+F
+GD4
+F
+GD5
+F
+GD6
+IT
+S
+N1
+IT
+S
+N2
+K
+A
+L
+RN
+M
+CF
+2
+M
+CF
+2
+L
+M
+CF
+2
+L
+2
+NE
+T
+1
+NGE
+F
+P
+L
+E
+K
+HG1
+P
+L
+E
+K
+HG2
+P
+L
+E
+K
+HG3
+P
+L
+E
+K
+HG4
+P
+L
+E
+K
+HG4
+B
+P
+L
+E
+K
+HG5
+P
+L
+E
+K
+HG6
+P
+L
+E
+K
+HG7
+P
+RE
+X
+1
+P
+RE
+X
+2
+RA
+S
+GRF
+1
+RA
+S
+GRF
+2
+S
+OS
+1
+S
+OS
+2
+S
+P
+A
+T
+A
+1
+3
+T
+IA
+M
+1
+T
+IA
+M
+2
+T
+RIO
+V
+A
+V
+1
+V
+A
+V
+2
+V
+A
+V
+3
+A
+B
+R
+B
+CR
+0.0
+0
+.
+1
+0
+.
+2
+0
+.
+3
+0
+.
+4
+0
+.
+8
+1
+.
+0
+               
+*
+*
+*
+*
+**
+*
+* **
+*
+*
+*
+**
+*
+*
+*
+*
+*
+*
+* *
+*
+*
+*
+*
+*
+*
+*** **
+*
+*
+*
+*
+*
+* *
+**
+* *
+**
+*
+**
+*
+*
+*
+*
+**
+**
+*
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+Figure 1. Family-wide RhoGEF and RhoGAP activity screens 
+(
+A) HEK293T cells were transfected with the mCherry-labeled RhoGEF cDNA library and the 
+FRET sensors RhoA-2G, Rac1-2G, and Cdc42-2G together with RhoGDI. (B) RhoGDI shRNA-
+depleted HEK293T cells were transfected with the mCherry-labeled RhoGAP cDNA library 
+and indicated FRET sensors. Values show ĐhaŶges iŶ FRET ratio ;ΔRͿ Đoŵpared to ĐoŶtro l 
+Ŷorŵalized to the ŵaǆiŵal oďserǀed FRET ratio ĐhaŶge ;ΔR MAX). Mean ± SD (n=3) is shown 
+throughout. Dashed lines indicate activity thresholds. Significance of values above (A) or 
+ďeloǁ ;BͿ the threshold ǁas ĐalĐulated ďǇ uŶpaired StudeŶt’s t -test versus control and 
+Benjamini-Hochberg procedure, significant values are marked with an asterisk (*). For 
+regulators with multiple activities, only those above 20% of the main activity were 
+considered. Venn diagrams and lists of active regulators are given sorted by substrate 
+GTPases: RhoA (green), Rac1 (blue), and Cdc42 (red).  
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+Cdc42-2G Rac1-2G RhoA-2G
+Figure 2
+RhoA-2G Cdc42-2G Rac1-2G
+A
+B
+norm. FRET ratio R
+(FRET-acceptor/donor)
+norm. FRET ratio R
+(FRET-acceptor/donor)
+norm. FRET ratio R
+(FRET-acceptor/donor)
+norm. FRET ratio R
+(FRET-acceptor/donor)
+norm. FRET ratio R
+(FRET-acceptor/donor)
+norm. FRET ratio R
+(FRET-acceptor/donor)
+***
+CONTROL
+ARHGEF5
+ARHGEF7
+ARHGEF16ARHGEF25
+ARHGEF40
+DNMBP
+DOCK6
+0.0
+0.1
+0.8
+1.0
+1.2
+1.4
+1.6
+1.8
+ 
+ 
+ 
+*** ***
+CONTROL
+ARHGEF5
+ARHGEF7
+ARHGEF16ARHGEF25
+ARHGEF40
+DNMBP
+DOCK6
+0.0
+0.1
+0.90
+0.95
+1.00
+1.05
+ 
+* **
+CONTROL
+ARHGEF5
+ARHGEF7
+ARHGEF16ARHGEF25
+ARHGEF40
+DNMBP
+DOCK6
+PLEKHG1
+PLEKHG4B
+0.0
+0.1
+0.8
+1.0
+1.2
+1.4
+ 
+n.s. ***
+**
+***
+CONTROL
+ARHGAP9
+ARHGAP24
+ARHGAP26
+ARHGAP27
+ARHGAP32
+ARHGAP39
+ARHGAP44
+CHN1
+SRGAP1
+SYDE1
+0.0
+0.1
+0.7
+0.8
+0.9
+1.0
+1.1
+ 
+** ** **
+***
+CONTROL
+ARHGAP9
+ARHGAP24
+ARHGAP26
+ARHGAP27
+ARHGAP32
+ARHGAP39
+ARHGAP44
+CHN1
+SRGAP1
+SYDE1
+0.0
+0.1
+0.7
+0.8
+0.9
+1.0
+ 
+*** ** ** ***
+CONTROL
+ARHGAP9
+ARHGAP24
+ARHGAP26
+ARHGAP27
+ARHGAP32
+ARHGAP39
+ARHGAP44
+CHN1
+SRGAP1
+SYDE1
+0.0
+0.1
+0.8
+0.9
+1.0
+1.1
+ 
+*** ** **
+ΔR / norm. ImCherryΔR / norm. ImCherryΔR / norm. ImCherryΔR / norm. ImCherryΔR / norm. ImCherryΔR / norm. ImCherry
+ISO1
+ISO3
+ISO2
+ΔN
+ISOα2
+ISOα1
+long isoform short isoform
+0.0
+0.5
+1.0
+1.5
+ 
+ARHGEF5
+0.00
+0.05
+0.10
+ 
+ARHGEF16
+0.00
+0.05
+0.10
+0.15
+0.20
+ 
+ARHGEF25
+*** *** ***
+0.00
+0.02
+0.04
+0.06
+ 
+ARHGEF7
+0.00
+0.02
+0.04
+0.06
+ 
+ARHGEF25
+** **
+0.0
+0.1
+0.2
+0.3
+0.4
+ 
+ARHGEF16
+0.00
+0.05
+0.10
+ 
+ARHGEF25
+0.0
+0.5
+1.0
+1.5
+2.0 
+ 
+PLEKHG1
+0.0
+0.5
+1.0
+ 
+PLEKHG4B
+* *** * **
+-0.2
+-0.1
+0.0
+ 
+ARHGAP26
+-0.10
+-0.05
+0.00
+ 
+ARHGAP27
+-0.4
+-0.2
+0.0
+ 
+CHN1
+-0.2
+0.0
+0.2
+ 
+SYDE1
+* * ** ***
+-0.8
+-0.6
+-0.4
+-0.2
+0.0
+ 
+ARHGAP39
+-0.10
+-0.05
+0.00
+ 
+ARHGAP44
+-0.6
+-0.4
+-0.2
+0.0
+ 
+CHN1
+-0.3
+-0.2
+-0.1
+0.0
+ 
+SYDE1
+*** *** *****
+-0.10
+-0.05
+0.00
+0.05
+ 
+ARHGAP9
+-0.10
+-0.05
+0.00
+ 
+ARHGAP39
+-0.3
+-0.2
+-0.1
+0.0
+0.1
+ 
+ 
+CHN1
+** *** **
+ISO1
+ISO2
+ISO4ISO1
+ISO1ISO2
+ISO1
+ISO2
+ISO1ISO2
+ISO1ISO2
+ISO1
+ISO2
+ISO1
+ISO1
+ΔC
+ΔN
+ISO1
+ISO2
+ISO1
+ISO2
+ISOα2
+ISOα1
+ISO1ISO2
+ISO2
+ΔN
+ISO1
+ΔC
+ISOα2
+ISOα1
+ISO1ISO2
+long isoform short isoform
+ARHGEF5 ISO2
+ARHGEF5 ISO1
+ARHGEF7 ISO4
+ARHGEF7 ISO1
+ARHGEF16 ISO1
+ARHGEF16 ISO2
+ARHGEF25 ISO1
+ARHGEF25 ISO2
+ARHGEF40 ISO1
+ARHGEF40 ISO2
+DNMBP ISO1
+DNMBP ISO2
+DOCK6
+DOCK6 (1586-2047)
+PLEKHG1
+PLEKHG1 (1-432)
+PLEKHG4B
+PLEKHG4B (634-1271)
+ 
+ARHGAP9 ISO1
+ARHGAP9 ISO3
+ARHGAP24 ISO1
+ARHGAP24 ISO3
+ARHGAP26 ISO1
+ARHGAP26 ISO2
+ARHGAP27 ISO1
+ARHGAP27 ISO2
+ARHGAP32 ISO1
+ARHGAP32 ISO2
+ARHGAP39 ISO2
+ARHGAP39 (682-1114)
+ARHGAP44 ISO1
+ARHGAP44 (1-508)
+CHN1 Alpha-1
+CHN1 Alpha-2
+SRGAP1 ISO1
+SRGAP1 ISO2
+SYDE1 ISO1
+SYDE1 ISO2
+SH3
+PH
+BAR
+CH
+ otherDH (RhoGEF)
+DHR-1 (DOCK-C2)
+SH3
+WW
+BAR
+PX
+RhoGAP
+MyTH4
+PH
+SH2
+C1
+FCH
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+Figure 2. Autoinhibition is a common feature of RhoGEFs and R hoGAPs  
+Semiquantitative comparison of catalytic activities of full-length longest isoforms versus 
+shorter isoforms or truncations of randomly selected 9 RhoGEFs (A) and 10 RhoGAPs (B). 
+Experiments were performed as described in Figure 1 and Figure S2. Graphs on the left 
+represeŶt ĐhaŶges iŶ FRET ratio ;ΔRͿ Ŷorŵalized to RhoGEF or RhoGAP expression levels as 
+determined by mCherry intensity. Graphs on the right show the FRET ratios normalized to 
+control. Dashed lines indicate activity thresholds as in Figure 1. Values show mean ± SD (n=3; 
+Ŷ=2 for ARHGEF40 aŶd DNMBPͿ. SigŶifiĐaŶĐe leǀels ǁere ĐalĐulated ďy uŶpaired StudeŶt’s t -
+tests as indicated: ***p<0.001, **p<0.01, *p<0.05, n.s.=not significant. Right panels: domain 
+representations of the used constructs, as in Figure S1. 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+PIK3R1
+ARHGAP22
+ARAP2
+focal adhesions
+ARHGAP9-YFP
+mitochondria
+ARHGAP26
+endopl. reticulum
+ARHGAP24
+ARHGEF2
+ARHGAP42
+cytoskeleton
+OCRL
+ITSN1
+ARHGAP1
+vesicles nucleus
+ARHGAP12
+FARP1
+plasma 
+membrane
+A
+B
+Figure 3
+D
+PLEKHG3
+ ARHGEF11
+ARHGEF11abm
+ARHGAP36
+lysosomes
+C
+Tubulin
+YFP phalloidin YFP / phalloidin
+SH3BP1
+ARAP2, ARHGAP9, ARHGAP12, ARHGAP22, ARHGAP23, ARHGAP31, ARHGAP35, ARHGAP39
+CHN2, DLC1, OCRL, PIK3R1, PIK3R2, SRGAP1, SRGAP3, STARD8, STARD13, SYDE1, SYDE2
+18 RhoGEFs ARHGEF6, ARHGEF7, ARHGEF19, ARHGEF39, DOCK1, DOCK3, DOCK5, ECT2L, FARP2
+ITSN1, ITSN2, KALRN, PLEKHG1, SOS1, SOS2, TRIO, VAV1, VAV3 
+19 RhoGAPs
+focal adhesion associated
+16 RhoGEFs
+17 RhoGAPs
+actin associated
+ARAP2, ARAP3, ARHGAP5, ARHGAP9, ARHGAP11A, ARHGAP24, 
+MYO9A, MYO9B, OPHN1, SH3BP1, SRGAP1, SYDE1
+ARHGEF11, ARHGEF15, ARHGEF17, ARHGEF18, ARHGEF26, 
+PLEKHG2, PLEKHG3, PLEKHG4B, PLEKHG6 
+BCR
+DOCK1, FGD1, FGD2, FGD4, FGD6, ITSN2, PLEKHG1, 
+ARHGAP28, ARHGAP29, ARHGAP33, ARHGAP35, ARHGAP42,
+1 RhoGEF/GAP
+FGD5
+ARHGAP11A
+ARHGAP19
+ARHGEF3
+ARHGAP5
+YFP phalloidin YFP / phalloidin
+CHN1-α1
+endomembranes
+ARHGAP21
+Golgi
+0.0
+2.0
+4.0norm. intensity 0.0
+1.0
+2.0
+3.0norm. intensity
+TRIO
+0.0
+2.0
+4.0norm. intensity0.0
+1.0
+2.0
+3.0norm. intensity
+SOS1
+0.0
+2.0
+4.0norm. intensity0.0
+1.0
+2.0
+3.0norm. intensity
+KALRN
+longitudinal
+intensity plot
+transverse
+intensity plotmergePaxillinRhoGEF
+NGEF DOCK8
+PREX2
+ARHGEF28
+DOCK6
+PLEKHG4
+ARHGAP44
+TAGAP
+ARHGAP18
+PREX1
+ARHGAP4
+ARHGEF1
+ARHGAP10
+FAM13A
+ARAP1
+ARHGEF10
+DOCK4
+VAV2
+ALS2
+MCF2L
+PLEKHG7
+ARHGAP36 ARHGAP1
+INPP5B
+FGD 5
+GMIP
+FAR P1
+DEPDC1B
+ARHGAP20
+TIAM1
+DOCK9
+HMHA1
+DOCK2
+AKAP1 3
+ARHGEF9
+ARHGEF40
+ABRDEPDC1
+ARHGAP8
+MCF2
+FAM13B
+ARHGAP15
+ARHGAP40
+DOCK7
+STARD13 ARHGEF18
+ARAP2 ARHGAP24ARHGEF7
+PIK3R2 SYDE1VAV1
+DLC1 ECT 2LCHN2
+ARHGEF6ITSN1
+STARD8
+VAV3
+ARHGEF11
+OCRL
+ITSN2
+ARHGAP33
+ARHGAP5
+ARAP3
+FGD 1
+FGD 2
+ARHGAP42
+PLEKHG6
+OPHN1
+ARHGEF26
+SH3BP1
+ARHGEF19
+ARHGEF15
+KALRN
+SRGAP3
+FAR P2
+ARHGAP22 DOCK1
+DOCK3SYDE2 ARHGAP35DOCK5 PLEKHG3PLEKHG1PIK3R1 TRIO
+BCR
+FGD 6
+PLEKHG2
+MYO 9B
+FGD 4
+ARHGAP28
+MYO9A
+PLEKHG4B
+ARHGAP11ARASGRF2
+TIAM2ECT2 NET1 ARHGAP31
+ARHGAP19ARHGAP26RALBP1 FGD 3CHN1 ARHGEF3 RACGAP1
+ARHGEF2
+ARHGEF28ARHGEF10L ARHGAP6
+ARHGAP27
+ARHGEF12
+ARHGAP25ARHGAP30
+ARHGAP11B
+ARHGEF4
+DOCK11
+RASGRF1
+ARHGAP39
+DOCK10
+ARHGEF39
+ARHGEF25SPATA13
+cytosol
+actin
+plasma membrane
+focal adhesions
+ﬁlaments
+vesicles
+nucleus
+SOS1SOS2
+ARHGEF5
+tubulin
+ARHGEF16
+ARHGAP12
+ARHGAP23
+ARHGAP29
+ARHGAP17
+ARHGAP21
+ARHGAP9
+PLEKHG5
+SRGAP1
+SRGAP2MCF2L2
+DNMBP
+ARHGEF17
+ARHGAP32
+focal adhesions
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+Figure 3. RhoGEFs and RhoGAPs display diverse spatial distribu tion in cells 
+Selection of images from confocal live-cell microscopy screen of YFP-tagged RhoGEF and 
+RhoGAP subcellular localization (A) , TIRF microscopy focal adhesion localization screen (B), 
+and Cytochalasin D-treated actin colocacalization screen (C). (B) Image insets show higher 
+magnifications of the boxed areas. Right panels: normalized fluorescence intensity profiles of 
+longitudinal and transverse sections through focal adhesions, indicated by white lines in the 
+merged images. (C) abm = actin binding mutant. Scale bars: (A) 10 µm, (B) white scale bars: 
+20 µm, black scale bars: 5 µm, (C) 10 µm. (D) Summary of the distribution of RhoGEF and 
+RhoGAP proteins over different subcellular compartments. 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+A
+B
+Figure 4
+DOCK1
+ARHGAP6
+DOCK11
+ARHGAP30
+DOCK7
+DOCK5
+SYDE1
+DOCK8
+DOCK9
+ARHGAP35
+ARHGAP28
+ARHGAP31
+VAV1
+RASGRF2
+SH3BP1
+ARHGEF18
+AKAP1 3
+ARHGEF7
+ARHGEF28
+ARHGAP44
+ARHGEF19
+ARHGEF10
+TAGAP
+ARHGEF10L
+PIK3R2
+ARHGEF39
+BCR
+PIK3R1
+ARHGAP1
+KALRN
+ARHGEF6
+ARHGEF9
+CHN1
+FAR P2
+OCRL
+TRIO
+PLEKHG6
+ INPP5B
+NET1
+DOCK10
+RACGAP1
+ARHGAP5
+SOS1
+ARHGAP15
+FGD 2
+ARHGAP18
+PLEKHG4B
+ARHGEF40
+PREX1
+PREX2
+ITSN1
+DOCK4
+DOCK3
+ARHGAP11B
+ABR
+PLEKHG4
+ARHGEF1
+SYDE2
+DEPDC1B
+PLEKHG3
+ARHGEF12
+NGEF
+ARHGEF11
+ARHGAP24
+ARHGAP33
+ARHGAP22
+SRGAP3
+ARHGEF16
+FGD 3
+CHN2
+ALS2
+STARD13
+FGD 6
+DLC1
+Membrane traﬃcking
+Rich1/Amot
+polar
+ity complex
+Focal adhesions
+R
+egulation of actin
+cytoskeleton
+RANGAP1
+ARHGEF4
+SLAI N2
+ARHGEF6
+ARHGAP25
+CDKN2A
+NET1
+CDK16
+ARHGAP23
+MAGI1
+MAGI3
+ARHGAP21
+DSG1
+ARHGAP12
+PLEKHG7
+TJP2
+CTNND1
+ARHGAP44
+CD2AP
+SH3BP1
+ACAT1
+AMOT
+ARHGAP17
+GIT1
+GIT2
+PAK2
+ARHGEF7
+PAK1
+RAB6B
+RAB8B
+RAB31
+RAB5C
+RAB5A
+MPP5
+GIPC1
+MPDZ
+AMOTL 1
+PLEKHG5
+TRIP1 0
+SYDE1
+RAB8A
+RAB1B
+RAB1A
+RAB6A
+INPP5B
+OCRL
+DTNA
+TIAM1
+ UTRN
+TIAM2
+PPP1R10
+AHNAK
+INADL
+IQGAP1
+CALU
+ARHGEF15
+SOS2
+GRB2
+CRKL
+MAPK1
+ARHGEF5
+ARHGAP35
+ARHGAP28
+SHMT2
+ECT 2L
+DEPDC1B
+LIN7C
+ARHGEF16
+DLG1
+CASK
+ARHGEF26
+SCRI B
+DMD
+SOS1
+SNTB2
+FGD 6
+EZR
+CTNNB1
+CDH1
+PKP4
+CTNNA1
+MSN
+RDX
+RCN1
+Dystrophin complex
+Cell polarity 
+and c
+ontacts
+Cell surface-cytoskeleton contacts
+Cell-cell junction assembly
+Growth factor
+r
+eceptor signalling
+Increasing Z-score
+Increasing Degree
+(Number of interactors)
+Interaction detected in this study
+K
+nown interaction not found in this study
+GAP
+ GEF
+ Eﬀector
+ RhoGTPase
+Node c
+olour legend panel A
+Node colour legend panel B
+Legend
+PRDX4
+ZNF207
+ZCCHC9
+C16orf88
+ARHGAP1
+EBNA1BP2
+SYDE2
+LRPAP1
+WDR74
+HP1BP3
+ABCD3
+FIP1L1
+EEF1E1
+ATPIF1
+SPANXN5
+MRPL14
+CACYBP
+SRFBP1
+RBM22
+CDK9
+ARHGEF17
+SYDE1
+NUDT21
+PHF6
+RBM25
+APBB1
+C1orf35
+PYCR1
+NES
+NUP35
+WBP11
+RDX
+MRPS23
+EZR
+TACO1
+MSN
+ASAP2
+KIAA1671
+SUMO3
+CYFIP1
+TJP2
+PPP1R12A
+GOPC
+ASAP1
+POLR2B
+ARHGAP12
+AURKB
+ZMYM2
+PRC1
+EIF6
+CHMP2B
+KDM1A
+RPS29
+PLEKHG3
+MLF2
+ARHGEF4
+PLEC
+PACSIN2
+MAZ
+FLOT1
+POTEE
+CD2AP
+MLLT11
+GSN
+SNRPB2
+SH3BP1
+PLEKHG1
+ARHGEF15
+U2AF2
+DDX39A
+SSR4
+KPNA2
+NUP93
+NOC2L
+DNAJB1
+ITSN2
+OPHN1
+MRPL53
+ATP5C1
+VAV3
+LUC7L2
+ARHGAP29
+DEK
+HUWE1
+SAP18
+ NOP16
+ARHGAP32
+MCAT
+DOCK11
+CHD1
+ANKRD54
+SURF4
+BTRC
+DOCK1
+DOCK5
+WDR33
+RCL1
+PABPN1
+VAV2
+WDR82
+THOC1
+MECP2
+CCNT1
+PRPF38A
+DDX42
+RAPH1
+NSRP1
+PLG
+PTMA
+NKTR
+RBM33
+ARHGAP27
+ROBO1
+RRS1
+FAM13B
+FAM76B
+BAG3
+CPSF3
+DOCK9
+AKAP8L
+PPIH
+CPSF2
+LMNA
+DNAJB11
+PPP2CA
+GLOD4
+PAM16
+KIAA1429
+HEXIM1
+ATP5I
+STIP1
+HIGD1A
+MFAP1
+AHCYL1
+FAM195B
+SRGAP1
+CAPZA2
+PRRC2A
+NDUFV3
+ENAH
+NDUFA8
+CCDC50
+YME1L1
+CPSF1
+PTPLAD1
+SEC61B
+UGGT1
+TIMM50
+SUGT1
+THOC5
+TAGAP
+SRGAP3
+SNRNP40
+PRPF4B
+CALU
+ARHGAP11A
+INPPL1
+ARHGEF18
+ALS2
+CHN2
+ARAP2
+RUVBL1
+PDCD10
+CDC42
+SMC3
+TP53
+CPVL
+MTCH2
+PRKAR2A
+DUS3L
+USP7
+GART
+HN1L
+RGNEF
+ARHGEF9
+SPTLC1
+SRSF2
+RHOB
+MAT2B
+ATP5H
+TIMM13
+DYRK1B
+PIP
+CD2BP2
+SERPINB3
+FAM175B
+TNKS
+PEO1
+TNKS2
+RHOA
+SPIN3
+ARHGAP21
+HMHA1
+GIT2
+PRDX5
+SLC25A31
+FBXO28
+INADL
+MPDZ
+LOC780933
+HBB
+HBA2
+TMEM33
+VPS37C
+MNF1
+AHNAK
+CTNNB1
+MCF2
+FLJ22184
+LIN7C
+KIAA1107
+CDK16
+PTRF
+PKP4
+NCK1
+PAK1
+ZBTB33
+PAK2
+PLEKHG5
+GIT1
+VAPA
+SRSF4
+TRIP6
+SLC3A2
+GRSF1
+AJUBA
+HMGA2
+PRSS2
+NIPSNAP1
+PYCR2
+CLPP
+APOD
+TMEM57
+EIF4G2
+ZFR
+DTNA
+SMARCA4
+NUMA1
+DMD
+NGEF
+NUP153
+TRIP10
+VAV1
+PRDX2
+TARDBP
+XPO1
+ERLIN1
+CCDC137
+ARHGAP28
+DEPDC1B
+ARHGAP44
+PSMB6
+FARP2
+NUP98
+FUBP3
+HMGN1
+PNKD
+ECT2
+UBA52
+CAMK2D
+ATP5O
+SERPINH1
+MCTS1
+TIMM23
+ACAT1
+TUBB4A
+SLC25A22
+ARHGEF26
+CAMK2G
+SEC61A1
+CHP1
+VDAC1
+WDR1
+ABLIM1
+COPE
+PPP1R9B
+TIAM1
+TMOD2
+MPRIP
+ARHGAP42
+PUF60
+ARHGAP17
+COPB1
+CLN6
+SRRT
+CKAP4
+ PPIF
+ARHGAP23
+GLUD1
+GSPT1
+MSI1
+ARHGAP31
+IPO8
+TFAM
+NEFL
+CASP14
+FASTKD1
+ARHGEF25
+SF1
+CSNK1D
+PSPC1
+ARHGAP26
+GMIP
+ARHGEF19
+SF3B14
+MAPRE2
+THOC6
+ACTL6A
+CPSF4
+LSM4
+YY1
+PKN3
+EMG1
+CCDC86
+GATA4
+DGCR14
+GATAD2A
+NUPL2
+ZNF362
+FYTTD1
+NUP50
+PINX1
+ZNF346
+ARID3B
+CDCA5
+RNF169
+CCDC12
+TPX2
+C5orf24
+POLR2D
+SMNDC1
+ZC3H14
+SMARCE1
+C9orf78
+MBD3
+ARPC1B
+NOL7
+TPM3
+PALM2-AKAP2
+CSNK1E
+SH3KBP1
+DAZAP1
+CBX1
+RPS19BP1
+HMGN5
+FAM207A
+SH3PXD2A
+CWC15
+FAM13A
+PPP2R3B
+PPP2R5E
+PPP2R5C
+AHCYL2
+SCOC
+SRGAP2
+THOC7
+TOX4
+QPCTL
+BUB3
+CA2
+MRPL43
+NBEA
+PPP2R1A
+CNBP
+WIPF2
+FGD1
+DSG1
+ CFL1
+PIP5K1C
+SNTB2
+EIF3D
+PPP1R10
+SLC16A1
+CASK
+BLOC1S2
+MAPK1
+ARHGEF7
+DHRS7B
+ARF4
+PRPF6
+PKP2
+RANGAP1
+PCNA
+KALRN
+ARHGEF40
+NOA1
+CGN
+RPRD1A
+LONP2
+MYO5A
+PPIE
+TFB1M
+MYO9A
+NME1-NME2
+AZGP1
+ARHGAP35
+ARHGEF12
+CCNT2
+CSTB
+LIMD1
+ARHGAP25
+S100A13
+TIAM2
+TTC9C
+CTNNA1
+MRPL10
+ARL1
+SKP1
+TLN1
+PSMA5
+UTRN
+ARHGEF11
+SMC4
+INA
+ECT2L
+KPRP
+MRPS18B
+SLAIN2
+TMOD1
+LRCH3
+GIPC1
+LSM14A
+SCRIB
+GPHN
+CHN1
+PDIA4
+ARHGEF6
+PPIL4
+AKAP13
+MTPN
+PLEKHG2
+PDF
+COMMD9
+WDR59
+MTX2
+MZT2B
+RBBP5
+FKBP3
+BRPF1
+ASH2L
+EDIL3
+ZNF22
+NISCH
+CKMT1B
+CLTA
+WDR6
+AP2M1
+SCP2
+BCR
+CSNK2A1
+RASGRF2
+AP2A1
+PIK3R1
+RSL24D1
+SF3A2
+CTBP2
+UTP11L
+NOSIP
+SRPRB
+PRKACB
+CSN3
+SDF2L1
+LSM11
+CLPX
+RPL22L1
+PREPL
+NDUFA5
+DDX50
+USP39
+ECH1
+AP2A2
+CAT
+FTSJ1
+HSD17B4
+BIN3
+PLEKHA7
+MAP7D1
+PPIP5K2
+P4HB
+PDZD11
+DNM2
+DNM3
+SNX9
+DNMBP
+CSN2
+PDS5A
+RAVER1
+CAMSAP3
+USP15
+GAR1
+MRPL28
+HAX1
+PRPF3
+ANP32A
+SSSCA1
+STOM
+FUBP1
+PJA2
+TMX1
+PPM1G
+ERP44
+CSDE1
+XRN2
+PFDN1
+PROSC
+ITSN1
+BOLA2
+SNRPE
+HMGB2
+RAB6A
+STOML2
+SMN1
+SUFU
+LSM12
+TOMM22
+TOMM40
+BSG
+S100A9
+MAGED2
+LRCH2
+LMNB2
+TPR
+RPN2
+PGK1
+LGALS7
+RPN1
+LDHA
+TPI1
+NUP205
+SSB
+DLD
+PFN1
+NUP214
+SRSF5
+LTF
+MRPS26
+ARHGAP9
+NOP56
+HSD17B10
+CBX3
+RAB1B
+RAB1A
+FAM109A
+ELANE
+ANXA1
+CTSG
+PLEKHJ1
+RAB6B
+OCRL
+ACLY
+GOLGA4
+KRT81
+PFDN6
+HEATR1
+S100A8
+S100A7
+PA2G4
+ARHGAP36
+CS
+CRKL
+LRRC59
+RBFOX2
+RBBP7
+HSPE1
+NACA
+IPO5
+PLEKHG4
+PLRG1
+PLEKHG6
+Sep-07
+SNRPF
+PDIA3
+DPY30
+ARHGEF5
+PSMB2
+ARHGAP24
+SHMT2
+RPS27A
+MIB1
+ARHGEF39
+MRPS7
+HSPA4L
+API5
+PNN
+DDB1
+NOP58
+ARHGEF10
+ARHGAP19
+MCM7
+SLC9A3R2
+CIRH1A
+ ARHGAP20
+RBM39
+SNRPA
+FARSA
+CHCHD3
+CALD1
+MCM5
+FANCI
+VDAC3
+HADHB
+PSMD3
+PPP6C
+RCN1
+TRIM27
+DNAJB6
+MRPS35
+ARHGAP8
+CDC37
+CIRBP
+CCDC47
+KAZN
+AKAP1
+CSTF1
+ELMO1
+ELMO2
+ARHGAP5
+SEC13
+ZYX
+REPIN1
+HLA-C
+ATP5J2
+MRPL47
+ZNF24
+ZNF768
+TRIO
+EPS15L1
+MTMR14
+EPS15
+GCN1L1
+SUB1
+MRPL11
+ DNAJC11
+ARHGAP22
+MLL
+PPP6R3
+SORL1
+ANKRD28
+ARHGEF2
+CEP170
+LBR
+DHCR7
+TRAF4
+CSTF2
+SEC16A
+FARP1
+CSN1S2
+FGD3
+PIK3R2
+ARHGEF10L
+UBAP2L
+MRPL16
+SIRT5
+DDX19B
+ARCN1
+DDOST
+GANAB
+SFXN1
+PGRMC1
+DOCK3
+SH3GL1
+DOCK10
+SH3GL2
+RHOG
+NME2
+PPIB
+VAPB
+SF3A1
+ALDH18A1
+CBS
+PRDX3
+C12orf23
+DOCK7
+CLCC1
+SOS2
+NT5C2
+ADCK3
+MCCC1
+EVI5L
+LRCH1
+IMPDH2
+GLO1
+PSMD7
+LRCH4
+MYO9B
+GRB2
+TAGLN2
+PRKCSH
+SLIRP
+CSTA
+DOCK8
+CKB
+TECR
+PRKACA
+ARF1
+CHCHD2
+UBA1
+PLOD2
+PLOD1
+ARHGAP7
+GINS2
+MAP3K7
+RPL10L
+RBL1
+DNAJC9
+COL4A4
+ARHGEF3
+PSME3
+FGD4
+RBM5
+C11orf31
+LANCL1
+TRIM32
+SLC25A12
+MRPS28
+ARHGAP15
+SSBP1
+RADIL
+ARAP3
+TCERG1
+POLDIP2
+CTNND1
+SP6
+KIF23
+AGAP3
+KRT84
+STARD8
+BYSL
+SNRPG
+HDX
+MAGED1
+ARHGAP33
+INPP5B
+CCAR1
+PPP1R13L
+KCTD12
+C11orf67
+PSMA1
+SMARCC1
+MCM3
+RAB31
+PSMB1
+APPL1
+PSMA2
+RAB8B
+RAB8A
+UBL4A
+PSMD11
+RAB5C
+RANBP1
+TANC2
+DKC1
+COBL
+C12orf57
+LOC731751
+NCAM2
+HMGN4
+RALBP1
+ARHGAP39
+JPH1
+LYAR
+RACGAP1
+SRRM1
+LOC101060252
+Sep-02
+PEX14
+FHL1
+KRT86
+PCBD1
+LOC100653049
+TXNDC5
+PSMD12
+NET1
+TRMT112
+ANKFY1
+PSMA6
+MGA
+PSMD13
+EIF3G
+TXNDC12
+SDHA
+MAGI1
+REPS1
+RALB
+JUN
+CCDC6
+MAGI3
+PEAK1
+CNKSR3
+CNKSR2
+SHCBP1
+C14orf166
+FAM98A
+SLC25A24
+MYL6B
+FGD5
+SMARCC2
+ARHGAP4
+PSMB4
+RAE1
+MCF2L2
+ABR
+MYCBP
+LDHB
+PDCD6
+SBSN
+PSMA7
+PAICS
+ANXA5
+SRSF8
+ANXA6
+MRPL2
+SOS1
+HMGB1
+MAX
+RAB5A
+DBNL
+EXOSC6
+RANBP9
+DCAF7
+MRPS31
+SF3B5
+ CRK
+BIN1
+MRPS14
+ARHGAP11B
+UNC45A
+DOCK6
+COX5A
+ARHGEF16
+DLG1
+ARHGEF1
+DLAT
+ARHGAP6
+PLEKHG4B
+CDKN2A
+DUT
+ANXA2
+TGM3
+ARHGAP30
+FGD2
+UCHL3
+C20orf11
+MRPL4
+MAT2A
+RIF1
+MOB2
+RABL3
+PTS
+STARD13
+GPX1
+TAB1
+EPB41L3
+DYNC1LI1
+FGD6
+PSMC6
+CSRP2
+PREX1
+PREX2
+PSMB5
+PCMT1
+PLEKHG7
+ARHGAP18
+DOCK4
+GAP/GEF
+ARHGAP23
+SRGAP1
+SRGAP2
+ARHGAP17
+ARHGAP32
+DNMBP
+focal adhesions
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+Figure 4. The RhoGEF/RhoGAP interactome is highly interconne cted and includes 
+components of multiple cellular processes 
+(A) RhoGEF/RhoGAP interactome network. As examples of subnetworks of the 
+RhoGEF/RhoGAP interactome, interactions with complexes involved in cell polarity, 
+junctions, membrane trafficking, growth factor receptor signaling and actin cytoskeleton 
+organization are shown. (B) Bait-bait interactome. Our network is enriched (p-value <<0.001) 
+in bait-bait interactions among RhoGEFs and RhoGAPs. Shown are all 66 interactions, with 
+nodes color-coded by their subcellular localization (see also Figure 3).   
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+A
+D
+B
+Figure 5
+E
+C
+G
+H
+F
+relative luciferase signal
+(norm. to PLEKHG4B FL)
+2.0
+2.5
+1.0
+0.5
+1.5
+0.0
+***
+***
+**
+*** ***
+*** *** *** ***
+GEF11-Y885A + - - - - - + - - -
+GEF11-N + - - - - - + - - -
+GEF12-Y940A +- - - - - + - - -
+GEF12-N +- - - - - + - - -
+4B FL + + + + +- - - - -
+4B-C + - - - - - - - - -
+relative luciferase signal
+(norm. to each FLAG control)GEF12GEF11
+FLAG
+PLEKHG4B-Y943A
+PLEKHG4B-N
+0.0
+1.2
+1.0
+0.8
+0.6
+0.4
+0.2
+GEF12GEF1
+1
+GEF11/12
+4B-Y943A
+4B-N
+**** ******
+4B
+4B
+4B
+GEF12
+GEF11
+β
+12/13
+12/13
+GTPα
+α
+γ
+autoinhibited
+Cdc42
+GTP
+RhoA
+GTP
+FLAG
+ARHGEF1
+1-N3
+PLEKHG4B-N
+0.0
+1.0
+1.2
+0.8
+0.6
+0.4
+0.2
+FLAGGα   QL
+-
+FLAG-4B-N
++
++
++
++
+- - -
+FLAG
++
+FLAG-GEF11-N3
++
++
++
++- - -
+- -
+-
+-
+******
+GEF11-N3
+4B-N
+Gα   QL
+13 
+relative luciferase signal
+(norm. to Gα13QL+FLAG control)
+FLAG-Gα   QL13 
+13 
+PLEKHG4B
+FL
+N
+∆C
+C
+FL
+N
+∆C
+C
+lysate IP:GFP
+4B:
+FL
+N
+∆C
+C
+FL
+N
+∆C
+C
+11/12 
+(FLAG)
+4B 
+(GFP)
+lysate
+IP:GFP
+ARHGEF11 ARHGEF12
+100
+55
+40
+35
+GEF11 GEF12
+4B-N
+Gɑ   QL
+mCherry
+GEF1
+1/
+GEF12
+FLAG-Gɑ   QL
+GFP
+FLAG
+FLAG-4B-N
+FLAG-mCherry
++ + + +
+GEF11 GEF12
+lysate IP:GFP
+YFP-GEF11/12
++ +
+- -
++ +- -
++ + + +
++ + - -
++ +- -
+13
+13
+GEF11 GEF12 4B
+GEF11/
+GEF12/
+4B
+(GFP)
+WT QLWT QL WT QL
+lysate
+lysate
+IP:GFP
+IP:GFP
+Gɑ   
+(FLAG)
+13
+Gɑ   :   13
+1
+1/12 
+(FLAG)
+4B 
+(GFP)
+11/12:
+lysate
+IP:GFP
+11 FL
+11 ∆N
+12 FL
+12 ∆N
+11 FL
+11 ∆N
+12 FL12 ∆N
+PLEKHG4B
+RhoA Cdc42Rac1
+***
+***
+***
+n.s.
+n.s.
+***
++GDI
++GDI
++GDI
+ControlControl
+4B
+GEF11GEF12MCF2
+GEF11-Y885AGEF12-Y940A
+0.0
+0.1
+1.0
+1.5
+2.0
+ 
+ControlControl
+4B
+GEF11GEF12MCF2
+0.0
+0.1
+0.8
+1.0
+1.2
+ 
+norm. FRET ratio R
+(FRET-acceptor/donor)
+norm. FRET ratio R
+(FRET-acceptor/donor)
+ControlControl
+4B
+GEF11GEF12MCF2
+4B-Y943A
+0.0
+0.1
+0.8
+1.0
+1.2
+ 
+*** ***
+n.s.
+****** ***
+norm. FRET ratio R
+(FRET-acceptor/donor)
+0.0
+0.1
+0.6
+0.8
+1.0
+1.2
+1.4
+RhoA-2G
+norm. FRET ratio R
+(FRET-acceptor/donor)
+GDI ++ + + ++ - + + +
+GEF11
+GEF12
+4B-N
+4B-Y943A
++- - + +- - - - -
+-- - - -- - + + +
+-- - + -+ - - + -
+-- + - +- - - - +
+******
+******
+0.0
+0.1
+0.8
+0.9
+1.0
+1.1
+1.2
+GDI + + + +
+4B-FL
+4B-C
+GEF11-Y855A
+GEF12-Y940A
+- + + +
++
+- - -
+- - + -
+- +- -
+Cdc42-2G
+norm. FRET ratio R
+(FRET-acceptor/donor)
+******
+**
+1271634
+ DH PH C
+10011
+ DH ΔC
+6001 N
+12711
+ DH PH FL
+GEF12
+actin
+binding
+GEF11N
+N3
+FL
+15441
+ DH
+PDZ RGS PH
+1
+PDZ160
+15441
+ DH
+RGS PH
+∆N
+∆N
+N
+FL
+1
+PDZ130
+15221
+ DH
+RGS PH
+15221
+ DH
+PDZ RGS PH
+6001
+PDZ RGS
+GEF11
+GEF12
+PLEKHG4B
+consensus
+894
+949
+952
+875
+930
+933
+I
+I
+L
+I
+I
+L
+L
+L
+L
+L
+L
+L
+L
+L
+L
+R
+R
+R
+T
+S
+R
+M
+M
+V
+L
+L
+V
+Q
+E
+P
+E
+D
+Q
+S
+N
+D
+K
+K
+K
+I
+A
+LL
+P
+I
+Q
+Q
+Q
+T
+T
+A
+P
+P
+A
+Y
+Y
+Y
+K
+K
+K
+I
+I L L LRX X X X X XM L KQ T P Y K
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 
+Figure 5. A multi-RhoGEF complex downstream of GPCR  
+(
+A) Schematic of the three human RhoGEFs and truncations used. (B) PLEKHG4B, ARHGEF11 
+and ARHGEF12 interact via their N-termini. Immunoprecipitations of indicated YFP-
+PLEKHG4B constructs with indicated FLAG-ARHGEF11 or FLAG-ARHGEF12 constructs from 
+lysates of transfected HEK293T cells. (C) ARHGEF11 and ARHGEF12 are RhoA-specific GEFs, 
+whereas PLEKHG4B activates Cdc42. FRET assay as described in Figure 1A and Figure S2. GEF-
+dead mutants : ARHGEF11-Y885A ARHGEF12-Y 940A, PLEKHG4B-Y943A. (D) Sequence 
+alignment of human ARHGEF11, ARHGEF12 and PLEKHG4B revealing the conserved tyrosine 
+in the DH domain critical for catalysis(50). (E) Autoinhibition of PLEKHG4B and its release by 
+ARHGEF11 and ARHGEF12 binding. Left panel: PLEKHG4B-stimulated SRE-luciferase reporter 
+activation assay. Right panel: Cdc42-2G FRET ratios of HEK293T cells transfected with 
+RhoGDI, mCherry-tagged PLEKHG4B and the indicated miRFP-tagged ARHGEF11 and 
+ARHGEF12 mutants. (F) ARHGEF11 and ARHGEF12 are inhibited by PLEKHG4B. Upper panel: 
+ARHGEF11/12-stimulated SRE-luciferase reporter activation assay. Anti-FLAG Western Blot 
+shows the expression of the transfected constructs. Lower panel: RhoA-2G FRET ratios of 
+HEK293T cells transfected with RhoGDI, mCherry-ARHGEF11/12 and the indicated miRFP-
+tagged PLEKHGϰB ŵutaŶts. ;GͿ PLEKHGϰB iŶhiďits Gαϭϯ-mediated ARHGEF11/12 
+recruitment and downstream RhoA activation. Upper left panel: Immunoprecipitations of 
+YFP-fusions of the three GEFs with wild type (WT) or constitutively active FLAG- Gαϭϯ ;QLͿ 
+from lysates of transfected HEK293T cells . Upper right panel: Immunoprecipitations of YFP-
+tagged ARHGEF11/12 with indicated FLAG-tagged proteins from lysates of transfected 
+HEK293T cells. Lower left panel: GαϭϯQL-stimulated SRE-luciferase reporter activation assay. 
+Anti-FLAG Western Blot shows the expression of transfected constructs. (H) Model of 
+PLEKHG4B interaction with ARHGEF11 and ARHGEF12 and their mutual regulation of 
+GαϭϮ/ϭϯ-mediated GPCR signaling. All bar graphs show mean ± SD (n=3: C, E left, F, and G ; 
+n=4: E right). SigŶifiĐaŶĐe was ĐalĐulated ďy uŶpaired StudeŶt’s t -test (C, E right, F, and G) 
+versus control+RhoGDI (C), versus PLEKHG4B (E right) or as indicated by lines. Significance 
+was determined using One-way ANOVA, followed ďy Tukey’s ŵultiple ĐoŵparisoŶs ;E left). 
+Significance was ranked as * p<0.05, ** p<0.01, *** p<0.001. 
+ 
+.CC-BY-NC-ND 4.0 International licenseavailable under a
+not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made 
+The copyright holder for this preprint (which wasthis version posted August 29, 2018. ; https://doi.org/10.1101/354316doi: bioRxiv preprint 

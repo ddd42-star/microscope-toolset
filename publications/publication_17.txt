@@ -1,0 +1,2669 @@
+Article
+Optogenetic actuator– ERK biosensor circuits
+identify MAPK network nodes that shape
+ERK dynamics
+Coralie Dessauges1 , Jan Mikelson2 , Maciej Dobrzyński1 , Marc-Antoine Jacques1 ,
+Agne Frismantiene1 , Paolo Armando Gagliardi1 , Mustafa Khammash2 & Olivier Pertz1,*
+Abstract
+Combining single-cell measurements of ERK activity dynamics with
+perturbations provides insights into the MAPK network topology.
+We built circuits consisting of an optogenetic actuator to activate
+MAPK signaling and an ERK biosensor to measure single-cell ERK
+dynamics. This allowed us to conduct RNAi screens to investigate
+the role of50 MAPK proteins in ERK dynamics. We found that the
+MAPK network is robust against most node perturbations. We
+observed that the ERK-RAF and the ERK-RSK2-SOS negative feed-
+back operate simultaneously to regulate ERK dynamics. Bypassing
+the RSK2-mediated feedback, either by direct optogenetic activa-
+tion of RAS, or by RSK2 perturbation, sensitized ERK dynamics to
+further perturbations. Similarly, targeting this feedback in a
+human ErbB2-dependent oncogenic signaling model increased the
+efficiency of a MEK inhibitor. The RSK2-mediated feedback is thus
+important for the ability of the MAPK network to produce consis-
+tent ERK outputs, and its perturbation can enhance the efficiency
+of MAPK inhibitors.
+Keywords ERK dynamics; MAPK network; optogenetics; signaling robustness;
+single-cell biology
+Subject CategoriesBiotechnology & Synthetic Biology; Signal Transduction
+DOI 10.15252/msb.202110670 | Received3 September 2021 | Revised16 May
+2022 | Accepted17 May 2022
+Mol Syst Biol. (2022) 18:e 10670
+Introduction
+The extracellular signal-regulated kinase (ERK) is part of the
+mitogen-activated protein kinase (MAPK) signaling network and
+regulates a large variety of fate decisions. While ERK can be acti-
+vated by several extracellular inputs, ERK signaling has mostly been
+studied in the context of receptor tyrosine kinases (RTKs). Upon
+binding of their cognate growth factors (GFs), RTKs activate a com-
+plex signaling cascade with the following hierarchy: (i) recruitment
+of adaptor molecules such as GRB2 (Schlessinger,2000); (ii) control
+of the activity of RAS GTPases through Guanine nucleotide
+exchange factors (GEFs) and GTPase activating proteins (GAPs)
+(Cherfils & Zeghouf,2013); (iii) triggering of a tripartite RAF, MEK,
+ERK kinase cascade that is further regulated by a variety of binding
+proteins (Lavoieet al, 2020); and (iv) ERK-mediated phosphoryla-
+tion of a large number of substrates. Due to its central role in fate
+decisions, MAPK network dysregulation is causative for a large
+number of diseases including cancer (Rauen,2013; Samatar & Pouli-
+kakos, 2014).
+As for other signaling pathways (Purvis & Lahav,2013), tempo-
+ral patterns of ERK activity, hereafter referred to as ERK dynamics,
+rather than steady-state control fate decisions (Santoset al, 2007;
+Avraham & Yarden, 2011; Albeck et al, 2013; Ryu et al, 2015).
+These specific ERK dynamics have been shown to arise from feed-
+back in the MAPK network. For example, a negative feedback (NFB)
+from ERK to RAF can produce adaptive or oscillatory ERK dynamics
+(Santoset al, 2007; Kholodenko et al, 2010; Avraham & Yarden,
+2011). The ERK-RAF NFB was also shown to buffer against MAPK
+node perturbations (Sturm et al, 2010; Fritsche-Guenther et al,
+2011). This property might allow cells to produce consistent ERK
+outputs despite heterogeneous node expression (Bl €uthgen &
+Legewie, 2013). In this work, we specifically refer to the ability of
+the MAPK network to produce consistent ERK dynamics in presence
+of node perturbations as signaling robustness. While several NFBs
+have been mapped experimentally in the MAPK network (Lakeet al,
+2016), their contribution to this signaling robustness and shaping
+ERK dynamics remains largely unknown.
+Single-cell biosensor imaging has provided new insights into
+MAPK signaling that were not accessible with biochemical,
+population-averaged measurements. This showed that the MAPK
+network can produce a wide variety of ERK dynamics such as tran-
+sient (Ryuet al, 2015), pulsatile (Albeck et al, 2013), oscillatory
+(Shankaran et al, 2009), and sustained dynamics (Ryuet al, 2015;
+Blum et al, 2019). Mathematical modeling has provided insights
+into the network’s structures that decode different signaling inputs
+into specific ERK dynamics (Santoset al, 2007; Shankaran et al,
+1 Institute of Cell Biology, University of Bern, Bern, Switzerland
+2 Department of Biosystems Science and Engineering, ETH Zurich, Basel, Switzerland
+*Corresponding author. Tel:+41 031 684 46 37; E-mail: olivier.pertz@unibe.ch
+ª 2022 The Authors. Published under the terms of the CC BY4.0 license Molecular Systems Biology 18:e 10670 | 2022 1 of 22
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+2009; Nakakuki et al, 2010; Ryu et al, 2015). Combined modeling/
+experimental approaches helped to shed light on various subparts of
+the MAPK network, including the epidermal growth factor receptor
+(EGFR) module (Koseska & Bastiaens,2020), the RAS module
+(Schmick et al, 2015;E r i c k s o net al, 2019), and the tripartite RAF/
+MEK/ERK cascade (Ferrell & Bhatt,1997; Kholodenko, 2000; Orton
+et al, 2005; Santos et al, 2007; Ryu et al, 2015; Kochan´czyk et al,
+2017; Arkun & Yasemi, 2018). However, the low experimental
+throughput to measure ERK dynamics, or other MAPK network nodes,
+has precluded a global understanding of the specific functions of the
+nodes present in the network.
+Here, we built multiple genetic circuits consisting of optogenetic
+actuators together with an ERK biosensor to simultaneously activate
+ERK from different nodes in the MAPK network and report single-
+cell ERK dynamics. These circuits allowed us to investigate the role
+of 50 MAPK signaling nodes in ERK dynamics regulations with RNA
+interference (RNAi). We observed that most perturbations of indi-
+vidual nodes resulted in mild ERK dynamics phenotypes despite
+targeting major MAPK signaling nodes. Further, the ERK dynamics
+induced by various perturbations suggest that two NFBs (ERK-RAF
+and ERK-RSK2-SOS) act simultaneously to regulate ERK dynamics.
+Targeting the RSK2-mediated NFB increased the efficiency of addi-
+tional MAPK network perturbations both in our optogenetic systems
+and in an ErbB2-driven oncogenic ERK signaling model. This sug-
+gests that the RSK2-mediated feedback plays a role in MAPK signal-
+ing robustness and can be targeted for potent inhibition of
+oncogenic ERK signaling.
+Results
+An optogenetic actuator–biosensor genetic circuit to study
+input-dependent ERK dynamics
+In order to measure ERK dynamics in response to dynamic RTK
+input, we built a genetically encoded circuit made of an optogenetic
+RTK actuator and an ERK biosensor (Fig1A). We chose optoFGFR,
+which consists of a myristoylated intracellular domain of the fibro-
+blast growth factor receptor 1 (FGFR1) fused to a CRY2 domain and
+tagged with mCitrine (Kimet al, 2014). Upon stimulation with blue
+light, optoFGFR dimerizes and trans-autophosphorylates, leading to
+the activation of the MAPK/ERK, phosphoinositide 3-kinase (PI3K)/
+AKT, and phospholipase C (PLC)/Ca2+ pathways. As ERK biosensor,
+we used ERK-KTR-mRuby2 that is spectrally compatible with
+optoFGFR. ERK-KTR reversibly translocates from the nucleus to the
+cytosol upon ERK activation (Regotet al, 2014). We used a nuclear
+Histone 2B (H2B)-miRFP703 marker to identify and track single
+cells. After stably inserting these constructs into murine NIH3T3
+fibroblasts, we used automated time-lapse microscopy to stimulate
+selected fields of view with defined blue light input patterns to acti-
+vate optoFGFR. The corresponding ERK-KTR/H2B signals were
+recorded with a 1-min temporal resolution. We observed that a 100-
+ms light pulse leads to reversible ERK-KTR translocation from the
+nucleus to the cytosol, indicative of transient ERK activation (Fig1
+B, Movie EV1). At the end of each experiment, we imaged the
+mCitrine signal to evaluate optoFGFR expression levels. We built a
+computer vision pipeline to automatically track each nucleus, com-
+pute ERK activity as the cytosolic/nuclear ratio of the ERK-KTR
+signals, and correlate single-cell ERK responses with optoFGFR
+levels (Fig1C). We then use this pipeline to evaluate the sensitivity
+and specificity of our system with dose–response experiments using
+the FGFR inhibitor SU5402, the RAF inhibitor RAF709, the MEK
+inhibitor U0126, and the ERK inhibitor SCH772984
+(Appendix FigS1A).
+To evaluate light-dependent optoFGFR activation dynamics, we
+engineered a mScarlet-tagged optoFGFR that is spectrally orthogonal
+to CRY2 absorption (Appendix FigS1B). Total internal reflection
+(TIRF) microscopy visualized the formation of optoFGFR clusters in
+response to blue light-mediated dimerization in the plasma mem-
+brane (Appendix FigS1B, blue arrows, Movie EV2). Consistently
+with CRY2’s dissociation half-life (Duan et al, 2017), these
+optoFGFR clusters appeared within 20 s after a blue light pulse and
+disappeared after~5 min (Appendix Fig S1C). We assume that
+optoFGFR is active in its clustered form in which transphosphoryla-
+tion occurs and inactive in its monomeric form due to tonic cyto-
+solic phosphatase activity (Lemmonet al, 2016). As documented
+previously (Kim et al, 2014), light stimulation also triggered
+optoFGFR endocytosis (Appendix FigS1B, red arrows).
+Directly following light stimulation, we systematically observed a
+short ERK inactivation period, that we refer to as “dip”, lasting 2–
+3 min before activation of a strong ERK activity (Appendix FigS1D,
+green rectangle). This light-induced ERK dip was insensitive to
+SCH772984-mediated ERK inhibition but could be suppressed by cyclo-
+sporine A-mediated calcineurin inhibition. Calcineurin is a Ca2+-
+dependent phosphatase that dephosphorylates Ser383 in Elk1 (Sugi-
+motoet al, 1997). As ERK-KTR contains an Elk-1 docking domain
+phosphorylated by ERK (Regotet al, 2014), we hypothesized that it
+could be negatively affected by optoFGFR-evoked Ca2+ input (Kimet
+al, 2014)( A p p e n d i xF i gS1E). Consistently, Ionomycin-evoked increase
+in cytosolic Ca2+ induced a dip in absence of light stimulation (Appen-
+dix FigS1F).
+Different optoFGFR inputs trigger transient, oscillatory, and
+sustained ERK dynamics
+Next, we characterized optoFGFR-triggered ERK dynamics in
+response to a single light pulse of different intensities and durations
+(Fig2A). As ERK dynamics depended on light power density, as
+well as pulse duration, we defined the light dose (D, mJ/cm2)a s
+their product to quantify the total energy received per illuminated
+area. To characterize ERK dynamics, we extracted the amplitude at
+the maximum of the peak (maxPeak), and the full width at half
+maximum (FWHM) of the ERK trajectories (Fig2B). With increasing
+light doses, ERK peaks increased both in duration and amplitude,
+until the latter reached saturation. Based on these observations, we
+selected 180 mW/cm2 and 100 ms (D= 18 mJ/cm2) as the minimal
+light input to generate an ERK transient of maximal amplitude.
+Using this light dose, we then investigated ERK dynamics in
+response to multiple light pulses delivered at different intervals
+(Fig2C). All stimulation regimes led to identical maximal ERK
+amplitude (FigEV1A) and adaptation kinetics when optoFGFR input
+ceased (Fig EV1B). Repeated light inputs applied at 10- or 20-min
+intervals evoked population-synchronous ERK transients. By con-
+trast, repeated light inputs applied at higher frequencies (2-min
+intervals) led to sustained ERK dynamics. Given CRY2’s 5-min
+dissociation half-life (Appendix FigS1B and C) (Duan et al, 2017),
+2 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+this suggests that light pulses delivered at a 2-min interval reactivate
+optoFGFR faster than it deactivates, leading to sustained optoFGFR
+activity. Hierarchical clustering of ERK responses to sustained
+optoFGFR input highlighted the presence of sustained and oscilla-
+tory single-cell ERK dynamics (Fig2D). Classification of ERK trajec-
+tories based on optoFGFR expression revealed that sustained/
+oscillatory ERK dynamics correlated with high/low optoFGFR levels
+(Fig2E, Movie EV3). Oscillatory ERK dynamics were also observed
+in optoFGFR high expressing cells in response to low light input
+(Fig2F). Thus, sustained optoFGFR input can trigger sustained or
+oscillatory ERK dynamics depending on the input strength, a combi-
+nation of light energy and optoFGFR expression.
+ERK dynamics evoked by optoFGFR versus endogenous RTKs
+highlight different MAPK regulatory mechanisms
+Because of the absence of an ectodomain, optoFGFR must be con-
+sidered as a prototypic RTK that lacks some regulatory mechanisms
+inherent to the native FGFR. To evaluate whether optoFGFR is
+relevant for studying the MAPK network, we compared ERK dynam-
+ics evoked by optoFGFR inputs versus stimulation of the endoge-
+nous FGFR or EGFR using increasing concentrations of basic FGF
+(bFGF) and EGF. All bFGF concentrations led to an ERK peak simi-
+lar in amplitude to sustained optoFGFR input (Figs3A and EV1C,
+compared to EV1A). However, FGFR inputs led to different ERK
+dynamics than optoFGFR: 1 ng/ml bFGF led to damped ERK oscilla-
+tions followed by steady-state sustained ERK activity, while 10 and
+100 ng/ml bFGF concentrations led to a first ERK peak followed by
+a strong adaptation. The biphasic behavior induced by increasing
+bFGF concentrations was previously documented to emerge from
+the competition of bFGF for FGFR and heparan sulfate proteoglycan
+co-receptors (Kanodiaet al, 2014; Blum et al, 2019). It is thus not
+surprising that optoFGFR, that lacks these extracellular interactions,
+produced different ERK dynamics than FGFR. All EGF concentra-
+tions led to an ERK peak similar in amplitude to optoFGFR and
+FGFR inputs (Figs3B and EV1D). As for bFGF, 1 ng/ml EGF concen-
+tration evoked damped oscillatory ERK dynamics that decreased at
+higher EGF concentrations. However, EGFR inputs led to strong
+A
+C
+B
+FGFR
+cyto
+FGFR
+cyto
+SOS
+MEK
+GRB2
+FRS2
+RAF
+RAS
+ERK
+ERK-KTR
+ERK-KTR
+ERK inactive ERK active
+H2B
+-5 min +5 min +10  min +15 min +30 min
+ERK-KTR
+mRuby2
+H2B
+miRFP703
+optoFGFR
+mCitrine
+Post time-lapse
+t
+ERK-KTR 
+segmentation
+- Single cell tracking
+- Full-length trajectories selection
+- Receptor intensity matching
+ERK-KTR
+optoFGFR
+H2B
+optoFGFR 
+segmentation
+01 0 2 0 3 0 4 0
+0.5
+1.0ERK activity
+Time [min]
+Single cell
+Average
+Light input
+Nuc
+Cyto
+Nuc
+Cyto
+Intensity (log10)
+Density
+optoFGFR distribution
+P
+P
+P
+P
+P
+Figure 1. An optogenetic actuator-biosensor genetic circuit to study input-dependent ERK dynamics.
+A Schematic representation of the optoFGFR system consisting of the optogenetic FGF receptor (optoFGFR) tagged with mCitrine, the ERK biosensor (ERK-KTR) tagged
+with mRuby2, and a nuclear marker (H2B) tagged with miRFP703.
+B Time-lapse micrographs of ERK-KTR dynamics in response to a470-nm light pulse. Using a20× air objective, ERK-KTR and H2B channels were acquired every1 min
+and the optoFGFR channel was acquired once at the end of the experiment. Scale bar:50 μm.
+C Image analysis pipeline developed to quantify single-cell ERK dynamics. Nuclear and cytosolic ERK-KTR signals were segmented based on the H2B nuclear mask.
+Single-cell ERK activity was then calculated as the cytosolic/nuclear ERK-KTR ratio. Single-cell optoFGFR intensity was measured under the cytosolic ERK-KTR mask
+and used as a proxy for single-cell optoFGFR expression.
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 3 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+ERK adaptation, not observed in response to optoFGFR inputs,
+suggesting the existence of different regulatory mechanisms.
+Both oscillatory and transient ERK dynamics can be explained by
+the presence of NFB (Kholodenkoet al, 2010). Thus, we wondered
+if the different ERK dynamics induced by optoFGFR or EGFR input
+emerge from differences in downstream NFBs. We reasoned that if
+EGFR induces different NFBs than optoFGFR, pre-stimulating cells
+with EGF should activate this feedback, and affect subsequent
+optoFGFR-evoked ERK dynamics. To test this, we pre-stimulated
+cells with sustained EGFR input, subsequently applied sustained
+0 1 02 03 04 0 0 1 02 03 04 0 01 0 2 0 3 0 4 001 0 2 0 3 0 4 0
+0.0
+0.5
+1.0
+0.0
+0.5
+1.0
+0.0
+0.5
+1.0
+ERK trajectories
+Dose (D) = 0 mJ/cm2
+D = 0
+D = 0
+D = 0.25
+D = 0.5
+D = 5
+D = 1
+D = 2
+D = 20
+D = 9
+D = 18
+D = 180
+25 50 75525 50 755 25 50 755
+0.25
+0.50
+0.75
+1.00
+25 50 755
+A
+C
+ED
+F
+25 50 755
+0.5
+1.0
+0.25
+0.50
+0.75
+1.00
+25 50 755
+0.25
+0.50
+0.75
+1.00
+1.00
+0.25
+0.50
+0.75
+1.00
+0.25
+0.50
+0.75
+20 400 10 30 20 400 10 30 20 400 10 30 20 400 10 30
+0.3
+1.2
+ERK
+activity
+FWHM
+maxPeak
+B
+FWHM [min] maxPeak
+12
+9
+6
+NA
+0.8
+1.2
+0.4
+NA NA NA
+Time [min]
+0 mW/cm2 5 mW/cm2 20 mW/cm2 180 mW/cm2
+50 ms 100 ms 1 s
+ERK activity
+2 min interval10 min interval20 min interval 5 min interval
+2 min interval
+Time [min]
+ERK activity
+0 mJ/cm2 5 mJ/cm2 18 mJ/cm22.5 mJ/cm2
+0.0
+0.5
+1.5
+−2.5 −2.0 −1.5
+Intensity (log10)
+Density
+1.0
+optoFGFR distribution
+Light power density
+Light dose
+Pulse duration
+Clusters
+13 24
+4
+3
+2
+1
+Low High
+Average 
+ERK activity
+ERK activity
+Time [min]
+Low 
+optoFGFR 
+ERK activity
+Time [min]
+Time [min]Time [min]
+Oscillatory
+Sustained
+Time
+ERK activity
+Feature extraction
+5 mW/cm2
+20 mW/cm2
+180 mW/cm2
+Power density
+50ms 100ms 1s
+50ms 100ms 1s
+0 mW/cm2
+Pulse duration
+Average
+Single cell
+High
+optoFGFR 
+Average
+Single cell
+Low 
+optoFGFR 
+Average
+Single cell
+High
+optoFGFR 
+Average
+Single cell
+Figure 2.
+4 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+optoFGFR input, and evaluated ERK dynamics (Fig 3C). Pre-
+stimulation with 100 ng/ml EGF led to the characteristic adaptive
+ERK transient. Subsequent application of optoFGFR input yielded
+sustained ERK responses similar in amplitude and duration to non-
+pre-stimulated cells. However, EGF pre-stimulation led to a reduc-
+tion of synchronous optoFGFR-evoked ERK oscillations in low
+optoFGFR-expressing cells.
+To provide intuition about the MAPK network circuitries leading
+to different ERK dynamics in response to optoFGFR and EGFR
+inputs, as well as the origin of the oscillatory behavior, we built a
+mathematical model consisting of the RAS GTPase and the three-
+tiered RAF/MEK/ERK network (Fig3D, Appendix Table S1). We
+used ordinary differential equations with Michaelis-Menten kinetics
+(see Materials and Methods, Appendix TableS2 and S3 ). To
+account for the oscillatory ERK dynamics in response to EGFR and
+optoFGFR inputs, we included the well-documented ERK-RAF NFB
+(Santoset al, 2007; Kholodenkoet al, 2010; Fritsche-Guentheret al,
+2011; Blum et al, 2019). We also included a receptor-level inactiva-
+tion process for EGFR, but not for optoFGFR, to account for EGF-
+dependent regulatory mechanisms. We used a Bayesian inference
+approach (Mikelson & Khammash,2020) to infer the model parame-
+ters from averaged ERK trajectories in response to sustained low
+optoFGFR input with or without sustained EGFR pre-stimulation
+(Fig3E). After identification of parameters that allowed the model
+to capture the training dataset (Fig3F), we simulated ERK dynamics
+evoked by low EGFR input (adaptative, oscillatory ERK dynamics),
+high EGFR input (adaptative ERK dynamics without oscillation),
+and sustained high optoFGFR input (sustained ERK dynamics)
+(Fig3G). We observed that our model with a NFB and EGFR inacti-
+vation was able to predict ERK dynamics evoked by different EGFR
+and optoFGFR input strengths, while two simpler models (one with
+only the EGFR inactivation reaction, but no NFB (FigEV1E–G) and
+one with only the NFB, but no EGFR inactivation (FigEV1H–J) were
+not able to reproduce experimentally observed ERK dynamics.
+This suggested that oscillatory optoFGFR-evoked ERK dynamics
+emerge from a NFB also present downstream of endogenous EGFR,
+while additional regulatory mechanisms seem to be required for the
+strong ERK transient adaptation following EGFR input. These mech-
+anisms might consist of receptor-level regulations such as endocyto-
+sis, which was recently shown to be an important regulator of the
+transient adaptive EGF-triggered ERK dynamics in different cell sys-
+tems (Gerosaet al, 2020; Kiyatkinet al, 2020). While optoFGFR also
+gets endocytosed (Appendix FigS1B, Kimet al, 2014), it most likely
+is insensitive to inactivation by endosome acidification since it lacks
+an ectodomain (Huotari & Helenius,2011). Additionally, light-
+mediated optoFGFR dimerization might occur both at the plasma
+and endo-membranes, allowing for reactivation of endocytosed
+optoFGFR. The hypothesis that a receptor-level mechanism is
+important for strong adaptation was further supported by inhibition
+of optoFGFR with the FGFR kinase inhibitor (SU5402), which
+shifted ERK dynamics from sustained to transient in a dose
+response-dependent manner (FigEV1K). Thus, these results suggest
+that optoFGFR lacks receptor-dependent regulatory mechanisms but
+allows us to investigate the intracellular MAPK feedback structure
+shaping ERK dynamics. In our model, we used the well-established
+ERK-RAF NFB. However, several NFBs have been mapped in the
+MAPK signaling cascade, whose role in shaping ERK dynamics is
+still unknown and which could also be responsible for the observed
+oscillatory ERK dynamics.
+RNA interference screen reveals that ERK dynamics remain
+unaffected in response to perturbation of most MAPK
+signaling nodes
+We then explored the network circuitry that shapes optoFGFR-
+evoked ERK dynamics with an RNA interference (RNAi) screen
+targeting 50 MAPK signaling nodes. We focused our screen on
+sustained optoFGFR input which captured the largest amount of
+information about ERK dynamics when compared to other stimula-
+tion schemes: it led to sustained and oscillatory ERK dynamics
+(Fig2E and F) while recapitulating the rapid increase of ERK activity
+and adaptation observed with transient input (FigEV1A and B). We
+used a bioinformatic approach to select 50 known interactors of the
+tripartite RAF/MEK/ERK cascade downstream of the FGFR receptor
+that were detected in a NIH3T3 proteome (Schwanh€ausser et al,
+2011) (Fig4A, Appendix TableS4). We used the siPOOL technology
+to specifically knockdown (KD) these 50 MAPK signaling nodes
+while limiting off-target effects (Hannuset al, 2014). We first vali-
+dated KD efficiency by quantifying transcript levels with different
+siPOOL concentrations targeting the ERK and MEK isoforms (Fig
+EV2A) and observed strong KD with 10 nM siRNA concentration.
+We then evaluated the effect ofERK1 or ERK2 KD on ERK dynamics.
+We observed only subtle phenotypes compared to the non-targeting
+siRNA (CTRL) used as negative control (Fig4B), even though effi-
+cient KD was observed at protein level (Fig 4C). However, com-
+bined ERK1/ERK2 KD strongly suppressed ERK dynamics indicating
+that the latter is not affected by the perturbation of individual ERK
+isoforms as previously reported (Fritsche-Guentheret al, 2011;
+Ornitz & Itoh, 2015). Due to its strong phenotype, we usedERK1/
+ERK2 KD as positive control throughout our screen.
+◀
+Figure 2. Different optoFGFR inputs trigger transient, oscillatory and sustained ERK dynamics.
+A ERK responses to increasing light power densities and pulse durations of470-nm transient light input. The light dose“D” is calculated as the product of the power
+density and pulse duration.
+B Quantification of the maxPeak (maximal ERK amplitude of the trajectory) and the FWHM (full width at half maximum) of single-cell ERK responses shownin (A)
+(Nmin = 40 cells per condition from one replicate, boxes indicate the upper and lower quartiles, the central bands indicate the median and whiskers extend to individ-
+uals up to1.5 interquartile away from the median).
+C ERK responses to 470 nm light pulses delivered every20, 10, 5, and2 min, respectively (D= 18 mJ/cm2).
+D Hierarchical clustering (Euclidean distance and Ward D2 linkage) of trajectories from the2-min interval stimulation shown in (C) (referred to as“sustained”)( N = 60
+cells). The number of clusters was empirically defined to resolve the different ERK dynamics. The average ERK responses per cluster are displayed on the right.
+E Using the log10 intensity of optoFGFR-mCitrine (left panel), trajectories shown in (D) are separated in low and high optoFGFR cells (right panel).
+F ERK responses to increasing doses of sustained optoFGFR input. Single-cell ERK trajectories were divided in low (top panel) and high (bottom panel)optoFGFR
+expression.
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 5 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+We performed three replicates of the screen targeting the 50
+nodes. Despite efficient KD quantified for different nodes (FigEV2B),
+visual inspection of ERK trajectories only revealed subtle ERK
+dynamics phenotypes for a limited number of node perturbations
+(Fig EV2C and D). We used a feature-based approach to evaluate
+the effect of each perturbation on ERK dynamics. We focused our
+analysis on ERK responses evoked by high optoFGFR input to limit
+the single-cell heterogeneity due to optoFGFR expression variability.
+AB
+ERK activity
+Time [min]
+0.25
+0.50
+0.75
+1.00
+4010 2003 04010 200 30 4010 200 30
+ERK activity
+Time [min]
+0.25
+0.50
+0.75
+1.00
+4010 2003 04010 200 30 4010 200 30
+10 ng/ml1 ng/ml 100 ng/ml
+100 ng/ml EGF
+18 mJ/cm2 light
+Time [min]
+0.25
+0.50
+0.75ERK activity
+40200 60
+1.00
+Time [min]
+402006 0
+Average low
+optoFGFR
+Average high 
+optoFGFR
+Time
+Light
+EGF
+C Light Light EGF
+bFGF
+10 ng/ml1 ng/ml 100 ng/ml
+EGF
+Single cell
+D
+MEK
+RAF
+RAS
+ERK
+EGFR optoFGFR
+Receptor
+inactivation
+ERK-KTR
+EGFR
+NFB
+Training
+Predictions
+Data
+Maximum a posteriori
+estimate
+Example trajectory
+Posterior envelope
+4010 200 30 50
+ERK activity0.4
+0.6
+0.8
+4010 200 30 50
+0.4
+0.6
+0.8
+4010 200 30 50
+0.4
+0.6
+0.8
+Time [min]
+4010 2003 0 5 0 6 0 7 0
+0.4
+0.6
+0.8
+ERK activity
+4010 200 30 50
+0.4
+0.6
+0.8
+High optoFGFR expression
+Low optoFGFR expression
+1 ng/ml EGF 100 ng/ml EGF
+100 ng/ml EGF + 
+Low optoFGFR expression
+4010 2003 0 5 0 6 0 7 0
+0.4
+0.6
+0.8
+ERK activity
+4010 2003 0 5 0
+0.4
+0.6
+0.8
+EGFR input
+optoFGFR input
+Training dataset
+E
+F
+G
+P
+P
+P
+Figure 3. ERK dynamics evoked by optoFGFR versus endogenous RTKs highlight different MAPK regulatory mechanisms.
+A, B Single-cell ERK trajectories under increasing concentrations of sustained (A) bFGF or (B) EGF input added att = 5 min.
+C ERK responses of cells stimulated with sustained optoFGFR input (D= 18 mJ/cm2)a tt = 24 min without or with100 ng/ml EGF sustained pre-stimulation att = 5
+min. Average ERK responses for optoFGFR high and low expression levels are shown (N = 20 cells for low and high optoFGFR, randomly selected out of at least80
+cells).
+D Mathematical model topology consisting of the RAS GTPase, the MAPK three-tiered (RAF, MEK, ERK) network and the ERK-KTR reporter. EGFR and optoFGFRinputs
+both activate the RAS/RAF/MEK/ERK cascade and the ERK-RAF NFB. EGFR activity is under receptor-dependent regulations.
+E Training dataset consisting of the average ERK responses evoked by sustained low optoFGFR input with or without pre-stimulation with100 ng/ml sustained EGF.
+F Simulation of ERK responses from the training dataset, including the maximum a posteriori (MAP) estimate, the posterior envelope indicating the predictive density
+of our estimation, as well as an example trajectory.
+G Predictions of the model for ERK responses evoked by1 ng/ml EGF,100 ng/ml EGF and sustained high optoFGFR inputs. Note that for low EGFR input (1 ng/ml),
+the model predicts both adaptive and oscillatory ERK responses.
+6 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+SPRY1
+FGFR1
+FRS2
+GRB2
+SHC1
+SPRY4SPRY2
+PTPN6
+GAB1
+PTPN11
+SPRY3
+DUSP26DUSP22
+DUSP10
+DUSP16
+DUSP4
+DUSP8
+DUSP1 DUSP3
+DUSP6
+DUSP2
+DUSP9
+SOS2
+SOS1
+RAPGEF3
+NF1
+RAPGEF1 RASA1
+RASGRP1
+PP2A
+MEK2 CNKSR1
+ERK1
+KSR1
+NCK1
+SRCNCK2
+PTK2
+CRKL
+SHIP
+PLCG1
+RRASNRAS
+RKIP
+YWHAZHRAS
+RAP1A
+RAP1B KRAS
+YWHAG
+CRAF
+RSK2
+PEA15
+ERK2
+MEK1
+ARAF BRAF
+DUSP14
+A B
+GAPDH
+1.00
+0.25
+0.50
+0.75
+ERK2 ERK1+2
+CTRL ERK1
+20 4001 0 3 0
+1.00
+0.25
+0.50
+0.75
+20 4001 0 3 0
+ERK2 ERK1+2CTRL ERK1
+ERK1
+ERK2
+Time [min]
+ERK activity
+C
+Receptor 
+proximal layer
+MembraneMAPK 
+cascade
+Downstream
+D
+F
+Receptor
+GEFs, GAPs, GTPases
+Kinases
+Phosphatases
+Adaptors, scaffolds, antagonists
+44 kDa
+42 kDa
+maxPeak
+Time
+ERK activity
+baseline
+ERKpostStim
+optoFGFR expression highlow
+Proportion of
+ oscillating cells
+0.2
+0.0
+0.2
+0.4
+PP2A
+PEA15
+RAPGEF1
+DUSP8
+KRAS
+DUSP14
+NCK2
+SRC
+DUSP9
+PLCG1
+YWHAZ
+DUSP10
+SPRY2
+RAP1B
+RAP1A
+DUSP26
+YWHAG
+RAPGEF3
+CTRL
+RRAS
+DUSP22
+ARAF
+SHC1
+DUSP3
+NCK1
+PTK2
+DUSP2
+SOS2
+PTPN11
+CRKL
+RASGRP1
+NF1
+RASA1
+CNKSR1
+SOS1
+RKIP
+SPRY4
+GAB1
+DUSP1
+NRAS
+DUSP16
+MEK1
+KSR1
+DUSP4
+HRAS
+BRAF
+ERK1
+DUSP6
+FRS2
+SPRY3
+MEK2
+SPRY1
+PTPN6
+SHIP
+GRB2
+RSK2
+CRAF
+ERK2
+ERK1+2
+0.4
+*** ****
+****
+****
+***
+***
+****
+****
+*
+*
+**
+**
+*
+**
+*
+*
+*
+*
+Time
+ERK activity
+Peak 1 Peak 2 Peak 3
+Oscillating cells
+CTRL
+CTRL
+ERK activity
+GRB2 RAPGEF1FRS2 CRAFDUSP6
+PLCG1PP2A ERK2ERK1+2 RSK2
+ERK activity
+Time [min]
+1.00
+0.25
+0.50
+0.75
+20 4001 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0
+1.00
+0.25
+0.50
+0.75
+1.00
+0.25
+0.50
+0.75
+1.00
+0.25
+0.50
+0.75
+20 4001 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0
+1.00
+0.25
+0.50
+0.75
+1.00
+0.25
+0.50
+0.75
+CODEX
+Low
+optoFGFR
+High
+optoFGFR
+CODEX
+Low 
+optoFGFR
+High 
+optoFGFR
+E
+Features
+37 kDa
+DUSP26
+DUSP22
+DUSP16
+DUSP14
+DUSP10
+DUSP9
+DUSP8
+DUSP6
+DUSP4
+DUSP3
+DUSP2
+DUSP1
+PEA15
+RSK2
+ERK2
+ERK1
+MEK2
+MEK1
+CRAF
+BRAF
+ARAF
+PP2A
+KSR1
+CNKSR1
+YWHAG
+YWHAZ
+RKIP
+RRAS
+NRAS
+KRAS
+HRAS
+RAP1B
+RAP1A
+NF1
+RASA1
+RASGRP1
+RAPGEF3
+RAPGEF1
+SOS2
+SOS1
+NCK2
+NCK1
+SRC
+PLCG1
+SHIP
+PTPN11
+PTPN6
+SPRY4
+SPRY3
+SPRY2
+SPRY1
+CRKL
+PTK2
+SHC1
+GAB1
+GRB2
+FRS2
+ERK1+2
+CTRL
+baseline
+maxPeak
+ERKpostStim
+2-2zScore to CTRL NS
+Figure 4.
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 7 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+We quantified the average ERK activity before stimulation (base-
+line), the maximal ERK amplitude during stimulation (maxPeak),
+and the ERK amplitude at a fixed time point after response adapta-
+tion in the negative control (ERKpostStim). To evaluate these phe-
+notypes, we z-scored the features associated to each perturbation to
+those of the negative control (Fig4D, see Materials and Methods for
+details). While many phenotypes were statistically significant, most
+of them remained mild as observed by visually inspection of the fea-
+ture distributions (FigEV3A). Apart from ERK1+2 KD, only GRB2,
+PTK2, andERK2 led to a reduction of ERK amplitude (maxPeak). KD
+of negative regulators such asSPROUTY 2,3, and4, or phosphatases
+such asPP2A and several dual-specificity phosphatases (DUSPs) led
+to increased ERK amplitude. Increased basal ERK activity was
+observed forRKIP, PP2A, DUSP4, andDUSP6 KDs, indicating a func-
+tion in regulating basal ERK levels. Prolonged ERK activity
+(ERKpostStim) was observed in response to KD ofRKIP, PP2A,
+ERK2, DUSP1,2,3,4,6 and strikingly for RSK2 KD (Fig EV3B),
+suggesting a role of these nodes in ERK adaptation.
+Because both visual inspection of trajectories, as well as our
+feature-based approach might miss more subtle ERK dynamics
+phenotypes, we used CODEX (Jacqueset al, 2021), a data-driven
+approach to identify patterns in single-cell time series based on
+convolutional neural networks (CNNs) (FigEV3C). We trained a
+CNN to classify ERK trajectories that originate from different
+siRNA perturbations and selected the ten perturbations for which
+the CNN classification accuracy was the highest (Appendix Table
+S4, “CODEX accuracy”, see Materials and Methods for details).
+Projection of the CNN features in a t-distributed stochastic neigh-
+bor embedding (t-SNE) space revealed different clusters of ERK
+trajectories (FigEV3D). Comparison of the ten trajectories with the
+highest classification confidence identified by CODEX to randomly
+selected ERK trajectories for low or high optoFGFR expression
+highlighted ERK phenotypes not accessible to visual inspection
+and the feature-based approach (Fig4E). CODEX identified some
+of the perturbations that affect ERK amplitude, baseline or adapta-
+tion observed with the feature-based approach. However, it also
+highlighted perturbations affecting oscillatory ERK dynamics.PP2A
+KD led to sustained oscillatory behavior.PLCG1 KD resulted in a
+first peak followed by damped oscillations, and absence of the dip.
+As phospholipase C mediates Ca2+ signaling in response to FGFR
+activation (Ornitz & Itoh, 2015), this further validates the role of
+Ca2+ signaling in formation of the dip (Appendix Fig S1D–F).
+RAPGEF1 KD led to oscillatory ERK responses of different ampli-
+tudes. RSK2, ERK2, and CRAF KD displayed reduced oscillatory
+ERK behavior.
+To validate the latter oscillatory ERK dynamics phenotypes, we
+evaluated the proportion of oscillatory trajectories (trajectories with
+at least 3 peaks) for each perturbation, both for high and low
+optoFGFR input (Fig4F). This confirmed that RSK2, CRAF, and
+ERK2 KD led to decreased oscillatory ERK dynamics. We also
+observed that these perturbations reduced ERK oscillations in cells
+stimulated with 1 ng/ml EGF (FigEV3E–G), suggesting a role of
+these nodes in the regulation of ERK oscillations in the context of a
+native RTK.
+ERK2 and CRAF isoforms are implicated in the well-established
+ERK-RAF NFB, known to regulate ERK dynamics (Santos et al,
+2007; Ryu et al, 2015; Blum et al, 2019), and to enable consistent
+ERK dynamics under MEK or ERK perturbations (Sturmet al, 2010;
+Fritsche-Guenther et al, 2011). RSK2 encodes the p90 ribosomal S6
+kinase 2 protein, an ERK substrate regulating survival and prolifera-
+tion (Cargnello & Roux,2011; Yooet al, 2015). RSK2 is also known
+to be involved in an ERK-induced NFB targeting SOS (Douville &
+Downward,1997; Sahaet al, 2012; Lakeet al, 2016), whose signifi-
+cance in the regulation of ERK dynamics has been less well studied.
+In addition to dampening ERK oscillations,RSK2 KD also led to
+slower ERK adaptation when optoFGFR input ceased (Figs4D and
+EV3A and B), suggesting an important role of this NFB in ERK
+dynamics regulation. Our results suggest that the ERK-RAF and
+ERK-RSK2-SOS NFBs simultaneously operate within the MAPK net-
+work to generate ERK oscillations and raise the question whether
+both NFBs contribute to the strong MAPK signaling robustness
+observed in our screen.
+Direct optogenetic activation of RAS highlights different ERK
+dynamics phenotypes than optoFGFR input
+To further explore the role of MAPK feedback in MAPK signaling
+robustness, we used optoSOS (Johnsonet al, 2017), an optogenetic
+actuator that activates RAS, and thus bypasses the RSK2-mediated
+NFB regulation (Fig5A). OptoSOS consists of a membrane anchored
+light-activatable iLID domain, and an mCitrine-tagged SspB domain
+fused to SOS’s catalytic GEF domain. It was stably integrated into
+◀
+Figure 4. RNA interference screen reveals that ERK dynamics remain unaffected in response to perturbation of most MAPK signaling nodes.
+A RNAi perturbation targets referred to by their protein names. Nodes were spatially grouped based on the hierarchy of interactions within the MAPK network and
+color-coded for their function.
+B ERK responses to sustained optoFGFR input (D= 18 mJ/cm2) in cells transfected with10 nM siRNA againstERK1, ERK2 or a5 nM combination of each (ERK1+2). A
+non-targeting siRNA (CTRL) was used as control (N = 15 cells from low and high optoFGFR levels).
+C Western blot analysis of cells transfected with10 nM siRNA againstERK1, ERK2 or a5 nM combination of each (ERK1+2).
+D Z-Score evaluation of the baseline, maxPeak and ERKpostStim of single-cell ERK responses under sustained high optoFGFR input (D= 18 mJ/cm2). The z-score was
+calculated by comparing each RNAi perturbation to theCTRL KD (Nmin = 126 cells per treatment, from three technical replicates). Non-significant (NS) results are in
+gray (see FigEV3A for statistical results).
+E Single-cell ERK trajectories (sustained optoFGFR input, D= 18 mJ/cm2) for the RNAi perturbations classified with the highest accuracy by CODEX. Top lines show
+single-cell ERK trajectories for which CODEX had the highest classification confidence in the validation set (N = 10). Bottom lines show single-cell ERK trajectories for
+low and high optoFGFR cells (N = 30 for each condition, randomly selected out of at least212 cells per perturbation from three technical replicates). For easier visual-
+ization, the CTRL condition is shown twice.
+F Proportion of oscillating cells (trajectories with at least three peaks) per RNAi perturbation for low and high optoFGFR expression (sustained optoFGFR input,
+D = 18 mJ/cm2, Nmin = 61 cells for low and126 for high optoFGFR per perturbation from three technical replicates). Perturbations were ordered based on the
+proportion of oscillating cells with low optoFGFR expression. Statistical analysis was done using a pairwiset-test, comparing each perturbation against theCTRL for
+each receptor level independently (*< 0.05,* *< 0.005, ***< 0.0005, ****< 0.00005, FDRP-value correction method).
+8 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+cells expressing ERK-KTR and H2B. Because iLID displays faster dis-
+sociation rates than CRY2 (t1/2 = 30 s for iLID versus~5 min for
+CRY2 (Duan et al, 2017; Benedetti et al, 2018)), optoSOS required
+repeated light pulses to prolong its membrane recruitment and pro-
+duce a robust ERK response (Fig5B). Five consecutive 100 ms light
+pulses at 6 W/cm2 (D = 0.6 J/cm2) applied at 20-s intervals, pro-
+vided the minimal light input to induce a saturated ERK amplitude
+(FigEV4A). Application of this light input at 2-min intervals evoked
+sustained ERK dynamics with small fluctuations at the same fre-
+quency as the light input pattern, reflecting the fast optoSOS
+AB
+D E
+maxPeak
+Time
+ERK activity
+0.5
+1.0
+optoFGFR optoSOS
+1.5
+NS ****
+*
+NS
+low highExpression
+ERK activity at maxPeak
+0 J/cm2 0.05 J/cm2 0.6 J/cm20.01 J/cm2
+ERK activity
+1.00
+0.25
+0.50
+0.75
+20 4001 0 3 0 2 0 4001 0 3 0 20 4001 0 3 0 20 4001 0 3 0
+1.00
+0.25
+0.50
+0.75
+Time [min]
+Light dose
+0 x
+0.25
+0.50
+0.75
+1.00
+Time [min]
+ERK activity
+01 0 2 0 3 0 4 0
+C 2 min interval10 min interval20 min interval
+25 50 75525 50 755
+ERK activity
+0.25
+0.50
+0.75
+1.00
+25 50 755 25 50 755
+5 min interval
+Time [min]
+0 10 20 30 40 0 10 20 30 40 0 10 20 30 40
+Number of pulses [0.6 J/cm2]
+1 x 3 x 5 x
+SOScat
+RSK2
+FGFR
+cyto
+FGFR
+cyto
+SOS
+MEK
+GRB2
+FRS2
+RAF
+RAS
+ERK P
+P
+P
+P
+Low 
+optoSOS
+High
+optoSOS
+F
+G
+maxPeak
+Time
+ERK activity
+baseline
+ERKpostStim
+Features
+CTRL NF1ERK2 DUSP6CRAF RSK2
+ERK activity
+Time [min]
+1.00
+0.25
+0.50
+0.75
+20 4001 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0 2 0 4 0 01 0 3 0
+1.00
+0.25
+0.50
+0.75 Low 
+optoSOS
+High
+optoSOS
+20 4001 0 3 0
+DUSP22
+DUSP26
+DUSP22
+DUSP16
+DUSP14
+DUSP10
+DUSP9
+DUSP8
+DUSP6
+DUSP4
+DUSP3
+DUSP2
+DUSP1
+PEA15
+RSK2
+ERK2
+ERK1
+MEK2
+MEK1
+CRAF
+BRAF
+ARAF
+PP2A
+KSR1
+CNKSR1
+YWHAG
+YWHAZ
+RKIP
+RRAS
+NRAS
+KRAS
+HRAS
+RAP1B
+RAP1A
+NF1
+RASA1
+ERK1+2
+CTRL
+baseline
+maxPeak
+ERKpostStim
+2-2zScore to CTRL NS
+Figure 5.
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 9 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+reversion to the dark state (Fig5C). OptoSOS did not induce ERK
+oscillations (Fig EV4B), even in cells with low optoSOS expression
+or at lower light doses (Fig5D). However, ERK amplitudes corre-
+lated with optoSOS expression level, low optoSOS levels led to low
+ERK amplitudes, while high actuator expression levels resulted in
+high ERK amplitudes. Using the minimal light input to trigger satu-
+rating ERK amplitude, both optoSOS and optoFGFR led to steep ERK
+activation and fast adaptation when light stimulation ceased (com-
+pare Figs2C and 5C), as well as similar ERK amplitudes in cells
+expressing high actuator levels (Fig 5E). However, high optoSOS
+expression levels moderately increased ERK activity baseline levels
+in comparison to optoFGFR (FigEV4C), suggesting that this system
+is leaky to some extent.
+Using this specific light input, we performed siRNA screens
+targeting MAPK signaling nodes downstream of optoSOS in tripli-
+cates (FigEV4D and E ). We extracted the baseline, maxPeak,
+ERKpostStim features from optoSOS high expressing cells (Fig
+EV4F) and z-scored feature values to the negative control (Fig5F).
+We observed more prominent ERK amplitude phenotypes in
+response to optoSOS input than to optoFGFR input. Some of these
+phenotypes are shown in Fig5G. Most prominently, CRAF, ERK2,
+and DUSP4 KD led to a stronger reduction in ERK amplitude than
+observed with optoFGFR input.RSK2 KD also reduced ERK ampli-
+tude, suggesting that it also regulates nodes downstream of RAS.
+However,RSK2 KD did not decrease ERK adaptation following
+optoSOS input removal (Fig EV4G), suggesting that it is not
+involved in NFB regulation in this system.PP2A KD did not induce
+increased ERK amplitude or baseline as observed in the optoFGFR
+system. As for optoFGFR input,DUSP6 KD increased basal ERK
+activity and decreased adaptation (Fig EV4G). DUSP22 KD led to
+increased amplitude, without affecting ERK baseline and adapta-
+tion.NF1 KD, which encodes a RAS-specific GAP, led to increased
+ERK baseline and slower adaptation (FigEV4G), without affecting
+ERK amplitude. The NF1 baseline phenotype, that was not
+observed in the optoFGFR system, might emerge from the
+optoSOS-mediated low levels of RAS activation due to the optoSOS
+system’s leakiness (FigEV4C) that can then be amplified by loss
+of NF1’s RAS GAP activity. The finding that perturbation of spe-
+cific nodes (e.g., ERK2 and CRAF) leads to more penetrant pheno-
+types in response to optoSOS versus optoFGFR input suggested
+that the RAS/RAF/MEK/ERK part of the network is more sensitive
+to perturbations than optoFGFR-triggered network, suggesting that
+the RSK2 NFB that operates above RAS contributes to MAPK sig-
+naling robustness.
+Perturbation of the RSK2-mediated NFB increases the efficiency
+of RAF, MEK, and ERK targeting drugs
+To further investigate the role of the RSK2-mediated NFB in MAPK
+signaling robustness, we performed dose response experiments
+using different MAPK inhibitors and compared ERK amplitudes
+evoked by optoFGFR (RSK2-feedback dependent) versus optoSOS
+(RSK2-feedback independent) input, as well as optoFGFR input in
+absence/presence of RSK2 perturbation. We used drugs targeting B/
+CRAF (RAF709), MEK (U0126) and ERK (SCH772984). We evalu-
+ated the inhibition efficiency by measuring ERK amplitude at a fixed
+time point, focusing on ERK responses evoked by high optoFGFR or
+optoSOS inputs to limit the single-cell heterogeneity due to expres-
+sion variability of the optogenetic actuator. All inhibitors led to a
+stronger reduction of ERK amplitude and EC50 in response to
+optoSOS versus optoFGFR input (Figs6A–C and EV5A, Appendix
+Table S5). Visual evaluation of ERK amplitude distributions (Fig6B)
+and quantification of their standard deviations (Fig 6D) revealed
+more compact ERK amplitude distributions in presence of increas-
+ing drug concentrations in response to optoSOS versus optoFGFR
+input. This suggests a more homogeneous drug inhibition in the
+cell population in response to optoSOS input. We then performed
+the identical experiments inCTRL or RSK2 KD cells in response to
+optoFGFR input (Figs 6E–H and EV5B, Appendix Table S6). RSK2
+KD led to increased inhibition of ERK amplitudes, decreased EC50,
+and more compact ERK amplitude distributions in response to
+increasing drug concentration than inCTRL KD cells. Similar results
+were observed when the RSK2-mediated feedback was inhibited
+using the RSK inhibitor SL0101 (Smithet al, 2005)( F i gEV5C–F,
+Appendix TableS7). Thus, inhibition of the RSK2-mediated NFB sen-
+sitizes ERK responses to RAF, MEK or ERK drug perturbations. Note
+that drug mediated ERK amplitude inhibition was stronger in
+response to optoSOS input than to optoFGFR input withRSK2 KD or
+RSK inhibition, suggesting that additional mechanisms to the RSK2-
+mediated feedback contribute to MAPK signaling robustness. How-
+ever, our results suggest that perturbation of the RSK2-mediated feed-
+back can be exploited to enhance the efficiency of MAPK-targeting
+drugs, reducing ERK amplitudes more homogeneously across the cell
+population.
+◀
+Figure 5. Direct optogenetic activation of RAS highlights different ERK dynamics phenotypes than optoFGFR input.
+A Schematic representation of ERK signaling induced by optoSOS versus optoFGFR input.
+B ERK dose responses under transient optoSOS input consisting of different numbers of repeated470 nm pulses (1, 2, 3, 4, and5× pulses applied at20-s intervals,
+D = 0.6 J/cm2). Repeated pulses are depicted as a single stimulation (blue bar).
+C ERK responses to optoSOS inputs consisting of5 repeated 470 nm light pulses delivered every20, 10, 5, and2 min, respectively (D= 0.6 J/cm2).
+D ERK responses to increasing light doses of sustained optoSOS input consisting of2-min interval input, each input made of5 repeated light pulses. Cells were divided
+in low and high optoSOS expression levels based on the log10 intensity of the optoSOS-mCitrine.
+E Quantification of the maxPeak of single-cell ERK responses under sustained optoFGFR (Fig2F,D = 18 mJ/cm2) and optoSOS (Fig5D,D = 0.6 J/cm2) input for low or
+high expression of each optogenetic system (N = 40 cells per condition, boxes indicate the upper and lower quartiles, the central bands indicate the median and
+whiskers extend to individuals up to1.5 interquartile away from the median). Statistical analysis was done using a Wilcoxon test, comparing each condition to each
+other (Nmin = 48 cells per condition, NS: non-significant, *< 0.05, ****< 0.00005, FDRP-value correction method).
+F Z-Score evaluation of the baseline, maxPeak, and ERKpostStim of single-cell ERK responses under sustained high optoSOS input (D= 0.6 J/cm2). The z-score was cal-
+culated by comparing each RNAi perturbation to theCTRL KD (Nmin = 33 cells per treatment, from three technical replicates). Non-significant (NS) results are in gray
+(see Fig EV4F for statistical results).
+G Single-cell ERK trajectories for low and high optoSOS cells for selected RNAi perturbations (N = 40 randomly selected out of at least193 trajectories from three tech-
+nical replicates).
+10 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+BA
+RSK2
+SOS
+MEK
+GRB2
+FRS2
+RAF
+RAS
+ERK P
+P
+SCH772984
+RAF709
+U0126
+optoSOS 
+input
+optoFGFR 
+input
+C
+D
+H
+E
+RSK2
+SOS
+MEK
+GRB2
+FRS2
+RAF
+RAS
+ERK P
+P
+SCH772984
+RSK2 KD
+RAF709
+U0126
+optoFGFR 
+input
+F
+G
+optoFGFR
+optoSOS
+0
+1
+Normalized
+SD
+Concentration [μM]
+0 2 51 0 20 50 025 1 0 2 0 5 0 0 0.5 12 51 0
+CTRL KD
+RSK2 KD
+Concentration [μM]
+025 1 0 2 0 5 0 0 2 51 0 20 50 0 0.5 1 2 5 10
+0
+1
+Normalized
+SD
+optoFGFR
+optoSOS
+RAF709 U0126 SCH772984
+EC50 = 7.9 μM
+EC50 = 4.1 μM
+EC50 = 10.3 μM
+EC50 = 1.6 μM
+EC50 = 1.1 μM
+EC50 = 0.2 μM
+EC50 = 8.2 μM
+EC50 = 4.0 μM
+EC50 = 12.7 μM
+EC50 = 5.3 μM
+EC50 = 1.4 μM
+EC50 = 0.6 μM
+Concentration [μM]
+optoFGFR
+optoSOS
+Rescaled
+ERK activity at tfixed
+0.0
+0.5
+1.0
+02 5 1 0 2 0 5 01 02 5 1 0 2 0 5 011 0 02 15
+Concentration [μM] (log10)
+optoFGFR
+CTRL KD
+RSK2 KD
+Rescaled
+ERK activity at tfixed
+Concentration [μM] (log10) 
+0.0
+0.5
+1.0
+02 5 1 0 2 0 5 01 0 2 5 10 20 50 11 0 02 15
+ERK activity at tfixed
+CTRL KD
+RSK2 KD
+optoFGFR
+0.5
+1.0
+0 2 5 10 20 50 0 2 5 10 20 50 00 . 5 1 25 1 0
+Concentration [μM]
+RAF709 U0126 SCH772984
+ERK activity at tfixed
+0.5
+1.0
+0 2 5 10 20 50 0 2 5 10 20 50 0 0.5 1 2 5 10
+Figure 6. Perturbation of the RSK2-mediated NFB increases the efficiency of RAS, MEK, and ERK targeting drugs.
+A Schematic representation of the optoFGFR (RSK2-mediated feedback dependent) and optoSOS (RSK2-mediated feedback independent) systems targeted with the B/
+CRAF (RAF709), the MEK (U0126) or the ERK (SCH772984) inhibitor.
+B Single-cell ERK amplitudes from sustained high optoFGFR input (D= 18 mJ/cm2) or optoSOS input (D= 0.6 J/cm2) under different concentrations of the MAPK inhibi-
+tors, extracted at a fixed time point (tfixed optoFGFR = 15 min, tfixed optoSOS = 10 min, N = 200 cells with high optoFGFR or optoSOS expression per condition randomly
+selected from3 technical replicates).
+C A Hill function was fit to the normalized mean ERK activity as shown in (B) (Nmin = 200 cells per condition). Shaded area indicates the95% CI and dashed lines the
+EC50.
+D Normalized standard deviation of ERK amplitudes shown in (B) (Nmin = 200 cells per condition).
+E Schematic representation of the optoFGFR system treated withCTRL KD (RSK2-mediated feedback dependent) orRSK2 KD (RSK2-mediated feedback independent)
+targeted with the B/CRAF (RAF709), the MEK (U0126) or the ERK (SCH772984) inhibitor.
+F Single-cell ERK amplitudes from sustained high optoFGFR input (D= 18 mJ/cm2) under different concentrations of the MAPK inhibitors, extracted at a fixed time
+point (tfixed optoFGFR = 15 min, N = 70 cells with high optoFGFR expression per condition (apart fromRSK2 KD + 0 μMU 0126 (32 cells)), randomly selected from2
+technical replicates forRSK2 KD and1 replicate forCTRL KD).
+G A Hill function was fit to the normalized mean ERK activity as shown in (F) (Nmin = 32 cells per perturbation). Shaded area indicates the95% CI and dashed lines the
+EC50.
+H Normalized standard deviation of ERK amplitudes shown in (F) (Nmin = 32 cells per perturbation).
+Data information: in (B) and (F), boxes indicate the upper and lower quartiles, the central bands indicate the median and whiskers extend to individuals up to1.5
+interquartile away from the median.
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 11 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+Targeting the RSK2-mediated feedback in an ErbB2 oncogenic
+signaling model increases MEK inhibition efficiency
+The results above suggested an important role of the RSK2-mediated
+feedback in MAPK signaling robustness against node perturbation in
+response to optogenetic inputs in NIH3T3 cells. To test whether this
+feedback also contributes to MAPK signaling robustness in a
+disease-relevant system, we evaluated its function in MCF10A cells,
+a breast epithelium model, using either wild-type (WT) or overex-
+pressing ErbB2 (referred to as ErbB2over) recapitulating the ErbB2
+amplification observed in 20% of all breast cancers (Yarden & Pines,
+2012; Arteaga & Engelman,2014). We chose this specific model sys-
+tem because ErbB2 amplification leads to constitutive RTK input on
+the MAPK network, while retaining an intact downstream feedback
+structure (Fig7A). This contrasts with other cancer model systems
+in which additional mutations might lead to RAS or RAF overactiva-
+tion, and thus disrupt the feedback architecture. Further, previous
+work has highlighted the role of NFBs in ERK pulse formation in
+MCF10A cells (Kochańczyk et al, 2017), suggesting that EGFR and
+ErbB2 trigger a MAPK network with similar feedback circuitry as
+optoFGFR.
+As described before (Albeck et al, 2013), WT cells displayed
+asynchronous low-frequency ERK pulses in the absence of EGF, and
+high-frequency ERK pulses in presence of EGF (Fig7B). In marked
+contrast, ErbB2over cells displayed high frequency ERK pulses, even
+in the absence of EGF (Fig7C). To investigate the role of the RSK2-
+mediated feedback in MAPK signaling robustness, we performed a
+U0126 dose response in EGF-stimulated MCF10A WT cells and
+found that 3µM U0126 decreased ERK amplitude without fully
+suppressing the response (Fig EV5G and H ). As observed in
+response to optogenetic inputs, RSK inhibition with 50µM SL0101
+led to a mild reduction in ERK amplitude. However, in combination
+with 3µM U0126, ERK amplitude was decreased to the level of
+unstimulated cells. Similar results were observed in ErbB2over cells
+(Fig EV5I), suggesting that RSK2 perturbation increases the sensitiv-
+ity of ERK responses to MEK inhibition.
+As averaging ERK dynamics can hide asynchronous single-cell
+signaling activity, we further investigated the effect of these pertur-
+bations on single-cell trajectories using CODEX (Jacqueset al, 2021)
+(see Materials and Methods for details). For WT cells, a tSNE projec-
+tion of the CNN features built from single-cell ERK trajectories
+hinted that the CNN was able to construct features separating the
+treatments into well-defined clusters (Figs7D and EV5J). Clustering
+of the CNN features confirmed the existence of discrete ERK dynam-
+ics clusters (Fig7E) whose composition correlated with the treat-
+ments (Fig 7F). To characterize the dynamics captured by each
+cluster, we extracted the medoid trajectory and its 4 closest neigh-
+bors from each cluster (Fig7G). This revealed that non-stimulated
+cells mostly display low frequency ERK activity pulses (cluster 4) or
+absence of pulses (cluster 5). Cells stimulated with EGF without
+inhibitor displayed ERK pulses of high amplitude (cluster 1).
+SL0101-treated cells displayed a sustained ERK activation at low
+amplitude (cluster 3). U0126-treated cells still displayed prominent
+ERK pulses but at a lower amplitude than EGF-treated cells in
+absence of drug (cluster 2). Finally, in cells treated with both U0126
+and SL0101, almost no ERK activity was observed (cluster 5). For
+ErbB2over cells, we observed that the CNN features were forming a
+more continuous space with less distinct clusters (Figs7H and I,
+and EV5K). A heterogeneous mix of ERK trajectory clusters was
+observed for the different treatments (Fig7J and K). Untreated cells
+mostly displayed high frequency ERK pulses that were either sharp
+(cluster 3) or wider (cluster 2). SL0101-treated cells were almost
+equally shared between cluster 1 (relatively flat high-amplitude ERK
+trajectories), cluster 2, cluster 4 (low-amplitude ERK pulses) and
+cluster 5 (low baseline activity). U0126 led to a less heterogeneous
+mix mostly consisting of ERK trajectories from cluster 4 and 5. The
+U0126/SL0101 combination shifted most cells to cluster 5, indicat-
+ing an efficient inhibition of ERK activity at a suboptimal U0126 con-
+centration. Thus, RSK inhibition also sensitizes the MAPK network
+to U0126-mediated MEK inhibition both in MCF10A WT and ErbB2-
+over cells.
+Discussion
+Optogenetic actuator-biosensor circuits allow for feedback
+structure mapping in the MAPK network
+ERK dynamics is crucial for fate decisions. Yet, the topology of the
+network enabling the cells to sense different inputs and convert this
+information into finely tuned ERK dynamics remains poorly under-
+stood. We developed genetic circuits consisting of optogenetic actu-
+ators and an ERK biosensor (Figs1A and 5A) that allow for a large-
+scale interrogation of single-cell ERK dynamics and investigated the
+▸
+Figure 7. Targeting the RSK2-mediated feedback in an ErbB2 oncogenic signaling model increases MEK inhibition efficiency.
+A Schematic representation of MAPK signaling in response to EGFR input in MCF10A WT cells or oncogenic ErbB2 input in ErbB2 overexpressing (ErbB2over) cells.
+B, C Single-cell ERK responses in MCF10A WT cells without or with stimulation with10 ng/ml EGF att = 30 min (B) and in unstimulated MCF10A ErbB2over cells (C).
+D tSNE projection of CODEX ’s CNN features from ERK trajectories of MCF10A WT cells without EGF stimulation, or with10 ng/ml EGF stimulation added at
+t = 30 min in absence of perturbation, with50 μMS L0101, 3 μMU 0126 or a combination of both.
+E t-SNE projection of CODEX ’s CNN features shown in (D) colored by the CNN feature clusters. Black diamonds indicate the position of the medoid and its4 closest
+neighbor trajectories for each cluster.
+F Distribution of the trajectories in the CNN features clusters per treatment. Colors are as shown in (E).
+G Medoid trajectories and their 4 closest neighbors per cluster highlighted in (E) (black diamonds).
+H tSNE projection of CODEX ’s CNN features from ERK trajectories of non-stimulated ErbB2 overexpressing cells without perturbation, with50 μMS L0101, 3 μM
+U0126 or a combination of both.
+I t-SNE projection of CODEX ’s CNN features shown in (H) colored by the CNN feature clusters. Black diamonds indicate the position of the medoid and its4 closest
+neighbor trajectories for each cluster.
+J Distribution of the trajectories in the CNN features clusters per treatment. Colors are as shown in (I).
+K Medoid trajectories and their 4 closest neighbors per cluster highlighted in (I) (black diamonds).
+12 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+effects of 50 RNAi perturbations targeting components of the MAPK
+signaling network (Fig 4A). In our optoFGFR screen, we only
+observed a small number of penetrant ERK dynamics phenotypes
+(Fig4D–F), implying that the MAPK network can buffer against per-
+turbations of most of its components. We cannot exclude that in
+some cases, even on the relatively short 72 h timescale of the RNAi
+experiment, compensation by upregulation of specific nodes might
+occur. However, our data suggest that the MAPK network topology
+allows for MAPK signaling robustness— the production of consistent
+ERK outputs in presence of node perturbation. This might emerge
+from isoform redundancy for multiple nodes in the network, as
+observed for single or combined ERK isoforms perturbation (Fig4B),
+but also for individual perturbation of RAS, RAF, MEK isoforms.
+Another mechanism might involve NFBs that have been shown to
+A
+H
+K
+yTSNE
+P P P P
+ErbB2
+ErbB2over
+RSK2
+SOS
+MEK
+GRB2
+RAF
+RAS
+ERK P
+P
+SL0101
+U0126
+no inhibitor
+xTSNE
+yTSNE
+D
+G
+WT
+P
+P
+EGFR
+EGF
+B
++ 10 ng/ml EGFno EGF no EGF
+ErbB2overWT
+ERK activity
+Time [hours]
+0 5 10 15
+1.0
+05 1 0 150 5 10 15
+1.5
+0.5
+C
+Time [hours]
+50 μM SL0101
+3 μM U0126
+3 μM U0126 
++ 50 μM SL0101
+no inhibitor
+xTSNE
+Treatment
+50 μM SL0101
+3 μM U0126
+3 μM U0126 
++ 50 μM SL0101
+no inhibitor
+Treatment CNN 
+clusters
+EF
+IJ
+yTSNE
+xTSNE 0.0 0.5 1.0
+50 μM SL0101
+3 μM U0126
+3 μM U0126 
++ 50 μM SL0101
+no inhibitor
+CNN clusters proportion
+no inhibitor
+0.0 0.5 1.0
+50 μM SL0101
+3 μM U0126
+3 μM U0126 
++ 50 μM SL0101
+no inhibitor
+CNN clusters proportion
+Cluster 1 Cluster 2 Cluster 3 Cluster 4 Cluster 5
+Time [hours]
+ERK activity
+0 5 10 15 0 5 10 15 0 5 10 15 0 5 10 15
+0.5
+1.0
+1.5
+2.0
+0 5 10 15
+Cluster 1 Cluster 2 Cluster 3 Cluster 4 Cluster 5
+Time [hours]
+ERK activity
+0 5 10 15 0 5 10 15 0 5 10 15 0 5 10 15
+0.5
+1.0
+1.5
+2.0
+0 5 10 15
+1
+2
+3
+4
+5
++ EGF - EGF
+yTSNE
+xTSNE
+CNN 
+clusters
+1
+2
+3
+4
+5
+- EGF
++ EGF - EGF- EGF
+Figure 7.
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 13 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+decrease the network sensitivity to node perturbation (Sturmet al,
+2010; Fritsche-Guenther et al, 2011). Our screen suggested that
+RSK2, that mediates a NFB from ERK to SOS (Douville & Down-
+ward,1997; Saha et al, 2012), both regulates ERK dynamics
+(Fig 4D–F) and plays a role in MAPK signaling robustness (Fig6E–H).
+In addition, our data suggest that the well-studied ERK-RAF NFB,
+which has been shown to buffer against MAPK node perturbations
+(Sturmet al, 2010; Fritsche-Guenther et al, 2011), also regulates
+ERK dynamics (Fig4F). We therefore speculate that feedback oper-
+ates simultaneously in the MAPK network, and act at multiple
+levels within the cascade to warrant MAPK signaling robustness.
+Consistently with this hypothesis, we observed that the optoSOS-
+triggered network, which is not under the RSK2 NFB regulation,
+shows an increased sensitivity in ERK amplitude to perturbation of
+some nodes (Fig5F and G). Indeed, ERK2 and CRAF perturbations,
+which led to loss of ERK oscillations, had relatively mild amplitude
+phenotypes in response to optoFGFR input, while both perturba-
+tions led to strong ERK amplitude phenotypes in response to
+optoSOS input. Because these phenotypes were not observed with
+other ERK and RAF isoforms, we propose that ERK2 and CRAF are
+the isoforms involved in the classic ERK-RAF NFB. Additional feed-
+back has been reported within the MAPK network (Langloiset al,
+1995;L a k eet al, 2016;K o c h ańczyk et al, 2017), and even if they
+have not been highlighted in our screen, they might also regulate
+ERK dynamics.
+While providing the experimental throughput to perturb and ana-
+lyze ERK dynamics at scale, optoFGFR, that lacks an ectodomain,
+evoked different ERK dynamics than endogenous RTKs such as FGFR
+and EGFR (Fig3A and Bcompared to Fig2F). These different ERK
+dynamics emerge likely because of receptor-level interactions that
+involve competition of bFGF for FGFR and heparan sulfate proteogly-
+can co-receptors (Kanodiaet al, 2014; Blum et al, 2019) in the case
+of FGFR, or receptor endocytosis in the case of EGFR (Gerosaet al,
+2020; Kiyatkinet al, 2020). Our combined modeling and experimen-
+tal approach suggested that optoFGFR and EGFR share similar down-
+stream MAPK network circuitries and NFBs (Fig3C–G). OptoFGFR
+therefore provides a simplified system that allowed us to focus on
+intracellular feedback structures, without confounding receptor-level
+regulations. Our Bayesian inference modeling approach, that is
+parameter agnostic, could provide simple intuitions about the
+receptor-level and negative feedback structures that shape ERK
+dynamics in response to optoFGFR and EGFR inputs. However, even
+if we had access to many ERK dynamics phenotypes, our modeling
+approach did not allow us to explore more sophisticated MAPK net-
+work topologies such as the presence of two NFBs or multiple node
+isoforms. We interpreted our data using some of the feedback struc-
+tures that have been previously experimentally documented and
+modeled but cannot formally exclude that the observed ERK dynam-
+ics emerge from different network structures. In the future, informa-
+tion about the different nodes and their dynamics might allow to
+further constrain the model topology and parameter space, and
+hopefully address this limitation.
+Additional novel insights into regulation of ERK dynamics
+Our optoFGFR and optoSOS screens provided new system-wide
+insights into the regulation of the MAPK network. Strikingly, the
+same perturbations induced different ERK dynamics phenotypes in
+the optoFGFR and optoSOS screens. This might occur because some
+regulators target the MAPK network at multiple levels, differently
+affecting ERK responses triggered with optoFGFR or optoSOS inputs.
+Additionally, as the two optogenetic systems are under the regula-
+tion of one versus two simultaneously occurring NFBs, they might
+have different sensitivities to perturbations, as discussed above.
+With respect to the optoFGFR system,GRB2 KD led to a reduc-
+tion of ERK amplitude (Fig 4D and E). GRB2 acts as the RTK-
+proximal adaptor to activate SOS (Chardin et al, 1993; Belov &
+Mohammadi, 2012). As GRB2 operates at the start of the cascade,
+outside of most NFBs, heterogeneity in its expression levels might
+be less easily buffered out.PLCG1 KD increased damped oscillatory
+behavior (Fig 4E and F). Phospholipase Cɣ1 activates calcium sig-
+naling, which has itself been shown to regulate RAS/MAPK signal-
+ing in a calcium spike frequency-dependent manner (Cullen &
+Lockyer,2002; Kupzig et al, 2005). Further investigation will be
+required to understand the significance of this crosstalk.RKIP KD
+resulted in higher ERK baseline and slower ERK adaptation post-
+stimulation, without affecting ERK amplitude (Fig4D). RKIP (RAF
+kinase inhibitor protein) prevents MEK phosphorylation by CRAF
+(Yeunget al, 2000), suggesting that RKIP-dependent regulation is
+specifically involved in keeping basal ERK activity low. With respect
+to phosphatases, none of their perturbations led to a strong pheno-
+type such as sustained ERK dynamics post-stimulation for example.
+The strongest phenotype was observed forPP2A KD that led to
+increased ERK amplitude, baseline, and slower adaptation (Figs4D
+and EV3A). This might occur because the protein phosphatase 2A is
+an ubiquitous phosphatase that acts at multiple levels by depho-
+sphorylating SHC1, MEK1, MEK2, ERK1 and ERK2, as well as a large
+number of other proteins (Junttilaet al, 2008; Saraf et al, 2010).
+The observation that in optoFGFR-lowPP2A KD cells, ERK dynam-
+ics displayed increased amplitude but still oscillated rather than
+exhibiting sustained behavior, suggests that NFBs might buffer
+against the loss of phosphatase regulation to some extent. Perturba-
+tion of the nuclear DUSPs, DUSP1,2,4, the atypical DUSP3 and most
+strongly the cytosolic DUSP6 (Pattersonet al, 2009) led to higher
+ERK baseline, reduced adaptation, with only limited effects on
+amplitude (Figs4D and EV3A). Consistently, DUSP6 has previously
+been proposed to pre-emptively dephosphorylate MAPKs to main-
+tain low ERK activity baseline levels at resting state (Huang & Tan,
+2012). Our results indicate that perturbation of single DUSPs might
+not be compensated by the others, suggesting that individual DUSPs
+might regulate specific substrates within the MAPK network. Except
+forDUSP6, KD of the different DUSPs did not significantly affect
+oscillatory ERK behavior in optoFGFR-low cells (Fig4F), suggesting
+that they are not involved in the MAPK feedback circuitry that oper-
+ates on timescales of minutes.
+The optoSOS screen revealed stronger ERK amplitude pheno-
+types, especially for ERK2 and CRAF KD (Fig 5F versus Fig 4D).
+Unlike for optoFGFR input,RSK2 KD did not result in slower ERK
+adaptation, suggesting that ERK responses triggered by the optoSOS
+input are not regulated by the RSK2-mediated NFB. However,RSK2
+KD led to a reduction of ERK amplitude, also observed to a lesser
+extent in response to optoFGFR input, suggesting a role of RSK2 in
+ERK amplitude regulation downstream of RAS. With respect to
+phosphatases,PP2A KD led to decreased amplitude, a different phe-
+notype than in response to optoFGFR input. This might occur
+because of the broad specificity PP2A phosphatase, which might
+14 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+lead to different phospho-proteomes in response to optoSOS versus
+optoFGFR input. Similar phenomena might apply for most of the
+DUSPs.
+The RSK2-mediated feedback can be targeted to potently inhibit
+oncogenic ErbB2 signaling
+Our data suggest that the RSK2-mediated NFB is important for
+MAPK signaling robustness downstream of our prototypic optoFGFR
+RTK (Fig6). We found that the RSK2-mediated NFB likely also oper-
+ates downstream of EGFR and oncogenic ErbB2 signaling in
+MCF10A cells (Fig7). In response to EGF stimulation, or ErbB2
+overexpression, a subset of RSK-inhibited cells displayed wider ERK
+pulses, suggesting that the RSK2 NFB is also involved in ERK adap-
+tation in this system (Fig7G cluster 3, Fig7K cluster 1 and 2). Fur-
+ther, RSK inhibition led to a high heterogeneity of ERK dynamics
+within the cell population especially visible in the case of ErbB2
+overexpressing cells (Fig7J), which might result from the reduced
+ability of the MAPK network to cope with nodes expression noise in
+absence of the RSK2 NFB. In EGF-treated cells, combination of RSK
+and suboptimal MEK inhibition led to strong and homogeneous ERK
+inhibition (Fig7E–G, cluster 5). In the ErbB2 overexpressing cells,
+combined RSK/MEK inhibition shifted most of the cell population to
+flat, low amplitude ERK dynamics, enabling to further inhibit a large
+number of cells when compared to suboptimal MEK inhibition only
+(Fig7I–K, cluster 5). These results suggest that pharmacological
+inhibition of the RSK2-mediated NFB can be used to reduce MAPK
+signaling robustness, sensitizing the network to MEK perturbation.
+Such non-trivial drug combinations might allow for homogeneous
+inhibition of ERK dynamics in most of the cells in a population. This
+homogeneous inhibition might mitigate the emergence of drug-
+tolerant persister cells from cell subpopulations that display residual
+ERK activity in response to inhibition of a single node. Our results
+imply that efficient pharmacological inhibition of the MAPK net-
+work requires precise understanding of its topology. The RSK2 NFB
+is an example of a druggable node that can be exploited to target
+MAPK signaling robustness.
+Our scalable experimental pipeline provides new insight into the
+MAPK network wiring that produces ERK dynamics. However, our
+perturbation approach only highlighted very subtle ERK dynamics
+phenotypes, precluding a complete understanding of the MAPK net-
+work. We envision that this will require more precise knowledge
+about the dynamics of MAPK network nodes and their interactions
+in response to defined inputs and perturbations. Such data can now
+be produced at scale using optogenetic actuator/biosensor circuits
+as those we describe in this work. This information might allow for
+faithful parametrization of more complex models. With the increas-
+ing amount of optogenetic actuators and biosensors available, simi-
+lar genetic circuits could also be designed to study the dynamics of
+other signaling pathways at scale.
+Materials and Methods
+Cell culture and reagents
+NIH3T3 cells were cultured in DMEM high-glucose medium with
+5% fetal bovine serum, 4 mML-glutamine, 200 U/ml penicillin and
+200 µg/ml streptomycin at 37°C with 5% CO2. All imaging experi-
+ments with NIH3T3 were done in starving medium consisting of
+DMEM high glucose supplemented with 0.5% BSA (Sigma), 200 U/ml
+penicillin, 200μg/ml streptomycin and 4 mML-Glutamine. MCF10A
+human mammary cells were cultured in DMEM:F12 supplemented
+with 5% horse serum, 20 ng/ml recombinant human EGF (Pepro-
+tech), 10μg/ml insulin (Sigma), 0.5μg/ml hydrocortisone (Sigma),
+200 U/ml penicillin, and 200μg/ml streptomycin. All imaging experi-
+ments with MCF10A were done in starving medium consisting in
+DMEM:F12 supplemented with 0.3% BSA, 0.5μg/ml hydrocortisone,
+200 U/ml penicillin, and 200μg/ml streptomycin. For growth factor
+stimulations, we used human EGF (AF-100, Peprotech) and human
+basic FGF (F0291, Sigma). Chemical perturbations were done with
+SU-5402 (SML0443, Sigma), RAF709 (HY-100510, Lucerna-Chem),
+U0126 (S1102, Selleck chemicals, Lubio), SCH772984 (HY-50846,
+Lucerna-Chem), SL0101 (559285, Sigma), Cyclosporine A (10-1119,
+Lucerna-Chem), and Ionomycin (sc-3592, Santa Cruz). Selection of
+the cells post transfection was done using Puromycin (P7255, Sigma),
+Blasticidin S HCI (5502, Tocris), and Hygromycin B (sc-29067,
+Lab Force).
+Plasmids and stable cell line generation
+The optoFGFR construct was a gift from Won Do Heo (Addgene
+plasmid # 59776) (Kimet al, 2014). It consists of the myristoylated
+FGFR1 cytoplasmic region fused with the PHR domain of the cryp-
+tochrome2 and tagged with mCitrine. It was cloned in a lentiviral
+backbone for stable cell line generation. A modified version of the
+optoFGFR tagged with the red fluorophore mScarlet (Bindelset al,
+2017) was cloned in a PiggyBac plasmid pPBbSr2-MCS (blasticidin
+resistance), a gift from Kazuhiro Aoki. The optoSOS construct is a
+modified version of the tRFP-SSPB-SOScat-P2A-iLID-CAAX
+(Addgene plasmid #86439) (Johnsonet al, 2017), in which we
+replaced the tRFP by mCitrine. The construct was cloned in the
+pPB3.0. Puro, an improved PiggyBac plasmid generated in our lab
+with puromycin resistance. The ERK-KTR-mRuby2 and ERK-KTR-
+mTurquoise2 reporters were generated by fusing the ERK Kinase
+Translocation Reporter (ERK-KTR) (Regotet al, 2014) with
+mRuby2 (Lam et al, 2012) or mTurquoise2 (Goedhartet al, 2012).
+The nuclear marker H2B-miRFP703 is a fusion of the human H2B
+clustered histone 11 (H2BC11) with the monomeric near-infrared
+fluorescent protein miRFP703 (Shcherbakovaet al, 2016) (Addgene
+plasmid #80001). ERK-KTR-mRuby2, ERK-KTR-mTurquoise2, and
+H2B-miRFP703 were cloned in the PiggyBac plasmids pPB3.0.
+Hygro, pSB-HPB (gift of David Hacker, EPFL, (Balasubramanianet
+al, 2016)), and pPB3.0. Blast, respectively. All constructs in
+PiggyBac plasmids were co-transfected with the helper plasmid
+expressing the transposase (Yusaet al, 2011) for stable insertion
+using the jetPEI (Polyplus) transfection reagent for NIH3T3 cells or
+FuGene (Promega) transfection reagent for MCF10A cells. After
+antibiotic selection, NIH3T3 cells were FACS-sorted to generate
+stable cell lines homogeneously expressing the biosensors. In the
+case of MCF10A cells, clones with uniform biosensor expression
+were isolated. To generate ErbB2 overexpressing MCF10A cells,
+lentiviral transduction using a pHAGE-ERBB2 construct (a gift from
+Gordon Mills & Kenneth Scott, Addgene plasmid #116734 (Nget
+al, 2018)) was performed in the presence of 8 μg/ml polybrene
+(TR1003, Sigma) in cells already expressing H2B-miRFP703 and
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 15 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+ERK-KTR-mTurquoise2. Cells were further selected with 5 μg/ml
+puromycin.
+Live imaging of ERK dynamics
+NIH3T3 cells were seeded in 96-well 1.5 glass-bottom plates
+(Cellvis) coated with 10 μg/ml Fibronectin (Huber lab) using
+1.5 × 103 cells/well and incubated for 24 h. MCF10A cells were
+seeded in 24-well 1.5 glass-bottom plates (Cellvis) coated with 5μg/
+ml Fibronectin (Huber lab) at 1× 105 cells/well and incubated for
+48 h. NIH3T3 cells were washed with PBS and incubated in starving
+medium for 4 h in the dark before starting the experiment. MCF10A
+cells were starved for 7 h before starting the experiments. In experi-
+ments involving drug perturbations, cells were incubated for 2 h (or
+1 h in MCF10A experiments) with the inhibitor(s). Imaging was
+performed with an epifluorescence Eclipse Ti inverted fluorescence
+microscope (Nikon) using a Plan Apo air 20× (NA 0.8) objective.
+Nikon Perfect Focus System (PFS) was used to keep cells in focus
+throughout the experiment. Illumination was done with a SPECTRA
+X light engine (Lumencor) with the following filters (Chroma):
+mTurquoise2: 440 nm LED, 470lp, 69308 CFP/YFP/mCherry-ET,
+CFP 458–482; mCitrine: 508 nm LED, ET500/20×, 69308bs, ET535/
+30m; mRuby2 and mCherry: 555 nm LED, ET575/25×, 69008bs,
+59022m, miRFP703: 640 nm LED, ET640/30×, 89100bs Sedat Quad,
+84101m Quad. Images were acquired with an Andor Zyla 4.2 plus
+camera at a 16-bit depth. Image acquisition and optogenetic stimula-
+tion were controlled with the NIS-Element JOBS module. For
+NIH3T3 experiments, ERK-KTR-mRuby2 and H2B-miRFP703 were
+acquired at 1-min interval and 470-nm light inputs were delivered at
+specific frequencies and intensities (see below). MCF10A image
+acquisition was performed at 5-min time resolution. Growth factor
+stimulations were done by manually pipetting EGF and bFGF during
+the experiment. We used mCitrine intensity to quantify the expres-
+sion level of the optogenetic constructs. However, as mCitrine exci-
+tation leads to optoFGFR or optoSOS activation, we acquired one
+frame with the ERK-KTR-mRuby2, the H2B-miRFP703, and the
+mCitrine-tagged optoFGFR or optoSOS only at the end of each
+NIH3T3 experiments. All experiments were carried on at 37°C with
+5% CO2.
+Optogenetic stimulation
+Light stimulations were delivered with a 470 nm LED light source
+that was hardware-triggered by the camera to generate light pulses
+of reproducible duration. Light stimulations of defined intensity and
+duration were programmed to be automatically delivered at specific
+timepoints. To define the dose of light received by the cells, we mea-
+sured the 470 nm light intensity at the focal plane using an optical
+power meter (X-Cite Power Meter, Lumen Dynamics Group) and
+converted this value to a power density as
+Light power density¼ Light intensity/C2 1
+π /C2 FN
+2 /C2 Magnification
+/C16/C17 2
+mW
+cm2
+/C20/C21
+:
+with FN = 18 mm. The obtained value was then multiplied by the
+duration of the pulse to obtain the dose of light received by the
+cells for each light pulse.
+Light doseðDÞ¼ Light power density/C2 Pulse duration
+¼ mW /C2 s
+cm2
+/C20/C21
+¼ mJ
+cm2
+/C20/C21
+:
+For stimulation of the optoFGFR cells, the 470-nm LED intensity
+was limited to a low dose by combining a ZET470/10× filter and a
+ND filter 5% (Chroma). Transient stimulations were done with a
+single pulse, while sustained stimulations were done with single
+pulses delivered every 2 min. For stimulation of the optoSOS cells,
+we used the 470 nm LED with a ET470/24× filter (no ND filter).
+Transient stimulations were done with 5 pulses repeated at 20-s
+intervals, while sustained stimulations were done using 5 pulses
+repeated at 20-s intervals, delivered every 2 min.
+Figures System
+Power
+density
+Pulse
+duration Dose
+Stimulation
+pattern
+1B and C,
+Appendix S1A,
+Appendix S1D
+optoFGFR 180 mW/
+cm2
+1 ×
+100 ms
+18 mJ/
+cm2
+Transient
+Appendix S1B
+and C
+optoFGFR
+(mScarlet)
+> 180
+mW/cm2
+1 ×
+100 ms
+> 18 mJ/
+cm2
+Transient
+2A and B optoFGFR Variable Variable Variable Transient
+2C and EV1A
+and B
+optoFGFR 180 mW/
+cm2
+1 ×
+100 ms
+18 mJ/
+cm2
+Variable
+2D and E, 3C
+and E, EV1K, 4B,
+D–F, EV2C and
+D, EV3A–D, 5E,
+EV4C, 6B–D and
+F–H,E V5A, B,
+D–F
+optoFGFR 180 mW/
+cm2
+1 ×
+100 ms
+18 mJ/
+cm2
+Sustained
+2F optoFGFR Variable 1 ×
+100 ms
+Variable Sustained
+5B optoSOS 6 W/cm2 variable ×
+100 ms
+(20-s
+interval)
+0.6 J/cm2 Transient
+EV4A optoSOS Variable variable ×
+100 ms
+(20-s
+interval)
+Variable Transient
+5C optoSOS 6 W/cm2 5 × 100 ms
+(20-s
+interval)
+0.6 J/cm2 Variable
+5D optoSOS Variable 5 × 100 ms
+(20-s
+interval)
+Variable Sustained
+5E–G,
+EV4B–G,
+6B–D and EV5A
+optoSOS 6 W/cm2 5 × 100 ms
+(20-s
+interval)
+0.6 J/cm2 Sustained
+TIRF imaging of optoFGFR dynamics
+Cells were seeded at a density of 1× 103 per well in 96 well 1.5
+glass bottom plates (Cellvis) coated with 10 μg/ml Fibronectin
+(Huber lab) and incubated for 24 h at 37°C with 5% CO2. Before
+imaging, cells were washed with PBS and incubated in starving
+medium for 4 h in the dark. Imaging was performed with an
+epifluorescence Eclipse Ti inverted fluorescence microscope (Nikon)
+using a CFI Apochromat TIRF 100× oil (NA 1.49). Images were
+acquired with an Andor Zyla 4.2 plus camera at a 16-bit depth. TIRF
+16 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+images were acquired with a 561 nm laser using a ET575/25 filter in
+front of the ZT488/561rpc (Chroma) to prevent nonspecific activa-
+tion of the CRY2. MetaMorph software (Universal Imaging) was
+used for acquisition. TIRF images of the optoFGFR-mScarlet were
+acquired at a 20-s interval. Optogenetic stimulation was done using
+a 470 nm LED (SPECTRA X, Lumencor) (Appendix FigS1B). All
+experiments were carried on at 37°C with 5% CO2.
+Image processing pipeline
+Nuclear segmentation was done in CellProfiler 3.0 (McQuinet al,
+2018) using a threshold-based approach of the H2B channel. In the
+case of MCF10A cells, nuclear segmentation was preceded by pre-
+diction of nuclear probability using a random forest classifier based
+on different pixel features available in Ilastik software (Berget al,
+2019). To measure the ERK-KTR fluorescence in the cytosol, the
+nuclear mask was first expanded by 2 pixels to exclude the blurred
+edges of the nucleus. The new mask was then further expanded by
+4 pixels in a threshold-based manner to obtain a “ring” area corre-
+sponding to the cytoplasmic ERK-KTR. ERK activity was obtained
+by calculating the ratio between the average cytosolic pixel intensity
+and the average nuclear pixel intensity. Single-cell tracking was
+done on nuclear centroids with MATLAB usingμ-track 2.2.1
+(Jaqaman et al, 2008). The final images containing the ERK-KTR-
+mRuby2, H2B-miRFP703, and the optoFGFR-mCitrine (or optoSOS-
+mCitrine) channels were processed using the same CellProfiler set-
+tings as the time-lapse images. Intensity of the mCitrine was
+extracted under the ERK-KTR cytoplasmic mask and used to classify
+cells into low or high expressors in a threshold-based manner. For
+optoFGFR-evoked ERK responses, the threshold was defined empiri-
+cally to separate oscillatory and non-oscillatory ERK responses (low
+<−1.75 (log10 mCitrine intensity) < high). For optoSOS-evoked
+ERK responses, the threshold was defined empirically to separate
+cells with low or high ERK response amplitudes (low< −1.25
+(log10 mCitrine intensity)< high). The same thresholds were kept
+across experiments to compare low and high expressors.
+The optoFGFR-mScarlet dimers/oligomers were segmented using
+the pixel classification module from Ilastik (Berg et al, 2019).
+OptoFGFR dimers, cell background and trafficking vesicles were
+manually annotated on images before and after the light stimula-
+tion. A probability map of the optoFGFR dimers classification was
+exported as TIFF for each frame. We then computed the mean of
+pixel intensities from the binarized mask obtained with Ilastik using
+Fiji (Appendix FigS1C).
+Quantification of ERK activity
+We wrote a set of custom R scripts to automatically calculate the
+ERK-KTR cytoplasmic/nuclear ratio as a proxy for ERK activity for
+each single-cell, link single-cell ERK responses with the corre-
+sponding optoFGFR/optoSOS intensity value and export the corre-
+sponding ERK single-cell trajectories. For NIH3T3 data, outliers in
+ERK single-cell trajectories were removed using a clustering-based
+approach (https://github.com/pertzlab/Outlier_app). Trajectories
+with an ERK activity higher than 0.8 or lower than 0.2 before stimu-
+lation, above 1.6 during the whole experiment or displaying single
+time point spiking values were removed. For MCF10A data, trajecto-
+ries with an ERK activity above 2 or shorter than 90% of the total
+experiment duration were removed. All the R codes used for further
+analysis are available as supplementary information (see Data avail-
+ability section). Hierarchical clustering analysis of single-cell trajec-
+tories (Figs2D, EV3F and G, and EV4B) was done using Time
+Course Inspector (Dobrzyn´ski et al, 2019).
+Modeling
+The model for the EGF and light stimulated ERK cascade is a kinetic
+model, representing the EGF receptor, the inter-cellular proteins
+(RAS, RAF, MEK, ERK) as well as a negative feedback (NFB) from
+ERK to RAF and the inactivation of the EGF receptor in the form of
+endocytosis (Fig3D). We explicitly modeled the ERK-KTR readout
+through nuclear and cytosolic KTR. The initial fraction of cytosolic
+KTR is estimated from the data through the parameterktrinit. The
+KTR readout Y(t) was taken to be the ratio of cytosolic KTR over
+nuclear KTR with additive Gaussian noise.
+YðtÞ¼ KTR
+KTR∗ þ ∈:
+∈∼ Normalð0; σ2Þ:
+where the variance of the measurement noise σ2 was estimated
+from the data.
+Appendix TableS1 shows all modeled species, their notation
+used for the equation, as well as the initial values. We assume that
+in the beginning of the experiment, all species are in the inactive
+form, reflecting the fact that the cells have been starved. The total
+concentrations of all species have been normalized to 1. The model
+equations are shown in Appendix TableS2. The phosphorylation
+events are modeled with Michaelis-Menten kinetics. The NFB is
+modeled through the modeling speciesNFB and its “active” version
+NFB*, which affects the dephosphorylation rate ofRAF linearly. The
+activation, endocytosis, and recycling of the EGF receptor is
+modeled linearly. The model parameters are described in Appendix
+TableS3. For the modeling of the two smaller models (without feed-
+back (Fig EV1E) or without endocytosis (Fig EV1H)), we set the
+corresponding parameters (knfb and r2,3) to zero.
+For the parameter inference, we used a Nested Sampling algo-
+rithm as described in (Mikelson & Khammash,2020). The inference
+was performed on the ETH High-performance Cluster Euler and was
+done using the parallel implementation on 48 cores. The algorithm
+was run for 24 h or until the algorithm stopped because the termina-
+tion criterionΔLFNS (see (Mikelson & Khammash,2020) for details)
+was /C0 ∞. As prior distributions, we chose for all parameters non-
+informative log-uniform priors between 10−5 and 105, except for
+ktrinit for which we chose a uniform prior on the interval [0, 1] and
+for σ for which we chose a log-uniform prior between 10−5 and 1.
+Predictive distributions can be found on Figs3F and G, and EV1F,
+G, I and J.
+RNAi perturbation screen
+We used Ingenuity Pathway Analysis (IPA, Qiagen) to select pro-
+teins directly interacting with ERK, MEK, RAF, RAS and FGFR, that
+are known to be expressed in NIH3T3 cells using a proteomics
+approach (Jensenet al, 2009; Schwanh€ausser et al, 2011) (Appendix
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 17 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+Table S4). We then imported this protein list in STRING (Jensen
+et al, 2009) to generate an interaction network with a minimum
+interaction score of 0.4. The final interactome was manually modi-
+fied to display the protein names to facilitate the readout (Fig4A).
+We targeted these selected proteins with RNA interference, using
+the siPOOL technology (one siPOOL containing a mix of 30 siRNAs
+targeting the same gene (Hannuset al, 2014), sequences available
+in the Data availability section). We arranged the siPOOLs in a 96
+well plate format (in columns 2–5 and 8–11, one well per siPOOL)
+with the non-targeting siRNA (CTRL) and the positive control (mix
+of 5 nM siPOOL against ERK1 and 5 nM siPOOL against ERK2)
+placed alternately in columns 1, 6, 7, and 12. Cells were reverse
+transfected using RNAiMAX (Thermo Fisher, 13778150) following
+the recommended siPOOL transfection protocol (https://
+sitoolsbiotech.com/protocols.php). OptoFGFR-expressing cells were
+transfected with 10 nM of siPOOL in a 96-well 1.5 glass-bottom
+plate (Cellvis) coated with 10μg/ml Fibronectin (Huber Lab) at
+0.3 × 103 cells/well density and incubated for 72 h at 37°C and 5%
+CO2. For the imaging, the 96-well plate was divided into 15 sub-
+experiments, each sub-experiment consisting of a negative control
+well, a positive control well and 4 wells with different siPOOLs. We
+selected 2 FOVs per well and programmed the microscope to run
+the 15 experiments sequentially, acquiring the ERK-KTR-mRuby2
+and the H2B-miRFP703 channels with a 1-min interval, stimulating
+the cells with sustained optoFGFR input (2-min intervals,
+D= 18 mJ/cm2), and acquiring a final frame with ERK-KTR-
+mRuby2, H2B-miRFP703, and optoFGFR-mCitrine (Figs4B and D–F,
+EV2C and D, EV3A–D, 6F–H and EV5B). For the optoSOS system,
+we limited the perturbation screen to targets acting below RAS (Figs
+5Fand G, and EV4D–G). Stimulations were done with sustained
+optoSOS input (5 repeated pulses at 2-min intervals, D = 0.6 J/
+cm2). For EGF experiments, cells were stimulated with 1 ng/ml EGF
+at t = 5 min (FigEV3E–G).
+Real-time qPCR
+Cells were transfected with different concentrations of siPOOL in
+a 24-well plate at 5 × 103 cells/well density and incubated at
+37°C with 5% CO2 for 72 h before RNA isolation. Reverse tran-
+scription was done with the ProtoScript II reverse transcriptase
+kit (Bioconcept, M0368L). Real-time qPCRs were run using the
+MESA Green pPCR MasterMix Plus for SYBR Green assay (Euro-
+genetec, RT-SY2X-03+WOU) on the Rotor-Gen Q device (Qiagen).
+Each sample was tested in triplicate. Expression level of the
+gene of interest was calculated using the 2−ΔΔCt method with
+GAPDH expression level as internal control (Fig EV2A). The fol-
+lowing primers were used for the RT –qPCR (designed with the
+Real-time PCR (TaqMan) Primer and Probes Design Tool from
+GenScript).
+Target Forward sequences Reverse sequences
+ERK1 50-GGTTGTTCCCAAATGCTG
+ACT-30
+50-CAACTTCAATCCTCTTGTGA
+GGG-30
+ERK2 50-TCCGCCATGAGAATGTTATA
+GGC-30
+50-GGTGGTGTTGATAAGCAGATT
+GG-30
+MEK1 50-AAGGTGGGGGAACTGAAGG
+AT-30
+50-CGGATTGCGGGTTTGATC
+TC-30
+Target Forward sequences Reverse sequences
+MEK2 50-GTTACCGGCACTCACTATC
+AA C-30
+50-CCTCCAGCCGCTTCCTT
+TG-30
+GAPDH 50-ACCCAGAAGACTGTGGA
+TGG-30
+50-TCAGCTCAGGGATGAC
+CTTG-30
+Immunoblotting
+Cells were transfected with 10 nM siPOOL in 6 well plates at
+6 × 104 cells/well density and incubated at 37°C with 5% CO2 for
+72 h. Cells were lysed in a buffer containing 10 mM Tris–HCl, 1 mM
+EDTA, and 1% SDS. Protein concentration was determined with the
+BCATM protein assay kit (Thermo Fisher, 23227). Home cast 10%
+SDS gels or Novex 4 –20% 10 well Mini Gels (Thermo Fisher,
+XP04200) were used for SDS–PAGE. Transfer was done using PVDF
+membranes and a Trans-Blot SD Semi-Dry Electrophoretic Transfer
+Cell (Bio-Rad). Imaging was done with an Odyssey Fluorescence
+scanner (Li-COR) (Figs4C and EV2B). The following primary anti-
+bodies were used: anti-total ERK (M7927, Sigma), anti-MEK1
+(ab32091, Abcam), anti-MEK2 (ab32517, Abcam), anti-BRAF (sc-
+5284, Santa Cruz), anti-CRAF (9422S, Cell Signaling Technology),
+anti-SOS1 (610096, Biosciences), anti-GRB2 (PA5-17692, Invi-
+trogen), and anti-RSK2 (sc-9986, Santa Cruz). Anti-GAPDH (sc-
+32233, Santa Cruz) or anti-Actin (A2066, Merck) was used as pro-
+tein of reference. For the secondary antibodies, we used the IRDye
+680LT donkey anti-mouse IgG (926-68022, Li-COR), IRDye 800CW
+goat anti-mouse (926-32210, Li-COR), and IRDye 800CW donkey
+anti-rabbit (926-32213, Li-COR). Protein quantification was done
+with the Image StudioTM Lite software.
+Time series feature extraction
+We used custom scripts to extract features of ERK responses to tran-
+sient optoFGFR input (Figs2B and EV1A and B), sustained GF input
+(Fig EV1C and D), and transient optoSOS input (Fig EV4A). The
+maximum peak (maxPeak) is the absolute value of the highest ERK
+activity in the trajectory. To estimate the full width at half maximum
+(FWHM), we first removed the baseline of the trajectories and
+increased their sampling frequency by a factor 30 with spline inter-
+polation. On the resulting trajectory, we applied a “walk” procedure
+to quantify the FWHM. In this method, a pointer walks left and right
+(i.e., opposite and along the direction of time, respectively) from the
+maximum point of the trajectory. The pointer stops whenever the
+half maximum value is crossed. Both stops define a left and a right
+border, the time difference between these 2-border timepoints gives
+the FWHM. To avoid reporting aberrant FWHM values in cases
+where a peak cannot be clearly defined, we excluded FWHM calcu-
+lation for trajectories where the fold change between the baseline
+(mean activity before stimulation) and the maximum value of the
+trajectory was below a threshold manually defined. ERKpostStim is
+the absolute value of ERK activity extracted 9 min after the last stim-
+ulation pulse to evaluate ERK adaptation. Statistical analysis (Fig
+EV1A and B) was done by comparing all conditions to the 20-min
+interval stimulation patterns with a Wilcoxon test using the FDR
+P-value correction (NS: non-significant, * < 0.01, ** < 0.001,
+***< 0.0001, and ****< 0.00001).
+To evaluate ERK phenotypes under siRNA perturbations in
+response to sustained optoFGFR or optoSOS input (Figs4D, EV3A,
+18 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+5F and EV4F), we extracted the baseline (average ERK activity on
+5 timepoints before stimulation), the maxPeak (maximum ERK
+activity within a 10-min time window following the start of the stim-
+ulation) and the ERKpostStim (ERK activity at a fixed timepoint
+post-stimulation (toptoFGFR = 42 min andtoptoSOS = 40 min)) from 3
+technical replicates. To avoid heterogeneity due to differences in
+optogenetic expression, we focused our analysis on cells with high
+optogenetic expression. The obtained baseline, maxPeak and
+ERKpostStim for each siRNA perturbation were z-scored to the non-
+targeting siRNA (CTRL). Non-significant results were manually set
+to gray. Statistical analysis was done by comparing each perturba-
+tion to the control with a Wilcoxon test using the FDRP-value cor-
+rection (NS: non-significant, * < 0.05, ** < 0.005, *** < 0.0005,
+****< 0.00005).
+For the comparison of both optogenetic systems (Figs 5E and
+EV4C), ERK baseline was obtained by averaging ERK activity on 5
+timepoints before stimulation and ERK maxPeak was extracted
+within a 10-min time window following the start of the stimulation.
+Statistical analysis was done by comparing low and high expressing
+cells within and across optogenetic systems with a Wilcoxon test
+using the FDRP-value correction (NS: non-significant, * < 0.05,
+**< 0.005, ***< 0.0005, ****< 0.00005).
+To quantify the efficiency of the three MAPK inhibitors on the
+reduction of ERK amplitudes under sustained high optoFGFR or
+optoSOS input (Fig6), extraction of the maxPeak was limited by the
+fact that several concentrations led to a full suppression of ERK
+amplitudes. Therefore, we extracted ERK amplitudes at a fixed time
+point following the start of the stimulation (tfixed optoFGFR = 15 min,
+tfixed optoSOS = 10 min). The obtained ERK amplitudes were then
+plotted for each concentration for a fixed number of cells randomly
+selected (Figs6B and F, and EV5D). To calculate the EC50 of each
+drug, we normalized the data by setting the mean ERK responses of
+the non-treated condition to 1 and the mean ERK responses of the
+maximum concentration to 0. EC50 then was calculated by fitting a
+Hill function to the mean ERK activity of each concentration (Figs
+6Cand G, and EV5E, Appendix TablesS5–S7). The heterogeneity of
+ERK amplitude at the fixed time point was evaluated by computing
+the normalized standard deviation of the extracted ERK activity per
+condition (Figs6D and H, and EV5F).
+Identification of ERK dynamics phenotypes using CODEX
+To investigate ERK dynamics phenotypes to siRNA perturbations,
+we first trained a convolutional neural network (CNN) to classify
+input ERK trajectories into any of the siRNA-perturbed conditions
+(FigEV3C). For this purpose, we used a CNN architecture composed
+of 4 1D-convolution layers with 20 kernels of size 5, followed by a
+convolution layer with 20 kernels of size 3 and one layer of 10 ker-
+nels of size 3. The responses are then pooled with global average
+pooling to generate a vector of 10 features that is passed to a (10,63)
+fully connected layer for classification. Each convolutional layer is
+followed by ReLU and batch normalization. The CNN was trained to
+minimize the cross-entropy loss, with L2 weight penalty of 1e−3.
+To identify siRNA treatments that induced a distinctive pheno-
+type, we selected the 10 conditions for which the CNN classification
+precision was the highest on the validation set (Appendix TableS4,
+“CODEX accuracy”). To these 10 conditions, we also added the neg-
+ative control (non-targeting siRNA (CTRL)). We trained a second
+CNN, with the same architecture and training parameters, but lim-
+ited to recognizing the 11 selected treatments to obtain a clear
+embedding of these hits. With this new model, we extracted the fea-
+tures used for the classification of the trajectories (i.e., the input rep-
+resentation after the last convolution layer) and projected them with
+tSNE (Python’ssklearn implementation, perplexity of 100, learning
+rate of 600 and 2,500 iterations) (FigEV3D). We selected 10 proto-
+type curves for each treatment by taking the trajectories for which
+the second CNN’s classification confidence (i.e., the probability for
+the actual class of the inputs) were the highest in the validation set
+(Fig4E, “CODEX”).
+To visualize the ERK dynamics landscape in MCF10A WT cells
+and in MCF10A cells overexpressing ErbB2, we trained one CNN for
+each cell line. These CNNs were trained to recognize the drug treat-
+ment applied on cells, using single-cell ERK traces as input. The
+architecture of the CNNs is the same as described previously. The
+only difference lies in the number of outputs in the final fully
+connected layer, which were set to the number of drug treatments.
+Features used for the classification of the trajectories were then
+projected with tSNE (Figs7D and H, and EV5J and K).
+To identify clusters gathering similar ERK dynamics (Fig7E, F, I
+and J), we clustered trajectories based on their CNN features using a
+partition around medoids (PAM). This iterative algorithm is similar
+to K-means clustering. PAM defines the cluster centers (i.e., the
+medoids) as the observed data points which minimize the median
+distances to all other points in its own cluster. This makes PAM
+more robust to outliers than K-means which uses the average coor-
+dinates of a cluster to define its center. Representative trajectories
+were obtained by taking the medoids of each cluster and their four
+closest neighbors (Fig7G and K). Distances between points were
+defined with the Manhattan distance between the scaled CNN fea-
+tures (zero mean and unit variance). We manually verified that
+these clusters captured an actual trend by visualizing trajectories in
+each cluster with the interactive CODEX application.
+Peak detection and classification of oscillatory trajectories
+The number of ERK activity peaks was calculated with a custom
+algorithm that detects local maxima in time series. First, we applied
+a short median filter to smoothen the data with a window width of
+3 timepoints. Then, we ran a long median filter to estimate the long-
+term bias with a window width of 15 timepoints. This bias was then
+subtracted from the smoothed time series, and we only kept the pos-
+itive values. If no point in this processed trajectory was exceeding a
+manual threshold of 0.075, all variations were considered as noise
+and no peak was extracted from the trajectory. The remaining tra-
+jectories were then rescaled to [0,1]. Finally, peaks were detected as
+points that exceeded a threshold which was manually set to 0.1.
+Peaks that were found before the first stimulation or after the last
+stimulation were filtered out.
+The classification of trajectories into oscillatory and non-
+oscillatory behaviors was performed after the peak detection step.
+Cells were called oscillatory if at least 3 peaks were detected with
+the peak detection procedure (Fig4F). Statistical analysis was
+done using a pairwise t-test comparing each perturbation to the
+control for high and low levels of optoFGFR independently,
+with FDRP-value correction (* < 0.05, **< 0.005, ***< 0.0005,
+****< 0.00005).
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 19 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+Data availability
+The datasets used in this study as well as all R codes used for fur-
+ther analysis are available at https://data.mendeley.com/datasets/
+st36dd7k23/2. Source code for the inference algorithm, model files,
+and results is available at https://github.com/Mijan/LFNS_
+optoFGFR.
+Expanded View for this article is available online.
+Acknowledgements
+This work was supported by SystemsX.ch grant2015/337, the Swiss Cancer
+League grant KLS-4867-08-2019 and the Swiss National Science Foundation
+grant Div3 310030_185376 to Olivier Pertz, by the H2020-MSCA-IF, project No.
+89631 NOSCAR to Agne Frismantiene and by the European Union’s Horizon
+2020 and innovation program under grant agreement No.730964 (TRANSVAC
+project) to Mustafa Khammash. We thank Won Do Heo for sharing the
+optoFGFR plasmid, Kazuhiro Aoki for sharing the pPBbSr2-MCS plasmid and
+David Hacker for sharing the pSB-HPB plasmid. We thank the Microscopy
+Imaging Center of the University of Bern for its support.
+Author contributions
+Coralie Dessauges:Conceptualization; Data curation; Formal analysis; Investi-
+gation; Visualization; Methodology; Writing— original draft; Writing— review &
+editing. Jan Mikelson:Resources; Formal analysis; Investigation.Maciej Dobr-
+zyński: Resources; Software; Formal analysis; Visualization.Marc-Antoine
+Jacques: Resources; Software; Formal analysis.Agne Frismantiene:Data cura-
+tion; Formal analysis; Investigation.Paolo Armando Gagliardi:Data curation;
+Formal analysis; Investigation.Mustafa Khammash:Supervision; Funding
+acquisition. Olivier Pertz:Conceptualization; Supervision; Funding acquisition;
+Writing— original draft; Project administration; Writing— review & editing.
+In addition to theCRediT author contributions listed above, the contribu-
+tions in detail are:
+OP and CD designed the study. CD developed the optogenetic systems and
+imaging pipelines. CD performed the experiment and image analysis on
+NIH3T3. AF and PAG performed the experiments and image analysis on
+MCF10A. MD developed the processing pipelines. CD processed the data. CD,
+M-AJ, AF, and PAG analyzed the data. M-AJ conducted the CNN analysis. JM
+performed mathematical modeling. OP and MK supervised the work. OP, CD,
+and JM wrote the paper.
+Disclosure and competing interests statement
+The authors declare that they have no conflict of interest.
+References
+Albeck JG, Mills GB, Brugge JS (2013) Frequency-modulated pulses of
+ERK activity transmit quantitative proliferation signals.Mol Cell 49:
+249 –261
+Arkun Y, Yasemi M (2018) Dynamics and control of the ERK signaling
+pathway: sensitivity, bistability, and oscillations.PLoS One 13:e 0195513
+Arteaga CL, Engelman JA (2014) ERBB receptors: from oncogene discovery to
+basic science to mechanism-based cancer therapeutics.Cancer Cell 25:
+282 –303
+Avraham R, Yarden Y (2011) Feedback regulation of EGFR signalling:
+decision making by early and delayed loops.Nat Rev Mol Cell Biol12:
+104 –117
+Balasubramanian S, Wurm FM, Hacker DL (2016) Multigene expression in
+stable CHO cell pools generated with the piggyBac transposon system.
+Biotechnol Prog32: 1308 –1317
+Belov AA, Mohammadi M (2012) Grb2, a double-edged sword of receptor
+tyrosine kinase signaling.Sci Signal 5:p e49
+Benedetti L, Barentine AES, Messa M, Wheeler H, Bewersdorf J, De Camilli P
+(2018) Light-activated protein interaction with high spatial subcellular
+confinement. Proc Natl Acad Sci USA115:E 2238 –E2245
+Berg S, Kutra D, Kroeger T, Straehle CN, Kausler BX, Haubold C, Schiegg M,
+Ales J, Beier T, Rudy Met al (2019) ilastik: interactive machine learning for
+(bio)image analysis. Nat Methods 16: 1226 –1232
+Bindels DS, Haarbosch L, van Weeren L, Postma M, Wiese KE, Mastop M,
+Aumonier S, Gotthard G, Royant A, Hink MAet al (2017) mScarlet: a bright
+monomeric red fluorescent protein for cellular imaging.Nat Methods 14:
+53 –56
+Blum Y, Mikelson J, Dobrzyński M, Ryu H, Jacques M-A, Jeon NL, Khammash
+M, Pertz O (2019) Temporal perturbation of ERK dynamics reveals network
+architecture of FGF2/MAPK signaling. Mol Syst Biol15:e 8947
+Bl€uthgen N, Legewie S (2013) Robustness of signal transduction pathways.
+Cell Mol Life Sci70: 2259 –2269
+Cargnello M, Roux PP (2011) Activation and function of the MAPKs and their
+substrates, the MAPK-activated protein kinases.Microbiol Mol Biol Rev75:
+50 –83
+Chardin P, Camonis JH, Gale NW, van Aelst L, Schlessinger J, Wigler MH, Bar-
+Sagi D (1993) Human Sos1: a guanine nucleotide exchange factor for Ras
+that binds to GRB2. Science 260: 1338 –1343
+Cherfils J, Zeghouf M (2013) Regulation of small GTPases by GEFs, GAPs, and
+GDIs. Physiol Rev 93: 269 –309
+Cullen PJ, Lockyer PJ (2002) Integration of calcium and Ras signalling.Nat
+Rev Mol Cell Biol3: 339 –348
+Dobrzyński M, Jacques M-A, Pertz O (2019) Mining single-cell time-series
+datasets with Time Course Inspector.Bioinformatics 36: 1968 –1969
+Douville E, Downward J (1997) EGF induced SOS phosphorylation in PC12
+cells involves P90 RSK-2. Oncogene 15: 373 –383
+Duan L, Hope J, Ong Q, Lou H-Y, Kim N, McCarthy C, Acero V, Lin MZ, Cui B
+(2017) Understanding CRY2 interactions for optical control of intracellular
+signaling. Nat Commun 8: 547
+Erickson KE, Rukhlenko OS, Posner RG, Hlavacek WS, Kholodenko BN (2019)
+New insights into RAS biology reinvigorate interest in mathematical
+modeling of RAS signaling.Semin Cancer Biol54: 162–173
+Ferrell JE, Bhatt RR (1997) Mechanistic studies of the dual phosphorylation of
+mitogen-activated protein kinase.J Biol Chem272: 19008 –19016
+Fritsche-Guenther R, Witzel F, Sieber A, Herr R, Schmidt N, Braun S, Brummer
+T, Sers C, Bl€uthgen N (2011) Strong negative feedback from Erk to Raf
+confers robustness to MAPK signalling.Mol Syst Biol7: 489
+Gerosa L, Chidley C, Fröhlich F, Sanchez G, Lim SK, Muhlich J, Chen J-Y,
+Vallabhaneni S, Baker GJ, Schapiro Det al (2020) Receptor-driven ERK
+pulses reconfigure MAPK signaling and enable persistence of drug-
+adapted BRAF-mutant melanoma cells.Cell Syst 11: 478 –494.e9
+Goedhart J, von Stetten D, Noirclerc-Savoye M, Lelimousin M, Joosen L, Hink
+MA, van Weeren L, Gadella TWJ, Royant A (2012) Structure-guided
+evolution of cyan fluorescent proteins towards a quantum yield of93%.
+Nat Commun 3: 751
+Hannus M, Beitzinger M, Engelmann JC, Weickert M-T, Spang R, Hannus S,
+Meister G (2014) siPools: highly complex but accurately defined siRNA
+pools eliminate off-target effects.Nucleic Acids Res42: 8049 –8061
+Huang C-Y, Tan T-H (2012) DUSPs, to MAP kinases and beyond.Cell Biosci 2:
+24
+20 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+Huotari J, Helenius A (2011) Endosome maturation.EMBO J 30: 3481 –3500
+Jacques MA, Dobrzyński M, Gagliardi PA, Sznitman R, Pertz O (2021) CODEX, a
+neural network approach to explore signaling dynamics landscapes.Mol
+Syst Biol 17:e 10026
+Jaqaman K, Loerke D, Mettlen M, Kuwata H, Grinstein S, Schmid SL, Danuser
+G( 2008) Robust single-particle tracking in live-cell time-lapse sequences.
+Nat Methods 5: 695 –702
+Jensen LJ, Kuhn M, Stark M, Chaffron S, Creevey C, Muller J, Doerks T, Julien P,
+Roth A, Simonovic Met al (2009) STRING 8–a global view on proteins and
+their functional interactions in630 organisms. Nucleic Acids Res37:D 412 –
+D416
+Johnson HE, Goyal Y, Pannucci NL, Sch€upbach T, Shvartsman SY, Toettcher JE
+(2017) The spatiotemporal limits of developmental erk signaling.Dev Cell
+40: 185 –192
+Junttila MR, Li S-P, Westermarck J (2008) Phosphatase-mediated crosstalk
+between MAPK signaling pathways in the regulation of cell survival.FASEB
+J 22: 954 –965
+Kanodia J, Chai D, Vollmer J, Kim J, Raue A, Finn G, Schoeberl B (2014)
+Deciphering the mechanism behind Fibroblast Growth Factor (FGF)
+induced biphasic signal-response profiles.Cell Commun Signal12: 34
+Kholodenko BN (2000) Negative feedback and ultrasensitivity can bring
+about oscillations in the mitogen-activted protein kinase cascades.Eur J
+Biochem 267: 1583 –1588
+Kholodenko BN, Hancock JF, Kolch W (2010) Signalling ballet in space and
+time. Nat Rev Mol Cell Biol11: 414 –426
+Kim N, Kim JM, Lee M, Kim CY, Chang K-Y, Heo WD (2014) Spatiotemporal
+control of fibroblast growth factor receptor signals by blue light.Chem
+Biol 21: 903 –912
+Kiyatkin A, van Alderwerelt van Rosenburgh IK, Klein DE, Lemmon MA (2020)
+Kinetics of receptor tyrosine kinase activation define ERK signaling
+dynamics.Science Signaling 13: eaaz5267
+Kochańczyk M, Kocieniewski P, Kozłowska E, Jaruszewicz-Błońska J, Sparta B,
+Pargett M, Albeck JG, Hlavacek WS, Lipniacki T (2017) Relaxation oscillations
+and hierarchy of feedbacks in MAPK signaling.Sci Rep7: 38244
+Koseska A, Bastiaens PIH (2020) Processing temporal growth factor patterns
+by an epidermal growth factor receptor network dynamically established
+in space.Annu Rev Cell Dev Biol36: 359 –383
+Kupzig S, Walker SA, Cullen PJ (2005) The frequencies of calcium oscillations
+are optimized for efficient calcium-mediated activation of Ras and the
+ERK/MAPK cascade.Proc Natl Acad Sci USA102: 7577 –7582
+Lake D, Corrêa SAL, M€uller J (2016) Negative feedback regulation of the ERK1/
+2 MAPK pathway. Cell Mol Life Sci73: 4397 –4413
+Lam AJ, St-Pierre F, Gong Y, Marshall JD, Cranfill PJ, Baird MA, McKeown MR,
+Wiedenmann J, Davidson MW, Schnitzer MJet al (2012) Improving FRET
+dynamic range with bright green and red fluorescent proteins.Nat
+Methods 9: 1005 –1012
+Langlois WJ, Sasaoka T, Saltiel AR, Olefsky JM (1995) Negative feedback
+regulation and desensitization of insulin- and epidermal growth factor-
+stimulated p21ras activation. J Biol Chem270: 25320 –25323
+Lavoie H, Gagnon J, Therrien M (2020) ERK signalling: a master regulator of
+cell behaviour, life and fate.Nat Rev Mol Cell Biol21: 607 –632
+Lemmon MA, Freed DM, Schlessinger J, Kiyatkin A (2016) The dark side of
+cell signaling: positive roles for negative regulators. Cell 164: 1172 –
+1184
+McQuin C, Goodman A, Chernyshev V, Kamentsky L, Cimini BA, Karhohs
+KW, Doan M, Ding L, Rafelski SM, Thirstrup D et al (2018) Cell profiler
+3.0: next-generation image processing for biology. PLoS Biol 16:
+e2005970
+Mikelson J, Khammash M (2020) Likelihood-free nested sampling for
+parameter inference of biochemical reaction networks.PLoS Comput Biol
+16:e 1008264
+Nakakuki T, Birtwistle MR, Saeki Y, Yumoto N, Ide K, Nagashima T, Brusch L,
+Ogunnaike BA, Okada-Hatakeyama M, Kholodenko BN (2010) Ligand-
+specific c-Fos expression emerges from the spatiotemporal control of ErbB
+network dynamics.Cell 141: 884 –896
+Ng PK-S, Li J, Jeong KJ, Shao S, Chen H, Tsang YH, Sengupta S, Wang Z,
+Bhavana VH, Tran Ret al (2018) Systematic functional annotation of
+somatic mutations in cancer.Cancer Cell 33: 450 –462.e10
+Ornitz DM, Itoh N (2015) The Fibroblast Growth Factor signaling pathway.
+Wiley Interdiscip Rev Dev Biol4: 215 –266
+Orton RJ, Sturm OE, Vyshemirsky V, Calder M, Gilbert DR, Kolch W (2005)
+Computational modelling of the receptor-tyrosine-kinase-activated MAPK
+pathway.Biochem J 392: 249 –261
+Patterson KI, Brummer T, O’Brien PM, Daly RJ (2009) Dual-specificity
+phosphatases: critical regulators with diverse cellular targets.Biochem J
+418: 475–489
+Purvis JE, Lahav G (2013) Encoding and decoding cellular information
+through signaling dynamics.Cell 152: 945–956
+Rauen KA (2013) The RASopathies.Annu Rev Genomics Hum Genet14: 355 –
+369
+Regot S, Hughey JJ, Bajar BT, Carrasco S, Covert MW (2014) High-sensitivity
+measurements of multiple kinase activities in live single cells.Cell 157:
+1724 –1734
+Ryu H, Chung M, Dobrzyński M, Fey D, Blum Y, Lee SS, Peter M, Kholodenko
+BN, Jeon NL, Pertz O (2015) Frequency modulation of ERK activation
+dynamics rewires cell fate.Mol Syst Biol11: 838
+Saha M, Carriere A, Cheerathodi M, Zhang X, Lavoie G, Rush J, Roux PP, Ballif
+BA (2012) RSK phosphorylates SOS1 creating 14-3-3-docking sites and
+negatively regulating MAPK activation.Biochem J 447: 159 –166
+Samatar AA, Poulikakos PI (2014) Targeting RAS-ERK signalling in cancer:
+promises and challenges.Nat Rev Drug Discov13: 928 –942
+Santos SDM, Verveer PJ, Bastiaens PIH (2007) Growth factor-induced MAPK
+network topology shapes Erk response determining PC-12 cell fate. Nat
+Cell Biol 9: 324 –330
+Saraf A, Oberg EA, Strack S (2010) Molecular determinants for PP2A substrate
+specificity: charged residues mediate dephosphorylation of tyrosine
+hydroxylase by the PP2A/B’ regulatory subunit. Biochemistry 49: 986 –995
+Schlessinger J (2000) Cell signaling by receptor tyrosine kinases.Cell 103:
+211 –225
+Schmick M, Kraemer A, Bastiaens PIH (2015) Ras moves to stay in place.
+Trends Cell Biol25: 190 –197
+Schwanh€ausser B, Busse D, Li N, Dittmar G, Schuchhardt J, Wolf J, Chen W,
+Selbach M (2011) Global quantification of mammalian gene expression
+control. Nature 473: 337 –342
+Shankaran H, Ippolito DL, Chrisler WB, Resat H, Bollinger N, Opresko LK,
+Wiley HS (2009) Rapid and sustained nuclear-cytoplasmic ERK oscillations
+induced by epidermal growth factor.Mol Syst Biol5: 332
+Shcherbakova DM, Baloban M, Emelyanov AV, Brenowitz M, Guo P, Verkhusha
+VV (2016) Bright monomeric near-infrared fluorescent proteins as tags
+and biosensors for multiscale imaging.Nat Commun 7: 12405
+Smith JA, Poteet-Smith CE, Xu Y, Errington TM, Hecht SM, Lannigan DA (2005)
+Identification of the first specific inhibitor of p90 ribosomal S6 kinase
+(RSK) reveals an unexpected role for RSK in cancer cell proliferation.
+Cancer Res65: 1027 –1034
+Sturm OE, Orton R, Grindlay J, Birtwistle M, Vyshemirsky V, Gilbert D, Calder
+M, Pitt A, Kholodenko B, Kolch W (2010) The mammalian MAPK/ERK
+ª 2022 The Authors Molecular Systems Biology 18:e 10670 | 2022 21 of 22
+Coralie Dessauges et al Molecular Systems Biology
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.
+
+pathway exhibits properties of a negative feedback amplifier.Sci Signal 3:
+ra90
+Sugimoto T, Stewart S, Guan KL (1997) The calcium/calmodulin-dependent
+protein phosphatase calcineurin is the major Elk-1 phosphatase. J Biol
+Chem 272: 29415 –29418
+Yarden Y, Pines G (2012) The ERBB network: at last, cancer therapy meets
+systems biology. Nat Rev Cancer12: 553 –563
+Yeung K, Janosch P, McFerran B, Rose DW, Mischak H, Sedivy JM, Kolch W
+(2000) Mechanism of suppression of the Raf/MEK/extracellular signal-
+regulated kinase pathway by the raf kinase inhibitor protein.Mol Cell Biol
+20: 3079 –3085
+Yoo S-M, Cho SJ, Cho Y-Y (2015) Molecular targeting of erks/rsk2 signaling
+axis in cancer prevention.J Cancer Prev20: 165 –171
+Yusa K, Zhou L, Li MA, Bradley A, Craig NL (2011) A hyperactive piggyBac
+transposase for mammalian applications.Proc Natl Acad Sci USA108:
+1531 –1536
+License: This is an open access article under the
+terms of the Creative Commons Attribution License,
+which permits use, distribution and reproduction in
+any medium, provided the original work is properly
+cited.
+22 of 22 Molecular Systems Biology 18:e 10670 | 2022 ª 2022 The Authors
+Molecular Systems Biology Coralie Dessauges et al
+Downloaded from https://www.embopress.org on March 6, 2025 from IP 130.92.255.36.

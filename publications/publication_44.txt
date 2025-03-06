@@ -1,0 +1,533 @@
+Communicative & Integrative Biology
+ISSN: (Print) 1942-0889 (Online) Journal homepage: www.tandfonline.com/journals/kcib20
+Filopodia
+Nanodevices that sense nanotopographic ECM cues to orient neurite outgrowth
+Olivier Pertz
+To cite this article: Olivier Pertz (2011) Filopodia, Communicative & Integrative Biology, 4:4,
+436-439, DOI: 10.4161/cib.15325
+To link to this article:  https://doi.org/10.4161/cib.15325
+Copyright © 2011 Landes Bioscience
+Published online: 01 Jul 2011.
+Submit your article to this journal 
+Article views: 560
+View related articles 
+Full Terms & Conditions of access and use can be found at
+https://www.tandfonline.com/action/journalInformation?journalCode=kcib20
+Communicative & Integrative Biology 4:4, 436-439; July/August 2011; ©2011 Landes Bioscience
+436 C ommunicative & Integrative Biology  V olume 4 Issue 4
+Addendum to: Jang KJ, Kim MS, Feltrin D, Jeon 
+NL, Suh KY, Pertz O. Two distinct filopodia popu-
+lations at the growth cone allow to sense nano-
+topographical extracellular matrix cues to guide 
+neurite outgrowth. PLoS One 2010; 5:15966. 
+PMID: 21209862; DOI: 10.1371/journal.pone
+Key words:  neurite outgrowth, filopo -
+dium, actin dynamics, microfabrication, 
+live cell imaging
+Abbreviations:  ECM, extracellular 
+matrix
+Submitted: 03/02/11
+Accepted: 03/02/11
+DOI: 10.4161/cib.4.2.15325
+*Correspondence to: Olivier Pertz;  
+Email: Olivier.pertz@unibas.ch
+T
+he processes of neuronal outgrowth 
+and guidance have typically been 
+studied in classic 2D cell culture systems 
+that do not recapitulate topographical 
+cues present in the in vivo extracellular 
+matrix (ECM). Using microfabrication 
+techniques, we mimicked this ECM 
+topography by presenting laminin on a 
+line pattern with nanometric size fea-
+tures. We found that this not only allows 
+neurite orientation but also robust out-
+growth. This depends on dynamic sto -
+chastic sensing of the line pattern by 
+growth cone filopodia which allows 
+them to probe their surrounding space by 
+measuring the extent of filopodial adhe-
+sion surface with the ECM. Filopodium 
+alignment with an ECM line allows to 
+the formation of a robust F-actin net-
+work that leads to its stabilization, allow-
+ing steady neurite extension along the 
+line pattern. Because this model system 
+allows exquisitely stereotypic filopodial 
+dynamics, this opens up the possibil-
+ity to easily study the spatio-temporal 
+dynamics of the signaling networks that 
+regulate this prototypic growth cone 
+navigation system.
+Proper functioning of the nervous system 
+requires functional connections between 
+neurons. This requires undifferentiated 
+neurons to extend neurites that will sub-
+sequently differentiate in axons and den -
+drites to wire the adult brain. Most of 
+what we know about the biology of neurite 
+outgrowth has been performed in classic 
+2-dimensional culture dishes, which do 
+not recapitulate the in vivo occurring, 
+3-dimensional environments in which the 
+extracellular matrix assembles structures 
+Filopodia
+Nanodevices that sense nanotopographic ECM cues to orient neurite outgrowth
+Olivier Pertz
+Institute for Biochemistry and Genetics; Dept. Biomedicine; University of Basel; Basel, Switzerland
+with specific geometries and size features 
+on the order of tens of nanometers to 
+micrometers. By example, laminin can 
+build fibrillar tracks on the surface of 
+Schwann cells which are important for 
+neurite outgrowth and neuronal regen-
+eration after a lesion. 1 Such ECM tracks 
+display submicrometer size features. It is 
+therefore reasonable to assume that pre-
+cise topology of the ECM is important 
+for the cell’s ability to interact with and 
+perceive its environment.2 However, the 
+importance of the ECM organization and 
+topography at the micro- and nanome-
+ter scale is still poorly understood. With 
+recent advances in microfabrication tech-
+niques,3,4 this now becomes accessible, and 
+multiple reports document that exten -
+sion of neuronal processes from neurons 
+are highly dependent on the geometrical 
+topology of the ECM.
+We and others show that when ECM 
+cues that induce neurite outgrowth are 
+presented on a number of different scaf-
+folds such as linear ridge groove patterns, 5 
+aligned nanofibers, 6 or porous structures, 7 
+all having size features on the order of 
+hundreds of nanometers, neuronal pro-
+cesses can read these patterns and align 
+along them. This is remarkable since, in 
+these experiments, the size features of 
+these structures are smaller than the neu-
+ronal process and the growth cone itself, 
+excluding the possibility that orientation 
+of outgrowth is the result of sterically con-
+fining the neurite to a specific geometrical 
+domain. This suggests that the neurite 
+is able to sense and read such nanoto-
+pographic cues, most likely through its 
+growth cone. Another surprising result 
+is that such nanopatterned 
+ s
+ubstrates not 
+www.landesbioscience.com C ommunicative & Integrative Biology  437
+ArtICLe Addendum
+actin flow exceeds actin assembly at the 
+filopodium tip.11 At a global cell level, the 
+consequence of filopodium stabilization is 
+that it allows for steady neurite outgrowth, 
+rather than the neurite protrusion-retrac-
+tion cycles observed on the classic 2D sub-
+strate. This explains how directionality is 
+coupled to robust neuronal outgrowth. 
+Schematics of the dynamic filopodium 
+behavior underlying the sensing process is 
+pictured in Figure 1.
+An important clue that the stochas -
+tic search and capture mechanism we 
+describe is relevant, is that in vivo imag-
+ing of neuronal guidance, 12 reveals similar 
+streamlined growth cones with lateral filo -
+podial scanning as we observe on the line 
+substrate (Fig. 2 ). This clearly contrasts 
+with the flat, veil-like growth cones that 
+are typically observed in 2D substrates. 
+Our data clearly suggests that the key fea-
+ture of stochastic search and capture per -
+formed by filopodia is that it serves as an 
+“alignment sensor” for the line substrate. 
+This is possible because the filopodium 
+substrates. Sensing of the line substrate 
+occurs through a dynamic, stochastic 
+search and capture mechanism performed 
+by the growth cone filopodia. The filopo-
+dia explore their environment through a 
+highly stereotypic behavior involving pro-
+trusion-retraction cycles that are coupled 
+with lateral scanning motions, with a typi-
+cal filopodium lifecycle on the order of 5 
+to 10 min. Because of their size features 
+(roughly 2–3 μm length and 200–300 
+nm width), filopodia will display different 
+extents of interaction with the line sub-
+strate (width: 350 nm) depending if they 
+are aligned or not with a pattern ridge. We 
+observe that when a filopodium aligns with 
+the line substrate, this leads to its stabiliza-
+tion for hours in the direction of the pat -
+tern. This occurs through the formation 
+of a dense F-actin network in the aligned 
+filopodium that might enable a very effi-
+cient cytoskeletal-substrate coupling. In 
+non-aligned filopodia, less efficient cyto-
+skeletal-substrate coupling might lead to 
+filopodia retraction when the retrograde 
+only orient neurite outgrowth but also lead 
+to increase in neuronal process length,5,6 
+robust axonal specification7 or differentia -
+tion of stem cells to the neuronal lineage.8-10 
+The ability of the cell to polarize (e.g., to 
+directionally extend neurites) seems there-
+fore to be intimately linked with robust 
+neurite extension, and this might in turn 
+allow regulation of cell fate.
+In our recently published paper, 5 we 
+identify a potential mechanism by which 
+neuronal growth cones are able to inter-
+prete such topographic cues to orient neu-
+rite outgrowth in a model ridge/groove 
+nanopatterned ECM laminin substrate 
+(refered to as the line substrate through-
+out this article). We also provide insight 
+into how directionality is linked to robust 
+neuronal process extension. We find that 
+the line substrate leads to a switch in cell 
+morphology, with a drastic decrease in the 
+number and length of filopodia, and the 
+formation of streamlined growth cones 
+that contrast with the flat veil-like growth 
+cones typically observed on classic 2D 
+Figure 1. mo del of neurite guidance in response to nanotopographical cues. (A) Plain substrate. un restricted access to eCm  leads to a large amount of 
+long filopodia, none of which can be stabilized by a robust F‐actin cytoskeleton. 
+th
+is is accompanied with a high frequency of neurite collapse events. 
+(B) Line substrate, unaligned growth cone. Filopodia scan the line substrate through lateral scanning and protrusion/retraction
+events. Only few filopodia align on the lines and thus almost all filopodia sense only discrete adhesion points to the 
+eCm. (
+C) Line substrate, aligned 
+growth cone. 
+th
+rough stochastic sensing, multiple filopodia have aligned on the line substrate and have assembled an F‐actin rich cytoskeleton that 
+stabilizes them. On the distal part of the growth cone, non‐aligned, unstable filopodia continue to operate, suggesting a crosstalk
+between both filopodia populations. 
+th
+is stabilizes the growth cone leading to steady neurite outgrowth. Figure reproduced with permission from 5.
+
+438 C ommunicative & Integrative Biology  V olume 4 Issue 4
+cone guidance. Importantly, in a 2D 
+environment, in which every filopodium 
+engages identical amount of ECM, its 
+stabilization cannot occur. This suggests 
+that on the line substrate, the growth cone 
+senses the local asymmetry of the ECM 
+by globally integrating signals emanating 
+from aligned and non-aligned filopodia 
+which display different extents of adhe-
+sion with the substrate. These signals 
+must then be integrated to locally switch 
+on the robust F-actin network that allows 
+filopodium stabilization and, ultimately, 
+robust directional neurite outgrowth. To 
+understand this system, we must therefore 
+identify the players that allow directional 
+sensing by integrins and the logic of this 
+signal integration machinery. At the same 
+time, we must also gain insight in the sig-
+naling events that allow the formation of 
+the robust actin network that stabilizes 
+aligned filopodia. An important feature of 
+our experimental model system is that its 
+filopodia morphodynamics are exquisitely 
+robust and stereotypic compared to the 
+2D environment. Furthermore, because 
+the streamlined growth cone displays a 
+as an isotropic environment by growth 
+cone filopodia. In this case, orientation of 
+neurite outgrowth on the permissive sub-
+strate might be the result of mechanically 
+sensing the rigidity of the environment by 
+evaluating the differential traction forces 
+exerted by integrins on the permissive 
+or non-permissive substrate, rather than 
+local changes in adhesive contact as on a 
+nanometer-sized line substrate. Not sur-
+prisingly, this has been shown to require 
+myosin activity.13 In contrast, we find 
+that myosin and Rho kinase activities are 
+dispensible for neurite orientation on the 
+nanometer-sized line substrate, suggesting 
+that integrin molecules might not work as 
+mechanosensors, but maybe simply evalu-
+ate differences in the extent of adhesive 
+contact. These lines of evidence point to 
+the existence of highly diverse modes of 
+ECM sensing that depend on the geom-
+etry and size features of the ECM that the 
+growth cone encounters.
+It will be important to clarify the 
+modality by which filopodia relay signals 
+to the cytoskeleton to orient neurite out-
+growth in this specific mode of growth 
+has similar size features than the line sub -
+strate and might therefore sense different 
+extent of adhesion depending on if it is 
+aligned or not with the asymmetric line 
+nanostructure. Given the large literature 
+about filopodium cytoskeletal dynamics 
+and growth cone guidance, an important 
+question that comes to mind is why this 
+striking behavior was not observed before. 
+The simple answer is that, on classic 2D 
+substrates, the isotropic nature of the ECM 
+surrounding filopodia does not allow 
+them to sense local differences in adhesive 
+contact. Because each filopodia engage an 
+identical amount of ECM, this does not 
+allow to trigger the signal amplification 
+mechanisms that allow filopodium sta-
+bilization and steady neurite outgrowth. 
+This also applies to stripe assays that are 
+commonly used as an experimental para-
+digm for directional neurite outgrowth 
+in the neurobiology community. Such 
+stripe assays typically consist of alternat-
+ing zones of non-permissive (e.g., poly-
+D-ornithine) and permissive substrates 
+(e.g., laminin) with size features of tens 
+of microns,13 that are locally experienced 
+Figure 2. Comparison of growth cone dynamics on the line substrate and in a developing retina. (A) Growth cone dynamics of n1e- 115 neuron-like 
+cells on the line substrate. 
+n1e-
+115 were transfected with GFP-lifeact, an F-actin marker. 
+re
+d and blue lines indicates the lateral movement of non-
+aligned filopodia. 
+no
+te the high F-actin content in aligned filopodia. 
+ti
+mescale is in minutes:seconds. Part reproduced with permission from reference 
+5. (B) Growth cone dynamics of Xenopus retinal axons imaged live in the developping retina. 
+no
+te streamlined appearance of growth cone and left-
+right lateral movement of lateral filopodia (indicated by arrows). Part reproduced with permission from. 12 Scale bars = 10 mm.
+
+www.landesbioscience.com C ommunicative & Integrative Biology  439
+Acknowledgements
+This work was supported by grants from 
+the Swiss National Science Foundation 
+and Human Frontiers Science Program to 
+Olivier Pertz.
+References
+1. T siper MV, Yurchenco PD. Laminin assembles into 
+separate basement membrane and fibrillar matrices 
+in Schwann cells. J Cell Sci 2002; 115:1005-15.
+2.
+ I
+ngber DE. Mechanical control of tissue morpho -
+genesis during embryological development. Int J Dev 
+Biol 2006; 50:255-66.
+3.
+ K
+hademhosseini A, Langer R, Borenstein J, Vacanti 
+JP. Microscale technologies for tissue engineering and 
+biology. Proc Natl Acad Sci USA 2006; 103:2480-7.
+4. S
+niadecki NJ, Desai RA, Ruiz SA, Chen CS. 
+Nanotechnology for cell-substrate interactions. Ann 
+Biomed Eng 2006; 34:59-74.
+5.
+ J
+ang KJ, Kim MS, Feltrin D, Jeon NL, Suh KY, Pertz 
+O. Two distinct filopodia populations at the growth 
+cone allow to sense nanotopographical extracellular 
+matrix cues to guide neurite outgrowth. PLoS One 
+2010 ; 5:15966.
+6.
+ P
+atel S, Kurpinski K, Quigley R, Gao H, Hsiao BS, 
+Poo MM, et al. Bioactive nanofibers: synergistic 
+effects of nanotopography and chemical signaling on 
+cell guidance. Nano Lett 2007; 7:2122-8.
+7.
+ C
+ho WK, Kang K, Kang G, Jang MJ, Nam Y, 
+Choi IS. Pitch-dependent acceleration of neurite out -
+growth on nanostructured anodized aluminum oxide 
+substrates. Angew Chem Int Ed Engl 2010.
+8.
+ L
+ee MR, Kwon KW, Jung H, Kim HN, Suh KY, Kim 
+K, et al. Direct differentiation of human embryonic 
+stem cells into selective neurons on nanoscale ridge/
+groove pattern arrays. Biomaterials 2010; 31:4360-6.
+9.
+ X
+ie J, Willerth SM, Li X, Macewan MR, Rader A, 
+Sakiyama-Elbert SE, et al. The differentiation of 
+embryonic stem cells seeded on electrospun nanofibers 
+into neural lineages. Biomaterials 2009; 30:354-62.
+10.
+ Y
+im EK, Pang SW, Leong KW. Synthetic nanostruc -
+tures inducing differentiation of human mesenchy -
+mal stem cells into neuronal lineage. Exp Cell Res 
+2007; 313:1820-9.
+11.
+ M
+allavarapu A, Mitchison T. Regulated actin cytoskel-
+eton assembly at filopodium tips controls their exten -
+sion and retraction. J Cell Biol 1999; 146:1097-106.
+12.
+ H
+arris WA, Holt CE, Bonhoeffer F. Retinal axons 
+with and without their somata, growing to and 
+arborizing in the tectum of Xenopus embryos: 
+a time-lapse video study of single fibres in vivo. 
+Development 1987; 101:123-33.
+13.
+ T
+urney SG, Bridgman PC. Laminin stimulates and 
+guides axonal outgrowth via growth cone myosin II 
+activity. Nat Neurosci 2005; 8:717-9.
+14.
+ P
+ertz OC, Wang Y, Yang F, Wang W, Gay LJ, 
+Gristenko MA, et al. Spatial mapping of the neurite 
+and soma proteomes reveals a functional Cdc42/Rac 
+regulatory network. Proc Natl Acad Sci USA 2008; 
+105:1931-6.
+15.
+ P
+ertz O. Spatio-temporal Rho GTPase signaling—
+where are we now? J Cell Sci 2010; 123:1841-50.
+16.
+ S
+abouri-Ghomi M, Wu Y, Hahn K, Danuser G. 
+Visualizing and quantifying adhesive signals. Curr 
+Opin Cell Biol 2008; 20:541-50.
+17.
+ M
+ammoto A, Ingber DE. Cytoskeletal control of 
+growth and cell fate switching. Curr Opin Cell Biol 
+2009; 21:864-70.
+18.
+ V
+ogel V, Sheetz MP. Cell fate regulation by coupling 
+mechanical cycles to biochemical signaling pathways. 
+Curr Opin Cell Biol 2009; 21:38-46.
+19.
+ M
+arkus A, Patel TD, Snider WD. Neurotrophic fac -
+tors and axonal growth. Curr Opin Neurobiol 2002; 
+12:523-31.
+the classically studied extrinsic cues such as 
+specific soluble growth factors and ECM 
+components.17,18 Such cell intrinsic sig -
+nals are produced by mechanical cycles of 
+extension and retraction that allow cells to 
+sense their environment, initiate intracellu-
+lar signaling events that can ultimately be 
+integrated to produce long term responses 
+such as transcriptional regulation and cell 
+fate specification.18 Obviously, the different 
+morphodynamic cell behaviors observed 
+on the 2D (neurite growth/retraction 
+cycles) and the nanopattern (steady neurite 
+outgrowth) immediatly suggest that there 
+will be production of distinct cell-intrinsic, 
+mechano-chemical signals in both modes 
+of neurite outgrowth. How could such 
+morphodynamic behaviors be integrated 
+in a global cellular response? One pos-
+sibility is that during neurite retraction, 
+in which the growth cone de-adheres, the 
+integrin signaling that normally occurs in 
+the adherent growth cone during neurite 
+protrusion is simply turned off because 
+of a lack of integrin engagement with the 
+ECM. There are numerous examples of 
+retrograde signaling mechanisms between 
+the growth cone and the nucleus,19 and one 
+might easily imagine that such processes 
+are depending on integrin signaling in the 
+growth cone (e.g., that the growth cone is 
+in its adhesive state). Continuous integrin 
+engagement during processive neurite out-
+growth on the nanopattern might therefore 
+ensure constant retrograde signaling from 
+the growth cone to the nucleus, and allow 
+robust cell specification or other cellular 
+responses such as cell survival and quies-
+cence. At a different spatial and temporal 
+scale, the unstable versus stable filopodia 
+behaviors on the 2D versus the nanopat-
+tern could also lead to production of simi-
+lar cell-intrinsic mechano-chemical signals.
+To conclude, we believe that the 
+nanopattern technology presented here, 
+combined with a variety of contemporary 
+cell biology techniques such as live cell 
+imaging and large scale perturbation stud-
+ies has the potential to provide an integrated 
+view of the spatio-temporal signaling net-
+works that regulate a prototypical growth 
+cone guidance process. Additionally, this 
+model system also opens up the possibility 
+to study how these spatio-temporal signal-
+ing networks are globally integrated by the 
+cell to regulate cell fate.
+reduced number of filopodia, this allows to 
+easily observe each phases of their cycles of 
+growth/retraction, lateral scanning motion 
+and stabilization (Fig. 2A and B ). This is 
+not the case on the 2D substrate in which 
+the high filopodia density leads them to lat-
+erally bump into each other, restricts their 
+movement, and thus precludes the observa-
+tion of these events (Fig. 2C). The robust-
+ness of this system should therefore allow to 
+unambigously quantify each dynamic stage 
+of the filopodium life cycle such as growth 
+and retraction, left-right lateral movement 
+and stabilization through assembly of a 
+robust F-actin network. This should allow 
+to decipher the signaling networks that 
+regulate each filopodium behavior using 
+genetic perturbations and visualization 
+of spatio-temporal signaling events using 
+fluorescent biosensors. Since the neurite 
+proteome of our N1E-115 neuronal-like 
+cell system has been elucidated,14 we have 
+a catalogue of components as a template 
+that can be tested by RNA interference 
+screens. A complementary technique will 
+be to visualize the fine dynamics of signal-
+ing proteins such as Rho GTPases, which 
+are essential regulators of the cytoskeleton, 
+and have previously shown to occur on 
+spatial and temporal scales of micrometer 
+and tens of seconds.15 We therefore envision 
+that dynamic activation patterns of Rho 
+GTPase signaling will correlate with dif-
+ferent morphogenetic phases of filopodium 
+movement. Finally, computer vision tech-
+niques are also available to merge dynam -
+ics datasets from different experiments in 
+one universal model.16 This could then be 
+ultimately used for modeling the whole 
+process.
+Beyond its capacity to allow efficient 
+directional neurite outgrowth, the line 
+substrate mentioned in this study has 
+also been shown to induce robust differ-
+entiation of human embryonic stem cells 
+to the neuronal lineage without the use 
+of differentiation-inducing agents such as 
+cocktails of growth factors.8 Furthermore, 
+differentiation is not efficient on classic 2D 
+substrates that use the same ECM protein, 
+suggesting that ECM nanotopology plays 
+an important role. How can this occur? 
+The important parameters here might 
+be cell intrinsic, mechanical cues, which 
+have been recently proposed to be equally 
+important in stem cell fate regulation than 

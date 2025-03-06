@@ -1,0 +1,1923 @@
+ARTICLE
+Received 30 Oct 2013| Accepted 9 May 2014| Published 6 Jun 2014
+Phosphatidylinositol 5-phosphate regulates
+invasion through binding and activation of Tiam1
+Julien Viaud1,F r e´de´ric Lagarrigue1, Damien Ramel1, Sophie Allart2, Gae¨tan Chicanne1, Laurie Ceccato1,
+Delphine Courilleau1, Jean-Marie Xuereb1, Olivier Pertz3, Bernard Payrastre1,4 &F r e´de´rique Gaits-Iacovoni1
+PtdIns5P is a lipid messenger acting as a stress-response mediator in the nucleus, and known
+to maintain cell activation through trafﬁc alterations upon bacterial infection. Here, we show
+that PtdIns5P regulates actin dynamics and invasion via recruitment and activation of the
+exchange factor Tiam1 and Rac1. Restricted Rac1 activation results from the binding of Tiam1
+DH-PH domains to PtdIns5P. Using an assay that mimics Rac1 membrane anchoring by using
+Rac1-His and liposomes containing Ni2 þ -NTA modiﬁed lipids, we demonstrate that intrinsic
+Tiam1 DH-PH activity increases when Rac1 is anchored in a PtdIns5P-enriched environment.
+This pathway appears to be general since it is valid in different pathophysiological models:
+receptor tyrosine kinase activation, bacterial phosphatase IpgD expression and the invasive
+NPM-ALK(þ ) lymphomas. The discovery that PtdIns5P could be a keystone of GTPases and
+cytoskeleton spatiotemporal regulation opens important research avenues towards unravel-
+ling new strategies counteracting cell invasion.
+DOI: 10.1038/ncomms5080
+1 INSERM, UMR1048, Universite´ T oulouse III, Institut des Maladies Me´taboliques et Cardiovasculaires, 31432 T oulouse, France.2 INSERM, UMR1043, Plateau
+T echnique D’imagerie Cellulaire, Centre de Physiopathologie de T oulouse Purpan, 31024 T oulouse, France.3 Institute of Biochemistry and Genetics, University
+of Basel, Basel 4058, Switzerland.4 CHU de T oulouse, Laboratoire d’He´matologie, 31059 T oulouse, France. Correspondence and requests for materials should
+be addressed to F.G.-I. (email: frederique.gaits@inserm.fr).
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 1
+& 2014 Macmillan Publishers Limited. All rights reserved.
+P
+hosphoinositides (PIs) are spatiotemporal organizers
+of signal transduction, rearrangement of the actin cyto-
+skeleton, intracellular vesicle trafﬁcking and survival 1,2.
+They have speciﬁc localizations within cells that account for
+recruitment of effectors displaying PI-binding domains such as
+PH, FYVE, FERM, PHOX and more recently PHD to regulate
+signalling3. Deregulation and mutations in PI-metabolizing
+enzymes take part in the development of human pathologies
+including genetic diseases and cancer 4,5. Phosphatidylinositol
+5-phosphate (PtdIns5P) metabolism and functions remain poorly
+understood. It is present at low levels in many cell types, and
+several physiological and pathophysiological challenges alter
+PtdIns5P levels, indicating that it is a signalling molecule, in
+addition to having housekeeping functions6,7.
+A large body of studies over the years has focused on nuclear
+PtdIns5P, identifying it as a stress-induced second messenger
+that regulates apoptosis by binding the PHD domain of the
+chromatin-regulator ING2 (refs 8,9). Cell fractionation
+demonstrated that while the majority of bulk PtdIns5P is
+present in the plasma membrane, it is also enriched in
+intracellular membrane compartments including endosomes,
+smooth endoplasmic reticulum and the trans-Golgi
+network10,11. Our group pioneered studies demonstrating that
+PtdIns5P was produced upon bacterial infection of HeLa cells by
+the human pathogens Shigella ﬂexneri and Salmonella
+typhimurium12,13. S. ﬂexneri’s virulence factor, IpgD, is a potent
+4-phosphatase that converts PtdIns(4,5)P 2 into PtdIns5P
+and contributes to dramatic F-actin remodelling, facilitating
+bacterial entry and inducing alteration of trafﬁcking through
+PtdIns5P accumulation on early endosomes to maintain host
+cell activation 10,13,14. Additional studies in different models
+conﬁrmed that PtdIns5P impacts actin reorganization. PtdIns5P
+produced by the PI 5-kinase PIKfyve was implicated in insulin-
+induced F-actin breakdown, thereby regulating trafﬁcking of
+vesicles containing the GLUT4 glucose transporter from
+intracellular membranes pools to the plasma membrane15–17.I n
+line with these observations, recent studies have identiﬁed
+PtdIns5P as the central molecule regulating cell migration in
+response to FGF-1 in ﬁbroblasts and in border cells during
+Drosophila embryogenesis, where its production is locally
+regulated at the endosomal level by the interplay of PIKfyve
+and the PI 3-phosphatase MTMR3 (ref. 15). However, the precise
+molecular mechanisms linking PtdIns5P to actin dynamics and
+migration are still unknown.
+Our previous work on anaplastic lymphomas expressing the
+tyrosine kinase oncogene NPM-ALK demonstrated that the
+oncogene activated PIKfyve to produce PtdIns5P. Moreover,
+invasiveness of NPM-ALK(þ ) cells was regulated not only by
+PIKfyve but also by the Rac1 GTPase 18–21. Knowing the
+importance of Rho GTPases as molecular switches regulating a
+wide array of cellular processes, such as cytoskeleton remodelling,
+membrane dynamics and migration in response to PIs, they
+represent ideal candidates to link PtdIns5P to the aforementioned
+cellular responses22,23.
+With those observations in mind, we sought to investigate
+whether PtdIns5P could activate Rho GTPases signalling and
+address the functionality of such activation using various models.
+Three complementary models were used to evaluate the general
+nature of the mechanism. We ﬁrst studied FGF-1 stimulation of
+RPE-1 cells; second, we used the bacterial phosphatase IpgD to
+produce PtdIns5P in MEFs; and third, we analysed NPM-
+ALK( þ) anaplastic lymphomas. We ﬁnd that PtdIns5P elevation
+is responsible for Rac1 activation in all three models and identify
+the guanine nucleotide exchange factor (GEF) Tiam1 (T-cell
+lymphoma invasion and metastasis 1) as being activated by
+PtdIns5P and required for Rac1 activation. We demonstrate that
+the C-terminal regulatory PH domain (PHc) of Tiam1 binds
+speciﬁcally to PtdIns5P, leading to recruitment of active Tiam1/
+Rac1 to early endosomes and dorsal rufﬂes. This is mandatory for
+robust change in actin and membrane dynamics upon PtdIns5P
+elevation. Interestingly, elevated levels of PtdIns5P induce
+invasion in pathophysiological contexts, being even sufﬁcient to
+trigger invasive capabilities in cells that are otherwise not able to
+migrate in 3D. These observations broaden the understanding of
+PtdIns5P by suggesting that it can integrate several upstream
+signals to coordinate trafﬁcking as well as actin and membrane
+dynamics to regulate invasion.
+Results
+PtdIns5P induces Rac1 and Cdc42 activation. To elucidate how
+PtdIns5P could affect actin dynamics and migration, we ﬁrst
+focused on the Rho GTPases, which are good candidates to
+integrate PI signalling and cytoskeletal dynamics. To allow ﬁne-
+tuning of PtdIns5P production, we developed inducible Tet-Off
+MEF cell lines stably expressing Myc-EGFP-IpgD (called MEF-
+IpgD), a bacterial phosphatase that transforms PtdIns(4,5)P 2
+into PtdIns5P (ref. 13). As controls, inducible MEF cell lines
+expressing the Myc-EGFP-Inp54p phosphatase (PtdIns(4,5)P2
+5-phosphatase that produces PtdIns4P) and Myc-EGFP-IpgD
+C438S (a phosphatase-dead mutant called MEF-IpgD-CS) were
+also generated. MEF-IpgD were characterized by the production
+of high levels of PtdIns5P and a concomitant drop in
+PtdIns(4,5)P2 (Fig. 1a and Supplementary Fig. 1a), reproducing
+what is observed with S. ﬂexneri-infected or IpgD-expressing
+HeLa cells10,13,14. Mass assay24, together with confocal imaging
+using the GST-FYVE (Hrs) probe that binds to PtdIns3P,
+demonstrated that IpgD expression did not affect signiﬁcantly
+PtdIns3P levels nor distribution (Supplementary Fig. 1b,c).
+Activation of known PtdIns5P response pathways, Akt,
+GSK3 and FHKR, validated the cell lines for further studies
+(Supplementary Fig. 1d)10,14. As expected, no change in PtdIns5P
+and PtdIns(4,5)P2 levels nor Akt activation were observed with
+the MEF-IpgD-CS cell line (Fig. 1a and Supplementary Fig. 1a,e).
+Expression of IpgD resulted in a strong activation of both Rac1
+and Cdc42, while RhoA remained stable (Fig. 1b). As a control,
+co-expression of IpgD and PIP4KII/C25, which drastically reduced
+the amount of PtdIn5P (Fig. 1a), brought Rac1- and Cdc42-GTP
+back to control levels (Fig. 1b). Inp54p and IpgD-CS expressions
+resulted in no change in Rac1 or Cdc42 activation (Fig. 1b,c).
+Importantly, study of the F-actin conﬁrmed that IpgD expression
+induced disappearance of actin stress ﬁbres, while cortical actin
+was not affected. Treatment with the Rac inhibitor NSC23766
+(ref. 25) restored F-actin polymerization, demonstrating that Rac
+was responsible for PtdIns5P-dependent actin remodelling
+(Supplementary Fig. 2a). Interestingly, activation of Cdc42 by
+PtdIns5P was not involved in F-actin dynamics inside the cell but
+was instrumental to cortical actin assembly since no pericellular
+actin staining could be seen upon treatment with secramine A26,a
+potent inhibitor of Cdc42 (Supplementary Fig. 2a). This
+observation suggested that Rac1 and Cdc42 might regulate
+different actin pools downstream of PtdIns5P.
+Time-course experiments performed on MEFs treated with
+short-chain PtdInsPs demonstrated that PtdIns5P was respon-
+sible for GTPase activation and F-actin breakdown (Fig. 1d and
+Supplementary Fig. 2b,c). We had previously identiﬁed class I PI
+3-kinases sensitive to LY294002 inhibition as targets activated by
+PtdIns5P14. GTPases pull-downs performed in MEF-IpgD or
+control MEFs challenged with synthetic PtdIns5P in the presence
+of LY294002 demonstrated that PI 3-kinases were not responsible
+for Rac1 activation in this context (Supplementary Fig. 3a,b).
+Since Rac1 had the strongest impact on actin dynamics, we
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+2 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+25.0
+a
+*
+*
+MEFs
+20.0
+15.0
+10.0
+5.0
+–
+–
+–
+–
++
+–
+–
+–
++
++
+–
+–
+–
+–
++
+–
+–
+–
+–
++
+IpgD
+PIP4KIIβ
+Inp54p
+IpgD-CS PtdIns5P
+(fold increase)
+Rac-GTP
+Rac
+Cdc42-GTP
+Cdc42
+RhoA-GTP
+RhoA
+PIP4KIIβ
+PIP4KII
+β
++IpgD
+IpgD 72
+72
+25
+25
+25
+25
+25
+25
+kDa
+Control ControlIpgD IpgD Inp54p
+Inp54p
+IpgD
+ControlIpgDIpgD-CS
+25
+25
+25
+25
+72
+55
+10 RPE-1 cells
+8
+6
+4
+2
+0
+Mut WTGFP-3xPHD
+FGF-1
+Rac-GTP
+Rac
+GFP
+1.4
+1.2
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+–+ –+ kDa
+25
+25
+72
+55
+kDa
+Rac-GTP
+Rac
+Cdc42-GTP
+Cdc42
+Rac-GTP
+Rac
+Cdc42-GTP
+Cdc42
+IpgD
+12 RPE-1 cells stimulated
+with 200 ng ml–1 FGF-1
+10
+8
+6
+PtdIns5P
+(fold increase)4
+2
+01 0 2 0 3 0
+Time (min)
+40 50 60
+01 0
+PtdIns5P PtdIns4P
+20 0 10 20 min
+25
+25
+25
+25
+kDa
+*
+*
+* *
+Rac-GTP
+(fold increase)
+*
+*
+Fold increase
+PtdIns3P / PtdInsPs
+Fold increase
+PtdIns(3,5)P2 /
+PtdInsP2
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+05
+Time (min)
+15
+RPE-1 cells stimulated
+with 200 ng ml–1 FGF-1
+RPE-1 cells stimulated
+with 200 ng ml–1 FGF-1
+05
+Time (min)
+15
+*
+b
+c
+d
+f
+e
+g h
+Figure 1 | PtdIns5P activates Rac1 and Cdc42.(a) MEF T et-Off IpgD, Inp54p, or IpgD-CS-expressing cells were transfected or not with EGFP-PIP4KII/C25.
+After serum starvation, PtdIns5P levels were quantiﬁed by mass assay. Data are shown as mean±s.e.m. (n ¼3–6; *Po0.05 using non-parametric
+t-test) (b) Lysates from serum-starved MEFs were subjected to pull-down experiments to monitor the levels of active Rac1, Cdc42 and RhoA. IpgD and
+Inp54p were detected using an anti-myc antibody and PIP4KII/C25using an anti-GFP antibody. (c) Lysates from serum-starved MEFs were subjected to
+pull-down experiments to monitor levels of active Rac1 and Cdc42 as in (b). (d) Lysates from serum-starved MEFs, treated with the indicated
+exogenous-PtdInsP (15mM) for the indicated times, were subjected to pull-down experiments as in (b). Data are representative of three to ﬁve
+experiments. (e) RPE-1 cells were serum-starved overnight and stimulated with 200 ng ml/C0 1 FGF-1 for the indicated time and PtdIns5P levels were
+quantiﬁed by mass assay. Data are shown as mean±s.e.m. (n ¼ 4; *Po0.05 using non-parametrict-test). (f) Rac1 activation was monitored by
+pull-down from serum-starved RPE-1 cells transduced by GFP-3xPHD wild type (WT) or GFP-3xPHD PI binding mutant (Mut)-expressing lentiviruses
+and treated or not with 200 ng ml/C0 1 FGF-1 for 15 min. Data are shown as mean±s.e.m. (n ¼3; *Po0.05 using one samplet-test for the deviation
+from mean value of 1 in the control group). (g) PtdIns3P levels (percentage of total PtdInsPs) in RPE-1 cells stimulated with 200 ng ml/C0 1 FGF-1.
+Data are shown as mean±s.e.m. (n ¼ 3; *Po0.05 using non-parametrict-test). (h) PtdIns(3,5)P2 levels (percentage of total PtdInsP2s) in RPE-1 cells
+stimulated with 200 ng ml/C0 1 FGF-1. Data are shown as mean±s.e.m. (n ¼ 3; *Po0.05 using non-parametrict-test).
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 3
+& 2014 Macmillan Publishers Limited. All rights reserved.
+focused on the study of this GTPase downstream of PtdIns5P in
+physiological and pathological models: RPE-1 cells stimulated by
+FGF-1 and anaplastic lymphomas expressing the NPM-ALK
+oncogene.
+It was recently shown that FGF-1 stimulated 2D migration of
+BJ foreskin ﬁbroblasts by producing PtdIns5P through a
+signalling cascade that involved the class III PI 3-kinase Vps34,
+PIKfyve and the MTMR3 myotubularin 15,27. We therefore
+checked whether PtdIns5P was a feature of FGF-1 stimulation
+by measuring PtdIns5P production in RPE-1 cells. When
+challenged with FGF-1, an important transitory increase in
+PtdIns5P peaking at 15 min of stimulation was observed (Fig. 1e).
+FGF-1 also induced activation of Rac1 in a PtdIns5P-dependent
+way since sequestration of this PI with the trapping probe GFP-
+3xPHD8,10 dropped Rac1-GTP back to control levels (Fig. 1f). To
+go further into deciphering the metabolic pathway of PdIns5P
+upon FGF-1 stimulation, RPE-1 cells were metabolically labelled
+with [32P]orthophosphate before stimulation. A signiﬁcant drop
+in PtdIns3P amounts was observed after 5–15 min of treatment,
+while levels of PtdIns(3,5)P2 and other PIs were hardly affected
+(Fig. 1g,h). This suggested that PtdIns3P could be a precursor of
+PtdIns5P synthesis through transformation into PtdIns(3,5)P2 by
+PIKfyve and subsequent dephosphorylation by a 3-Phosphatase
+as demonstrated by Oppeltet al.15 in BJ ﬁbroblasts. The lack of a
+concomitant decrease in PtdIns(3,5)P2 could reﬂect a rapid and
+transient metabolization difﬁcult to assess with such an elusive PI.
+However, these observations do not rule out the possibility that
+PtdIns5P could come from the action of PIKfyve on PtdIns.
+The impact of PtdIns5P on Rho GTPases was also analysed in a
+pathological context by studying anaplastic large-cell lymphomas
+expressing the NPM-ALK tyrosine kinase oncogene. We
+previously demonstrated that NPM-ALK(þ) cells had elevated
+levels of PtdIns5P, which could be attributed to activation of
+PIKfyve by the oncogene in NPM-ALK-expressing NIH-3T3
+ﬁbroblasts21,28. We used the Cost and Karpas 299 patient-derived
+cell lines and showed by treatment with the YM201636 inhibitor
+and shRNA depletion that PIKfyve was responsible for the
+increase in PtdIns5P in these cells (Fig. 2a,b). Treatment with
+the YM201636 inhibitor, PIKfyve shRNA, or expression of
+GFP-3xPHD, clearly demonstrated that PtdIns5P production
+was also responsible for Rac1 activation in NPM-ALK(þ) cells
+(Fig. 2c–e). Together, these data demonstrate that PtdIns5P-
+induced activation of Rho GTPases and the subsequent
+modulation of actin dynamics are prevalent mechanisms
+observed in different models.
+The RacGEF Tiam1 is activated upon PtdIns5P elevation .
+Rho GTPases cycle between an inactive GDP-bound and an
+active GTP-bound state with the assistance of GEFs, which are
+required for proper local GTPase activation29. The Rac inhibitor
+NSC23766 blocks interaction between Rac1 and a subset of its
+GEFs, namely Tiam1 and Trio 25. Tiam1 is speciﬁc for Rac1
+in vivo and has been involved in Rac1-induced cytoskeleton
+remodelling, motility and invasion in many different cell
+types30,31. Interestingly, pull-down experiments with the
+nucleotide free mutant GST-Rac1 G15A, which display high
+afﬁnity for active GEFs, demonstrated that Tiam1 was activated
+upon PtdIns5P elevation in FGF-1-treated RPE-1 cells and
+MEF-IpgD, whereas an unrelated GEF for RhoA (p115 RhoGEF)
+was not. Accordingly, pre-treatment of cells with NSC23766
+abolished Tiam1 association to RacG15A (Fig. 3a,b). Subcellular
+fractionation of control MEFs, MEF-IpgD or MEF-Inp54p
+conﬁrmed that the relocation of Tiam1 to the heavy membrane
+fraction that marked its activation was only observed upon IpgD
+expression (Supplementary Fig. 4a). The GST-Cdc42G15A mutant
+did not pull down any active Tiam1 (not shown). Rac1 G15A
+pull-downs also demonstrated that Tiam1 was activated in
+NPM-ALK( þ ) anaplastic lymphomas (Fig. 3c). The NPM-ALK
+inhibitor WHI-154 prevented Tiam1 from binding to Rac1G15A
+in both Karpas 299 and Cost cells, indicating that the oncogene
+was responsible for Tiam1 activation (Fig. 3c). Tiam1 was
+previously identiﬁed as part of the proteomic signature of
+NPM-ALK, reinforcing the idea of its involvement in NPM-ALK-
+mediated tumorigenicity32. Immunoprecipitations conﬁrmed that
+Tiam1 was a binding partner of the oncogene (Supplementary
+Fig. 4b), and demonstrated that it was a tyrosine phosphorylation
+target of NPM-ALK (Supplementary Fig. 4c).
+Moreover, ectopic expression of IpgD in Tiam1/C0 //C0 primary
+MEFs (Fig. 3d) in which the GEF had been knocked out33 as
+well as exogenous PtdIns5P stimulation of WT MEFs pre-treated
+with NSC23766 failed to activate Rac1, showing that Tiam1 is
+essential for Rac1 activation in response to PtdIns5P elevation
+(Supplementary Fig. 4d,e). Importantly, PtdIns5P-elicited F-actin
+breakdown was totally abolished in Tiam1 /C0 //C0 MEFs, which
+conserved strong actin ﬁbres (Fig. 3e,g). Re-expression of
+Tiam1 in Tiam1 /C0 //C0 MEFs restored PtdIns5P-dependent
+F-actin disappearance, conﬁrming that Tiam1 was responsible
+for this effect (Fig. 3f,g).
+The known NPM-ALK-dependent actin disassembly that was
+previously shown to be regulated by Rac18, was also blocked when
+NPM-ALK was expressed in Tiam1/C0 //C0 MEFs, as shown by the
+persistence of actin ﬁbres (Supplementary Fig. 4f). Of note, NPM-
+ALK-expressing Tiam1/C0 //C0 MEF exhibited ﬁlopodia, suggesting
+that activation of Cdc42 downstream of the oncogene was
+maintained in the absence of Tiam1 (Supplementary Fig. 4f, white
+arrows). In agreement with the lack of NPM-ALK-dependent
+actin ﬁbres remodelling in Tiam1/C0 //C0 cells, the invasion elicited
+by expression of the oncogene was blocked in Tiam1/C0 //C0 MEF
+(Supplementary Fig. 4g). Together, these data point to PtdIns5P
+acting on the Tiam1/Rac1 module as a general way of eliciting
+actin remodelling in various cell systems.
+Tiam1 PHc preferentially binds to PtdIns5P. Tiam1 has the
+particularity of bearing two PH domains. While the N-terminal
+domain (PHn) seems to be critical for protein interactions and
+Tiam1 localization, the PHc domain, contained in the catalytic
+DH-PH region, is responsible for Tiam1 exchange activity34,35
+(Fig. 4a). It had been previously reported that the PHc domain
+displayed afﬁnity for PtdIns3P (ref. 36). We used recombinant
+GST-DH-PHc to probe PIP strips and PIP arrays (serial dilution
+of various PIPs) to check whether it had afﬁnity for other PIs.
+These experiments not only conﬁrmed that Tiam1 PHc bound to
+PtdIns3P but also revealed that it displayed a stronger afﬁnity for
+PtdIns5P (Fig. 4b,c), whereas Tiam1 PHn preferentially bound to
+PtdIns(4,5)P2 and PtdIns(3,4,5)P3 (Fig. 4d and ref. 37). Lysines
+from both variable loops L1 (/C251//C252) and L2 (/C252//C253) of the Tiam1
+PHc have been shown to be required for PtdIns3P binding36
+(Fig. 4a). We repeated the experiments using mutants where the
+lysines were substituted by glutamines and demonstrated that
+those residues were important for binding to both PtdIns3P and
+PtdIns5P (Fig. 4c). Sedimentation assays with liposomes
+containing a mix of PC:PE and either PtdIns3P, PtdIns4P or
+PtdIns5P conﬁrmed that GST-DH-PHc-Tiam1 only bound
+liposomes bearing either PC:PE:PtdIns3P or PC:PE:PtdIns5P
+(Fig. 4e). The stronger binding to PtdIns5P-containing
+liposomes conﬁrmed that Tiam1 PHc preferentially interacted
+with PtdIns5P.
+PtdIns5P stimulates Tiam1 DH-PHc activityin vitro. We next
+analysed the effect of PtdIns5P on the intrinsic Tiam1 GEF
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+4 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+activity by performingin vitro nucleotide exchange assays using
+recombinant Rac1 loaded with bodipy-FL-GDP. It has been
+previously reported that the DH-PHc of Tiam1 displayed a much
+better activity on prenylated Rac-GDP bound to liposomes versus
+non prenylated soluble Rac-GDP 36,38. These observations
+suggested that anchoring of Rac-GDP to membranes was
+important for proper presentation of the GTPase to the DH-PH
+domain. Rearrangement of the DH-PH structure following
+association with PtdInsP would then stimulate GDP to GTP
+exchange.
+We then used the ﬁndings of a recent study by Maleckaet al.39
+to adapt a system that mimics the prenylation-dependent
+membrane anchoring of GTPases by creating liposomes
+containing PC, PE and lipids bearing a modiﬁed Ni 2 þ-NTA
+head group (DGS-NTA(Ni)) capable of binding to a recombinant
+C-terminal hexahistidine-tagged version of Rac1 (Fig. 5a).
+a
+sh contsh1 sh2
+250
+kDa
+55
+Actin
+PIKfyve
+Karpas
+35
+sh contsh1 sh2
+250
+kDa
+55
+Cost
+35
+120
+100
+80
+60 *
+PtdIns5P (% of control)
+PtdIns5P (% of control)
+40
+20
+0
+120
+100
+80
+60
+40
+20
+0
+Control
+YM201636
+sh cont
+sh1 sh2
+b
+*
+* 120
+100
+80
+60
+PtdIns5P (% of control)
+PtdIns5P (% of control)
+40
+20
+0
+120
+100
+80
+60
+40
+20
+0
+Control
+YM201636
+sh cont
+sh1 sh2
+*
+*
+*
+CostKarpas
+YM201636
+Rac-GTP
+Rac
+Rac-GTP
+(fold increase)
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+MutGFP-3xPHD
+Rac-GTP
+Rac
+WT Mut WT
+25
+25
+kDa
+–+– +
+25
+25
+kDa
+CostKarpas
+kDa
+25
+25
+315
+55
+35
+Rac-GTP
+Rac
+PIKfyve
+Actin
+sh controlsh1 sh2 sh controlsh1 sh2
+c d
+e
+* *
+* *
+*
+* *
+*
+1.00
+0.75
+0.50Rac-GTP (fold increase)
+0.25
+0.00
+sh control
+sh1 sh2
+sh control
+sh1 sh2
+Rac-GTP
+(fold increase)
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+Figure 2 | PtdIns5P is essential for Rac activation in NPM-ALK(þ) cells. (a) PtdIns5P mass levels in serum-starved Karpas 299 treated overnight or
+not with 800 nM of the PIKfyve inhibitor YM201636 or transduced with lentiviruses expressing shRNA directed against PIKfyve (sh1 and sh2). Data
+are shown as mean±s.e.m. (n ¼ 3 (Karpas 299 cells);n ¼ 3 (Cost cells); *Po0.05 using one samplet-test for the deviation from mean value of 100 in
+the control group). (b) Same experiment as in (a) with Cost cells. (c) Rac1 activation was monitored by pull-down from serum-starved Karpas 299
+and Cost cells treated overnight or not with 800 nM YM201636. (d) Rac1 activation was monitored by pull-down from serum-starved Karpas 299 and
+Cost cells stably expressing shRNA directed against PIKfyve (sh1 and sh2). Data are shown as mean±s.e.m. (n ¼3; *Po0.05 using one samplet-test
+for the deviation from mean value of 1 in the control group). (e) Rac1 activation was monitored by pull-down from serum-starved Karpas 299 and Cost
+cells transduced by GFP-3xPHD wild type (WT) or GFP-3xPHD PI binding mutant (Mut)-expressing lentiviruses. Data are shown as mean±s.e.m.
+(n ¼3; *Po0.05 using one samplet-test for the deviation from mean value of 1 in the control group).
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 5
+& 2014 Macmillan Publishers Limited. All rights reserved.
+Sedimentation assays conﬁrmed approximately stoichiometric
+binding of Rac1-His to the Ni2 þ-NTA lipid exposed on the
+liposomes’ outer surface39 (Fig. 5b). We then performed exchange
+assays using liposomes bearing different PtdInsP species and
+Rac1-His loaded with bodipy FL-GDP in the presence of soluble
+Tiam1 DH-PHc. Maximum exchange activity was achieved by
+adding EDTA to the reaction, while spontaneous Rac1 exchange
+was assessed in the presence of buffer only. In the presence of
+PtdIns5P-bearing liposomes, we observed a strong Tiam1
+exchange activity, while PtdIns4P had no effect (Fig. 5c,d). In
+this assay, we also observed a weak increase in Tiam1 exchange
+activity in the presence of PtdIns3P-bearing liposomes,
+demonstrating that both PtdIns3P and PtdIns5P could
+potentiate Tiam1 activity in vitro (Fig. 5c,d). Our observations
+demonstrate the potency of this assay that mimics membrane and
+proteins functional interactions. These results suggest that Tiam1
+RPE-1 cellsab MEFs
+WB: Tiam1WB: P115
+ControlIpgD IpgD–FGF1
+NSC
+250
+250
+130
+100
+130
+100
+Lysate
+RacG15A
+Lysate
+RacG15A
+kDa
+–
++
+–– – +
++
++
+c
+250
+WHI-154
+250
+72
+100
+72
+kDa
+RacG15ALysate
+–+
+Karpas Cost
+–+
+WB:
+Tiam1
+p-NPM-
+ALK
+NPM-
+ALK
+WT
+– PtdIns5P – PtdIns5P
+Tiam1–/–
+MEFs
+WTkDa
+250
+55
+35
+Actin
+Actin
+Tiam1
+Tiam1–/–
+Tiam1–/–
+– PtdIns5P
+ActinHA-Tiam1
+% Cells with stress fibres
+100
+80
+60
+40
+20
+0
+WT Tiam1 –/– Tiam1–/–
+**
+PtdIns5P
+HA-Tiam1
+–
+–
++
+–
+–
+–
++
+–
+–
++
++
+–
+de
+fg
+Figure 3 | PtdIns5P elevation activates Tiam1, which is required for actin dynamics.(a) GEF trapping assays using GST-Rac1G15A agarose beads
+were performed on serum-starved RPE-1 cells stimulated or not with 200 ng ml/C0 1 FGF-1 for 15 min and treated or not with NSC23766. Tiam1 and p115
+RhoGEF binding were detected by western blotting. (b) Same experiment as in (a) performed on serum-starved MEF cells. (c) Same experiments as in
+(a) carried out on serum-starved Karpas 299 and Cost cells treated overnight or not with 15mM WHI-154. Lysates were probed with anti-Tiam1,
+anti-P-NPM-ALK(Y664) or anti-ALK (Sp8) antibodies. (d) Lysates from primary WT and Tiam1/C0 //C0 MEF cells were subjected to western blot analysis
+with anti-Tiam1. (e) Serum-starved primary WT and Tiam1/C0 //C0 MEFs were treated or not with exogenous PtdIns5P (15mM) for 30 min. Cells were then
+ﬁxed and the actin cytoskeleton was visualized by staining with AlexaFluor 488-phalloidin. Scale bar, 10mm. (f) Serum-starved primary WT and Tiam1/C0 //C0
+MEFs transfected with HA-Tiam1 were treated with exogenous PtdIns5P (15mM) for 30 min. Cells were then ﬁxed and the actin cytoskeleton was visualized
+by staining with AlexaFluor 488-phalloidin and Tiam1 with and HA antibody. Scale bar, 10mm. (g) Quantitative analysis of the experiment described in
+(e) and (f). Data are shown as mean±s.e.m. (n ¼ 3; *Po0.05 using one samplet-test for the deviation from mean value of 100 in the control group and
+using non-parametric one way ANOVA (Kruskal–Wallis) with Dunn’s post test).
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+6 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+recruitment by PtdIns5P is sufﬁcient to increase intrinsic Tiam1
+exchange activity.
+PtdIns5P, Tiam1 and Rac1 localize on endosomes within
+rufﬂes. We then investigated the localization of PtdIns5P, Tiam1
+and Rac1, knowing that PtdIns5P produced by IpgD expression
+in HeLa and BHK cells rapidly accumulates on early
+endosomes10. We focused on MEF-IpgD as a model because
+they are easy to image and IpgD-elicited increase in PtdIns5P
+recapitulated Tiam1/Rac1 activation and actin dynamics observed
+in other models (this and other studies10,13,14,21,28). Cells were
+seeded on ﬁbronectin micropatterns, which mimics the restrained
+adhesion geometry cells encounter within tissues, permitting
+enhanced monitoring of better membrane dynamics 40. Cells
+plated onto crossbow micropatterns adopted a polarized shape
+CD44
+Ankyrin
+a
+b
+c
+d
+e
+Ras
+PDZ DH PHcRBD
+Rac
+PHnTiam1
+Tiam1-PHc-WT
+Tiam1-PHc-L1/L2
+1,279 L1 L2
+GST-Tiam1
+Lysophosphatidic acid (LPA) Sphingosine-1-P (S1P)
+1,317
+Ptdlns(3,4)P2
+Ptdlns3P
+Ptdlns(3,5)P2
+PS
+GST
+FYVE (Hrs) PH (Osh2) 2XPHD (ING2)
+DH-PHc
+Tiam1GST
+DH-PHc
+Tiam1-WT
+DH-PHc
+Tiam1-L2
+DH-PHc
+Tiam1-L1L2
+Ptdlns4P
+Ptdlns5P
+Ptdlns3P
+Ptdlns4P
+Ptdlns5P
+Ptdlns3P
+Ptdlns4P
+Ptdlns5P
+Ptdlns4P
+Ptdlns5P
+PHn
+Tiam1-1WT
+Ptdlns3P
+Ptdlns(3,4)P2 Ptdlns(3,4,5)P3
+Ptdlns(4,5)P2Ptdlns(3,5)P2
+pmol/spot
+pmol/spot
+100
+75
+50
+25
+12.5
+100
+75
+50
+25
+12.5
+100
+75
+50
+25
+12.5
+100
+75
+50
+25
+12.5
+100
+75
+50
+25
+12.5
+100
+75
+50
+25
+12.5
+100
+75
+50
+25
+12.5
+Ptdlns(3,5)P2
+Ptdlns(4,5)P2
+Ptdlns(3,4,5)P3
+Phosphatidic acid (PA)
+Phosphatidylserine (PS)
+Blue blank
+Pellet
+Sup
+Pellet
+Sup
+120
+100
+80
+60
+40
+20
+Binding of
+DH-PHc Tiam1
+0
+Lipid bufferPC:PEPC:PE:PI3PPC:PE:PI4PPC:PE:PI5P
+Lipid buffer
+PC:PE
+PC:PE:PI3PPC:PE:PI4PPC:PE:PI5P
+Lysophosphocholine (LPC)
+Ptdlns
+Ptdlns3P
+Ptdlns4P
+Ptdlns5P
+Phosphatidylethanolamine (PE)
+Phosphatidylcholine (PC)
+DH-PHc-WTGST
+CC
+*
+*
+Figure 4 | The C-terminal PH domain of Tiam1 binds to PtdIns5P.(a) Structure of the Tiam1 protein. PHn, N-terminal pleckstrin homology domain;
+CC, coiled-coil region; RBD, Ras-binding domain; PDZ, postsynaptic density-96/Discs large/Zonaoccludens-1; DH, Dbl homology domain (the catalytic
+domain); PHc, C-terminal pleckstrin homology domain. Amino-acid sequence of Tiam1 PHc-WT and mutants are presented below. Lysine to glutamine
+mutations in PH*L2 and PH*L1/L2 are in red. (b) GST or GST-Tiam1-DH-PHc (0.5mgm l/C0 1) was used to probe PIP array. Weak binding to
+phosphatidylserine was sometimes observed but was not reproduced in all experiments. Data are representative of more than ﬁve experiments done
+with commercial or homemade membranes. (c) A total of 0.5mgm l/C0 1 of each GST-tagged protein was used to probe nitrocellulose spotted with serial
+dilutions of PtdIns3P, PtdIns4P and PtdIns5P, as described under ‘Methods’. Lipid–protein overlays are representative of ﬁve independent experiments.
+(d) A total of 0.5mgm l/C0 1 of GST-tagged PHn of Tiam1 was used to probe nitrocellulose spotted with 100 pmol of each PI as described under ‘Methods’.
+The result is representative of three independent experiments. (e) GST or Tiam1 GST-DH-PHc was incubated with liposomes containing the indicated PIs.
+Liposomes were recovered by centrifugation and protein content was analysed by SDS-PAGE and silver staining. Bottom panel: quantitative analysis of
+liposome binding experiments. Results are presented as mean±s.e.m. (n ¼3; *Po0.05 using one samplet-test for the deviation from mean value of 100 in
+the PI5P group and using non-parametrict-test).
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 7
+& 2014 Macmillan Publishers Limited. All rights reserved.
+with a lamellipodium at the front (Supplementary Fig. 5).
+MEF-IpgD exhibited a strong dorsal and peripheral rufﬂing
+activity and extended large lamellipodia to probe the matrix
+surrounding the micropattern (Supplementary Fig. 5a, left panel).
+Time-lapse experiments demonstrated that rufﬂing was polarized
+(Supplementary Fig. 5a and Supplementary Movies 1 and 2).
+Plating on circular micropatterns led to a loss of polarization, but
+MEF-IpgD retained a strong rufﬂing activity around the cell body
+(Supplementary Fig. 5a, right panel, and Supplementary Movies 3
+and 4). PtdIns5P was visualized using the GST-2xPHD probe.
+PtdIns5P decorates intracellular vesicles localized at the foot of
+dorsal rufﬂes, sites with strong actin dynamics as shown
+by phalloidin staining, reinforcing the idea of a functional
+link between PtdIns5P, trafﬁcking and rufﬂe formation
+(Supplementary Fig. 5b, zooms). Confocal microscopy
+demonstrated that Tiam1, Rac1 and PtdIns5P partially
+colocalized with vesicles positive for EEA1, a marker of early
+endosomes, suggesting that PtdIns5P was recruiting the Tiam1/
+Rac1 module on these vesicles (Fig. 6a,b). As protein–protein
+association can be very transient and colocalization of several
+partners impaired by sterical hindrance on small structures such
+as vesicles, we also performed a Proximity Ligation Assay
+1.00
+His
+PtdlnsP PtdlnsP
+Ni
+His
+NiC-ter
+0.1 μm
+liposome
+DGS-NTA
+(Ni)
+0.1 μm
+liposome
+DGS-NTA
+(Ni)
+N-ter
+a
+bc
+d
+Rac1 Rac1
+Exchange
+reaction
+GTP
+Bodipy-GDP
+Bodipy-G
+DP
+DH Tiam1
+PH
+100
+50
+0
+0 500 1,000 1,500
+Time (s)
+Spontaneous exchange
+EDTA
+Tiam1 (PC:PE:DGS (Ni))
+Tiam1 (PC:PE:DGS(Ni):Ptdlns3P)
+Tiam1 (PC:PE:DGS(Ni):Ptdlns4P)
+Tiam1 (PC:PE:DGS(Ni):Ptdlns5P)
+2,000 2,500
+Ptdlns5P
+Lipid buffer
+Ptdlns4P
+0.75
+0.50
+0.25
+100
+80
+60
+EDTA
+Spontaneous exchangeTiam1 (PC:PE:DGS(Ni))
+Tiam1 (PC:PE:DGS(Ni):Ptdlns3P)Tiam1 (PC:PE:DGS(Ni):Ptdlns4P)Tiam1 (PC:PE:DGS(Ni):Ptdlns5P)
+40
+20
+0
+Maximum Rac1 exchange Fraction of maximum bound
+Fluorescence (a.u.)
+0.00
+012345678
+*
+*
+*
+Input [Rac1-His] μM
+91 0 1 1
+No PI
+EDTA
+Ptdlns3P
+Figure 5 | PtdIns5P increases Tiam1 DH-PHc intrinsic exchange activity.(a) The assay was performed on 0.1mmo fN i2 þ -NTA-containing
+liposomes (with the different PI species) bound to Rac-His loaded with Bodipy FL-GDP. Recombinant Tiam1 DH-PHc was added and the nucleotide
+exchange reaction was started by adding an excess of GTP. The exchange reaction was followed by ﬂuorospectroscopy. (b) Rac1-His-binding capacity of
+Ni2 þ -NTA-containing liposomes. A total of 300mM liposomes PC:PE:PEﬂuorescein:DGS-NTA(Ni) (67:28:2:3 molar ratio) were incubated with increasing
+concentrations of Rac1-His. Liposome-associated Rac1-His was quantiﬁed by SDS–PAGE followed by Coomassie staining and plotted as a function of
+Rac-His input concentration using ImageJ. Data are shown as mean±s.e.m. (n ¼ 3 experiments). (c) Recombinant Rac1-His loaded with Bodipy
+FL-GDP (1mM ﬁnal) was bound to liposomes via DGS-NTA(Ni). Liposomes were composed of PC:PE:DGS-NTA(Ni):PI (61:30:3:6 molar ratio). DH-PHc
+Tiam1 (100 nM) was then preincubated and the exchange reaction (Bodipy FL-GDP/GTP) was started by adding 200mM ﬁnal GTP. The data were ﬁt as
+a single exponential decay and all experiments were performed three times with identical results. (d) Quantiﬁcation of the experiment described in (c).
+Results are expressed as maximum Rac1 exchange att ¼40 min assuming 100% exchange was obtained with EDTA. Data are shown as mean±s.e.m.
+(n ¼3; *Po0.05 using non-parametrict-test)
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+8 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+(Duolink) demonstrated to be more sensitive to study those type
+of interactions 41. This analysis conﬁrmed the data obtained
+by immunoﬂuorescence staining (Supplementary Fig. 6). Weak
+colocalization could also be detected in control MEFs at
+structures where basal levels of PtdIns5P were present
+(Supplementary Fig. 7a, line scans a and d). Study of Cdc42
+localization demonstrated that it was mostly located at the plasma
+membrane in MEF-IpgD (Supplementary Fig. 7b).
+While re-expression of WT Tiam1 restored F-actin breakdown
+in Tiam1/C0 //C0 MEFs, expression of the Tiam1-L1L2 mutant that
+cannot bind PtdIns5P was not capable of remodelling actin upon
+PtdIns5P increase (Fig. 7). Morphological analysis demonstrated
+that overexpression of WT Tiam1 together with PtdIns5P
+treatment resulted in the appearance of enlarged vesicles positive
+for EEA1, suggesting that they worked together to affect
+trafﬁcking. Accordingly, overexpression of Tiam1 L1L2 did not
+RFP-Rac1
+a
+b
+Zoom 1 Zoom 2
+ca
+b
+d
+1
+2
+200
+120
+80
+40
+0
+012345 6 0 2.5 5
+cb d
+7
+160
+80
+40
+0
+200 250
+200
+150
+100
+50
+0
+0123 4 5
+Merge
+160
+120
+80
+0
+40
+0Distance (μm)
+Ruffles
+1
+2
+3
+Zoom 1
+Zoom 2
+100 150 80
+60
+40
+20
+0
+0 0.5 1 1.5 2 2.5
+100
+50
+0
+01234
+50
+Intensity (a.u.)
+0
+0123456
+Distance (μm) Distance ( μm) Distance ( μm)
+Zoom 3
+a
+Intensity (a.u.)
+123
+Rac1 EEA1 PHD
+45
+Tiam1-HA EEA1 Merge
+Figure 6 | PtdIns5P localizes to early endosomes with Tiam1 and Rac1.(a) MEF-IpgD were co-transfected with mRFP-Rac1 and Tiam1-HA before
+induction of IpgD expression. Cells were then serum-starved, ﬁxed and stained for EEA1 and the HA tag. The lower panels (zoom 1 and zoom 2)
+represent high magniﬁcations of areas 1 and 2 shown on the upper merge panel. On each zoom, the two lines drawn across the cells indicate the
+path of a 3-pixel-wide linescan (zoom 1: a,b, zoom 2: c,d). Respective line scans are shown below zoom panels. (b) Serum-starved MEF-IpgD were
+stained for endogenous Rac1, EEA1 and PtdIns5P (using the GST-2xPHD probe). Arrowheads indicate zones of rufﬂing. Magniﬁcations of areas 1, 2 and
+3 shown as boxes in the merged image, as well as their respective linescans (3-pixels wide) are shown at the bottom of the panel. Scale bar, 10mm.
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 9
+& 2014 Macmillan Publishers Limited. All rights reserved.
+affect the structure of EEA1 endosomes, demonstrating that
+Tiam1 binding to PtdIns5P was mandatory for this effect to occur
+(Fig. 7, zooms). In line with this observation, Tiam1 L1L2 was not
+recruited to EEA1 endosomes as was WT-Tiam1 (Fig. 7, zooms
+and linescans).
+Taken together, these data favour the hypothesis that PtdIns5P
+enrichment in early endosomes recruits and locally activates the
+Tiam1/Rac1 module to drive targeted actin and membrane
+dynamics.
+PtdIns5P regulates Rac1 activity in rufﬂes and vesicles. Active
+Rac1 has been reported to localize in rufﬂes and early endosomes,
+where we demonstrated PtdIns5P to be enriched in several cell
+types10,13,42. Indeed, Rac1 is a pivotal regulator of actin dynamics,
+which drives the formation of membrane protrusions such as
+lamellipodia, peripheral and dorsal circular rufﬂes (unique sites
+where spatially restricted actin remodelling controls cellular
+motility). Observation of Rac1 localization over time by
+monitoring the CFP ﬂuorescence of Raichu-Rac1 demonstrated
+that Rac1 was not only present on early endosomes (Fig. 8a) but
+also relocated to rufﬂes when levels of PtdIns5P increased
+(Fig. 8a). Dynamic analysis revealed that CFP-Rac1-containing
+dorsal rufﬂes moved towards the edge of the lamellipodium
+before being engulfed, illustrating the polarization of this process
+(Fig. 8a, zoom and kymograph). We then recorded FRET (Fo¨rster
+Resonance Energy Transfer) emitted by the Raichu-Rac1
+biosensor over time to monitor local activity of the Tiam1/Rac1
+module43. When MEF-IpgD were spatially restricted on
+micropatterns, active Rac1 could be observed at the cell
+periphery and in circular rufﬂes that were moving along the
+lamellipodium (Figs 8b and 9c, and Supplementary Movie 5).
+When plated on non-patterned ﬁbronectin, cells spread out on
+the coverslips and extend lamellipodia, resulting in a lower rate of
+rufﬂing44, and therefore facilitating FRET imaging of discrete
+internal structures such as vesicles. Real-time imaging of non-
+patterned cells revealed that Rac1 was also active on small vesicles
+that were moving within the lamellipodium (Figs 8c and 9b, and
+Supplementary Movie 6). When MEFs were not challenged with
+PtdIns5P, Raichu-Rac1 ﬂuorescence was largely cytosolic and no
+activation could be detected over time (Figs 8d and 9c,
+Supplementary Fig. 8a, and Supplementary Movies 7 and 8).
+Again, monitoring of FRET activity in Tiam1 /C0 //C0 MEFs
+demonstrated that no activation of Raichu-Rac1 was detected in
+the absence of GEF when PtdIns5P was added to the cells (Figs 8e
+and 9c, and Supplementary Movie 9).
+Tiam1–/–
+Ptdlns5P
+ActinTiam1/EEA1
+–+ +
+HA-Tiam1 wt
+Zoom: Tiam1–/– + HA-Tiam1 wt
+Tiam1 EEA1 Merge
+Tiam1 EEA1 Merge 0
+0
+50
+Intensity (a.u.)
+100
+150
+0.04 0.08 0.12
+Distance (μm)
+Distance (μm)
+0
+0
+50
+Intensity (a.u.)
+100
+0.05 0.1 0.15
+Zoom: Tiam1–/– + myc-Tiam1 L1L2
+myc-Tiam1 L1/L2
+Figure 7 | Tiam1 binding to PtdIns5P drives F-actin remodelling and localization to EEA1 endosomes.Serum-starved primary Tiam1/C0 //C0 MEF
+transfected with HA-Tiam1 or myc-Tiam1 L1L2 were treated with exogenous PtdIns5P (15mM) for 30 min. Cells were then ﬁxed and the actin cytoskeleton
+was visualized by staining with AlexaFluor 488-phalloidin and Tiam1 with HA or myc antibodies. Scale bar, 10mm. The lower panels represent higher
+magniﬁcations for indicated areas shown as boxes in the merged image, as well as their respective linescans (3-pixels wide).
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+10 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+CFP-Rac1a
+b
+c
+d
+e
+Raichu-Rac1
+1.5
+1
+04 8 12
+4 8 12 16 min
+16 20 minPtdlns5P
+Zoom
+Raichu-Rac1
+a
+b
+Area a
+Area b
+1.5
+1
+Ptdlns5P (8 min) 4
+0
+Raichu-Rac1 MEF Tiam1 –/– + Ptdlns5P
+5 10 15 20 25 min
+0 5 10 15 20 min
+8 12 16 min
+Raichu-Rac1FRETFRET
+ab
+a
+b
+Zoom
+Kymograph
+Time
+Figure 8 | PtdIns5P induces Rac1 activation in dorsal rufﬂes and vesicles.(a) MEF cells transfected with the Raichu-Rac1 encoding vector were
+plated on micropatterns of ﬁbronectin and serum-starved for 6 h. Exogenous PtdIns5P was added (0.5mM) and cells were imaged every 4 min during
+20 min. Rac1 localization was visualized by monitoring CFP ﬂuorescence. Rac1-enriched rufﬂes are visible on the dorsal side of the cells. On the rightside,
+a kymograph assembled along the lamellipodium shows the dynamic towards the front of the cell. (b) Rac1 activation is visualized by color-coded
+FRET. High ratio values (red) correlate with higher Rac1 activity in rufﬂes and at the cell periphery. The lower panels represent higher magniﬁcations
+for areas at the indicated time points. Arrowheads represent circular rufﬂes moving towards the front of the lamellipodium. (c) Similar experiments
+as in (b) except that no micropattern was used. The right panels represent higher magniﬁcations of boxed areas a and b depicted on the larger image.
+Arrowheads indicate vesicles (area a) and rufﬂes (area b) with active Rac1. (d) Similar experiment as in (c) except that no PtdIns5P was added to the
+cells. (e) Similar experiment as in (c) except that it was performed on Tiam1/C0 //C0 MEFs challenged with PtdIns5P. Scale bar, 10mm. See also
+Supplementary Movies 5–9.
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 11
+& 2014 Macmillan Publishers Limited. All rights reserved.
+No Rac1 activation was either observed in serum-starved
+control MEFs, while IpgD-MEFs displayed a strong FRET signal
+in rufﬂes and vesicles (Fig. 9a,b and d). To investigate the role of
+endocytosis in Rac1 activity in rufﬂes and vesicles, cells were
+treated with sucrose. After 2 h of treatment to allow cells to adapt
+to the hypertonic medium generated by the addition of sucrose,
+transferrin and dextran intakes were monitored. As shown in
+Supplementary Fig. 8b, endocytosis of both compounds was
+blocked. No change in FRET activity was detected upon sucrose
+treatment of control MEFs. However, Raichu-Rac1 activation was
+only detected at the periphery of IpgD-MEFs, implying that
+endocytosis and subsequent trafﬁcking were required to relocate
+Rac1 and induce rufﬂing activity (Fig. 9a,d). FRET activity
+was even greater at the plasma membrane of sucrose-treated
+IpgD-MEFs, suggesting that IpgD-produced PtdIns5P was
+probably found in endosomes as a result of endocytosis (Fig. 9d).
+Altogether, those observations demonstrated that PtdIns5P
+recruits Tiam1 at speciﬁc sites where actin and membrane
+dynamics were increased due to subsequent activation of Rac1.
+PtdIns5P triggers and drives invasive behaviour. Rac1 regulates
+chemotaxis in response to growth factors such as EGF, PDGF,
+HGF or serum via formation of lamellipodia and dorsal rufﬂes
+driven by actin dynamics44,45. As already mentioned, FGF-1 has
+been shown to elicit 2D migration through PIKfyve/MTMR3-
+dependent production of PtdIns5P (ref. 15). Herein, we
+demonstrated that the invasion through dense 3D-Matrigel by
+RPE-1 cells challenged by a 10% serum gradient could be
+recapitulated by an FGF-1 gradient (Fig. 10a). Interestingly, while
+PtdIns5P trapping with GFP-3xPHD did not affect invasion
+towards serum, FGF-1-dependent invasion was abrogated
+(Fig. 10a). Accordingly, NSC23766 treatment had the same
+effect on RPE-1 cells (Fig. 10b). Similar observations were made
+in Cost and Karpas 299 cells, where invasiveness was tested
+towards a gradient of FBS and SDF1a, demonstrating that the
+PtdIns5P/Tiam1/Rac1 module was likely responsible for the effect
+(Fig. 10c and Supplementary Fig. 10).
+IpgD expression and subsequent PtdIns5P elevation were
+capable of switching the phenotype of MEFs to highly motile and
+invasive cells, which correlated with the observed increase
+in membrane and actin dynamics, while control MEFs or
+MEF-Inp54p showed no 2D nor 3D motility (Fig. 10d,e and
+Supplementary Fig. 11a). In this model, inhibition of Tiam1/Rac1
+by NSC23766 blocked both migration and invasion as observed
+for RPE-1 cells challenged with FGF-1 (Fig. 10b–d).
+We then assessedin situ the proteolytic activity of MEF-IpgD
+using ﬂuorescent-matrix degradation assays. After 48 h,B80% of
+Controla
+bc d
+–
+3
+0.5
+250 225 450
+400
+350
+300
+250
+200
+150
+100
+50
+0
+200
+175
+150
+125
+100
+75
+50
+25
+0
+WT
+– + – + – + – +Ptdlns5P
+Tiam1–/–
+Vesicles * Membrane Membrane
+200
+150
+100
+50
+% FRET ratio versus control
+% FRET ratio versus control
+% FRET ratio versus control0
+Control
++Ptdlns5P
+IpgD
+IpgD
+Sucrose
+Sucrose
+Control
+IpgD Zoom
+Figure 9 | PtdIns5P-induced localization of active Rac1 in dorsal rufﬂes and vesicles requires endocytosis.(a) Control and IpgD-MEF-expressing
+Raichu-Rac1 were serum-starved for 2 h before the addition of 0.4 M sucrose for 2 more hours. Cells were ﬁxed and imaged. The right panels represent
+higher magniﬁcations of boxed areas on the larger image. Arrowheads indicate vesicles with active Rac1. Scale bar, 10mm. (b) Changes in FRET were
+represented as a percentage of FRET in vesicles over FRET in the cytosol (called ‘control’) of indicated cells and treatment. (c) Similar representation as in
+(b) performed on the cell periphery (plasma membrane for all; plasma membrane and rufﬂes in the case of WT MEFs treated by PtdIns5P). (d) Similar
+representation as in (b) performed on the experiment described in (a).
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+12 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+cells displayed degradation areas (Fig. 10f). Invadopodia/invado-
+somes are small needle-like membrane projections located at sites
+of major structural dynamics where proteolytic degradation
+occurs, at the ventral side of cells in 2D and in the direction of the
+gradient in 3D46,47. By immunoﬂuorescence, invadosomes appear
+as patched structures enriched in proteins that regulate
+cytoskeleton and membrane remodelling, cell–ECM adhesion
+and matrix degradation 47. Confocal sections followed by
+orthogonal plotting of the images (z projection) demonstrated
+that the digested zones contained cores of F-actin, a trademark of
+functional invadosomes (Fig. 10f). The above observations
+demonstrated for the ﬁrst time that PtdIns5P orchestrates
+invasion through activation of Tiam1 and Rho GTPases to
+restrict actin dynamics and allow matrix digestion.
+Discussion
+In this paper, we unravelled a new role for non-nuclear PtdIns5P
+in cell invasion where it increases actin and membrane dynamics
+through activation of the Tiam1/Rac1 module. We studied three
+different pathophysiological situations, stimulation of RPE-1 cells
+by FGF-1, ectopic expression of the bacterial IpgD phosphatase
+and transformation by the NPM-ALK oncogene, and showed that
+they all relied on this pathway to elicit 3D migration.
+We used the Raichu probe to assess active Rac1 in cells. It is
+known that this probe does not bind RhoGDI, suggesting it might
+not behave in the same manner as endogenous Rac1. However,
+Raichu-Rac1 has been shown to interact with other important
+regulators of GTPases such as GAPs and GEFs, among which is
+Tiam1, to regulate its local activity 48. Confocal microscopy
+6
+ab c
+de
+f
+GFP-3xPHD WT Control
+NSC23766
+Control
+*
+* * *
+*
+*NSC23766 Control
+NSC23766
+Control
+NSC23766GFP-3xPHD Mut
+8
+6
+4
+2
+0
+80
+60
+40
+20
+0
+% Of invading cells
+4
+2
+0
+60 700
+600
+500
+400
+300
+200
+100
+0
+50
+40
+30
+20
+10
+% Of invading MEFs
+% Of migrated MEFs0
+Control IpgD
+FITC-gelatine Actin
+Merge
+z-projection yz 82.22 ± 6.01100
+90
+80
+70
+60
+50
+40
+30
+20
+10
+0
+Control IpgD Inp54p
+% Cells with invadosomes
+Inp54p Control IpgD Inp54p
+FCS
+0%
+FCS
+10%
+FGF-1 FCS
+0%
+FCS
+10%
+FGF-1 Karpas Cost
+Invading RPE-1 cells
+(fold increase)
+Invading RPE-1 cells
+(fold increase)
+xz
+Figure 10 | PtdIns5P is required for invasion of dense Matrigel and invadosome formation.(a) Invasiveness of transduced RPE-1 cells into 3D-Matrigel
+toward a FBS gradient or FGF-1 was examined using transwell chambers. The number of cells penetrating the Matrigel was expressed as a fold increase
+compared with the experiment without serum gradient. Data are shown as mean±s.e.m. (n ¼ 3; *Po0.05 using non-parametric one way ANOVA
+(Kruskal–Wallis) with Dunn’s post test) (b) Same experiment as in (a) except that RPE-1 were treated overnight with NSC23766 (100mM). Data are shown
+as mean±s.e.m. (n ¼3; *Po0.05 using non-parametric one way ANOVA (Kruskal–Wallis) with Dunn’s post test). (c) Karpas 299 or Cost cells were
+treated overnight with NSC23766 (40mM) before CMTMR staining. Invasiveness towards an FBS and 1mgm l/C0 1 SDF1a gradient was examined.
+The number of cells penetrating the Matrigel to depths of 20mm and greater was expressed as a percentage of the total cell number within the gel.
+Data are shown as mean±s.e.m. (n ¼ 3; *Po0.05 using non-parametric one way ANOVA (Kruskal–Wallis) with Dunn’s post test). (d) IpgD or Inp54p
+expression was induced in MEF T et-Off cells before serum starvation. Then, invasiveness into 3D-Matrigel±NSC23766 (100mM) towards an FBS gradient
+was examined. Data are shown as mean±s.e.m. (n ¼ 3; *Po0.05 using non-parametric one way ANOVA (Kruskal–Wallis) with Dunn’s post test).
+(e) Serum-starved control, IpgD or Inp54p-expressing MEFs were seeded into transwell chambers. Migration toward a gradient of FBS was allowed for
+6h ±NSC23766 100mM and the percentages of migrated cells were determined. Data are shown as mean±s.e.m. (n ¼3 experiments; *Po0.05 using
+non-parametric one-way ANOVA (Kruskal–Wallis) with Dunn’s post test). (f) MEF-IpgD were cultured on FITC-gelatin-coated coverslips for 24 h.
+Degradation areas were visualized as dark holes.z projections show that actin cores are present within the degraded gelatin. The percentage of cells
+that presented at least one area of gelatin degradation was determined. Data are shown as mean±s.e.m. (n ¼3).
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 13
+& 2014 Macmillan Publishers Limited. All rights reserved.
+allowed us to detect FRET at sites of endogenous Rac1
+localization, rufﬂes and vesicles. Recently, it was demonstrated
+that recruitment of Tiam1 and Rac1 to early endosomes upon
+endocytosis or activation of receptor tyrosine kinases (RTKs) was
+required for the spatial partitioning of active Rac to zones where
+protrusive activity led to motility42,49. However, the molecular
+mechanism for this recruitment was not studied. Our ﬁndings
+indicate that PtdIns5P might be the missing link between
+trafﬁcking and actin/membrane dynamics. We found a direct
+binding between PtdIns5P and the Tiam1 PHc domain that
+localized it to early endosomes and led to chemotaxis.
+These ﬁndings shed new light on the complex relationship
+between PIs and GEFs for Rho GTPases50. PIs interact with GEFs
+through the PH domain associated to the DH domain responsible
+for their exchange activity. GEFs are then localized at PI-enriched
+membrane regions to activate their target GTPases and engage
+downstream signalling for an accurate response to the initial
+insult. However, most PH domains found in the DH-PH tandem
+bind poly-PIs (PtdIns(4,5)P 2 and PtdIns(3,4,5)P 3) with low
+afﬁnity and often require protein adaptors for efﬁcient
+membrane association. A careful survey of the literature
+highlights the fact that no systematic studies have been
+undertaken to clearly assess the speciﬁcity of GEF PH
+domains50. By adapting a method whereby Rac1 can be
+anchored to liposomes bearing different PtdInsP, we could
+demonstrate that PtdIns5P binding by Tiam1 DH-PHc
+potentiates its intrinsic GEF function. GEF activation is in part
+due to an improved probability for the formation of complexes
+containing all three partners (Tiam1 DH-PHc, Rac1 and
+PtdIns5P). However, since GEF DH-PH domains have weak
+activity in solution, it also can be postulated that binding to
+PtdIns5P-bearing liposomes favours a more active conformation
+of the DH-PH towards interaction and exchange on Rac1
+(ref. 38). Our method represents a signiﬁcant improvement since
+previous studies failed to demonstrate any effect on GEF activity
+via Tiam1 DH-PHc interaction with PtdIns3P in solution36.W e
+conﬁrmed that PtdIns3P bound Tiam1 PHc, albeit with a lower
+afﬁnity than PtdIns5P. In agreement, we could measure a weak
+activation by PtdIns3P-bearing liposomes, demonstrating that
+both PIs could activate Tiam1in vitro.
+This observation has an important impact on cells, since we
+have previously demonstrated that PtdIns5P accumulation on
+early endosomes, known to be enriched in PtdIns3P, induced
+trafﬁcking modiﬁcations. Indeed, Palamidessi et al. 42 and
+Joffre et al.49 demonstrated that the activation of, respectively,
+Tiam1/Rac1 and Rac1 and oncogenic mutants of the Met receptor
+on early endosomes was instrumental to directed motility. In
+HeLa and BHK cells, PtdIns5P endosome enrichment led to
+stabilization and sustained activation of EGFR by blocking its
+degradation and favoring recycling10. Endocytosis and trafﬁcking
+have long been regarded merely as means of attenuating cell
+activation through degradative pathways. The concept of
+‘signalling endosomes’, which stems from the observation that
+signalling persists along the endocytic route, shed new light on
+how signalling pathways are regulated 51. Our ﬁndings
+demonstrate that the assumption that endosomal PtdIns3P
+accounted for those effects is not totally accurate and identify
+PtdIns5P as an important component of endosome-associated
+signalling. Since IpgD does not lead to modiﬁcation of total nor
+endosomal PtdIns3P levels, our study indicates that PtdIns5P is
+the main PI that recruits Tiam1 to early endosomes when high
+levels of PtdIns5P are present. In this line of thought, localization
+of PtdIns3P and PtdIns5P in MEF-IpgD demonstrated that they
+colocalized on endomembranes. However, only PtdIns5P was
+enriched at the plasma membrane and in rufﬂes (Supplementary
+Fig. 9). Therefore, it is possible that under basal conditions, when
+PtdIns3P and PtdIns5P are present in comparable amounts, they
+could cooperate to achieve balance between degradation and
+recycling of cargo during steady state trafﬁcking.
+In FGF-1 signalling and NPM-ALK lymphomas, PIKfyve,
+either alone or in coordination with MTMR3, has been
+demonstrated to modulate the levels of PtdIns3P, PtdIns(3,5)P2
+and PtdIns5P (refs 15,21,28). However, in all cases, sequestration
+of PtdIns5P by the GFP-3xPHD probe and complementation of
+PIKfyve knock down by synthetic PtdIns5P or IpgD transfection
+demonstrated that, indeed, PtdIns5P was the important PI for
+effects on actin and migration.
+Interestingly, our study opens a new ﬁeld of investigation on
+GEFs as interacting partners and effectors of PtdIns5P, likely
+accounting for some of the non-nuclear PtdIns5P functions.
+Moreover, Miroshnychenkoet al.52 reported that the PH domain
+of BCR also showed afﬁnity for PtdIns5P, but they did not
+investigate it further. Additional studies are required to elucidate
+the existence of PtdIns5P-responsive subfamilies of Rho GTPases
+and GEFs.
+Our ﬁndings demonstrate that activation of Tiam1/Rac1 by
+PtdIns5P is a potent signal that can reprogram non-migrating
+cells to engage in both 2D- and 3D-directed migration. Indeed,
+MEFs expressing high levels of PtdIns5P undergo a phenotypical
+modiﬁcation reminiscent of cancer-associated ﬁbroblasts and
+ﬁbroblasts activation during wound-healing processes53, where
+they become highly invasive by increased motility and through
+secretion of MMPs. Circular dorsal rufﬂes, also called ‘waves’,
+share regulatory circuitry similar to invadosomes, which drive
+motility in 3D matrices 44. Cdc42 is a central element of
+invadosome structure and function54. Upon PtdIns5P increase,
+Cdc42 is activated and regulates cortical actin, which might
+cooperate with Rac1 to generate invadosomes. Accordingly, this
+work and our previous studies demonstrated that Rac1 was
+required to trigger matrix digestion 18–20. The discovery that
+PtdIns5P is a central regulator of ECM remodelling, actin and
+membranes dynamics, which are prerequisites for 3D migration,
+broadens our view of how this phenomenon is regulated.
+In conclusion, the sum of our work demonstrates that
+PtdIns5P is an important mediator of signalling, leading to
+invasion/3D migration in response to different extracellular or
+oncogenic cues. The outcome of PtdIns5P elevation and of
+Tiam1/Rac1 activation elicited by either RTK activation (FGF-1
+or insulin17), bacterial infection or tumorigenesis can be either
+beneﬁcial, in the case where physiological development requires
+accurate cell motility, or detrimental, when exploited in
+pathologies such as cancer, diabetes or bacterial infection.
+Therefore, this work points to PtdIns5P as a crucial mediator
+involved in determining cellular fate by acting at the crossroads of
+cellular processes such as trafﬁcking, motility and response to
+growth factors that have high pathophysiological relevance.
+Targeting enzymes involved in its metabolism represent
+therapeutic targets worth exploring for a wide array of
+diseases.
+Methods
+Reagents and antibodies. NSC23766 was from Calbiochem, secramine A and
+YM201636 were generous gifts from T. Kirchhausen (Harvard Medical School,
+USA) and P. Parker (London Research Institute, UK) respectively. Fibronectin
+micropatterned chips were from CYTOO. FGF-1 was from Peprotech. GST-Rac1-
+G15A and GST-Cdc42-G15A beads were from Cell Biolabs or were puriﬁed as
+described55. Antibodies used in this study are listed in Supplementary Table 1.
+Horseradish peroxidase-conjugated goat anti-mouse and anti-rabbit
+immunoglobulin antisera were from Promega. AlexaFluor-labelled secondary
+antibodies were from Life Technologies. Synthetic lipids were from Avanti Polar
+Lipids and Echelon. shRNA expression vectors directed against PIKfyve were from
+Sigma-Aldrich: TRCN0000150008 (sh1: 50-CCTTGGATTGTAACAATGG-30),
+TRCN0000147783 (sh2: 50-GCCAAGTCTATTCAAGTCT-30). Mission turbo
+GFP was used as a control.
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+14 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+Cell culture, plasmids and transfection. Tet-Off MEF cells were grown in DMEM
+supplemented with 10% FBS, 100 U ml/C0 1 penicillin, 100mgm l/C0 1 streptomycin and
+500 mgm l/C0 1 G418 (Life Technologies). Wild-type and Tiam1/C0 //C0 knockout MEFs,
+cultured in DMEM supplemented with 10% FBS and 50mM /C25-mercaptoethanol, were
+provided by J. Collard and A. Malliri (Netherlands Cancer Institute, the Netherlands
+and University of Manchester, UK, respectively). The ALCL cell lines Cost and Karpas
+299 (harbouring the t(2,5)(p23;q35) translocation and expressing NPM-ALK) were
+cultured in IMDM (Life Technologies) supplemented with 15% FBS. Cost ALCL cell
+line56 was obtained from F. Meggetto (INSERM U1037, France). Karpas 299 ALCL
+cells were obtained from DSMZ (German Collection of Microorganisms and Cell
+Culture, Germany). RPE-1 cells were provided by B. Goud (Curie Institute, France).
+Cell lines were checked twice a month forMycoplasma (Lonza). DNA transfections
+were performed using Lipofectamine with Plus Reagent (Life Technologies) or
+X-tremeGENE 9 (Roche) according to the manufacturer’s instructions. For treatment
+with short-chain lipids, C4-PtdIns4P and C4-PtdIns5P (Echelon Biosciences Inc.)
+were resuspended in water and used at 15mM for the indicated time on serum-starved
+MEF cells, except where stated otherwise. The following plasmids were used: pRK5-
+Myc-IpgD, pCDNA3-EGFP-Lyn-Inp54p vector (gift from T. Meyer, Stanford
+University, USA), pRaichu-Rac1, pRaichu-Cdc42, pEGFP-actin (gift from B. Geny,
+Pasteur Institute, France), pEGFP-N3-NPM-ALK (gift from M. Fawal, Spanish
+National Cancer Research Center, Spain), pcDNA3-HA-Tiam1 (gift from A. Malliri,
+University of Manchester, UK), pGEX-2TK-DH-PH-Tiam1 WT, mutant L2, mutant
+L1/L2, (myc-tagged) FL PH*L1/L2 Tiam-1 were a gift from M.A. Lemmon
+(University of Pennsylvania, USA). WT Rac-His was obtained by site-directed
+mutagenesis using the pET28a-Rac1-Q61L vector as a template (gift from J.R.
+Peterson, Fox Chase Cancer Center, USA). pRaichu-1026x bearing the CAAX box of
+Rac1 before CFP was a gift from Dr Matsuda (Osaka University, Japan). pGEX-4T1-
+PHn Tiam1 was obtained by sub-cloning using pcDNA3-HA-Tiam1 as a template.
+Establishment of MEFs inducible cell lines. EGFP-IpgD, EGFP-Inp54p or
+EGFP-IpgD-C438S were subcloned into the pTRE2-hyg-Myc expression vectors
+(Clontech) by standard techniques. A total of 1/C2 106 MEF Tet-Off cells (Clontech)
+expressing the tetracycline-controlled transactivator were plated in 100 mm dishes
+and transfected with 2mg of pTRE2-hyg-Myc-EGFP-IpgD, pTRE2-hyg-Myc-
+EGFP-Inp54p or pTRE2-hyg-Myc-EGFP-IpgD-C438S using Lipofectamine with
+Plus Reagent (Life Technologies) and 2mgm l/C0 1 of doxycyclin (Sigma-Aldrich) was
+added to avoid any protein expression during the selection process. Forty-eight
+hous after transfection, 400mgm l/C0 1 of hygromycin (Sigma-Aldrich) was added.
+Transformants were selected and single cells cloned using the limiting dilution
+method. To test for induced expression, doxycyclin was removed from the medium
+and EGFP-positive clones were selected and analysed by western blot for
+expression of Myc-EGFP-IpgD, Myc-EGFP-Inp54p or Myc-EGFP-IpgD-C438S.
+Lentivirus production and transduction. EGFP-3xPHD WT and EGFP-
+3xPHDmut (cysteine mutant)-encoding sequences were subcloned from the
+pEGFP-C1 plasmids8 into the pTRIP-IRES lentiviral vector plasmid57. Vector
+particles were produced as previously described57. Cost and Karpas 299 cells were
+transduced by incubation with lentiviral particles at an MOI of 1. Cells were
+washed 24 h later and after an additional 48 h, EGFP-positive cells were sorted by
+ﬂow cytometry on a BD FACSAria Sorp (BD Biosciences). RPE-1 cells were
+transduced by incubation with lentiviral particles at an MOI of 1 for 3 days.
+Transduction efﬁciency was checked by ﬂuorescence microscopy and reached
+almost 100%. Cost and Karpas cells were transduced by incubation with lentiviral
+particles at an MOI of 1 for 3 days and selected using 2mgm l/C0 1 puromycin.
+Immunoprecipitation and western blotting. Total cellular proteins were extracted
+with 50 mM Tris-base (pH 8), 150 mM NaCl, 5 mM EGTA, 1% Nonidet P-40, 1 mM
+PMSF, 50 mM NaF, 1 mM Na3VO4,1 0m gm l/C0 1 leupeptin and 2 mg ml/C0 1 aprotinin.
+For cell fractionation, cells were scraped in detergent-free lysis buffer as described
+above. Homogenates were centrifuged for 10 min at 1,000g. The post-nuclear
+supernatant was then centrifuged for 30 min at 100,000g. The supernatant (HSS) was
+collected and the pellet resuspended in lysis buffer supplemented with 1% TritonX-
+100 and 0.5% sodium deoxycholate to obtain the membrane fractions (HSP). For
+immunoprecipitations, clariﬁed homogenates were incubated overnight at 4/C176Cw i t h
+the antibodies and a mix of protein A/G sepharose beads. After washes, proteins were
+eluted with Laemmli buffer and analysed by SDS-PAGE followed by western blotting
+on Immobilon-P membranes (Millipore) with appropriate antibodies. Immunor-
+eactive bands were detected by chemiluminescence using either medical X-ray ﬁlm
+(Kodak) or chemidoc (Bio-Rad Laboratories) with the SuperSignal detection system
+(Pierce). Quantiﬁcation was done using ImageJ or Chemidoc Image lab (Biorad
+laboratories). Larger images of immunoblots shown in the main article are included in
+Supplementary Fig. 12,13 and 14.
+GTPase pull-downs and GEF trapping. The amounts of GTP-bound active Rac1,
+Cdc42 or RhoA and active Tiam1 were determined by pull-downs as previously
+described55,58. Brieﬂy, cells were lysed in ice-cold lysis buffer (50 mM Tris-base
+(pH 7.4), 500 mM NaCl, 10 mM MgCl2, 2.5 mM EGTA, 1% Triton X-100, 0.5%
+sodium deoxycholate, 0.1% SDS, 1 mM PMSF, 50 mM NaF, 1 mM Na3VO4,
+10 mgm l/C0 1 leupeptin and 2mgm l/C0 1 aprotinin) and clariﬁed lysates were
+incubated with 20mg GST-PBD (PAK1 Binding Domain for Rac1 and Cdc42),
+GST-RBD (Rhotekin Binding Domain for RhoA) or GST-Rac1G15A (for GEF
+trapping assays) beads at 4/C176C for 60 min. After washes, bound proteins were eluted
+with Laemmli buffer and analysed by SDS–PAGE followed by western blotting.
+Microscopy. FRET efﬁciency was represented as the color-coded ratio image of
+YFP/CFP after background subtraction using MetaMorph (Universal Imaging).
+Some experiments were conducted using a wide-ﬁeld microscope (Axiovert 200,
+Carl Zeiss) with a/C2 40 oil immersion lens (Carl Zeiss). MetaMorph was used for
+acquisition with a CoolSNAP HQ camera (Roper Scientiﬁc). The ﬁlters used for the
+dual-emission ratio imaging were a 455DRLP dichroic mirror and two emission
+ﬁlters, 470AF40 for CFP and 535BP35 for YFP (Chroma Technology Corp).
+Cells were illuminated with a 75 W xenon lamp through a 20 nm bandwidth
+monochromator Optoscan (CAIRN Research Limited) at 435 nm for CFP
+excitation and 500 nm for YFP excitation. The exposure time was 0.5 s with 3/C2 3
+binning, every minute. After the ﬁrst acquisition, 0.5mM PtdInsPs were added to
+the cells. Other FRET experiments were performed with a confocal microscope
+LSM 780 piloted by the Zen software, using a/C2 40 Plan-Apochromat water
+immersion lens (Carl Zeiss). Images were acquired with a pinhole diameter
+of 149mm.
+For immunoﬂuorescence, cells were ﬁxed/permeabilized for 20 min in 3.7%
+formaldehyde with 0.05% TritonX100 and saturated in 1% fatty acid free BSA/PBS.
+Incubation with antibodies or the GST-2xPHD probe (40mgm l/C0 1 in 1% BSA/PBS)
+was performed for 30 min at room temperature. After incubation with ﬂuorescent
+secondary antibodies or AlexaFluor-labelled phalloidin (Molecular Probes), cells
+were washed with PBS and mounted with Mowiol. Confocal imaging was
+performed using a LSM 710 or 780 microscope, piloted by Zen software, with a
+/C2 63 Plan-Neoﬂuar objective (Carl Zeiss). Proﬁling of ﬂuorescence intensity was
+done with ImageJ.
+Phospholipid extraction and analysis. Phospholipids were extracted and
+analysed by high-performance liquid chromatography (HPLC) after metabolic
+labelling with [32P]orthophosphate (200mCi ml/C0 1; Perkin Elmer), except for
+PtdIns3P and PtdIns5P that were quantiﬁed by mass assay as described13,14,24.
+Brieﬂy, total lipid extraction was performed according to the Bligh and Dyer
+procedure59. PtdInsP were then puriﬁed by thin layer chromatography. Lipid
+kinase assays were performed using recombinant PIKfyve (for PtdIns3P) and PI5P
+4-kinase IIa (for PtdIns5P) and [g-32P]ATP (Perkin Elmer). The radioactive
+biphosphates generated (proportional to the PtdIns3P or PtdIns5P present in the
+sample) were extracted and analysed by HPLC.
+Lipid–protein overlay assay (fat blots). Recombinant GST-tagged proteins were
+expressed inE.coli strain BL21(DE3) and puriﬁed by afﬁnity chromatography using
+glutathione Sepharose 4B beads according to the manufacturer’s instructions
+(GE Healthcare). PIP-Strips (Echelon Biosciences Inc) and in-house membranes
+were used as previously described60. Membranes were blocked in TBS or PBS
+containing 3 mg ml/C0 1 FA-free BSA and 0.1% Tween 20. Incubations were done
+with 0.5mgm l/C0 1 of puriﬁed protein in blocking buffer. After washes, binding of
+the domains to the PIs was detected by anti-GST western blotting.
+Liposome-binding assays. The liposome-binding assays were performed
+essentially as previously described61. Brieﬂy, liposomes containing PC:PE (50:50)
+or PC:PE:PtdInsP(n) (45:45:10) were prepared by mixing chloroform stocks, drying
+and resuspending using a bath sonicator in 10 mM HEPES (pH 7.7), 100 mM NaCl,
+200 mM sucrose and 5 mM EGTA. Liposome sedimentation assays were conducted
+using 300mM liposomes and 2mg of GST fusion proteins. All centrifugation steps
+were done at 16,000g and 4/C176C. Supernatant and pellet fractions were analysed by
+SDS–PAGE and silver staining.
+Binding of Rac-His to liposomes. Liposomes containing PC:PE:PE-ﬂuor-
+escein:DGS-NTA(Ni) (67:28:2:3) were prepared by mixing chloroform/methanol
+stocks, drying and resuspending in 50 mM HEPES (pH 7.5), 100 mM NaCl,
+200 mM sucrose and 5 mM EGTA. After vortexing and 10 min equilibration at
+room temperature, the suspension was subjected to ﬁve freeze/thaw cycles using
+liquid nitrogen and extruded 19 times through 0.1mm polycarbonate ﬁlter using a
+hand extruder (Avanti Polar Lipids). Liposomes were kept at 4/C176C and used within
+4 days of their preparation. Increasing concentrations of Rac-His were incubated
+with 300mM liposomes for 20 min at room temperature in 50 mM HEPES
+(pH 7.5), 120 mM Potassium acetate, 1 mM MgCl2 and 1 mM DTT. Liposomes
+were then pelleted by centrifugation (1 h, 16,000g,2 0/C176C) and the ﬂuorescent
+liposome pellet was visualized using a UV lamp. Supernatant and pellet fractions
+were analysed by SDS–PAGE and Coomassie staining (Imperial protein stain,
+Thermo scientiﬁc).
+Exchange factor activity. Liposomes were prepared as described in the Methods
+for ‘Binding of Rac-His to liposomes’ but without sucrose. Liposome compositions
+were PC:PE:DGS-NTA(Ni) (67:30:3) and PC:PE:DGS-NTA(Ni):PtdInsP
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 15
+& 2014 Macmillan Publishers Limited. All rights reserved.
+(61:30:3:6). All incubations were done in 96-well black microplates in a ﬁnal
+volume of 100ml. Rac-His (loaded with bodipy FL GDP) (1mM) was incubated
+with liposomes (300mM) for 10 min in 50 mM Tris (pH 7.5), 100 mM NaCl,
+10 mM MgCl2. Then, 100 nM Tiam1 DH-PHc (GST-tag was cleaved with
+thrombin) was added for 10 additional minutes. Reaction was started by adding
+400mM GTP. Activation of Rac1 was monitored by ﬂuorescence of bodipy
+(488/535 nm). Fluorescence intensity was recorded every 15 s for 40 min using a
+Varioskan ﬂash spectroﬂuorometer (Thermo scientiﬁc). All measurements were
+performed at 30/C176C.
+Migration and invasion assays. For transwell experiments, cells were processed
+as described18. Brieﬂy, cells were seeded in 24-well plates in transwell chambers
+(BD Biosciences). Migration proceeded for 6 h toward a gradient of FBS from the
+upper chamber of the transwell insert (without FBS) to the lower chamber (with
+10% FBS), where cells were scored. Matrigel matrix (BD Biosciences) invasion
+assay was performed on 20,000 serum-starved cells for 6 h and labelled for 90 min
+with 0.5mM CellTracker Orange CMTMR (Life Technologies). After washes, cells
+were seeded in labtek chambers and overlaid with Matrigel at 5 mg ml/C0 1,
+±100 mM NSC23766 (40mm for Cost and Karpas 299). After 90 min at 37/C176C,
+medium containing 10% FBS was added (15% FBS containing 1mg/ml SDF1a for
+Cost and Karpas 299 cells). Opticalz sections were taken every 2.5mm starting
+from the base and extending 100mm into the Matrigel. A representative image is
+shown in Supplementary Fig. 10. To quantify invasion, CMTMR ﬂuorescent cells
+in the sections above 20mm were added and then divided by the sum of cells in all
+z sections. Quantiﬁcation was performed using Imaris 6.4.2 software (Bitplane). For
+transwell experiments, cells were processed as described18. Brieﬂy, cells were seeded
+in 24-well plates in transwell chambers (BD Biosciences). Migration proceeded for
+6 h toward a gradient of FBS from the upper chamber of the transwell insert
+(without FBS) to the lower chamber (with 10% FBS), where cells were scored, either
+after staining with crystal violet or after ﬁxation, permeabilization and DAPI
+staining. Representative images are shown in Supplementary Fig. 11.
+ECM degradation assays. Cells were seeded on FITC-gelatin-coated coverslips as
+described previously62. For colocalization experiments, cells were ﬁxed, stained and
+analysed as described above using a LSM 780 confocal microscope. To quantify
+ECM degradation, we determined the percentage of cells that presented areas of
+degradation relative to the total number of cells in each condition.
+Duolink in situ proximity ligation assay. Cells grown on coverslips were ﬁxed in
+3.7% formaldehyde and permeabilized with 0.2% Triton X-100. Coverslips were
+then incubated with primary antibodies for 1 h, except in the case of PtdIns5P
+detection where the coverslips were incubated with GST-2xPHD probe before
+incubation with an anti-GST antibody as primary. Hybridization, ligation,
+ampliﬁcation and detection were realized according to the manufacturer’s
+instructions (Olink Bioscience). In brief, secondary antibodies were incubated
+in a humidity chamber for 1 h at 37/C176C. Ligation was performed with a ligase-
+containing ligation solution for 30 min at 37/C176C. Then, the ampliﬁcation step was
+performed with a polymerase-containing ampliﬁcation solution for 1 h and 40 min
+at 37/C176C. Coverslips were analysed by confocal imaging using a LSM 780 micro-
+scope, piloted by the Zen software, with a/C2 63 Plan-NEOFLUAR objective (Carl
+Zeiss). Duolink ﬂuorescent dots were counted using the ‘analyse particles functions’
+of the Fiji software.
+Statistical analysis. Data are representative of three to ﬁve independent
+experiments and provided as mean±s.e.m. Statistical analyses were carried out by
+either non-parametric t-test, non-parametric one-way ANOVA (Kruskal–Wallis)
+with Dunn’s post test or one samplet-test (for the deviation from mean value in a
+control group) using GraphPad PRISM 4.0 software (GraphPad Software Inc.,
+La Jolla, CA, USA). Signiﬁcance was accepted at *Po0.05. The number of cells
+analysed in the various experiments presented herein can be found in
+Supplementary Table 2.
+References
+1. Di Paolo, G. & De Camilli, P. Phosphoinositides in cell regulation and
+membrane dynamics. Nature 443, 651–657 (2006).
+2. Payrastre, B. et al.Phosphoinositides: key players in cell signalling, in time and
+space. Cell Signal. 13, 377–387 (2001).
+3. Lemmon, M. A. Membrane recognition by phospholipid-binding domains.
+Nat. Rev. Mol. Cell Biol.9, 99–111 (2008).
+4. McCrea, H. J. & De Camilli, P. Mutations in phosphoinositide metabolizing
+enzymes and human disease.Physiology (Bethesda) 24, 8–16 (2009).
+5. Pendaries, C., Tronchere, H., Plantavid, M. & Payrastre, B. Phosphoinositide
+signaling disorders in human diseases.FEBS Lett. 546, 25–31 (2003).
+6. Viaud, J., Boal, F., Tronchere, H., Gaits-Iacovoni, F. & Payrastre, B.
+Phosphatidylinositol 5-phosphate: A nuclear stress lipid and a tuner of
+membranes and cytoskeleton dynamics.Bioessays 36, 260–272 (2013).
+7. Grainger, D. L., Tavelis, C., Ryan, A. J. & Hinchliffe, K. A. The emerging role of
+PtdIns5P: another signalling phosphoinositide takes its place.Biochem. Soc.
+Trans. 40, 257–261 (2012).
+8. Gozani, O. et al. The PHD ﬁnger of the chromatin-associated protein ING2
+functions as a nuclear phosphoinositide receptor.Cell 114, 99–111 (2003).
+9. Jones, D. R. et al. Nuclear PtdIns5P as a transducer of stress signaling: an
+in vivo role for PIP4Kbeta.Mol. Cell. 23, 685–695 (2006).
+10. Ramel, D.et al. Shigella ﬂexneri infection generates the lipid PI5P to alter
+endocytosis and prevent termination of EGFR signaling.Sci. Signal. 4, ra61
+(2011).
+11. Sarkes, D. & Rameh, L. E. A novel HPLC-based approach makes possible the
+spatial characterization of cellular PtdIns5P and other phosphoinositides.
+Biochem. J. 428, 375–384 (2010).
+12. Mason, D.et al. Alteration of epithelial structure and function associated
+with PtdIns(4,5)P2 degradation by a bacterial phosphatase.J. Gen. Physiol.129,
+267–283 (2007).
+13. Niebuhr, K.et al.Conversion of PtdIns(4,5)P2 into PtdIns(5)P by theS. ﬂexneri
+effector IpgD reorganizes host cell morphology.EMBO J. 21, 5069–5078
+(2002).
+14. Pendaries, C.et al. PtdIns5P activates the host cell PI3-kinase/Akt pathway
+during Shigella ﬂexneri infection. EMBO J. 25, 1024–1034 (2006).
+15. Oppelt, A.et al. Production of phosphatidylinositol 5-phosphate via PIKfyve
+and MTMR3 regulates cell migration.EMBO Rep. 14, 57–64 (2013).
+16. Sbrissa, D., Ikonomov, O. C., Filios, C., Delvecchio, K. & Shisheva, A.
+Functional dissociation between PIKfyve-synthesized PtdIns5P and
+PtdIns(3,5)P2 by means of the PIKfyve inhibitor YM201636.Am. J. Physiol.
+Cell Physiol. 303, C436–C446 (2012).
+17. Sbrissa, D., Ikonomov, O. C., Strakova, J. & Shisheva, A. Role for a novel
+signaling intermediate, phosphatidylinositol 5-phosphate, in insulin-regulated
+F-actin stress ﬁber breakdown and GLUT4 translocation.Endocrinology 145,
+4853–4865 (2004).
+18. Colomba, A.et al. Activation of Rac1 and the exchange factor Vav3 are
+involved in NPM-ALK signaling in anaplastic large cell lymphomas.Oncogene
+27, 2728–2736 (2008).
+19. Colomba, A.et al.inhibition of Rac controls NPM-ALK-dependent lymphoma
+development and dissemination.Blood Cancer J1, e21 (2011).
+20. Lagarrigue, F.et al. Matrix metalloproteinase-9 is upregulated in
+nucleophosmin-anaplastic lymphoma kinase-positive anaplastic lymphomas
+ans activated at the cell surface by the chaperone heat shock protein 90 to
+promote cell invasion.Cancer Res. 70, 6978–6987 (2010).
+21. Dupuis-Coronas, S.et al. The nucleophosmin-anaplastic lymphoma kinase
+oncogene interacts, activates, and uses the kinase PIKfyve to increase
+invasiveness. J. Biol. Chem.286, 32105–32114 (2011).
+22. Hall, A. Rho GTPases and the actin cytoskeleton.Science 279, 509–514 (1998).
+23. Heasman, S. J. & Ridley, A. J. Mammalian Rho GTPases: new insights into their
+functions from in vivo studies. Nat. Rev. Mol. Cell Biol.9, 690–701 (2008).
+24. Chicanne, G.et al.A novel mass assay to quantify the bioactive lipid PtdIns3P
+in various biological samples.Biochem. J. 447, 17–23 (2012).
+25. Gao, Y., Dickerson, J. B., Guo, F., Zheng, J. & Zheng, Y. Rational design and
+characterization of a Rac GTPase-speciﬁc small molecule inhibitor.Proc. Natl
+Acad. Sci. USA101, 7618–7623 (2004).
+26. Pelish, H. E.et al. Secramine inhibits Cdc42-dependent functions in cells and
+Cdc42 activation in vitro. Nat. Chem. Biol.2, 39–46 (2006).
+27. Haugsten, E. M., Oppelt, A. & Wesche, J. Phosphatidylinositol 5-phosphate is a
+second messenger important for cell migration.Commun. Integr. Biol.6,
+e25446 (2013).
+28. Coronas, S.et al. Elevated levels of PtdIns5P in NPM-ALK transformed cells:
+implication of PIKfyve.Biochem. Biophys. Res. Commun.372, 351–355 (2008).
+29. Vigil, D., Cherﬁls, J., Rossman, K. L. & Der, C. J. Ras superfamily GEFs and
+GAPs: validated and tractable targets for cancer therapy?Nat. Rev. Cancer10,
+842–857 (2010).
+30. Lazer, G. & Katzav, S. Guanine nucleotide exchange factors for RhoGTPases:
+good therapeutic targets for cancer therapy?Cell Signal. 23, 969–979 (2011).
+31. Cook, D. R., Rossman, K. L. & Der, C. J. Rho guanine nucleotide exchange
+factors: regulators of Rho GTPase activity in development and disease.
+Oncogene doi:10.1038/onc.2013.362 (2013).
+32. Lim, M. S.et al.The proteomic signature of NPM/ALK reveals deregulation of
+multiple cellular pathways.Blood 114, 1585–1595 (2009).
+33. Malliri, A.et al.Mice deﬁcient in the Rac activator Tiam1 are resistant to Ras-
+induced skin tumours.Nature 417, 867–871 (2002).
+34. Mertens, A. E., Roovers, R. C. & Collard, J. G. Regulation of Tiam1-Rac
+signalling. FEBS Lett. 546, 11–16 (2003).
+35. Michiels, F.et al. Regulated membrane localization of Tiam1, mediated by the
+NH2-terminal pleckstrin homology domain, is Required for Rac-dependent
+membrane rufﬂing and C-Jun NH2-terminal kinase activation.J. Cell Biol.137,
+387–398 (1997).
+36. Baumeister, M. A.et al. Loss of phosphatidylinositol 3-phosphate binding by
+the C-terminal Tiam-1 pleckstrin homology domain preventsin vivo Rac1
+ARTICLE NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080
+16 NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications
+& 2014 Macmillan Publishers Limited. All rights reserved.
+activation without affecting membrane targeting.J. Biol. Chem.278,
+11457–11464 (2003).
+37. Fleming, I. N., Gray, A. & Downes, C. P. Regulation of the Rac1-speciﬁc
+exchange factor Tiam1 involves both phosphoinositide 3-kinase-dependent and
+-independent components.Biochem. J. 351, 173–182 (2000).
+38. Robbe, K., Otto-Bruc, A., Chardin, P. & Antonny, B. Dissociation of GDP
+dissociation inhibitor and membrane translocation are required for efﬁcient
+activation of Rac by the Dbl homology-pleckstrin homology region of Tiam.
+J. Biol. Chem.278, 4756–4762 (2003).
+39. Malecka, K. A., Szentpetery, Z. & Peterson, J. R. Synergistic activation of
+p21-activated kinase 1 by phosphatidylinositol 4,5-bisphosphate and Rho
+GTPases. J. Biol. Chem.288, 8887–8897 (2013).
+40. Thery, M. Micropatterning as a tool to decipher cell morphogenesis and
+functions. J. Cell Sci.123, 4201–4213 (2010).
+41. Soderberg, O.et al. Direct observation of individual endogenous protein
+complexes in situ by proximity ligation.Nat. Methods 3, 995–1000 (2006).
+42. Palamidessi, A.et al. Endocytic trafﬁcking of Rac is required for the spatial
+restriction of signaling in cell migration.cell 134, 135–147 (2008).
+43. Yoshizaki, H.et al. Activity of Rho-family GTPases during cell division as
+visualized with FRET-based probes.J. Cell Biol.162, 223–232 (2003).
+44. Suetsugu, S., Yamazaki, D., Kurisu, S. & Takenawa, T. Differential roles of
+WAVE1 and WAVE2 in dorsal and peripheral rufﬂe formation for ﬁbroblast
+cell migration.Dev. Cell 5, 595–609 (2003).
+45. Buccione, R., Orth, J. D. & McNiven, M. A. Foot and mouth: podosomes,
+invadopodia and circular dorsal rufﬂes.Nat. Rev. Mol. Cell Biol.5, 647–657
+(2004).
+46. Block, M. R.et al.Podosome-type adhesions and focal adhesions, so alike yet so
+different. Eur. J. Cell Biol.87, 491–506 (2008).
+47. Linder, S. The matrix corroded: podosomes and invadopodia in extracellular
+matrix degradation. Trends Cell. Biol.17, 107–117 (2007).
+48. Itoh, R. E.et al. Activation of Rac and cdc42 video imaged by ﬂuorescent
+resonance energy transfer-based single-molecule probes in the membrane of
+living cells. Mol. Cell Biol.22, 6582–6591 (2002).
+49. Joffre, C.et al. A direct role for Met endocytosis in tumorigenesis.Nat. Cell
+Biol. 13, 827–837 (2011).
+50. Viaud, J., Gaits-Iacovoni, F. & Payrastre, B. Regulation of the DH-PH tandem
+of guanine nucleotide exchange factor for Rho GTPases by phosphoinositides.
+Adv. Biol. Regul.52, 303–314 (2012).
+51. Palfy, M., Remenyi, A. & Korcsmaros, T. Endosomal crosstalk: meeting points
+for signaling pathways.Trends Cell Biol.22, 447–456 (2012).
+52. Miroshnychenko, D., Dubrovska, A., Maliuta, S., Telegeev, G. & Aspenstrom, P.
+Novel role of pleckstrin homology domain of the Bcr-Abl protein: analysis of
+protein-protein and protein-lipid interactions.Exp. Cell Res.316, 530–542
+(2010).
+53. Kalluri, R. & Zeisberg, M. Fibroblasts in cancer.Nat. Rev. Cancer6, 392–401
+(2006).
+54. Saltel, F.et al.Invadosomes: intriguing structures with promise.Eur. J. Cell Biol.
+90, 100–107 (2011).
+55. Garcia-Mata, R.et al. Analysis of activated GAPs and GEFs in cell lysates.
+Methods Enzymol. 406, 425–437 (2006).
+56. Lamant, L.et al. Establishment of a novel anaplastic large-cell lymphoma-cell
+line (COST) from a ’small-cell variant’ of ALCL.Leukemia 18, 1693–1698
+(2004).
+57. Sirven, A.et al. Enhanced transgene expression in cord blood CD34(þ )-
+derived hematopoietic cells, including developing T cells and NOD/SCID
+mouse repopulating cells, following transduction with modiﬁed trip lentiviral
+vectors.Mol. Ther. 3, 438–448 (2001).
+58. Benard, V. & Bokoch, G. M. Assay of Cdc42, Rac, and Rho GTPase activation
+by afﬁnity methods.Methods Enzymol. 345, 349–359 (2002).
+59. Bligh, E. G. & Dyer, W. J. A rapid method of total lipid extraction and
+puriﬁcation. Can. J. Biochem. Physiol.37, 911–917 (1959).
+60. Dowler, S., Kular, G. & Alessi, D. R. Protein lipid overlay assay.Sci. STKE2002,
+pl6 (2002).
+61. Strochlic, T. I., Viaud, J., Rennefahrt, U. E., Anastassiadis, T. & Peterson, J. R.
+Phosphoinositides are essential coactivators for p21-activated kinase 1.Mol.
+Cell 40, 493–500 (2010).
+62. Bowden, E. T., Coopman, P. J. & Mueller, S. C. Invadopodia: unique methods
+for measurement of extracellular matrix degradationin vitro. Methods Cell Biol.
+63, 613–627 (2001).
+Acknowledgements
+We thank J. Collard, M.A. Lemmon, B. Ge´ni, J.R Peterson, A. Malliri, M. Fawal and
+B. Goud for sharing reagents. We thank the Kirchausen and Hammond laboratories for
+providing secramine A. Thanks to the imaging facilities of INSERM U1043 (A. Canivet),
+INSERM U1048 (R. D’Angelo) and J.M. Lago for expert microscopy help and advice.
+We thank B. Payrastre’s and B. Goud’s groups for helpful discussions. We thank
+Dr R. Solinhac for his help with statistical analysis. We acknowledge support from the
+INSERM, ARC (Association pour la Recherche contre le Cancer), ‘La Ligue contre le
+Cancer’, ‘La Fondation pour la Recherche Medicale’, ANR 2013 ANR-13-BSV2-0004-01
+(Agence Nationale de la Recherche). J.V. is supported by ARC and ‘La fondation
+Lefoulon-Delalande’. F.L. and D.R. were supported by the French ‘Ministe`re de la
+Recherche et de la Technologie’ and ARC. This work is dedicated to the Memory of
+Jose´ Da Silva.
+Author contributions
+J.V., F.L. and D.R. performed most of the experiments. S.A. and D.C. performed some of
+the FRET experiments. G.C. performed lentiviral productions, PtdIns3P mass assay and
+PIPs HPLC analysis. L.C. gave technical support and performed the DuoLink assay.
+J.-M.X. carried out PtdIns5P mass assays on RPE-1 cells and Cost/Karpas cells expressing
+shRNA. O.P. and B.P. criticized the research. J.V., B.P. and F.G-I. analysed the data and
+wrote the manuscript. F.G.-I. designed and supervised the study.
+Additional information
+Supplementary Information accompanies this paper at http://www.nature.com/
+naturecommunications
+Competing ﬁnancial interests:The authors declare no competing ﬁnancial interests.
+Reprints and permissioninformation is available online at http://npg.nature.com/
+reprintsandpermissions/
+How to cite this article:Viaud, J. et al. Phosphatidylinositol 5-phosphate regulates
+invasion through binding and activation of Tiam1.Nat. Commun. 5:4080
+doi: 10.1038/ncomms5080 (2014).
+NATURE COMMUNICATIONS | DOI: 10.1038/ncomms5080 ARTICLE
+NATURE COMMUNICATIONS| 5:4080 | DOI: 10.1038/ncomms5080 | www.nature.com/naturecommunications 17
+& 2014 Macmillan Publishers Limited. All rights reserved.

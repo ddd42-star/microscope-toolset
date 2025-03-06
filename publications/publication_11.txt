@@ -1,0 +1,1557 @@
+ 
+GTPase activating protein DLC4 spatio -1 
+temporally regulates Rho signaling  2 
+Max Heydasch1,†, Lucien Hinderling1,2,†, Jakobus van Unen 1, Maciej Dobrzynski1, Olivier 3 
+Pertz1,* 4 
+ 5 
+1Institute of Cell Biology, University of Bern, 3012 Bern, Switzerland 6 
+2Graduate School for Cellular and Biomedical Sciences, University of Bern, Switzerland 7 
+† These authors contributed equally to this work 8 
+* Corresponding author: olivier.pertz@unibe.ch 9 
+ 10 
+Abstract 11 
+Tightly regulated spatio -temporal Rho GTPase activity patterns regulate morphogenetic 12 
+processes such as cell migration. Emerging evidence suggests that binding of Guanine 13 
+nucleotide exchange factors (GEFs) a nd GTPase activating proteins (GAPs) to the 14 
+cytoskeleton or adhesions mediate feedback regulation to spatio -temporal Rho GTPase 15 
+activation. To explore such feedback regulation, we study the Rho specific GAP Deleted in 16 
+Liver Cancer 1 (DLC1) which binds to f ocal adhesions (FAs) through mechanosensitive 17 
+interactions. Using a FRET biosensor, we show that DLC1 loss of function leads to global 18 
+increase in Rho activity and contractility throughout the cell without affecting a striking 19 
+lamellar RhoA activity band i n fibroblasts. To interrogate the Rho GTPase signaling flux, 20 
+we build a genetic circuit consisting of an optogenetic actuator to control Rho activity, and 21 
+a Rho activity biosensor. In spreading cells at steady state, optogenetic manipulation of 22 
+Rho activity reveals that DLC1 controls the rate of Rho activation rather than duration, both 23 
+at FAs and at the plasma membrane (PM). Local and reversible optogenetic control of 24 
+contractility shows that DLC1 associates/dissociates with FAs during their 25 
+reinforcement/relaxation. This might provide positive feedback that locally increases the 26 
+rate of Rho activation at FAs that experience local tension to facilitate FA disassembly. Our 27 
+results indicate that DLC1 operates both at the PM and at FAs to regulate global Rho 28 
+activity levels at steady state, or to amplify local Rho activity at FAs experiencing a strong 29 
+mechanical input, presumably to induce robust FA disassembly. This provides new insights 30 
+in the complexity of spatio-temporal Rho GTPase signaling. 31 
+32 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Introduction 33 
+Rho GTPases regulate the cytoskeletal dynamics that power morphogenetic processes at 34 
+the cell - and tissue level  (Etienne-Manneville and Hall, 2002) . Their activity is tightly 35 
+controlled in time and space by G EFs and GAPs, which respectively activate and inhibit 36 
+Rho GTPases. In the GTP-loaded, active state, Rho GTPases bind downstream effectors 37 
+that regulate cytoskeletal dynamics and other cellular processes. Based on classic 38 
+experiments that include measuring population-averaged Rho GTPase activity levels, as 39 
+well as overexpressing dominant positive/negative Rho GTPase mutants, it was proposed 40 
+that Rac1 controls lamellipodial protrusion, Cdc42 regulates filopodium formation, and 41 
+RhoA controls myosin-based contractility.  42 
+Recent studies in which spatio-temporal Rho GTPase activation dynamics were measured 43 
+using fluorescence resonance energy transfer (FRET)-based biosensors, revealed a much 44 
+higher signaling complexity. During cell migration, RhoA, Rac1 and Cdc42 are all activated 45 
+in membrane protrusions at the leading edge (Itoh et al., 2002; Kraynov et al., 2000; 46 
+Nalbant et al., 2004; Pertz et al., 2006) . Further, the three Rho GTPases are activated in 47 
+specific spatio-temporal sequences during the protrusion/retraction cycles that fluctuate on 48 
+time and length scales of seconds and single micrometers (Machacek et al., 2009) . A 49 
+further level of complexity is that these Rho GTPase activity sequences vary depending on 50 
+the cell system (Hu et al., 2022; Machacek et al., 2009; Martin et al., 2016). This indicates 51 
+that complex spatio-temporal Rho GTPase signaling programs regulate processes such as 52 
+cell migration. Similarly as for Ras GTPases (Schmick et al., 2015) , it is now clear that 53 
+these Rho GTPase signaling patterns most likely result from a precise spatio -temporal 54 
+regulation of Rho GTPase signaling fluxes controlled by GEFs and GAPs (Bement and von 55 
+Dassow, 2014; Fritz and Pertz, 2016; Pertz, 2010). In this signaling flux, specific GEFs will 56 
+be locally activated to load Rho GTPases with GTP depending on different cellular inputs. 57 
+These GTP-loaded GTPases will then subsequently diffuse in the plasma membrane  by 58 
+virtue of their C -terminal lipid moiety until they encounter a locally activated GAP  which 59 
+eventually deactivates them. The interplay of GEFs, GAPs and diffusion of Rho GTPases 60 
+in the PM will ultimately lead to the formation of a Rho GTPase activity pattern. Modelling 61 
+studies have suggested that sophisticated dynamic signaling behaviors can emerge from 62 
+the interplay of GEFs, GAPs, and GTPases within a signaling  network (Tsyganov et al., 63 
+2012). Steady-state images of Rho GTPase activity  patterns do not provide information 64 
+about the whole Rho GTPase flux mentioned above. 65 
+This signaling complexity is consistent with the large amount of GEFs and GAPs that are 66 
+ubiquitously expressed in cells (Fusco et al., 2016, 2016; Moon and Zheng, 2003; 67 
+Mosaddeghzadeh and Ahmadian, 2021; Müller et al., 2020; Rossman et al., 2005) . 68 
+Recently, a system-wide screen has revealed that many GEFs and GAPS localize to 69 
+cytoskeletal structures as well as adhesion complexes such as focal adhesions (FAs)  70 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+(Müller et al., 2020). This strongly suggests the existence  of feedback mechanisms from 71 
+the cytoskeleton and FAs to Rho GTPase signaling. In this study, it was shown that Rac1-72 
+specific GEFs bind to FAs at the front, while Rac1 -specific GAPs bind to FAs and at the 73 
+back of the lamella of fibroblasts. This precise, asymmetric positioning of GEFs and GAPs 74 
+might then regulate the Rho GTPase flux that produces the wide gradie nt of Rac activity 75 
+observed at the leading edge of fibroblasts (Itoh et al., 2002; Kraynov et al., 2000; Martin 76 
+et al., 2016). Such feedback regulation might allow leading edge Rac1 activity to constantly 77 
+integrate mechanosensitive inputs from FAs, allowing dynamic regulation of Rac1 activity 78 
+required to fine tune cell migration. Another prominent example of such spatio -temporal 79 
+feedback regulation are the excitable RhoA activity patterns observed in the cortex during 80 
+cytokinesis in Xenopus Laevis (Bement and von Dassow, 2014) , that have also been 81 
+observed in mammalian cells (Graessl et al., 2017). Here, RhoA activity waves that control 82 
+F-actin wave patterns are spatially regulated by a RhoGAP that is locally regulated by F -83 
+actin (Bement et al., 2015a). Thus, cytoskeletal feedback to Rho GTPase regulation might 84 
+be crucial to generate dynamic Rho GTPase signaling patterns. Understanding such 85 
+spatio-temporal feedback regulation is not accessible with classic genetic approaches in 86 
+which long term perturbation of Rho GTPases, their regulators and effectors rapidly result 87 
+in a new mechanochemical state of the cell, that will not be informative about an initial 88 
+signaling/mechanical state of interest (Isogai and Danuser, 2018) . Further, it is currently 89 
+unknown which specific features of spatio-temporal Rho GTPase signaling are regulated 90 
+to produce signaling patterns. For example, does negative regulation by a GAP solel y 91 
+control Rho GTPase signal termination, or could it also modulate, less intuitive parameters 92 
+such as the rate of activation? Tackling such questions requires new tools to acutely and 93 
+transiently perturb the Rho GTPase flux to understand its spatio -temporal regulation , 94 
+directly in single living cells.  Note that this experimental paradigm was succes sful at 95 
+analyzing the Mitogen activated protein kinase (MAPK network) (Blum et al., 2019; 96 
+Dessauges et al., 2022; Ryu et al., 2015). 97 
+A promising candidate to investigate how mechanical feedback from FAs can spatio -98 
+temporally shape Rho GTPase activity is the RhoA-specific GAP Deleted in Liver Cancer 99 
+1 (DLC1). DLC1 has been shown to both bind the plasma membrane (PM) (Erlmann et al., 100 
+2009), as well as FAs (Haining et al., 2018; Kaushik et al., 2014) . At the PM, intera ction 101 
+with phosphatidylinositol-4,5-bisphosphate (PI(4,5)P2) can regulate GAP activity (Erlmann 102 
+et al., 2009). At the FA, DLC1 interacts with the r7-r8 domains of the FA protein talin in a 103 
+mechanosensitive fashion (Gingras et al., 2008; Goult et al., 2021; Haining et al., 2018; 104 
+Zhao et al., 2022), as well as with Focal adhesion kinase (Li et al., 2011). When talin is in 105 
+a state of low mechanical strain, it binds to DLC1, and presumably leads to local RhoA 106 
+inactivation. However, upon force application, the r7 -r8 domains unfold leading to 107 
+dissociation of DLC1 from talin, leading to loss of negative RhoA regulation. This suggests 108 
+that DLC1 is regulated at FAs by mechanosensitive interactions, which can relay 109 
+information about the mechanical state of the cell to control RhoA activity. 110 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+In this work, we explore the spatio-temporal regulation of RhoA activity by DLC1. We show 111 
+that knocking out DLC1 in REF52 fibroblasts leads to increased amplitude in RhoA 112 
+throughout the cell. This is accompanied by an increased contractility that augments FAs 113 
+and stress fibers (SFs). To explore how DLC1 contributes to Rho GTPase activity fluxes, 114 
+we built a genetic circuit consisting of an optogenetic actuator to activate Rho with light, 115 
+and a spectrally compatible biosensor to measure Rho activity. Transient optogenetic 116 
+recruitment of a Rho GEF domain at FAs or at the PM led to an increase in the rate of 117 
+activation of Rho in DLC1 KO versus WT cells at both subcellular localizations. However, 118 
+we found that in both control and DLC1 null cells, RhoA activation was more efficient at 119 
+FAs compared to the PM . Further, acute and local  manipulation of contractility with the 120 
+optogenetic actuator  revealed that DLC1 dynamically associates/dissociates with FAs 121 
+under acute mechanical tension/relaxation. Our results suggest a complex mechanism in 122 
+which DLC1 -dependent Rho regulation can occur both at the PM and at FAs, with a 123 
+dependence on mechanosensitive signals on the latter. 124 
+ 125 
+Results 126 
+DLC1 deficient cells show increased formation of SFs and FAs 127 
+To investigate the function of DLC1 in cytoskeletal and adhesion dynamics, we knocked 128 
+down (KD) DLC1 in rat REF52 fibroblasts via small interfering RNA (siRNA). We also 129 
+created a knockout (KO) cell line via Crispr/Cas9, that has a frameshift deletion at position 130 
+841 of Exon 5 of the gene, resulting in an early in frame stop codon 100 bp downstream of 131 
+the cut. Gene-editing was validated by sequencing the endogenous locus. We were unable 132 
+to test expression levels using western blot because of the absence of commercially 133 
+available antibodies specific for rat DLC1. We then also rescued the DLC1 KO cells with 134 
+an mCherry-labeled DLC1 construct using stable transfection with a piggyBac transposase 135 
+system. REF52 fibroblasts were seeded at subconfluent density onto fibronectin -coated 136 
+glass bottom wells  and allowed to spread for one hour before fixation, leading to an 137 
+isotropic spreading state in control, wild -type (WT) cells. To assess the impact of DLC1 138 
+deficiency on the formation of cytoskeletal and adhesion structures, we stained for F-actin 139 
+(phalloidin) and paxillin (Figure 1A) or phospho -myosin light chain (pMLC) (Figure 1B). 140 
+Consistent with a n expected increase in RhoA activity, we observed a phenotype of 141 
+increased contractility as documented by increased lamella size, SF content, number of 142 
+FAs, an d increased pMLC. This increased contractility led to the loss of the isotropic 143 
+spreading observed in WT cells. Rescue with the DLC1 construct reverted the cells to a 144 
+less contractile phenotype that displayed a lamella of identical size as WT cells, enabling 145 
+the characteristic isotropic spreading observed in WT cells. Quantification of these images 146 
+revealed both an increase in lamella size (Figure 1C) and FA area (Figure 1D) in DLC1 KD 147 
+and KO cells versus WT and rescue cells ( Figure1C). As previously documented in 148 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+fibroblasts (Kaushik et al., 2014), these results indicate that DLC1 feeds into the regulation 149 
+of contractility, SF and FA formation in fibroblasts. The less penetrant phenotype observed 150 
+in KO versus KD suggests that the KO cells might be able to adapt to the long-term absence 151 
+of DLC1, while KD cells h ad less than 48 hours to adjust to the new mechanical 152 
+state. These experiments also validate the DLC1 KO cells and DLC1 KO rescued with 153 
+mCherry-DLC1 that will be used in subsequent experiments. 154 
+ 155 
+DLC1 deficient cells display altered spreading dynamics, lack of polarization 156 
+and efficient migration 157 
+We timelapsed REF52 WT and DLC1 KO cells for multiple hours in presence of pla telet 158 
+derived growth factor (PDGF), a potent stimulator of fibroblast motility (Martin et al., 2014), 159 
+and evaluated their ability to migrate. We found that DLC1 KO cells displayed a reduction 160 
+in both their speed of migration and their ability to migrate directionally (Figure S1A-C). We 161 
+then investigated cytoskeletal dynamics during spreading using REF52 fibroblasts stably 162 
+expressing the F-actin marker LifeAct (Riedl et al., 2008). Imaging early spreading (e.g. 20 163 
+minutes after plating) revealed no clear differences in edge dynamics in WT versus DLC1 164 
+KO cells (Figure 2A). However, kymograph analysis clearly showed that the lamella that 165 
+characteristically starts directly at the leading edge of the highly contractile REF52 cells 166 
+(Martin et al., 2016, 2014) , was wider in DLC1 KO versus WT cells. Later, 1 hour after 167 
+plating, when the cells are still spreading, lamellipodial protrusion/retraction cycles of wider 168 
+amplitude were observed in DLC1 KO versus WT cells (Figure 2B, Movie S1), with again 169 
+a large increase in SF content (F igure 2B, right panel). After initial spreading, REF52 170 
+fibroblasts break their symmetry and eventually display  short episodes of polarized cell 171 
+migration. Later, contractility builds up leading cells with spindle -like morphology. This 172 
+process occurs on tim escales of multiple hours. To capture these behaviors, we  173 
+investigated cytoskeletal dynamics over the next 10 hours after reseeding at a slower 174 
+timescale that precludes observation of lamellipodial dynamics. While WT cells efficiently 175 
+broke their symmetry, and could display short stretches of polarized migration, DLC1 KO 176 
+cells displayed robust stress fibers that hampered symmetry breaking and polarization 177 
+(Figure 2C, Movie S2 ). DLC1 KO cells therefore rapidly adopted a spindle -like shape. 178 
+Quantification of the adoption of such a spindle shape phenotype showed that WT cells will 179 
+assume the spindle -like shape much later than DLC1 KO cells and often fail to do so 180 
+entirely within the 10 hours of imaging (Figure 2D). Further highlighting a role for DLC1 in 181 
+RhoA-mediated control of contractility, we found that DLC1 overexpression leads to strong 182 
+reduction in the number of SFs (Figure S2A). Together, these results show that DLC1 loss 183 
+of function leads to increased contractility at the onset of spreading, which later impedes 184 
+polarization and directional cell migration. 185 
+ 186 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+DLC1 deficient cells display an increase in global RhoA activity, without any 187 
+marked differences in RhoA activity pattern 188 
+To explore how DLC1 spatio-temporally controls RhoA activity, we used RhoA2G (Fritz et 189 
+al., 2013), a fluorescence resonance energy transfer (FRET)-based biosensor that reports 190 
+on RhoA activity together with the Lifeact F -actin marker during spreading. As previously 191 
+observed (Martin et al., 2014) , a RhoA activity band that correlates with the lamella r 192 
+contractile actomyosin network of the cell can be observed at the cell edge of WT REF52 193 
+fibroblast (Figure 3A, Movie S3). In DLC1 KO cells, we observed global elevation of RhoA 194 
+activity throughout the cell. Quantification of both the average activity per cell and the local 195 
+edge RhoA activity  revealed increased RhoA activity (Figure 3B). Kymograph analysis 196 
+revealed that the lamellar RhoA activity band remained of constant size during spreading 197 
+(Figure 3A). Examining cells approximately 10 hours  after spreading when they had fully 198 
+spread, and WT cells had adopted a more contractile state, the DLC1 KO cells still exhibited 199 
+a global increase in RhoA activity  (Figure 3C,D). This increase was however less strong 200 
+than in spreading cells, most likely b ecause of a higher state of contractility in WT well -201 
+spread versus spreading cells. We also evaluated the effect of overexpression of an 202 
+mCherry-tagged DLC1 on RhoA activity (Figure S2B). We observed that mild DLC1 203 
+expression, that remains mostly bound to FAs and to the PM  and does not compromise 204 
+cell morphology, leads to a decrease in global RhoA activity. Strong DLC1 expression that 205 
+leads to a large cytosolic pool of DLC1 further diminishes global RhoA activity but then 206 
+compromises cell morphology. Together, these results suggest that DLC1 signaling at the 207 
+PM and at FAs  controls global levels of RhoA activity within cells, rather than controlling 208 
+the spatio-temporal RhoA activity pool observed at the lamella. 209 
+ 210 
+Design of an optogenetic actuator - Rho biosensor to interrogate the Rho 211 
+GTPase flux 212 
+While FRET measurements as shown above provide insight about a steady -state RhoA 213 
+activity pattern, they cannot probe in detail how  a GEF/GAP/GTPase signaling network  214 
+might affect the Rho GTPase flux which most likely emerges from the regulation of multiple 215 
+GEFs and GAPs. For example, GAP -mediated negative regulation  might control Rho 216 
+GTPase signal duration, but might also be involved in adjusting the rate of activation. We 217 
+reasoned that transient, acute optogenetic perturbations of the Rho GTPase flux, followed 218 
+by measuring Rho activity dynamics might provide new insights about its regulation. To 219 
+manipulate Rho activity in single living cells, we re-engineered an iLID-based optogenetic 220 
+actuator based on a DH/PH domain of the GEF LARG (Oakes et al., 2017) (Figure 4A). We 221 
+used a high affinity nano SspB domain for efficient light-dependent recruitment of the LARG 222 
+GEF domain to the iLID anchor. To better focus optogenetic activation, we also fused the 223 
+iLID anchor to a stargazin membrane anchor that slows down its diffusion (Natwick and 224 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Collins, 2021) . Both the stargazin -iLID anchor and the SspB -LARG domains were 225 
+separated by a P2A self-cleaving peptide, allowing for equimolar expression of both units 226 
+from a single operon. We refer to this construct as optoLARG. To interrogate the Rho 227 
+GTPase flux, we engineered a REF52 line that stably expressed the optogenetic construct 228 
+as well as a rhotekin-based G protein binding domain (rGBD) that reports on Rho activation 229 
+(Mahlandt et al., 2021) . The rGBD probe is labelled with a  tandem dimeric Tomato 230 
+(tdTomato) fluorophore that is spectrally orthogonal to optogenetic activation . We used a 231 
+truncated CMV promoter to warrant low expression level of the rGBD probe to avoid 232 
+dominant negative effects of the construct through inh ibition of Rho signaling.  We also 233 
+expressed a spectrally orthogonal far-red Lifeact-miRFP construct that reports on F-actin 234 
+dynamics. Because rGBD cannot distinguish between the activity of the RhoA, RhoB and 235 
+RhoC isoforms, we refer to any rGBD measurement  as Rho activity.  This is in marked 236 
+contrast with RhoA2G, the FRET biosensor we used above that is specific for RhoA (Fritz 237 
+et al., 2013), but is not spectrally compatible with optoLARG. Note that both biosensors are 238 
+able to measure active Rho GTPase pools during  robust morphogenetic events such as  239 
+tail retraction (Fritz et al., 2013; Mahlandt et al., 2021) , while rGBD misses leading edge 240 
+Rho GTPase activity pools widely observed using FRET probes (Machacek et al., 2009; 241 
+Martin et al., 2016; Pertz et al., 2006). 242 
+We then used a digital micromirror device (DMD) to spatially shine repetitive pulses of blue 243 
+light delivered at different frequencies on 2 distinct regions of interest (ROIs) at the edge 244 
+of fibroblasts. When light pulses were delivered at high frequency, we observed robust Rho 245 
+activation at the edge, which correlated with assembly of contractile F-actin structures and 246 
+potent edge retraction (Figure 4B, kymograph shown in 4C , Movie S4 ). Removal of the 247 
+blue light pulses led to a subsequent decrease in Rho activity, and reversion of the edge 248 
+to a protrusive state. Further, stimulating a ROI at the opposite edge of the cell with a lower 249 
+light pulse frequency led to a lower Rho activation, and less robust edge retraction. These 250 
+results indicate that  depending on the strength of the light input,  optoLARG can locally, 251 
+reversibly, and quantitatively control Rho activity in singl e living cells on timescales of 252 
+seconds, allowing us to acutely manipulate the Rho GTPase flux. 253 
+ 254 
+Optogenetic interrogation of the Rho GTPase flux in WT and DLC1 KO cells 255 
+Because DLC1 might both regulate the Rho GTPase flux both at the PM (Erlmann et al., 256 
+2009) and at FAs (Haining et al., 2018) , we performed a series of experiments using 257 
+optoLARG to transiently activate RhoA with the expectation of observing  different 258 
+perturbations in Rho activity fluxes in control versus DLC1 KO cells. For that purpose, we 259 
+produced WT and DLC1 KO REF52 lines expressing optoLARG, the tdTomato -rGBD 260 
+biosensor and miRFP-paxillin as a readout for focal adhesions . We first sought to locally 261 
+activate RhoA by illuminating large ROIs at edges and evaluate any difference in Rho 262 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+activity patterns using the spectrally compatible rGBD biosensor in WT versus DLC1 KO 263 
+cells. We however were not able to identify a threshold optogenetic light input that would 264 
+induce different RhoA activity  patterns and edge dynamics in WT versus the more 265 
+contractile DLC1 KO cells. We observed that t he same light input  could induce edge 266 
+retraction in both WT and DLC1 KO cells in a non-predictable manner. This might be due 267 
+to the spatial heterogeneity of the mechanical states within cells, as well as small 268 
+differences in optoLARG and rGBD expression levels in the stable cell lines.  To address 269 
+this caveat, we reasoned that we should activate Rho using optoLARG with a more subtle 270 
+modality by illuminating only small ROIs and measuring small local fluctuations of Rho 271 
+activity using rGBD without inducing large changes in mechanical states. Further, to dissect 272 
+potential regulation of DLC1 GAP activity by PI(4,5)P2 at the PM  (Erlmann et al., 2009)  273 
+versus mechanosensitive interactions at the FA (Haining et al., 2018), we decided to make 274 
+measurements on FAs but use ROIs outside of FAs (non-FAs ROIs) to probe the PM. For 275 
+that purpose, we built an image analysis pipeline to first segment a cell in a field of view 276 
+and to then segment FAs based on their fluorescent intensity, size and localization at the 277 
+cell periphery  using the paxillin -miRFP signal (Figure 5A). We then used these FA 278 
+segmentations to illuminate small ROIs within FAs or in neighboring non-FA ROIs with one 279 
+pulse of blue light using the DMD and evaluated rGBD fluorescence fluctuations at this 280 
+location for a couple of minutes until Rho activity returned to baseline ( Figure 5B). This 281 
+optogenetic stimulation had no visible effect on edge retraction, or FA morphodynamics, 282 
+as observed when stimulating larger ROIs. Quality control of our automated segmentation 283 
+revealed high versus low paxillin signals in FA versus non -FA ROIs ( Figure 5C). This 284 
+experiment was performed on multiple cells, allowing to average out any experimental 285 
+noise due to small differences in expression levels of optoLARG or rGBD. These data were 286 
+then averaged for FA and non-FA ROIs. We observed that this pulsed optoLARG light input 287 
+led to a local transient of Rho activity for approximately 2.5 minutes in WT cells when FAs 288 
+or the PM were stimulated (Figure 5D). The identical optoLARG input led to an increased 289 
+rate of Rho activation leading to higher amplitude when a FA versus a non-FA ROI was 290 
+stimulated. Surprisingly, in DLC1 KO cells, we observed increased Rho activation rate that 291 
+also led to augmented Rho activity amplitude in comparison with WT cells in both FA and 292 
+non-FA ROIs. This was also accompanied with faster deactivation kinetics of RhoA. These 293 
+data suggest that  DLC1 limits the rate of Rho activation rather than signal duration to 294 
+regulate RhoA activity in spread cells. This can occur both at the PM and at FAs. Further, 295 
+FAs seem to provide a subcellular environment that favors GEF-mediated activation of Rho 296 
+activity. The finding that DLC1 KO also leads to faster deactivation suggests the existence 297 
+of a negative feedback that points to complex modalities of spatio-temporal regulation that 298 
+most likely involves additional GEFs/GAPs. 299 
+ 300 
+DLC1 differently interact with FAs depending on their mechanical states 301 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Our finding that we did not observe striking patterns of RhoA activity in the vicinity of FAs 302 
+in spread cells challenges the idea that mechan ical inputs regulate Rho activity in this 303 
+specific regime of mechanical forces. We speculated that the DLC1/talin system in FAs is 304 
+only mechanosensitive to stronger mechanical inputs. To evaluate FA-DLC1 interactions, 305 
+we imaged fibroblasts rescued with mCherry -DLC1 and miRFP -paxillin as a marker for 306 
+FAs. We observed that DLC1 binds to FAs at the onset of FA assembly, and that the local 307 
+DLC1 density augmented with the paxillin density (Figure S3A-C). During FA disassembly, 308 
+DLC1 density diminished concomitantly with decreasing paxillin density until the FA was 309 
+fully disassembled (Figure S3D-F). 310 
+To characterize force-dependent interactions of FAs with DLC1  in regimes of strong 311 
+mechanical perturbations, we engineered our mCherry-DLC1 rescue cells to stably express 312 
+the optoLARG system, as well as the miRFP-paxillin construct. We then used the DMD to 313 
+activate Rho-mediated contractility locally and transiently in small ROIs containing FAs with 314 
+a standardized light input. The transient light pulse induced either of the two FA behaviors: 315 
+light-mediated FA reinforcement as evidenced by a local increase in paxillin density,  was 316 
+followed by 1. FA relaxation (and decrease in paxillin density) upon light removal (Figure 317 
+6A-C, quantified in Figure 6D , Movie S5) , or 2. FA rupture (Figure S4A-C). This was 318 
+accompanied by a striking simultaneous decrease in DLC1 intensity at the FA during FA 319 
+reinforcement, and a reassociation of DLC1 during FA relaxation upon light input removal. 320 
+If the light input led to FA rupture, then the DLC1 signal gradually decreased along FA 321 
+reinforcement until the FA ultimately ruptured in an all-or-nothing manner. FAs in the same 322 
+cell that were not subjected to the light input displayed dynamics as in normal cells , as 323 
+shown in Figure 6 (Figure S 4D-F). These results indicate that DLC1 dynamically 324 
+dissociates and associates during acute FA reinforcement and relaxation in response to a 325 
+strong mechanical input. 326 
+ 327 
+Discussion 328 
+A key question in Rho GTPase biology is how multiple GEFs and GAPs control  spatio-329 
+temporal Rho GTPase signaling patterns to regulate cytoskeletal dynamics that power 330 
+morphogenetic processes such as cell migration. The recent finding that many GEFs and 331 
+GAPs themselves bind cytoskeletal and adhesion structures (Müller et al., 2020) strongly 332 
+suggests direct feedback from the cytoskeleton to Rho GTPase signaling . Self-333 
+organizational properties of cytoskeletal and adhesions structures might therefore 334 
+contribute to spatio-temporal control of Rho GTPase signaling.  Because DLC1 has been 335 
+proposed to bind to FAs in a mechanosensitive manner (Haining et al., 2018), we decided 336 
+to study it as a prototypical example of an adhesion feedback to Rho GTPase signaling. 337 
+Using novel technologies  that allow for acute spatio -temporal perturbations, we provide 338 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+some new insights about how Rho GTPases are spatio-temporally controlled by a RhoGAP 339 
+that integrates mechanosensitive inputs. 340 
+We found that in spreading fibroblasts, DLC1 KO globally augment s contractility, as 341 
+illustrated by a robust increase in SFs and FAs (Figure 1). Evaluation of F-actin dynamics 342 
+immediately after spreading, when global contractility levels are still low, reveal that DLC1 343 
+KO fibroblasts rapidly assemble a wider contractile lamella than WT cells , suggesting 344 
+aberrant increase of myosin -based contractility already at an early stage of spreading  345 
+(Figure 2A). One hour after cell plating, when cells are well spread but still retain an 346 
+isotropic shape, we observed a global increase in contractility in DLC1 KO versus WT cells 347 
+(Figure 3B). On a timescale of multiple hours after spreading , when WT cells break 348 
+symmetry, display polarized cell migration episodes , and finally adopt a contractile state  349 
+leading to a spindle morphology, we find that DLC1 KO cells transition directly to the 350 
+contractile phenotype without being able to polarize (Figure 2C,D). Thus, DLC1 loss of 351 
+function leads to a global increase of aberrant contractility. 352 
+We had previously shown that REF52 fibroblasts display a wide band of RhoA activity that 353 
+correlates with the lamellar contractile myosin network during spreading (Martin et al., 354 
+2016, 2014). We found that DLC1 KO leads to a global increase in RhoA activity throughout 355 
+the cell, without however markedly modifying the spatial band of RhoA activity (Figure 356 
+3A,B). Similar results were observed when cells were allowed to further polarize and 357 
+assemble a robust actomyosin cytoskeleton (Figure 3C,D). Further, we observed that mild 358 
+DLC1 expression, that can still mostly be titrated by FAs  and the PM without spilling out 359 
+into the cytosol, is already able to strongly downregulate global RhoA activity levels (Figure 360 
+S2B). We propose that DLC1 regulates global levels of RhoA activity at steady state, rather 361 
+than spatially patterned RhoA activity pools as observed in protrusive edges and filopodia 362 
+(Fritz et al., 2013; Machacek et al., 2009; Pertz et al., 2006) , in the lamella (Martin et al., 363 
+2016, 2014) or at the cytokinetic furrow (Basant and Glotzer, 2018; Bement et al., 2015b). 364 
+Note that the classic genetic perturbation paradigm cannot be used to study more subtle 365 
+functions of DLC1 at FAs because long -term loss of DLC1 function results in cells being 366 
+locked in a state of excessive contractility. 367 
+How does DLC1 contribute to the Rho GTPase flux in cells? To answer this question, we 368 
+used optoLARG to interrogate the Rho GTPase flux at the PM and at FAs, 2 sites at which 369 
+DLC1 can control Rho (Erlmann et al., 2009; Haining et al., 2018) . We 1st found that a 370 
+transient optoLARG light input of identical amplitude at FAs led to increased Rho activity 371 
+amplitude compared to stimulation in non-FA PM regions (schematized in Figure 6E). This 372 
+strongly suggest that the FA is a subcellular region which is highly permissive for GEF-373 
+mediated activation of Rho , which could involve a num ber of mechanisms including Src 374 
+regulation of Rho release from RhoGDI (DerMardirossian et al., 2006). 2nd, surprisingly, 375 
+we observed that DLC1 KO cells displayed increased rates of Rho activation kinetics in 376 
+both FA and non-FA regions in response to a transient optoLARG light input, also leading 377 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+to increased Rho activity amplitude. This strongly suggests that DLC1 regulates the rate of 378 
+Rho activation rather than signal duration/termination. Given the promiscuous expression 379 
+of GEFs and GAPs within a cell type (Moon and Zheng, 2003; Rossman et al., 2005), other 380 
+Rho GAP(s) might specifically control signal termination , which might by example be 381 
+important to specifiy the lamellar pattern of RhoA activity in our REF52 cell system . The 382 
+role of DLC1 in controlling the rate of Rho activation remains to be understood. One can 383 
+however speculate that DLC1 provides negative feedback  to control the rate of Rho 384 
+activation. Such feedback structures are prevalent in different GTPase signaling networks 385 
+(Tsyganov et al., 2012; Wu and Lew, 2013), and can endow the latter with properties such 386 
+as robustness to perturbations. 3rd, we observed that in addition to the increased rate of 387 
+Rho activation in response to the optoLARG input, DLC1 KO cells also display faster 388 
+adaptation back to baseline Rho activity compared to  control cells. Such non -linear 389 
+behavior again suggests the existence of additional feedback regulation that might involve 390 
+other GEFs/GAPs. An important feature of our optogenetic approach in which we perturb 391 
+cells minimally without eliciting cytoskeletal responses is that we might be able to capture 392 
+subtle dynamic processes occurring at steady state. Strong optoLARG input that leads to 393 
+robust actomyosin contractility  and edge retraction , as seen in Figure 4, might activate 394 
+numerous mechanical feedback not present at steady-state, and thus not provide access 395 
+to cellular regulation processes occurring in an unperturbed, normal state. 396 
+Together, our data strongly suggests that in spread fibroblasts at steady state, in absence 397 
+of any acute mechanical input, DLC1 can exert its GAP activity both at the PM and at FAs 398 
+to control the rate of Rho activation. In these conditions, DLC1 association with FAs follows 399 
+FA assembly and disassembly (Figure 6 ), strongly suggesting that mechanosensitive 400 
+interactions with talin are not relevant in this context (Haining et al., 2018). Note that RhoA 401 
+localization is homogeneously distributed at the PM, and any RhoA pool being regulated 402 
+by DLC1 at the FAs will immediately diffuse in the PM, explaining the absence of local 403 
+pools of RhoA activity at FAs. This global regulation of R hoA activity levels by DLC1 in 404 
+fibroblasts is in marked contrast with neuronal growth cones, in which DLC1 regulates a 405 
+highly focused RhoA activity pattern that localizes to the tip of F-actin bundles in filopodia, 406 
+most probably to regulat e formin-dependent actin polymerization (Fusco et al., 2016) . In 407 
+this context, DLC1 loss of function leads to an enlargement of the RhoA activity pattern at 408 
+filopodia, which results in longer and stabler filopodia, ultimately inducing more processive 409 
+growth cone motility and neurite outgrowth. This shows that a specific RhoGAP , such as 410 
+DLC1, can function in different ways in distinct cellular systems and mechanical contexts. 411 
+In the presence of acute mechanical perturbations, we observe distinct DLC1 dynamics at 412 
+FAs that most likely involve documented mechanosensitive interactions with talin at FAs 413 
+(Haining et al., 2018) . Using optoLARG, we were able to control actomyosin contractility 414 
+transiently and locally in a small ROI leading to FA reinforcement followed by relaxation 415 
+(Figure 6). We found that in response to such a mechanical input, DLC1 rapidly dissociates 416 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+from FAs that exhibit robust reinforcement (Figure 6, schematized in Figure 6F ). The 417 
+release of DLC1 in response to strong FA reinforcement correlates well with in vitro  418 
+measurements that have shown that DLC1 dissociates from stretched talin due to unfolding 419 
+of the r7-r8 domain (Haining et al., 2018). Our data also shows that FA relaxation can lead 420 
+to rebinding of DLC1 to FAs (Figure 6), suggesting that the r7-r8 talin domain might refold 421 
+in these conditions.  Our results illustrate how  optoLARG enables spatio-temporal, 422 
+reversible control of contractility that might help unravel mechanosensitive interactions that 423 
+are not accessible with classically used global chemical perturbations such as nocodazole-424 
+mediated microtubule depolymerization  (Krendel et al., 2002) , or treatment with 425 
+lysophosphatidic acid (Pertz et al., 2006)  leading to global RhoA activation and massive 426 
+stimulation of contractility. 427 
+We propose that DLC1 provides two levels of regulation of Rho. In absence of any strong 428 
+mechanical input, active DLC1 at FAs and at the PM throughout the cell seems to contribute 429 
+to the regulation of steady -state global Rho activity in the cells by controlling its rate of 430 
+activation. The significance of this mode of regulation is yet to be understood but most likely 431 
+involves simultaneous regulation with additional Rho GEFs and GAPs. Distinct Rho GAPs 432 
+might spatially control signal termination that shape the characteristic band of RhoA activity 433 
+that coincides with the lamella.  In response to strong mechanical stimuli  leading to FA 434 
+reinforcement and talin stretching , rapid unbinding of DLC1 from FAs might locally 435 
+decrease local RhoGAP activity providing positive feedback that could rapidly increase the 436 
+local rate of Rho activation , possibly strengthening contractility that might lead to FA 437 
+disassembly as we have observed. C onversely, when the mechanical input vanishes, 438 
+recruitment of DLC1 to relaxing FAs might rapidly switch off RhoA activity to return to a 439 
+steady state of low contractility. We speculate that these non -linear signaling behaviors 440 
+might allow to amplify local mechanical input s to regulate all -or-nothing cytoskeletal 441 
+processes such as tail retraction during cell migration. Such tail retraction events are 442 
+characterized by short bursts of highly localized RhoA activity that are followed by rapid 443 
+relaxation once the tail has been retracted (Martin et al., 2014; Pertz et al., 2006) . Here, 444 
+SF pulling on FAs at the back of a cell might allow local release of DLC1, rapid increase of 445 
+local RhoA activity, leading to strong local contraction and tail retraction . Experimentally 446 
+testing this hypothesis in the context of tail retraction  is technically challenging because 447 
+long term DLC1 perturbation leads to global contractility that precludes cell polarization, 448 
+directional migration and thus tail retraction episodes. This illustrates an important limitation 449 
+of the classic genetic perturbation toolkit that ha s been used to study Rho GTPase 450 
+signaling. 451 
+Our results provide new insights into the complex network circuitry that regulates spatio-452 
+temporal Rho GTPase signaling and illustrate how we must tackle this problem. By allowing 453 
+for precise and reversible perturbations, signaling optogenetics provide the opportunity to 454 
+dissect the spatio -temporal Rho GTPase fluxes that contro l patterns of Rho GTPase 455 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+activity at adequate time/length scales. In the future, a full understanding of Rho GTPase 456 
+signaling fluxes and formation of signaling pattern s will require more systematic 457 
+approaches to consider the multiple GEFs/GAPs that are inv olved in shaping  cell 458 
+morphogenesis. 459 
+ 460 
+Materials and methods  461 
+Cell culture 462 
+Rat Embryo Fibroblast 52 (REF52) were cultured in Dubelcco’s Modified Eagle Medium 463 
+with 4.5 g/l glucose, 10% 4mM L -Glutamine, and 100 U/ml penicillin/streptomycin. Cells 464 
+were grown at 37 ºC and 5% CO2.  465 
+ 466 
+SiRNA knockdown 467 
+4µl lipofectamine RNAi max was mixed with a total of 500µl of OPTIMEM medium and a 468 
+pool of SiRNAs against the gene of interest at a final concentration of 60 nM (SiTools 469 
+Biotech). The mix was added to a 6 well plate containing 100000 cells in a 2 ml medium 470 
+volume medium. 471 
+ 472 
+CrispR/Cas9 Knockout generation 473 
+Two guide sequences targeting DNA within exon 5 of the DLC1 gene were selected using 474 
+the CRISPOR tool for predicted high -specificity protospacer adjacent motif target sites in 475 
+the rat genome 32 . Two complementary oligos each containing the DLC1 guide sequence 476 
+and Bbsl ligation adapter s were synthesized (Microsynth) (sense sequence: 5’ -477 
+CACCGAACCGAGAGAGCTACCCGG-3', antisense sequence: 5’ -478 
+AAACCCGGGTAGCTCTCTCGGTTC-3’). The guide sequences were annealed and 479 
+ligated into a pSpCas9(BB)-2A-GFP vector. REF52 cells were grown in six -well plates to 480 
+60% confluency and transfected with 1µg of the vector together with 1 µl of Lipofectamine 481 
+3000 and 5 µl of P3000 solution (ThermoFisher Scientific). Two days post transfection cells 482 
+were detached, suspended in PBS +1% FBS and sorted into 96 well -plates using 483 
+fluorescence-activated cell sorting. After expansion, individual clones were detached and 484 
+suspended in the lysis buffer (10mM TRIS, 50mM KCL, 2.5mM MgCl2, 0.45% Tween-20, 485 
+0.05% Gelatine, 0.12 mg/ml of proteinase K). The cell solution was frozen at -80 °C and 486 
+subsequently kept at 63 °C for one hour. Proteinase K was inactivated by heating the 487 
+solution to 95 °C for 15 minutes. PCR primers were designed to amplify a 500bp region 488 
+around the CRISPR cut site (forward primer: 5’ -489 
+AAGGAGTGTGTCTAACTCCACGCAGACCAG-3', reverse primer:  5’-490 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+CTCCTTAGGACTGTCGCTGCTGTTTTCTCT-3’). Genomic sequences were amplified by 491 
+PCR and sequenced by Sanger sequencing.  492 
+ 493 
+DNA constructs 494 
+A “pB3.0” piggybac vector was created by adapting the pPBbsr2 (Matasci et al., 2011) to 495 
+make it smaller in size. pPBbsr2 was digested with AscI and PacI, yielding 3922 bp and 496 
+2864 bp fragments. Full size pPBbsr2 was used as template for a PCR with forward primer 497 
+5’-TTAGCATTAATTAAGCGGCCGCGTTGCTGGCGTTTTTCC-3’ and reverse prime r 5’-498 
+GTGCCTTTACAACTTATGAGTAACCCCGCGCGGACGATT-3’, yielding a 1671bp insert 499 
+that was ligated back into the receiving 3922bp part of the digested pPBbsr2 vector, 500 
+creating “pB3.0 -BLAST” (Blasticidine resistance). To introduce different resistance 501 
+cassettes, we performed an overlap extension PCR with pB3.0 -BLAST as template for 502 
+PCR1 (primers A+B) and PCR2 (primers C+D) with the following primers: 503 
+primer A: 5’ -AAGGATGCCCAGAAGGTACCCCATTGTATGGGATCTGATCTGGG-3’, 504 
+primer B: 5’ -GGAAACTTTTTGTGCTATTATGGTGGCCATTCAGCTCTACGTAGCTACT-505 
+3’, primer C 5’-506 
+CCTTTGAAAAACACGATAATACCACCGGTAAGTCGAGATGCATCGATGA-3’, primer D: 507 
+5’-CTCCGCCTTTCTTGGACGTCGGGTTCGAACCGCATTAGT-3’. Primers A and D, the 508 
+product of PCR1 and PCR2 were used for fusing the two fragments by PCR. The resulting 509 
+PCR product was ligated into the pB3.0 -BLAST vector, digested with Kpn1 and Pst1, by 510 
+fusion cloning, yielding a pB3.0-noAB vector with a single Age1 site to introduce antibiotic 511 
+resistance cassettes. To produce pB3.0-HYGRO and pB3.0-PURO, PCRs were performed 512 
+on template vectors pHygro -PB and pPuro-PB, respectively. For pB3.0 -HYGRO forward 513 
+primer 5’ -AACACGATAATACCACCATGAAAAAGCCTGAACTCACCGC-3’ and reverse 514 
+primer 515 
+5’-GCAGGCTCCCGTTTCCTTATCGGCCATTCAGCTCTA-3’ were used. For pB3.0 -516 
+PURO forward primer 5’ -AACACGATAATACCACCATGACCGAGTACAAGCCCACG-3’ 517 
+and reverse primer 5’-GCGTTCGGGCCACGGACTGGCCATTCAGCTCTA-3’ were used. 518 
+The respective inserts were inserted via fusion cloning in the pB3.0 -noAB vector 33, 519 
+digested with AgeI. 520 
+Construction of the pB3.0 -optoLARG-mVenus-SspB-p2A-stargazin-mtq2-iLID optoLARG 521 
+system was as follows. The cDNA for optoLARG -mVenus-SspB(nano)-p2A-iLID-CAAX 522 
+was synthesized by custom gene synthesis (Genewiz, Azenta life sciences, US). The 523 
+sequence contained the catalytical DH-PH domain of human RhoGEF12 (LARG, aa 766-524 
+1138), connected via a linker (GSGSGSGS) to full -length mVenus fused to SSPB(nano). 525 
+This is followed by a p2A sequence (GSGATNFSLLKQAGDVEENPGP), the iLID module 526 
+(Guntas et al., 2015) and a CAAX box (KRAS). The construct was cloned into pB3.0-BLAST 527 
+containing a CAG promotor, yielding pB3.0 -optoLARG-mVenus-SspB-p2A-iLID-CAAX. 528 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+After publication of an improved plasma membrane anchor for the iLID -module (Natwick 529 
+and Collins, 2021), we changed the part after the p2A sequence. The pB3.0 -optoLARG-530 
+mVenus-SspB-p2A-iLID-CAAX vector was digested with BsrGI and AflII, and a custom 531 
+gene synthesized stretch of cDNA containing SspB(nano) -p2A, full -length stargazin, 532 
+mTurqoise2 and iLID was ins erted. This yielded pB3.0 -optoLARG-mVenus-SspB(nano)-533 
+p2A-stargazin-mtq2-iLID (exact sequences of the gene synthesis products are available on 534 
+request).  535 
+An eGFP DLC1 plasmid containing the 1091aa long isoform originating from mouse (kindly 536 
+provided by Monilola A. Olayioye) was used to produce mCherry -DLC1. The DLC1 gene 537 
+was cut out of this plasmid with BamHI and, N -terminally fused to FKBP12-mCherry and 538 
+inserted into pB3.0-BLAST containing a CAG-promotor, yielding pB3.0-FKBP12-mCherry-539 
+DLC1.  540 
+ 541 
+Spreading Assay 542 
+Glass bottom well plates (Celvis) were coated with 5 µg/ml of human plasma fibronectin 543 
+purified protein (Merck) for one hour at room temperature. REF52 cells were seeded at a 544 
+density of 7000 cells per well (using 24 well plates) in FluoroBrite DMEM mediu m 545 
+containing 1% FBS, 0.1% BSA, 4mM L -Glutamine and 100 U/ml penicillin/streptomycin. 546 
+Imaging was done with a Nikon Eclipse Ti-E inverted microscope with an automatic stage. 547 
+Temperature was kept at 37ºC with a temperature control system, humidity (100%) and  548 
+CO2 (~5%) with a gas mixer (Life Imaging Services). Focus drift was prevented by the 549 
+equipped Perfect Focus System (Nikon). The microscope was controlled with Metamorph 550 
+software (Universal Imaging). 551 
+ 552 
+Optogenetic Stimulation experiments 553 
+Glass bottom well p lates (Celvis) were coated with 5 µg/ml of human plasma fibronectin 554 
+purified protein (Merck) for one hour at room temperature. REF52 cells were seeded at 555 
+6000 cells/well into 12 well plates and allowed to attach for 12 hours. For both RhoA activity 556 
+and mCh erry-DLC1/miRFP-paxillin optogenetic stimulation experiments cells were 557 
+incubated in FluoroBrite DMEM medium overnight. The microscope was controlled with 558 
+NIS-Elements (Nikon) for observing DLC1 dynamics and with open-source micromanager 559 
+software (Edelstein et al., 2014) for edge stimulation. Optogenetic stimulation was localized 560 
+to specific regions using an Andor mosaic 3 DMD. For mCherry -DLC1/miRFP-paxillin 561 
+experiments, ROIs were user-defined. For RhoA activity experiments, cells in different 562 
+fields of view were selecte d by a user, cells were then segmented with a custom pixel-563 
+classifier based on a pre-trained VGG16 convolutional neural network, which was trained 564 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+on a field of view of the experimental data. ROIs for stimulation masks were then 565 
+automatically defined at the top and bottom of the cell for consecutive illumination with 566 
+different light pulse regimes. Fields of views were imaged one after the other on multiple 567 
+cells. For data extraction the stimulation mask was expanded by gaussian smoothing and 568 
+then thresholded to cover a wider region, reducing artifacts caused by membrane 569 
+dynamics. Image intensities were calculated for the overlap of this mask with the 570 
+segmented cells and the full segmented cells respectively. 571 
+ 572 
+Immuno-histochemistry 573 
+One hour after  seeding, cells were fixed for 10 minutes with 0.2% paraformaldehyde. A 574 
+0.1% Triton X solution was used for permeabilization, after which cells were incubated 575 
+overnight at 4C with the blocking buffer, containing 5% Bovine-Serum-Albumin and 0.05% 576 
+Tween20 in PBS. After each step of the following protocol cells were washed three times 577 
+with Phosphate-Buffered-Saline (PBS). Cells were incubated overnight with the primary 578 
+antibody (1:250 dilution for paxillin (Abcam ab32084), 1:50 for pMLC (Cell Signaling 579 
+Antibody #3671). Secondary antibody incubation (1:1000) lasted one hour. Phalloidin 580 
+incubation (1:200 Phalloidin-Atto647N) was performed for 20 minutes and DAPI incubation 581 
+for 10 hours. Cells were imaged immediately after the last step. 582 
+ 583 
+Image analysis 584 
+Lamella si ze, focal adhesion areas (Figure 1) and RhoA activity ratio measurements 585 
+(Figure 3) were computed with CellProfiler in conjunction with a pixel classifier trained with 586 
+Ilastik (Berg et al., 2019). Spreading dynamics (Figure 2D) were manually analyzed. FRET 587 
+ratio images were computed and analyzed with custom python scripts. DLC1 and paxillin 588 
+dynamics (Figure S3D) were calculated with manually drawn ROIs in Fiji (Schindelin et al., 589 
+2012). 590 
+ 591 
+Acknowledgements 592 
+This work was supported by the Swiss National Science Foundation IZSAZ3_173462 593 
+Argentinian-Swiss Joint Research Programme and by the Sinergia CRSII5_183550 grants 594 
+to Olivier Pertz. We are grateful to the Microscopy Imaging Center of the University of Bern 595 
+for support (https://www.mic.unibe.ch). We thank Kazuhiro Aoki (NIBB, Japan) for providing 596 
+the pPBbsr2 vector, David L. Hacker (EPFL, Switzerland), for the pPuro -PB and pHygro-597 
+PB plasmids, Judith Trüb (UniBE, Switzerland) for the cloning of pB3.0 -BLAST, Monilola 598 
+A. Olayioye (University of Stuttgart, Germany) for the eG FP DLC1 plasmid, Dean E. 599 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Natwick and Sean R. Collins (University of California Davis) for sharing the Stargazin-iLID 600 
+constructs. We are grateful to Miguel Vicente -Manzanares, Bernhard Wehrle-Haller and 601 
+Daniel Riveline for constructive comments on the manuscript 602 
+ 603 
+Author contributions  604 
+O.P. supervised the research. O.P. and M.H. wrote the paper. M.H. designed and 605 
+performed experiments. L.H. designed and performed optogenetic experiments. J.v.U. built 606 
+the optoLARG/rGBD circuit. M.D. designed data analysis tools.  607 
+ 608 
+Additional Information 609 
+The authors declare no competing interests. 610 
+611 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Figure legends. 612 
+Figure 1. Cytoskeletal structures in WT and DLC1 deficient cells.  613 
+A,B. Representative immunofluorescence images of paxillin and F -actin (phalloidin) (A), 614 
+and pMLC and F-actin (phalloidin) (B) immunostains are shown in inverted black and white 615 
+(ibw) contrast as well as color composites (DAPI signal also included). Scale bar = 10µm. 616 
+C. Compared to WT cells (n=243) lamella size is significantly increased in DLC1 KD cells 617 
+(n=290, p-adjusted < 0.001) and DLC1 KO cells (n=242, p-adjusted < 0.001), while DLC1 618 
+rescue cells (n=57) show significantly lower lamella sizes than both, WT (p -adjusted = 619 
+0.0098), as well as KO cells (p-adjusted < 0.001). 620 
+D. DLC1 KD cells (n=290) display a significant increase in the total area of focal adhesions 621 
+per cell (p-adjusted <0.001) compared to WT cells (n=243), while DLC1 KO cells (n=242) 622 
+do not show a significant difference (p -adjusted = 0.09). Rescue cells show a significant 623 
+decrease in the total area of focal adhesions (p -adjusted < 0.001). ANOVA plus Tukey’s 624 
+honestly significant difference test. 625 
+ 626 
+Figure 2. F -actin dynamics and cell morphodynamics in WT and DLC1 KO 627 
+cells. 628 
+All time series are representative ibw contrast images of WT and DLC1 KO cells expressing 629 
+Lifeact-mCherry. Dotted lines mark the area used for the kymographs  shown in the right 630 
+panels. 631 
+A. Cells were imaged for 10 minutes in 10 second intervals during spreading immediately 632 
+after replating. Dotted red lines display differences in lamella size in WT and DLC1 KO 633 
+cells. Time 634 
+B. One hour after reseeding, when cells are still isotropically spreading, DLC1 KO cells 635 
+display increased lamellipodia size and more prominent edge protrusion retraction cycles. 636 
+High magnification insets are shown for time point 10 minutes and show the robust increase 637 
+of contractility in DLC1 KO cells. 638 
+C. Cells were imaged for 10 hours with 15 minutes intervals starting from spreading. WT 639 
+cells break symmetry and display episodes of polarized motility. KO cells are much less 640 
+dynamic and reach a contractile phenotype much faster, without being able to polarize. 641 
+D. Box plot showing at which time point cells exhibited the elongated phenotype described 642 
+in (C). DLC1 KO cells (n=42) exhibited this phenotype a mean of 90 minutes earlier than 643 
+WT cells (n=22) p -adjusted = 0.002, Student's t -test. 17 addit ional WT cells failed to 644 
+develop that phenotype entirely. 645 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Scale bars = 20 µm for all images. 646 
+ 647 
+Figure 3. RhoA activation dynamics in WT and DLC1 KO cells 648 
+Cells are stably expressing Lifeact -mCherry, and the RhoA2G FRET sensor. RhoA 649 
+localization images show RhoA2G localization that is identical to RhoA. RhoA activity 650 
+images display the computed FRET ratio. Images are color -coded according to the 651 
+normalized scales shown below the panels.  652 
+A. Representative images of WT and DLC1 KO cells during spreading. Kymographs for the 653 
+violet lines are shown in the right panels. Note the RhoA activity band maintains constant 654 
+width during spreading at the periphery in WT cells. Note increased global RhoA activity in 655 
+DLC1 KO cells, with maintenance of a similar RhoA band pattern at the cell edge. 656 
+B. Box plots of FRET ratio averaged over the whole cell (right panel) or a ROI placed at 657 
+the cell edge (left panel). This shows that during spreading DLC1 KO cells (n = 149) have 658 
+an increased total RhoA activity compared to WT cells (n = 114, p = 0.005). In addition, the 659 
+FRET ratio at just the cell edge is increased as well (p=0.011). 660 
+C. Representative images of WT cells and DLC1 KO c ells that have transitioned in a 661 
+contractile state 12 hours after plating. No difference in RhoA activity pattern can be 662 
+observed between WT and DLC1 KO cells, although the latter still display slightly higher 663 
+global RhoA activity levels. 664 
+D. Box plots of FRET ratio averaged over the whole cell (right panel) or a ROI placed at 665 
+the cell edge (left panel). This shows that contractile DLC1 KO cells (n=103) have an 666 
+increased total RhoA activity (p < 0.001) and edge FRET ratio (p < 0.001) compared to WT 667 
+cells (n = 82) compared to WT cells (n = 82). Students t-test. 668 
+(A,B) Scale bars = 20 µm. 669 
+ 670 
+Figure 4. An optogenetic actuator - Rho biosensor circuit to probe Rho 671 
+GTPase flux 672 
+A. Schematics of the optogenetic actuator - Rho biosensor to measure Rho GTPase flux. 673 
+OptoLarg is based on an iLID system which does not interact with Ssb -LARG in the dark 674 
+state. The iLID module is anchored to the plasma membrane by a Stargazin anchor that 675 
+displays slow diffusion, allowing better focussing of optogenetic activation. Upon light 676 
+exposure ssb-LARG is locally recruited to the plasma membrane, activating Rho. Rho 677 
+activity is measured by a rGBD effector binding domain. 678 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+B. Time-series of REF52 cells locally stimulated with light first in a ROI at the cell top with 679 
+a high stimulation frequency, and then with a ROI at the cell bottom with a low stimulation 680 
+frequency. Light pulses have the same intensity. Thick and thin blue thunder symbols 681 
+represent high and low optogenetic stimulation. Red dotted line is used for the kymograph 682 
+shown in (C).  683 
+C. Kymographs of cells in (B). Light pulse stimulation regimes of top and bottom ROIs are 684 
+shown in the upper box. Blue dotted boxes indicate the region and length of the stimulation. 685 
+Note how intense optogenetic stimulation in the top ROI leads to Rho activity, assembly of 686 
+contractile F-actin structures, and robust edge retraction. Upon removal of the light input, 687 
+the Rho activity and F-actin resume, and edge protrusion occurs again. Lower optogenetic 688 
+stimulation in the bottom ROI leads to much lower Rh o activity and F-actin structures, as 689 
+well as lower edge retraction. 690 
+(B,C) Scale bars = 10 µm 691 
+ 692 
+Figure 5. Rho GTPase activation kinetics in WT versus DLC1 KO cells 693 
+A. Computer vision pipeline and experiment: 1) a cell is segmented using the rGBD-dTomato 694 
+channel. 2) FAs and non -FAs are detected using the paxillin channel (see Material and 695 
+Methods). ROIs on FAs (blue dots, shown in the bottom left panel) and ROIs on non -FA 696 
+regions in between (orange dots, shown in the upper left panel) are selected for stimulation. 697 
+3) Image of the stimulation pattern (green channel) shows that the calibrated DMD can 698 
+stimulate the regions with high spatial precision (image is overexposed to show the 699 
+diffraction pattern of the mirrors). 700 
+B. The DMD is used to stimulate ROIs (FAs or non-FAs) with a pulse of blue light (blue line). 701 
+rGBD signal fluctuations are then measured in the ROIs. 702 
+C. Distribution of paxillin -miRFP intensities in the FA and Non -FA ROIs normalized to the 703 
+mean paxillin-miRFP intensity of the whole cell shows that our segmentation pipelines 704 
+accurately identifies FA and Non-FA ROIs. 705 
+D. Normalized and averaged rGBD fluorescence fluctuations upon ROI optogenetic 706 
+stimulation. For each stimulated ROIs, the fold change to the baseline (average activity from 707 
+0-150 seconds before optogenetic stimulation) is calculated. Median and 99% CI are shown. 708 
+Regions on top of focal adhesions have a larger fold change in rGBD activity than regions 709 
+between focal adhesions. DLC1-KO cells have a larger rGBD fold change in the initial time 710 
+after stimulation (150-200 seconds), but then also fall back down to the baseline quicker. 711 
+(KO-FA: N=3643, KO-NON-FA: N=3643, CTRL-FA: N = 2144, CTRL-NON-FA:2144. Mean 712 
+number of regions per cell: ~16.90, Cells CTRL = 321, DLC1 -KO=431. The same cell can 713 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+appear multiple times in the experiment, but with a relaxation time in between and new 714 
+stimulation regions). 715 
+E. The different dynamics described in (D) can be robustly observed in technical replicates 716 
+of the experiment. In all replicates the rGBD recruitment is higher in FAs vs Non -FAs, and 717 
+we see the trend of faster accumulation and faster return to baseline of rGBD in DLC1 KO 718 
+vs CTRL cells. 719 
+ 720 
+Figure 6. Optogenetic control of force-dependent DLC1 interactions with FAs 721 
+A. Color-coded fluorescence micrographs of REF52 fibroblast expressing miRFP -paxillin 722 
+(left) and mCherry-DLC1 (right) and the optoLARG construct (not shown). The black boxes 723 
+indicate the area used for close up images in (B).  The white boxes indicate the ROI for 724 
+optogenetic illumination. Selected FAs denoted by the pink and green arrowheads . The 725 
+black dotted lines were used for the kymograph in B.  726 
+B. Kymographs showing two selected FAs, the grey box indicates the time at which 727 
+optogenetic stimulation has been applied.  Optogenetic stimulation is applied on select 728 
+ROIs placed over FAs with 50 ms light pulses per frame (every 15 seconds) for a duration 729 
+of 7.5 minutes. 730 
+C. Closeups time series of paxillin and DLC1 signals at a single FA denoted by the 731 
+respective arrowheads. Scale bars = 10 µm. 732 
+D. Quantification of mcherry -DLC1 and miRFP -paxillin fluorescence signals during 733 
+optoLARG mediated control of FA re inforcement and relaxation.  Normalized miRFP -734 
+paxilllin and mCherry-DLC1 from 2 FAs shown in panels A-C.  735 
+E. Model of Rho GTPase activity modulation by DLC1 at FAs and at the plasma membrane 736 
+relevant to Figure 5. Left and right panels show schematics of Rho activation dynamics in 737 
+response to optoLARG optogenetic input at FAs (left panel) and plasma membrane (right 738 
+panels). Top and bottom panel show schematics for Rho activation dynamics in response 739 
+to optoLARG optogenetic input in control (top) and DLC1 KO (bottom) panels. 740 
+F. Model of force dependent regulation of DLC1 at FAs relevant to this and Figure S3. Left 741 
+panel, in absence of acute mechanical input, DLC1 increases with FA assembly and 742 
+decreases with FA disassembly. Central panel, upon acute local increase of mechanical 743 
+stress in response to application of an optoLARG optogenetic input, DLC1 unbinds from 744 
+FA in a reinforcement regime, and rebinds FA in a relaxing regime when the optoLARG 745 
+input is removed. Right panel, upon acute local increase of mechanical stress in response 746 
+to application of an optoLARG optogenetic input some FAs rupture after DLC1 dissociation 747 
+and FA rupture. 748 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Supplementary Figure legends  749 
+Figure S1: Cell motility properties in WT versus DLC1 KO cells 750 
+A. Example fields of view of tracked WT and DLC1 KO cells. 20000 REF fibroblasts 751 
+expressing a histone H2B-miRFP marker were seeded in a 24 well-plate well coated with 752 
+fibronectin and stimulated with 20 ng/ml PDGF, imaged for 12 hours at 15 minutes interval. 753 
+Tracking was performed using stardist 37 on the H2B image). DLC1 KO cells display a large 754 
+subpopulation of cells that remain extremely stationary. 755 
+B. Mean Square displacements (MSDs) for different time intervals, WT move more than 756 
+DLC1 KO cells for all possible lag times. Plot shows directionality (exponential bit between 757 
+0.25 and 1.5 hours). For times longer than 2 hours the curve is flat indicating that migration 758 
+has characteristics of random walk at these timescales. Thick lines: mean, thin lines: 759 
+standard deviation. Dotted grey line shows delta t chosen for figure C. 760 
+C. Distribution of velocities calculated as µm/hour from Root-MSD. We again observe the 761 
+bimodal distribution in the DLC1 KO cell with a big subgroup of the cells move extremely 762 
+slowly (5 µm/hour). Thick lines are mean and extrema. Two sided t-test: (statistic=25.1, p-763 
+value=1.6e-131) 764 
+ 765 
+Figure S2. Effect of DLC1 overexpression on F-actin cytoskeleton and RhoA 766 
+activity 767 
+A. Effect of DLC1 overexpression of F -actin. REF52 cells stably expressing Lifeact -768 
+mCherry were transfected with mCherry-DLC1 or mCherry plasmids, allowed to spread for 769 
+12 hours on fibronectin-coated coverslips and imaged. Images are shown in ibw contrast. 770 
+Large mCherry-DLC1 pool in the cytosol levels documents its overexpression. Note how 771 
+DLC1 overexpression leads to loss of contractile F-actin structures. 772 
+B. Effect of DLC1 overexpression of RhoA. Cells stably transfected with the RhoA2G 773 
+biosensor were transfected with mCherry-paxillin or mCherry-DLC1. mCherry signals are 774 
+shown in ibw contrast. RhoA2G FRET ratio, and expression leve ls are color -coded 775 
+according to the scale. Note how low mCherry-DLC1 expression that remains associated 776 
+with FA already lowers RhoA activity, while high mCherry-DLC1 expression leads to even 777 
+lower RhoA activity and aberrant cell morphology.  778 
+ 779 
+Figure S3. DLC1 dynamics at FAs in unperturbed cells 780 
+Panels A-C document FAs in an assembly state. This shows that the DLC1 signal 781 
+augments concomitantly with paxillin signal during FA assembly. 782 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Panels D-F document FAs in a disassembly state. This shows that the DLC1  signal 783 
+decreases concomitantly with paxillin signal during FA disassembly. 784 
+A,D. Color-coded fluorescence micrographs of REF52 fibroblast expressing miRFP-paxillin 785 
+(top) and mCherry-DLC1 (bottom). The white boxes indicate the area used for close up 786 
+images in (B,E). 787 
+B,E. Closeups of the ROIs (left panel) and kymographs (right panel) of selected FAs 788 
+denoted by the red arrowheads. White dotted lines were used for the kymograph. In the 789 
+kymograph, the grey box indicates the time at which optogenetic stimulation has been 790 
+applied.  791 
+C,F. Closeups time series of paxillin and DLC1 signals at a single FA denoted by the 792 
+respective red arrowheads. 793 
+Scale bars = 10 µm. 794 
+ 795 
+Figure S4. DLC1 dynamics in a n optoLARG stimulated FA that undergoes  796 
+reinforcement followed by disassembly, as well as  FA behavior in absence 797 
+of optoLARG stimulus 798 
+Panels A-C document FAs that when subjected to a nearby pulse of optogenetic Rho -799 
+mediated contractility display a behavior of FA re inforcement followed by disassembly . 800 
+Optogenetic stimulation is applied on select ROIs placed over FAs with 50 ms light pulses 801 
+per frame (every 15 seconds) for a duration of 8 minutes. 802 
+Panels D-F document the dynamics of DLC1 in a ROI not stimulated with light in the same 803 
+cell as in shown in Figure 6A-C. 804 
+A. Color-coded fluorescence micrographs of REF52 fibroblast expressing miRFP -paxillin 805 
+(top) and mCherry -DLC1 (bottom) and the optoLARG construct (not shown). The black 806 
+boxes indicate the area used for close up images in (B). The white boxes indicate the ROI 807 
+for optogenetic illumination.  808 
+B. Closeups of the ROIs (left panel) and kymographs (right panel) of selected FAs denoted 809 
+by the arrowheads. The pink and green arrowheads indicate the FAs of interest in (B). The 810 
+black arrowhead indicates the FA of interest i n (C). The black dotted lines were used for 811 
+the kymograph. In the kymograph, the grey box indicates the time at which optogenetic 812 
+stimulation has been applied. 813 
+C. Closeups time series of paxillin and DLC1 signals at a single FA denoted by the 814 
+respective arrowheads. Scale bars = 10 µm. 815 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+D. Color-coded fluorescence micrographs of REF52 fibroblast expressing miRFP -paxillin 816 
+(top) and mCherry -DLC1 (bottom) and the optoLARG construct (not shown). The black 817 
+boxes indicate the area used for close up images in (B,E).  The white boxes indicate the 818 
+ROI for optogenetic illumination.  819 
+E. Closeups of the ROIs (left panel) and kymographs (right panel) of selected FAs denoted 820 
+by the arrowheads. The pink and green arrowheads indicate the FAs of interest in (B). The 821 
+black arrowhead indicates the FA of interest in (D). The black dotted lines were used for 822 
+the kymograph. In the kymograph, the grey box indicates the time at which optogenetic 823 
+stimulation has been applied. 824 
+F. Closeups time series of paxillin and DLC1 signals at a sin gle FA denoted by the 825 
+respective arrowheads. 826 
+ 827 
+Supplementary Movie legends  828 
+ 829 
+Movie S1: F -actin dynamics of WT and DLC1 KO REF52 cells during late 830 
+spreading (relevant to Figure 2B). 831 
+Representative ibw contrast movie of WT and DLC1 KO cells expressing Lifeact-mCherry 832 
+during late spreading. Time: Minutes:seconds. Scale bar = 20 mm.  833 
+ 834 
+Movie S2: F-actin dynamics and edge dynamics of WT and DLC1 KO REF52 835 
+cells during acquisition of a polarized cell migration phenotype over a period 836 
+of 15 hours (relevant to Figure 2C). 837 
+Representative ibw contrast movie of WT and DLC1 KO cells expressing Lifeact-mCherry 838 
+for 15. Edge dynamics were color -coded with respect to time.  Time: Minutes:seconds. 839 
+Scale bar = 20 mm. 840 
+ 841 
+Movie S3: F-actin and RhoA activity dynamics WT and DLC1 KO REF52 cells 842 
+during late spreading (relevant to Figure 3A). 843 
+Representative movie of WT and DLC1 KO cells expressing Lifeact -mCherry and the 844 
+RhoA2G FRET biosensor during late spreading. 845 
+Left panels: F-actin channel in ibw contrast. Right panels: RhoA activity emission ratio color 846 
+coded according to color scale.  847 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Time: Minutes:seconds. Scale bar = 20 mm. 848 
+ 849 
+Movie S4: Characterisation of the optoLARG/rGBD genetic circuit (relati to 850 
+Figure 5) 851 
+REF52 cells stably expressing the optoLARG/rGBD circuit as well as Lifeact -miRFP are 852 
+locally stimulated with blue light of identical intensity, first in a ROI at the cell top with a high 853 
+stimulation frequency, and then with a ROI at the cell bottom with a low er stimulation 854 
+frequency. The stimulation frequencies are indicated by the appearance/disappearance 855 
+frequency of the ROIs.  856 
+Left panel: rGBD signal, Right panel: F -actin lifeact-miRFP. Note the more robust edge 857 
+contraction, as well as increased RhoA activity in response to high  versus l ow light  858 
+frequency stimulation. 859 
+Time: Minutes:seconds. Scale bar = 10 mm. 860 
+ 861 
+Movie S5: DLC1 dynamics at FAs during an optoLARG-induced contractility 862 
+pulse (relevant to Figure 6A-C, cell denoted by pink arrow) 863 
+REF52 KO cells rescued with mCherry -DLC1 and expressing miRFP-paxillin, and the 864 
+optoLARG/rGBD circuit were imaged  before, during and after a transient optogenetic 865 
+stimulation in the whole field of view shown in the movie. 866 
+Time: Minutes:seconds. Scale bar = 5 mm. 867 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+References 
+Basant A, Glotzer M. 2018. Spatiotemporal Regulation of RhoA during Cytokinesis. Curr 
+Biol 28:R570–R580. 
+Bement WM, Leda M, Moe AM, Kita AM, Larson ME, Golding AE, Pfeuti C, Su K-C, Miller 
+AL, Goryachev AB, von Dassow G. 2015a. Activator -inhibitor coupling between 
+Rho signalling and actin assembly makes the cell cortex an excitable medium. Nat 
+Cell Biol 17:1471–1483. 
+Bement WM, Leda M, Moe AM, Kita AM, Larson ME, Golding AE, Pfeuti C, Su K-C, Miller 
+AL, Goryachev AB, von Dassow G. 2015b. Activator –inhibitor coupling between 
+Rho signalling and actin assembly makes the cell cortex an excitable medium. Nat 
+Cell Biol 17:1471–1483. 
+Bement WM, von Dassow G. 2014. Single cell pattern formation and transient cytoskeletal 
+arrays. Curr Opin Cell Biol 26:51–59. 
+Berg S, Kutra D, Kroeger T, Straehle CN, Kausler BX, Haubold C, Schiegg M, Ales J, Beier 
+T, Rudy M, Eren K, Cervantes JI, Xu B, Beuttenmueller F, Wolny A, Zhang C, 
+Koethe U, Hamprecht FA, Kreshuk A. 2019. ilastik: interactive machine learning 
+for (bio) image analysis. Nat Methods 16:1–7. 
+Blum Y, Mikelson J, Dobrzyński M, Ryu H, Jacques M-A, Jeon NL, Khammash M, Pertz O. 
+2019. Temporal perturbation of ERK dynamics reveals network architecture of 
+FGF2/MAPK signaling. Mol Syst Biol 15:e8947. doi:10.15252/msb.20198947 
+DerMardirossian C, Rocklin G, Seo J-Y, Bokoch GM. 2006. Phosphorylation of RhoGDI by 
+Src regulates Rho GTPase binding and cytosol -membrane cycling. Mol Biol Cell 
+17:4760–4768. doi:10.1091/mbc.e06-06-0533 
+Dessauges C, Mikelson J, Dobrzyński M, Jacqu es M, Frismantiene A, Gagliardi PA, 
+Khammash M, Pertz O. 2022. Optogenetic actuator – ERK biosensor circuits 
+identify MAPK network nodes that shape ERK dynamics. Mol Syst Biol  18. 
+doi:10.15252/msb.202110670 
+Edelstein AD, Tsuchida MA, Amodaj N, Pinkard H, Vale RD, Stuurman N. 2014. Advanced 
+methods of microscope control using μManager software. J Biol Methods  1. 
+doi:10.14440/jbm.2014.36 
+Erlmann P, Schmid S, Horenkamp FA, Geyer M, Pomorski TG, Olayioye MA. 2009. DLC1 
+activation requires lipid interaction thro ugh a polybasic region preceding the 
+RhoGAP domain. Mol Biol Cell 20:4400–4411. doi:10.1091/mbc.e09-03-0247 
+Etienne-Manneville S, Hall A. 2002. Rho GTPases in cell biology. Nature 420:629–635. 
+Fritz RD, Letzelter M, Reimann A, Martin K, Fusco L, Ritsma L, Ponsioen B, Fluri E, 
+Schulte-Merker S, van Rheenen J, Pertz O. 2013. A versatile toolkit to produce 
+sensitive FRET biosensors to visualize signaling in time and space. Sci Signal 
+6:rs12. doi:10.1126/scisignal.2004135 
+Fritz RD, Pertz O. 2016. The dynamics of spatio-temporal Rho GTPase signaling: formation 
+of signaling patterns. F1000Research 5. doi:10.12688/f1000research.7370.1 
+Fusco L, Lefort R, Smith K, Benmansour F, Gonzalez G, Barillari C, Rinn B, Fleuret F, Fua 
+P, Pertz O. 2016. Computer vision profiling of neurite outgrowth dynamics reveals 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+spatiotemporal modularity of Rho GTPase signaling. J Cell Biol  212:91–111. 
+doi:10.1083/jcb.201506018 
+Gingras AR, Bate N, Goult BT, Hazelwood L, Canestrelli I, Grossmann JG, Liu H, Putz 
+NSM, Roberts GCK, Volkmann N, Hanein D, Barsukov IL, Critchley DR. 2008. The 
+structure of the C -terminal actin-binding domain of talin. EMBO J 27:458–469. 
+doi:10.1038/sj.emboj.7601965 
+Goult BT, Brown NH, Schwartz MA. 2021. Talin in mechanotransduction and 
+mechanomemory at a glance. J Cell Sci 134:jcs258749. doi:10.1242/jcs.258749 
+Graessl M, Koch J, Calderon A, Kamps D, Banerjee S, Mazel T, Schulze N, Jungkurth JK, 
+Patwardhan R, Solouk D, Hampe N, Hoffmann B, Dehmelt L, Nalbant P. 2017. An 
+excitable Rho GTPase signaling network generates dynamic subcellular 
+contraction patterns. J Cell Biol 17:jcb.201706052-15. 
+Guntas G, Hallett RA, Zimmerman SP, Williams T, Y umerefendi H, Bear JE, Kuhlman B. 
+2015. Engineering an improved light -induced dimer (iLID) for controlling the 
+localization and activity of signaling proteins. Proc Natl Acad Sci U S A 112:112–
+117. 
+Haining AWM, Rahikainen R, Cortes E, Lachowski D, Rice A, von Essen M, Hytönen VP, 
+del Río Hernández A. 2018. Mechanotransduction in talin through the interaction 
+of the R8 domain with DLC1. PLOS Biol 16:e2005599-20. 
+Hu J, Gong X, Strömblad S. 2022. Local temporal Rac1-GTP nadirs and peaks restrict cell 
+protrusions and retractions. Sci Adv 8:eabl3667. doi:10.1126/sciadv.abl3667 
+Isogai T, Danuser G. 2018. Discovery of functional interactions among actin regulators by 
+analysis of image fluctuations in an unperturbed motile cell system. Philos Trans 
+R Soc B Biol Sci 373:20170110. doi:10.1098/rstb.2017.0110 
+Itoh RE, Kurokawa K, Ohba Y, Yoshizaki H, Mochizuki N, Matsuda M. 2002. Activation of 
+Rac and Cdc42 Video Imaged by Fluorescent Resonance Energy Transfer-Based 
+Single-Molecule Probes in the Membrane of Living Cells.  Mol Cell Biol 22:6582–
+6591. doi:10.1128/MCB.22.18.6582-6591.2002 
+Kaushik S, Ravi A, Hameed FM, Low BC. 2014. Concerted modulation of paxillin dynamics 
+at focal adhesions by deleted in liver cancer -1 and focal adhesion kinase during 
+early cell spreading: D LC1 Regulates Paxillin Dynamics at Focal Adhesions via 
+FAK. Cytoskeleton 71:677–694. doi:10.1002/cm.21201 
+Kraynov VS, Chamberlain C, Bokoch GM, Schwartz MA, Slabaugh S, Hahn KM. 2000. 
+Localized Rac activation dynamics visualized in living cells. Science 290:333–337. 
+Krendel M, Zenke FT, Bokoch GM. 2002. Nucleotide exchange factor GEF -H1 mediates 
+cross-talk between microtubules and the actin cytoskeleton. Nat Cell Biol 4:294–
+301. doi:10.1038/ncb773 
+Li G, Du X, Vass WC, Papageorge AG, Lowy DR, Qian X. 2011. Full activity of the deleted 
+in liver cancer 1 (DLC1) tumor suppressor depends on an LD-like motif that binds 
+talin and focal adhesion kinase (FAK). Proc Natl Acad Sci  108:17129–17134. 
+doi:10.1073/pnas.1112122108 
+Machacek M, Hodgson L, Welch C, El liott H, Pertz O, Nalbant P, Abell A, Johnson GL, 
+Hahn KM, Danuser G. 2009. Coordination of Rho GTPase activities during cell 
+protrusion. Nature 461:99–103. doi:10.1038/nature08242 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Mahlandt EK, Arts JJG, van der Meer WJ, van der Linden FH, Tol S, van Buul JD, Gadella 
+TWJ, Goedhart J. 2021. Visualizing endogenous Rho activity with an improved 
+localization-based, genetically encoded biosensor. J Cell Sci  134:jcs258823. 
+doi:10.1242/jcs.258823 
+Martin K, Reimann A, Fritz RD, Ryu H, Jeon NL, Pertz O. 2016. Spatio -temporal co -
+ordination of RhoA, Rac1 and Cdc42 activation during prototypical edge protrusion 
+and retraction dynamics. Sci Rep 6:21901. doi:10.1038/srep21901 
+Martin K, Vilela M, Jeon NL, Danuser G, Pertz O. 2014. A growth factor-induced, spatially 
+organizing cytoskeletal module enables rapid and persistent fibroblast migration. 
+Dev Cell 30:701–716. doi:10.1016/j.devcel.2014.07.022 
+Matasci M, Baldi L, Hacker DL, Wurm FM. 2011. The PiggyBac transposon enhances the 
+frequency of CHO stable cell line generation and yields recombinant lines with 
+superior productivity and stability. Biotechnol Bioeng  108:2141–2150. 
+doi:10.1002/bit.23167 
+Moon SY, Zheng Y. 2003. Rho GTPase-activating proteins in cell regulation. Trends Cell 
+Biol 13:13–22. doi:10.1016/s0962-8924(02)00004-1 
+Mosaddeghzadeh N, Ahmadian MR. 2021. The RHO Family GTPases: Mechanisms of 
+Regulation and Signaling. Cells 10:1831. doi:10.3390/cells10071831 
+Müller PM, Rademacher J, Bagshaw RD, Wo rtmann C, Barth C, van Unen J, Alp KM, 
+Giudice G, Eccles RL, Heinrich LE, Pascual -Vargas P, Sanchez -Castro M, 
+Brandenburg L, Mbamalu G, Tucholska M, Spatt L, Czajkowski MT, Welke R -W, 
+Zhang S, Nguyen V, Rrustemi T, Trnka P, Freitag K, Larsen B, Popp O, Mertins P, 
+Gingras A-C, Roth FP, Colwill K, Bakal C, Pertz O, Pawson T, Petsalaki E, Rocks 
+O. 2020. Systems analysis of RhoGEF and RhoGAP regulatory proteins reveals 
+spatially organized RAC1 signalling from integrin adhesions. Nat Cell Biol 22:498–
+511. doi:10.1038/s41556-020-0488-x 
+Nalbant P, Hodgson L, Kraynov V, Toutchkine A, Hahn KM. 2004. Activation of 
+endogenous Cdc42 visualized in living cells. Science 305:1615–1619. 
+Natwick DE, Collins SR. 2021. Optimized iLID Membrane Anchors for Local Optogeneti c 
+Protein Recruitment. ACS Synth Biol  10:1009–1023. 
+doi:10.1021/acssynbio.0c00511 
+Oakes PW, Wagner E, Brand CA, Probst D, Linke M, Schwarz US, Glotzer M, Gardel ML. 
+2017. Optogenetic control of RhoA reveals zyxin -mediated elasticity of stress 
+fibres. Nat Commun 8:15817–12. 
+Pertz O. 2010. Spatio -temporal Rho GTPase signaling - where are we now? J Cell Sci  
+123:1841–1850. doi:10.1242/jcs.064345 
+Pertz O, Hodgson L, Klemke RL, Hahn KM. 2006. Spatiotemporal dynamics of RhoA 
+activity in migrating cells. Nature 440:1069–1072. doi:10.1038/nature04665 
+Riedl J, Crevenna AH, Kessenbrock K, Yu JH, Neukirchen D, Bista M, Bradke F, Jenne D, 
+Holak TA, Werb Z, Sixt M, Wedlich-Soldner R. 2008. Lifeact: a versatile marker to 
+visualize F-actin. Nat Methods 5:605–607. doi:10.1038/nmeth.1220 
+Rossman KL, Der CJ, Sondek J. 2005. GEF means go: turning on RHO GTPases with 
+guanine nucleotide-exchange factors. Nat Rev Mol Cell Biol 6:167–180. 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Ryu H, Chung M, Dobrzyński M, Fey D, Blum Y, Lee SS, Peter M, Kholodenko BN, Jeon 
+NL, Pertz O. 2015. Frequency modulation of ERK activation dynamics rewires cell 
+fate. Mol Syst Biol 11:838. doi:10.15252/msb.20156458 
+Schindelin J, Arganda-Carreras I, Frise E, Kaynig V, Longair M, Pietzsch T, Preibisch S, 
+Rueden C, Saalfeld S, Schmid B, Tinevez J-Y, White DJ, Hartenstein V, Eliceiri K, 
+Tomancak P, Cardona A. 2012. Fiji: an open-source platform for biological-image 
+analysis. Nat Methods 9:676–682. doi:10.1038/nmeth.2019 
+Schmick M, Kraemer A, Bastiaens PIH. 2015. Ras moves to stay in place. Trends Cell Biol 
+25:190–197. 
+Tsyganov MA, Kolch W, Kholodenko BN. 2012. The topology design principles that 
+determine the spatiotemporal dynamics of G-protein cascades. Mol Biosyst 8:730–
+743. 
+Wu C-F, Lew DJ. 2013. Beyond Symmetry Breaking: Competition and Negative Feedback 
+in GTPase regulation. Trends Cell Biol 23:476–483. doi:10.1016/j.tcb.2013.05.003 
+Zhao Y, Lykov N, Tzeng C. 2022. Talin -1 interaction network in cellular 
+mechanotransduction (Review). Int J Mol Med  49:1–12. 
+doi:10.3892/ijmm.2022.5116 
+ 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+F-Actin
+Actin
+Paxillin
+Paxillin
+Dapi
+Actin
+Phospho
+MLC
+Dapi
+F-Actin
+Phospho
+MLC
+Ctrl
+ DLC1 SiRNA DLC1 KO DLC1 Rescue
+Lamella size
+(fraction of diameter)
+Ctrl DLC1
+KD
+DLC1
+KO
+DLC1
+rescue
+** ** *
+0
+0.2
+0.4
+0.6
+0.8
+D
+B
+C
+A
+Focal adhesion area (µm²) 
+Ctrl
+**
+DLC1
+KD
+0
+1800
+3600
+5400 **
+DLC1
+KO
+DLC1
+rescue
+Ctrl DLC1 SiRNA DLC1 KO DLC1 Rescue
+Figure 1. Cytoskeletal structures in WT and DLC1 deficient cells.  
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+*
+0:00 h
+ 2:30 h
+ 5:00 h
+ 7:30 h
+ 10:00 h
+DLC1
+KO
+Ctrl
+0:00 min 2:30 min 5:00 min 7:30 min 10:00 min
+tiime
+Kymograph
+DLC1
+KO
+Ctrl
+DLC1
+KO
+A
+B
+C
+D
+Ctrl
+2:30
+5:00
+7:30
+10:00
+Ctrl DLC1 KO
+time (h:min)
+10:00
+7:30
+5:00
+2:30
+0:00
+Early spreadingLate spreadingMigrationMigrationTime untill phenotype
+is displayed (h:min)
+Figure 2. F -actin dynamics and cell morphodynamics in WT and DLC1 KO 
+cells. 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+RhoA activity cell
+Ctrl DLC1
+KO
+1.0
+1.5
+2.0
+2.5
+3.0 *
+Ctrl DLC1
+KO
+RhoA activity cell edge
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+*
+B
+RhoA activity cell
+Ctrl DLC1
+KO
+Ctrl DLC1
+KO
+RhoA activity cell edge
+Ctrl
+time
+F-Actin
+(LifeAct)
+RhoA
+localization
+RhoA
+activity Kymograph
+DLC1
+KO
+1.61.0
+A
+C D
+1.25
+2.00
+2.75
+**
+1
+2
+3
+**
+Ctrl
+DLC1
+KO
+2.01.0
+Figure 3. RhoA activation dynamics in WT and DLC1 KO cells 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+ 
+ 
+    
+dtTomato
+RhoA
+GDP
+GDI
+rGBD
+LARG SsPB
+iLID
+stargazin RhoA GTP
+Dark - OFF Light - ON
+F-actin (Lifeact)
+A
+B
+C
+Rho activity (rGBD)F-actin (Lifeact)
+Rho activity (rGBD)
+Figure 4. An optogenetic actuator - Rho biosensor circuit to probe Rho 
+GTPase flux 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+rGBD
+dTomato
+Paxillin
+miRFP
+stimulationnon-FAs
+FAs
+FAs
+non-FAs
+1) Segment the cell 2) Find focal adhesions and 
+    regions in between
+3) Stimulate the spots
+Stimulate region
+with DMD
+Measure 
+response
+rGBD
+Time
+Normalized Paxillin signal
+A
+B C
+ED
+time [s]
+t=200s t=300s
+* **
+   rGBD fold-change
+normalized to baseline
+* **
+Figure 5. Rho GTPase activation kinetics in WT versus DLC1 KO cells 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+normalized intensity
+6:15 12:30 18:45 25:00 31:150
+0.85
+0.90
+6:15 12:30 18:45 25:00 31:150
+1.00
+0.95
+1.05
+1.10
+1.15
+1.20 Pax
+DLC1
+Time (minutes)
+D
+A
+B
+C
+intensity
+assemble
+DLC1
+PAX
+disassemble
+t
+E
+RhoA
+DLC1
+CTRL
+DLC1 KO
+RhoA
+DLC1
+FAs MembraneRhoGEF 
+input
+measure
+RhoA
+activity
+t
+measure
+RhoGEF input
+intensity
+reinforce rupture
+t
+RhoGEF 
+input
+DLC1
+PAX
+intensity
+reinforce weaken
+t
+RhoGEF 
+input
+DLC1
+PAX
+F
+15:00 18:45 22:30 26:15 30:00
+3:45 7:300:00 11:15
+1.0
+3.4
+PAX
+1.0
+2.1
+PAX
+PAX
+PAX
+DLC1
+time
+time
+stim
+stim
+DLC1 DLC1
+DLC1
+Figure 6. Optogenetic control of force-dependent DLC1 interactions with Fas 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+Figure S1: Cell motility properties in WT versus DLC1 KO cells 
+  
+A
+B C
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+2.9
+1.0
+7.7
+1.0
+Ctrl
+DLC1mild
+overexpression
+DLC1strong
+overexpression
+mCherry
+Paxillin
+RhoA
+localization
+RhoA
+activity
+mCherry
+DLC1
+B
+Ctrl
+DLC1
+Overexpression
+DLC1
+Overexpression
+Actin
+mCherry mCherry
+DLC1
+A
+Figure S2. Effect of DLC1 overexpression on F-actin cytoskeleton and RhoA 
+activity 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+E
+F
+time time
+D
+B
+C
+A
+B
+1.0
+3.4
+1.0
+2.0
+1.0
+2.5
+1.0
+3.4
+1.0
+2.0
+1.0
+3.4
+1.0
+3.7
+1.0
+mCherry
+DLC1
+mCherry
+DLC1
+mCherry
+DLC1
+mCherry
+DLC1
+miRFP
+Paxillin
+miRFP
+Paxillin
+miRFP
+Paxillin
+miRFP
+Paxillin
+3:00 6:00 9:00 12:00 15:000
+3:00 6:00 9:00 12:00 15:000
+Kymograph
+Kymograph
+Figure S3. DLC1 dynamics at FAs in unperturbed cells 
+  
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 
+ 
+1.0
+2.1
+1.0
+2.3
+1.3
+3.6
+1.0
+3.0
+opto-LARG independent
+FA assembly
+E
+time
+opto-LARG independent
+FA disassembly
+F
+time
+1.0
+3.4
+mCherry
+DLC1
+D
+1.0
+2.1
+miRFP
+Paxillin
+B C
+A
+0:00 2:00 4:00 6:00 8:00 10:00 12:00 14:00 16:00
+C
+B
+time
+mCherry
+DLC1
+miRFP
+Paxillin
+mCherry
+DLC1
+miRFP
+Paxillin
+1.0
+5.0
+1.0
+2.3
+Figure S4. DLC1 dynam ics in an optoLARG stimulated FA that undergoes 
+reinforcement followed by disassembly, as well as FA behavior in absence 
+of optoLARG stimulus 
+ 
+.CC-BY-NC-ND 4.0 International licensemade available under a
+(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is 
+The copyright holder for this preprintthis version posted June 19, 2023. ; https://doi.org/10.1101/2023.06.19.545304doi: bioRxiv preprint 

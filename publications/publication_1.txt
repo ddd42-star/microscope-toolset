@@ -1,0 +1,2595 @@
+Research Article
+The hGIDGID4 E3 ubiquitin ligase complex targets
+ARHGAP11A to regulate cell migration
+Halil Bagci1 , Martin Winkler1 , Benjamin Gr¨adel2,3 , Federico Uliana1 , Jonathan Boulais4 , Weaam I Mohamed1 ,
+Sophia L Park1 , Jean-François Cˆot ´e4,5 , Olivier Pertz3 , Matthias Peter1
+The human CTLH/GID (hGID) complex emerged as an important E3
+ligase regulating multiple cellular processes, including cell cycle
+progression and metabolism. However, the range of biological
+functions controlled by hGID remains unexplored. Here, we used
+proximity-dependent biotinylation (BioID2) to identify proteins
+interacting with the hGID complex, among them, substrate can-
+didates that bind GID4 in a pocket-dependent manner. Bio-
+chemical and cellular assays revealed that the hGIDGID4 E3 ligase
+binds and ubiquitinates ARHGAP11A, thereby targeting this
+RhoGAP for proteasomal degradation. Indeed, GID4 depletion or
+impeding the GID4 substrate binding pocket with the PFI-7 in-
+hibitor stabilizes ARHGAP11A protein amounts, although it carries
+no functional N-terminal degron. Interestingly, GID4 inactivation
+impairs cell motility and directed cell movement by increasing
+ARHGAP11A levels at the cell periphery, where it inactivates RhoA.
+Together, we identiﬁed a wide range of hGIDGID4 E3 ligase sub-
+strates and uncovered a unique function of the hGIDGID4 E3 ligase
+regulating cell migration by targeting ARHGAP11A.
+DOI 10.26508/lsa.202403046 | Received 15 September 2024 | Revised 24
+September 2024 | Accepted 25 September 2024 | Published online 10 October
+2024
+Introduction
+The ubiquitin–proteasome system (UPS) is a key protein degra-
+dation machinery in eukaryotic cells. Conjugation of ubiquitin to
+target proteins is achieved by three coordinated enzymatic reac-
+tions, governed by activating E1, conjugating E2, and ligating E3
+enzymes. E3 ligases perform the critical function of substrate
+recognition, in some cases by detecting speciﬁc short amino acid
+motifs called degrons ( Henneberg & Schulman, 2021 ; Dikic &
+Schulman, 2023). Ubiquitin conjugation to substrate proteins reg-
+ulates various cellular processes, including cellular homeostasis,
+metabolism, and cell cycle progression (Brandon Croft, 2015).
+Dysfunctions in the UPS, including mutations in the ubiquitin
+machinery or in substrate recognition motifs, have been associated
+with a broad spectrum of pathological conditions including cancer
+and metabolic diseases (Kitamura, 2023).
+In yeast, the UPS tightly controls the metabolic switch from
+gluconeogenesis to glycolysis. This process involves glucose-
+induced degradation-deﬁcient (GID) proteins, also known as the
+C-terminal to LisH (CTLH), which form a multi-subunit RING
+domain–containing E3 ligase (Santt et al, 2008). Biochemical and
+structural analyses revealed that the yeast GID complex is com-
+posed of seven subunits, and four such units assemble into a stable
+tetramer (Menssen et al, 2012; Sherpa et al, 2021). Gid7 acts as a
+supramolecular assembly factor allowing the formation of higher
+order complexes. The catalytic center is formed by the two RING
+domain–containing proteins Gid2 and Gid9, which are held together
+by the scaffold Gid8. Gid5 recruits different substrate receptors
+including Gid4, Gid10, and Gid11 (Kong et al, 2021). Gid4 promotes
+proteasomal degradation of excess gluconeogenic enzymes such
+as fructose 1,6-bisphosphate 1 (Fbp1) or malate dehydrogenase
+(Mdh2) (Chen et al, 2017; Dong et al, 2020). These substrates are
+recognized via a Pro/N-terminal degron motif, which docks into a
+conserved Gid4 binding pocket. Similarly, Gid10 and Gid11 target
+distinct sets of substrates that regulate speciﬁc metabolic transi-
+tions (Kong et al, 2021; Langlois et al, 2022).
+The GID/CTLH E3 ligase complex is evolutionarily conserved, and
+all yeast subunits have closely related counterparts in higher
+eukaryotes (Salemi et al, 2017; Lampert et al, 2018; Maitland et al,
+2019). RanBP9 (Gid1), RMND5A (Gid2), ARMC8 (Gid5), TWA1 (Gid8), and
+MAEA (Gid9) are ubiquitously expressed and assemble into mul-
+timeric complexes localizing to the nucleus and cytoplasm
+(Kobayashi et al, 2007). The two RING domain–containing subunits
+RMND5A and MAEA linked by TWA1 form the catalytic trimer
+(Lampert et al, 2018), which assembles with other subunits such as
+WDR26 (Gid7), RanBP9/RanBP10 (Gid1), MKLN1, GID4 (Gid), ARMC8
+(Gid5), and YPEL5 (Fig 1A)( Kobayashi et al, 2007; Lampert et al, 2018).
+Structural studies revealed important insights into the mecha-
+nism and assembly of hGID E3 ligase complexes, and identiﬁed the
+1Institute of Biochemistry, Department of Biology, ETH Zürich, Zürich, Switzerland2Graduate School for Cellular and Biomedical Sciences, University of Bern, Bern,
+Switzerland 3Institute of Cell Biology, University of Bern, Bern, Switzerland4Montreal Clinical Research Institute (IRCM), Montr´eal, Canada 5Molecular Biology
+Programs, Universit´e de Montr´eal, Montr´eal, Canada
+Correspondence: matthias.peter@bc.biol.ethz.ch
+Federico Uliana’s present address is Johannes-Gutenberg-Universit¨at (JGU), Mainz, Germany
+©2 0 2 4Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 1o f2 1
+on 6 March, 2025life-science-alliance.org Downloaded from 
+http://doi.org/10.26508/lsa.202403046Published Online: 10 October, 2024 | Supp Info: 
+GID4/ARMC8 and RanBP9/WDR26 modules responsible for sub-
+strate recruitment (Mohamed et al, 2021 ; Sherpa et al, 2021 ).
+Comprehensive phage display screens and peptide binding assays
+demonstrated that human GID4 (hGID4) subunit binds a variety of
+short motifs via a conserved pocket (Dong et al, 2020; Chrustowicz
+et al, 2022). A chemical compound, PFI-7, blocks this binding pocket,
+thereby preventing hGID4 interaction with Pro/N-terminal degron-
+containing targets, such as DNA helicases DDX21 or DDX50 (Owens
+et al, 2024). Likewise, degradation of 3-hydroxy-3-methylglutaryl
+(HMG)-coenzyme A (CoA) synthase 1 (HMGCS1) requires a Pro/N-
+degron motif and is regulated by mTORC1 activity (Yi et al, 2024).
+Nevertheless, it remains unclear whether hGID4 primarily recog-
+nizes N-terminal degrons in vivo, since the GID4 substrate Zinc
+ﬁnger MYND-type containing 19 (ZMYND19) lacks an N-terminus
+compatible with the proposed consensus motif (Mohamed et al,
+2021). Moreover, GID4 is not the only substrate receptor of the hGID
+E3 ligase, as depletion of WDR26/Gid7, but not hGID4, stabilizes the
+tumor suppressor HBP1 (Fig 1A)( Lampert et al, 2018; Mohamed et al,
+2021). WDR26 also binds the metabolic enzyme NMNAT1 through an
+internal basic degron motif, antagonized by YPEL5 (Gottemukkala
+et al, 2024). Thus, the hGID complex may exploit multivalent binding
+motifs to target substrates by binding to hGID4 and WDR26.
+Although the structure and mechanisms of hGID E3 ligases are
+beginning to emerge, its biological functions remain poorly un-
+derstood. hGID activity has been implicated in regulating cell
+proliferation, metabolism, embryonic development, and cell dif-
+ferentiation. Mutations in WDR26 cause developmental disorders,
+with altered expression levels in many invasive and metastatic
+cancer cells (Ye et al, 2016). Interestingly, several hGID subunits
+such as RanBP9, MKLN1, and WDR26 have been associated with cell
+migration and adhesion (Maitland et al, 2022), but the underlying
+substrates and mechanisms are unclear. Cell migration is a highly
+integrated multistep process driven by spatiotemporal control of
+membrane protrusions and actin polymerization at the leading
+edge of the cell. Subsequent steps include adhesion to matrix
+contacts, contraction of the cytoplasm, release from contact sites,
+and recycling of membrane receptors from the rear to the front of
+the cell. Actin dynamics are regulated by the activity of Rho GTPases
+through the opposing actions of a large family of guanine nucle-
+otide exchange factors (GEFs) and GTPase-activating proteins
+(GAPs). RanBP9 interacts with ß-integrins and promotes cell at-
+tachment and spreading (Woo et al, 2012), whereas MKLN1 and
+WDR26 may alter the activity of Rho-type GTPases (Tripathi et al,
+2015; Hasegawa et al, 2020). However, how hGID E3 ligase activity
+controls Rho GTPases and inﬂuences cell migration and invasion
+remains to be discovered.
+Here, we employed an integrative approach combining cellular
+phenotyping and systematic BioID2-based mass spectrometry to
+uncover physiological hGID substrates involved in cell growth and
+migration. Interestingly, ourﬁndings demonstrate that GID4 alters
+cell migration by regulating RhoA activity, which is achieved
+through ubiquitination and subsequent degradation of the RhoGAP
+ARHGAP11A. Indeed, abrogation of GID4 expression or inhibition of
+its substrate binding pocket leads to the accumulation of ARH-
+GAP11A at the cell periphery and a decrease in RhoA activity.
+Collectively, our study represents a valuable resource recapitu-
+lating the transient interactome of GID4, altered by proteasomal
+degradation and its substrate binding pocket. Among the inter-
+actors, we validated the relationship between GID4 and ARHGAP11A,
+which functions as a physiological substrate of the hGIDGID4 E3
+ligase regulating cell growth and migration.
+Results
+GID4 is required for efﬁcient cell growth and migration
+To investigate the role of the hGID E3 ligase and in particular its
+substrate receptor GID4 in regulating cell growth and proliferation,
+we generated stable, doxycycline (DOX)-inducible GID4 KD HeLa and
+RPE1 cell lines using the CRISPR-Bac system (Schertzer et al, 2019).
+Brieﬂy, HeLa or RPE1 cells were transfected with a pool of four
+single-guide RNAs (sgRNAs) targeting theGid4 gene or without a
+sgRNA for control (sgControl). Stable integration of the sgRNA and
+DOX-inducible PB_tre_Cas9 vector was selected using G418 and
+hygromycin for HeLa, or G418 and puromycin for RPE1 cells. In-
+dependent clones were expanded, and efﬁcient GID4 KD was
+conﬁrmed by immunoblotting after DOX induction for 96 h. For both
+the HeLa and RPE1 cell lines, two validated clones termed sgGID4 KD
+#1 and sgGID4 KD #2 were further characterized and used
+throughout this study. Importantly, although GID4 was efﬁciently
+depleted, WDR26 levels remained unchanged for both the HeLa and
+RPE1 cell lines, conﬁrming the speciﬁcity of the sgGID4 and stability
+of the remaining hGID complex (Figs 1Band S1A). We also used the
+recently described GID4-inhibitor PFI-7, which binds to a struc-
+turally deﬁned GID4 pocket, thereby blocking access of N-terminal
+degron motifs (Owens et al, 2024). Compared with DMSO controls,
+the addition of PFI-7 to sgControl HeLa or RPE-1 cells did not alter
+GID4 or WDR26 levels, respectively (Figs 1B and S1A).
+To uncover cellular functions of the hGIDGID4 complex, we ﬁrst
+tested whether GID4 depletion affects proliferation of HeLa cells.
+Interestingly, cell lines lacking GID4 or treated with the GID4 in-
+hibitor PFI-7 showed approximately twofold reduced growth rates
+compared with control cells or DMSO alone, as measured by MTT
+absorbance at 570 nm (Figs 1Cand S1B). The addition of the PFI-7
+compound to GID4-depleted cell lines did not further enhance this
+proliferation defect, conﬁrming that PFI-7 is speciﬁc and GID4 is the
+relevant PFI-7 target underlying this phenotype. To conﬁrm and
+extend these results, we performed wound healing assays to ex-
+amine GID4 function in directed cell migration. We observed more
+than sixfold delay of both sgGID4 KD #1 and sgGID4 KD #2 HeLa cells
+to close the cell-free area compared with sgControl (Figs 1Dand
+S2A). The wound area of PFI-7–treated sgControl HeLa cells was
+approximately fourfold larger than sgControl cells treated with
+DMSO (Fig 1D). The wound healing response of PFI-7–treated cells
+was less pronounced compared with both sgGID4 KD #1 and sgGID4
+KD #2 cell lines, whereas PFI-7 addition to GID4-depleted cells did
+not enhance the phenotype (Figs 1Dand S2A). Importantly, the re-
+expression of GID4 in sgGID4 KD #1 HeLa cells (+GID4) restored the
+gap closure to levels similar to those of control cells, conﬁrming
+that the observed wound healing defect is caused by the lack of
+GID4 and not an unspeciﬁc off-target effect or compensatory
+mechanism (Figs 1D, S1C, and S2A).
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 2o f2 1
+A
+D
+x (μm)
+y (μm)
+200 400-200 -400 0
+-200
+-400
+200
+400
+0
+E
+sgGID4 KD #1
+sgControl
+sgGID4 KD #1 + PFI-7
+sgControl + DMSO
+sgControl + PFI-7
+1.4
+1.0
+0.8
+0.6
+0.4
+0.2
+0
+1.2
+123
+Time (d)
+          MTT assay
+Absorbance at 570 nm
+***
+**
+CB
+sgControl
++ DMSO
+x (μm)
+y (μm)
+200 400-200-400 0
+-200
+-400
+200
+400
+0
+sgControl
+ + PFI-7
+x (μm)
+y (μm)
+200 400-200 -400 0
+-200
+-400
+200
+400
+0
+sgGID4 KD #1
+     + PFI-7
+y (μm)
+x (μm)
+sgControl
+200 400-200 -400 0
+-200
+-400
+200
+400
+0
+x (μm)
+sgGID4 KD #1
+200 400-200 -400 0
+-200
+-400
+200
+400
+0
+y (μm)
+x (μm)
+sgGID4 KD #1
+     + GID4
+200 400-200-400 0
+-200
+-400
+200
+400
+0
+y (μm)
+sgControl
+sgGID4 KD #1
+sgContr
+ol + DMSO
+sgControl
+ + PFI-7
+sgGID4 KD #1 + PFI-7
+10
+0
+****
+ns
+20
+30
+sgGID4 KD #1 + GID4
+ns
+****
+RPE1
+HeLa
+GAPDH
+GID4
+WDR26 75
+25
+37
+sgGID4 KD #1sgGID4 KD #2sgContr
+ol + DMSO
+sgControl + PFI-7sgGID4 KD #1 + PFI-7sgGID4 KD #2 + PFI-7sgControl
+TCL
+(kDa)
+HeLa
+****
+****
+40
+sgGID4 KD #1
+     + PFI-7
+sgControl
++ DMSO
+sgControl
+ + PFI-7
+ntrol
+SO
+sgC
+ + P
+0h
+4 KD #1
+Tim
+KD #1
+I-7
+sgGID4
+ + PF
+ntrol
+I-7
+Con
+PF
+0h
+sgGID4 KD #1sgControl
+D
+sgC
+E
+sgGID
+ontrol
+sgC
++ DM
+on
+MS
+KD #1
+4
+sgGI
+D4
+sgGID4 KD #1
+    + GID4
+sgGID4 KD #1
+sgControl
+sgGID4 KD #1 + PFI-7
+sgControl + DMSO
+sgControl + PFI-7
+Wound area (r.u.)
+1.0
+0.8
+0.6
+0.4
+0.2
+0
+0 5 10 15 20
+Time (h)
+***
+**
+sgGID4 KD #1 + GID4
+Figure 1. Loss of GID4 leads to cell migration defects.
+(A) Schematic of the hGID E3 ligase complex. The hGID complex includes two distinct substrate receptors (GID4 and WDR26), two RING E3 ligases (RMND5 and MAEA), and
+other subunits including TWA1, ARMC8, and RANBP9. Each substrate receptor can target a speciﬁc set of substrates for protein degradation via ubiquitination. Theﬁgure is
+created withBioRender.com. (B) Western blots of HeLa total cell lysates showing GID4 and WDR26 protein expression. Lysates were prepared from a stable clone without
+sgRNA (sgControl), a stable clone with a pool of four sgRNAs targeting GID4 (sgGID4 KD #1), a second stable clone with a pool of four sgRNAs targeting GID4 (sgGID4 KD #2),
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 3o f2 1
+Delayed wound closure could be a consequence of reduced
+proliferation or a combination of reduced proliferation and im-
+paired cell migration. To investigate whether decreased cell mi-
+gration may contribute to the wound healing defect, we carried out
+single-cell tracking assays. We used RPE1 cells for this analysis
+because they exhibit higher random migration than HeLa cells and
+are thus better suited for velocity measurements. Interestingly, we
+observed that GID4-depleted RPE1 cells display more than twofold
+decreased velocity compared with sgControl cells (Figs 1Eand S2B
+and C), and this defect was restored upon the re-expression of GID4
+(Figs 1E, S1D, andS2B and C). Likewise, PFI-7–treated sgControl cells
+also showed reduced velocity compared with DMSO-treated
+sgControls, albeit a less pronounced reduction than observed
+with untreated or PFI-7–treated sgGID4 KD cells. Taken together, we
+conclude that GID4 is required for efﬁcient cell motility, suggesting
+the hGIDGID4 E3 ligase complex regulates targets speciﬁcally in-
+volved in this process.
+BioID2-mediated proximity labeling identiﬁes potential
+GID4 substrates
+To decipher the GID4 proximal protein interaction network and
+explore potential GID4 substrates regulating cell migration and
+other biological functions, we carried out a proximity-dependent
+biotinylation screen (Fig 2A). To achieve this goal, weﬁrst generated
+stable Flp-In T-REx HeLa cells expressing a BirA2-Flag-GID4 fusion
+protein (BioID2-GID4) in a tetracycline-inducible manner. For
+control, we produced Flp-In T-REx HeLa cell lines expressing BirA2-
+Flag-EGFP (BioID2-GFP). To distinguish potential substrates from
+general interactors or regulatory proteins, we generated a BirA2-
+Flag-GID4E237A fusion cell line (BioID2-GID4E237A), harboring a spe-
+ciﬁc point mutation known to abolish substrate binding (Dong et al,
+2018). We also constructed Flp-In T-REx HeLa cell lines expressing
+WDR26-BirA2-Flag (WDR26-BioID2) as an additional bait to select
+substrates primarily recruited via the GID4 substrate receptor.
+Immunoblotting with FLAG antibodies conﬁrmed that the BioID2-
+GID4 or BioID2-GID4E237A proteins are expressed at comparable
+levels, over twofold higher than endogenous GID4, making it un-
+likely that endogenous GID4 prevents their assembly into the hGID
+complex (Fig S3C). Indeed, both fusion proteins stably assemble
+into hGID complexes as measured by co-immunoprecipitation with
+the hGID catalytic subunit MAEA (Fig S3A). Importantly, treatment of
+the BioID2-GID4 and BioID2-GID4E237A cell lines with tetracycline and
+biotin demonstrated that both fusion proteins efﬁciently trigger
+biotinylation of endogenous proteins in their vicinity (Fig S3B).
+Likewise, the WDR26-BioID2 fusion showed appropriate protein
+expression and biotinylation, and co-immunoprecipitated with the
+hGID catalytic subunit MAEA (Fig S3D and E).
+To identify proximal candidate substrates of GID4, we next incu-
+bated the cell lines with tetracycline and biotin for 24 h and afﬁnity-
+isolated biotinylated proteins fromcell extracts using Streptavidin
+beads. Biotinylated proteins were digested on beads, identiﬁed by
+mass spectrometry (MS), and quantiﬁed by spectral counts. We further
+used the SAINT algorithm (Choi et al, 2011) comparing intensity of
+proteins at different conditions versus experimental controls. To
+distinguish substrates from other hGID4-interacting proteins, we
+performed BioID2 assays in cells treated or not with the proteasome
+inhibitor MG132 (Fig 2A). As expected, we successfully recovered all
+known hGID subunits with BioID2-GID4, BioID2-GID4E237A,a n dM G 1 3 2 -
+treated BioID2-GID4 baits (Fig 2B and Cand Table S1), conﬁrming that
+GID4 engages with the hGID complex independently of proteasome
+function or substrate binding. In addition to the hGID complex
+subunits, the analysis of the generated protein network showed
+functionally associated protein clusters (Fig 2C). These components
+are implicated in diverse cellular functions including mRNA degra-
+dation, the ISWI-type and BRK domain complexes, integrator and
+mitochondrial activity, mitotic spindle assembly, low-density lipo-
+protein particle receptor binding, and the cellular response to hy-
+droperoxide. Further work is required to functionally validate these
+interactors, which may regulate E3 ligase activity and/or recruit the
+hGID complex to speciﬁc subcellular locations.
+Next, we extended our search for proteins that exhibit degra-
+dation substrate behavior by focusing on GID4-interacting proteins
+that are signiﬁcantly enriched in MG132-treated BioID2-GID4 cells,
+but not in untreated GID4 or MG132-treated BioID2-GID4E237A con-
+trols. To further show GID4 speciﬁcity, we also included WDR26-
+BioID2 in this analysis. We identiﬁed 41 proteins with high conﬁ-
+dence scores (Bayesian False Discovery Rate [BFDR]≤ 0.01) that are
+specially enriched in MG132-treated GID4, but not in the other
+BioID2 baits (Fig 2D and Table S2). Network analysis revealed that
+sgControl treated with DMSO (10μM), sgControl treated with PFI-7 (10μM), sgGID4 KD #1 treated with PFI-7 (10μM), and sgGID4 KD #2 treated with PFI-7 (10μM). Blots were
+probed as indicated with antibodies to GID4 and WDR26. GAPDH controls equal loading. The blot is representative of three independent experiments.(C) MTT assay of HeLa
+cells measuring absorbance at 570 nm indicating cell metabolic activity during 1, 2, or 3 d for lysates derived as in (B). sgControl or sgGID4 KD #1 cells were either untreated
+or treated with DMSO (10μM) or PFI-7 (10μM). Data values at day 3 were analyzed for statistical signiﬁcance and are shown as the mean ± SD (n = 3 independent
+experiments; three biological replicates were performed for each experiment). The indicatedP-values were calculated by one-way ANOVA, followed by Bonferroni’s
+multiple comparisons test. *P ≤ 0.05, ***P ≤ 0.001. (D) (Left panel) Representative brightﬁeld images acquired over time (h) of a wound healing assay with HeLa sgControl,
+sgGID4 KD #1, or sgGID4 KD #1 cells transfected with an untagged GID4-expressing plasmid (+GID4), either untreated or treated with DMSO (10μM) or PFI-7 (10μM). Cells
+were grown to a monolayer with a deﬁned cell-free gap established by a silicone insert. The silicone insert was removed (time 0), and images were acquired at 1-h intervals.
+The wound area was selected using the freehand selection tool (ImageJ) and is outlined in yellow. Scale bars, 100μm. (Right panel) The wound area was quantiﬁed and
+expressed in relative units (r.u.) over time (h), normalized to the wound area at time 0 h. Data values at 20 h were analyzed for statistical signiﬁcance and are shown as
+the mean ± SD (n = 3 independent experiments). The indicatedP-values were calculated by one-way ANOVA, followed by Bonferroni’s multiple comparisons test. **P≤ 0.01,
+***P ≤ 0.001. (E) (Left panel) Plots showing a 24-h period of merged individual RPE1 cell trajectories set to a common origin at the intersection of the y (μm)- and x (μm)-
+axes for sgControl, sgGID4 KD #1, or sgGID4 KD #1 cells transfected with an untagged GID4-expressing plasmid (+GID4), either untreated or treated with DMSO (10μM) or
+PFI-7 (10μM). Images were acquired at 30-min intervals for 24 h, and analyzed using a manual tracking plugin and chemotaxis tool (ibidi) in ImageJ software. (Right panel)
+Bar graph showing cell velocity (μm/h) of RPE1 cells from data acquired and analyzed as in the left panel. Data values are shown as the mean ± SD (n = 3 independent
+experiments; 200 cells were analyzed for each condition). The indicatedP-values were calculated by one-way ANOVA, followed by Bonferroni’s multiple comparisons
+test. ns (not signiﬁcant), ****P ≤ 0.0001.
+Source data are available for thisﬁgure.
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 4o f2 1
+AvgSpec
+05 0
+Relative AvgSpec
+BFDR
+≤ 0.01 ≤ 0.05 > 0.05
+B
+D
+GID4 degradation substrate candidates (enriched in GID4 + MG132)
+A
+E
+BAZ1B
+DARS2NDC1HIST1H2BO
+MGA
+RBBP4
+LONP1
+DNTTIP2
+ASH1L
+RPA1
+ARHGAP11A
+H2AFX
+ZNF106
+KIFC1
+MAU2
+MBD4
+RACGAP1
+SHCBP1
+CTCF
+MRE11
+GLYR1
+RPA2
+SRD5A3ZFR
+DMAP1
+NRDE2
+RBL1
+TM9SF2
+ABHD3
+AFF4
+CPEB2
+CUL2NUSAP1
+ZC3H14
+CORO1C
+EIF2AK1
+GPR180
+MCM10
+NAT
+8L
+RDH13
+WDR82
+GID4
+GID4 + MG132
+GID4E237A + MG132
+WDR26
+WDR26 + MG132
+WDR26
+RANBP9
+RANBP10
+YPEL5
+GID4
+ARMC8
+MAEA
+RMND5A
+GID8
+MKLN1
+GID4GID4
+E237A
+GID4 + MG132
+Known
+GID
+subunits
+AvgSpec
+05 0
+Relative AvgSpec
+BFDR
+≤ 0.01 ≤ 0.05 > 0.05
+HSP90B1HSP90B1HSP90B1
+ APOBAPOBAPOB
+INTS12INTS12INTS12
+INTS11INTS11INTS11
+ANAPC5ANAPC5ANAPC5
+SMC1ASMC1ASMC1A
+AURKBAURKBAURKB
+SP1SP1SP1
+PRKCDPRKCDPRKCD
+BAZ1ABAZ1ABAZ1A
+CHD9CHD9CHD9
+RPP30RPP30RPP30
+ZNF609ZNF609ZNF609
+AGO2AGO2AGO2
+YTHDF2YTHDF2YTHDF2
+GIGYF2GIGYF2GIGYF2
+CLPXCLPXCLPX
+EARS2EARS2EARS2
+LARS2LARS2LARS2
+Integrator
+complex
+Low-density lipoprotein
+particle receptor binding
+Response to 
+hydroperoxide
+ISWI-type complex
+and BRK domain
+GID complex:
+Proteasome-mediated 
+ubiquitin-dependent protein
+catabolic process
+mRNA destabilization Mitotic spindle pole
+Mitochondrial matrix
+Known interactions
+from curated databases
+experimentally determined
+textmining
+Others
+co-expression
+protein homology
+Predicted interactions
+gene neighborhood
+gene fusions
+gene co-occurrence
+ARMC8ARMC8ARMC8
+GID4GID4GID4
+GID8GID8GID8
+MAEAMAEAMAEA
+MKLN1MKLN1MKLN1
+ RANBP10RANBP10RANBP10
+RANBP9RANBP9RANBP9
+RMND5ARMND5ARMND5A
+WDR26WDR26WDR26
+YPEL5YPEL5YPEL5
+DNA replication
+Chromatin remodeling
+BAZ1BBAZ1BBAZ1B
+DMAP1DMAP1DMAP1
+GLYR1GLYR1GLYR1
+H2AXH2AXH2AX
+H2BC17H2BC17H2BC17
+MRE11MRE11MRE11
+ RPA1RPA1RPA1
+RPA2RPA2RPA2
+RhoGAP signaling
+Microtubule cytoskeleton
+ARHGAP11AARHGAP11AARHGAP11A
+KIFC1KIFC1KIFC1
+MCM10MCM10MCM10
+NUSAP1NUSAP1NUSAP1
+RACGAP1RACGAP1RACGAP1
+SHCBP1SHCBP1SHCBP1
+Nuclear pore
+transmembrane ring
+DARS2DARS2DARS2
+EIF2AK1EIF2AK1EIF2AK1
+LONP1LONP1LONP1
+NDC1NDC1NDC1
+Cellular senescence
+RBBP4RBBP4RBBP4
+RBL1RBL1RBL1
+Sister chromatid cohesion
+CTCFCTCFCTCF
+MAU2MAU2MAU2
+Known interactions
+from curated databases
+experimentally determined
+textmining
+Others
+co-expression
+protein homology
+Predicted interactions
+gene neighborhood
+gene fusions
+gene co-occurrence
+C
+Figure 2. Proximity labeling by BioID2 identiﬁes GID4 degradation substrate candidates.
+(A) Workﬂow of the BioID2 pipeline to identify GID4 interactors and putative substrates. Flp-In T-REx HeLa cell lines expressing either BirA2-Flag-GID4 (BioID2-GID4),
+BirA2-Flag-GID4E237A (BioID2-GID4E237A), or BirA2-Flag-EGFP (BioID2-GFP) as bait proteins were treated with tetracycline (1μg/ml) and biotin (50μM) in the presence or
+absence of MG132 (5μM). Biotinylated proteins were isolated on streptavidin beads and digested by trypsin, and peptides were analyzed by mass spectrometry (MS). The
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 5o f2 1
+these proteins are functionally linked to DNA replication and
+chromatin remodeling, RhoGAP signaling and microtubule cyto-
+skeleton, nuclear pore assembly, cellular senescence, and sister
+chromatid cohesion (Fig 2E), implicating potential roles of GID4-
+dependent degradation in these processes. Although the previ-
+ously reported GID4 substrate ZMYND19 was not identiﬁed with
+BioID2-GID4, the ZMYND19 interaction was speciﬁcally recovered in
+MG132-treated ARMC8-BioID2, but not WDR26-BioID2 screens (Fig
+S3Fand Table S3), conﬁrming binding speciﬁcity of ZMYND19 toward
+the GID4-ARMC8 substrate module.
+Taken together, this comprehensive BioID2 analysis identi-
+ﬁed numerous GID4 interactors that (1) are known hGID sub-
+units or potential regulatory proteins, or (2) exhibit degradation
+substrate–like behavior, where their interaction is increased in the
+presence of MG132. Overall, this approach identi ﬁed 507 GID4
+interactors with high con ﬁdence scores (BFDR ≤ 0.01), encom-
+passing both previously reported interactors (Fig S3G)( Owens et al,
+2024) and numerous additional candidates.
+ARHGAP11A is ubiquitinated and degraded by a GID4-dependent
+mechanism
+Because we discovered that GID4 is required for cell migration,
+we next tested whether components of the identi ﬁed RhoGAP
+signaling complex are degraded in vivo in a GID4-dependent
+manner. Of those, ARHGAP11A and RACGAP1 are GAPs that are
+known to regulate cell migration via RhoA or Rac1, respectively
+(J a c q u e m e te ta l ,2 0 1 3; Kagawa et al, 2013). To investigate whether
+GID4 is required to degrade ARHGAP11A, RACGAP1, and KIFC1, we
+treated HeLa sgGID4 KD or sgControl cell lines with the trans-
+lation inhibitor cycloheximide (CHX) and assessed their half-life
+by immunoblotting (Fig 3A ). Interestingly, although all three
+proteins are degraded with a half-life below 4 h, only ARHGAP11A
+w a ss t a b i l i z e di nt h ea b s e n c eo fG I D 4(Fig 3A). A previous study
+reported that RACGAP1 and KIFC1 are degraded by the anaphase-
+promoting complex/cyclosome (APC/C) E3 ubiquitin ligase,
+thereby regulating mitotic spindle disassembly and cell
+spreading (Min et al, 2014). We thus speculate that APC/C may
+explain the remaining, GID4-independent degradation of ARH-
+GAP11A. To corroborate these data, we analyzed ARHGAP11A and
+KIFC1 levels in CHX-treated HeLa sgGID4 KD or sgControl cell lines
+that were also treated with PFI-7 or DMSO. Indeed, ARHGAP11A,
+but not KIFC1, was stabilized in the presence of PFI-7, implying
+that a functional GID4 substrate binding pocket is required for
+ARHGAP11A degradation in vivo (Fig 3B). To further validate this
+result, we immunoprecipitated FLAG-tagged WT GID4 or its E237A
+mutant and probed for co-immunoprecipitation of ARHGAP11A,
+KIFC1, or the hGID catalytic subunit MAEA as a positive control
+(Fig 3C). We also tested whether their binding is altered by the
+PFI-7 inhibitor. Indeed, both ARHGAP11A and KIFC1 readily co-
+immunoprecipitated with GID4in a PFI-7-dependent manner,
+a n dt h e i ri n t e r a c t i o nw i t ht h eG I D 4E237A mutant was signi ﬁ-
+cantly diminished. Moreover, they failed to bind FLAG-tagged
+WDR26, suggesting that ARHGAP11A engages the hGID com-
+plex via GID4, and not the alternate WDR26 substrate receptor
+(Fig 3C).
+To examine whether ARHGAP11A is ubiquitinated by hGIDGID4,
+we immunoprecipitated FLAG-t agged ARHGAP11A from MG132-
+treated HeLa cells overexpressing HA-tagged ubiquitin (HA-Ub)
+and either Myc-tagged GID4E237A or WT GID4 treated with DMSO or
+PFI-7 to block substrate binding (Fig 3D). For further control, we
+overexpressed Myc-tagged WDR26. Indeed, immunoprecipitation
+of HA-Ub or FLAG-tagged ARHGAP11A revealed a smear of high
+molecular weight species, consistent with ubiquitinated ARH-
+GAP11A (Fig 3D ). Although we cannot rigorously exclude that
+additional E3 ligases may contribute to this activity, ARHGAP11A
+polyubiquitination was inhibited by the addition of PFI-7 and
+absent when analyzing the GID4-E237A mutation. Moreover, no
+ubiquitination of ARHGAP11A was observed in cells overexpressing
+Myc-tagged WDR26. Taken together, these results suggest that the
+hGIDGID4 E3 ligase directly ubiquitinates ARHGAP11A, which in turn
+targets this RhoA GAP for rapid degradation by the 26S
+proteasome.
+ARHGAP11A is targeted by GID4 through a non–N-terminal degron
+To further conﬁrm that ARHGAP11A is speciﬁcally targeted by the
+GID4-ARMC8 and not the WDR26-RANBP9 substrate module, we
+depleted endogenous GID4, WDR26, ARMC8, or RANBP9 by siRNA (Fig
+4A). Indeed, in contrast to WDR26 or RANBP9, RNAi depletion of GID4
+and ARMC8 leads to the accumulation of ARHGAP11A, but not HBP1,
+in HeLa cells. Conversely, RNAi KD of WDR26 and RANBP9 triggered
+accumulation of HBP1, whereas ARHGAP11A levels were unaffected.
+Together, these results demonstrate that the steady-state levels of
+ARHGAP11A are speciﬁcally regulated by the hGIDGID4 E3 ligase
+complex.
+Because ARHGAP11A interacted with GID4 by a pocket-dependent
+mechanism, we next tested the putative involvement of its
+N-terminal degron. ARHGAP11A exists in three different isoforms.
+Interestingly, isoforms 1 and 2 encompass a putative N-terminal
+non-proline degron motif (WDQRLVRL) that is absent in isoform 3
+(Fig 4B). To investigate whether this distinct N-terminal motif
+schematic drawing was adapted fromGingras et al (2019), and is created withBioRender.com. (B) (Upper panel) Dot plots of quantiﬁed BioID2-interacting proteins
+(ProHits) using SAINT analysis. HeLa BioID2-GID4 or BioID2-GID4E237A cell lines expressing the respective BirA2-Flag-tagged bait protein (GID4, GID4E237A) were either
+untreated or treated with MG132 (5μM). (Lower panel) The average spectral counts are represented by the node color. The edge color shows the conﬁdence score of the
+BioID2 interaction (BFDR≤ 1% considered as high conﬁdence, 1% < BFDR≤ 5% as medium conﬁdence, or BFDR > 5% as low conﬁdence). The relative abundance of the
+prey is depicted by the circle size according to the biggest node size and proportionally scaled for other preys.(C) Protein–protein interaction networks and functional
+enrichment of the GID4 interactions, which are considered hGID subunits or regulatory proteins, enriched in the BioID2-GID4, BioID2-GID4E237A, and MG132-treated BioID2-
+GID4 baits. The protein network was generated with MCL clustering using STRING v11.5.(D) Dot plots of quantiﬁed BioID2-interacting proteins (ProHits) using SAINT
+analysis. HeLa BioID2-GID4, BioID2-GID4E237A, or WDR26-BioID2 cell lines expressing the respective BirA2-Flag-tagged bait protein were either untreated or treated with
+MG132 (5μM). (E) Protein–protein interaction networks and functional enrichment of the GID4 interactions, which are considered GID4 degradation substrate candidates,
+enriched in MG132-treated BioID2-GID4, and not in MG132-treated BioID2-GID4E237A, or MG132-treated WDR26-BioID2. The protein network was generated with MCL
+clustering using STRING v11.5.
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 6o f2 1
+A
+C
+B
+D
+150
+CHX (h)
+DMSO (μM)
+PFI-7 (μM)
+0 88 8 8 8
+--
+--
+--
+--
+10 50
+10 50
+sgControl
+75
+25
+37
+ARHGAP11A
+KIFC1
+GID4
+GAPDH
+(kDa)
+TCL
+HeLa
+Flag-ARHGAP11A
+(kDa)
+Myc-GID4
+Myc-GID4E237A
+Myc-WDR26
+DMSO
+PFI-7
+-
++ ++ + +
+-
+-
+-
+-
++
++
+-
+-
+-+
+-
+-
+-+
++
++ -
+-
+- -
+-
+-
+-
+--
+-
+-
+-
+-
+-
+IP Flag Flag
+HA
+TCL Myc
+Flag
+GAPDH
+HA
+50
+250
+150
+100
+100
+75
+100
+37
+10
+HA-Ub + MG132
+ARHGAP11A~Ubn
+ARHGAP11A~Ub2
+ARHGAP11A~Ub1
+ARHGAP11A
+ARHGAP11A~Ubn
+ARHGAP11A~Ub1
+Myc-WDR26
+Myc-GID4
+HA-Ub
+IP Flag
+HeLa
+FLAG
+FLAG-GID4E237A
+WDR26-FLAG
++
+-
+-
+-
+-
+-
++
+-
+-
+-
+-
++
+DMSO
+MG132
++
+-
+-
+-
+-+ -
+PFI-7 -- +
++
+-
+-
+-
+-
+-
+-
+-
+ARHGAP11A
+KIFC1
+ARHGAP11A
+KIFC1
+FLAG
+(kDa)
+75
+37
+50
+75
+37
+50
+150
+75
+37
+75
+FLAG-GID4
+FLAG-EGFP
+IP FLAG
+TCL
+GAPDH
+MAEA
+MAEA
+50
+50
+150
+Flp-In T-REx HeLa
+02480248CHX (h)
+sgControl sgGID4 KD #1
+ARHGAP11A 150
+GID4
+GAPDH
+25
+37
+(kDa)
+TCL
+RACGAP1 75
+KIFC1 75
+HeLa
+ARHGAP11A protein
+       amount (%)
+sgControl
+sgGID4 KD #1
+100
+80
+0
+60
+40
+20
+0248
+Time (h)
+*
+**
+* * 100
+80
+0
+60
+40
+20
+0248
+Time (h)
+sgControl
+sgGID4 KD #1
+ns
+ns
+ns
+ns
+RACGAP1 protein
+     amount (%)
+100
+80
+0
+60
+40
+20
+0248
+Time (h)
+sgControl
+sgGID4 KD #1
+ns
+ns
+ns
+ns
+KIFC1 protein
+  amount (%)
+100
+80
+0
+60
+40
+20
+sgControl 8h
+sgControl + DMSO (10 μ
+m) 8h
+sgControl 
++ DMSO (50 μm) 
+8h
+sgCont
+rol + PFI-7 (10 μ
+m) 
+8h
+sgCon
+trol + PFI-7 (50 μm) 8h
+****
+ns
+ns
+****
+sgControl 
+0h
+ARHGAP11A protein
+       amount (%)
+****
+sgControl 8h
+sgControl + DMSO (
+10 μm) 8h
+sgCont
+rol + DMSO (50 
+μm) 
+8h
+sgCont
+rol + PFI-7 (10 μm) 8h
+sgControl + PFI-7 (50 
+μm) 8h
+ns
+ns***
+sgCont
+rol 0h
+ns
+ns
+KIFC1 protein
+  amount (%)
+100
+80
+0
+60
+40
+20
+Figure 3. ARHGAP11A acts as a GID4 degradation substrate.
+(A) (Left panel) Western blots of a cycloheximide (CHX) chase assay with total cell lysates (TCLs) of sgControl or sgGID4 KD #1 HeLa cells harvested at the times indicated
+(in hours). CHX (20μg/ml) was added at time 0. Blots were probed with antibodies to endogenous GID4, ARHGAP11A, RACGAP1, or KIFC1. GAPDH controls equal loading.
+(Right panel) Bar graphs quantifying the amount (%) of ARHGAP11A (left), RACGAP1 (middle), or KIFC1 (right) protein. Data values are shown as the mean±S D( n=3
+independent experiments). The indicatedP-values were calculated by a two-tailedt test. ns (not signiﬁcant), *P ≤ 0.05, **P≤ 0.01. (B) (Left panel) Western blots of a CHX
+chase assay with TCLs prepared at the times indicated (in hours) from sgControl HeLa cells treated with DMSO or the indicated PFI-7 concentrations (μM). CHX (20μg/ml)
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 7o f2 1
+regulates GID4-dependent degradation, we compared the half-lives
+of C-terminally Flag-tagged isoforms 1 (ARHGAP11Aiso1-Flag) and 3
+(ARHGAP11Aiso3-Flag) in HeLa cells treated with either siScrambled
+or siGID4 (Fig 4C and D). Surprisingly, both ARHGAP11Aiso1-Flag and
+ARHGAP11Aiso3-Flag fusion proteins were rapidly degraded in the
+presence of GID4 but stabilized after GID4 RNAi depletion. This
+suggests that the N-terminal motif of ARHGAP11A is not required for
+GID4-dependent degradation in vivo, implying the existence of
+alternative binding motifs. Consistent with this notion, analysis of
+the N-termini of all substrate candidates binding GID4 in a pocket-
+dependent manner in which spectral counts increased upon MG132
+treatment revealed no coherent sequence logo that aligns with
+the previously reported N-terminal consensus degron (Fig S3H)
+(Chrustowicz et al, 2022).
+To directly determine binding of GID4 to putative degron motifs
+of ARHGAP11A, we usedﬂuorescence polarization (FP) to measure
+the af ﬁnity of TAMRA-labeled peptides to recombinant GID4
+lacking its N-terminal domain (GID4Δ1–115). Although the control
+peptide PGLWKS bound with the expected afﬁnity of 2.4 μM, the
+WDQRLV peptide encompassing the amino terminus of ARHGA-
+P11Aiso1 was unable to interact with measurable afﬁnity (Fig 4E). To
+exclude that the TAMRA label interferes with binding, we devised
+an in vitro competition assay, where the GID4Δ1–115-bound TAMRA-
+labeled control peptide was competed with increasing concen-
+trations of unlabeled peptides covering different regions of
+ARHGAP11A (Fig 4E). In contrast to controls, peptides covering the
+N-terminal sequences of the two ARHGAP11A isoforms showed no
+binding activity with biologically relevant afﬁnity. Similar results
+were obtained when titrating a peptide corresponding to the
+C-terminus of ARHGAP11A, or a peptide covering a recently de-
+scribed putative internal degron (Fig 4E)( Zhang et al, 2023). We
+conclude that GID4 recognizes ARHGAP11A by an unknown
+mechanism that requires its substrate binding pocket, possibly by
+using an internal or non-linear degron motif or by exploiting
+multiple low-afﬁnity degrons that may cooperate to allow efﬁcient
+recruitment into the hGID complex. Alternatively, we cannot ex-
+clude that binding of ARHGAP11A and GID4 is bridged by an un-
+known component.
+GID4-dependent degradation of ARHGAP11A regulates
+cell migration
+If hGIDGID4 activity alters cell migration by increasing ARHGAP11A
+turnover, we predict that decreasing ARHGAP11A levels by RNAi
+may restore the observed wound healing and motility defects.
+Consistent with previous results (Lawson et al, 2016; Dai et al,
+2018), ARHGAP11A-depleted HeLa and RPE1 cells displayed
+profound migration defects, as determined by wound healing
+assays and single-cell velocity measurements (Figs 5B and Cand
+S4B). These results imply that both reduced and increased
+ARHGAP11A levels cause defects in cell migration and motility,
+characteristic of altered GTPase dynamics. Therefore, RNAi de-
+pletion and GID4-dependent degradation of ARHGAP11A may
+antagonize each other. Indeed, ARHGAP11A steady-state levels
+were partially re-established in RNAi-depleted HeLa or RPE1
+cells treated with PFI-7 inhibitor (Figs 5A and S4A), and this
+increase was sufﬁcient to restore the wound healing and velocity
+defects compared with ARHGAP11A RNAi solvent controls (DMSO)
+(Figs 5B and C and S4B). Together, these data con ﬁrm that
+ARHGAP11A turnover is regulated by hGID GID4 E3 ligase activity
+and that increased ARHGAP11A levels lead to cell migration
+defects.
+Decreased hGIDGID4 activity down-regulates spatiotemporal
+dynamics of RhoA
+We next used immunoﬂuorescence to examine the subcellular
+localization of endogenous ARHGAP11A in HeLa cells in the pres-
+ence or absence of hGIDGID4 activity. Consistent with previous re-
+sults (Namba et al, 2020), ARHGAP11A localized to the cytoplasm and
+accumulated in nucleoli in sgControl cells (Fig 6A). siRNA depletion
+or omission of the secondary antibody abolished this staining (Figs
+6A and S5A), demonstrating speciﬁcity of the assay. Interestingly,
+ARHGAP11A levels in the nucleus and cytoplasm increased upon
+PFI-7 treatment, and a fraction of ARHGAP11A accumulated at the
+cell periphery (Fig 6A).
+Because ARHGAP11A is as a RhoA GAP (Kagawa et al, 2013; Xu
+et al, 2013), we assessed the spatiotemporal dynamics of RhoA
+activity in live cells lacking functional hGIDGID4. To this end, we
+took advantage of the previously described RhoA second-
+generation biosensor (RhoA2G) FRET system (Fritz et al, 2013 ),
+and generated HeLa cell lines stably expressing RhoA2G (referred
+to as RhoA2G-HeLa). In addition, we employed the established
+RhoA2G-REF52 cell lines, as REF52ﬁbroblasts display more pro-
+nounced cytoskeletal migratory phenotypes (Martin et al, 2016).
+Importantly, siRNA-mediated GID4 KD decreased the FRET ratio in
+both RhoA2G-HeLa and RhoA2G-REF52 cells (Figs 6B and Cand S5B
+and C), implying decreased RhoA activity. Similarly, RhoA activity
+was signiﬁcantly decreased after 6 or 12 h of PFI-7 treatment in
+RhoA2G-HeLa or RhoA2G-REF52 cells compared with DMSO con-
+trols (Figs 6Dand S5D). RhoA inhibition in the absence of hGIDGID4
+was uniform over the cell periphery, consistent with the observed
+was added at time 0. Blots were probed with antibodies recognizing endogenous ARHGAP11A, KIFC1, or GID4. GAPDH controls equal loading. (Right panel) Bar graphs
+quantifying the amount (%) of the ARHGAP11A (left), RACGAP1 (middle), or KIFC1 (right) protein. Data values are shown as the mean ± SD (n = 3 independentexperiments).
+The indicated P-values were calculated by one-way ANOVA, followed by Bonferroni’s multiple comparisons test. ns (not signiﬁcant), ***P ≤ 0.001, ****P ≤ 0.0001.
+(C) Western blots of TCLs and FLAG immunoprecipitates (IP-FLAG) of Flp-In T-Rex HeLa cell lines expressing FLAG-EGFP, FLAG-GID4, FLAG-GID4E237A, or WDR26-FLAG as
+bait proteins. Cells were treated as indicated with MG132 (5μM), DMSO (10μM), or PFI-7 (10μM). Blots were probed with antibodies to FLAG, or endogenous ARHGAP11A,
+KIFC1, or MAEA. GAPDH controls equal loading.(D) Western blots of TCLs and FLAG immunoprecipitates (IP-FLAG) of HeLa cells expressing FLAG-ARHGAP11A (isoform 3)
+and either Myc-GID4, Myc-GID4E237A, or Myc-WDR26 in the presence of HA-ubiquitin (HA-Ub). Cells were treated with MG132 (5μM), and as indicated with DMSO (10μM)
+or PFI-7 (10μM). IP-FLAG samples were probed with anti-FLAG or anti-HA antibodies, and TCLs with antibodies recognizing the Myc-, FLAG-, or HA-tags. GAPDH controls
+equal loading.
+Source data are available for thisﬁgure.
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 8o f2 1
+siGID4
+siWDR26siARMC8
+siScrambled siRANBP9
+****
+****
+ARHGAP11A protein
+       amount (%)
+A
+B
+E
+siGID4
+siWDR26siARMC8
+siScrambled siRANBP9
+****100
+80
+0
+60
+40
+20
+****
+     HBP1 protein
+       amount (%)
+ARHGAP11A
+(kDa)
+75
+25
+100
+HBP1
+GID4
+WDR26
+ARMC8
+RANBP9
+GAPDH
+siScrambledsiGID4siWDR26siARMC8siRANBP9
+50
+75
+100
+37
+HeLa
+TCL
+012
+0.0
+0.4
+0.8
+1.2
+log [ligand] (μM)
+Normalized inhibition (FP/ FP0)
+ARHGAP11A; iso1 N-term
+ARHGAP11A; iso3 N-term
+ARHGAP11A; degronID
+ARHGAP11A; C-term
+KIFC1, N-term
+PGLWKS
+DDX21, N-term
+PG
+LWKS
+DDX21 N-t
+erm
+0 5 10 15 20
+0
+20
+40
+60
+80
+100
+120
+[GID4Δ1-115]( μ M )
+Polarization (mP)
+ARHGAP11A
+N-term
+PGLWKS
+KD,GID4 =2 . 3 7μ MΔ1-115
+RhoGAP
+ domain
+834571
+ARHGAP11A
+isoform 3
+DS SN LAV I
+501
+ARHGAP11A
+isoform 2
+1 46 246
+WDQR LVR L
+RhoGAP
+ domain
+1 46 246 1023
+ARHGAP11A
+isoform 1
+WDQR LVR L
+RhoGAP
+ domain
+100
+80
+0
+60
+40
+20
+C
+Flag
+GID4
+GAPDH
+02 4 80 2 4 8CHX (h) (kDa)
+ARHGAP11Aiso1-Flag
+    Flp-In T-REx HeLa
+siScrambled siGID4
+37
+25
+150TCL
+***
+****
+**ns
+0
+20
+100
+40
+60
+80
+ARHGAP11Aiso1-Flag
+    Flp-In T-REx HeLa
+0 2 4 8
+Time (h)
+siScrambled
+siGID4
+ARHGAP11Aiso1 protein
+       amount (%)
+D
+Flag
+GID4
+GAPDH
+02 4 80 2 4 8CHX (h) (kDa)
+ARHGAP11Aiso3-Flag
+    Flp-In T-REx HeLa
+siScrambled siGID4
+100
+25
+37
+TCL
+****
+****
+ns
+0
+20
+100
+40
+60
+80
+ARHGAP11Aiso3-Flag
+    Flp-In T-REx HeLa
+0 2 4 8
+Time (h)
+siScrambled
+siGID4
+ARHGAP11Aiso3 protein
+       amount (%)
+***
+Figure 4. ARHGAP11A regulates cell migration downstream of GID4.
+(A) (Left panel) Western blots of total cell lysates prepared from HeLa cells transfected with siScrambled (50 nM), siGID4 (50 nM), siWDR26 (50 nM), siARMC8 (50 nM), or
+siRANBP9 (50 nM). The blots were probed with antibodies recognizing endogenous ARHGAP11A, HBP1, GID4, WDR26, ARMC8, and RANBP9. GAPDH controls equal loading.
+Data are representative of three independent experiments. (Right panel) Bar graphs quantifying the amount (%) of ARHGAP11A (left) or HBP1 (right) ofHeLa cells
+transfected with the indicated siRNAs. Data values are shown as the mean ± SD (n = 3 independent experiments). The indicatedP-values were calculated by one-way
+ANOVA, followed by Bonferroni’s multiple comparisons test. ****P ≤ 0.0001. (B) Schematic representation of the ARHGAP11A isoforms. Isoforms 1 and 2 contain an N-
+terminus (WDQRLVRL) resembling the GID4 degron, whereas isoform 3 encodes an N-terminus (DSSNLAVI) incompatible with the consensus motif. The motifs are shown
+without the initiator methionine. The RhoGAP domain is highlighted (green).(C, D)(Upper panels) Western blots of CHX chase assays with total cell lysates prepared at
+the times indicated (in hours) from Flp-In T-REx HeLa cells expressing C-terminally FLAG-tagged ARHGAP11A isoforms 1 (ARHGAP11Aiso1-FLAG) or 3 (ARHGAP11Aiso3-FLAG)
+transfected with either siScrambled (20 nM) or siGID4 (20 nM). CHX (20μg/ml) was added at time 0. Blots were probed with antibodies to FLAG or endogenous GID4. GAPDH
+controls equal loading. (Lower panels) Bar graphs quantifying the amount (%) of ARHGAP11A. Data values are shown as the mean ± SD (n = 3 independent experiments).
+The indicatedP-values were calculated by a two-tailedt test. ns (not signiﬁcant), **P ≤ 0.01, ***P ≤ 0.001, ****P ≤ 0.0001. (E) (Left panel) Fluorescence polarization (FP)
+measurements of GID4Δ1–115 and the TAMRA-labeled control peptide PGWLKS (blue circles) (Dong et al, 2018) and the TAMRA-labeled N-terminal ARHGAP11A peptide
+WDQRLV (black circles). Data values are shown as the mean ± SD (n = 3 independent experiments). (Right panel) Competitive FP experiments between TAMRA-labeled
+PGLWKS bound to GID4Δ1–115 and the indicated ARGHAP11A-derived peptides. WDQRLV (black circles) and DSSNLAVIF (gray circles) represent the N-terminal peptides of
+ARHGAP11A isoforms 1 and 3, respectively; LPTSKPVDL (orange circles) mimics the C-terminus of ARGHAP11A; LKENENMMEGNLPKCAAHSKDEARSSFS (green circles) is derived
+from the DegronID database (Zhang et al, 2023). DPQRSPLLE represents the N-terminus of KIFC1. The N-terminal peptide of DDX21 (PGKLRSDAG) (Owens et al, 2024) was
+used as a positive control alongside with unlabeled PGLWKS. PGLWKS and PGKLRSDAG displace theﬂuorescent peptide with an IC50 of 30.3μM and 83.4μM, respectively.
+All N-terminal degron peptides were analyzed without the initiator methionine. Data values are shown as the mean ± SD (n = 3 independent experiments).
+Source data are available for thisﬁgure.
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 9o f2 1
+motility defects and ARHGAP11A accumulation throughout the cell
+periphery.
+To corroborate these live-cell microscopy results, we next
+quantiﬁed RhoA-GTP levels by the pulldown assay using the RBD
+of the RhoA-GTP effector Rhotekin fused to GST (GST-RBD) (Fig 6E).
+Brieﬂy, total cell lysates (TCLs) prepared from GID4-depleted HeLa
+cell lines left untreated or treated with PFI-7 or DMSO were in-
+c u b a t e dw i t hi m m o b i l i z e dG S To rG S T - R B Dt oa l l o wb i n d i n go f
+active RhoA-GTP. For control, we also analyzed RhoA activity in
+cells RNAi-depleted for ARHGAP11A. The beads were washed,
+bound proteins were eluted, and RhoA-GTP was immunoblotted
+with RhoA-speciﬁc antibodies. As expected, both GID4 RNAi de-
+pletion and PFI-7 treatment reduced active RhoA compared with
+controls. Importantly, ARHGAP11A siRNA KD in PFI-7–treated cells
+signiﬁcantly restored active RhoA levels when compared to PFI-
+7–treated controls (Fig 6E). These results conﬁrm that hGIDGID4
+r e g u l a t e sc e l lm o t i l i t yb yc o n t r o l l i n ga c t i v eR h o Aa c t i v i t yv i a
+ubiquitin-dependent degradation of ARHGAP11A. Because both
+hyperactivation and inactivation of RhoA lead to cell migration
+defects, we conclude that regulation of hGIDGID4 is required to
+maintain physiological levels of ARHGAP11A and ensure spatio-
+temporal RhoA activity during cell migration.
+B
+C
+A
+-37
+-150ARHGAP11A
+GAPDH
+(kDa)
+siScrambled
+siARHGAP11A
+siARHGAP11A + PFI-7        
++-
++ -
+-
+-
++--
+HeLa
+0
+20
+100
+40
+60
+80
+siScrambled
+siARHGAP11AsiARHGAP11A
++ PFI-7
+ARHGAP11A protein
+       amount (%)
+*******
+***
+B
+(kDa)
+-37
+-150
+-
+siScrambled siARHGAP11A
+siARHGAP11A
+     + PFI-7
+Wound area (r.u.)
+1.0
+0.8
+0.6
+0.4
+0.2
+0
+0 5 10 15 20
+Time (h)
+****
+*
+siScrambled
+siARHGAP11A
+siARHGAP11A + PFI-7        
+siScrambled
+siARHGAP11AsiARHGAP11A    + PFI
+-7
+10
+0
+20
+30
+**** ****
+****
+x (μm)
+y (μm)
+200 400-200 -400 0
+-200
+-400
+200
+400
+0
+siARHGAP11A
+     + PFI-7
+x (μm)
+y (μm)
+200 400-200 -400 0
+-200
+-400
+200
+400
+0
+siScrambled
+x (μm)
+y (μm)
+200 400-200 -400 0
+-200
+-400
+200
+400
+0
+siARHGAP11A
+TCL
+HeLa
+RPE1
+40
+Figure 5. Inhibition of the GID4 substrate binding pocket partially restores cell migration of cells with RNAi-reduced ARHGAP11A levels.
+(A) (Upper panel) Western blots of total cell lysates prepared from HeLa cells transfected with siScrambled (20 nM), siARHGAP11A (20 nM), or siARHGAP11A(20 nM)
+treated with PFI-7 (10μM). The blots were probed with antibodies recognizing endogenous ARHGAP11A and GAPDH as a loading control. Data are representative of three
+independent experiments. (Lower panel) Bar graphs quantifying the amount (%) of ARHGAP11A. Data values are shown as the mean ± SD (n = 3 independent experiments).
+The indicated P-values were calculated by one-way ANOVA, followed by Bonferroni’s multiple comparisons test. ***P ≤ 0.001, ****P ≤ 0.0001. (B) (Left panel)
+Representative brightﬁeld images of sgControl HeLa cells transfected with siScrambled (20 nM), siARHGAP11A (20 nM), or siARHGAP11A (20 nM) treated with PFI-7 (10μM).
+Cells were grown to a monolayer with a deﬁned cell-free gap established by a silicone insert. The silicone insert was removed (time 0), and images were acquired at 1-h
+intervals. The wound area selected using the freehand selection tool (ImageJ) is outlined in yellow. Scale bars, 100μm. (Right panel) The wound area was quantiﬁed and
+expressed in relative units (r.u.) over time (h), and normalized to the wound area at time 0 h. Data values at 20 h were analyzed for statistical signiﬁcance, and are shown
+as the mean ± SD (n = 3 independent experiments; four measurements were performed for each wounded area). The indicatedP-values were calculated by one-way
+ANOVA, followed by Bonferroni’s multiple comparisons test. *P ≤ 0.05, ****P ≤ 0.0001. (C) (Left panels) Plots showing a 24-h period of merged individual sgControl RPE1
+cell trajectories set to a common origin at the intersection of the y (μm)- and x (μm)-axes. Cells were transfected with siScrambled (20 nm) or siARHGAP11A (20 nM) and
+treated with PFI-7 (10μM) as indicated. Images were acquired at 30-min intervals for 24 h and analyzed using a manual tracking plugin and chemotaxis tool (ibidi) in ImageJ
+software. (Right panel) Bar graph quantifying cell velocity (μm/h) for the indicated samples. Data values are shown as the mean ± SD (n = 3 independent experiments;
+200 cells were analyzed for each condition). The indicatedP-values were calculated by one-way ANOVA, followed by Bonferroni’s multiple comparisons test. ****P ≤ 0.0001.
+Source data are available for thisﬁgure.
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 10 of 21
+A
+Overlay
+Overlay
+Overlay
+F-actin
+F-actin
+F-actin
+ARHGAP11A
+ARHGAP11A
+ARHGAP11A
+sgControl
++ siScrambled
+sgControl
++ siARHGAP11A
+sgControl
++ siScrambled
++ PFI-7
+B
+siScrambled
+siGID4
+High
+Low
+FRET Ratio
+Normalized FRET ratio
+siScrambled
+siGID4
+1.0
+0.8
+0.6
+1.4
+1.2
+****
+ARHGAP11A enrichment
+ at the cell periphery (%)0
+60
+80
+100
+40
+20
+****
+sgControl + siScrambledsgControl + siScrambled
+            + PFI-7
+C
+**
+1.0
+0.8
+0.6
+1.2
+0.4
+siScram
+bled
+siGID4
+siScrambledsiGID4
+FRET Ratio
+DMSO
+0 Hours
+ 6 Hours
+ 12 Hours
+PFI-7
+FRET Ratio
+DMSO
+PFI-7
+D
+sgGID4 KD #1
+sgControl + PFI-7
+sgControl + P
+FI-7 + siScrambled
+RhoA activation (%)
+sgControl + 
+DMSO
+sgControl +
+ PFI-7 + siA
+RHGAP11A
+GST-RBD
+****
+ns ns
+100
+80
+0
+60
+40
+20
+**
+****
+E
+RhoA2G-HeLa RhoA2G-REF52
+RhoA2G-HeLa
+HeLa
+Normalized FRET ratio
+0 6 12
+Time [Hours]
+0.6
+0.8
+1.0
+1.2
+1.4Normalized FRET ratio
+ns
+* ****
+High
+Low
+High
+Low
+-37
+-25
+-25RhoA
+RhoA
+GAPDH
+Pulldown GST
+TCL
+GST
+sgControl + DMSO
+sgGID4 KD #1
+sgGID4 KD #2
+sgControl + PFI-7
+sgControl + PFI-7 + siScrambled
+sgControl + PFI-7 + siARHGAP11A
++- - - - -
++
++
++
++
++
+-
+-
+-
+-
+-
++
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-- -
+-- -
+-
+-
+++
+Coomassie
+(kDa)
+GST-RBD
+-25
+-37
+GST-RBD
+GST
+HeLa
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 11 of 21
+Discussion
+Here, we show that the hGIDGID4 E3 ligase regulates cell growth and
+migration, and we validated the RhoGAP ARHGAP11A as a physio-
+logical substrate. Indeed, ARHGAP11A is stabilized and accumulates
+at the cell periphery in cells with reduced GID4 levels and/or ac-
+tivity, leading to low RhoA-GTP levels and cell migration defects.
+Moreover, our BioID2 approach identiﬁed additional GID4 inter-
+actors, among them, substrate candidates that depend on a
+conserved substrate binding pocket. Together, these results expand
+the cellular functions of hGID E3 ligase complexes and identify
+physiological substrates and mechanisms underlying GID4-speciﬁc
+phenotypes.
+BioID2 analysis identiﬁed hGID subunits, potential regulators,
+and putative GID4 substrates
+Our comprehensive BioID2 screen identiﬁed 507 GID4 interactors
+with high conﬁdence scores (BFDR≤ 0.01), which we divided into
+substrate candidates and GID4 interactors that may rather function
+as hGID subunits or regulators. Indeed, we detected all known hGID
+subunits, including RANBP9, RANBP10, and MKLN1, which bind the
+hGID complex by a mutually exclusive mechanism. Among the
+additional hGID interactors, we note HTRA2, which was previously
+shown by AP-MS analysis to interact with several GID subunits
+(Table S1) (Lampert et al, 2018) and bind the giant E3 ligase BIRC6
+(Ehrmann et al, 2023). In contrast, we did notﬁnd a human ho-
+mologue of GID12, a GID4-interacting protein that sterically blocks
+substrate ubiquitination (Qiao et al, 2022). Many of these pocket-
+independent interactors are nuclear proteins involved in regulation
+of gene expression or cell division (Baillat et al, 2005;Du et al, 2021;
+Nakanishi, 2022) and may thus help recruiting the hGID complex to
+regulate DNA-associated processes, polymerase activity, and/or
+cell cycle progression. Further work is required to validate these
+candidates, for example, by extending the BioID approach to other
+hGID core subunits.
+Importantly, we also identiﬁed over 30 GID4 substrate candi-
+dates, as deﬁned by an increased spectral count upon MG132
+treatment and dependence on a functional GID4 substrate binding
+pocket. Moreover, these interactors do not bind WDR26, suggesting
+that they are speciﬁc to GID4. Many of these identiﬁed GID4 substrate
+candidates are involved in chromatin organization, chromosome
+segregation and cell division, DNA binding and RNA processing, and
+gene expression (Fig 2E), consistent with the predominantly nuclear
+localization of GID4. For example, we found that GID4 interacts with
+the Rb transcriptional corepressor 1 (RBL1), the MAU2 sister chro-
+matid cohesion factor and the CCCTC-binding factor (CTCF), and the
+transcription factor ZNF106, which has been implicated in growth-
+related metabolism associated with early multiple organ failure in
+acute pancreatitis (Ciosk et al, 2000; Grasberger et al, 2005; Henley &
+Dick, 2012; Liu & Dekker, 2022; van den Berg et al, 2022). Moreover, GID4
+interacts with the ribosome biogenesis regulator BYSL (Table S2)
+(Adachi et al, 2007; Fukuda et al, 2008), suggesting that the hGIDGID4 E3
+ligase may regulate ribosome abundance.
+A recent study identiﬁed HMGCS1 as a Pro/N-degron–containing
+GID4 substrate that is targeted for degradation in vivo (Yi et al,
+2024). Indeed, HMGCS1 is stabilized in cells lacking GID4, MAEA or
+MKLN1, or both RMND5A and RMND5B subunits. HMGCS1 undergoes
+direct ubiquitination in vitro only in the presence of GID4 and
+interacts with GID4 via its N-terminal proline (Yi et al, 2024). In
+contrast, our previous work revealed that GID4 can also recognize
+substrates that do not follow the N-terminal degron rule, as we
+showed that ZMYND19 lacks such a motif but nevertheless interacts
+and is ubiquitinated in vitro in a GID4-dependent manner
+(Mohamed et al, 2021). Although the BioID2-GID4 screens did not
+contain ZMYND19, it interacts with ARMC8-BioID2 in MG132-treated
+cells, conﬁrming its speciﬁcity toward the GID4-ARMC8 substrate
+receptor module. Interestingly, only a fraction of the putative GID4
+substrates contain distinct N-terminal motifs that fulﬁll the
+Figure 6. Decrease in spatiotemporal RhoA activity upon GID4 inhibition or depletion.
+(A) (Left panel) Representative confocal microscopy images showing immunoﬂuorescence of ARHGAP11A and staining of F-actin with phalloidin. HeLa cells were
+transfected as indicated with siScrambled (20 nM) or siARHGAP11A (20 nM) and either untreated or treated with PFI-7 (10μM). The green and magenta channels show
+overlayed merged images. The insets shown in the lower left corner are magniﬁed by factor 9. Images are representative of three independent experiments. Scale bars,
+10 μm. (Right panel) Bar graph showing enrichment in the percentage of endogenous ARHGAP11A at deﬁned regions of the cell periphery. Data values are shown as the
+mean ± SD (n = 3 independent experiments; 100 cells were analyzed for each condition). The indicatedP-values were calculated by a two-tailedt test. ****P ≤ 0.0001. (B)
+(Left panel) RhoA activity of RhoA2G-HeLa cells transfected either with siScrambled (20 nM) or with siGID4 (20 nM) was measured 48 h post-siRNA transfection. Warmer (in
+red) colors indicate higher RhoA activity. Scale bar, 20μm. (Right panel) Box plots showing the normalized FRET ratio of RhoA2G-HeLa cells transfected with siScrambled
+(20 nM) or siGID4 (20 nM). The measurements were scaled such that the median value of the siScrambled control group is equal to 1. Individual points represent the mean
+FRET ratio from unique cells. Data were analyzed from 410 siScrambled-transfected or 416 siGID4-transfected RhoA2G-HeLa cells. ****P ≤ 0.0001. (C) (Left panel) RhoA
+activity of RhoA2G-REF52 cells transfected either with siScrambled (20 nM) or siGID4 (20 nM) was measured 48 h post-siRNA transfection. Warmer (in red) colors indicate
+higher RhoA activity. Scale bar, 50μm. (Right panel) Box plots showing the normalized FRET ratio of RhoA2G-REF52 cells transfected with siScrambled (20 nM) or siGID4 (20
+nM). The measurements were scaled such that the median value of the siScrambled control group is equal to 1. Individual points represent the mean FRET ratio from
+unique cells. Data were analyzed from 60 siScrambled-transfected or 88 siGID4-transfected RhoA2G-REF52 cells. **P ≤ 0.01. (D) (Left panel) Normalized FRET ratio of
+PFI7- or DMSO-treated RhoA2G-HeLa cells. Warmer colors (in red) indicate higher RhoA activity. PFI-7 (10μM) was added after time point 0. Ratio values were normalized
+per ﬁeld of view to the mean value of the half hour. Scale bar, 20μm. (Right panel) Box plots showing the normalized FRET ratio of RhoA2G-HeLa cells treated with DMSO or
+PFI-7. For each group, the FRET measurements were normalized to the sample mean of theﬁrst 20 min pre-treatment. Subsequently, the measurements were scaled
+such that the median value of each time point in the DMSO group is equal to 1. Data were analyzed from 411 DMSO-treated or 1096 PFI-7–treated RhoA2G-HeLa cells. ns
+(not signiﬁcant), *P ≤ 0.05, ****P ≤ 0.0001. (E) (Left panel) Pulldown assay from extracts prepared from HeLa sgControl, sgGID4 KD #1, or sgGID4 KD #2 cells using the GST-
+tagged RBD of Rhotekin (GST-RBD) or GST alone (GST) as a bait. Cells were exposed to siScrambled (20 nM) or siARHGAP11A (20 nM) and were either untreated or treated
+with PFI-7 (10μM). The upper panel shows a Western blot with antibodies to RhoA to detect RhoA-GTP associated with the bait (pulldown GST) or remaining in the total cell
+lysate. GAPDH controls equal loading. The lower panel visualizes GST and GST-RBD proteins using a Coomassie-stained gel. (Right panel) Bar graph quantifying the
+percentage of RhoA-GTP (RhoA activation) normalized to total RhoA. Data values are shown as the mean ± SD (n = 3 independent experiments). The indicated P-values
+were calculated by one-way ANOVA, followed by Bonferroni’s multiple comparisons test. ns (not signiﬁcant), **P ≤ 0.01, ****P ≤ 0.0001.
+Source data are available for thisﬁgure.
+GID4
+degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 12 of 21
+stringent criteria proposed as degrons by earlier studies. It is
+possible that some of the pocket-dependent GID4-interactors bind
+indirectly, or the N-terminal degron may be insufﬁcient to mediate
+binding to GID4.
+We included MG132 enrichment as a substrate criterion and thus
+ﬁltered out GID4 binding proteins whose protein levels are not
+altered in the absence of GID4. For example, previous work revealed
+that GID4 binds several nucleolar RNA helicases including DDX17,
+DDX21, and DDX50 (Owens et al, 2024). Although these targets rely on
+an N-terminal degron motif, their ubiquitination does not lead to
+proteasomal degradation. Thus, the hGIDGID4 complex may regulate
+cellular processes by degradative and non-degradative functions,
+and future work is needed to understand their selective ubiq-
+uitination mechanism. We also note that we recovered signiﬁcantly
+more BioID2-GID4 interactors in Flp-In T-REx HeLa cells (Fig S3G)
+compared with a similar study (Owens et al, 2024). This might in part
+be due to our MG132 treatment identifying additional interactors
+and/or better incorporation of our BioID2-GID4 fusion protein into
+the hGID complex, as we successfully identiﬁed all known hGID
+subunits in both untreated and MG132-treated BioID2-GID4
+samples.
+The hGIDGID4 E3 ligase regulates cell migration by degrading
+ARHGAP11A
+Our phenotypic analysis demonstrates that the hGIDGID4 E3 ligase
+complex is required for cell growth and migration in multiple cell
+models (Woo et al, 2012; Tripathi et al, 2015; Ye et al, 2016; Hasegawa
+et al, 2020; Maitland et al, 2022). Indeed, loss of GID4 or inhibition of
+its binding pocket signiﬁcantly impairs the wound healing response
+in HeLa cells and alters the motility of single RPE1 cells. Inter-
+estingly, we found that this defect is caused by GID4 interacting via
+its conserved substrate pocket with a cluster of proteins associated
+with cytoskeleton organization, including the two Rho GTPase –
+activating enzymes (RhoGAPs) ARHGAP11A and RACGAP1. Although
+ARHGAP11A and RACGAP1 are both turned over with a half-life of
+less than 4 h, only ARHGAP11A is stabilized in the absence of GID4
+or upon PFI-7 treatment. Indeed, RACGAP1 is targeted for protea-
+somal degradation in vivo by the APC/C E3 ligase (Min et al,
+2014). Interestingly, our results demonstrate that GID4-dependent
+degradation of ARHGAP11A does not require an N-terminal degron
+sequence, suggesting the existence of an alternative binding
+mechanism. First, although the known substrate cleft of GID4 is rather
+narrow, ARHGAP11A may bind to GID4 via an internal degron, perhaps
+involving alternative GID4 binding sites. Second, the GID4-ARHGAP11A
+interaction may be indirect and bridged by an unknown protein
+containing an N-terminal degron. Finally, the turnover of ARHGAP11A
+could be a secondary effect of GID4 activity, potentially involving the
+degradation of another substrate that enhances ARHGAP11A ubiq-
+uitination. Further investigation is needed to reveal the molecular
+basis of ARHGAP11A’s interaction with GID4.
+ARHGAP11A targets RhoA involved in cytoskeletal organization,
+thereby regulating cell division, lymphocyte activation, myeloid
+leukocyte differentiation, and leukocyte apoptosis (Lawson & Der,
+2018). ARHGAP11A also regulates cell cycle progression by a RhoA-
+independent mechanism, as its depletion leads to cell cycle defects
+with high p27 levels (Lawson et al, 2016). Surprisingly, ARHGAP11A is
+enriched in nucleoli (Zanin et al, 2013; Namba et al, 2020), with
+unclear functional implications. However, our results demonstrate
+that ARHGAP11A accumulates at the periphery of cells lacking GID4
+activity, without apparent asymmetric localization and polarization.
+Consistent with previous results (Kagawa et al, 2013; Zanin et al, 2013;
+Lawson & Der, 2018 ), increased ARHGAP11A steady-state levels
+globally decrease RhoA-GTP, resulting in cell migration and motility
+defects. Conversely, ARHGAP11A depletion reduces cell proliferation
+and cell migration (Dai et al, 2018; Guan et al, 2021) by increasing RhoA
+activity. Thus, both too much and too little RhoA activity interfere with
+cell motility and migration, consistent with the widespread spatio-
+temporal regulation of GTPases required to organize polarized actin
+structures and membrane protrusions. Indeed, GID4 inhibition by
+PFI-7 in ARHGAP11A-depleted cells allows re-activation of RhoA-GTP
+and consequently cell motility by partially restoring ARHGAP11A
+protein levels. The hGIDGID4 E3 ligase thus antagonizes ARHGAP11A
+in vivo, thereby setting a threshold for RhoA activation.
+GID4-mediated ARHGAP11A stabilization at the cell periphery
+might regulate RhoA activity in different ways. For example, low
+RhoA activity might impair leading edge protrusion/retraction
+cycles that contribute to both random and directed motility. This
+is especially relevant in REF52ﬁbroblasts, where RhoA activity is
+required for generating actomyosin contractility necessary for la-
+mella formation and efﬁcient leading edge protrusion and re-
+traction (Martin et al, 2016). Alternatively, lower RhoA activity may
+globally impair actomyosin contractility. Future studies should
+address how subtle RhoA activity dynamics in GID4- or ARHGAP11A-
+perturbed cells are propagated at the whole-cell level to impair
+random and directed motility.
+Irrespective of the detailed mechanism, our results demonstrate
+that hGIDGID4 regulates RhoA activity through ARHGAP11A and imply
+that ARHGAP11A steady-state levels need to be carefully balanced
+to allow directed cell migration. Although the regulatory mecha-
+nisms controlling GID4-mediated ARHGAP11A degradation under
+physiological conditions remain to be examined, we note that
+ARHGAP11A expression is increased in various cancers, including
+hepatocellular and clear cell renal carcinoma and gastric cancer.
+Moreover, elevated ARHGAP11A levels have been associated with
+poor survival (Dai et al, 2018; Fan et al, 2021; Yang et al, 2023). It is
+thus tempting to speculate that loss of GID4 stabilizes ARHGAP11A in
+these cancer cells, thereby contributing to tumor progression.
+BioID: a valid approach to identify E3 ligase substrates and
+functions
+The identiﬁcation of physiological E3 ligase substrates is often
+hampered by the generally low afﬁnity of substrate–receptor in-
+teractions that cannot easily withstand cell lysis and stringent
+immunoprecipitation conditions. To circumvent this bottleneck,
+BioID screening emerged as an alternative approach, as bio-
+tinylation of interacting proteins is dictated by their close proximity
+in cells before lysis and extract preparation (Roux et al, 2012). Until
+recently, BioID approaches suffered from severe speciﬁcity limi-
+tations, fueled by the need to overexpress bulky fusion proteins
+combined with long incubation times to reach sufﬁcient labeling.
+However, the recent development of smaller biotinylation enzyme
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 13 of 21
+variants with increased catalytic activity (e.g., miniTurboID, UltraID)
+mitigated some of these risks (Branon et al, 2018; Kubitz et al, 2022).
+Nevertheless, including secondary ﬁltering criteria such as the
+presence of motifs and/or domains, or stringent speciﬁcity controls
+such as treatment with MG132 substantially improves the identi-
+ﬁcation of high conﬁdence interactors. Ideally, inhibitory com-
+pounds or mutant proteins altering binding to critical components,
+for example, mutations in the substrate interaction domain, further
+help to distinguish direct from indirect, unspeciﬁc interactors. In
+addition, rapid improvements in AlphaFold to predict binding
+surfaces with atomic accuracy using a deep learning algorithm
+greatly facilitate the identiﬁcation of critical residues (Jumper et al,
+2021). As shown by this and other studies (Shariﬁ Tabar et al, 2022),
+including such speciﬁcity criteria allows for efﬁcient ﬁltering of
+comprehensive BioID datasets, making this approach comple-
+mentary to other proteomics approaches such as AP-MS and diGly
+enrichment (Iconomou & Saunders, 2016). Therefore, advanced
+BioID screening strategies hold great potential to study other multi-
+subunit RING domain–containing E3 ligases, particularly those for
+which physiological substrates remain scarce despite known
+substrate receptors and/or functions.
+Materials and Methods
+Reagents and tools
+Cell lines, plasmids, antibodies, oligonucleotides, chemicals and
+other reagents, and software used in this study are listed in Tables
+S4 and S5.
+Cell culture, siRNA transfections, and generation of stable Flp-In
+T-REx cell lines
+Cells were cultured in DMEM supplemented with 10% FBS and 1%
+penicillin–streptomycin (DMEM/FBS/PS) and maintained at 37°C in
+5% CO2. For siRNA transfections, ON-TARGETplus SMARTpool siRNA
+reagents targeting speciﬁc human (Gid4, Wdr26, Armc8, Ranbp9,
+Arhgap11a) or rat (Gid4) genes, or non-targeting control (siS-
+crambled) were transfected in the presence of Lipofectamine 2000
+or RNAiMAX according to the manufacturer’s recommendations.
+Stable Flp-In T-REx HeLa cell lines expressing BirA2-Flag-GID4,
+BirA2-Flag-GID4E237A, WDR26-BirA2-Flag, ARMC8-BirA2-Flag, BirA2-
+Flag-EGFP, Flag-GID4, Flag-GID4E237A, WDR26-Flag, Flag-EGFP, ARH-
+GAP11Aiso1-Flag, ARHGAP11A iso3-Flag, or an empty vector were
+generated as described elsewhere (Kean et al, 2012; Bagci et al,
+2020). Protein expression and biotinylation were induced in the
+presence of 1μg/ml tetracycline and 50μM biotin.
+Generation of CRISPR/BAC GID4 KD HeLa or RPE1 cell lines
+The CRISPR-Bac cells were generated as described elsewhere, with
+modiﬁcations (Schertzer et al, 2019). We designed four sgRNAs tar-
+geting different exons of theGid4 gene. Each sgRNA was separately
+cloned into the PB_rtTA_BsmBI vector to generate the following
+vectors: PB_rtTA_Bsmb1_Gid4_sgRNA1, PB_rtTA_Bsmb1_Gid4_sgRNA2,
+PB_rtTA_Bsmb1_Gid4_sgRNA3 and PB_rtTA_Bsmb1_Gid4_sgRNA4. As
+RPE1 cells are resistant to hygromycin B, the hygromycin B resistance
+(HygR) gene in the PB_tre_Cas9 vector was replaced with a puromycin
+resistance (PuroR) gene using the NEBuilder HiFi DNA assembly kit to
+generate the PB_tre_Cas9_puro vector. The HiFi reaction was per-
+formed according to the manufacturer’sr e c o m m e n d a t i o n s .W e
+then simultaneously cotransfected 625 ng of either PB_tre_Cas9
+(containing HygR) or PB_tre_Cas9_puro (containing PuroR) with
+1,250 ng of the Super piggyBac Transposase expression vector and
+157 ng of each of the four PB_rtTA_BsmBI vectors with sgRNAs tar-
+geting theGid4 gene. As a negative control, we cotransfected the
+empty pb_rtTA_Bsmb1 vector into which we did not clone a sgRNA-
+targeting sequence (control). HeLa cells were selected in the presence
+of hygromycin B (200μg/ml) and G418 (200μg/ml) for 10 d. RPE1 cells
+were selected in the presence of puromycin (10μg/ml) and G418
+(200 μg/ml) for 10–20 d. Cell death was observed within 3 or 4 d upon
+G418 and hygromycin B or puromycin treatment. Isolated clones were
+trypsinized, pooled together, and plated into new 10-cm plates in
+fresh selection medium to generate stable CRISPR/BAC GID4 KD HeLa
+or RPE1 cell lines. After selection, cells were cultured in the absence of
+G 4 1 8a n dh y g r o m y c i nBo rp u r o m y c i n ,a n dD O X( 1μg/ml) was added to
+the DMEM/FBS/PS medium for 4 d to induce the Cas9 expression. The
+efﬁciency of GID4 KD was assessed by Western blot.
+MTT assay
+3-(4,5-Dimethylthiazol-2-yl)-2,5-diphenyl-2H-tetrazolium bromide
+(MTT) assays were carried out as described elsewhere, with modiﬁ-
+cations (Stier et al, 2023). The MTT assay kit (Promega) was used to
+measure cell proliferation according to the manufacturer’sr e c o m -
+mendations. 5,000 HeLa cells were pl a t e di n9 6 - w e l lp l a t e sw i t ht h r e e
+biological replicates per condition. Cells were grown in 96-well plates
+f o r2 4 ,4 8 ,o r7 2hb e f o r et h ei n c u b a t i o nw i t ht h eM T Td y em a s t e rm i xf o r
+2 h at 37°C in 5% CO2. The reaction was stopped by adding 100μls t o p
+solution. Plates containing the MTT-treated cells were measured at a
+wavelength of 570 nm, and the growth rate was normalized to day 0.
+Wound healing
+Two-well silicone inserts with a deﬁned cell-free gap (ibidi) were
+inserted into eight-well microscopy slides (ibidi). For each condition,
+10,000 HeLa sgControl, sgGID4 KD #1, or sgGID4 #2 cells, untreated or
+treated with DMSO (10μM) or PFI-7 (10μM), from the experiments as
+in (Figs 1Dand S2A) were plated into each chamber and incubated
+overnight at 37°C in 5% CO2 in the presence or absence of DMSO
+(10 μM) or PFI-7 (10μM). For the GID4 rescue assay, untransfected
+sgControl, sgGID4 KD #1 transfected with an empty vector, or sgGID4
+KD #1 cells transfected with an untagged GID4-expressing plasmid
+were plated into chambers after 24 h of Lipofectamine 2000 trans-
+fection (Fig 1D). For siRNA transfections, siScrambled, siARHGAP11A, or
+siARHGAP11A-transfected cells, untreated or treated with PFI-7
+(10μM), were plated into chambers after 24 h of siRNA transfec-
+tions (Fig 5B). The next day, the medium was replaced with or without
+DMSO (10μM) or PFI-7 (10μM )a n dp l a c e di n s i d et h eC O2 incubator of
+a phase-contrast microscope. Time-lapse imaging was performed by
+taking an image every 1 h for 24 h using a 10X objective. Three random
+ﬁelds were acquired for each of the three biological replicates. The
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 14 of 21
+Nikon Ti2-E wideﬁeld microscope equipped with a xy stage (Prior), a
+piezo z-drive (Prior), and NIS-Elements software was used to take
+images. Captured images were analyzed using ImageJ software. The
+size of the gap area at times 0, 5, 10, 15, or 20 h was measured using
+the freehand selection tool and analyzed using the Measure com-
+mand in the Analyze menu. The measured gap area at times 5, 10, 15,
+or 20 h was normalized to 0 h, to determine the wound area closure in
+relative units.
+Single-cell tracking
+Single-cell tracking was performed and analyzed as described
+elsewhere, with modiﬁcations (Pijuan et al, 2019). 5,000 RPE1 cells per
+condition were plated into eight-well microscopy slides (ibidi) and
+incubated overnight at 37°C in 5% CO2 in the presence or absence of
+DMSO (10μM) or PFI-7 (10μM). Like wound healing assays, sgControl,
+sgGID4 KD #1, or sgGID4 #2 cells, untreated or treated with DMSO
+(10μM) or PFI-7 (10μM), from experiments as inFigs 1Eand S2B and C
+were plated into eight wells. For the GID4 rescue assay, untransfected
+sgControl, sgGID4 KD #1 transfected with an empty vector, or sgGID4
+KD #1 cells transfected with an untagged GID4-expressing plasmid
+were plated into eight wells after 24 h of Lipofectamine 2000
+transfection (Figs 1E and S2B and C). siScrambled, siARHGAP11A, or
+siARHGAP11A-transfected cells, untreated or treated with PFI-7
+(10μM), were plated into eight wells after 24 h of siRNA transfec-
+tions (Figs 5Cand S4B). The next day, the medium was replaced with
+or without DMSO (10μM) or PFI-7 (10μM) and placed inside the CO2
+incubator of a phase-contrast microscope. Time-lapse imaging was
+performed by taking an image every 30 min for 24 h using a 10X
+objective. Eight randomﬁelds were acquired for each of the three
+biological replicates to obtain data from at least 200 cells. The Nikon
+Ti2-E wideﬁeld microscope equipped with a xy stage (Prior), a piezo
+z-drive (Prior), and NIS-Elements software was used to take images.
+Captured images were analyzed using the manual tracking plugin
+and chemotaxis tool (ibidi) in ImageJ software. The tracking plot,
+velocity, and overlay dot and line data were generated as described
+elsewhere (Pijuan et al, 2019).
+BioID2-MS
+BioID2-MS experiments were carried out as previously described,
+with modiﬁcations (Couzens et al, 2013; Methot et al, 2018; Bagci et al,
+2020; Mehnert et al, 2020; Uliana et al, 2023). BirA2-Flag–expressed
+cells were harvested after 24 h of tetracycline (1 μg/ml), biotin
+(50 μM), MG132 (5μM), DMSO (5μM), or PFI-7 (10μM) treatment. They
+were washed three times in PBS and lysed in 1.5 ml radio-
+immunoprecipitation assay buffer. They were then sonicated for 30 s
+at 30% amplitude (three times of 10-s bursts with 2-s break between).
+1μl Benzonase was added to each sample followed by a centrifu-
+gation for 30 min at 4°C at maximum speed. Cleared lysates were
+incubated with 70μl of streptavidin beads at 4°C for 3 h with rotation.
+Streptavidin beads were then transferred in a 10 kD molecular weight
+cutoff spin column (Vivacon 500; Sartorius), washed three times with
+lysis buffer, then three times with 50 mM ammonium bicarbonate
+(ABC), pH 8.0. Samples were resuspended in 200μl ABC, transferred to
+centrifugal units, and centrifuged for 15 min at 4°C at 8,000g.1 0 0μlo f
+8M urea and 1μl of 500 mM tris(2-carboxyethyl)phosphine (TCEP)
+were added to each sample and incubated for 30 min at 37°C at
+600 rpm (Eppendorf ThermoMixer F1.5). 2μl of 500 mM iodoacetamide
+was added to each sample and incubated for an additional 30 min at
+37°C at 600 rpm (Eppendorf ThermoMixer F1.5). Samples were then
+centrifuged for 15 min at 8,000g and washed two times in 200μlA B C .
+100 μlA B Ca n d1μg trypsin (Promega, sequencing grade) were added
+to each sample before incubation for 12 h at 37°C at 700 rpm
+(Eppendorf ThermoMixer F1.5). The next day, tryptic proteolysis was
+quenched with 5% formic acid and peptides were subjected to C18
+cleanup (microspin column; The NeST Group), according to the
+manufacturer’s recommendations. Eluted peptides were dried using
+a speed vacuum and resuspended in 20μl of 2% acetonitrile and 0.1%
+formic acid. LC-MS/MS analysis was performed on an Orbitrap Q
+Exactive + mass spectrometer (Thermo Fisher Scientiﬁc) coupled to
+an EASY-nLC 1000 liquid chromatography system (Thermo Fisher
+Scientiﬁc). Peptides were separated using a reverse-phase column
+(75 μm ID x 400 mm New Objective, in-house packed with ReproSil
+Gold 120 C18, 1.9 μm, Dr. Maisch GmbH) across a 120-min linear
+gradient from 5 to 40% (buffer A: 0.1% [vol/vol] formic acid; buffer B:
+0.1% [vol/vol] formic acid, and 95% [vol/vol] acetonitrile). The DDA
+data acquisition mode was set to perform one MS1 scan followed by a
+maximum of 16 scans for the top 16 most intense peptides (TOP16)
+with MS1 scans (R = 70,000 at 400 m/z, AGC = 1 × 106, and maximum IT =
+100 ms), HCD fragmentation (NCE = 27%), isolation windows (2.0 m/z),
+and MS2 scans (R = 17,500 at 400 m/z, AGC = 1 × 105,a n dm a x i m u mI T=
+50 ms). A dynamic exclusion of 30 s was applied, and charge states
+lower than two and higher than seven were rejected for the isolation.
+MS data analyses
+Raw MSﬁles were analyzed using the X! Tandem (Bjornson et al, 2008)
+and Mascot (Perkins et al, 1999) search engines through the iProphet
+pipeline integrated in ProHits (Shteynberg et al, 2011; Liu et al, 2012).
+RAW ﬁles were converted to .mzXMLﬁles using the ProteoWizard tool
+(Kessner et al, 2008), and peptides were searched against the Human
+RefSeq database (v.57) supplemented with common contaminants
+MaxQuant, the Global Proteome Machine (http://www.thegpm.org/
+crap/index.html), and decoy sequences. Mascot search parameters
+were set with trypsin speciﬁcity (two missed cleavage allowed).
+Oxidation (M) and deamidation (NQ) were set as variable modiﬁ-
+cations, and carbamidomethyl as aﬁxed modiﬁcation. Mass toler-
+ances for precursor and fragment ions were set to 15 ppm and 0.6 D,
+respectively, and peptide charges of +2, +3, and +4 were considered. X!
+Tandem and Mascot search results were individually processed by
+PeptideProphet, and peptides were assembled into proteins using
+parsimony rules using the Trans-Proteomic Pipeline (Deutsch et al,
+2023) with the following parameters: p 0.05 -x20 -PPM -“DECOY”;
+iProphet options: pPRIME; and PeptideProphet: pP (protein proba-
+bility > 0.9). The quantiﬁcation approach was based on the spectral
+counts of the identiﬁed proteins.
+Interaction scoring
+We applied SAINTexpress (v.3.6.1) to proteins identiﬁed with at least
+one unique peptide. Each set of proteomics data for baits (GID4 WT
+or E237A mutant, ARMC8, untreated or treated with MG132 [5 mM],
+DMSO [10μM], or PFI-7 [10μM] for 24 h) was individually compared
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 15 of 21
+with its corresponding negative control dataset and analyzed in
+three independent biological replicates. The negative controls for
+BioID2-MS experiments include BirA2-Flag-EGFP untreated or
+treated with MG132 (5μM) for 24 h and were analyzed in three
+independent biological replicates, similar to baits. SAINT analyses
+were carried out with the following settings: number of controls: 6,
+compressed controls: 4, compressed baits: 2. A BFDR cutoff of 0.01
+has been applied toﬁlter contaminants or non-speciﬁc interac-
+tions. Interactions displaying a BFDR≤ 1% were considered as high
+conﬁdence, 1% < BFDR≤ 5% as medium conﬁdence, and BFDR > 5%
+as low conﬁdence. Unﬁltered contaminants (http://www.thegpm.org/
+crap/index.html) were removed.
+Dot plot analyses
+SAINT outputﬁles of untreated or MG132 BirA2-Flag-GID4, BirA2-
+Flag-GID4E237A, WDR26-BirA2-Flag, or ARMC8-BirA2-Flag bait data
+analyzed in ProHits were processed using the ProHits-viz platform
+to carry out dot plot analyses (Choi et al, 2011;Knight et al, 2017).
+Experimental controls such as BirA2-Flag-EGFP treated or not with
+MG132 have been used in SAINT analyses toﬁlter non-speciﬁc
+interactions.
+Protein–protein association networks and clustering
+Proteins identiﬁed in SAINT output ﬁles were analyzed by the
+STRING database to generate the protein –protein association
+networks or functionally relevant protein clusters. Protein clusters
+were obtained after MCL clustering using STRING v11.5 (Szklarczyk
+et al, 2019). The MCL inﬂation parameter was 3, and the protein–
+protein interaction enrichment P-value was 2.33 × 10−12. Known
+interactions were extracted from curated databases including
+Biocarta, BioCyc, GO, KEGG, or Reactome. Experimentally deter-
+mined interactions were extracted from BIND, DIP, GRID, HPRD,
+IntAct, MINT, or PID. Text mining–based interactions were extracted
+from the scientiﬁc literature as determined by STRING (Szklarczyk
+et al, 2019).
+Protein sequence alignment and analysis
+Alignment and analysis of prey protein sequences identiﬁed in
+BioID2 were performed using Jalview software version 2.11.2.6
+(Waterhouse et al, 2009). The ﬁrst N-terminal amino acids, ex-
+cluding Met at the ﬁrst position, were submitted to Jalview. The
+conserved residues were colored using the Clustal color scheme.
+Sequence logo analysis
+Theﬁrst nine N-terminal amino acids, excluding the N-terminal
+methionine, of the protein sequences of the GID4 degradation
+substrate candidates identi ﬁed by BioID2 were submitted to
+Seq2Logo 2.0 (Thomsen & Nielsen, 2012 )f o rs e q u e n c el o g o
+analysis with the following inputs: (1) logo type: shannon; (2)
+clustering method: clustering (Hobohm1); (3) threshold for clus-
+tering (Hobohm1): 0.63; and (4) weight on prior (pseudo-count
+correction for low counts): 200, using the human proteome as
+background.
+Co-immunoprecipitations, GST-RBD pulldown, siRNA KD of hGID
+subunits, ubiquitination, and half-life measurements
+Co-immunoprecipitations and ubiquitination assay
+Flp-In T-REx HeLa cells from experiments as in Figs 3C and
+S3A–E were lysed in 3-([3-cholamidopropyl]dimethylammonio)-1-
+propanesulfonate (CHAPS) buffer (30 mM Tris –HCl, pH 7.5,
+150 mM NaCl, 5 mM MgCl2 and 1% CHAPS) supplemented with in-
+hibitors (5 mM NaF, 1 mM Na2VO4, and 1x cOmplete, EDTA-free
+Protease Inhibitor Cocktail). HeLa cells from experiments as in
+Fig 3Dwere lysed in Nonidet P-40 (NP-40) buffer (30 mM Tris–HCl,
+pH 7.5, 150 mM NaCl, 5 mM MgCl2, and 1% NP-40) supplemented with
+the same inhibitors used in experiments as inFigs 3Cand S3A–E.I n
+both experiments, cleared TCLs were incubated for 3 h at 4°C with an
+anti-ﬂag M2 afﬁnity gel (FLAG beads). Bound co-immunoprecipitated
+proteins (IP-FLAG) and unbound TCLs were subjected to Western
+blotting using the indicated antibodies against endogenous or ex-
+ogenous (FLAG, HA, and Myc-tagged) proteins. For the experiment
+shown inFig 3D, to avoid potential background noise from membrane
+stripping, the IP-Flag samples from the same set of experiments were
+loaded onto separate gels, and subsequently transferred to different
+membranes, which were then individually probed with either Flag or
+HA antibodies (IP-Flag/Flag or IP-Flag/HA upper panels).
+siRNA KD of hGID subunits
+HeLa cells from the experiment as inFig 4Awere transfected with
+siScrambled (50 nM), siGID4 (50 nM), siWDR26 (50 nM), siARMC8 (50
+nM), or siRANBP9 (50 nM) for 48 h. After transfection, cells were
+lysed in NP-40 buffer supplemented with the same inhibitors used
+in experiments as inFigs 3Cand S3A–E. Cleared TCLs were subjected
+to Western blotting using the indicated antibodies against en-
+dogenous ARHGAP11A, HBP1, GID4, WDR26, ARMC8, RANBP9, or
+GAPDH proteins.
+GST-RBD pulldown
+GST or GST-RBD fusion proteins were puriﬁed from BL21 bacteria and
+coupled with GST beads as described previously (Bagci et al, 2020).
+The expression of puriﬁed GST or GST-RBD was assessed by Coo-
+massie. HeLa sgControl, sgGID4 KD #1, or sgGID4 KD #2 cells from
+experiment as inFig 6Ewere transfected with siScrambled (20 nM) or
+siARHGAP11A (20 nM) and were either untreated or treated with PFI-7
+(10μM). Cells were then lysed in CHAPS buffer with the aforemen-
+tioned inhibitors and incubated with beads coupled with GST or GST-
+RBD for 3 h at 4°C. Bound pulldown proteins (pulldown GST) and
+unbound TCLs were subjected to Western blotting using the indi-
+cated antibodies against endogenous RhoA or GAPDH proteins.
+Half-life measurements
+HeLa sgControl or sgGID4 KD #1 cells from experiments as inFig 3A
+and Bwere untreated (time at 0 h) or treated with 20μg/ml CHX at
+times 2, 4, or 8 h. For the experiments as inFig 4C and D, Flp-In T-REx
+HeLa cells expressing ARHGAP11Aiso1-Flag or ARHGAP11Aiso3-Flag
+were transfected with siScrambled (20 nM) or siGID4 (20 nM) for 48
+h. After transfection, the medium was replaced, and cells were
+untreated (time at 0 h) or treated with 20μg/ml CHX at times 2, 4, or
+8 h. Cells were lysed in CHAPS buffer with the aforementioned
+inhibitors. Extracted TCLs were subjected to Western blotting using
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 16 of 21
+the indicated antibodies against Flag or endogenous ARHGAP11A,
+KIFC1, RACGAP1, or GAPDH.
+Immunoﬂuorescence
+7,500 HeLa cells per condition were plated on coverslips 1 d before
+ﬁxation with 4% PFA. Cells were permeabilized with PBS/0.30%
+Triton X-100, and blocked in PBS/0.30% Triton X-100/1% BSA for
+1 h at RT followed by an overnight incubation with the ARHGAP11A
+antibody, or not. The next day, samples were washed three times in
+PBS and incubated with secondary anti-rabbit IgG Alexa Fluor 488
+antibody for 1 h at RT with 1:1,000 dilution. Samples were then
+washed three times in PBS and incubated with rhodamine phal-
+loidin for 1 h at RT with a 1:400 dilution. Samples were washed again
+three times with PBS, and incubated with DAPI for 5 min at RT with a
+1:10,000 dilution. Samples were washed three times with PBS.
+Coverslips were then mounted on microscopy slides using ProLong
+Diamond Antifade Mountant andﬁxed with a nail polish. The Leica
+SP8 AOBS confocal microscope was used to take images, using a
+63x/1.4 oil immersion objective. The following excitation lasers were
+used: 405 nM for DAPI (blue channel), 488 nM for Alexa Fluor 488
+(green channel), and 561 nM for rhodamine phalloidin (magenta
+channel). Images were processed using Leica Application Suite X
+(Las X) software. The contrast was adjusted throughout the whole
+image to enhance visibility when necessary. Z-stack images were
+converted to maximum projections and exported to Adobe Illus-
+trator to prepareﬁgures. 100 cells were analyzed for each condition.
+To quantify the percentage of ARHGAP11A enrichment at the cell
+periphery, regions of interest were created afterﬁnding the
+boundaries of the cell periphery by setting a threshold on the green
+channel, as described elsewhere (DesMarais et al, 2019). The nu-
+clear ﬂuorescence of ARHGAP11A was excluded from the analysis.
+The ﬂuorescence intensity of the regions of interest was analyzed
+using the ImageJ tool and exported to GraphPad Prism 9 software
+for further analysis.
+Peptide binding assays
+Protein puriﬁcation
+GID4Δ1–115, N-terminally tagged with 2xStrepII-Smt3, was expressed in
+Rosetta 2(DE3)pLysS cells in Terriﬁc Broth medium at 25°C overnight.
+After expression, cells were harvested by centrifugation, resuspended
+in lysis buffer (Strep buffer supplemented with PMSF, leupeptin,
+pepstatin A, DNase I, and lysozyme), and lysed by high-pressure
+homogenization (Emulsiﬂex). Cell lysates were cleared by centrifu-
+gation at 50,000g for 60 min, and supernatants were loaded onto a
+5 ml Strep-Tactin Superﬂow column (QIAGEN), washed with Strep
+buffer (20 mM MOPS, pH 7.6, 100 mM NaCl, 1 mM DTT, and 5% [vol/vol]
+glycerol), and Strep buffer–supplemented with 1 M NaCl before
+elution. An eluate was incubated with Ulp1 overnight and passed back
+over a 5-ml Strep-Tactin Superﬂow column. Finally, GID4Δ1–115 was
+puriﬁed via size-exclusion chromatography in Strep buffer.
+Fluorescence polarization (FP)
+Saturation binding experiments were performed similarly as
+described previously ( Chrustowicz et al, 2022 ). In brief, 20 nM
+WDQRLV-TAMRA or PGLWKS-TAMRA was incubated with indicated
+GID4Δ1–115 concentrations for 10 min in FP buffer (20 mM MOPS, pH
+7.6, 100 mM NaCl, 25 mM D-Trehalose, 1% [vol/vol] glycerol, 0.01%
+[vol/vol] Triton X-100, and 0.1 g/l BSA). Samples were transferred
+to Corning 384-wellﬂat bottom plates (3575; Corning), and the FP
+signal was recorded using a CLARIOstar plate reader (BMG LAB-
+TECH). FP data were normalized against aﬂuorescent peptide-
+only control and ﬁtt oao n es i t e - s p e c iﬁc binding model in
+GraphPad Prism.
+Competitive FP assays were performed as described previously
+(Chrustowicz et al, 2022 ). Brieﬂy, 20 μM GID4Δ1–115 and 20 nM
+PGLWKS-TAMRA peptides were incubated for 10 min with twofold
+dilutions of unlabeled peptides in FP buffer, and the FP signal was
+measured on a CLARIOstar plate reader (BMG LABTECH). Unlabeled
+peptides were dissolved in DMSO. Thus, all FP data were baseline-
+corrected against appropriate DMSO concentrations. Displacement
+of PGLWKS-TAMRA was calculated as the ratio of free versus
+GID4Δ1–115-bound PGLWKS-TAMRA. To determine IC50 values, nor-
+malized FP data were plotted against log(inhibitor) andﬁtted with a
+log(inhibitor) versus response model with variable slope in
+GraphPad Prism.
+Live-cell FRET measurements and data analysis
+Stable cell line generation
+Stable cell lines expressing RhoA second-generation biosensor
+(RhoA2G) in HeLa or REF52 cells were generated using the fol-
+lowing protocol. Cells were transfected with 1,250 ng of the pPB 3.0
+puro RhoA2G vector and with 1,250 ng of the Super piggyBac
+Transposase expression vector. HeLa cells were selected in the
+presence of puromycin (10μg/ml) for 10–20 d. Cell death was
+observed within 3 or 4 d upon puromycin treatment. Isolated
+clones were trypsinized, pooled together, and plated into new 10-
+cm plates in fresh selection medium to generate stable RhoA2G-
+HeLa cells. Stable cell lines were transfected with siScrambled
+(negative control) or siGID4 using RNAiMAX according to the
+manufacturer’s recommendations. GID4 KD efﬁciency was veriﬁed
+by Western blot.
+Image acquisition
+Images were acquired on a Nikon Eclipse Ti inverted microscope
+with a 20x Plan Apochromat objective, using a Prime 95B sCMOS
+camera with 2 x 2 pixel binning. For RhoA2G biosensor imaging, the
+donor and FRET channels were excited using a Lumencor Spectra
+X 440 nm LED. Sequential imaging of donor and FRET channels was
+p e r f o r m e dw i t he x c i t a t i o nﬁlters 430/24 and a Dichroic Q465 long-
+pass ﬁlter. For donor emission, a 480/40-nmﬁlter was used, and
+for FRET emission, a 535/30-nmﬁlter was used. Cells were imaged
+in FluoroBrite DMEM supplemented with 0.5% FBS and 0.5% BSA,
+stable L-glutamine (4 mM), and penicillin–streptomycin (200 U/
+ml).
+Data analysis
+FRET analysis was performed using the custom Python code in line
+with the procedure described elsewhere (Spiering et al, 2013). For
+time-series measurements with PFI-7, ratios were normalized to
+two frames of baseline acquisition to remove any bias not origi-
+nating from drug treatment.
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 17 of 21
+Data presentation and statistical analysis
+BFDR of 0.01 was used toﬁlter non-speciﬁc BioID2-MS interactions
+from the dot plot analyses. The GO-term enrichment score was
+determined as the–log10 of adjustedP-values, calculated by the g:
+Proﬁler tool. For other experiments, GraphPad Prism 9 was used to
+generate quantiﬁcation graphs and carry out statistical analysis.
+Co-immunoprecipitation, GST-RBD pulldown, or half-life mea-
+surements were quantiﬁed using ImageJ software. Selected lanes
+(Analyze/Gels/Plot Lanes) were plotted, and the intensity of each
+protein band was measured using the wand tracing tool and
+normalized to the total RhoA (for GST-RBD pulldown) or GAPDH (for
+all other Western blot experiments) levels. For experiments com-
+paring two conditions, the indicatedP-values were calculated using
+a two-tailed t test. For experiments including multiple conditions,
+the indicated P-values were calculated using one-way ANOVA,
+followed by Bonferroni’s multiple comparisons. Data values for
+experiments comparing two or multiple conditions are shown as
+the mean ± SD. For the quantiﬁcation of protein amount or en-
+richment in percentage, data values were normalized by setting the
+group with the highest mean to a percentage between 70% and
+100%. All other groups were then normalized using the same co-
+efﬁcient, ensuring consistent comparison across all samples. The
+indicated P-values are as follows: ns (not signiﬁcant), *P ≤ 0.05, **P ≤
+0.01, ***P ≤ 0.001, and ****P ≤ 0.0001. Figs 1Aand 2A are created using
+BioRender software.
+Data Availability
+The mass spectrometry proteomics data have been deposited to the
+ProteomeXchange Consortium via the PRIDE (Perez-Riverol et al,
+2022) partner repository with the dataset identiﬁer PXD054003.T h e
+list of MS rawﬁles used in this study is included in Table S6.
+Supplementary Information
+Supplementary Information is available at https://doi.org/10.26508/lsa.
+202403046
+Acknowledgements
+We thank the ScopeM facility members, Tobias Schwarz, and Joachim Hehl
+for microscopy training and technical assistance, and Gabor Csucs for
+helpful discussion with single-cell tracking experiments. We are grateful to
+Anne-Claude Gingras for the BioID2 plasmids, Brenda A. Schulman for the
+GID4 antibody, the Structural Genomics Consortium for the PFI-7 chemical
+probe, and Stephen Taylor for the Flp-In T-REx HeLa cell line. PB_rtTA_BsmBI
+and PB_tre_Cas9 plasmids were provided by Mauro Calabrese (plasmids #
+126028 and 126029; Addgene), the GST-RBD by Martin Schwartz (plasmid #
+15247; Addgene), and pCMV6-AN-HA_Ubiquitin by Roger Woodgate (plasmid #
+131258; Addgene). The K27-SUMO expression plasmid was a kind gift from Dirk
+G¨orlich. We thank Christian Poitras for MS data management, Alicia Smith for
+article editing, Gabriel Neurohr, Arun John Peter, and Frank van Drogen for
+critical feedback, and members of the Peter Lab and the UBI-motif ITN
+network for helpful discussions. This work was supported by the National
+Science and Engineering Research Council of Canada (RGPIN-2024-04485) to
+J-F C ˆot ´e, the Swiss National Science Foundation Sinergia grant
+(CRSII5_183550) to O Pertz, and the Swiss National Science Foundation
+(310030_179283/1) to M Peter. SL Park was funded by an ITN network grant
+from the European Research Commission. J-F Cˆot ´e holds the Canada
+Research Chair Tier 1 in Cellular Signalling and Cancer Metastasis.
+Author Contributions
+H Bagci: conceptualization, data curation, software, formal analysis,
+validation, investigation, visualization, methodology, project ad-
+ministration, and writing— original draft, review, and editing.
+M Winkler: data curation, formal analysis, investigation, method-
+ology, and writing - review and editing.
+BG r¨adel: data curation, software, formal analysis, investigation,
+methodology, and writing - review and editing.
+F Uliana: data curation, software, formal analysis, investigation,
+methodology, and writing - review and editing.
+J Boulais: data curation, formal analysis, and writing - review and
+editing.
+WI Mohamed: data curation, formal analysis, investigation, meth-
+odology, and writing - review and editing.
+SL Park: data curation, formal analysis, investigation, methodology,
+and writing - review and editing.
+J-F Cˆot ´e: resources, supervision, funding acquisition, and writing -
+review and editing.
+O Pertz: resources, supervision, funding acquisition, and writing -
+review and editing.
+M Peter: conceptualization, resources, supervision, funding ac-
+quisition, visualization, methodology, project administration, and
+writing— original draft, review, and editing.
+Conﬂict of Interest Statement
+The authors declare that they have no conﬂict of interest.
+References
+Adachi K, Soeta-Saneyoshi C, Sagara H, Iwakura Y (2007) Crucial role of Bysl in
+mammalian preimplantation development as an integral factor for
+40S ribosome biogenesis.Mol Cell Biol27: 2202–2214. doi:10.1128/
+MCB.01908-06
+Bagci H, Sriskandarajah N, Robert A, Boulais J, Elkholi IE, Tran V, Lin Z-Y,
+Thibault M-P, Dub´e N, Faubert D, et al (2020) Mapping the proximity
+interaction network of the Rho-family GTPases reveals signalling
+pathways and regulatory mechanisms.Nat Cell Biol22: 120–134.
+doi:10.1038/s41556-019-0438-7
+Baillat D, Hakimi M-A, N¨a¨ar AM, Shilatifard A, Cooch N, Shiekhattar R (2005)
+Integrator, a multiprotein mediator of small nuclear RNA processing,
+associates with the C-terminal repeat of RNA polymerase II.Cell 123:
+265–276. doi:10.1016/j.cell.2005.08.019
+Bjornson RD, Carriero NJ, Colangelo C, Shifman M, Cheung K-H, Miller PL,
+Williams K (2008) X!!Tandem, an improved method for running X!
+tandem in parallel on collections of commodity computers.J
+Proteome Res 7: 293–299. doi:10.1021/pr0701198
+Brandon Croft GR (2015) Ubiquitin-proteasome system in neurodegenerative
+disorders. J Drug Metab Toxicol06. doi:10.4172/2157-7609.1000187
+Branon TC, Bosch JA, Sanchez AD, Udeshi ND, Svinkina T, Carr SA, Feldman JL,
+Perrimon N, Ting AY (2018) Efﬁcient proximity labeling in living cells and
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 18 of 21
+organisms with TurboID.Nat Biotechnol36: 880–887. doi:10.1038/
+nbt.4201
+Chen S-J, Wu X, Wadas B, Oh J-H, Varshavsky A (2017) An N-end rule pathway
+that recognizes proline and destroys gluconeogenic enzymes.Science
+355: eaal3655. doi:10.1126/science.aal3655
+Choi H, Larsen B, Lin Z-Y, Breitkreutz A, Mellacheruvu D, Fermin D, Qin ZS,
+Tyers M, Gingras A-C, Nesvizhskii AI (2011) Saint: Probabilistic scoring
+of afﬁnity puriﬁcation–mass spectrometry data.Nat Methods8: 70–73.
+doi:10.1038/nmeth.1541
+Chrustowicz J, Sherpa D, Teyra J, Loke MS, Popowicz GM, Basquin J, Sattler M,
+Prabu JR, Sidhu SS, Schulman BA (2022) Multifaceted N-degron
+recognition and ubiquitylation by GID/CTLH E3 ligases.J Mol Biol434:
+167347. doi:10.1016/j.jmb.2021.167347
+Ciosk R, Shirayama M, Shevchenko A, Tanaka T, Toth A, Shevchenko A,
+Nasmyth K (2000) Cohesin’s binding to chromosomes depends on a
+separate complex consisting of Scc2 and Scc4 proteins.Mol Cell 5:
+243–254. doi:10.1016/S1097-2765(00)80420-7
+Couzens AL, Knight JDR, Kean MJ, Teo G, Weiss A, Dunham WH, Lin Z-Y,
+Bagshaw RD, Sicheri F, Pawson T, et al (2013) Protein interaction
+network of the mammalian Hippo pathway reveals mechanisms of
+kinase-phosphatase interactions.Sci Signal 6: rs15. doi:10.1126/
+scisignal.2004712
+Dai B, Zhang X, Shang R, Wang J, Yang X, Zhang H, Liu Q, Wang D, Wang L, Dou K
+(2018) Blockade of ARHGAP11A reverses malignant progress via
+inactivating Rac1B in hepatocellular carcinoma.Cell Commun Signal
+16: 99. doi:10.1186/s12964-018-0312-4
+DesMarais V, Eddy RJ, Sharma VP, Stone O, Condeelis JS (2019) Optimizing
+leading edge F-actin labeling using multiple actin probes,ﬁxation
+methods and imaging modalities.BioTechniques 66: 113–119.
+doi:10.2144/btn-2018-0112
+Deutsch EW, Mendoza L, Shteynberg DD, Hoopmann MR, Sun Z, Eng JK, Moritz
+RL (2023) Trans-proteomic pipeline: Robust mass spectrometry-based
+proteomics data analysis suite.J Proteome Res22: 615–624.
+doi:10.1021/acs.jproteome.2c00624
+Dikic I, Schulman BA (2023) An expanded lexicon for the ubiquitin code.Nat
+Rev Mol Cell Biol24: 273–287. doi:10.1038/s41580-022-00543-1
+Dong C, Zhang H, Li L, Tempel W, Loppnau P, Min J (2018) Molecular
+basis of GID4-mediated recognition of degrons for the Pro/N-end
+rule pathway.Nat Chem Biol 14: 466–473. doi:10.1038/s41589-018-
+0036-1
+Dong C, Chen S-J, Melnykov A, Weirich S, Sun K, Jeltsch A, Varshavsky A, Min J
+(2020) Recognition of nonproline N-terminal residues by the Pro/N-
+degron pathway.Proc Natl Acad Sci U S A117: 14158–14167. doi:10.1073/
+pnas.2007085117
+Du R, Huang C, Liu K, Li X, Dong Z (2021) Targeting AURKA in cancer: Molecular
+mechanisms and opportunities for cancer therapy.Mol Cancer20: 15.
+doi:10.1186/s12943-02 0-01305-3
+Ehrmann JF, Grabarczyk DB, Heinke M, Deszcz L, Kurzbauer R, Hudecz O,
+Shulkina A, Gogova R, Meinhart A, Versteeg GA, et al (2023) Structural
+basis for regulation of apoptosis and autophagy by the BIRC6/SMAC
+complex.Science 379: 1117–1123. doi:10.1126/science.ade8873
+Fan B, Ji K, Bu Z, Zhang J, Yang H, Li J, Wu X (2021) ARHGAP11A is a prognostic
+biomarker and correlated with immune inﬁltrates in gastric cancer.
+Front Mol Biosci8: 720645. doi:10.3389/fmolb.2021.720645
+Fritz RD, Letzelter M, Reimann A, Martin K, Fusco L, Ritsma L, Ponsioen B, Fluri
+E, Schulte-Merker S, van Rheenen J, et al (2013) A versatile toolkit to
+produce sensitive FRET biosensors to visualize signaling in time and
+space. Sci Signal 6: rs12. doi:10.1126/scisignal.2004135
+Fukuda MN, Miyoshi M, Nadano D (2008) The role of bystin in embryo
+implantation and in ribosomal biogenesis.Cell Mol Life Sci65: 92–99.
+doi:10.1007/s00018-007-7302-9
+Gingras A-C, Abe KT, Raught B (2019) Getting to know the neighborhood: Using
+proximity-dependent biotinylation to characterize protein complexes
+and map organelles.Curr Opin Chem Biol48: 44–54. doi:10.1016/
+j.cbpa.2018.10.017
+Gottemukkala KV, Chrustowicz J, Sherpa D, Sepic S, Vu DT, Karayel¨O,
+Papadopoulou EC, Gross A, Schorpp K, von Gronau S, et al (2024) Non-
+canonical substrate recognition by the human WDR26-CTLH E3 ligase
+regulates prodrug metabolism.Mol Cell84: 1948–1963.e11. doi:10.1016/
+j.molcel.2024.04.014
+Grasberger H, Ye H, Mashima H, Bell GI (2005) Dual promoter structure of
+ZFP106: Regulation by myogenin and nuclear respiratory factor-1.
+Gene344: 143–159. doi:10.1016/j.gene.2004.09.035
+Guan X, Guan X, Qin J, Qin L, Shi W, Jiao Z (2021) ARHGAP11A promotes the
+malignant progression of gastric cancer by regulating the stability of
+actinﬁlaments through TPM1.J Oncol2021: 4146910. doi:10.1155/2021/
+4146910
+Hasegawa M, Parkos CA, Nusrat A (2020) WD40 repeat protein 26 negatively
+regulates formyl peptide receptor-1 mediated wound healing in
+intestinal epithelial cells.Am J Pathol190: 2029–2038. doi:10.1016/
+j.ajpath.2020.06.005
+Henley SA, Dick FA (2012) The retinoblastoma family of proteins and their
+regulatory functions in the mammalian cell division cycle.Cell Div7:
+10. doi:10.1186/1747-1028-7-10
+Henneberg LT, Schulman BA (2021) Decoding the messaging of the ubiquitin
+system using chemical and protein probes.Cell Chem Biol28:
+889–902. doi:10.1016/j.chembiol.2021.03.009
+Iconomou M, Saunders DN (2016) Systematic approaches to identify E3 ligase
+substrates. Biochem J 473: 4083–4101. doi:10.1042/BCJ20160719
+Jacquemet G, Morgan MR, Byron A, Humphries JD, Choi CK, Chen CS, Caswell
+PT, Humphries MJ (2013) Rac1 is deactivated at integrin activation sites
+through an IQGAP1-ﬁlamin-A-RacGAP1 pathway. J Cell Sci126:
+4121–4135. doi:10.1242/jcs.121988
+Jumper
+J, Evans R, Pritzel A, Green T, Figurnov M, Ronneberger O,
+Tunyasuvunakool K, Bates R,ˇZ´ıdek A, Potapenko A, et al (2021) Highly
+accurate protein structure prediction with AlphaFold.Nature 596:
+583–589. doi:10.1038/s41586-021-03819-2
+Kagawa Y, Matsumoto S, Kamioka Y, Mimori K, Naito Y, Ishii T, Okuzaki D,
+Nishida N, Maeda S, Naito A, et al (2013) Cell cycle-dependent Rho
+GTPase activity dynamically regulates cancer cell motility and
+invasion in vivo.PLoS One8: e83629. doi:10.1371/journal.pone.0083629
+Kean MJ, Couzens AL, Gingras A-C (2012) Mass spectrometry approaches to
+study mammalian kinase and phosphatase associated proteins.
+Methods57: 400–408. doi:10.1016/j.ymeth.2012.06.002
+Kessner D, Chambers M, Burke R, Agus D, Mallick P (2008) ProteoWizard: Open
+source software for rapid proteomics tools development.
+Bioinformatics24: 2534–2536. doi:10.1093/bioinformatics/btn323
+Kitamura H (2023) Ubiquitin-speciﬁc proteases (USPs) and metabolic
+disorders. Int J Mol Sci24: 3219. doi:10.3390/ijms24043219
+Knight JDR, Choi H, Gupta GD, Pelletier L, Raught B, Nesvizhskii AI, Gingras A-C
+(2017) ProHits-viz: A suite of web tools for visualizing interaction
+proteomics data. Nat Methods 14: 645–646. doi:10.1038/nmeth.4330
+Kobayashi N, Yang J, Ueda A, Suzuki T, Tomaru K, Takeno M, Okuda K,
+Ishigatsubo Y (2007) RanBPM, Muskelin, p48EMLP, p44CTLH, and the
+armadillo-repeat proteins ARMC8alpha and ARMC8beta are
+components of the CTLH complex.Gene 396: 236–247. doi:10.1016/
+j.gene.2007.02.032
+Kong K-YE, Fischer B, Meurer M, Kats I, Li Z, Rühle F, Barry JD, Kirrmaier D,
+Chevyreva V, San Luis B-J, et al (2021) Timer-based proteomic proﬁling
+of the ubiquitin-proteasome system reveals a substrate receptor of
+the GID ubiquitin ligase.Mol Cell 81: 2460–2476.e11. doi:10.1016/
+j.molcel.2021.04.018
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 19 of 21
+Kubitz L, Bitsch S, Zhao X, Schmitt K, Deweid L, Roehrig A, Barazzone EC,
+Valerius O, Kolmar H, B´ethune J (2022) Engineering of ultraID, a
+compact and hyperactive enzyme for proximity-dependent
+biotinylation in living cells.Commun Biol 5: 657. doi:10.1038/s42003-
+022-03604-5
+Lampert F, Stafa D, Goga A, Soste MV, Gilberto S, Olieric N, Picotti P, Stoffel M,
+Peter M (2018) The multi-subunit GID/CTLH E3 ubiquitin ligase
+promotes cell proliferation and targets the transcription factor Hbp1
+for degradation. Elife 7: e35528. doi:10.7554/eLife.35528
+Langlois CR, Beier V, Karayel O, Chrustowicz J, Sherpa D, Mann M, Schulman BA
+(2022) A GID E3 ligase assembly ubiquitinates an Rsp5 E3 adaptor and
+regulates plasma membrane transporters.EMBO Rep 23: e53835.
+doi:10.15252/embr.202153835
+Lawson CD, Der CJ (2018) Filling GAPs in our knowledge: ARHGAP11A and
+RACGAP1 act as oncogenes in basal-like breast cancers.Small
+GTPases 9: 290–296. doi:10.1080/21541248.2016.1220350
+Lawson CD, Fan C, Mitin N, Baker NM, George SD, Graham DM, Perou CM,
+Burridge K, Der CJ, Rossman KL (2016) Rho GTPase transcriptome
+analysis reveals oncogenic roles for Rho GTPase-activating proteins
+in basal-like breast cancers.Cancer Res 76: 3826–3837. doi:10.1158/
+0008-5472.CAN-15-2923
+Liu Y, Dekker J (2022) CTCF–CTCF loops and intra-TAD interactions show
+differential dependence on cohesin ring integrity.Nat Cell Biol24:
+1516–1527. doi:10.1038/s41556-022-00992-y
+Liu G, Zhang J, Choi H, Lambert J, Srikumar T, Larsen B, Nesvizhskii AI, Raught B,
+Tyers M, Gingras A (2012) Using ProHits to store, annotate, and Analyze
+afﬁnity puriﬁcation–mass spectrometry (AP-MS) data.Curr Protoc
+Bioinformatics Chapter 8: 8.16.1–8.16.32. doi:10.1002/
+0471250953.bi0816s39
+Maitland MER, Onea G, Chiasson CA, Wang X, Ma J, Moor SE, Barber KR, Lajoie
+GA, Shaw GS, Schild-Poulter C (2019) The mammalian CTLH complex is
+an E3 ubiquitin ligase that targets its subunit muskelin for
+degradation.Sci Rep 9: 9864. doi:10.1038/s41598-019-46279-5
+Maitland MER, Lajoie GA, Shaw GS, Schild-Poulter C (2022) Structural and
+functional insights into GID/CTLH E3 ligase complexes.Int J Mol Sci23:
+5863. doi:10.3390/ijms23115863
+Martin K, Reimann A, Fritz RD, Ryu H, Jeon NL, Pertz O (2016) Spatio-temporal
+co-ordination of RhoA, Rac1 and Cdc42 activation during prototypical
+edge protrusion and retraction dynamics.Sci Rep 6: 21901.
+doi:10.1038/srep21901
+Mehnert M, Ciuffa R, Frommelt F, Uliana F, van Drogen A, Ruminski K, Gstaiger
+M, Aebersold R (2020) Multi-layered proteomic analyses decode
+compositional and functional effects of cancer mutations on kinase
+complexes.Nat Commun 11: 3563. doi:10.1038/s41467-020-17387-y
+Menssen R, Schweiggert J, Schreiner J, Kuˇsevi´c D, Reuther J, Braun B, Wolf DH
+(2012) Exploring the topology of the Gid complex, the E3 ubiquitin
+ligase involved in catabolite-induced degradation of gluconeogenic
+enzymes.J Biol Chem287: 25602–25614. doi:10.1074/jbc.M112.363762
+Methot SP, Litzler LC, Subramani PG, Eranki AK, Fiﬁeld H, Patenaude A-M,
+Gilmore JC, Santiago GE, Bagci H, Cˆot ´e J-F, et al (2018) A licensing step
+links AID to transcription elongation for mutagenesis in B cells.Nat
+Commun 9: 1248. doi:10.1038/s41467-018-03387-6
+Min M, Mayor U, Dittmar G, Lindon C (2014) Using in vivo biotinylated ubiquitin
+to describe a mitotic exit ubiquitome from human cells.Mol Cell
+Proteomics 13: 2411–2425. doi:10.1074/mcp.M113.033498
+Mohamed WI, Park SL, Rabl J, Leitner A, Boehringer D, Peter M (2021) The
+human GID complex engages two independent modules for substrate
+recruitment.EMBO Rep 22: e52981. doi:10.15252/embr.202152981
+Nakanishi K (2022) Anatomy of four human Argonaute proteins.Nucleic Acids
+Res 50: 6618–6638. doi:10.1093/nar/gkac519
+Namba T, Dóczi J, Pinson A, Xing L, Kalebic N, Wilsch-Br¨auninger M, Long KR,
+Vaid S, Lauer J, Bogdanova A, et al (2020) Human-speciﬁc ARHGAP11B
+acts in mitochondria to expand neocortical progenitors by
+glutaminolysis. Neuron 105: 867–881.e9. doi:10.1016/
+j.neuron.2019.11.027
+Owens DDG, Maitland MER, Khalili Yazdi A, Song X, Reber V, Schwalm MP,
+Machado RAC, Bauer N, Wang X, Szewczyk MM, et al (2024) A chemical
+probe to modulate human GID4 Pro/N-degron interactions.Nat Chem
+Biol 20: 1164–1175. doi:10.1038/s41589-024-01618-0
+Perez-Riverol Y, Bai J, Bandla C, Garc´ıa-Seisdedos D, Hewapathirana S,
+Kamatchinathan S, Kundu DJ, Prakash A, Frericks-Zipper A, Eisenacher
+M, et al (2022) The PRIDE database resources in 2022: A hub for mass
+spectrometry-based proteomics evidences.Nucleic Acids Res50:
+D543–D552. doi:10.1093/nar/gkab1038
+Perkins DN, Pappin DJ, Creasy DM, Cottrell JS (1999) Probability-based protein
+identiﬁcation by searching sequence databases using mass
+spectrometry data. Electrophoresis 20: 3551–3567. doi:10.1002/(SICI)
+1522-2683(19991201)20:18<3551::AID-ELPS3551>3.0.CO;2-2
+Pijuan J, Barceló C, Moreno DF, Maiques O, Sisó P, Marti RM, Maci`a A, Panosa A
+(2019) In vitro cell migration, invasion, and adhesion assays: From cell
+imaging to data analysis.Front Cell Dev Biol7: 107. doi:10.3389/
+fcell.2019.00107
+Qiao S, Lee C-W, Sherpa D, Chrustowicz J, Cheng J, Duennebacke M,
+Steigenberger B, Karayel O, Vu DT, von Gronau S, et al (2022) Cryo-EM
+structures of Gid12-bound GID E3 reveal steric blockade as a
+mechanism inhibiting substrate ubiquitylation.Nat Commun13: 3041.
+doi:10.1038/s41467-022-30803-9
+Roux KJ, Kim DI, Raida M, Burke B (2012) A promiscuous biotin ligase fusion
+protein identiﬁes proximal and interacting proteins in mammalian
+cells. J Cell Biol196: 801–810. doi:10.1083/jcb.201112098
+Salemi LM, Maitland MER, McTavish CJ, Schild-Poulter C (2017) Cell signalling
+pathway regulation by RanBPM: Molecular insights and disease
+implications.Open Biol 7: 170081. doi:10.1098/rsob.170081
+Santt
+O, Pﬁrrmann T, Braun B, Juretschke J, Kimmig P, Scheel H, Hofmann K,
+Thumm M, Wolf DH (2008) The yeast GID complex, a novel ubiquitin
+ligase (E3) involved in the regulation of carbohydrate metabolism.
+Mol Biol Cell19: 3323–3333. doi:10.1091/mbc.e08-03-0328
+Schertzer MD, Thulson E, Braceros KCA, Lee DM, Hinkle ER, Murphy RM, Kim
+SO, Vitucci ECM, Calabrese JM (2019) A piggyBac-based toolkit for
+inducible genome editing in mammalian cells.RNA 25: 1047–1058.
+doi:10.1261/rna.068932.118
+Shariﬁ Tabar M, Parsania C, Chen H, Su X-D, Bailey CG, Rasko JEJ (2022)
+Illuminating the dark protein-protein interactome.Cell Rep Methods
+2: 100275. doi:10.1016/j.crmeth.2022.100275
+Sherpa D, Chrustowicz J, Qiao S, Langlois CR, Hehl LA, Gottemukkala KV,
+Hansen FM, Karayel O, von Gronau S, Prabu JR, et al (2021) GID E3 ligase
+supramolecular chelate assembly conﬁgures multipronged ubiquitin
+targeting of an oligomeric metabolic enzyme.Mol Cell 81:
+2445–2459.e13. doi:10.1016/j.molcel.2021.03.025
+Shteynberg D, Deutsch EW, Lam H, Eng JK, Sun Z, Tasman N, Mendoza L, Moritz
+RL, Aebersold R, Nesvizhskii AI (2011) iProphet: Multi-level integrative
+analysis of shotgun proteomic data improves peptide and protein
+identiﬁcation rates and error estimates.Mol Cell Proteomics10:
+M111.007690. doi:10.1074/mcp.M111.007690
+Spiering D, Bravo-Cordero JJ, Moshfegh Y, Miskolci V, Hodgson L (2013)
+Quantitative ratiometric imaging of FRET-biosensors in living cells.
+Methods Cell Biol114: 593–609. doi:10.1016/B978-0-12-407761-4.00025-
+7
+Stier A, Gilberto S, Mohamed WI, Royall LN, Helenius J, Mikicic I, Sajic T, Beli P,
+Müller DJ, Jessberger S, et al (2023) The CUL4B-based E3 ubiquitin
+ligase regulates mitosis and brain development by recruiting
+phospho-speciﬁc DCAFs. EMBO J 42: e112847. doi:10.15252/
+embj.2022112847
+Szklarczyk D, Gable AL, Lyon D, Junge A, Wyder S, Huerta-Cepas J, Simonovic M,
+Doncheva NT, Morris JH, Bork P, et al (2019) STRING v11: Protein-protein
+association networks with increased coverage, supporting functional
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 20 of 21
+discovery in genome-wide experimental datasets.Nucleic Acids Res
+47: D607–D613. doi:10.1093/nar/gky1131
+Thomsen MCF, Nielsen M (2012) Seq2Logo: A method for construction and
+visualization of amino acid binding motifs and sequence proﬁles
+including sequence weighting, pseudo counts and two-sided
+representation of amino acid enrichment and depletion.Nucleic
+Acids Res 40: W281–W287. doi:10.1093/nar/gks469
+Tripathi BK, Lowy DR, Zelenka PS (2015) The Cdk5 activator P39 speciﬁcally
+links muskelin to myosin II and regulates stressﬁber formation and
+actin organization in lens.Exp Cell Res330: 186–198. doi:10.1016/
+j.yexcr.2014.08.003
+Uliana F, Ciuffa R, Mishra R, Fossati A, Frommelt F, Keller S, Mehnert M,
+Birkeland ES, van Drogen F, Srejic N, et al (2023) Phosphorylation-
+linked complex proﬁling identiﬁes assemblies required for Hippo
+signal integration.Mol Syst Biol19: e11024. doi:10.15252/msb.202211024
+van den Berg FF, Issa Y, Vreijling JP, Lerch MM, Weiss FU, Besselink MG, Baas F,
+Boermeester MA, van Santvoort HCDutch Pancreatitis Study Group,
+(2022) Whole-exome sequencing identiﬁes SLC52A1 and ZNF106
+variants as novel genetic risk factors for (early) multiple-organ failure
+in acute pancreatitis.Ann Surg 275: e781–e788. doi:10.1097/
+SLA.0000000000004312
+Waterhouse AM, Procter JB, Martin DMA, Clamp M, Barton GJ (2009) Jalview Version
+2—a multiple sequence alignment editor and analysis workbench.
+Bioinformatics25: 1189–1191. doi:10.1093/bioinformatics/btp033
+Woo JA, Roh S, Lakshmana MK, Kang DE (2012) Pivotal role of RanBP9 in
+integrin-dependent focal adhesion signaling and assembly.FASEB J
+26: 1672–1681. doi:10.1096/fj.11-194423
+Xu J, Zhou X, Wang J, Li Z, Kong X, Qian J, Hu Y, Fang J-Y (2013) RhoGAPs
+attenuate cell proliferation by direct interaction with p53
+tetramerization domain. Cell Rep 3: 1526–1538. doi:10.1016/
+j.celrep.2013.04.017
+Yang H, Zhang H, Zhang L, Tusuphan P, Zheng J (2023) ARHGAP11A is a novel
+prognostic and predictive biomarker correlated with
+immunosuppressive microenvironment in clear cell renal cell
+carcinoma.Int J Mol Sci24: 7755. doi:10.3390/ijms24097755
+Ye Y, Tang X, Sun Z, Chen S (2016) Upregulated WDR26 serves as a scaffold to
+coordinate PI3K/AKT pathway-driven breast cancer cell growth,
+migration, and invasion.Oncotarget 7: 17854–17869. doi:10.18632/
+oncotarget.7439
+Yi SA, Sepic S, Schulman BA, Ordureau A, An H (2024) mTORC1-CTLH E3 ligase
+regulates the degradation of HMG-CoA synthase 1 through the Pro/N-
+degron pathway.Mol Cell 84: 2166–2184.e9. doi:10.1016/
+j.molcel.2024.04.026
+Zanin E, Desai A, Poser I, Toyoda Y, Andree C, Moebius C, Bickle M, Conradt B,
+Piekny A, Oegema K (2013) A conserved RhoGAP limits M phase
+contractility and coordinates with microtubule asters to conﬁne RhoA
+during cytokinesis. Dev Cell 26: 496–510. doi:10.1016/
+j.devcel.2013.08.005
+Zhang Z, Sie B, Chang A, Leng Y, Nardone C, Timms RT, Elledge SJ (2023)
+Elucidation of E3 ubiquitin ligase speciﬁcity through proteome-wide
+internal degron mapping.Mol Cell 83: 3377–3392.e6. doi:10.1016/
+j.molcel.2023.08.022
+License: This article is available under a Creative
+Commons License (Attribution 4.0 International, as
+described athttps://creativecommons.org/
+licenses/by/4.0/).
+GID4 degrades ARHGAP11A for migration Bagci et al. https://doi.org/10.26508/lsa.202403046 vol 7 | no 12 | e202403046 21 of 21
