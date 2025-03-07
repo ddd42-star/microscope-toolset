@@ -1,13 +1,14 @@
 import os
 import sys
 import chromadb
+import textwrap
 
 from openai import OpenAI
 from chromadb.utils import embedding_functions
 from pypdf import PdfReader
 import textwrap
 
-def get_openai_embeddings(text):
+def get_openai_embeddings(text, client):
 
     response = client.embeddings.create(input=text, model="text-embedding-3-small")
 
@@ -18,23 +19,24 @@ def get_openai_embeddings(text):
 
 
 # function to query documents
-def query_documents(question):
+def query_documents(question, client, collection):
 
-    query_embeddings = get_openai_embeddings(question)
+    query_embeddings = get_openai_embeddings(question, client)
+    
     results = collection.query(query_embeddings=query_embeddings)
 
     # Extract relevant chuncks
     relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
 
     print("getting relevant information")
-    print(results)
+    #print(results)
 
     return relevant_chuncks
 
 
 # function to generate a response from OpenAI
 
-def generete_response(question, relevant_chuncks):
+def generete_response(question, relevant_chuncks, client):
 
     context = "\n\n".join(relevant_chuncks)
 
@@ -64,7 +66,7 @@ def generete_response(question, relevant_chuncks):
 
     return answer
 
-def chat_gpt(client):
+def chat_gpt(client, collection):
 
     # Example query
     # query documents
@@ -76,16 +78,16 @@ def chat_gpt(client):
 
     while question != "exit":
 
-        question = input("Please type:\n 'exit' to go back to the menu\n 'c' to digit your question")
+        question = input("Please type:\n 'exit' to go back to the menu\n 'c' to digit your question\n\n :")
 
         if question.lower().strip() == "c":
             question = input("Digit your question here: ")
 
-            relevant_chunkcs = query_documents(question)
+            relevant_chunkcs = query_documents(question, client, collection)
 
-            answer = generete_response(question, relevant_chunkcs)
+            answer = generete_response(question, relevant_chunkcs, client)
 
-            print(answer)
+            print(textwrap.fill(answer.content, width=100))
 
         elif question.lower().strip() == "exit":
             sys.exit("bye")
@@ -105,7 +107,10 @@ if __name__ == "__main__":
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key,model_name='text-embedding-3-small')
 
     # initialize chroma client
-    chroma_client = chromadb.PersistentClient(path="chroma_storage")
+    # to fix, chroma db doesn' recognise absolut path
+    #path = "C:/Users/dario/OneDrive/università/MA/Thesis/microscope-toolset/microscope-toolset/chroma_storage"
+    path = "C:/Users/dario/OneDrive/università/MA/Thesis/microscope-toolset/microscope-toolset/chroma_storage"
+    chroma_client = chromadb.PersistentClient(path="./chroma_storage")
     collection_name = "publications_qa_collection"
     collection = chroma_client.get_collection(name=collection_name, embedding_function=openai_ef)
 
@@ -116,7 +121,7 @@ if __name__ == "__main__":
 
     while choice != "quit":
 
-        choice = input("Available command:\n Press 'quit' to terminate\n Press 'chat' to start conversation with GPT-4")
+        choice = input("Available command:\n Press 'quit' to terminate\n Press 'chat' to start conversation with GPT-4\n\n : ")
 
         command = choice.lower().strip()
 
@@ -124,7 +129,7 @@ if __name__ == "__main__":
             sys.exit("See you next time!")
 
         elif command == "chat":
-            chat_gpt(client)
+            chat_gpt(client, collection)
 
         else:
             print("Please choose a valid option ('quit', 'chat')")
