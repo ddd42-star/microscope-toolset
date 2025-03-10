@@ -1,2064 +1,0 @@
-Article
-SrGAP2-Dependent Integration of Membrane Geometry
-and Slit-Robo-Repulsive Cues Regulates Fibroblast
-Contact Inhibition of Locomotion
-Graphical Abstract
-Highlights
-d SrGAP2 is required for cell repulsion and contact inhibition of
-locomotion (CIL)
-d Local ﬁne-tuning of edge dynamics at cell-cell overlaps
-determines cell repulsion
-d SrGAP2 integrates geometrical and Slit-Robo-repulsive cues
-to elicit CIL
-d SrGAP2 controls Rac1 activity duration in contact, but not
-contact-free, protrusions
-Authors
-Rafael Dominik Fritz, Denis
-Menshykau, Katrin Martin, Andreas
-Reimann, Valeria Pontelli, Olivier Pertz
-Correspondence
-olivier.pertz@izb.unibe.ch
-In Brief
-Fritz et al. show that Rac GAP srGAP2 and
-Slit-Robo signaling regulate contact
-inhibition of locomotion in ﬁbroblasts.
-srGAP2 regulates dynamics of contact
-protrusions that stochastically explore
-cell-cell overlaps and integrates edge
-curvature and Slit-Robo-mediated
-repulsive cues to locally cease Rac1
-activity for cell repulsion, repolarization,
-and migrational direction change.
-Fritz et al., 2015, Developmental Cell35, 78–92
-October 12, 2015ª2015 Elsevier Inc.
-http://dx.doi.org/10.1016/j.devcel.2015.09.002
-
-Developmental Cell
-Article
-SrGAP2-Dependent Integration of Membrane Geometry
-and Slit-Robo-Repulsive Cues Regulates
-Fibroblast Contact Inhibition of Locomotion
-Rafael Dominik Fritz,1 Denis Menshykau,2,4 Katrin Martin,1 Andreas Reimann,1,5 Valeria Pontelli,3 and Olivier Pertz1,6,*
-1Department of Biomedicine, University of Basel, Mattenstrasse 28, 4058 Basel, Switzerland
-2Department of Biosystems, Science and Engineering (D-BSSE), ETH Zurich, Mattenstrasse 26, 4058 Basel, Switzerland
-3Department of Neurological and Movement Sciences, Section of Physiology, University of Verona, Strada le Grazie 8, 37134 Verona, Italy
-4Present address: Bayer Technology Services GmbH, Computational Systems Biology, 51368 Leverkusen, Germany
-5Present address: Department of Biosystems, Science and Engineering (D-BSSE), ETH Zurich, Mattenstrasse 26, 4058 Basel, Switzerland
-6Present address: Institute of Cell Biology, University of Bern, Baltzerstrasse 4, 3012 Bern, Switzerland
-*Correspondence: olivier.pertz@izb.unibe.ch
-http://dx.doi.org/10.1016/j.devcel.2015.09.002
-SUMMARY
-Migrating ﬁbroblasts undergo contact inhibition of
-locomotion (CIL), a process that was discovered
-ﬁve decades ago and still is not fully understood at
-the molecular level. We identify the Slit2-Robo4-
-srGAP2 signaling network as a key regulator of CIL
-in ﬁbroblasts. CIL involves highly dynamic contact
-protrusions with a specialized actin cytoskeleton
-that stochastically explore cell-cell overlaps between
-colliding ﬁbroblasts. A membrane curvature-sensing
-F-BAR domain pre-localizes srGAP2 to protruding
-edges and terminates their extension phase in
-response to cell collision. A FRET-based biosensor
-reveals that Rac1 activity is focused in a band at
-the tip of contact protrusions, in contrast to the broad
-activation gradient in contact-free protrusions.
-SrGAP2 speciﬁcally controls the duration of Rac1
-activity in contact protrusions, but not in contact-
-free protrusions. We propose that srGAP2 inte-
-grates cell edge curvature and Slit-Robo-mediated
-repulsive cues to ﬁne-tune Rac1 activation dynamics
-in contact protrusions to spatiotemporally coordi-
-nate CIL.
-INTRODUCTION
-Contact inhibition of locomotion (CIL) was ﬁrst described more
-than 50 years ago by Abercrombie as a general cell repulsion
-phenomenon between two contacting ﬁbroblasts (Abercrombie
-and Heaysman, 1953, 1954). Nowadays, CIL is considered a
-generic mechanism to locally cease cell protrusions in vitro
-and in vivo (Mayor and Carmona-Fontaine, 2010). CIL consists
-of two phases: initial cell-cell contact and collapse of
-protrusions followed by cell repolarization and change of
-migrational direction (Mayor and Carmona-Fontaine, 2010 ).
-Cadherins (Scarpa et al., 2015; Theveneau et al., 2010; Hutten-
-locher et al., 1998), nectins (Takai et al., 2008), heparan sulfate
-proteoglycans (HSPGs) (Matthews et al., 2008), Ephrins (Astin
-et al., 2010; Sugiyama et al., 2013), and non-canonical Wnt
-signaling (Carmona-Fontaine et al., 2008) have been shown to
-regulate CIL. In many cases, this feeds into the control of cyto-
-skeletal dynamics through Rho GTPases (Carmona-Fontaine
-et al., 2008; Matthews et al., 2008; Theveneau et al., 2010;
-Scarpa et al., 2015). However, the precise molecular link be-
-tween such cell surface molecules and small GTPases remains
-elusive.
-Rho GTPases are key regulators of the cytoskeletal dynamics
-that control cell migration (Burridge and Wennerberg, 2004;
-Heasman and Ridley, 2008; Machacek et al., 2009; Pertz
-et al., 2006; Ridley, 2006). Their activity is tightly controlled in
-time and space by guanine nucleotide exchange factors
-(GEFs) and GTPase-activating proteins (GAPs) that respectively
-activate and inhibit GTPases. Regulation of Rho GTPases by
-different GEFs and GAPs, as well as coupling to speciﬁc down-
-stream effectors, dictates the overall outcome of Rho GTPase
-signaling at any given subcellular localization (Pertz, 2010).
-Recent studies, in which spatiotemporal Rho GTPase activation
-dynamics have been measured using ﬂuorescence resonance
-energy transfer (FRET)-based biosensors, have revealed com-
-plex spatiotemporal signaling programs in which the activity of
-multiple Rho GTPases ﬂuctuates on time and length scales of
-tens of seconds and single micrometers (Kraynov et al., 2000;
-Machacek et al., 2009; Nalbant et al., 2004; Pertz et al., 2006).
-An important question is, therefore, how global properties
-such as cell migration speed and persistence emerge from
-such exquisite spatiotemporal control of Rho GTPases at
-smaller lengths and timescales.
-Slit-Robo GAP (srGAP) proteins transduce repulsive cues
-downstream of the Slit-Robo axon guidance pathway to inhibit
-Rho GTPases (Wong et al., 2001; Ypsilanti et al., 2010). SrGAP2
-regulates cell migration and neurite outgrowth in neuronal cells
-as well as brain development (Charrier et al., 2012; Dennis
-et al., 2012; Guerrier et al., 2009; Pertz et al., 2008).
-Here we report that the Slit-Robo pathway controls ﬁbroblast
-CIL. We ﬁnd that srGAP2 speciﬁcally regulates the dynamics of
-specialized contact protrusions that stochastically explore cell-
-cell overlaps at minute timescales. SrGAP2 regulates a speciﬁc
-spatiotemporal pool of Rac1 activity within contact protrusions,
-78 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-but is dispensable for contact-free protrusions. At the whole-cell
-scale, this stochastic process ﬁne-tunes protrusion collapse and
-cell repolarization to mediate CIL.
-RESULTS
-SrGAP2 Regulates Contact-Dependent Cell Migration
-Using proteomics, we discovered srGAP2 to be expressed in
-NIH 3T3 mouse ﬁbroblasts (Fengos et al., 2014). Given the
-importance of srGAP2 in neuronal cell migration ( Guerrier
-et al., 2009) and growth cone dynamics (Pertz et al., 2008), we
-hypothesized that srGAP2 also regulates ﬁbroblast motility. We
-therefore downregulatedSrgap2 by RNAi and tracked subcon-
-ﬂuent randomly migrating cells (Figures 1A and 1B). Surprisingly,
-Srgap2 knockdown (KD) neither affected total travel distance nor
-persistence of migration (Figures 1C–1E). Next we analyzed
-Srgap2 KD cells in a wound-healing assay, where migration is
-inﬂuenced by contacts with neighboring cells ( Figure 1 B).
-Despite identical total travel distances,Srgap2 KD cells did not
-persistently migrate into the wound as was observed for control
-cells (Figures 1F–1H). Thus, srGAP2 regulates cell contact-
-dependent, directional persistence of migration in monolayers,
-but not cell migration per se.
-SrGAP2 Regulates CIL and Restricts Cell-Cell Overlap
-through Repulsion
-Because srGAP proteins mediate cell repulsion in neuronal cells
-(Wong et al., 2001), the loss of contact-dependent directional
-persistence might be attributed to defects in this process. We
-therefore examined the behavior of sparsely seeded ﬁbroblasts
-during cell-cell collision. Control cells underwent proper CIL
-characterized by cell repulsion and reversal of migrational direc-
-tion upon cell-cell collision. In contrast, cells treated withSrgap2
-small interfering RNA (siRNA) or small hairpin RNA (shRNA) were
-CIL deﬁcient, because they neither repulsed each other nor
-reversed the direction of migration after collision (Figures 2A–
-2C; Movie S1). Quantiﬁcation of the cell-cell collision-dependent
-change of migrational direction revealed that control cells
-migrate in the opposite direction, whileSrgap2 KD cells continue
-to migrate with little deviation from their original direction (Fig-
-ures 2D and 2E). Additionally,Srgap2 KD cells remained in con-
-tact for longer time periods compared to control cells, further
-AB C
-D
-E
-G
-H
-F
-Figure 1. SrGAP2 Regulates the Directional Persistence of Cells Migrating in Sheets, but Not in Isolation
-(A) Western blot analysis ofSrgap2 KD efﬁciency. Cells were transfected with non-targeting siRNA (control) or with a pool of fourSrgap2 siRNAs. Asterisk points to
-an unspeciﬁc band. Numbers depict molecular weight in kilodaltons.
-(B) Cell migration assays schematics. Fibroblasts stably expressing Lifeact-GFP/nuclear localization sequence (NLS)-mCherry (green cell with red nuclei),
-transfected with control orSrgap2 siRNA, were seeded either sparsely or within a monolayer of untransfected WT cells (gray). NLS-mCherry signal was used to
-track cells.
-(C) Migration tracks of sparsely seeded control orSrgap2 KD cells are shown (n = 14 cells for each condition).
-(D and E) Quantiﬁcation gives total travel distance (D) and directional persistence (E) of cells shown in (C).
-(F) Migration tracks of control (n = 19) andSrgap2 KD cells (n = 22) embedded in a wounded monolayer. Arrow indicates the direction into the wound.
-(G and H) Quantiﬁcation gives total travel distance (G) and directional persistence (H) of cells shown in (F).
-Boxplots show median, interquartile range (IQR) (box), and 1.5 IQR (whiskers) (D, E, G, and H). Two-tailed unpaired Student’s t test; ***p < 0.001; ns,not
-signiﬁcant.
-Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc. 79
-indicating that srGAP2 controls cell-cell repulsion (Figure 2F). We
-obtained similar results in primary mouse embryonic ﬁbroblasts
-(MEFs) (Figures S1A–S1D).
-We then produced ﬁbroblasts stably expressing Lifeact-GFP
-or Lifeact-mCherry, which visualizes F-actin dynamics (Riedl
-et al., 2008) and properly outlines the cell border ( Figures
-S2A–S2C). This allowed us to unambiguously evaluate cell-cell
-overlap in differentially labeled, adjacent cells. Unexpectedly,
-we found control cells to markedly overlap. This cell-cell over-
-lap, however, increased inSrgap2 KD cells (Figure 2G; Movie
-S2). Moreover, cell-cell overlap was stable in time in control
-cells, but rose constantly inSrgap2 KD cells (Figure 2H). Cell
-size itself did not impact on cell-cell overlap given the weak
-correlation between both parameters (Figure 2I). Srgap2 KD,
-Lifeact-GFP cells embedded in conﬂuent Lifeact-mCherry
-monolayers revealed increased cell-cell overlap compared to
-control Lifeact-GFP cells (Figures 2J and 2K). Identical results
-were observed in the converse experiment. Furthermore,
-Srgap2KD in both the monolayer and the embedded cells led
-to a further increase in cell-cell overlap, indicating that both
-interacting cells determine the degree of cell-cell overlap.
-Importantly, we found thatSrgap2 KD did not affect spreading
-in subconﬂuent ﬁbroblast (Figure 2L), indicating that srGAP2
-only functions in the context of overlapping cells. This also
-was observed in primary MEFs (Figure S1E). In summary,
-srGAP2 regulates cell repulsion by maintaining the size of cell-
-cell overlap regions constant, both in sparsely seeded contact-
-ing cells and in conﬂuent monolayers of immortalized and
-primary mouse ﬁbroblasts.
-Cell-Cell Overlap Zones Are Constantly Explored by
-Dynamic Contact Protrusions
-We then explored which mechanism regulates the maintenance
-of steady-state cell-cell overlap. This implies the formation of
-protrusions crawling either below or on top of neighboring cells
-(Figure 3A). To discriminate between both possibilities, we
-imaged adjacent Lifeact-GFP and Lifeact-mCherry cells. We
-found the following: (1) cell-cell overlaps consisted of multiple
-contact protrusions characterized by highly dynamic lamellipo-
-dia and ﬁlopodia, as compared to contact-free edges (Figure 3B;
-Movie S3); (2) total internal reﬂection ﬂuorescence (TIRF) imag-
-ing revealed that these contact protrusions remain associated
-with the extracellular matrix while inﬁltrating below neighboring
-cell edges, which become displaced from the TIRF ﬁeld (Fig-
-ure 3C); this is a stereotypic behavior observed in 100% of
-cases analyzed (>100 protrusions); and (3) contact, but not
-contact-free, protrusions displayed an intense F-actin band
-directly at their tip that assembled as soon as contact protru-
-sions extended beneath adjacent cells and disassembled
-instantly during edge retraction (Figures 3D–3F; Figures S1F
-and S1G;Movie S4).
-Kymograph-based quantiﬁcation of edge dynamics revealed
-that contact protrusions were more dynamic than contact-
-free protrusions (Figure 3G), due to not only enhanced mem-
-brane protrusion (Figure 3H) but also retraction ( Figure 3I).
-Despite such enhanced edge motility in contact protrusions,
-there was no effect on net edge movement (Figure 3 J).
-Colliding cells undergo repolarization during CIL and establish
-new contact-free protrusions away from the site of cell-cell
-contact. We compared contact-free protrusions in isolated
-cells and in cells engaged in cell-cell overlap and found
-that contact-free protrusions in the latter were more dynamic
-and persistent than in isolated cells ( Figures S2 D–S2G).
-Together, these results show that maintenance of steady-state
-cell-cell overlap is mediated by highly dynamic, extending
-and retracting contact protrusions with a specialized F-actin
-cytoskeleton.
-SrGAP2 Speciﬁcally Regulates the Extension Phase of
-Contact Protrusions
-Since maintenance of cell-cell overlap is a highly dynamic pro-
-cess, we explored if srGAP2 regulates contact protrusion dy-
-namics. Consistent with the ﬁndings that srGAP2 does not
-regulate intrinsic cell migration nor spreading (Figures 1and 2),
-we observed that contact-free edge dynamics were not affected
-by Srgap2 KD (Figures 3K–3O, ﬁrst and second columns from
-left). In contrast,Srgap2 KD increased total and net edge move-
-ment as well as persistence of contact protrusions (Figures 3K–
-3M). This arose from increased edge protrusion (Figure 3N),
-while edge retraction was only minimally affected (Figure 3O).
-Protrusion and retraction frequencies also were not affected
-(Figures S2H and S2I). Thus,Srgap2 KD enhances the extension
-of contact, but not contact-free, protrusions (schematized inFig-
-ure 3P), indicating that srGAP2 speciﬁcally limits the extension
-phase of contact protrusions.
-Endogenous srGAP2 Localizes to Protrusions with
-Curved Edges
-We then evaluated the subcellular localization of srGAP2 in sub-
-conﬂuent, polarized cells. Epiﬂuorescence imaging indicated
-leading edge but also perinuclear srGAP2 localization. TIRF im-
-aging, however, revealed that srGAP2 speciﬁcally localizes to
-the ventral part of contact-free protrusions, with some accumu-
-lation at curved cell edges (Figure 4A). SrGAP2 contains a Fes/
-CIP4 homology-Bin/Amphiphysin/Rversus (F-BAR) domain,
-which has been shown to modulate but also might sense mem-
-brane curvature (Frost et al., 2008, 2009; Guerrier et al., 2009).
-Therefore, we developed an image analysis pipeline to test if
-srGAP2 localizes to lamellipodial edges in a curvature-depen-
-dent manner (Figure S3A).
-This pipeline was validated using synthetic image datasets
-(Figures S3B–S3E). By co-labeling of endogenous srGAP2 and
-membrane-tethered GFP-CAAX or the transmembrane receptor
-Robo4, we ensured that the analyzed srGAP2 signal genuinely
-represented the cell edge (Figures S3F–S3K). In srGAP2-immu-
-nostained, contact-free protrusions, we detected more srGAP2
-at curved cell edges (Figure 4B, left). To quantify the relationship
-between curvature and cell edge srGAP2 recruitment, we ex-
-tracted srGAP2 ﬂuorescence intensity and curvature proﬁles
-along the cell border (Figures 4B and 4C), and we observed a
-positive correlation between both variables (Figure 4D). As a
-control, analysis of a homogeneously distributed ﬂuorescent
-signal from exogenously expressed GFP-CAAX did not lead to
-any correlation (Figures 4E–4G). Analysis of multiple protrusions
-revealed a distribution shift toward higher correlation coefﬁcients
-in cells stained for srGAP2 compared to GFP-CAAX (Figure 4H).
-These data show a correlation between lamellipodial srGAP2
-recruitment and edge curvature.
-80 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-FDCE
-H
-I
-G Srgap2 siRNA
-Srgap2 shRNA
-Control siRNA
-Control shRNA
-ShRNASiRNA
-Cell displacement
-after cell-cell collision Srgap2 shRNA
-Control shRNA
-0 2 04 06 08 0 1 0 0 1 2 0
-0
-10
-20
-30
-40
-P<0.001
-Time (min)
-Cell overlap (% of cell area)
-r=0.283
-P<0.001
-r=0.256
-P<0.001K
-J
-Cell overlap (% of cell area)
-kd
-kd
-kd
-c
-kdkd
-kd
-kdkd
-kd
-kd
-kd
-kd
-kdkd
-kd
-kdkd
-c
-c
-c
-c
-cc
-c
-cc
-c
-c
-c
-kd
-cc
-c
-cc
-kd
-kd
-kd
-c
-kdkd
-kd
-kdkd
-kd
-kd
-kd
-kd
-kdkd
-kd
-kdkd
-c
-c
-c
-c
-cc
-c
-cc
-c
-c
-c
-kd
-cc
-c
-cc
-***
-ns
-***
-0
-20
-40
-60
-80
-100
-Binary maskEPI
-Lifeact-
-mCherry
-Lifeact-
-GFP
-Binary mask
-c = Control siRNA kd = Srgap2 siRNA
-c = Control siRNA kd = Srgap2 siRNA
-EPI
-EPI
-Lifeact-GFP
-Binary image EPI
-Lifeact-mCherryOverlay
-%78%75% 36%54
-Cell overlap (µm2)
-Cell area (µm2)
-r=0.28
-P<0.00
-r=0.256
-P<0.001
-0 2000 4000 6000
-0
-200
-400
-600
-800
-00:00
-01:20
-03:00
-EPIE
-A
-L
-Control
-siRNA
-Srgap2
-siRNA
-Cell spreading (% of control)0
-50
-100
-150
-200
-250
-300 ns
-No cell-cell contact
-Cell-cell contact
-Srgap2 siRNA
-Control siRNA
-Srgap2 siRNA
-Control siRNA
-SrGAP2 mRNA level 
-(% of control)
-Control
-shRNA
-Srgap2
-shRNA
-0
-20
-40
-60
-80
-100
-120 *
-Contact duration (min)
-0 200 400 600 800 1000
-Probability
-0
-0.02
-0.04
-0.06
-0.08
-0.10
-0.12
-0.14
-0.16
-0.18
-B
-Migratory tracks
-Control siRNASrgap2 siRNA
--200 min
- 360 min
-0 min
--200 min 360 min0 min
-Migratory tracks
-Control shRNASrgap2 shRNA
--90 min
-195 min
-195 min0 min
-0 min-90 min
-*
-* *
-*
-*
-*
-*
-*
-*
-*
-*
-*
-Figure 2. SrGAP2 Regulates CIL and Maintenance of Cell-Cell Overlap
-(A and B) Phase-contrast time series of control andSrgap2 KD cells treated with siRNA (A) and shRNA (B) during cell collision. Migration trajectories are
-summarized to the right. Black arrowheads designate contacts between cell edges.
-(C) The qPCR analysis ofSrgap2 KD efﬁciency is shown. Mean ± SD; n = 4 measurements; Mann-Whitney test.
-(legend continued on next page)
-Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc. 81
-SrGAP2 Dynamically Associates to the Tip of Extending,
-but Not Retracting, Contact Protrusions
-Next, we studied srGAP2 dynamics in contact-free and contact
-protrusions. As for its endogenously expressed counterpart,
-exogenous srGAP2-GFP localized to the leading edge of single
-migrating cells (Figure S4A). Examination of interacting cells re-
-vealed that srGAP2-GFP formed a broad gradient in contact-
-free protrusions (Figures 4I and 4J;Figure S4B; Movie S5), while
-it localized at a focused band directly at the tip of contact protru-
-sions (Figures 4I and 4K). The latter pattern was reminiscent of
-the focused F-actin signal previously observed at that location
-(Figures 3C–3E). SrGAP2-GFP enriched at the edge of growing
-protrusions in a curvature-dependent manner and dissociated
-from the cell edge during protrusion collapse (Figure 4L; Figures
-S4C–S4E). Enrichment of srGAP2-GFP in both contact-free and
-contact protrusions required the presence of the F-BAR domain,
-because deletion mutants localized to the cytosol like GFP.
-In contrast, mutation of the Src homology 3 (SH3) domain
-(W765A mutant), responsible for interaction with Robo (Guerrier
-et al., 2009; Li et al., 2006; Wong et al., 2001), did not interfere
-with membrane targeting (Figure 4M; Figure S4F). Thus, srGAP2
-dynamically associates with the cell edge at the tip of extending
-contact protrusions in an F-BAR-dependent manner, but disso-
-ciates during membrane retraction.
-The Slit-Robo Pathway Regulates Maintenance of
-Cell-Cell Overlap and CIL
-In neuronal cells, srGAP proteins mediate cell-cell repulsion
-downstream of Slit and Robo (Wong et al., 2001; Ypsilanti
-et al., 2010). To explore whether Slit and Robo regulate repulsion
-in ﬁbroblasts, we designed a robust assay to evaluate cell
-contact-dependent spreading in response to siRNA perturba-
-tions (Figures 5A–5D). Speciﬁcally, we evaluated if cells deﬁcient
-in the repulsion machinery would spread more efﬁciently due to
-impaired sensing of repulsive cues received from the monolayer.
-Using this assay, we conﬁrmed thatSrgap2 KD cells displayed
-higher spreading than control cells in wild-type (WT) cell mono-
-layers and vice versa, this effect being further increased in
-Srgap2 KD monolayers (Figure 5E). This showed again that
-srGAP2 solely regulates cell spreading inﬂuenced by cell-cell
-interactions.
-Next we identiﬁed mediators of cell-cell repulsion at each level
-of the Slit-Robo signaling pathway using siRNA pools.Srgap1,
-Robo3, Robo4, Slit2, andSlit3 KD fostered contact-dependent
-cell spreading and phenocopied Srgap2 KD (Figures 5F and
-5G). We excluded off-target effects by repeating the assay
-with single siRNAs for selected genes (Figure 5H). We also
-conﬁrmed that Robo4 and Slit2 KD increased cell-cell overlap
-in cell monolayers (Figures 5I and 5J). We then examined the
-subcellular localization of Slit2 and Robo4 by immunoﬂuores-
-cence in subconﬂuent, polarized cells. Both Slit2 and Robo4
-localized mainly to perinuclear endomembranes, most likely cor-
-responding to secretory compartments necessary for secretion.
-TIRF microscopy, however, revealed broad accumulation of Slit2
-at the leading edge, while Robo4 was evenly localized at the
-plasma membrane with additional enrichment directly at the
-leading edge (Figure 5K).
-Finally, we investigated the impact of Slit2 and Robo4 on CIL in
-both NIH 3T3 cells and primary MEFs. As observed forSrgap2
-KD, Slit2 and Robo4 KD cells were deﬁcient in CIL, because
-they failed to change the direction of migration after cell-cell colli-
-sion and displayed prolonged contact duration (Figures 5L–5N;
-Figures S1H–S1K). These results indicate that the receptor-
-based repulsion machinery is pre-polarized in contact-free pro-
-trusions prior to any cell-cell encounter and activated during CIL.
-Construction of a Rac1 FRET Biosensor
-To analyze the spatiotemporal regulation of Rac1 by srGAP2,
-we constructed an improved, second-generation Rac1 FRET
-biosensor, which we term Rac1-2G. We used our previously
-described cpFRET toolkit (Fritz et al., 2013), and we took advan-
-tage of the GTP-Rac1-sensing domain from the effector PAK1
-(Lamarche et al., 1996). The cpFRET toolkit is a biosensor library
-in which geometric diversity has been built into the ﬂuorophores.
-This library is screened to empirically identify a biosensor with
-robust spectral properties. We used a biosensor design that pre-
-viously successfully yielded an improved RhoA biosensor and at
-the same time retained interaction with RhoGDI, which is essen-
-tial to capture faithful spatiotemporal patterns of Rho GTPase
-activity (Fritz et al., 2013). We identiﬁed a biosensor that dis-
-played a robust change in emission ratio (ER) (Figures 6A and
-6B; Figures S5A–S5C and S6) and appropriately responded to
-mutations that affect nucleotide loading (T17N) or the ability of
-Rac1 to interact with the PAK effector domain (Y40C) (Lamarche
-et al., 1996; Figure 6C). The biosensor also adequately re-
-sponded to coexpression of RhoGDI and Rac1-speciﬁc GEFs
-(D) Schematic representation shows migrational direction (black arrows) before and after cell-cell collision.
-(E) Scaled cell-displacement vectors of colliding cells. Arrows represent the scaled displacement of all cells before collision, whereas lines show migrational
-direction of each cell after collision. The length of lines is normalized to the respective arrow (n = 30 control and 38Srgap2 KD cells).
-(F) Distribution of cell-cell contact duration in control andSrgap2 KD cells is shown (n = 50 and 43 collisions of control andSrgap2 KD cells, respectively).
-(G) Time series of colliding Lifeact-GFP (magenta) and Lifeact-mCherry (cyan) cells transfected with the indicated siRNAs. Epiﬂuorescence (EPI) channels and
-their thresholded binary masks are shown in cyan/magenta colors. Timescale, hours:minutes.
-(H) Quantiﬁcation of cell-cell overlap in time between colliding cells. Cell-cell overlap is normalized to cell area (overlapping area/whole cell area). Graphs
-represent mean ± SEM; n = 16 control and 14Srgap2 KD cells, respectively; Mann-Whitney test.
-(I) Correlation of cell-cell overlap and cell area (n = 951 and 1,084 measurements for control andSrgap2 KD cells, respectively). Spearman correlation coefﬁcient
-and t statistics are shown.
-(J) Representative images of Lifeact-GFP cells embedded in Lifeact-mCherry monolayers. EPI and composite binary images are shown in cyan/magenta colors.
-SiRNA treatment is schematized (top). Cell-cell overlap, quantiﬁed as percentage of cell size, is displayed (bottom).
-(K) Quantiﬁcation of normalized cell-cell overlap in monolayers. Boxplots show median, IQR (box), 1.5 IQR (whiskers), and outliers (dots) (n = 219, 128, 115, and
-112 cells; Bonferroni multiple comparison test).
-(L) Quantiﬁcation of intrinsic cell spreading in isolated cells (n = 98 control and 96Srgap2 KD cells; Mann-Whitney test; ***p < 0.001; ns, not signiﬁcant).
-Scale bars, 40mm (A and B) and 20mm (G and J). See alsoFigures S1and S2.
-82 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-AB C
-D E
-FG H IJ
-K LM
-NO P
-(legend on next page)
-Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc. 83
-and GAPs (Figure 6D; Figures S5D and S5E). Expression of the
-Y40C Rac1 mutant biosensor, in which biosensor distribution
-is preserved, yielded a ﬂat ER proﬁle (Figures 6E and 6F). This in-
-dicates that the biosensor faithfully reports on Rac1 activation
-dynamics independently of cell geometry. As shown before
-(Kraynov et al., 2000; Kurokawa et al., 2004), evaluation of
-Rac1-2G in motile ﬁbroblasts revealed that Rac1 is activated in
-a broad gradient spanning several micrometers from the pro-
-truding cell edge inward the cell (Figures 6G and 6H; Movie
-S6). Rac1 activity then ceased immediately during edge retrac-
-tion. Together, the robust spectral properties of this second-
-generation biosensor reduce phototoxicity and photobleaching
-and allow for monitoring of Rac1 activity in time and space.
-Rac1 Activity Peaks at the Tip of Contact Protrusions
-The existence of speciﬁc morphodynamics and a specialized
-F-actin cytoskeleton in contact protrusions suggested distinct
-modes of spatiotemporal regulation of Rac1 in contact versus
-contact-free protrusions (Burridge and Wennerberg, 2004;
-Ridley, 2006). As shown above, evaluation of Rac1-2G in con-
-tact-free protrusions revealed broad Rac1 activation gradient di-
-minishing from the cell edge to the cell interior (Figure 7A; Movie
-S7). In contrast, Rac1 activation was speciﬁcally restricted to a
-focused band at the tip of contact protrusions (Figures 7B and
-7C; Movie S8), a pattern reminiscent of both the robust F-actin
-(Figures 3C–3E) and srGAP2 (Figure 4K) focused bands detected
-at the same location. Rac1 activity ﬂuctuations at the tip of con-
-tact protrusions correlated with protrusion growth and shrinkage
-(Figures 7D and 7E). Together, these results indicate distinct
-spatiotemporal Rac1 activation dynamics in contact-free versus
-contact protrusions that further correlate with their different
-morphodynamics.
-SrGAP2 Speciﬁcally Regulates Rac1 Activity in Contact
-Protrusions
-Because srGAP2 bears speciﬁc GAP activity toward Rac1 (Guer-
-rier et al., 2009) and because srGAP proteins mediate cell-cell
-repulsion in neuronal cells (Wong et al., 2001), we analyzed the
-impact of Srgap2 KD on Rac1 activation. Surprisingly, we de-
-tected the characteristic Rac1 activity pattern at the tip of con-
-tact protrusions in both control andSrgap2 KD cells. However,
-while Rac1 activation peaked transiently in control cells, it
-persisted for longer times inSrgap2 KD cells (Figure 7F). The
-tip-restricted Rac1 activity proﬁles correlated with the above-
-described contact protrusion dynamics: control protrusions
-collapsed with decreasing Rac1 activity whileSrgap2 KD protru-
-sions continued to expand in the presence of sustained, focused
-Rac1 activity (Figures 7G and 7H). In contrast to contact protru-
-sions, Srgap2 KD did not affect Rac1 activation patterns in con-
-tact-free protrusions (Figure 7I). These results show that srGAP2
-limits the duration of the tip-restricted Rac1 activity to regulate
-contact protrusion collapse.
-DISCUSSION
-By identifying the Slit2-Robo4-srGAP2 signaling system as a
-spatiotemporal regulator of ﬁbroblast CIL, we link extracellular
-signaling cues and cell surface molecules to the Rho GTPase-
-dependent control of cytoskeletal dynamics governing CIL. CIL
-occurs on an hourly timescale and consists of two phases as fol-
-lows: (1) a sensing phase leading to protrusion collapse, and (2) a
-repolarization phase resulting in change of migrational direction.
-At the timescale of minutes, we ﬁnd the sensing phase to involve
-stochastic extension-retraction cycles of specialized contact
-protrusions, which constantly probe surrounding cells by crawl-
-ing under the edges of adjacent cells. While displaying identical
-lifetimes as contact-free protrusions, contact protrusions exhibit
-increased extension-retraction amplitude, probably to efﬁciently
-register repulsive cues in cell-cell overlaps. Contact protrusions
-display a speciﬁc tip-localized, focused F-actin band, which
-might act as a very robust lamellipodial network that ensures efﬁ-
-cient edge extension while squeezing below a neighboring cell.
-Our analysis also shows that contact-free protrusions in cells
-with cell-cell overlap are more dynamic and persistent than
-Figure 3. SrGAP2 Regulates the Dynamics of Contact, but Not Contact-free, Protrusions
-(A) Rationale for evaluation of contact protrusion geometry. Dashed line indicates ventral cell part detectable with TIRF microscopy, which discriminates attached
-and non-attached cell edge portions in cell-cell overlaps.
-(B) Composite images of Lifeact-GFP (magenta) and Lifeact-mCherry (cyan) cells with cell-cell overlaps and contact-free edges. EPI and TIRF channels are
-shown. Black arrowheads depict lamellipodia and ﬁlopodia in cell-cell overlaps.
-(C) TIRF images of Lifeact-GFP (left) and Lifeact-mCherry cells (right) shown in inverted black/white colors. Cyan and magenta lines represent outlines of the
-Lifeact-mCherry and Lifeact-GFP cell, respectively. Red arrowheads denote contact protrusions with the characteristic F-actin band at the leading edge and blue
-arrowheads depict cell regions, which get displaced from the TIRF ﬁeld.
-(D) Time series of contact and contact-free protrusions (boxes 1 and 2 in B, respectively). TIRF images of Lifeact-mCherry cell are shown in inverted black-white
-contrast. Magenta line outlines the Lifeact-GFP cell. Fluorescence signals are scaled identically in both boxes. Timescale, minutes:seconds.
-(E) Line scans of normalized F-actin intensity in contact and contact-free protrusions imaged by TIRF, drawn according to scheme. Graph displays mean ± SEM;
-n = 50 protrusions for each condition; two-tailed unpaired Student’s t test.
-(F) Kymograph analysis of edge and F-actin dynamics of contact and contact-free protrusions along the yellow lines in (D). Fluorescence signals are scaled
-identically. Magenta line denotes cell border of the adjacent Lifeact-GFP cell.
-(G–J) Quantiﬁcation of total cell edge movement (G), edge protrusion (H), edge retraction (I), and net cell edge movement (J) of contact-free and contact
-protrusions (n = 54 and 76 kymographs of free and contact protrusions, G and J; nR474 andR397 individual protrusions and retractions, respectively, H and I;
-two-tailed unpaired Student’s t test).
-(K–O) Quantiﬁcation of total cell edge movement (K), net edge movement (L), persistence of movement (M), edge protrusion (N), and edge retraction (O)in
-contact-free and contact protrusions of control andSrgap2 KD cells (n = 87, 63, 60, and 63 kymographs, K–M; nR 622, 505, 467, and 330 protrusions or re-
-tractions, N and O; Bonferroni multiple comparison test).
-(P) Summary of contact-free and contact protrusion dynamics in control andSrgap2 KD cells. Movement of cell edge is shown in time.
-Boxplots show median, IQR (box), and outliers (dots). Whiskers represent 1.5 IQR (G, J, and K–M) or extend to minimum and maximum values (H, I, N, and O).
-**p < 0.01; ***p < 0.001; ns, not signiﬁcant. Scale bars, 20mm (B and C) and 5mm (D). See alsoFigures S1and S2.
-84 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-A BC D
-EF G
-H
-I J K
-L
-M
-Figure 4. SrGAP2 Dynamically Enriches at the Tip of Contact Protrusions during Their Extension, but Not Retraction, Phase
-(A) SrGAP2 immunostaining. TIRF and EPI channels are shown in pseudocolors.
-(B) Representative images of single confocal planes of protrusions stained with anti-srGAP2 IgG shown in pseudocolor and black-white contrast. Image was
-segmented and the cell border was extracted (blue line). Red line represents interpolation of the extracted cell border by third-order polynomial splines.
-(C) Fluorescence intensity (gray line) and cell edge curvature (black line) proﬁles along the cell border in (B) are shown.
-(D) Correlation of ﬂuorescence intensity and cell edge curvature obtained from (C). Spearman correlation coefﬁcient is shown in the black box.
-(E) Representative pseudocolor and black-white contrast images of protrusions in cells expressing membrane-tethered GFP-CAAX, which were analyzed
-as in (B).
-(F) Fluorescence intensity (gray line) and cell edge curvature (black line) proﬁles along the cell border in (E) are shown.
-(G) Correlation of ﬂuorescence intensity and cell edge curvature obtained from (F). Spearman correlation coefﬁcient is shown in the black box.
-(legend continued on next page)
-Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc. 85
-those in isolated cells. This suggests a mechanical cross-talk be-
-tween the cell-cell overlap zone and contact-free edges that
-drives the establishment of persistent contact-free protrusions,
-ultimately enabling cell repolarization and change of migrational
-direction during CIL. Interestingly, such a redistribution of
-cellular forces from cell contact regions toward free cell edges
-has been reported recently to occur during CIL inXenopus neural
-crest cells (Scarpa et al., 2015).
-At the whole-cell scale, srGAP2 loss of function suppresses
-CIL through abrogation of cell-cell repulsion both in primary
-and transformed ﬁbroblasts. At the subcellular scale, srGAP2
-speciﬁcally terminates the extension phase of contact, but not
-contact-free, protrusions during mutual stochastic sensing.
-SrGAP2 contains an F-BAR domain that, contrary to other
-F-BAR domains, has been shown to induce membrane protru-
-sions rather than invaginations when overexpressed as an iso-
-lated domain (Guerrier et al., 2009). We show that srGAP2
-dynamically binds to convex extending, but dissociates from
-concave retracting, contact and contact-free protrusions in an
-F-BAR domain-dependent fashion. The respectively focused
-and broad srGAP2 distribution in contact and contact-free
-protrusions might be modulated by differences in cell edge ge-
-ometry. Thus, the F-BAR domain seems to work as a cell edge
-geometry-dependent sensor to dynamically tether srGAP2 to ex-
-tending protrusions, ideally pre-positioning srGAP2 for regula-
-tion of protrusions in the eventuality of a cell-cell collision.
-The ability of srGAP2 to speciﬁcally regulate contact protru-
-sions implies that it receives additional upstream inputs, most
-likely from the Slit-Robo system, which it interacts with
-(Wong et al., 2001) and which is expressed in primary and
-transformed ﬁbroblasts. Consistently, we identify multiple Slit
-and Robo isoforms to be important for cell-cell repulsion.
-Furthermore, as for srGAP2, we ﬁnd that Slit2 and Robo4 are
-pre-polarized at the ventral membrane of contact-free protru-
-sions in motile ﬁbroblasts. The enrichment of the repulsion
-machinery at the leading edge provides an elegant explanation
-for the observation that head-to-head collisions are more efﬁ-
-cient in eliciting CIL than head-to-tail collisions, as reported in
-epithelial cells (Desai et al., 2013) and Drosophila hemocytes
-(Davis et al., 2015), although physical coupling of actin net-
-works was found to constitute the driving force in the latter
-cell system.
-In agreement with their localization pattern, Slit2 and Robo4
-mediate CIL in colliding cells. Importantly, Slit2 and Robo4
-have been found to function as a cognate ligand-receptor sys-
-tem in endothelial cells ( Jones et al., 2008). Slit molecules
-interact with HSPGs (Ypsilanti et al., 2010). Thus, Slit2 may be
-presented to Robo4 in a glycocalyx-tethered form in cell-cell
-overlaps, which remains to be investigated. Although we do
-not formally show that physical interaction between overlapping
-membranes occurs, the fact that depletion of Slit2 or Robo4 im-
-pairs CIL strongly suggests that repulsive signals are transferred
-between cells in cell-cell overlaps, rather than through long-
-range Slit secretion.
-SrGAP2 is a speciﬁc GAP for Rac1 (Guerrier et al., 2009).
-Intriguingly, we ﬁnd two distinct spatiotemporal Rac1 activation
-patterns in contact and contact-free protrusions. As shown
-before (Kurokawa et al., 2004), we detect a broad Rac1 activa-
-tion gradient in contact-free protrusions. In contrast, Rac1
-activity is concentrated in a narrow band at the tip of contact
-protrusions. We propose that it might regulate the robust lamel-
-lipodial F-actin pool, which also is present at this speciﬁc loca-
-tion. The differences in Rac1 activity patterns in contact-free
-versus contact protrusions within the same cell suggest that
-different GEFs and GAPs may be required to ﬁne-tune the actin
-cytoskeleton to yield context-dependent morphodynamics.
-This extends recent ﬁndings of context-dependent spatiotem-
-poral Rho GTPase activation programs in response to different
-extracellular cues (Kutys and Yamada, 2014; Martin et al., 2014;
-Pertz et al., 2006).
-Unintuitively, srGAP2 loss of function leads to increased pro-
-trusion extension without affecting the characteristic, narrow
-Rac1 activity band itself. This suggests that an additional GEF-
-GAP signaling network shapes this speciﬁc subcellular Rac1
-activation pattern through a reaction-diffusion system (Bement
-and von Dassow, 2014). The fact that srGAP2 colocalizes with
-active Rac1 during contact protrusion extension necessitates
-that its GAP activity is not constitutively active. In agreement,
-srGAP proteins are held in an auto-inhibited conformation
-through interaction between their N and C termini, which might
-get relieved through interactions between the SH3 domain and
-its cognate ligands (Guerrier et al., 2009; Zaidel-Bar et al.,
-2010). We therefore speculate that srGAP2 controls the duration
-of the Rac1 activation band by integrating cell geometry inputs
-through its F-BAR domain and repulsive inputs from a Robo re-
-ceptor by its SH3 domain (Wong et al., 2001). This might provide
-an elegant spatiotemporal signaling mechanism to both position
-and activate the Slit-Robo repulsive machinery in contact protru-
-sions during cell-cell collisions. Additional repulsive systems are
-likely to ﬁne-tune mesenchymal cell interactions through control
-of Rho GTPases (Astin et al., 2010; Sugiyama et al., 2013; Car-
-mona-Fontaine et al., 2008; Huttenlocher et al., 1998; Matthews
-et al., 2008; Takai et al., 2008; Scarpa et al., 2015; Theveneau
-et al., 2010), and it will be important to decipher if similar spatio-
-temporal Rho GTPase mechanisms occur in those signaling sys-
-tems during CIL.
-(H) Distribution of Spearman correlation coefﬁcients of signal intensity and cell edge curvature for cells immunostained for srGAP2 (red bars) or exogenously
-expressing GFP-CAAX (gray bars) are shown (n = 120 protrusions [srGAP2] and n = 95 protrusions [GFP-CAAX]).
-(I) Composite TIRF/EPI image of a srGAP2-GFP-expressing cell (magenta) during inﬁltration beneath a cell expressing Lifeact-mCherry (cyan). Cyanlines indicate
-the outline of Lifeact-mCherry cells.
-(J) Time series shows contact-free protrusion from box 1 in (I).
-(K) Time series of contact protrusion from box 2 in (I). White arrowheads designate highly focused srGAP2 accumulation at the cell edge.
-(L) Kymograph analysis of srGAP2 dynamics in contact-free and contact protrusions. White line depicts cell border and deﬁnes the overlap region.
-(M) Subcellular dynamics of exogenously expressed srGAP2 mutants in contact-free and contact protrusions analyzed by TIRF microscopy. White linesindicate
-cell-cell overlaps. White arrowheads point toward srGAP2 enrichment.
-Scale bars, 20mm (A), 5mm (B and J–M), and 10mm (E and I). See alsoFigures S3and S4.
-86 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-0
-20
-40
-60
-80
-100
-120
-D
- Lifeact-GFP NLS-mCherry
-DAPI Overlay
-BA
-3h
-3h
-Lifeact-GFP/NLS-mCherry cells
-transfected with siRNA
-seeded on top of monolayer
-Lifeact-GFP/NLS-mCherry cells 
-fully integrated in monolayer
-Fixation and DAPI staining
-WT fibroblast monolayer seeded
-Intact cell repulsion
-Deficient cell repulsion
-Lifeact-GFP/NLS-mCherry cell
-Wild type cell
-Overspread
-green cell
-Normally-spread
-green cell
-E
-Spreading of Lifeact-GFP/
-NLS-mCherry cell (% of control)c
-c
-c
-kd
-cc
-c
-cc
-kd
-kd
-kd
-c
-kdkd
-kd
-kdkd
-c
-c
-c
-c
-cc
-c
-cc
-kd
-kd
-kd
-kd
-kdkd
-kd
-kdkd
-0
-50
-100
-150
-200
-250
-300
-**
-ns
-***
-H
-Cell overlap (% of cell area)
-Slit2
-siRNA
-Control
-siRNA
-Robo4
-siRNA
-0
-20
-40
-60
-80
-100 ***
-***
-F
-G
-Robo
-Slit
-SrGAP
-HSPGs
-Cell 1
-Cell 2
-Normalized spreading of Lifeact-GFP/
-NLS-mCherry cell (% of control)
-siRNA: Control Srgap1Srgap2Srgap3Robo1Robo2Robo3Robo4 Slit1 Slit2 Slit
-3
-0
-20
-40
-60
-80
-100
-120
-140
-160
-180
-200
-*** ns ns
-ns
-ns
-***
-***
-*** *** ***
-C
-I J
-mRNA level (% of control)
-Slit2
-siRNA
-Control
-siRNA
-Robo4
-siRNA
-***
-***
-Monolayer bottom Monolayer middle Monolayer top
-Lifeact-GFP
-Lifeact-mCherry
-c = Control siRNA kd = Srgap2 siRNA
-L
-NM
-K
- Robo4
-EPI TIRF
-Slit2
-EPI TIRFControl siRNARobo4 siRNASlit2 siRNA
-Migratory tracks-240 min 495 min
-570 min240 min
-240 min0 min
-0 min-240 min
-* *
-** *
-* *
-*
-* ****
-*
-*
-*
-825 min240 min0 min-240 min
-*
-**
-*
-*
-*
-*
-*
-Normalized spreading of Lifeact-GFP/
-NLS-mCherry cell (% of control)mRNA level (% of control)
-*** *** *** *** ***
-*** ***
-***
-***
-**
-ns
-ns
-ns
-******
-Control Srgap1 Srgap2 Robo4 Slit2 Slit3
-123123123123123
-siRNA:
-Control Srgap1 Srgap2 Robo4 Slit2 Slit3
-123123123123123siRNA:
-0
-20
-40
-60
-80
-100
-120
-0
-20
-40
-60
-80
-100
-120
-140
-160
-180
-200
-Robo4 siRNA Slit2 siRNAControl siRNA Robo4 siRNA Slit2 siRNAControl siRNA
-Contact duration (min)
-0 200 400 600 800 1000
-Probability
-0
-0.1
-0.2
-0.3
-0.4
-0.5
-(legend on next page)
-Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc. 87
-EXPERIMENTAL PROCEDURES
-Characterization of Rac1 FRET Biosensors by Fluorometry and
-Microscopy
-Analysis of the ﬂuorescence emission spectra of the Rac1 sensor library, the
-different Rac1-2G mutants, as well as Rac1-2G’s responses to GEFs and
-GAPs were performed on a ﬂuorometer (Perkin Elmer LS50b). Typically, 23
-105 HEK293FT cells were seeded into a 12-well cell culture plate and trans-
-fected with 100 ng biosensor, 400 ng RhoGDI or GAPs, and 1,000 ng GEFs
-using Metafectene (Biontex). After 48 hr, cells were detached with brief trypsin
-treatment and resuspended in ice-cold PBS and cell suspensions were trans-
-ferred into a quartz cuvette. Rac1-2G was excited at 460 nm and emission
-spectra were recorded from 480 to 600 nm with a step of 0.5 nm. Spectra
-were background-subtracted with spectra of non-transfected cells and
-normalized according to their spectrum integral. Relative FRET was calculated
-by dividing the normalized ﬂuorescence intensity of Venus at its emission peak
-(528 nm) by the normalized ﬂuorescence intensity of mTFP1 at its emission
-peak (492 nm).
-Additionally, the impact of GEFs and GAPs on the Rac1-2G biosensor was
-measured by microscopy. Here, HEK293FT cells were transfected as
-described above, were seeded into a 96-well plate (Falcon) coated with
-10mg/mL PLL, and nine ﬁelds of view were acquired per experiment using a
-Plan Apo 103 objective and the Screening Acquisition Module in MetaMorph
-(Molecular Devices). The average ratio per ﬁeld of view was than calculated
-fromR100 cells.
-Microscopy Settings and Live-Cell Imaging
-Epiﬂuorescence and TIRF microscopy were performed on a Nikon Ti Eclipse
-inverted microscope equipped with a motorized stage, hardware-based auto-
-focus, and a TIRF module containing 491- and 561-nm solid-state lasers
-(Roper Scientiﬁc). MetaMorph (Molecular Devices) was used to control the mi-
-croscope; 440-, 470-, and 565-nm LEDs (CoolLED) were used as light sources
-in the epiﬂuorescence imaging regime. Images were acquired with an Orca R2
-CCD camera (Hamamatsu) at 16-bit depth. Epiﬂuorescence images were ac-
-quired using 103 Plan Apo and 603 Plan Apo VC objectives at binning 23 2.
-TIRF images were recorded using a 603Plan Apo TIRF objective. Live-cell im-
-aging was performed at 37/C14 C in Ham’s F12 medium (Gibco) supplemented
-with 2% fetal bovine serum (FBS), 4 mM L-Glutamine, and 100 U/ml
-penicillin/streptomycin. Filter sets (Chroma) were as follows: ET470/40x-
-59022bs-ET525/50 m (GFP); ET572/35x-59022bs-ET632/60 m (mCherry);
-ET572/35x-59006bs-ET632/60 m (mCherry combined with FRET imaging);
-430/24x-Q465L-ET480/40 m (mTFP1); 430/24x-Q465L-ET535/30 m (FRET);
-and ET402/15x-89100bs-ET455/50 m (DAPI). Confocal imaging was per-
-formed on a Zeiss LSM 510 Meta scanning microscope. Images were adjusted
-for brightness and contrast only using MetaMorph (Molecular Devices).
-Ratiometric FRET Imaging and Image Processing
-FRET imaging was performed as described previously (Fritz et al., 2013).
-Brieﬂy, NIH 3T3 cells infected with the Rac1 FRET biosensor were mixed
-with Lifeact-mCherry cells and seeded subconﬂuently to detect contact and
-contact-free protrusions in one sample. To assess the impact of srGAP2
-KD on Rac1 activation, we used NIH 3T3 cells stably expressing control or
-Srgap2shRNAs instead of siRNA-transfected cells to lower cell toxicity. Cells
-expressing low levels of the sensor were acquired with a 603Plan Apo TIRF or
-603 Plan Apo VC objective at binning 43 4 and 2-min time resolution. Donor
-and FRET images were acquired sequentially with exposure times%300 ms.
-Processing of epiﬂuorescence ratiometric datasets was performed with the
-Biosensor Processing Software 2.1 (Danuser laboratory:http://lccb.hms.
-harvard.edu/software.html). Subsequent image analysis was performed in
-MetaMorph (Molecular Devices). Ratio images are color-coded so that warm
-and cold colors represent high and low biosensor activity, respectively. The
-distribution of the biosensor was monitored in the donor channel. To visualize
-cell-cell overlap regions, borders of Lifeact-mCherry cells were generated
-based on binary images of the mCherry channel (Laplace1 function in
-MetaMorph [Molecular Devices]).
-Analysis and Quantiﬁcation of CIL
-CIL assays were started 48 hr after transfection of NIH 3T3 cells or primary
-MEFs with siRNAs. Cells (73 104) were seeded per well of a six-well plate
-and allowed to adhere on glass coated with 5mg/ml ﬁbronectin for 3 hr in
-DMEM supplemented with 10% FBS, 4 mM L-Glutamine, and 100 U/ml peni-
-cillin/streptomycin. Phase-contrast images subsequently were acquired for
-20 hr on a Nikon Ti Eclipse inverted microscope with a 103 Plan Fluor objec-
-tive. Cell nuclei were tracked using MetaMorph (Molecular Devices) software.
-Cells were tracked for equal time periods before and after cell-cell collision to
-yield two vectors that allowed for quantiﬁcation of the migrational direction.
-Figure 5. The Slit-Robo Pathway Mediates Cell-Cell Repulsion in Fibroblasts, Localizes to Contact-free Protrusions, and Regulates CIL
-(A) Outline of the monolayer integration assay used for siRNA screening.
-(B) Rationale for evaluation of contact-dependent cell-spreading phenotypes in the monolayer integration assay. Possible outcomes of cell contact-dependent
-spreading phenotypes are shown.
-(C) Confocal images show the cell monolayer taken 3 hr after seeding of Lifeact-GFP cells atop the Lifeact-mCherry monolayer.
-(D) EPI images of Lifeact-GFP/NLS-mCherry cells embedded within a monolayer of WT cells. Monolayer integrity and density was evaluated using the DAPI
-channel.
-(E) Average spreading of control andSrgap2 KD cells in conﬂuent monolayers is shown (n = 58, 63, 59, and 62 ﬁelds of view; Bonferroni multiple comparison test).
-(F) Schematic depiction of the Slit-Robo signaling pathway. The soluble ligand Slit is captured by HSPGs at the cell surface and presented to Robo receptors. The
-repulsive signal is further transduced via srGAP proteins to small Rho family GTPases.
-(G) Quantiﬁcation of contact-dependent spreading of Lifeact-GFP/NLS-mCherry cells embedded within monolayer cultures and treated with the indicated siRNA
-pools. Average spreading of multiple Lifeact-GFP/NLS-mCherry cells in one ﬁeld of view was measured (n = 193, 92, 50, 70, 97, 74, 73, 57, 57, 52, 58, 76, and 73
-ﬁelds of view; Bonferroni multiple comparison test).
-(H) Quantiﬁcation of contact-dependent spreading of Lifeact-GFP/NLS-mCherry cells embedded within monolayer cultures and treated with the indicated in-
-dividual siRNAs (top; n = 46, 34, 31, 46, 41, 34, 29, 29, 35, 39, 36, 37, 41, 29, 42, and 29 ﬁelds of view) and their respective knockdown efﬁciencies (bottom; mean ±
-SD; n = 2 measurements). Spreading analysis was performed as in (G). Bonferroni multiple comparison test.
-(I) Quantiﬁcation of cell-cell overlap of Lifeact-GFP cells transfected with siRNA pools and grown in Lifeact-mCherry monolayers is shown (n = 135, 86, and 101
-cells; Dunn’s multiple comparison test).
-(J) Knockdown efﬁciency of Robo4 and Slit2 siRNA pools as measured by qPCR is shown (mean ± SEM; n = 4 measurements; Bonferroni multiple
-comparison test).
-(K) Immunostaining for Slit2 and Robo4. TIRF and EPI channels are shown in pseudocolors. White arrowheads denote enrichment of these proteins at the
-leading edge.
-(L) Phase-contrast time series of control andRobo4 and Slit2 KD cells treated with siRNA pools during cell collision. Migration trajectories are summarized (right).
-Black arrowheads designate contacts between cell edges. Timescale, minutes.
-(M) Scaled cell-displacement vectors of colliding cells as inFigure 2E are shown (n = 22 control, 24Robo4 KD, and 23Slit2 KD cells).
-(N) Distribution of cell-cell contact duration (n = 17, 13, and 17 collisions of control,Robo4, andSlit2 KD cells, respectively).
-Boxplots show median, IQR (box), 1.5 IQR (whiskers), and outliers (dots). **p < 0.01, ***p < 0.001; ns, not signiﬁcant. Scale bars, 10mm (C), 20mm (K), 40mm (L),
-and 50mm (D). See alsoFigure S1.
-88 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-Cell displacement vectors are presented as inCarmona-Fontaine et al.(2008).
-The length of vectors before collision was normalized and vectors aligned. The
-length of each post-collision vector was scaled accordingly to show the rela-
-tive cell displacement after cell-cell collision. Contact time was determined
-based on images taken in 15-min steps.
-Single-Cell Migration and Wound-Healing Assay
-All cell migration assays were performed 48 hr post-transfection with siRNAs.
-For single-cell migration, 1.53 102 NIH 3T3 Lifeact-GFP/nuclear localization
-sequence (NLS)-mCherry cells transfected with siRNAs were seeded per
-well of a culture insert (80209, Ibidi) mounted on 24-mm glass coverslips
-coated with 5mg/ml ﬁbronectin. Cells were allowed to adhere for 3 hr in
-DMEM supplemented with 10% FBS, 4 mM L-Glutamine, and 100 U/ml peni-
-cillin/streptomycin before removal of the culture insert and imaging. For
-wound-healing assays, 3 3 103 NIH 3T3 Lifeact-GFP/NLS-mCherry cells
-transfected with siRNAs were mixed with 1.23 104 untransfected NIH 3T3
-WT cells and seeded into one chamber of a culture insert (80209, Ibidi)
-mounted on 24-mm glass coverslips coated with 5mg/ml ﬁbronectin. Cells
-were allowed to adhere for 3 hr in DMEM supplemented with 10% FBS,
-4 mM L-Glutamine, and 100 U/ml penicillin/streptomycin before removing
-the culture insert and introducing a scratch wound with a pipette tip. Cells
-were imaged in Ham’s F12 medium (Gibco) supplemented with 2% FBS,
-4 mM L-Glutamine, and 100 U/ml penicillin/streptomycin on a Nikon Ti Eclipse
-inverted microscope with a 103 Plan Fluor objective. Transmitted light
-(binning 23 2) and mCherry (binning 83 8) channels were recorded. A 103
-10 low-pass ﬁlter was applied to the mCherry channel to increase signal-to-
-noise ratio and nuclei were tracked using MetaMorph (Molecular Devices)
-software. Accumulated travel distance and directional persistence were calcu-
-lated with the Chemotaxis and Migration Tool 2.0 (Ibidi), and migratory tracks
-were generated with Origin 8 software (OriginLab).
-Cell Contact-Dependent Cell-Spreading Assay
-To measure contact-dependent cell spreading, 1.53 105 untransfected NIH
-3T3 WT cells were seeded in DMEM supplemented with 10% FBS, 4 mM
-L-Glutamine, and 100 U/ml penicillin/streptomycin (complete medium) into a
-24-well plate (Genetix) coated with 5mg/ml ﬁbronectin. Cells were centrifuged
-at 2003 g for 2 min at room temperature and allowed to form a monolayer for
-3h ra t3 7/C14 C. Subsequently, the monolayer was rinsed three times with com-
-plete medium and 33 104 Lifeact-GFP/NLS-mCherry cells transfected with
-siRNAs were seeded atop the monolayer and cultured for 3 hr in complete
-medium at 37/C14 C. In parallel, 53 103 siRNA-treated Lifeact-GFP/NLS-mCherry
-cells were sparsely seeded to assess the impact of each siRNA on intrinsic cell
-spreading. The monolayer was then rinsed three times with PBS to remove
-non-integrated Lifeact-GFP/NLS-mCherry cells and ﬁxed in parallel with the
-isolated cells in 4% paraformaldehyde for 10 min at room temperature. All cells
-were stained with DAPI (Molecular Probes). GFP, mCherry, and DAPI images
-of/C24 500 cells per ﬁeld of view were acquired using the Screening Acquisition
-Module in MetaMorph (Molecular Devices). Per condition and experiment,
-AB CD E
-F
-GH
-Figure 6. Construction and Characterization of a Single-Chain, Genetically Encoded Rac1 FRET Biosensor
-(A) Rac1-second generation (Rac1-2G) biosensor architecture. A PAK1-binding domain (PBD) is used to sense Rac1 nucleotide loading status. Rac1-2Gcontains
-circular permutation (cp) 227 of monomeric Teal ﬂuorescent protein 1 (mTFP1; FRET donor) and cp229 of Venus (FRET acceptor).
-(B) Fluorescence spectrum of active and inactive Rac1 sensor. HEK293FT cells were transfected with Rac1-2G alone (ON state) or in presence of RhoGDI (OFF
-state) and measured using ﬂuorometry. Spectrum was normalized by the area under the curve.
-(C) Evaluation of Rac1-2G biosensor mutants in HEK293FT cells by ﬂuorometry is shown (n = 3 experiments; Bonferroni multiple comparison test).
-(D) Evaluation of Rac1-2G in response to coexpression of upstream regulators in HEK293FT cells using ﬂuorometry. Full-length CdGAP (CdGAP FL) and
-the constitutively active, truncated CdGAP (CdGAPDN) can act as Rac1 GAP (Lamarche-Vane and Hall, 1998). p50RhoGAP is a GAP for Rac1, Cdc42, and
-RhoA, while Rap GAP is Rap1 speciﬁc. Dbl and Vav1 are Rac1-speciﬁc GEFs, while C3G is a Rap1-speciﬁc GEF (nR 2 experiments; Bonferroni multiple
-comparison test).
-(E) Evaluation of WT and Y40C mutant Rac1-2G ER in REF52 ﬁbroblasts. Rac1-2G activation (top) and distribution (mTFP1 channel; bottom) are shown.
-(F) Fluorescence intensity and ER proﬁles across lines shown in (E). ERs are scaled identically in both cells.
-(G) Analysis of Rac1 activation patterns (ratio) in REF52 ﬁbroblasts stimulated with 40 ng/ml platelet-derived growth factor. Biosensor distribution is shown in the
-FRET channel.
-(H) Kymograph analysis of Rac1 activation dynamics during edge extension/retraction measured along lines in (G).
-Scale bars, 40mm (E) and 20mm (G). See alsoFigures S5and S6.
-Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc. 89
-64 ﬁelds of view were recorded, and only ﬁelds of view with similar numbers of
-DAPI-positive cells were considered for analysis to obtain similar cell densities.
-Total cell surface per ﬁeld of view was measured in the GFP channel and
-divided by the number of NLS-mCherry-positive cells to obtain an average
-cell spreading per ﬁeld of view. Contact-dependent spreading in the mono-
-layer was normalized by cell spreading of sparse cells to correct for the effect
-of siRNA treatment on intrinsic cell spreading.
-Correlation Analysis of Cell Edge Curvature and srGAP2 Amount at
-the Cell Edge
-We calculated a correlation coefﬁcient for the local curvature of the cell edge
-and the intensity of the ﬂuorescent signal at the cell edge in that point. To this
-end, we developed a MATLAB-based pipeline, which includes the following
-steps (Figure S3): image segmentation, boundary extraction, calculation of
-the boundary curvature, readout of ﬂuorescent signal intensity at the cell
-boundary, and correlation analysis of curvature and intensity. Single-plane
-confocal images were segmented based on the image intensity gradient.
-The boundary of the cell was then extracted with the MATLAB function
-bwboundaries. Points that belong to the border of the acquired image
-were eliminated from the cell boundary. The longest continuous curve
-representing cell boundary,b was parameterized in the following way:
-bðx; yÞ = bðxðiÞ; yðiÞÞ, wherexðiÞ and yðiÞ are x and y coordinates of theith pixel
-along the border. This discrete parameterizationb was ﬁtted with the third-
-order polynomial spline (spap2 MATLAB function) to obtain a smooth param-
-eterizationb = bðxðtÞ; yðtÞÞ. The third-order polynomial spline was chosen to
-ensure continuity of the second-order derivatives of the parameterization,
-necessary to calculate curvature. The number of pixels ﬁtted with one spline
-was typically set to 20. Finally, curvature was calculated according to the
-formula
-k = x0y00 /C0 y0x00
-ðx02 + y02Þ3=2;
-AB
-CD E
-FG H I
-Figure 7. SrGAP2-Dependent Rac1 Activation Dynamics in Contact Protrusions
-(A) Rac1 activation in contact-free protrusions. Rac1 activation (ratio) and biosensor localization (mTFP1 channel) are shown. Warm and cold colors represent
-high and low Rac1 activation/distribution, respectively.
-(B) Rac1 activation in contact protrusions. Lifeact-mCherry neighboring cells are shown in pseudocolor in EPI and TIRF images. White or black lines deﬁne cell-
-cell overlap regions according to the Lifeact-mCherry channel. White arrowhead denotes spatially restricted Rac1 activation at the cell edge.
-(C) Time series of contact-free protrusions from (A) and contact protrusions from (B). Ratio scaling is identical as in (A) and (B). White arrowheads denote transient
-focused Rac1 activation bands.
-(D and E) Quantiﬁcation of Rac1 activity at the tip of contact protrusions (D) and contact protrusion size (E). Graphs represent mean ± SEM; n = 33 protrusion
-events from 11 cells; Dunn’s multiple comparison test.
-(F) Time series of Rac1 activation dynamics in control andSrgap2 KD cells stably expressing shRNAs. White arrowheads indicate focused Rac1 activity.
-(G and H) Quantiﬁcation of Rac1 activity (G) at the tip of contact protrusion and contact protrusion size (H) in control andSrgap2 KD cells (n = 26 and 24 protrusive
-events measured in ten control and sixSrgap2 KD cells, respectively). Graph shows mean ± SEM. Dunn’s multiple comparison test was used to compare
-between shRNAs.
-(I) Kymograph analysis of Rac1 activation dynamics in contact-free protrusions in control andSrgap2 KD cells is shown.
-All timescales, minutes:seconds. All scale bars, 5mm. *p < 0.05, **p < 0.01, ***p < 0.001.
-90 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-where 0 denotes derivative. Image intensity was read out from the nearest pixel
-along the smooth border b. The Spearman correlation coefﬁcient (corr
-MATLAB function) was then calculated between the extracted image intensity
-at boundary and the cell edge curvature.
-For time-lapse data, TIRF images were preliminarily segmented with a
-threshold-based ﬁlter (im2bw MATLAB function). The preliminarily segmented
-images were used as a mask for an active contour segmentation (activecon-
-tour MATLAB function).
-Statistical Analysis
-Statistical analysis was conducted with Prism5 software (GraphPad). D’Agos-
-tino and Pearson omnibus normality test was used to check for Gaussian dis-
-tribution before comparing groups. Datasets containing two groups were
-analyzed by two-tailed, unpaired Student’s t test (Gaussian distribution) or
-by Mann-Whitney test (non-Gaussian distribution). Datasets composed of
-three and more groups were analyzed by one-way ANOVA followed by Bonfer-
-roni multiple comparison tests (Gaussian distribution) or by Dunn’s multiple
-comparison tests (non-Gaussian distribution). Sample sizes of sufﬁcient power
-were chosen based on similar published research. Experiments were not ran-
-domized and investigators were not blinded. Statistical signiﬁcant differences
-are reported at *p < 0.05, **p < 0.01, and ***p < 0.001.
-ACCESSION NUMBERS
-The accession numbers for the three biosensor constructs reported in this
-paper are Addgene: 66110 (pTriEx-Rac1-2G), 66111 (pLenti-Rac1-2G), and
-66112 (pAd/CMV/V5-DEST-Rac1-2G).
-SUPPLEMENTAL INFORMATION
-Supplemental Information includes Supplemental Experimental Procedures,
-six ﬁgures, and eight movies and can be found with this article online at
-http://dx.doi.org/10.1016/j.devcel.2015.09.002.
-AUTHOR CONTRIBUTIONS
-R.D.F. and O.P. conceived the project and wrote the paper. R.D.F. conducted
-most experiments. D.M. developed computational tools and performed corre-
-lation analysis and quantiﬁcation of cell edge dynamics. K.M. performed FRET
-experiments and created stable cell lines. V.P. performed wound-healing and
-single-cell migration experiments. A.R. constructed and characterized the
-Rac1 FRET biosensor.
-CONFLICTS OF INTEREST
-D.M. is an employee of Bayer Technology Systems.
-ACKNOWLEDGMENTS
-We are grateful to G. Bokoch, X. Bustelo, L. Fusco, A. Howe, M. Kaeser,
-N. Lamarche-Vane, F. Polleux, J. de Rooij, M. Schwartz, and R. Zeller for
-sharing reagents. We also thank A. Erni and G. Roest for technical assistance.
-This work was supported by grants from the Swiss Cancer League and the
-Swiss National Science Foundation to O.P., University of Basel postdoctoral
-fellowship to R.D.F., and University of Verona Cooperint grant to V.P.
-Received: March 11, 2015
-Revised: August 6, 2015
-Accepted: September 9, 2015
-Published: October 1, 2015
-REFERENCES
-Abercrombie, M., and Heaysman, J.E. (1953). Observations on the social
-behaviour of cells in tissue culture. I. Speed of movement of chick heart ﬁbro-
-blasts in relation to their mutual contacts. Exp. Cell Res.5, 111–131.
-Abercrombie, M., and Heaysman, J.E. (1954). Observations on the social
-behaviour of cells in tissue culture. II. Monolayering of ﬁbroblasts. Exp. Cell
-Res.6, 293–306.
-Astin, J.W., Batson, J., Kadir, S., Charlet, J., Persad, R.A., Gillatt, D., Oxley,
-J.D., and Nobes, C.D. (2010). Competition amongst Eph receptors regulates
-contact inhibition of locomotion and invasiveness in prostate cancer cells.
-Nat. Cell Biol.12, 1194–1204.
-Bement, W.M., and von Dassow, G. (2014). Single cell pattern formation and
-transient cytoskeletal arrays. Curr. Opin. Cell Biol.26, 51–59.
-Burridge, K., and Wennerberg, K. (2004). Rho and Rac take center stage. Cell
-116, 167–179.
-Carmona-Fontaine, C., Matthews, H.K., Kuriyama, S., Moreno, M., Dunn, G.A.,
-Parsons, M., Stern, C.D., and Mayor, R. (2008). Contact inhibition of locomo-
-tion in vivo controls neural crest directional migration. Nature456, 957–961.
-Charrier, C., Joshi, K., Coutinho-Budd, J., Kim, J.E., Lambert, N., de
-Marchena, J., Jin, W.L., Vanderhaeghen, P., Ghosh, A., Sassa, T., and
-Polleux, F. (2012). Inhibition of SRGAP2 function by its human-speciﬁc paral-
-ogs induces neoteny during spine maturation. Cell149, 923–935.
-Davis, J.R., Luchici, A., Mosis, F., Thackery, J., Salazar, J.A., Mao, Y., Dunn,
-G.A., Betz, T., Miodownik, M., and Stramer, B.M. (2015). Inter-cellular forces
-orchestrate contact inhibition of locomotion. Cell161, 361–373.
-Dennis, M.Y., Nuttle, X., Sudmant, P.H., Antonacci, F., Graves, T.A., Nefedov,
-M., Rosenfeld, J.A., Sajjadian, S., Malig, M., Kotkiewicz, H., et al. (2012).
-Evolution of human-speciﬁc neural SRGAP2 genes by incomplete segmental
-duplication. Cell149, 912–922.
-Desai, R.A., Gopal, S.B., Chen, S., and Chen, C.S. (2013). Contact inhibition of
-locomotion probabilities drive solitary versus collective cell migration. J. R.
-Soc. Interface10, 20130717.
-Fengos, G., Schmidt, A., Martin, K., Fluri, E., Aebersold, R., Iber, D., and Pertz,
-O. (2014). Spatial proteomic and phospho-proteomic organization in three
-prototypical cell migration modes. Proteome Sci.12,2 3.
-Fritz, R.D., Letzelter, M., Reimann, A., Martin, K., Fusco, L., Ritsma, L.,
-Ponsioen, B., Fluri, E., Schulte-Merker, S., van Rheenen, J., and Pertz, O.
-(2013). A versatile toolkit to produce sensitive FRET biosensors to visualize
-signaling in time and space. Sci. Signal.6, rs12.
-Frost, A., Perera, R., Roux, A., Spasov, K., Destaing, O., Egelman, E.H., De
-Camilli, P., and Unger, V.M. (2008). Structural basis of membrane invagination
-by F-BAR domains. Cell132, 807–817.
-Frost, A., Unger, V.M., and De Camilli, P. (2009). The BAR domain superfamily:
-membrane-molding macromolecules. Cell137, 191–196.
-Guerrier, S., Coutinho-Budd, J., Sassa, T., Gresset, A., Jordan, N.V., Chen, K.,
-Jin, W.L., Frost, A., and Polleux, F. (2009). The F-BAR domain of srGAP2 in-
-duces membrane protrusions required for neuronal migration and morphogen-
-esis. Cell138, 990–1004.
-Heasman, S.J., and Ridley, A.J. (2008). Mammalian Rho GTPases: new in-
-sights into their functions from in vivo studies. Nat. Rev. Mol. Cell Biol.9,
-690–701.
-Huttenlocher, A., Lakonishok, M., Kinder, M., Wu, S., Truong, T., Knudsen,
-K.A., and Horwitz, A.F. (1998). Integrin and cadherin synergy regulates contact
-inhibition of migration and motile activity. J. Cell Biol.141, 515–526.
-Jones, C.A., London, N.R., Chen, H., Park, K.W., Sauvaget, D., Stockton, R.A.,
-Wythe, J.D., Suh, W., Larrieu-Lahargue, F., Mukouyama, Y.S., et al. (2008).
-Robo4 stabilizes the vascular network by inhibiting pathologic angiogenesis
-and endothelial hyperpermeability. Nat. Med.14, 448–453.
-Kraynov, V.S., Chamberlain, C., Bokoch, G.M., Schwartz, M.A., Slabaugh, S.,
-and Hahn, K.M. (2000). Localized Rac activation dynamics visualized in living
-cells. Science290, 333–337.
-Kurokawa, K., Itoh, R.E., Yoshizaki, H., Nakamura, Y.O., and Matsuda, M.
-(2004). Coactivation of Rac1 and Cdc42 at lamellipodia and membrane rufﬂes
-induced by epidermal growth factor. Mol. Biol. Cell15, 1003–1010.
-Kutys, M.L., and Yamada, K.M. (2014). An extracellular-matrix-speciﬁc GEF-
-GAP interaction regulates Rho GTPase crosstalk for 3D collagen migration.
-Nat. Cell Biol.16, 909–917.
-Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc. 91
-Lamarche, N., Tapon, N., Stowers, L., Burbelo, P.D., Aspenstro¨ m, P., Bridges,
-T., Chant, J., and Hall, A. (1996). Rac and Cdc42 induce actin polymerization
-and G1 cell cycle progression independently of p65PAK and the JNK/SAPK
-MAP kinase cascade. Cell87, 519–529.
-Lamarche-Vane, N., and Hall, A. (1998). CdGAP, a novel proline-rich GTPase-
-activating protein for Cdc42 and Rac. J. Biol. Chem.273, 29172–29177.
-Li, X., Chen, Y., Liu, Y., Gao, J., Gao, F., Bartlam, M., Wu, J.Y., and Rao, Z.
-(2006). Structural basis of Robo proline-rich motif recognition by the srGAP1
-Src homology 3 domain in the Slit-Robo signaling pathway. J. Biol. Chem.
-281, 28430–28437.
-Machacek, M., Hodgson, L., Welch, C., Elliott, H., Pertz, O., Nalbant, P., Abell,
-A., Johnson, G.L., Hahn, K.M., and Danuser, G. (2009). Coordination of Rho
-GTPase activities during cell protrusion. Nature461, 99–103.
-Martin, K., Vilela, M., Jeon, N.L., Danuser, G., and Pertz, O. (2014). A growth
-factor-induced, spatially organizing cytoskeletal module enables rapid and
-persistent ﬁbroblast migration. Dev. Cell30, 701–716.
-Matthews, H.K., Marchant, L., Carmona-Fontaine, C., Kuriyama, S., Larraı´n, J.,
-Holt, M.R., Parsons, M., and Mayor, R. (2008). Directional migration of neural
-crest cells in vivo is regulated by Syndecan-4/Rac1 and non-canonical Wnt
-signaling/RhoA. Development135, 1771–1780.
-Mayor, R., and Carmona-Fontaine, C. (2010). Keeping in touch with contact in-
-hibition of locomotion. Trends Cell Biol.20, 319–328.
-Nalbant, P., Hodgson, L., Kraynov, V., Toutchkine, A., and Hahn, K.M. (2004).
-Activation of endogenous Cdc42 visualized in living cells. Science305, 1615–
-1619.
-Pertz, O. (2010). Spatio-temporal Rho GTPase signaling - where are we now?
-J. Cell Sci.123, 1841–1850.
-Pertz, O., Hodgson, L., Klemke, R.L., and Hahn, K.M. (2006). Spatiotemporal
-dynamics of RhoA activity in migrating cells. Nature440, 1069–1072.
-Pertz, O.C., Wang, Y., Yang, F., Wang, W., Gay, L.J., Gristenko, M.A., Clauss,
-T.R., Anderson, D.J., Liu, T., Auberry, K.J., et al. (2008). Spatial mapping of the
-neurite and soma proteomes reveals a functional Cdc42/Rac regulatory
-network. Proc. Natl. Acad. Sci. USA105, 1931–1936.
-Ridley, A.J. (2006). Rho GTPases and actin dynamics in membrane protru-
-sions and vesicle trafﬁcking. Trends Cell Biol.16, 522–529.
-Riedl, J., Crevenna, A.H., Kessenbrock, K., Yu, J.H., Neukirchen, D., Bista, M.,
-Bradke, F., Jenne, D., Holak, T.A., Werb, Z., et al. (2008). Lifeact: a versatile
-marker to visualize F-actin. Nat. Methods5, 605–607.
-Scarpa, E., Szabo´ , A., Bibonne, A., Theveneau, E., Parsons, M., and Mayor, R.
-(2015). Cadherin Switch during EMT in Neural Crest Cells Leads to Contact
-Inhibition of Locomotion via Repolarization of Forces. Dev. Cell34, 421–434.
-Sugiyama, N., Gucciardo, E., Tatti, O., Varjosalo, M., Hyytia¨ inen, M., Gstaiger,
-M., and Lehti, K. (2013). EphA2 cleavage by MT1-MMP triggers single cancer
-cell invasion via homotypic cell repulsion. J. Cell Biol.201, 467–484.
-Takai, Y., Miyoshi, J., Ikeda, W., and Ogita, H. (2008). Nectins and nectin-like
-molecules: roles in contact inhibition of cell movement and proliferation. Nat.
-Rev. Mol. Cell Biol.9, 603–615.
-Theveneau, E., Marchant, L., Kuriyama, S., Gull, M., Moepps, B., Parsons, M.,
-and Mayor, R. (2010). Collective chemotaxis requires contact-dependent cell
-polarity. Dev. Cell19, 39–53.
-Wong, K., Ren, X.R., Huang, Y.Z., Xie, Y., Liu, G., Saito, H., Tang, H., Wen, L.,
-Brady-Kalnay, S.M., Mei, L., et al. (2001). Signal transduction in neuronal
-migration: roles of GTPase activating proteins and the small GTPase Cdc42
-in the Slit-Robo pathway. Cell107, 209–221.
-Ypsilanti, A.R., Zagar, Y., and Che´ dotal, A. (2010). Moving away from the
-midline: new developments for Slit and Robo. Development137, 1939–1952.
-Zaidel-Bar, R., Joyce, M.J., Lynch, A.M., Witte, K., Audhya, A., and Hardin, J.
-(2010). The F-BAR domain of SRGP-1 facilitates cell-cell adhesion during
-C. elegans morphogenesis. J. Cell Biol.191, 761–769.
-92 Developmental Cell35, 78–92, October 12, 2015ª2015 Elsevier Inc.
-  
-Developmental Cell 
-Supplemental Information 
-SrGAP2-Dependent Integration of Membrane Geometry  
-and Slit-Robo Repulsive Cues Regulates  
-Fibroblast Contact Inhibition of Locomotion  
-Rafael Dominik Fritz, Denis Menshykau, Katrin Martin, Andreas Reimann, Valeria 
-Pontelli, and Olivier Pertz 
-	  
-Supplemental	  Figures	  and	  Legends	  	  
-	  	  Figure	  S1.	  Related	  to	  Figures	  2,	  3,	  and	  5.	  Slit2-­‐Robo4-­‐srGAP2	  signaling	  regulates	  CIL	  in	  primary	  MEFs.	  	  (A)	  QPCR	  analysis	  of	  srGAP2	  KD	  efficiency.	  Mean	  ±	  SD	  of	  n	  =	  2	  measurements.	  (B)	  Phase	  contrast	  time	  series	   of	   cell	   collision	   between	   control	   and	  srGAP2	  KD	   cells	   treated	   with	   siRNA	   pools.	   Migration	  trajectories	   are	   summarized	   to	   the	   right.	   Black	   arrowheads	   designate	   cell-­‐cell	   contacts.	   Time	   scale,	  minutes.	  (C)	  Scaled	  cell-­‐displacement	  vectors	  of	  colliding	  cells	  as	  described	  in	  Figure	  2E.	  n	  =	  21	  control	  and	  20	  srGAP2	  KD	  cells.	  (D)	  Distribution	  of	  cell-­‐cell	  contact	  duration	  in	  control	  and	  srGAP2	  KD	  cells.	  n	  =	  16	  and	  15	  collisions	  of	  control	  and	  srGAP2	  KD	  cells,	  respectively.	  (E)	  Quantification	  of	  cell	  spreading	  in	   monolayers	   (left	   panel)	   and	   subconfluent	  cells	   (right	   panel)	   transfected	   with	   siRNA	   pools	   as	  indicated.	   Note	   that	   srGAP2	   regulates	   contact-­‐dependent	   spreading	   only.	   n	   =	   113	   and	   166	   cells	  (monolayer),	  121	  and	  174	  cells	  (subconfluent).	  Mann-­‐Whitney	  test.	  ***	  p	  <	  0.001;	  ns,	  not	  significant.	  Boxplots	   with	   median,	   IQR	   (box)	   and	   1.5	   IQR	   (whiskers),	   outliers	   are	   represented	   by	   dots.	  (F)	  Time	  series	   of	   contact	   and	   contact-­‐free	   protrusions.	   TIRF	   images	   of	   Lifeact-­‐mCherry	   cell	   are	  shown	   in	  
-BA
-Control siRNASrGAP2 siRNA
-Migratory tracks
-E
-F G
-J
-K
-H
-I
-DC
-SrGAP2 siRNAControl siRNA SrGAP2 siRNA
-Control siRNA
-Cell-cell contact No cell-cell contact
-Contact duration (min)
-0 200 400 600 800 1000
--135 min 360 min
-360 min210 min
-135 min0 min
-0 min-135 min
-*
-*
-*
-*
-*
-*
-*
-*
-*
-**
-**
-*
-*
-*Probability
-0
-0.1
-0.2
-0.3
-0.4
-0.5
-Control siRNARobo4 siRNASlit2 siRNA
-Migratory tracks-360 min 750 min
-570 min360 min
-360 min0 min
-0 min-360 min
-* * ** * * *
-*
-*****
-*
-*
-*
-540 min240 min0 min-240 min
-* *
-**
-*
-*
-*
-*
-Robo4 siRNA Slit2 siRNAControl siRNA
-Robo4 siRNA Slit2 siRNAControl siRNA
-Contact duration (min)
-0 200 400 600 800 1000
-Probability
-0
-0.05
-0.10
-0.15
-0.20
-0.25
-0.30
-0.35
-0.40
-0.45
-SrGAP2 mRNA level (% of control)Control
-siRNA
-SrGAP2
-siRNA
-0
-20
-40
-60
-80
-100
-120
-0
-20
-40
-60
-80
-100
-120mRNA level (% of control)
-Cell spreading (% of control)
-Slit2
-siRNA
-Control
-siRNA
-Robo4
-siRNA
-Control
-siRNA
-SrGAP2
-siRNA
-Control
-siRNA
-SrGAP2
-siRNA
-Lifeact-mCherry fluorescence
-(a.i.)
-Distance (µm)
-02 . 5 5 7 . 5 1 0
-0.4
-0.8
-0.6
-1.2
-1.0
-1.4
-1.6
-Contact protrusion
-Contact-free protrusion
-Contact-free
-protrusion
-00:30 02:00 02:30 05:00 07:00 13:30
-Contact
-protrusion
-Overlap
-16:30 17:30 18:00 21:00 27:0022:00
-0
-100
-200
-300
-400
-0
-200
-400
-600500 *** ns
-
-	  
-inverted	   black-­‐white	   contrast.	   Magenta	   line	   outlines	   cell-­‐cell	   overlap.	  Time	   scale,	   minutes:seconds.	  (G)	  Linescans	  of	  normalized	  F-­‐actin	  intensity	  in	  contact	  and	  contact-­‐free	  protrusions	  imaged	  by	  TIRF.	  Graph	   displays	   Mean	   ±	   SEM	   for	   n	   =	   21	   protrusions	   for	   each	   condition.	  (H)	  QPCR	   analysis	   of	  knockdown	   efficiency	   of	   pooled	   siRNAs.	  Mean	   ±	   SD	   of	   n=2	   measurements.	  (I)	  Phase	   contrast	   time	  series	  of	  cell	  collision	  between	  control,	  Robo4	  and	  Slit2	  KD	  cells	  treated	  with	  siRNA	  pools.	  Migration	  trajectories	   are	   summarized	   to	   the	   right.	   Black	   arrowheads	   designate	   cell-­‐cell	   contacts.	   Time	   scale,	  minutes.	  (J)	  Scaled	  cell-­‐displacement	  vectors	  of	  colliding	  cells	  as	  described	  in	  Figure	  2E.	  n	  =	  21	  control,	  21	  Robo4	  KD	   and	   22	  Slit2	  KD	  cells.	  (K)	  Distribution	   of	   cell-­‐cell	   contact	   duration.	   n	   =	   20,	   21	   and	   18	  collisions	  of	  control,	  Robo4	  and	  Slit2	  KD	  cells,	  respectively.	  Scale	  bars,	  50µm	  (B,I)	  and	  5µm	  (F).	  	   	  
-	  
-	  	  Figure	  S2.	   Related	   to	   Figures	   2	   and	   3.	  Additional	  characterization	  of	  protrusion	  dynamics	  using	  the	  Lifeact	  reporter.	  (A)	  Comparison	  of	  Lifeact-­‐mCherry	  and	  GFP-­‐CAAX	  as	  markers	  of	  cell	  dynamics	  in	  NIH	  3T3	   cells.	  (B)	  Zoom	   into	   the	   red	   box	   outlined	   in	   (A).	   Note	   that	   both	   markers	   overlap	   perfectly	   as	  shown	   in	   the	   overlay	   of	   the	   binary	   images	   of	   each	   channel.	  (C)	  Kymograph	   analysis	   of	   cell	   edge	  dynamics	   by	   Lifeact-­‐mCherry	   and	   GFP-­‐CAAX	   along	   red	   lines	   in	   (A).	   Composite	   images	   constructed	  from	  binary	  images	  of	  each	  channel	  show	  that	  both	  markers	  are	  well	  suited	  to	  faithfully	  track	  edge	  dynamics.	  (D)	  Schematics	  of	  contact-­‐free	   protrusions	   in	   isolated	   cells	   and	   cells	   engaged	   in	   cell-­‐cell	  overlap.	  (E-­‐G)	  Quantification	  of	  contact-­‐free	  protrusion	  dynamics	  in	  isolated	  cells	  and	  cells	  with	  cell-­‐cell	  overlap.	  The	  total	  edge	  movement	  (E),	  net	  edge	  movement	  (F)	  and	  persistence	  of	  movement	  (G)	  are	  shown.	  n	  =	  37	  and	  54	  kymographs.	  Note	  that	  the	  two	  conditions	  were	  obtained	  from	  separate	  
--0.4
--0.2
-0.0
-0.2
-0.4
--30
--20
--10
-0
-10
-20
-30
-0
-20
-40
-60
-80
-100
-120
-Protrusion frequency Retraction frequency
-SrGAP2
-siRNA
-Control
-siRNA
-SrGAP2
-siRNA
-Control
-siRNA
-Contact-free protrusion Contact protrusion
-SrGAP2
-siRNA
-Control
-siRNA
-SrGAP2
-siRNA
-Control
-siRNA
-Contact-free protrusion Contact protrusion
-0
-5
-10
-15
-0
-5
-10
-15
-Protrusion frequency
-(events/200 min)
-Distance (µm/h)
-Distance (µm/h)
-Persistence (A.U.)
-Retraction frequency
-(events/200 min)
-ns
-ns
-ns
-ns
-A
-H
-E
-I
-F
-D
-G
-C
-B
-1
-2
-Lifeact-mCherry
-Lifeact-mCherry
-GFP-CAAX
-GFP-CAAX Composite
-Lifeact-mCherryGFP-CAAXComposite
-1
-1
-2
-2
-12
-Total edge movement
-(protrusion + retraction)
-Net edge movement
-Contact-free
-protrusion 
-(isolated cell)
-Contact-free
-protrusion 
-(contacting cell)
-Contact-free
-protrusion 
-(isolated cell)
-Contact-free
-protrusion 
-(contacting cell)
-Contact-free
-protrusion 
-(isolated cell)
-Contact-free
-protrusion 
-(contacting cell)
-Contact-free
-protrusion 
-(isolated cell)
-Contact-free
-protrusion 
-(contacting cell)
-Persistence of movement
-*********
-	  
-experiments.	  Two-­‐tailed	  unpaired	  Student’s	  t-­‐test	  (E)	  and	  Mann-­‐Whitney	  test	  (F,	  G)	  were	  applied.	  ***	  p	  <	  0.001.	  (H,I)	  Quantification	  of	  protrusion	  frequency	  (H)	  and	  retraction	  frequency	  (I)	  of	  contact-­‐free	  and	   contact	   protrusions	   measured	   in	   control	   and	  srGAP2	   KD	  cells.	  n	   =	  87,	   64,	   54,	   39	   kymographs.	  Bonferroni’s	  multiple	  comparison	  test	  was	  used	  to	  compare	  conditions;	  ns,	  not	  significant.	  	  All	   boxplots	   with	   median,	   IQR	   (box)	   and	   1.5	   IQR	   (whiskers),	   outliers	   are	   represented	   by	   dots.	  Scale	  bars,	  20µm	  (A)	  and	  5µm	  (B).	  	   	  
-	  
-	  	  Figure	  S3.	  Related	  to	  Figure	  4.	  Correlation	  of	  srGAP2	  signal	  intensity	  and	  cell	  edge	  curvature.	  	  (A)	  Overview	  of	  image	  analysis	  pipeline.	  The	  source	  image	  displaying	  a	  protrusion	  immunostained	  for	  srGAP2	   is	   segmented	   so	   that	   black	   and	   white	  colors	  represent	   background	   and	   cell	   interior,	  
-Object border (pixel)
-02 0 0 4 0 0 6 0 0
-D
-Intensity increases 
-with curvature
-Source image
-(immunostaining for srGAP2)
-Image segmentation
-Cell border extraction
-Interpolation of cell border
-Curvature-Intesity correlation
-Calculation of Spearman
-correlation coefficient [r]
-Image segmentation
-Object border (pixel)
-Fluorescence
-(a.i.)
-Curvature
-(1/px)
-0
-0
-0.01
-0.02
-0.03
-0.04
-200 400 600
-50
-100
-150
-200
-250
-300
-E
-−0.01 0 0.01 0.02
-190
-200
-210
-220
-230
-240
-250
-260
-Curvature of test object (1/px) Curvature of test object (1/px)
- 
-Signal intensity (a.u.)
-r=0.769
-r=0.69
-0.03 0.04
-BA
-F
-HI J
-K
-G
-C
-Intensity randomly assigned
-to curvature
-Cell border
-Extraction of curvature and intensity
-Calculation of Spearman correlation coefficient
-−0.01 0 0.01 0.02
-50
-100
-150
-200
-250
-300
-0.03 0.04
- 
-r=-0.0432
-Test object
-Cell border
-0
-2
-4
-6
-8
-Curvature
-Signal intensity
--0.1 0 0.1
-Distance (µm)
-Distance (µm)
-Distance (µm)
-SrGAP2Robo4
-Linescan along cell edge
-GFP-CAAX
-1
-2
-SrGAP2 IgG
-Fluorescence (A.I.)Fluorescence (A.I.)
-Fluorescence (A.I.)
-Robo4Composite SrGAP2
-Robo4 + srGAP2
-05 1 0 1 5 2 0 2 5 3 0 3 5
-0
-100
-200
-300
-SrGAP2GFP-CAAX
-Cell edge
-SrGAP2Robo4
-1
-2
-05 1 0 2 0 3 0
-Cell edge
-Convex edge (1) Concave edge (2)
-Linescan 1 Linescan 2
-05 1 0 2 0 3 0
-0
-100
-200
-300
-01234 01234
-0
-50
-100
-150
-200
-250
-	  
-respectively.	  The	  cell	  border	  is	  extracted	  (red	  line).	  The	  extracted	  border	  is	  then	  interpolated	  by	  3rd-­‐order	   polynomial	   splines	   yielding	   the	   interpolated	   border	   (cyan	   line).	   Based	   on	   the	   interpolated	  border,	  signal	  intensity	  and	  curvature	  values	  are	  extracted	  along	  the	  border	  and	  plotted.	  Spearman	  correlation	   coefficient	  (r)	   is	   calculated	   to	   test	   for	   correlation.	   SrGAP2	   amount	   at	   the	   cell	   edge	  positively	  correlates	  with	  cell	  edge	  curvature	  as	  shown	  by	  the	  high	  Spearman’s	  correlation	  coefficient	  of	  r=0.69.	  (B)	  To	  validate	  the	  image	  analysis	  tool	  we	  created	  synthetic	  images	  where	  signal	  intensity	  was	  a	  linear	  function	  of	  the	  curvature	  (left	  panel)	  or	  a	  random	  uniform	  function	  (right	  panel).	  In	  the	  first	   case,	   signal	   intensity	   rises	   with	   increasing	   curvature	   and	   in	   the	   second	   case	   signal	   intensity	   is	  randomly	  assigned	  to	  curvature.	  (C)	  Image	  segmentation.	  The	  red	  line	  represents	  the	  extracted	  object	  border.	  (D)	  Signal	  intensity	  (grey	  line)	  and	  object	  curvature	  (black	  line)	  profiles	  along	  the	  border.	  Note	  random	   fluorescence	   fluctuations	   (right	   panel).	  (E)	  Correlation	   of	   signal	  intensity	   and	   object	  curvature.	   Spearman	   correlation	   coefficient	   is	   shown.	   Note	   large	   positive	   Spearman	   correlation	  coefficient	   (left	   panel),	   where	   signal	   intensity	   raises	   with	   increasing	   curvature.	   Contrary,	   in	   case	   of	  random	  assignment	  of	  signal	  intensity	  to	  curvature,	  the	  correlation	  coefficient	  is	  close	  to	  zero	  (right	  panel).	   These	   results	   show	   that	   this	   image	   pipeline	   is	   able	   to	   extract	   signal	   intensity	   and	   curvature	  profiles	   along	   object	   borders,	  and	   to	   test	   for	   correlation	   of	   both	   parameters	   as	   measured	   by	   the	  Spearman	  correlation	  coefficient.	  (F)	  Single	  confocal	  plane	  of	  a	  cell	  expressing	  GFP-­‐CAAX	  (left	  panel)	  and	  immunostained	  for	  endogenous	  srGAP2	  (right	  panel).	  The	  CAAX	  sequence	  originates	  from	  K-­‐Ras	  4b	  and	  targets	  proteins	  to	  the	  plasma	  membrane	  (Hancock	  et	  al.,	  1990).	  (G)	  Linescans	  along	  the	  white	  lines	   in	   (F).	   Note	   that	   srGAP2	   signal	   peaks	   at	   curved	   cell	   edges	   and	   colocalizes	   with	   the	   GFP-­‐CAAX	  signal	  (linescan	  1).	  In	  contrast,	  no	  srGAP2	  enrichment	  is	  detectable	  at	  straight	  cell	  edges,	  even	  despite	  clear	  GFP-­‐CAAX	  concentration	  (linescan	  2).	  However,	  the	  srGAP2	  signal,	  even	  in	  the	  absence	  of	  cell	  edge	   enrichment,	   still	   delineates	   the	   cell	   edge.	  (H)	  Composite	   single	   confocal	   plane	   of	   a	   cell	  immunostained	   for	   endogenous	   srGAP2	   (green)	   and	   endogenous	   Robo4	   (red),	   which	   is	   a	   plasma	  membrane	   protein.	  (I)	  Zoom	   into	   lamellipodium	   region	   depicted	   by	   dotted	   box	   in	   (H).	   Note	   strong	  enrichment	   of	   both	   srGAP2	   and	   Robo4	   at	   the	   cell	   edge.	  (J)	  Quantification	   of	   srGAP2	   and	   Robo4	  staining	   intensity	   along	   the	   edge	   as	   outlined	   in	   the	   top	   panel.	  (K)	  Linescans	   through	   convex	   and	  concave	   regions	   in	   the	   lamellipodium.	   Note	   that	   srGAP2	   and	   Robo4	   signals	   are	   enriched	   and	  colocalize	  at	  convex	  regions	  of	  the	  plasma	  membrane.	  Scale	  bars,	  20µm	  (A),	  10µm	  (H)	  and	  2µm	  (I).	  	   	  
-	  
-	  	  Figure	   S4.	   Related	   to	   Figure	   4.	  Additional	   characterization	   of	   srGAP2	   localization	   and	   dynamics	   in	  contact-­‐free	  and	  contact	  protrusions.	  	  (A)	  Comparison	   of	   srGAP2	   subcellular	   distribution	   patterns	   in	   polarized	   cells	   immunostained	   for	  endogenous	   srGAP2	   or	   transfected	   with	   srGAP2-­‐GFP.	   TIRF	   and	   epifluorescence	   channels	   are	  pseudocoloured	  for	  signal	  intensity.	  White	  arrowheads	  indicate	  srGAP2	  accumulation	  at	  the	  leading	  edge.	   Both	   experimental	   techniques	   yield	   similar	   distribution	   patterns.	   Note	   that	   broad	   srGAP2	  enrichment	  is	  detectable	  in	  the	  TIRF	  but	  not	  the	  epifluorescence	  channel.	  (B)	  Comparison	  of	  srGAP2	  localization	  in	  contact-­‐free	  and	  contact	  protrusions	  in	  one	  cell.	  Data	  corresponds	  to	  Figure	  4I.	  Lifeact-­‐mCherry	   and	   srGAP2-­‐GFP	   cells	   are	   shown	   in	   cyan/magenta	   and	   pseudocolours.	   Lines	   denote	   cell	  borders.	   The	   upper	   Lifeact-­‐mCherry	   cell	   becomes	   well	   detectable	   in	   the	   pseudocoloured	  epifluorescence	   image.	   Note	   that	   srGAP2-­‐GFP	   forms	   a	   wide	   gradient	   in	  contact-­‐free	   protrusions	  (white	   arrowhead)	   but	   enriches	   just	   at	   the	   tip	   of	   contact	   protrusions	   (red	   arrowheads).	  (C)	  Distribution	   of	   Spearman	   correlation	   coefficients	   for	   srGAP2-­‐GFP	   expressing	   cells	   (red	   bars)	   or	   GFP	  expressing	   cells	   (grey	   bars).	  Cell	   protrusions	   were	   recorded	   by	   time-­‐lapse	   microscopy	   and	  n	   >	   200	  Spearman	   correlation	   coefficients	   between	   signal	   intensity	   and	   cell	   edge	   curvature	   were	   computed	  for	   each	  condition	   and	   plotted.	  (D,E)	  Quantification	   of	   srGAP2	   amount	   at	   the	   tip	   of	   contact	  protrusions	   (D)	   and	   contact	   protrusion	   size	   (E).	   Graphs	   represents	   Mean	   ±	  SEM	  of	   n	  =	  13	  
-A
-C
-B
-Contact-free protrusion Contact protrusion
-SrGAP2 IgG
-EPI TIRF
-SrGAP2-GFP
-High
-Low
-Signal intensity
-Spearman correlation coefficient
--0.6 -0.4 -0.2 0 0.2 0.4 0.6
-Spearman correlation coefficient
--0.6 -0.4 -0.2 0 0.2 0.4 0.6
-Probability
-0
-0.05
-0.1
-0.15
-0.2
-0.25
-0.35
-0.3
-GFP
-SrGAP2-GFP
-GFP
-SrGAP2-GFP
-Lifeact-mCherryEPI
-SrGAP2-GFPTIRF
-SrGAP2-GFP (TIRF)
-Lifeact-mCherry (EPI)
-X
-GAP GFPF-BAR SH3
-SrGAP2 ∆F-BAR-GFP
-Overlap
-FDE
-∆t=72.5 min
-SrGAP2 WT-GFP
- GFP
-SrGAP2 W765A-GFP 
-Overlap OverlapOverlap
-∆t=60 min
-Contact protrusion
-Contact-free
-protrusion
-Normalized protrusion size (a.u.)
-Time (min)
-Protrusion Retraction
-02468 1 0 1 2 1 4
-0.9
-1.0
-1.1
-1.2
-Normalized srGAP2 amount at 
-protrusion tip (a.u.)
-Time (min)
-Protrusion Retraction
-02468 1 0 1 2 1 4
-0.8
-0.9
-1.0
-1.1
-1.2
-	  
-protrusion/retraction	   events	   from	   13	   cells.	   SrGAP2	   activity	  was	   quantified	   based	   on	   kymographs	  within	  a	  4-­‐pixel	  region	  at	  the	  tip	  of	  contact	  protrusions.	  (F)	  Kymograph	  analysis	  of	  the	  dynamics	  of	  the	  exogenously	   expressed	   srGAP2	   mutants.	   White	   lines	   depict	   cell-­‐cell	   overlap	   regions	   and	   white	  arrowheads	  point	  to	  the	  focused	  localization	  of	  srGAP2	  at	  the	  cell	  edge.	  All	  scale	  bars,	  10	  µm.	  	  	   	  
-	  
-	  	  Figure	  S5.	  Related	  to	  Figure	  6.	  Additional	  evaluation	  of	  the	  Rac1	  biosensor	  library	  and	  the	  Rac1-­‐2G	  biosensor.	  	  (A)	  Schematics	  of	  the	  Rac1	  biosensor	  library.	  The	  biosensor	  contains	  the	  FRET	  donor	  mTFP1,	  amino-­‐acids	   68-­‐150	   of	   the	   effector	   domain	   of	   PAK1,	   an	   64	   amino-­‐acid	   linker,	   the	   FRET	  donor	   Venus,	   and	  Rac1.	   Note	   that	   the	   Rac1	   C-­‐terminus	   remains	   free	   for	   adequate	   prenylation	   and	   reversible	  interactions	  with	  RhoGDI.	  The	  library	  consists	  of	  25	  biosensors	  in	  which	  the	  wild-­‐type	  or	  4	  different	  circularly	  permutated	  mutants	  are	  used	  for	  the	  donor	  and	  acceptor	  fluorophores.	  (B,	  C)	  Evaluation	  of	  the	   dynamic	   range	   of	   the	   Rac1	   biosensor	   library	   using	   fluorometry.	   Each	   biosensor	   was	   expressed	  either	   alone	   (ON	   state)	   or	   co-­‐expressed	   with	   RhoGDI	   (OFF	   state)	   in	   HEK293FT	   cells,	   and	   emission	  profiles	   were	   measured	   in	   cell	   suspensions	   using	   a	   cuvette-­‐based	   fluorometer.	   (B)	  ΔR/R0	  values	  represent	   changes	   in	   FRET	   efficiency	   between	   the	   ON	   and	  OFF	   states.	   A	   key	   indicates	   the	   specific	  mTFP1	   and	   Venus	   mutants.	   An	   arrow	   indicates	   the	   selected	   biosensor.	  n	   =	   1	   measurement.	  (C)	  Normalized	  emission	  profiles	  of	  the	  indicated	  Rac1	  biosensors	  are	  shown	  in	  the	  ON	  (black	  trace)	  and	  OFF	  (red	  trace)	  states.	  ΔR/R0	  values	  of	  the	  indicated	  biosensors	  are	  also	  shown.	  Black	  box	  indicates	  the	  selected	  biosensor.	  n	  =	  1	  measurement.	  (D,	  E)	  Evaluation	  of	  the	  Rac1-­‐2G	  biosensor’s	  response	  to	  different	  upstream	  regulators	  using	  microscopy.	  Transiently	  transfected	  HEK293FT	  cells	  were	  imaged	  in	   96-­‐well	   plates	   using	   high	   throughput	   microscopy.	   Average	   ER	   of	   multiple	   cells	   is	   calculated	   on	   a	  per-­‐field	  of	  view	  basis.	  (D)	  Representative	  ratio	  images	  of	  cells	  co-­‐expressing	  Rac1-­‐2G	  and	  different	  upstream	   regulators.	   Images	   are	   color-­‐coded	   for	   Rac1-­‐2G	   activity	   according	   to	   scale.	   Average,	  normalized	  ER	  is	  indicated	  for	  each	  condition	  in	  the	  upper	  left	  corner.	  (E)	  Average,	  normalized	  ER	  of	  Rac1-­‐2G.	  Bars	  represent	  Mean	  ±	  SEM	  n	  =	  27	  fields	  of	  view	  containing	  ≥100	  cells	  each.	  Note	  similar	  trends	  as	  observed	  in	  the	  corresponding	  fluorometry	  experiment	  in	  Figure	  6D.	  Scale	  bar,	  50	  µm.	  
-0.00
-0.25
-0.50
-0.75
-1.00
-1.25
-1.50
-CA
-B
-ED
-Rac1Venus wt
-cp175
-cp159
-cp227
-cp105 cp159
-cp173
-cp195
-cp229
-mTFP1 wt PBD
-Rac1 biosensor library
-105 159 175 227 wtmTFP1 cp
-Venus cp
-0.0
-0.1
-0.2
-0.3
-0.4
-0.5
-0.6
-0.7∆R/R₀
-157 195173 229 wt
-0
-2
-3
-4
-5
-6
-7
-N. A.
-N.A.
-40 % 34 % 52 % 34 % 51 %
-36 % 54 % 52 % 41 %
-22 % 16 % 21 % 21 %
-25 % 49 % 42 % 58 % 36 %
-39 % 45 % 47 % 23 % 69 %
-44 %
-mTFP1
-WT
-mTFP1
-cp105
-mTFP1
-cp159
-mTFP1
-cp175
-mTFP1
-cp227
-Venus
-WT
-Venus
-cp157
-Venus
-cp173
-Venus
-cp195
-Venus
-cp229
-Rac1-2G (ON) Rac1-2G + RhoGDI (OFF)
-Rac1-2G + CdGAP FL + CdGAP ∆N
-0.90 0.591.00
-+ p50RhoGAP
-0.81
-+ Rap GAP
-0.92
-+ RhoGDI
-+ RhoGDI + Dbl + Vav1 + C3G
-0.64 1.30 1.01 0.64
-1.0
-0.0
-Normalized emission ratio (a.u.)
-Rac1-2G
-+ CdGAP FL+ CdGAP 
-∆N
-+ p50RhoGAP
-+ Rap GAP+ RhoGDI
-+ Dbl+ Vav1+ C3G
-***
-*** ns
-*** ******
-ns
-	  
-	  
-	  	  Figure	  S6.	  Related	  to	  Figure	  6.	  Sequence	  of	  Rac1-­‐2G	  (mTFP1/cp227-­‐Venus/cp229)	  biosensor.	  	  Different	  biosensor	  domains	  are	  color-­‐coded	  according	  to	  the	  scheme	  displayed	  above	  the	  sequence.	  Different	   expression	   plasmids	   are	   available	   at	   Addgene.	   Plasmid	   ID:	   66110	   (pTriEx-­‐Rac1-­‐2G),	   66111	  (pLenti-­‐Rac1-­‐2G),	  66112	  (pAd/CMV/V5-­‐DEST-­‐Rac1-­‐2G).	   	  
-PBD6xHisMyc Rac1mTFP1 Venus
-NcoI^
-NcoI^
-XhoIBamHI BspEI
-NotI
-KpnIAgeIXmaI
-Rac1-2G
-  NcoI^ BamHI 
-  CCATGGCACACCATCACCACCATCACGGGAGCGGGGAGCAGAAACTAATATCAGAGGAGGATCTTGGCTCAGGATCCTCCACCGACGGCATGGACGAGCTGT  < 102 
-    M  A  H  H  H  H  H  H  G  S  G  E  Q  K  L  I  S  E  E  D  L  G  S  G  S  S  T  D  G  M  D  E  L  Y 
-  
-  ACAAGGGTGCTAGCGGAGGAATGGTGAGCAAGGGCGAGGAGACCACAATGGGCGTAATCAAGCCCGACATGAAGATCAAGCTGAAGATGGAGGGCAACGTGA  < 204 
-    K  G  A  S  G  G  M  V  S  K  G  E  E  T  T  M  G  V  I  K  P  D  M  K  I  K  L  K  M  E  G  N  V  N 
- 
-  ATGGCCACGCCTTCGTGATCGAGGGCGAGGGCGAGGGCAAGCCCTACGACGGCACCAACACCATCAACCTGGAGGTGAAGGAGGGAGCCCCCCTGCCCTTCT  < 306 
-    G  H  A  F  V  I  E  G  E  G  E  G  K  P  Y  D  G  T  N  T  I  N  L  E  V  K  E  G  A  P  L  P  F  S 
-   
-  CCTACGACATTCTGACCACCGCGTTCGCCTACGGCAACAGGGCCTTCACCAAGTACCCCGACGACATCCCCAACTACTTCAAGCAGTCCTTCCCCGAGGGCT  < 408 
-    Y  D  I  L  T  T  A  F  A  Y  G  N  R  A  F  T  K  Y  P  D  D  I  P  N  Y  F  K  Q  S  F  P  E  G  Y 
-  
- NcoI^ 
-  ACTCTTGGGAGCGCACCATGACCTTCGAGGACAAGGGCATCGTGAAGGTGAAGTCCGACATCTCCATGGAGGAGGACTCCTTCATCTACGAGATACACCTCA  < 510 
-    S  W  E  R  T  M  T  F  E  D  K  G  I  V  K  V  K  S  D  I  S  M  E  E  D  S  F  I  Y  E  I  H  L  K 
-   
-  AGGGCGAGAACTTCCCCCCCAACGGCCCCGTGATGCAGAAGAAGACCACCGGCTGGGACGCCTCCACCGAGAGGATGTACGTGCGCGACGGCGTGCTGAAGG  < 612 
-    G  E  N  F  P  P  N  G  P  V  M  Q  K  K  T  T  G  W  D  A  S  T  E  R  M  Y  V  R  D  G  V  L  K  G 
-   
-  GCGACGTCAAGCACAAGCTGCTGCTGGAGGGCGGCGGCCACCACCGCGTTGACTTCAAGACCATCTACAGGGCCAAGAAGGCGGTGAAGCTGCCCGACTATC  < 714 
-    D  V  K  H  K  L  L  L  E  G  G  G  H  H  R  V  D  F  K  T  I  Y  R  A  K  K  A  V  K  L  P  D  Y  H 
- 
-   BspEI 
-  ACTTTGTGGACCACCGCATCGAGATCCTGAACCACGACAAGGACTACAACAAGGTGACCGTTTACGAGAGCGCCGTGGCCCGCAACTCCGGAAAAGAGAAAG  < 816 
-    F  V  D  H  R  I  E  I  L  N  H  D  K  D  Y  N  K  V  T  V  Y  E  S  A  V  A  R  N  S  G  K  E  K  E 
-   
-  AGCGGCCAGAGATTTCTCTCCCTTCAGATTTTGAACACACAATTCATGTCGGTTTTGATGCTGTCACAGGGGAGTTTACGGGAATGCCAGAGCAGTGGGCCC  < 918 
-    R  P  E  I  S  L  P  S  D  F  E  H  T  I  H  V  G  F  D  A  V  T  G  E  F  T  G  M  P  E  Q  W  A  R 
-   
-  GCTTGCTTCAGACATCAAATATCACTAAGTCGGAGCAGAAGAAAAACCCGCAGGCTGTTCTGGATGTGTTGGAGTTTTACAACTCGAAGAAGACATCCAACA  < 1020 
-    L  L  Q  T  S  N  I  T  K  S  E  Q  K  K  N  P  Q  A  V  L  D  V  L  E  F  Y  N  S  K  K  T  S  N  S 
- 
-   XmaI 
-  GCCAGAAATACATGAGCTTTACAGATAAGTCAGCTCCCGGGACTTCTGGTTCTGGTAAACCTGGTTCTGGTGAAGGTTCTACTAAAGGGACTTCTGGTTCTG  < 1122 
-    Q  K  Y  M  S  F  T  D  K  S  A  P  G  T  S  G  S  G  K  P  G  S  G  E  G  S  T  K  G  T  S  G  S  G 
- 
-  GTAAACCTGGTTCTGGTGAAGGTTCTACTAAAGGGACTTCTGGTTCTGGTAAACCTGGTTCTGGTGAAGGTTCTACTAAAGGGACTTCTGGTTCTGGTAAAC  < 1224 
-    K  P  G  S  G  E  G  S  T  K  G  T  S  G  S  G  K  P  G  S  G  E  G  S  T  K  G  T  S  G  S  G  K  P 
- 
-   NotI 
-  CTGGTTCTGGTGAAGGTTCTACTAAAGGGGCGGCCGCCATGATCACTCTCGGCATGGACGAGCTGTACAAGGGTGGCAGCGGTGGCATGGTGAGCAAGGGCG  < 1326 
-    G  S  G  E  G  S  T  K  G  A  A  A  M  I  T  L  G  M  D  E  L  Y  K  G  G  S  G  G  M  V  S  K  G  E 
-   
-  AGGAGCTGTTCACCGGGGTGGTGCCCATCCTGGTCGAGCTGGACGGCGACGTAAACGGCCACAAGTTCAGCGTGTCCGGCGAGGGCGAGGGCGATGCCACCT  < 1428 
-    E  L  F  T  G  V  V  P  I  L  V  E  L  D  G  D  V  N  G  H  K  F  S  V  S  G  E  G  E  G  D  A  T  Y 
- 
-  ACGGCAAGCTGACCCTGAAGCTGATCTGCACCACCGGCAAGCTGCCCGTGCCCTGGCCCACCCTCGTGACCACCCTGGGCTACGGCCTGATGTGCTTCGCCC  < 1530 
-    G  K  L  T  L  K  L  I  C  T  T  G  K  L  P  V  P  W  P  T  L  V  T  T  L  G  Y  G  L  M  C  F  A  R 
-   
-  GCTACCCCGACCACATGAAGCAGCACGACTTCTTCAAGTCCGCCATGCCCGAAGGCTACGTCCAGGAGCGCACCATCTTCTTCAAGGACGACGGCAACTACA  < 1632 
-    Y  P  D  H  M  K  Q  H  D  F  F  K  S  A  M  P  E  G  Y  V  Q  E  R  T  I  F  F  K  D  D  G  N  Y  K 
- 
-  AGACCCGCGCCGAGGTGAAGTTCGAGGGCGACACCCTGGTGAACCGCATCGAGCTGAAGGGCATCGACTTCAAGGAGGACGGCAACATCCTGGGGCACAAGC  < 1734 
-    T  R  A  E  V  K  F  E  G  D  T  L  V  N  R  I  E  L  K  G  I  D  F  K  E  D  G  N  I  L  G  H  K  L 
- 
-  TGGAGTACAACTACAACAGCCACAACGTCTATATCACCGCCGACAAGCAGAAGAACGGCATCAAGGCCAACTTCAAGATCCGCCACAACATCGAGGACGGCG  < 1836 
-    E  Y  N  Y  N  S  H  N  V  Y  I  T  A  D  K  Q  K  N  G  I  K  A  N  F  K  I  R  H  N  I  E  D  G  G 
-   
-  GCGTGCAGCTCGCCGACCACTACCAGCAGAACACCCCCATCGGCGACGGCCCCGTGCTGCTGCCCGACAACCACTACCTGAGCTACCAGTCCGCCCTGAGCA  < 1938 
-    V  Q  L  A  D  H  Y  Q  Q  N  T  P  I  G  D  G  P  V  L  L  P  D  N  H  Y  L  S  Y  Q  S  A  L  S  K 
- 
- KpnI 
-  AAGACCCCAACGAGAAGCGCGATCACATGGTCCTGCTGGAGTTCGTGACCGCCGCCGGGGGTACCATGCAGGCCATCAAGTGTGTGGTGGTGGGAGACGGAG  < 2040 
-    D  P  N  E  K  R  D  H  M  V  L  L  E  F  V  T  A  A  G  G  T  M  Q  A  I  K  C  V  V  V  G  D  G  A 
-   
-  CTGTAGGTAAAACTTGCCTACTGATCAGTTACACAACCAATGCATTTCCTGGAGAATATATCCCTACTGTCTTTGACAATTATTCTGCCAATGTTATGGTAG  < 2142 
-    V  G  K  T  C  L  L  I  S  Y  T  T  N  A  F  P  G  E  Y  I  P  T  V  F  D  N  Y  S  A  N  V  M  V  D 
- 
-  ATGGAAAACCGGTGAATCTGGGCTTATGGGATACAGCTGGACAAGAAGATTATGACAGATTACGCCCCCTATCCTATCCGCAAACAGATGTGTTCTTAATTT  < 2244 
-    G  K  P  V  N  L  G  L  W  D  T  A  G  Q  E  D  Y  D  R  L  R  P  L  S  Y  P  Q  T  D  V  F  L  I  C 
-   
-  GCTTTTCCCTTGTGAGTCCTGCATCATTTGAAAATGTCCGTGCAAAGTGGTATCCTGAGGTGCGGCACCACTGTCCCAACACTCCCATCATCCTAGTGGGAA  < 2346 
-    F  S  L  V  S  P  A  S  F  E  N  V  R  A  K  W  Y  P  E  V  R  H  H  C  P  N  T  P  I  I  L  V  G  T 
-   
-  CTAAACTTGATCTTAGGGATGATAAAGACACGATCGAGAAACTGAAGGAGAAGAAGCTGACTCCCATCACCTATCCGCAGGGTCTAGCTATGGCCAAGGAGA  < 2448 
-    K  L  D  L  R  D  D  K  D  T  I  E  K  L  K  E  K  K  L  T  P  I  T  Y  P  Q  G  L  A  M  A  K  E  I 
-   
-  TTGGTGCTGTAAAATACCTGGAGTGCTCGGCGCTCACACAGCGAGGCCTCAAGACAGTGTTTGACGAAGCGATCCGAGCAGTCCTCTGCCCGCCTCCCGTGA  < 2550 
-    G  A  V  K  Y  L  E  C  S  A  L  T  Q  R  G  L  K  T  V  F  D  E  A  I  R  A  V  L  C  P  P  P  V  K 
- 
-   XholI 
-  AGAAGAGGAAGAGAAAATGCCTGCTGTTGTGACTCGAG  < 2588 
-    K  R  K  R  K  C  L  L  L  *  L  E   
- 
-^ = double cutter
-	  
-Supplemental	  Movie	  Legends	  	  Movie	  S1.	  Related	  to	  Figure	  2.	  SrGAP2	  KD	  cells	  exhibit	  deficiency	  in	  CIL.	  Control	  and	  srGAP2	  KD	   fibroblasts	   were	   monitored	   during	   cell	   collision	   by	   time-­‐lapse	   microscopy.	  SiRNA-­‐transfected	   NIH	   3T3	   cells	   and	   shRNA-­‐treated	   primary	   MEFs	  are	   shown	   in	   top	   and	   bottom	  panels,	   respectively.	  Note	  lack	   of	   cell	   repolarization	   and	   change	   of	   migration	   direction	   in	  srGAP2	  KD	   cells	  after	   cell-­‐cell	  collision.	   Time	   scale,	   hours:minutes;	   10	  (top	   panels)	   and	   15	  (bottom)	  minute	  frame	  rate.	  Scale	  bar,	  40	  µm.	  	  	  Movie	  S2.	  Related	  to	  Figure	  2.	  SrGAP2	  KD	  cells	  display	  increased	  cell-­‐cell	  overlap.	  Control	  and	  srGAP2	  KD	  NIH	   3T3	  fibroblasts	   expressing	   either	   Lifeact-­‐GFP	   (magenta)	   or	   Lifeact-­‐mCherry	   (cyan)	   were	   monitored	   during	   cell	   collision.	   Epifluorescence	   channels	   (top)	   and	  binary	   masks	   (bottom)	   are	   shown.	   Control	   cells	   show	   intact	   repolarization	   that	   is	   lost	   in	  srGAP2	  KD	   cells,	   which	   also	   show	   increased	   cell-­‐cell	   overlap.	  Time	   scale,	   hours:minutes;	   5	  minute	  frame	  rate.	  Scale	  bar,	  30	  µm.	  	  	  Movie	   S3.	   Related	   to	   Figure	   3.	  Cell-­‐cell	  overlap	  regions	  are	  highly	  dynamic	  zones	  that	  are	  constantly	   explored	   by	   contact	   protrusions.	   Subconfluently	   seeded	  NIH	   3T3	  wild	   type	  fibroblasts	   expressing	   Lifeact-­‐GFP	   (magenta)	   or	   Lifeact-­‐mCherry	   (cyan)	   were	   monitored	  during	   cell-­‐cell	   interactions.	   Epifluorescence	   and	   TIRF	   channels	   are	   shown.	   Note	  highly	  dynamic	  protrusion/retraction	   cycles	   in	   cell-­‐cell	   overlaps.	   Zoom	   is	  centered	  on	   highly	  dynamic	  contact	  protrusions.	  Comparison	  of	  epifluorescence	  and	  TIRF	  channels	  shows	  that	  contact	  protrusions	  remain	  connected	  with	  the	  ECM	  while	  moving	  beneath	  a	  quiescent	  edge	  of	  contacting	  cells.	  Time	  scale,	  minutes:seconds;	  30	  second	  frame	  rate.	  Scale	  bar,	  20	  µm.	  	  	  Movie	  S4.	  Related	  to	  Figure	  3.	  Comparison	  of	  contact	  and	  contact-­‐free	  protrusion	  dynamics.	  Zoom	  on	  contact	  (left)	  and	  contact-­‐free	  (right)	  protrusions	  in	  the	  Lifeact-­‐mCherry	  cell	  shown	  in	  Movie	  S3.	  TIRF	  channel	  is	  shown	  in	  inverted	  black-­‐white	  contrast.	  Alternating	  black/white	  line	  depicts	  the	  border	  of	  Lifeact-­‐GFP	  cell	  to	  visualize	  cell-­‐cell	  overlap.	  Note	  highly	  focused	  F-­‐actin	  band	  at	  the	  tip	  of	  contact	  protrusions.	  	  Time	  scale,	  minutes:seconds;	  30	  second	  frame	  rate.	  Scale	  bar,	  2	  µm.	  	  	  Movie	   S5.	   Related	   to	   Figure	   4.	  SrGAP2	   dynamics	   in	   contact-­‐free	   and	   contact	   protrusions.	  Adjacent	  NIH	   3T3	  cells	   expressing	   either	   Lifeact-­‐mCherry	   or	   srGAP2-­‐GFP	   were	   time-­‐lapsed	  using	   epifluorescence	   and	   TIRF	   microscopy.	   SrGAP2-­‐GFP	   TIRF	   signal	   is	   color-­‐coded	   for	  intensity	  so	  that	  warm	  and	  cold	  colors	  represent	  high	  and	  low	  srGAP2	  amounts	  respectively.	  White	   lines	   depict	   the	   border	   of	   Lifeact-­‐mCherry	   cells	   to	   visualize	   cell-­‐cell	   overlap.	   Note	  broad	   and	   narrow	   srGAP2	   accumulation	   in	   contact-­‐free	   and	   contact	   protrusions,	  respectively.	   Red	   arrowheads	   point	   towards	   focused	   srGAP2	   enrichment	   in	   contact	  protrusions.	  Time	  scale,	  minutes:seconds;	  30	  second	  frame	  rate.	  Scale	  bar,	  5	  µm.	  	  	  Movie	  S6.	  Related	  to	  Figure	  6.	  Rac1	  activation	  dynamics	  in	  REF52	  cells	  stimulated	  with	  40	  ng/mL	   PDGF.	   Fibroblasts	   expressing	   the	   Rac1-­‐2G	   FRET	   biosensor	   were	  analyzed	  by	  epifluorescence	   microscopy.	   Rac1	   activation	   (ratio,	  left)	   and	   biosensor	   distribution	   (FRET,	  right)	  are	  color-­‐coded	  for	  signal	  intensity	  so	  that	  warm	  and	  cold	  colors	  represent	  high	  and	  
-	  
-low	   Rac1	   activity/amount,	   respectively.	   Note	   broad	   Rac1	   activation	   gradient	   in	   free	  protrusion	  that	  switches	  off	  during	  retraction.	  Time	  scale,	  minutes:seconds;	  30	  second	  frame	  rate.	  Scale	  bar,	  20	  µm.	  	  	  Movie	  S7.	  Related	  to	  Figure	  7.	  Rac1	  activation	  dynamics	  in	  contact-­‐free	  protrusions.	  NIH	  3T3	  cells	  expressing	  the	  Rac1-­‐2G	  FRET	  biosensor	  were	  analyzed	  by	  epifluorescence	  microscopy.	  Rac1	   activation	   (ratio,	   left)	   and	   biosensor	   distribution	   (mTFP1,	   right)	   are	   color-­‐coded	   for	  signal	  intensity	  so	  that	  warm	  and	  cold	  colors	  represent	  high	  and	  low	  Rac1	  activity/amount,	  respectively.	  Note	  broad	  Rac1	  activation	  gradient	  in	  the	  contact-­‐free	  protrusion.	  Time	  scale,	  hours:minutes;	  2	  minute	  frame	  rate.	  Scale	  bar,	  5	  µm.	  	  	  Movie	   S8.	   Related	   to	   Figure	   7.	  Rac1	   activation	   dynamics	   in	   contact	   protrusions.	   NIH	   3T3	  cells	  expressing	  either	  the	  Rac1-­‐2G	  biosensor	  or	  Lifeact-­‐mCherry	  were	  seeded	  and	  allowed	  to	   interact.	   Fibroblasts	   expressing	   the	   Rac1-­‐2G	   FRET	   biosensor	   were	  analyzed	  by	  epifluorescence	  microscopy.	  Rac1	  activation	  (ratio,	  left)	  and	  biosensor	  distribution	  (mTFP1,	  right)	  are	  color-­‐coded	  for	  signal	  intensity	  so	  that	  warm	  and	  cold	  colors	  represent	  high	  and	  low	  Rac1	  activity/amount,	  respectively.	  White	  (left)	  and	  black	  (right)	  line	  depicts	  the	  border	  of	  Lifeact-­‐mCherry	  cell	  to	  visualize	  cell-­‐cell	  overlap.	  Note	  focused	  Rac1	  activation	  at	  the	  tip	  of	   contact	   protrusions	   (white	   arrowheads).	   	   Video	   is	   repeated	   once	   for	   enhanced	   visual	  perception.	  	  Time	  scale,	  hours:minutes;	  2	  minute	  frame	  rate.	  Scale	  bar,	  5	  µm.	  	  	   	  
-	  
-Supplemental	  Experimental	  Procedures	  	  Cell	  lines	  and	  reagents.	  	  NIH	  3T3	  fibroblasts	  (ATCC),	  primary	  mouse	  embryonic	  fibroblasts	  (kind	  gift	  from	  R.	  Zeller),	  rat	   embryonic	   fibroblasts	   (REF52;	   a	   kind	   gift	   from	   A.	  Howe)	  and	  human	  embryonic	  kidney	  (HEK)	   293	   FT	   cells	   (Invitrogen)	   were	   maintained	   in	   Dulbecco’s	   modified	   eagle	   medium	  (DMEM;	  Sigma)	  supplemented	  with	  10%	  fetal	  bovine	  serum	  (FBS;	  Sigma),	  4	  mM	  L-­‐Glutamine	  (Sigma)	   and	   100	   U/ml	   penicillin/streptomycin	   (Sigma)	   at	   37°C	  and	   5%	   CO2.	   The	   following	  reagents	   were	   used	   in	   this	   study:	   anti-­‐srGAP2	   (C-­‐14)	   and	   anti-­‐Slit2	   (G-­‐19)	   antibodies	   were	  from	   Santa	   Cruz,	   anti-­‐Robo4	   (ab10547)	   antibody	   was	   from	   Abcam	   and	   anti-­‐alphaTubulin	  (DM	   1A)	   antibody	   from	   Sigma.	   Human	   fibronectin	   was	   from	   Chemicon.	   PDGF	   was	   from	  Sigma.	  	  	  Plasmids.	  	  SrGAP2-­‐GFP	   wild	   type,	   ∆F-­‐BAR	   and	   W765A	   mutants	   were	   kind	   gifts	   from	   F.	   Polleux	   and	  described	   earlier	  (Guerrier	   et	   al.,	   2009).	   Lifeact-­‐GFP	   was	   described	   recently	  (Martin	   et	   al.,	  2014).	   Lifeact-­‐mCherry	   was	   generated	   by	   fusing	   the	   Lifeact	   coding	   sequence	  (Riedl	   et	   al.,	  2008)	  to	  the	  N-­‐terminus	  of	  mCherry	  followed	  by	  shuttling	  of	  the	  Lifeact-­‐mCherry	  fragment	  into	  the	  lentiviral	  backbone	  pRRpRRL-­‐	  SV40(puro)_CMV(mcs)	  (a	  kind	  gift	  from	  M.	  Kaeser)	  by	  homologous	   recombination	   (InFusion®	   technology,	   Clontech).	   For	   simultaneous	   expression	  of	   Lifeact-­‐GFP	   and	   NLS-­‐mCherry,	   a	   bicistronic	   construct	   consisting	   of	   Lifeact-­‐GFP,	   the	   IRES	  sequence	   derived	   from	   the	   pIRES	   vector	   (Clontech)	   and	   NLS-­‐mCherry	   was	   assembled	   in	  pcDNA3.1	   vector	   and	   shuttled	   into	  pRRpRRL-­‐	  SV40(puro)_CMV(mcs)	   using	   InFusion®	  technology	   (Clontech).	   The	   following	   expression	   constructs	   were	   kind	   gifts	   from	  N.	  Lamarche-­‐Vane	   (CdGAP),	   X.	   Bustelo	   (Vav1),	   J.	   de	   Rooij	   (Rap	   Gap,	   C3G),	   G.	   Bokoch	  (p50RhoGAP,	  Dbl),	  and	  M.	  Schwartz	  (RhoGDI).	  	  Rac1	  biosensor	  construction.	  	  The	   Rac1	   FRET	   biosensor	   was	   constructed	   using	   the	   cpFRET	   toolkit	  (Fritz	   et	   al.,	   2013).	  Following	  the	  design	  yielding	  the	  most	  sensitive	  2nd	  generation	  RhoA	  sensor,	  we	  constructed	  25	   sensor	   variants	   consisting	   of	   mTFP1	   wt	   and	   four	   circular	   permutations	   (cps),	   the	   PAK1	  effector	   domain	   (amino	   acids	   68-­‐150;	   custom	   gene	   synthesis;	   GenScript),	   a	   64	   amino	   acid	  linker,	   Venus	   wt	   and	   four	   cps	   and	   Rac1	   (custom	   gene	   synthesis;	   GenScript).	   The	   design	  including	  restriction	  sites	  used	  for	  cloning	  as	  well	  as	  the	  sequence	  of	  the	  2nd	  generation	  Rac1	  (Rac1-­‐2G)	  sensor	  is	  shown	  in	  Figure	  S6.	  Importantly,	  this	  biosensor	  architecture	  allows	  for	  lipid	   modification	   of	   Rac1	   and	   therefore	   preserves	   the	   regulation	   by	   RhoGDI	   required	   to	  faithfully	  report	  on	  endogenous	  GTPase	  activation	  in	  time	  and	  space	  as	  observed	  elsewhere	  (Fritz	   et	   al.,	   2013).	   The	   most	   sensitive	   Rac1-­‐2G	   sensor	   containing	   mTFP1/cp227	   and	  Venus/cp229	   was	   shuttled	   from	   pTriEx	   into	   the	  pAd/CMV/V5-­‐DEST	   Gateway®	   Vector	  according	  to	  the	  manufacturers	  instructions	  (Invitrogen).	  The	  dominant	  negative	  (T17N)	  and	  effector	  (Y40C)	  mutations	  were	  generated	  by	  site-­‐directed	  mutagenesis	  (Stratagene).	  	  Gene	  downregulation	  by	  siRNAs	  and	  shRNAs.	  	  An	   siRNA	   pool	   consisting	   of	   four	   individual	   SMARTPOOL	   siRNAs	   (Dharmacon)	   was	   used	   to	  knock	   down	  srGAP2	  in	   most	   of	   the	   experiments	   unless	   otherwise	   stated.	   The	   screen	   for	  
-	  
-genes	  modifying	  contact-­‐dependent	  cell	  spreading	  was	  performed	  with	  pools	  consisting	  of	  three	  individual	  Stealth	  RNAi	  siRNAs	  (Invitrogen)	  and	  positive	  hits	  were	  validated	  with	  three	  single	  siRNA	  sequences	  to	  exclude	  off-­‐target	  effects.	  MISSION	  shRNA	  (Sigma)	  was	  used	  for	  stable	  knockdown	  of	  srGAP2.	  SiRNAs	  were	  transfected	  into	  NIH	  3T3	  and	  primary	  MEFs	  cells	  using	   DharmaFECT1	   (Dharmacon)	   according	   to	   manufacturer’s	   procedures.	   Knockout	  efficiency	  was	  measured	  48h	  or72h	  post	  transfection	  by	  qPCR	  or	  Western	  blot.	  	  The	  following	  siRNAs	  and	  shRNAs	  were	  used:	  
-	  	  Lentiviral-­‐mediated	  generation	  of	  stable	  cell	  lines.	  	  Lentiviral	   particles	   were	   produced	   as	   described	   before	  (Fritz	   et	   al.,	   2013).	   Briefly,	   3x106	  HEK293FT	   cells	   were	   seeded	   on	   Poly-­‐L-­‐Lysine	   (PLL;	   10	   µg/mL;	   Sigma)	   in	   10cm	   dishes	   and	  transfected	  24h	  later	  with	  pRRpRRL-­‐	  SV40(puro)_CMV(mcs)	  containing	  the	  gene	  of	  interest	  or	  pLKO-­‐shRNA	  together	  with	  pVSV,	  pMDL	  and	  pREV	  packaging	  plasmids	  using	  Fugene	  HD.	  Culture	  supernatants	  were	  collected	  72h	  and	  96h	  post	  transfection,	  filtered	  through	  0.45µm	  filters	   (Sarstedt)	   and	   concentrated	   with	   Lenti-­‐X	   reagent	   (Clontech)	  at	  4°C	   according	   to	  manufacturer’s	  procedures.	  Virus	  particles	  were	  harvested	  by	  centrifugation	  at	  1500×g	  for	  45	   minutes	   at	   4°C	   and	   resuspended	   in	   DMEM	   supplemented	   with	  10%	   FBS,	   4	   mM	   L-­‐Glutamine	  and	  100	  U/ml	  penicillin/streptomycin.	  2x104	  NIH	  3T3	  cells	  seed	  24h	  before	  into	  
-
-	  
-12-­‐well	   plates	   were	   then	   infected	   with	   different	   virus	   dilutions	   (1:2	   to	   1:40	   range)	   in	   the	  presence	   of	   5µg/mL	   Polybrene	   (Sigma).	   Cells	   with	   unaffected	  morphology	   and	   low	   but	  sufficient	  expression	  of	  the	  gene	  of	  interest	  were	  selected	  with	  5µg/mL	  puromycin	  (Sigma).	  	  Adenoviral	  infection.	  	  The	   Rac1	   FRET	   biosensor	   was	   expressed	   in	   NIH	   3T3	   and	   REF52	   cells	   by	   adenoviral	   gene	  delivery.	   Viral	   particles	   were	   generated	   using	   the	  pAd/CMV/V5-­‐DEST	   Gateway®	   Vector	  system	  (Invitrogen)	  following	  manufacturer’s	  instructions.	  For	  infection,	  3x104	  NIH	  3T3	  cells	  were	  seeded	  into	  12-­‐well	  plate	  and	  grown	  in	  DMEM	  supplemented	  with	  10%	  FBS,	  4	  mM	  L-­‐Glutamine	  and	  100	  U/ml	  penicillin/streptomycin	  for	  6h.	  Following	  overnight	  incubation	  with	  adenoviral	  particles,	  cells	  were	  rinsed	  with	  PBS,	  reseeded	  and	  imaged	  40h	  post	  infection.	  	  Immunofluorescence.	  	  1-­‐2x104	  NIH	  3T3	  cells	  were	  seeded	  on	  18mm	  or	  24mm	  glass	  cover	  slips	  coated	  with	  5µg/mL	  fibronectin	   and	   cultured	   overnight	   in	  DMEM	   supplemented	   with	  10%	   FBS,	   4	   mM	   L-­‐Glutamine	  and	  100	  U/ml	  penicillin/streptomycin	  at	  37°C.	  Cells	  were	  rinsed	  once	  in	  PBS,	  fixed	  in	  4%	  paraformaldehyde	  for	  ten	  minutes	  at	  room	  temperature	  and	  permeabilized	  with	  0.1%	  Triton-­‐X	  100	  for	  two	  minutes.	  Subsequently,	  cells	  were	  blocked	  for	  ten	  minutes	  in	  2%	  BSA	  and	  incubated	  with	  the	  following	  primary	  antibodies	  for	  60	  minutes	  at	  room	  temperature:	  anti-­‐srGAP2	  (C-­‐14;	  1:100),	  anti-­‐Slit2	  (G-­‐19;	  1:50)	  and	  anti-­‐Robo4	  (1:100).	  Cells	  were	  rinsed	  three	  times	  in	  PBS	  before	  incubation	  with	  donkey	  anti-­‐goat	  IgG	  Alexa488	  and	  donkey	  anti-­‐rabbit	  IgG	  Alexa546	  (both	  Invitrogen;	  1:1000)	  for	  60	  minutes.	  Cells	  were	  rinsed	  three	  times	  in	   PBS	   and	   mounted	   in	   ProLong	   Gold	   (Invitrogen)	   for	   confocal	   microscopy.	   For	   TIRF	   and	  epifluorescence	  microscopy,	  coverslips	  were	  mounted	  into	  life	  cell	  imaging	  chambers	  (Life	  Cell	  Instrument)	  and	  cells	  imaged	  in	  PBS.	  	  Quantification	  of	  cell	  edge	  dynamics,	  protrusion	  size	  and	  F-­‐actin	  content.	  	  Cell	   edge	   dynamics	   were	   extracted	   from	   kymographs	   generated	   with	   MetaMorph	  (Molecular	   Device)	   based	   on	   time-­‐lapse	   data	   of	   contact	   and	   contact-­‐free	   protrusions.	  Kymographs	  were	  segmented	  and	  analyzed	  using	  MATLAB	  to	  quantify	  individual	  protrusion	  and	   retraction	   events.	   From	   these	   two	   parameters,	   total	   edge	   movement,	   net	   edge	  movement	  and	  protrusion/retraction	  frequencies	  were	  derived.	  	  To	  measure	  normalized	  protrusion	  size	  in	  time,	  ratio	  images	  were	  thresholded	  according	  to	  intensity	   and	   a	   region	   was	   created	   around	   a	   contact	   protrusion.	   Protrusion	   size	   was	  measured	   in	   pixels	   in	   each	   frame	   of	   the	   time-­‐lapse	   movie.	   Protrusion	   size	   was	   than	  normalized	  to	  the	  first	  measured	  frame	  of	  the	  time-­‐lapse	  movie.	  F-­‐actin	   was	   measured	   along	   a	   line	   placed	   within	   contact	   and	   free	   protrusions.	   The	   signal	  from	  the	  TIRF	  channel	  was	  quantified	  in	  MetaMorph	  (Molecular	  Devices).	  	   	  
-	  
-Supplemental	  References	  	  Fritz,	  R.D.,	  Letzelter,	  M.,	  Reimann,	  A.,	  Martin,	  K.,	  Fusco,	  L.,	  Ritsma,	  L.,	  Ponsioen,	  B.,	  Fluri,	  E.,	  Schulte-­‐Merker,	   S.,	   van	   Rheenen,	   J.,	   et	   al.	  (2013).	   A	   versatile	   toolkit	   to	   produce	   sensitive	  FRET	  biosensors	  to	  visualize	  signaling	  in	  time	  and	  space.	  Sci	  Signal	  6,	  rs12.	  	  Guerrier,	  S.,	  Coutinho-­‐Budd,	  J.,	  Sassa,	  T.,	  Gresset,	  A.,	  Jordan,	  N.V.,	  Chen,	  K.,	  Jin,	  W.L.,	  Frost,	  A.,	   and	   Polleux,	   F.	   (2009).	   The	   F-­‐BAR	   domain	   of	   srGAP2	   induces	   membrane	   protrusions	  required	  for	  neuronal	  migration	  and	  morphogenesis.	  Cell	  138,	  990-­‐1004.	  	  Hancock,	  J.F.,	  Paterson,	  H.,	  and	  Marshall,	  C.J.	  (1990).	  A	  polybasic	  domain	  or	  palmitoylation	  is	  required	  in	  addition	  to	  the	  CAAX	  motif	  to	  localize	  p21ras	  to	  the	  plasma	  membrane.	  Cell	  63,	  133-­‐139.	  	  Martin,	  K.,	  Vilela,	  M.,	  Jeon,	  N.L.,	  Danuser,	  G.,	  and	  Pertz,	  O.	  (2014).	  A	  growth	  factor-­‐induced,	  spatially	   organizing	   cytoskeletal	   module	   enables	   rapid	   and	   persistent	   fibroblast	   migration.	  Dev	  Cell	  30,	  701-­‐716.	  	  Riedl,	   J.,	   Crevenna,	   A.H.,	   Kessenbrock,	   K.,	   Yu,	   J.H.,	   Neukirchen,	   D.,	   Bista,	   M.,	   Bradke,	   F.,	  Jenne,	  D.,	  Holak,	  T.A.,	  Werb,	  Z.,	  et	  al.	  (2008).	  Lifeact:	  a	  versatile	  marker	  to	  visualize	  F-­‐actin.	  Nat	  Methods	  5,	  605-­‐607.	  	  	  	  
