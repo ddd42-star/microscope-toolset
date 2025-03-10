@@ -74,26 +74,15 @@ def chat_gpt(client, collection):
     # example question and response generation
     #question = "What is the biological function of hGID"
 
-    question = ""
+    question = input("Digit your question here: ")
 
-    while question != "exit":
+    relevant_chunkcs = query_documents(question, client, collection)
 
-        question = input("Please type:\n 'exit' to go back to the menu\n 'c' to digit your question\n\n :")
+    answer = generete_response(question, relevant_chunkcs, client)
 
-        if question.lower().strip() == "c":
-            question = input("Digit your question here: ")
-
-            relevant_chunkcs = query_documents(question, client, collection)
-
-            answer = generete_response(question, relevant_chunkcs, client)
-
-            print(textwrap.fill(answer.content, width=100))
-
-        elif question.lower().strip() == "exit":
-            sys.exit("bye")
-
-        else:
-            print("Digit a valid command")
+    print("############################################################")
+    print(textwrap.fill(answer.content, width=100))
+    print("############################################################")
 
 
 
