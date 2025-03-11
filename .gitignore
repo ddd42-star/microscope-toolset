@@ -184,4 +184,4 @@ cython_debug/
 chroma_storage/
 
 # db sqlt3
-.sqlite3
+*.sqlite3
