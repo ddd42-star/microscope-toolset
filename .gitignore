@@ -178,4 +178,7 @@ cython_debug/
 *.txt
 
 # markdown
-*.md 
+*.md
+
+# ignore database
+chroma_storage/

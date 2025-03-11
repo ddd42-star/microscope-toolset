@@ -5,7 +5,6 @@ import textwrap
 
 from openai import OpenAI
 from chromadb.utils import embedding_functions
-from pypdf import PdfReader
 import textwrap
 
 def get_openai_embeddings(text, client):
@@ -40,12 +39,55 @@ def generete_response(question, relevant_chuncks, client):
 
     context = "\n\n".join(relevant_chuncks)
 
-    prompt = (
-        "You are scientif assistent for question-asnwering task. Use the following pieces of retrieved context to asnwer the question."
-        "If you don't know, say that you don't know. If you don't know ask the user more information. Do this maximum three times and after that"
-        "just ask the user to re-formulate the question."
-        "\n\nContext:\n" + context + "\n\nQuestion:\n" + question
-    )
+    #prompt = (
+    #"You are scientific assistant tasked with answering questions. Below we provide some un-formated context that might or might not be relevant to the asked question. If it is relevant, be sure to use it to deliver concrete and concise answers. Give precise details. Don't use overly flowery voice." + 
+    #"### QUESTION\n" + question + "\n\n"
+    #"### CONTEXT\n" + context
+    #)
+    prompt = (f"""
+You are a highly knowledgeable and precise scientific assistant, designed to assist researchers, scientists, 
+and professionals by answering questions based on retrieved scientific literature. You process, summarize and synthesize 
+information from relevant database chunks while maintaining clarity, conciseness, and scientific accuracy.
+
+### Important Considerations:
+- **Not all retrieved chunks will be relevant.** Some may contain unrelated, incorrect, or misleading information.
+- **Your task is to critically evaluate the chunks, extract only what is relevant, and discard anything irrelevant or misleading.**
+- **Do not assume all retrieved information is applicable.** Verify coherence with known scientific principles and the user's question.
+
+### Guidelines for Answering:
+
+1. **Prioritize Relevance:**
+   - Analyze the retrieved chunks and extract only the information directly relevant to the user's question.
+   - Ignore unrelated details, speculative claims, or low-quality information.
+
+2. **Ensure Scientific Rigor:**
+   - Base responses on evidence from the retrieved sources while maintaining logical consistency.
+   - If multiple interpretations exist, present them objectively and indicate their level of support.
+
+3. **Summarize, Don't Just Relay:**
+   - Rephrase complex findings for clarity while preserving technical accuracy.
+   - If necessary, cite key findings concisely rather than quoting verbatim.
+   - Avoid blindly trusting any single chunk; cross-check against multiple retrieved chunks if available.
+
+4. **Handle Uncertainty Transparently:**
+   - If the retrieved data does not fully answer the question, acknowledge the gap.
+   - Suggest possible interpretations or areas for further research rather than making unsupported claims.
+
+5. **Concise and Structured Responses:**
+   - Provide a direct answer first, followed by supporting details.
+   - Use bullet points or structured explanations when appropriate.
+
+6. **Avoid Speculation and Noise:**
+   - Do not generate conclusions beyond what the retrieved data supports.
+   - Clearly distinguish between well-supported findings and inconclusive or weak evidence.
+   - If external knowledge is needed, state that explicitly instead of making assumptions.
+
+Your goal is to provide scientifically sound, relevant, and concise responses, filtering out noise and misleading information while ensuring the highest degree of accuracy.
+              
+### BEGINNING OF CHUNKS
+{context}              
+""")
+
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -76,9 +118,9 @@ def chat_gpt(client, collection):
 
     question = input("Digit your question here: ")
 
-    relevant_chunkcs = query_documents(question, client, collection)
+    relevant_chunkcs = query_documents(question.strip(), client, collection)
 
-    answer = generete_response(question, relevant_chunkcs, client)
+    answer = generete_response(question.strip(), relevant_chunkcs, client)
 
     print("############################################################")
     print(textwrap.fill(answer.content, width=100))
@@ -100,7 +142,7 @@ if __name__ == "__main__":
     #path = "C:/Users/dario/OneDrive/università/MA/Thesis/microscope-toolset/microscope-toolset/chroma_storage"
     path = "C:/Users/dario/OneDrive/università/MA/Thesis/microscope-toolset/microscope-toolset/chroma_storage"
     chroma_client = chromadb.PersistentClient(path="./chroma_storage")
-    collection_name = "publications_qa_collection"
+    collection_name = "semantic_much_bigger_qa_collection"
     collection = chroma_client.get_collection(name=collection_name, embedding_function=openai_ef)
 
     client = OpenAI(api_key=openai_key)
