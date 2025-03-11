@@ -8,7 +8,6 @@ import pymupdf4llm
 from openai import OpenAI
 from chromadb.utils import embedding_functions
 from semantic_text_splitter import MarkdownSplitter
-import textwrap
 import tool
 
 

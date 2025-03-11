@@ -1,0 +1,6 @@
+chromadb
+openai
+pymupdf4llm
+pymupdf
+semantic_text_splitter
+textwrap
