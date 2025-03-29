@@ -12,9 +12,10 @@ class Execute:
 
     def __init__(self, filename: str):
         self.namespace = {}
-        exec("string", self.namespace) # add fist line of code
+        exec(f"from pymmcore_plus import MMCCorePlus\n mmc = MMCCorePlus().instance()\n mmc.loadSystemConfiguration({filename})", self.namespace) # add fist line of code
         # instantiate the object
-        self.namespace["mmc"] = self.namespace["The class"]()
+        #self.namespace["mmc"] = self.namespace["The class"]()
+        # probably not necessary
 
     def install_library(self, module: str):
         """Install missing packages using pip"""
