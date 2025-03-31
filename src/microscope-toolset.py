@@ -11,6 +11,7 @@ from src.agents.prompt_agent import PromptAgent
 from src.agents.software_agent import SoftwareEngeneeringAgent
 from src.agents.reasoning_agent import ReasoningAgent
 from microscope.microscope_status import MicroscopeStatus
+from pages.chat import chat
 
 def main():
 
@@ -113,7 +114,7 @@ def main():
             # get the status of the microscope
             microscopeStatus = MicroscopeStatus()
 
-            status = microscopeStatus.getCurrentStatus(executor=executor)
+            status = microscopeStatus.getCurrentStatus(executor=executor) # dictnary with the current configuration values
             print("###########################################################")
             print("Currently the microscope has the current configurations:\n")
             print(status)
@@ -131,7 +132,7 @@ def main():
             print("REFORMULATE AGENT IS READY")
             print("-----------------")
             # Instance the Database agent
-            dbAgent = DatabaseAgent(client_openai=client_openai)
+            dbAgent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client, client_collection=client_collection)
             print("DATABASE AGENT IS READY")
             print("-----------------")
             # instance the prompt Agent
@@ -148,9 +149,10 @@ def main():
             print("-----------------")
 
             # change to chat page
-            
-            # reformulate the query
-            reformulated_query = mainAgent.reformulate_user_query("somenthing")
+            menu = ""
+            while menu != "quit":
+
+                menu = chat(mainAgent=mainAgent, dbAgent=dbAgent, promptAgent=promptAgent, codeAgend=softwareEngeneeringAgent, reacAgent=reAcAgent)
 
             # exit the loop
 

@@ -12,5 +12,8 @@ class MicroscopeStatus:
 
         code = "mmc.getSystemState().dict()"
 
-        return dict(executor.run_code(code))
+        # update microscope status
+        self.status = dict(executor.run_code(code))
+
+        return self.status
     

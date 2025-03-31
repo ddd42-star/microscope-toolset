@@ -10,7 +10,8 @@ class MainAgent(Agent):
     def reformulate_user_query(self, query: str) -> str:
 
         # create prompt
-        prompt = ("""""")
+        # TODO Add the missing prompt
+        prompt = ("""Prompt to add""")
         response = self.client_openai.chat.completions.create(
             model="gpt-4o-mini",
             messages= [
