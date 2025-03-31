@@ -152,7 +152,7 @@ def main():
             menu = ""
             while menu != "quit":
 
-                menu = chat(mainAgent=mainAgent, dbAgent=dbAgent, promptAgent=promptAgent, codeAgend=softwareEngeneeringAgent, reacAgent=reAcAgent)
+                menu = chat(mainAgent=mainAgent, dbAgent=dbAgent, promptAgent=promptAgent, codeAgend=softwareEngeneeringAgent, reacAgent=reAcAgent, executor=executor)
 
             # exit the loop
 
