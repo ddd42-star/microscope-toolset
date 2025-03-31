@@ -2,6 +2,15 @@
 import sys
 import os
 from python.execute import Execute
+import chromadb
+from chromadb.utils import embedding_functions
+from openai import OpenAI
+from src.agents.main_agent import MainAgent
+from src.agents.database_agent import DatabaseAgent
+from src.agents.prompt_agent import PromptAgent
+from src.agents.software_agent import SoftwareEngeneeringAgent
+from src.agents.reasoning_agent import ReasoningAgent
+from microscope.microscope_status import MicroscopeStatus
 
 def main():
 
@@ -65,21 +74,112 @@ def main():
         return e
     
     # start the program
+    print("Welcome to Microscope-toolset!!\n\n")
 
-    try:
-        # Instancied the namespace
-        executor = Execute(path_cfg_file)
+    while True:
 
-        # call the databas
-        # TODO
+        menu_option = input(
+            "------------------------------------"
+            "Please select your available options:\n"
+            "1)     start\n"
+            "2)     exit\n"
+            "------------------------------------"
+            "command: ").lower()
+        
+        if menu_option == "start":
 
-    except Exception as e:
-        sys.exit(e)
-    
-   
+            # Instancied the namespace
+            executor = Execute(path_cfg_file) # maybe refactor where user can put their instance object (?)
+
+            # call the database
+            openai_key = os.getenv("OPENAI_API_KEY") # after change with dict of API keys
+            api_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key, model_name="text-embedding-3-small")
+
+            chroma_client = chromadb.PersistentClient(path=path_database_file)
+
+            client_collection = select_collection(chroma_client)
+
+            # try that the collection contains all needed data
+            try:
+                print("The current database contains the following data:\n")
+                print(client_collection.peek())
+            except Exception as e:
+                print("The database doesn't contain the needed data! Adjust it and retry.")
+                sys.exit(e)
+
+            # instantiate openai
+            client_openai = OpenAI(api_key=openai_key)
+
+            # get the status of the microscope
+            microscopeStatus = MicroscopeStatus()
+
+            status = microscopeStatus.getCurrentStatus(executor=executor)
+            print("###########################################################")
+            print("Currently the microscope has the current configurations:\n")
+            print(status)
+            print("###########################################################")
+
+            # TODO checks that all the module of the requirement.txt are installed
+
+            # The user may start to interact with LLM
+            print("THE MICROSCOPE IS READY")
+            print("-----------------------")
+            print("THE LLM IS READY")
+            print("-----------------")
+            # Instance the Main Agent
+            mainAgent = MainAgent(client_openai=client_openai)
+            print("REFORMULATE AGENT IS READY")
+            print("-----------------")
+            # Instance the Database agent
+            dbAgent = DatabaseAgent(client_openai=client_openai)
+            print("DATABASE AGENT IS READY")
+            print("-----------------")
+            # instance the prompt Agent
+            promptAgent = PromptAgent(client_openai=client_openai)
+            print("PROMPT AGENT IS READY")
+            print("-----------------")
+            # Instance the Software Engeneering Agent
+            softwareEngeneeringAgent = SoftwareEngeneeringAgent(client_openai=client_openai)
+            print("SOFTWARE ENGENEERING AGENT IS READY")
+            print("-----------------")
+            # Instance the Reasoning Agent
+            reAcAgent = ReasoningAgent(client_openai=client_openai)
+            print("REASONING AGENT IS READY")
+            print("-----------------")
+
+            # change to chat page
+            
+            # reformulate the query
+            reformulated_query = mainAgent.reformulate_user_query("somenthing")
+
+            # exit the loop
+
+        elif menu_option == "exit":
+            sys.exit("See you next time!")
+        else:
+            print(""
+            "Invalid option! Please select between this options:\n"
+            "1)     start\n"
+            "2)     exit"
+            "-------------------------------------")
+
+def select_collection(client: chromadb.ClientAPI) -> chromadb.Collection:
+    """This function allow to select the available collection from the database"""
+    # show available collection
+    list_of_collection = client.list_collections()
+
+    while True:
+        collection_name = input(f"The available collection are {list_of_collection}, please select one: ")
+
+        if collection_name in list_of_collection:
+            break
+        else:
+            print("The collection doesn't exit! Please select one available option.")
+
+    return client.get_collection(name=collection_name)
 
 
-if "__main__" == "__name__":
+if __name__ == "__main__":
     # run the program
     main()
     
