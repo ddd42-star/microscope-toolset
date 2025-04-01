@@ -12,6 +12,7 @@ from src.agents.software_agent import SoftwareEngeneeringAgent
 from src.agents.reasoning_agent import ReasoningAgent
 from microscope.microscope_status import MicroscopeStatus
 from pages.chat import chat
+import threading
 
 def main():
 
@@ -77,6 +78,15 @@ def main():
     # start the program
     print("Welcome to Microscope-toolset!!\n\n")
 
+    # Instancied the namespace
+    executor = Execute(path_cfg_file) # maybe refactor where user can put their instance object (?)
+
+
+    # initialize the thread
+    monitor_thread = threading.Thread(target=executor.monitor, daemon= True)
+    monitor_thread.start()
+
+
     while True:
 
         menu_option = input(
@@ -89,14 +99,11 @@ def main():
         
         if menu_option == "start":
 
-            # Instancied the namespace
-            executor = Execute(path_cfg_file) # maybe refactor where user can put their instance object (?)
-
             # call the database
             openai_key = os.getenv("OPENAI_API_KEY") # after change with dict of API keys
             api_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key, model_name="text-embedding-3-small")
 
-            chroma_client = chromadb.PersistentClient(path=path_database_file)
+            chroma_client = chromadb.PersistentClient(path=path_database_file, )
 
             client_collection = select_collection(chroma_client)
 
@@ -112,9 +119,9 @@ def main():
             client_openai = OpenAI(api_key=openai_key)
 
             # get the status of the microscope
-            microscopeStatus = MicroscopeStatus()
+            microscopeStatus = MicroscopeStatus(executor=executor)
 
-            status = microscopeStatus.getCurrentStatus(executor=executor) # dictnary with the current configuration values
+            status = microscopeStatus.getCurrentStatus() # dictonary with the current configuration values
             print("###########################################################")
             print("Currently the microscope has the current configurations:\n")
             print(status)
@@ -152,11 +159,19 @@ def main():
             menu = ""
             while menu != "quit":
 
-                menu = chat(mainAgent=mainAgent, dbAgent=dbAgent, promptAgent=promptAgent, codeAgend=softwareEngeneeringAgent, reacAgent=reAcAgent, executor=executor)
+                menu = chat(mainAgent=mainAgent, 
+                            dbAgent=dbAgent, 
+                            promptAgent=promptAgent, 
+                            codeAgend=softwareEngeneeringAgent, 
+                            reacAgent=reAcAgent, 
+                            executor=executor, 
+                            microscopeStatus=microscopeStatus)
 
             # exit the loop
 
         elif menu_option == "exit":
+            executor.is_running = False
+            monitor_thread.join()
             sys.exit("See you next time!")
         else:
             print(""

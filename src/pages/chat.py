@@ -4,6 +4,7 @@ from agents.prompt_agent import PromptAgent
 from agents.software_agent import SoftwareEngeneeringAgent
 from agents.reasoning_agent import ReasoningAgent
 from src.python.execute import Execute
+from src.microscope.microscope_status import MicroscopeStatus
 
 def chat(
         mainAgent: MainAgent, 
@@ -11,7 +12,8 @@ def chat(
         promptAgent: PromptAgent, 
         codeAgent: SoftwareEngeneeringAgent, 
         reacAgent: ReasoningAgent, 
-        executor: Execute):
+        executor: Execute,
+        microscopeStatus: MicroscopeStatus):
 
     choice = ""
     while choice != "quit":
@@ -32,7 +34,8 @@ def chat(
         # if code is not valid send it to the reasoning agent
         if not is_error:
 
-            #new_strategy = ask_for_strategies_reasoning_agent(dbAgent,reacAgent, error=output, current_prompt=prompt_to_use, query=choice) # add "Your previous strategy didn't works. Try again."
+            #new_strategy = ask_for_strategies_reasoning_agent(dbAgent,reacAgent, error=output, current_prompt=prompt_to_use, query=choice) 
+            # # add "Your previous strategy didn't works. Try again."
 
             output = try_new_strategy(
                 promptAgent=promptAgent, 
@@ -50,10 +53,12 @@ def chat(
         # update the status of the microscope and wait for other messages
         
         # update the status of the microscope
-        # TODO
+        #microscopeStatus.update() # new status
         # refactor the output for the user
-        # TODO
-
+        print("###########################################")
+        print("OpenAI:")
+        print(output)
+        print("###########################################")
 
     return choice
 
