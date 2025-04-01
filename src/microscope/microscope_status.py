@@ -1,6 +1,7 @@
 from python.execute import Execute
 import threading
 import time
+import ast
 
 class MicroscopeStatus:
 
@@ -17,10 +18,12 @@ class MicroscopeStatus:
 
     def getCurrentStatus(self) -> dict:
 
-        code = "mmc.getSystemState().dict()"
+        code = "print(mmc.getSystemState().dict())"
 
         # update microscope status
-        self.status = dict(self.executor.run_code(code))
+        result = self.executor.run_code(code)
+        
+        self.status = ast.literal_eval(result)
 
         return self.status
     
@@ -60,7 +63,9 @@ class MicroscopeStatus:
 
     def monitor(self, check_interval = 1):
 
-        while self.is_running:
-            self.update()
-            time.sleep(check_interval)
-    
+        if not self._start:# add the option to skip the first check
+
+            while self.is_running: 
+                self.update()
+                time.sleep(check_interval)
+        

@@ -80,22 +80,27 @@ def main():
     # Instancied the namespace
     executor = Execute(path_cfg_file)  # maybe refactor where user can put their instance object (?)
 
+    # get the status of the microscope
+    microscopeStatus = MicroscopeStatus(executor=executor)
+
     # initialize the thread
-    monitor_thread = threading.Thread(target=executor.monitor, daemon=True)
+    monitor_thread = threading.Thread(target= microscopeStatus.monitor, daemon=True)
     monitor_thread.start()
 
     while True:
 
         menu_option = input(
-            "------------------------------------"
+            "------------------------------------\n"
             "Please select your available options:\n"
             "1)     start\n"
             "2)     exit\n"
-            "------------------------------------"
+            "------------------------------------\n"
             "command: ").lower()
 
         if menu_option == "start":
 
+            # start tracking
+            microscopeStatus._start = False
             # call the database
             openai_key = os.getenv("OPENAI_API_KEY")  # after change with dict of API keys
             api_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key,
@@ -117,13 +122,13 @@ def main():
             client_openai = OpenAI(api_key=openai_key)
 
             # get the status of the microscope
-            microscopeStatus = MicroscopeStatus(executor=executor)
+            #microscopeStatus = MicroscopeStatus(executor=executor)
 
             status = microscopeStatus.getCurrentStatus()  # dictonary with the current configuration values
-            print("###########################################################")
+            print("###########################################################\n")
             print("Currently the microscope has the current configurations:\n")
             print(status)
-            print("###########################################################")
+            print("###########################################################\n")
 
             # TODO checks that all the module of the requirement.txt are installed
 
@@ -142,7 +147,7 @@ def main():
             print("DATABASE AGENT IS READY")
             print("-----------------")
             # instance the prompt Agent
-            promptAgent = PromptAgent(client_openai=client_openai)
+            promptAgent = PromptAgent()
             print("PROMPT AGENT IS READY")
             print("-----------------")
             # Instance the Software Engeneering Agent
@@ -160,7 +165,7 @@ def main():
                 menu = chat(mainAgent=mainAgent,
                             dbAgent=dbAgent,
                             promptAgent=promptAgent,
-                            codeAgend=softwareEngeneeringAgent,
+                            codeAgent=softwareEngeneeringAgent,
                             reacAgent=reAcAgent,
                             executor=executor,
                             microscopeStatus=microscopeStatus)

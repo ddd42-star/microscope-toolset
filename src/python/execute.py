@@ -12,7 +12,7 @@ class Execute:
     def __init__(self, filename: str):
         self.namespace = {}
         exec(
-            f"from pymmcore_plus import CMMCorePlus\nmmc = CMMCorePlus().instance()\nmmc.loadSystemConfiguration({filename})",
+            f"from pymmcore_plus import CMMCorePlus\nmmc = CMMCorePlus().instance()\nmmc.loadSystemConfiguration(fileName='{filename}')",
             self.namespace)  # add fist line of code
         # instantiate the object
         #self.namespace["mmc"] = self.namespace["The class"]()
@@ -78,5 +78,5 @@ class Execute:
                 print("Stop execution, send back the code to the agent!")
                 read_output = repr(e)
                 is_run = True
-
+        
         return read_output
