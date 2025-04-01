@@ -1,20 +1,22 @@
-from agents.agent import Agent
 import chromadb
 import numpy as np
 from typing import List, Optional
+from openai import OpenAI
 
-class DatabaseAgent(Agent):
 
-    def __init__(self, client_openai, chroma_client: chromadb.ClientAPI, client_collection: chromadb.Collection):
-        super().__init__(client_openai)
+class DatabaseAgent:
+
+    def __init__(self, client_openai: OpenAI, chroma_client: chromadb.ClientAPI, client_collection: chromadb.Collection):
+        self.client_openai = client_openai
         self.chroma_client = chroma_client
         self.client_collection = client_collection
 
     def embeds_query(self, query) -> np.array:
 
-        response = self.client_openai.embeddings.create(input=query, model="text-embedding-3-small", dimensions=512) # later add model's choice
+        response = self.client_openai.embeddings.create(input=query, model="text-embedding-3-small",
+                                                        dimensions=512)  # later add model's choice
 
-        embedding = response.data[0].embedding # list of floating values
+        embedding = response.data[0].embedding  # list of floating values
         print("Generating embedding")
 
         return np.array(embedding)
@@ -33,22 +35,22 @@ class DatabaseAgent(Agent):
         print("getting relevant information")
 
         return relevant_chuncks
-    
+
     def prepare_output(self, relevants_informations: Optional[List[str]] = None) -> str:
 
         if len(relevants_informations) == 0 or relevants_informations is None:
-
             return "No relevant information contained into the database."
-        
+
         prompt = """Add prompt"""
 
-        more_relevants_informations = [f"CHUNK {ids}:\n" + relevant_chunk for ids,relevant_chunk in enumerate(relevants_informations)]
+        more_relevants_informations = [f"CHUNK {ids}:\n" + relevant_chunk for ids, relevant_chunk in
+                                       enumerate(relevants_informations)]
 
         list_of_informations = "\n\n".join(more_relevants_informations)
 
         response = self.client_openai.chat.completions.create(
             model="gpt-4o-mini",
-            messages= [
+            messages=[
                 {
                     "role": "system",
                     "content": "\n\n".join(list_of_informations)
@@ -61,13 +63,12 @@ class DatabaseAgent(Agent):
         )
 
         return response.choices[0].message
-    
+
     def send_context(self, context: str):
 
         context_summary = """CONTEXT:\n {context}""".format(context=context)
-        
+
         return context_summary
-    
 
     def search_into_database(self, refactored_query: str) -> str:
 
@@ -81,7 +82,7 @@ class DatabaseAgent(Agent):
         context_summary = self.send_context(context=context_compacted)
 
         return context_summary
-    
+
     def retrieve_distances(self, strategy: str):
         # embed the user query
         query_embedded = self.embeds_query(query=strategy)
@@ -93,13 +94,9 @@ class DatabaseAgent(Agent):
         #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
         distances = results["distances"][0]
 
-
-        return distances # [[dis_1m dis_2, dis_3, ...]]
-
-
+        return distances  # [[dis_1m dis_2, dis_3, ...]]
 
     def verify_strategies(self, strategies: str):
-
 
         # retrieve possible informations from the different strategies
         # format the strategies like this: [**-**\n**-**]
@@ -121,7 +118,4 @@ class DatabaseAgent(Agent):
             # The three strategies don't works, ask for others
             return None, False
 
-
-
-        return list_of_strategies[idx_strategy-1], True
-    
+        return list_of_strategies[idx_strategy - 1], True

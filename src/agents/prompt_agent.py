@@ -1,10 +1,10 @@
-from agent import Agent
 
 
-class PromptAgent(Agent):
 
-    def __init__(self, client_openai):
-        super().__init__(client_openai)
+class PromptAgent:
+
+    def __init__(self):
+        self.prompt = ""
 
     def create_prompt(self, reformulated_query: str, context: str) -> str:
         new_prompt = """
