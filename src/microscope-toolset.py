@@ -5,11 +5,11 @@ from python.execute import Execute
 import chromadb
 from chromadb.utils import embedding_functions
 from openai import OpenAI
-from src.agents.main_agent import MainAgent
-from src.agents.database_agent import DatabaseAgent
-from src.agents.prompt_agent import PromptAgent
-from src.agents.software_agent import SoftwareEngeneeringAgent
-from src.agents.reasoning_agent import ReasoningAgent
+from agents.main_agent import MainAgent
+from agents.database_agent import DatabaseAgent
+from agents.prompt_agent import PromptAgent
+from agents.software_agent import SoftwareEngeneeringAgent
+from agents.reasoning_agent import ReasoningAgent
 from microscope.microscope_status import MicroscopeStatus
 from pages.chat import chat
 import threading
@@ -103,7 +103,7 @@ def main():
             openai_key = os.getenv("OPENAI_API_KEY") # after change with dict of API keys
             api_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key, model_name="text-embedding-3-small")
 
-            chroma_client = chromadb.PersistentClient(path=path_database_file, )
+            chroma_client = chromadb.PersistentClient(path=path_database_file)
 
             client_collection = select_collection(chroma_client)
 
