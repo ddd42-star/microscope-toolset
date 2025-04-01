@@ -3,8 +3,8 @@ from agents.database_agent import DatabaseAgent
 from agents.prompt_agent import PromptAgent
 from agents.software_agent import SoftwareEngeneeringAgent
 from agents.reasoning_agent import ReasoningAgent
-from src.python.execute import Execute
-from src.microscope.microscope_status import MicroscopeStatus
+from src import Execute
+from src import MicroscopeStatus
 
 def chat(
         mainAgent: MainAgent, 

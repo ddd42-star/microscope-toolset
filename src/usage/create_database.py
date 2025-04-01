@@ -59,7 +59,7 @@ def main():
     openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key,model_name='text-embedding-3-small')
 
     # initialize chroma client
-    chroma_client = chromadb.PersistentClient(path="chroma_storage")
+    chroma_client = chromadb.PersistentClient(path="../chroma_storage")
     # create collection name
     collection_name = "vector_database"
     # initialize a new collection or an existing one

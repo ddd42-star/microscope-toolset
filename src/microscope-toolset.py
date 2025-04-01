@@ -14,41 +14,40 @@ from microscope.microscope_status import MicroscopeStatus
 from pages.chat import chat
 import threading
 
-def main():
 
+def main():
     # the input should be like this
     # python microscope-toolset --cfg <cfg name> --api_key <LLM key> --database <path to database> 
     # python microscope-toolset --cfg <cfg name> --api_key --database <path to database> 
-    tot_arg = len(sys.argv) - 1 
+    tot_arg = len(sys.argv) - 1
 
     list_arg = str(sys.argv)
 
-    
     if "--cfg" not in list_arg:
         raise TypeError("missing --cfg keyword")
-    
+
     if "--api_key" not in list_arg:
         raise TypeError("missing --api_key keyword")
 
     if "--database" not in list_arg:
         raise TypeError("missing --database keyword")
-    
+
     try:
         # try to convert the input given in the command line
         path_cfg_file = str(sys.argv[2])
 
     except Exception as e:
         return e
-    
+
     try:
         # get API key
         api_key_dict = {}
         if str(sys.argv[4]) == "--database":
             #get API key from system
-            
-            for i in ["OPENAI_API_KEY","GEMINI_API_KEY", "OLLOMA_API_KEY", "ANTHROPIC_API_KEY"]:
+
+            for i in ["OPENAI_API_KEY", "GEMINI_API_KEY", "OLLOMA_API_KEY", "ANTHROPIC_API_KEY"]:
                 api_key_dict[i] = os.getenv(i)
-            # TODO add part when the key is missing
+                # TODO add part when the key is missing
                 try:
                     # try to convert the input given in the command line
                     path_database_file = str(sys.argv[5])
@@ -62,7 +61,7 @@ def main():
                 llm, key = str(sys.argv[4].split(":"))
             except Exception as e:
                 return e
-            
+
             api_key_dict[llm] = key
 
             try:
@@ -74,18 +73,16 @@ def main():
 
     except Exception as e:
         return e
-    
+
     # start the program
     print("Welcome to Microscope-toolset!!\n\n")
 
     # Instancied the namespace
-    executor = Execute(path_cfg_file) # maybe refactor where user can put their instance object (?)
-
+    executor = Execute(path_cfg_file)  # maybe refactor where user can put their instance object (?)
 
     # initialize the thread
-    monitor_thread = threading.Thread(target=executor.monitor, daemon= True)
+    monitor_thread = threading.Thread(target=executor.monitor, daemon=True)
     monitor_thread.start()
-
 
     while True:
 
@@ -96,12 +93,13 @@ def main():
             "2)     exit\n"
             "------------------------------------"
             "command: ").lower()
-        
+
         if menu_option == "start":
 
             # call the database
-            openai_key = os.getenv("OPENAI_API_KEY") # after change with dict of API keys
-            api_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key, model_name="text-embedding-3-small")
+            openai_key = os.getenv("OPENAI_API_KEY")  # after change with dict of API keys
+            api_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key,
+                                                                 model_name="text-embedding-3-small")
 
             chroma_client = chromadb.PersistentClient(path=path_database_file)
 
@@ -121,7 +119,7 @@ def main():
             # get the status of the microscope
             microscopeStatus = MicroscopeStatus(executor=executor)
 
-            status = microscopeStatus.getCurrentStatus() # dictonary with the current configuration values
+            status = microscopeStatus.getCurrentStatus()  # dictonary with the current configuration values
             print("###########################################################")
             print("Currently the microscope has the current configurations:\n")
             print(status)
@@ -139,7 +137,8 @@ def main():
             print("REFORMULATE AGENT IS READY")
             print("-----------------")
             # Instance the Database agent
-            dbAgent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client, client_collection=client_collection)
+            dbAgent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
+                                    client_collection=client_collection)
             print("DATABASE AGENT IS READY")
             print("-----------------")
             # instance the prompt Agent
@@ -158,13 +157,12 @@ def main():
             # change to chat page
             menu = ""
             while menu != "quit":
-
-                menu = chat(mainAgent=mainAgent, 
-                            dbAgent=dbAgent, 
-                            promptAgent=promptAgent, 
-                            codeAgend=softwareEngeneeringAgent, 
-                            reacAgent=reAcAgent, 
-                            executor=executor, 
+                menu = chat(mainAgent=mainAgent,
+                            dbAgent=dbAgent,
+                            promptAgent=promptAgent,
+                            codeAgend=softwareEngeneeringAgent,
+                            reacAgent=reAcAgent,
+                            executor=executor,
                             microscopeStatus=microscopeStatus)
 
             # exit the loop
@@ -175,10 +173,11 @@ def main():
             sys.exit("See you next time!")
         else:
             print(""
-            "Invalid option! Please select between this options:\n"
-            "1)     start\n"
-            "2)     exit"
-            "-------------------------------------")
+                  "Invalid option! Please select between this options:\n"
+                  "1)     start\n"
+                  "2)     exit"
+                  "-------------------------------------")
+
 
 def select_collection(client: chromadb.ClientAPI) -> chromadb.Collection:
     """This function allow to select the available collection from the database"""
@@ -199,4 +198,3 @@ def select_collection(client: chromadb.ClientAPI) -> chromadb.Collection:
 if __name__ == "__main__":
     # run the program
     main()
-    

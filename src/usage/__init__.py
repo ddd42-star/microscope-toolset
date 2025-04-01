@@ -7,8 +7,8 @@ from openai import OpenAI
 from chromadb.utils import embedding_functions
 import textwrap
 
-def get_openai_embeddings(text, client):
 
+def get_openai_embeddings(text, client):
     response = client.embeddings.create(input=text, model="text-embedding-3-small")
 
     embedding = response.data[0].embedding
@@ -19,16 +19,15 @@ def get_openai_embeddings(text, client):
 
 # function to query documents
 def query_documents(question, client, collection):
-
     query_embeddings = get_openai_embeddings(question, client)
-    
+
     results = collection.query(query_embeddings=query_embeddings)
 
     # Extract relevant chuncks
     relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
 
     print("getting relevant information")
-    #print(results)
+    # print(results)
 
     return relevant_chuncks
 
@@ -36,14 +35,13 @@ def query_documents(question, client, collection):
 # function to generate a response from OpenAI
 
 def generete_response(question, relevant_chuncks, client):
-
     context = "\n\n".join(relevant_chuncks)
 
-    #prompt = (
-    #"You are scientific assistant tasked with answering questions. Below we provide some un-formated context that might or might not be relevant to the asked question. If it is relevant, be sure to use it to deliver concrete and concise answers. Give precise details. Don't use overly flowery voice." + 
-    #"### QUESTION\n" + question + "\n\n"
-    #"### CONTEXT\n" + context
-    #)
+    # prompt = (
+    # "You are scientific assistant tasked with answering questions. Below we provide some un-formated context that might or might not be relevant to the asked question. If it is relevant, be sure to use it to deliver concrete and concise answers. Give precise details. Don't use overly flowery voice." +
+    # "### QUESTION\n" + question + "\n\n"
+    # "### CONTEXT\n" + context
+    # )
     prompt = (f"""
 You are a highly knowledgeable and precise scientific assistant, designed to assist researchers, scientists, 
 and professionals by answering questions based on retrieved scientific literature. You process, summarize and synthesize 
@@ -83,38 +81,36 @@ information from relevant database chunks while maintaining clarity, conciseness
    - If external knowledge is needed, state that explicitly instead of making assumptions.
 
 Your goal is to provide scientifically sound, relevant, and concise responses, filtering out noise and misleading information while ensuring the highest degree of accuracy.
-              
+
 ### BEGINNING OF CHUNKS
 {context}              
 """)
-
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
             {
-                "role":"system",
+                "role": "system",
                 "content": prompt,
             },
             {
-                "role":"user",
-                "content":question
+                "role": "user",
+                "content": question
             },
         ],
     )
-
 
     answer = response.choices[0].message
 
     return answer
 
-def chat_gpt(client, collection):
 
+def chat_gpt(client, collection):
     # Example query
     # query documents
 
     # example question and response generation
-    #question = "What is the biological function of hGID"
+    # question = "What is the biological function of hGID"
 
     question = input("Digit your question here: ")
 
@@ -127,32 +123,30 @@ def chat_gpt(client, collection):
     print("############################################################")
 
 
-
-
 if __name__ == "__main__":
 
     # get openai key
 
     openai_key = os.getenv("OPENAI_API_KEY")
 
-    openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key,model_name='text-embedding-3-small')
+    openai_ef = embedding_functions.OpenAIEmbeddingFunction(api_key=openai_key, model_name='text-embedding-3-small')
 
     # initialize chroma client
     # to fix, chroma db doesn' recognise absolut path
-    #path = "C:/Users/dario/OneDrive/università/MA/Thesis/microscope-toolset/microscope-toolset/chroma_storage"
-    path = "C:/Users/dario/OneDrive/università/MA/Thesis/microscope-toolset/microscope-toolset/chroma_storage"
+    # path = "C:/Users/dario/OneDrive/università/MA/Thesis/microscope-toolset/microscope-toolset/chroma_storage"
+    path = "/chroma_storage"
     chroma_client = chromadb.PersistentClient(path="./chroma_storage")
     collection_name = "semantic_much_bigger_qa_collection"
     collection = chroma_client.get_collection(name=collection_name, embedding_function=openai_ef)
 
     client = OpenAI(api_key=openai_key)
 
-
     choice = ""
 
     while choice != "quit":
 
-        choice = input("Available command:\n Press 'quit' to terminate\n Press 'chat' to start conversation with GPT-4\n\n : ")
+        choice = input(
+            "Available command:\n Press 'quit' to terminate\n Press 'chat' to start conversation with GPT-4\n\n : ")
 
         command = choice.lower().strip()
 
