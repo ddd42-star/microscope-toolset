@@ -30,6 +30,8 @@ class DatabaseAgent:
         results = self.client_collection.query(query_embeddings=query_embedded)
 
         # Extract relevant chuncks
+        # TODO add a similarity treashold to filter out irrelevant informations, since chromadb always retrieve a
+        # result
         relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
 
         print("getting relevant information")
