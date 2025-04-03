@@ -51,8 +51,9 @@ class Execute:
                 return False
 
     def run_code(self, code: str):
-
+        #print(code)
         is_run = False
+        read_output = ""
         while not is_run:
             try:
                 f = StringIO()
@@ -64,6 +65,7 @@ class Execute:
                 is_run = True
             except ModuleNotFoundError as e:  # case 1, module not imported
                 module_name = str(e).strip("'")[1]  # to check, extract module name
+                print(module_name)
                 self.namespace[module_name] = importlib.import_module(module_name)
             except ImportError as e:  # case 2, module not found, it must be installed (this only after checking if all the modules are presents.)
                 import_module = str(e).strip("'")[1]  # extract module name

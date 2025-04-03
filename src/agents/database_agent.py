@@ -2,6 +2,7 @@ import chromadb
 import numpy as np
 from typing import List, Optional
 from openai import OpenAI
+from prompts.databaseAgentPrompt import DATABASE_PROMPT
 
 
 class DatabaseAgent:
@@ -27,44 +28,52 @@ class DatabaseAgent:
         query_embedded = self.embeds_query(query=query)
 
         # search into the database
-        results = self.client_collection.query(query_embeddings=query_embedded)
+        results = self.client_collection.query(query_embeddings=query_embedded, n_results=50)
 
         # Extract relevant chuncks
-        # TODO add a similarity treashold to filter out irrelevant informations, since chromadb always retrieve a
-        # result
-        relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+        SIMILARITY_THREASHOLD = 0.80
 
+        # result
+        #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+        relevant_chuncks = []
+        for index, doc in enumerate(results["documents"][0]):
+            # transform distances into a similsrity score
+            score = self.similarity_score(results["distances"][0][index])
+            print(score)
+
+            if score >= SIMILARITY_THREASHOLD:
+                relevant_chuncks.append(doc)
         print("getting relevant information")
 
         return relevant_chuncks
 
-    def prepare_output(self, relevants_informations: Optional[List[str]] = None) -> str:
+    def prepare_output(self, refactored_query: str, relevants_informations: Optional[List[str]] = None) -> str:
 
         if len(relevants_informations) == 0 or relevants_informations is None:
             return "No relevant information contained into the database."
-
-        prompt = """Add prompt"""
 
         more_relevants_informations = [f"CHUNK {ids}:\n" + relevant_chunk for ids, relevant_chunk in
                                        enumerate(relevants_informations)]
 
         list_of_informations = "\n\n".join(more_relevants_informations)
 
+        prompt = DATABASE_PROMPT.format(context=list_of_informations)
+
         response = self.client_openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {
                     "role": "system",
-                    "content": "\n\n".join(list_of_informations)
+                    "content": prompt
                 },
                 {
                     "role": "user",
-                    "content": prompt
-                }
-            ]
+                    "content": refactored_query
+                },
+            ],
         )
 
-        return response.choices[0].message
+        return response.choices[0].message.content
 
     def send_context(self, context: str):
 
@@ -78,7 +87,7 @@ class DatabaseAgent:
         list_of_relevant_informations = self.retrieve_relevant_information(query=refactored_query)
 
         # Ask to make a summary of the information retrieved
-        context_compacted = self.prepare_output(relevants_informations=list_of_relevant_informations)
+        context_compacted = self.prepare_output(refactored_query=refactored_query, relevants_informations=list_of_relevant_informations)
 
         # prepare the output for the prompt Agent
         context_summary = self.send_context(context=context_compacted)
@@ -90,20 +99,18 @@ class DatabaseAgent:
         query_embedded = self.embeds_query(query=strategy)
 
         # search into the database
-        results = self.client_collection.query(query_embeddings=query_embedded, includes=["distances"])
+        results = self.client_collection.query(query_embeddings=query_embedded, n_results=50)
 
-        # Extract relevant chuncks
-        #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
         distances = results["distances"][0]
 
-        return distances  # [[dis_1m dis_2, dis_3, ...]]
+        return distances  # [dis_1m dis_2, dis_3, ...]
 
     def verify_strategies(self, strategies: str):
 
         # retrieve possible informations from the different strategies
         # format the strategies like this: [**-**\n**-**]
         # to choose the best strategies calculate the distance, the nearest one is the best strategy
-        best_distance = np.inf
+        best_distance = np.inf # L2 distance goes from 0 to inf
         idx_strategy = 0
         list_of_strategies = strategies.split("**-**")
 
@@ -121,3 +128,10 @@ class DatabaseAgent:
             return None, False
 
         return list_of_strategies[idx_strategy - 1], True
+
+
+    def similarity_score(self, distance: float) -> float:
+        # transforming distance in range (0,1)
+        score = 1/(1 + distance)
+
+        return score

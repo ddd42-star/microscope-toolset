@@ -18,7 +18,7 @@ You are the **Database Agent** of the system. You receive a **reformulated query
 * Do **not introduce new concepts** not present in the retrieved information.
 
 ### Filtered Relevant Context:
-{copy here}
+{context}
 """
 
 

@@ -2,6 +2,7 @@ from python.execute import Execute
 import threading
 import time
 import ast
+from typing import List
 
 class MicroscopeStatus:
 
@@ -32,23 +33,25 @@ class MicroscopeStatus:
         return previous_dict == new_dict
 
     
-    def update(self) -> None:
+    def update(self) -> List[str]:
 
         previous_status = self.getStatus()
         new_status = self.getCurrentStatus()
-
+        changed = []
         if self.is_different(previous_status, new_status):
-            # print new values
-            self.show_new_values(previous_status, new_status)
+
             # update new status
             self.status = new_status
+            # print new values
+            return self.show_new_values(previous_status, new_status)
+        return changed
 
-
-    def show_new_values(self, previous_dict: dict, new_dict: dict) -> None:
+    def show_new_values(self, previous_dict: dict, new_dict: dict) -> List[str]:
 
         # show which parameter(s) change
         # dict(str, dict(str, str))
         # dict(deviceLabel, dict(propertyLabel, values))
+        changes = []
         for deviceLabel in new_dict.keys():
             for propertyLabel in new_dict[deviceLabel].keys():
                 # check if the value is a number or a string
@@ -58,8 +61,11 @@ class MicroscopeStatus:
                 except:
                     previous_value = previous_dict[deviceLabel][propertyLabel]
                     new_value = new_dict[deviceLabel][propertyLabel]
+                if previous_value != new_value:
+                    print(f'The device {deviceLabel} has changed the property {propertyLabel} from value {previous_value} to value {new_value}')
+                    changes.append(f'The device {deviceLabel} has changed the property {propertyLabel} from value {previous_value} to value {new_value}')
 
-                print(f'The device {deviceLabel} has changed the property {propertyLabel} from value {previous_value} to value {new_value}')
+        return changes
 
     def monitor(self, check_interval = 1):
 

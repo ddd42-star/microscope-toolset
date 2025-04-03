@@ -29,8 +29,13 @@ If any of the information is unavailable, it will be marked as **“no informati
     * The **Reasoning Agent** will provide **three possible strategies** to fix the issue.
     * You will receive a new prompt with the best strategy, and you will **incorporate the strategy into the revised code**.
 ### Key Output Requirements:
+* Write a code snippet, but do not specify the language name in the triple backticks.
+* At the start of the program I run the following snipped code:
+```from pymmcore_plus import CMMCorePlus\nmmc = CMMCorePlus().instance()\nmmc.loadSystemConfiguration(fileName='{filename}')```
+You can the use the CMMCorePlus object calling it with 'mmc'.
 * **Code should be logically structured** and avoid unnecessary complexity.
-* If the task doesn’t require Python code (e.g., purely informational query), respond with: *“Sorry, this question doesn’t need Python code for the answer.”*
+* If the task doesn’t require Python code (e.g., purely informational query), respond with: *"Sorry, this question doesn't need Python code for the answer."*
+* Just include snipped code into the triple backticks. DO NOT add any additional sentence (e.g. Here is a Python code snippet that...) 
 * Ensure **security standards** are met, especially for the microscope and any connected devices.
 * **Optimize your code** after generating it, considering both performance and clarity.
 ### Additional Guidelines:
@@ -38,12 +43,12 @@ If any of the information is unavailable, it will be marked as **“no informati
 If you encounter situations where the task requires further clarification, respond in a way that does not generate incomplete or incorrect code.
 
 ### Relevant Context
-{}
+{context}
 ### Microscope Status
-{}
+{microscope_status}
 ### Previous Outputs
-{}
+{previous_outputs}
 ### New Strategy
-{}
+{new_strategy}
 """
 

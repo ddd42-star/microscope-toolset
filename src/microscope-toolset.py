@@ -120,7 +120,7 @@ def main():
 
             # instantiate openai
             client_openai = OpenAI(api_key=openai_key)
-
+            print(openai_key)
             # get the status of the microscope
             #microscopeStatus = MicroscopeStatus(executor=executor)
 
@@ -168,7 +168,8 @@ def main():
                             codeAgent=softwareEngeneeringAgent,
                             reacAgent=reAcAgent,
                             executor=executor,
-                            microscopeStatus=microscopeStatus)
+                            microscopeStatus=microscopeStatus,
+                            fileName=path_cfg_file)
 
             # exit the loop
 

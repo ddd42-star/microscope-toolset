@@ -26,26 +26,23 @@ If any of the information is unavailable, it will be marked as **“no informati
    * Ensure each new iteration builds on previous learnings rather than repeating the same mistakes.
 ### Output Requirements:
 * Generate exactly **three strategies** that address the error.
-
+* In your answer just include the strategy to use. Each strategy should start with the following '**-**' character.
 * Each strategy must be:
   * ✅ Clear – Well-structured and easy to follow.
   * ✅ Synthetic – Avoid unnecessary details while keeping essential explanations.
   * ✅ Scientifically sound – Based on accurate reasoning and prior knowledge.
   * ✅ Straight to the point – No redundant language, just precise solutions.
-
 * Do not suggest strategies that contradict the provided information.
-
 * If no valid strategy can be derived, state why and suggest further steps (e.g., requesting more details from the user).
-
 ### Summary of relevant context (from the Database Agent)
-{} 
+{context} 
 ### Microscope status summary
-{}
+{microscope_status}
 ### Previous outputs
-{}
+{previous_outputs}
 ### Error message from the failed code execution
-{}
+{errors}
 ### Current Python code snippet
-{}
+{code}
 """
 
