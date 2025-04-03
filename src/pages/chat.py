@@ -38,7 +38,7 @@ def chat(
         # create the prompt to send for the softwareengeering
         #prompt_to_use = promptAgent.create_prompt(reformulated_query=reformulated_query, context=context)
 
-        output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=output, new_strategy="", query=choice, executor=executor)
+        output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=output, new_strategy="", query=reformulated_query, executor=executor)
         print("output: ", output)
         print("code: ", code)
         # if code is not valid send it to the reasoning agent
@@ -56,7 +56,6 @@ def chat(
                 microscope_status=microscope_status,
                 previous_output= output,
                 code=code,
-                query=choice, 
                 reformulated_query= reformulated_query, 
                 context=context, 
                 executor=executor,
@@ -106,18 +105,17 @@ def try_new_strategy(
         microscope_status: str,
         previous_output: str,
         code: str,
-        query: str, 
         reformulated_query: str, 
         context: str, 
         executor: Execute,
         fileName: str):
 
-    new_strategy = ask_for_strategies_reasoning_agent(dbAgent=dbAgent,reacAgent=reacAgent, context=context, microscope_status=microscope_status, previous_outputs=previous_output, code=code, error=error, query=query) # add "Your previous strategy didn't works. Try again."
+    new_strategy = ask_for_strategies_reasoning_agent(dbAgent=dbAgent,reacAgent=reacAgent, context=context, microscope_status=microscope_status, previous_outputs=previous_output, code=code, error=error, query=reformulated_query) # add "Your previous strategy didn't works. Try again."
     
     # create the prompt to send for the softwareengeering
     #new_prompt_to_use = promptAgent.add_new_strategy(reformulated_query=reformulated_query, context=context, new_strategy=new_strategy)
 
-    output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=previous_output, new_strategy=new_strategy, query=query, executor=executor)
+    output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=previous_output, new_strategy=new_strategy, query=reformulated_query, executor=executor)
 
     if not is_error:
         return try_new_strategy(
@@ -129,7 +127,6 @@ def try_new_strategy(
             microscope_status=microscope_status,
             previous_output=previous_output,
             code=code,
-            query=query, 
             reformulated_query= reformulated_query, 
             context=context, 
             executor=executor,

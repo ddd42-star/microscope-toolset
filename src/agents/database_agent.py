@@ -28,21 +28,21 @@ class DatabaseAgent:
         query_embedded = self.embeds_query(query=query)
 
         # search into the database
-        results = self.client_collection.query(query_embeddings=query_embedded, n_results=50)
+        results = self.client_collection.query(query_embeddings=query_embedded, n_results=10)
 
         # Extract relevant chuncks
         SIMILARITY_THREASHOLD = 0.80
 
         # result
-        #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
-        relevant_chuncks = []
-        for index, doc in enumerate(results["documents"][0]):
-            # transform distances into a similsrity score
-            score = self.similarity_score(results["distances"][0][index])
-            print(score)
+        relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+        #relevant_chuncks = []
+        #for index, doc in enumerate(results["documents"][0]):
+        #    # transform distances into a similsrity score
+        #    score = self.similarity_score(results["distances"][0][index])
+        #    print(score)
 
-            if score >= SIMILARITY_THREASHOLD:
-                relevant_chuncks.append(doc)
+        #    if score >= SIMILARITY_THREASHOLD:
+        #        relevant_chuncks.append(doc)
         print("getting relevant information")
 
         return relevant_chuncks
