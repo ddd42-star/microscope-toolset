@@ -19,58 +19,74 @@ def chat(
     choice = ""
     microscope_status = ""
     output = ""
+    additional_infos = ""
     while True:
 
         choice = input("Digit your question here: ").strip()
 
         if choice == "quit":
             break
-        print("choice", choice)
+
 
 
         # Reformulate the query
-        reformulated_query = mainAgent.reformulate_user_query(choice, microscope_status, output)
-        print("reformulated question: ", reformulated_query)
+        #reformulated_query = mainAgent.reformulate_user_query(choice, microscope_status, output)
+        #print("reformulated question: ", reformulated_query)
         # Search into the database for the context
-        context = dbAgent.search_into_database(refactored_query=reformulated_query)
-        print("context", context)
+        #context = dbAgent.search_into_database(refactored_query=reformulated_query)
+        context = dbAgent.look_for_context(query=choice)# choose raw query for searching the in the database
+        #print("context", context)
 
-        # create the prompt to send for the softwareengeering
-        #prompt_to_use = promptAgent.create_prompt(reformulated_query=reformulated_query, context=context)
+        # Let main Agent decide if the answer can be answered with a script or not
+        evaluate_query = mainAgent.evaluate_query(query=choice, microscope_status=microscope_status, previous_outputs=output, context=context, additional_infos=additional_infos)
+        print("evaluate query: ", evaluate_query)
 
-        output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=output, new_strategy="", query=reformulated_query, executor=executor)
-        print("output: ", output)
-        print("code: ", code)
-        # if code is not valid send it to the reasoning agent
-        if not is_error:
+        while "I need more information" in evaluate_query:
+            additional_infos_user = input("Add additional information here: ").strip()
+            additional_infos = "LLM: " + evaluate_query + "\n" + "USER: " + additional_infos_user
+            evaluate_query = mainAgent.evaluate_query(query=choice, microscope_status=microscope_status, previous_outputs=evaluate_query, context=context, additional_infos=additional_infos)
+            print("evaluate query: ", evaluate_query)
 
-            #new_strategy = ask_for_strategies_reasoning_agent(dbAgent,reacAgent, error=output, current_prompt=prompt_to_use, query=choice) 
-            # # add "Your previous strategy didn't works. Try again."
+        if evaluate_query == "This query does not require Python code.":
+             output = mainAgent.main_agent(query=choice, microscope_status=microscope_status, previous_outputs=output, context=context)
+        else:
+            # create the prompt to send for the softwareengeering
+            #prompt_to_use = promptAgent.create_prompt(reformulated_query=reformulated_query, context=context)
 
-            output = try_new_strategy(
-                promptAgent=promptAgent, 
-                codeAgent=codeAgent, 
-                dbAgent=dbAgent, 
-                reacAgent=reacAgent, 
-                error=output, 
-                microscope_status=microscope_status,
-                previous_output= output,
-                code=code,
-                reformulated_query= reformulated_query, 
-                context=context, 
-                executor=executor,
-                fileName=fileName)
+            output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=output, additional_infos=additional_infos, new_strategy="", query=choice, executor=executor)
+            print("output: ", output)
+            print("code: ", code)
+            # if code is not valid send it to the reasoning agent
+            if not is_error:
 
-        # otherwise, code has run successfully. Prepare the output for the user and add callback.
-        # update the status of the microscope and wait for other messages
-        
-        # update the status of the microscope
-        #if len(microscopeStatus.update()) == 0:
-        #    microscope_status = microscope_status
-        #else:
-        #    microscope_status = "\n".join(microscopeStatus.update()) # new status
-        #microscopeStatus.update() # new status
-        # refactor the output for the user
+                #new_strategy = ask_for_strategies_reasoning_agent(dbAgent,reacAgent, error=output, current_prompt=prompt_to_use, query=choice)
+                # # add "Your previous strategy didn't works. Try again."
+
+                output = try_new_strategy(
+                    promptAgent=promptAgent,
+                    codeAgent=codeAgent,
+                    dbAgent=dbAgent,
+                    reacAgent=reacAgent,
+                    error=output,
+                    microscope_status=microscope_status,
+                    previous_output= output,
+                    additional_infos = additional_infos,
+                    code=code,
+                    reformulated_query= choice,
+                    context=context,
+                    executor=executor,
+                    fileName=fileName)
+
+            # otherwise, code has run successfully. Prepare the output for the user and add callback.
+            # update the status of the microscope and wait for other messages
+
+            # update the status of the microscope
+            #if len(microscopeStatus.update()) == 0:
+            #    microscope_status = microscope_status
+            #else:
+            #    microscope_status = "\n".join(microscopeStatus.update()) # new status
+            #microscopeStatus.update() # new status
+            # refactor the output for the user
         print("###########################################")
         print("OpenAI:")
         print(output)
@@ -104,6 +120,7 @@ def try_new_strategy(
         error: str, 
         microscope_status: str,
         previous_output: str,
+        additional_infos: str,
         code: str,
         reformulated_query: str, 
         context: str, 
@@ -115,7 +132,7 @@ def try_new_strategy(
     # create the prompt to send for the softwareengeering
     #new_prompt_to_use = promptAgent.add_new_strategy(reformulated_query=reformulated_query, context=context, new_strategy=new_strategy)
 
-    output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=previous_output, new_strategy=new_strategy, query=reformulated_query, executor=executor)
+    output, code, is_error = codeAgent.run_code(fileName=fileName, context=context, microscope_status=microscope_status, previous_outputs=previous_output, additional_infos=additional_infos, new_strategy=new_strategy, query=reformulated_query, executor=executor)
 
     if not is_error:
         return try_new_strategy(
@@ -126,6 +143,7 @@ def try_new_strategy(
             error=error, 
             microscope_status=microscope_status,
             previous_output=previous_output,
+            additional_infos=additional_infos,
             code=code,
             reformulated_query= reformulated_query, 
             context=context, 

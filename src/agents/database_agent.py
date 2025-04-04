@@ -34,7 +34,8 @@ class DatabaseAgent:
         SIMILARITY_THREASHOLD = 0.80
 
         # result
-        relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+        relevant_chuncks = [f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}" for i in range(len(results["documents"][0]))]
+        #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
         #relevant_chuncks = []
         #for index, doc in enumerate(results["documents"][0]):
         #    # transform distances into a similsrity score
@@ -93,6 +94,22 @@ class DatabaseAgent:
         context_summary = self.send_context(context=context_compacted)
 
         return context_summary
+
+    def look_for_context(self, query: str) -> str:
+
+        # retrieve relvant informations
+        list_of_relevant_informations = self.retrieve_relevant_information(query=query)
+
+        if len(list_of_relevant_informations) == 0 or list_of_relevant_informations is None:
+            return "No relevant information contained into the database."
+
+        more_relevants_informations = [f"CHUNK {ids}:\n" + relevant_chunk for ids, relevant_chunk in
+                                       enumerate(list_of_relevant_informations)]
+
+        list_of_informations = "\n\n".join(more_relevants_informations)
+
+        return  list_of_informations
+
 
     def retrieve_distances(self, strategy: str):
         # embed the user query
