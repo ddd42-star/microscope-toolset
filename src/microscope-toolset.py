@@ -1,4 +1,25 @@
 # Run the application
+import logging
+# configure logging
+logging.basicConfig(
+        level=logging.WARNING,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        handlers=[logging.StreamHandler()]
+    )
+
+# Create a file handler to save logs to a file
+file_handler = logging.FileHandler('my_logs.log')
+file_handler.setLevel(logging.INFO)  # Set log level for file (INFO and higher)
+
+# Create a formatter for the file handler
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+# Add the file handler to the root logger (not using basicConfig, but manually adding)
+logging.getLogger().addHandler(file_handler)
+
+
+
 import sys
 import os
 from python.execute import Execute
@@ -13,12 +34,18 @@ from agents.reasoning_agent import ReasoningAgent
 from microscope.microscope_status import MicroscopeStatus
 from pages.chat import chat
 import threading
-
+# silence other annoying logs
+logging.getLogger("chromadb").setLevel(logging.WARNING)
+logging.getLogger("openai").setLevel(logging.WARNING)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("pymmcore-plus").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
 
 def main():
     # the input should be like this
     # python microscope-toolset --cfg <cfg name> --api_key <LLM key> --database <path to database> 
-    # python microscope-toolset --cfg <cfg name> --api_key --database <path to database> 
+    # python microscope-toolset --cfg <cfg name> --api_key --database <path to database>
     tot_arg = len(sys.argv) - 1
 
     list_arg = str(sys.argv)
@@ -75,7 +102,8 @@ def main():
         return e
 
     # start the program
-    print("Welcome to Microscope-toolset!!\n\n")
+    mainLogger = logging.getLogger(__name__)
+    mainLogger.info("Welcome to Microscope-toolset!!\n\n")
 
     # Instancied the namespace
     executor = Execute(path_cfg_file)  # maybe refactor where user can put their instance object (?)
@@ -88,7 +116,6 @@ def main():
     monitor_thread.start()
 
     while True:
-
         menu_option = input(
             "------------------------------------\n"
             "Please select your available options:\n"
@@ -107,57 +134,62 @@ def main():
                                                                  model_name="text-embedding-3-small")
 
             chroma_client = chromadb.PersistentClient(path=path_database_file)
-
+            # sleep
+            #time.sleep(1)
             client_collection = select_collection(chroma_client)
 
             # try that the collection contains all needed data
             try:
-                print("The current database contains the following data:\n")
-                print(client_collection.peek())
+                mainLogger.info("The current database contains the following data:\n")
+                mainLogger.info(client_collection.peek())
             except Exception as e:
-                print("The database doesn't contain the needed data! Adjust it and retry.")
+                mainLogger.error("The database doesn't contain the needed data! Adjust it and retry.")
                 sys.exit(e)
 
             # instantiate openai
             client_openai = OpenAI(api_key=openai_key)
-            print(openai_key)
+            #print(openai_key)
             # get the status of the microscope
             #microscopeStatus = MicroscopeStatus(executor=executor)
 
             status = microscopeStatus.getCurrentStatus()  # dictonary with the current configuration values
-            print("###########################################################\n")
-            print("Currently the microscope has the current configurations:\n")
-            print(status)
-            print("###########################################################\n")
+            mainLogger.info("""
+            Currently the microscope has the current configurations:
+            %s
+            """, status)
+            #print("###########################################################\n")
+            #print("Currently the microscope has the current configurations:\n")
+            #print(status)
+            #print("###########################################################\n")
 
             # TODO checks that all the module of the requirement.txt are installed
 
             # The user may start to interact with LLM
-            print("THE MICROSCOPE IS READY")
-            print("-----------------------")
-            print("THE LLM IS READY")
-            print("-----------------")
+            mainLogger.info("THE MICROSCOPE IS READY")
+            #print("-----------------------")
+            mainLogger.info("THE LLM IS READY")
+            #print("-----------------")
             # Instance the Main Agent
             mainAgent = MainAgent(client_openai=client_openai)
-            print("REFORMULATE AGENT IS READY")
-            print("-----------------")
+            mainLogger.info("MAIN AGENT IS READY")
+            #print("-----------------")
             # Instance the Database agent
             dbAgent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
                                     client_collection=client_collection)
-            print("DATABASE AGENT IS READY")
-            print("-----------------")
+            mainLogger.info("DATABASE AGENT IS READY")
+            #print("-----------------")
             # instance the prompt Agent
             promptAgent = PromptAgent()
-            print("PROMPT AGENT IS READY")
-            print("-----------------")
+            mainLogger.info("PROMPT AGENT IS READY")
+            #print("-----------------")
             # Instance the Software Engeneering Agent
             softwareEngeneeringAgent = SoftwareEngeneeringAgent(client_openai=client_openai)
-            print("SOFTWARE ENGENEERING AGENT IS READY")
-            print("-----------------")
+            mainLogger.info("SOFTWARE ENGENEERING AGENT IS READY")
+            #print("-----------------")
             # Instance the Reasoning Agent
             reAcAgent = ReasoningAgent(client_openai=client_openai)
-            print("REASONING AGENT IS READY")
-            print("-----------------")
+            mainLogger.info("REASONING AGENT IS READY")
+            #print("-----------------")
 
             # change to chat page
             menu = ""
@@ -187,6 +219,7 @@ def main():
 
 def select_collection(client: chromadb.ClientAPI) -> chromadb.Collection:
     """This function allow to select the available collection from the database"""
+    logger = logging.getLogger(__name__)
     # show available collection
     list_of_collection = client.list_collections()
 
@@ -196,7 +229,7 @@ def select_collection(client: chromadb.ClientAPI) -> chromadb.Collection:
         if collection_name in list_of_collection:
             break
         else:
-            print("The collection doesn't exit! Please select one available option.")
+            logger.info("The collection doesn't exit! Please select one available option.")
 
     return client.get_collection(name=collection_name)
 

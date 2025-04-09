@@ -7,7 +7,8 @@ from prompts.databaseAgentPrompt import DATABASE_PROMPT
 
 class DatabaseAgent:
 
-    def __init__(self, client_openai: OpenAI, chroma_client: chromadb.ClientAPI, client_collection: chromadb.Collection):
+    def __init__(self, client_openai: OpenAI, chroma_client: chromadb.ClientAPI,
+                 client_collection: chromadb.Collection):
         self.client_openai = client_openai
         self.chroma_client = chroma_client
         self.client_collection = client_collection
@@ -34,10 +35,12 @@ class DatabaseAgent:
         SIMILARITY_THREASHOLD = 0.80
 
         # result
-        relevant_chuncks = [f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}" for i in range(len(results["documents"][0]))]
-        #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
-        #relevant_chuncks = []
-        #for index, doc in enumerate(results["documents"][0]):
+        relevant_chuncks = [
+            f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
+            for i in range(len(results["documents"][0]))]
+        # relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+        # relevant_chuncks = []
+        # for index, doc in enumerate(results["documents"][0]):
         #    # transform distances into a similsrity score
         #    score = self.similarity_score(results["distances"][0][index])
         #    print(score)
@@ -88,7 +91,8 @@ class DatabaseAgent:
         list_of_relevant_informations = self.retrieve_relevant_information(query=refactored_query)
 
         # Ask to make a summary of the information retrieved
-        context_compacted = self.prepare_output(refactored_query=refactored_query, relevants_informations=list_of_relevant_informations)
+        context_compacted = self.prepare_output(refactored_query=refactored_query,
+                                                relevants_informations=list_of_relevant_informations)
 
         # prepare the output for the prompt Agent
         context_summary = self.send_context(context=context_compacted)
@@ -108,8 +112,7 @@ class DatabaseAgent:
 
         list_of_informations = "\n\n".join(more_relevants_informations)
 
-        return  list_of_informations
-
+        return list_of_informations
 
     def retrieve_distances(self, strategy: str):
         # embed the user query
@@ -127,7 +130,7 @@ class DatabaseAgent:
         # retrieve possible informations from the different strategies
         # format the strategies like this: [**-**\n**-**]
         # to choose the best strategies calculate the distance, the nearest one is the best strategy
-        best_distance = np.inf # L2 distance goes from 0 to inf
+        best_distance = np.inf  # L2 distance goes from 0 to inf
         idx_strategy = 0
         list_of_strategies = strategies.split("**-**")
 
@@ -146,9 +149,8 @@ class DatabaseAgent:
 
         return list_of_strategies[idx_strategy - 1], True
 
-
     def similarity_score(self, distance: float) -> float:
         # transforming distance in range (0,1)
-        score = 1/(1 + distance)
+        score = 1 / (1 + distance)
 
         return score
