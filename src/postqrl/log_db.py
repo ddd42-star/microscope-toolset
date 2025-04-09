@@ -1,7 +1,7 @@
 import os
 import logging
 from typing import Optional, List
-from postqrl.connection import DBConnection
+from src.postqrl.connection import DBConnection
 
 logger = logging.getLogger(__name__)
 from psycopg2.extras import Json
@@ -34,17 +34,17 @@ class LoggerDB:
         if collection_name in self.list_collection():
             logger.error("The database contains already a collection called %s", collection_name)
         try:
-            with connection.cursur() as cur:
+            with connection.cursor() as cur:
                 cur.execute(f"""
-                CREATE EXTENSION IF NOT EXISTS "vector"; -- doing a vector search
+                CREATE EXTENSION IF NOT EXISTS vector; -- doing a vector search
                 CREATE TABLE {collection_name}(
-                id SERIAL PRIMARY KEY
-                prompt TEXT NOT NULL
-                output TEXT NOT NULL
-                feedback BOOLEAN
-                category TEXT
-                embedding VECTOR(512)
-                metadata JSONB
+                id SERIAL PRIMARY KEY,
+                prompt TEXT NOT NULL,
+                output TEXT NOT NULL,
+                feedback BOOLEAN,
+                category TEXT,
+                embedding VECTOR(512),
+                metadata JSONB,
                 created_at TIMESTAMP DEFAULT NOW()
                 );
                 """)
@@ -63,7 +63,7 @@ class LoggerDB:
             logger.error(f"The collection {collection_name} doesn't exist or is not present into the database.")
 
         try:
-            with connection.cursur() as cur:
+            with connection.cursor() as cur:
 
                 cur.execute(f"""
                 SELECT * FROM {collection_name}
@@ -89,7 +89,7 @@ class LoggerDB:
 
         try:
 
-            with connection.cursur() as cur:
+            with connection.cursor() as cur:
 
                 cur.execute(f"""
                 INSERT INTO {collection_name}
@@ -114,7 +114,7 @@ class LoggerDB:
             logger.error(f"The collection {collection_name} is not into the database")
 
         try:
-            with connection.cursur() as cur:
+            with connection.cursor() as cur:
                 cur.execute(f"""
                 DROP TABLE IF EXISTS {collection_name}
                 """)
@@ -140,7 +140,7 @@ class LoggerDB:
             logger.error(f"The collection {collection_name} is not present into the database")
 
         try:
-            with connection.cursur() as cur:
+            with connection.cursor() as cur:
 
                 cur.execute(f"""
                 SELECT * FROM {collection_name} WHERE category = %s LIMIT %s
@@ -161,7 +161,7 @@ class LoggerDB:
             logger.error(f"The collection {collection_name} is not present into the database")
 
         try:
-            with connection.cursur() as cur:
+            with connection.cursor() as cur:
                 cur.execute(f"""
                 SELECT prompt, output, feedback, category,
                 1 - (embedding <#> %s) AS similarity
@@ -184,7 +184,7 @@ class LoggerDB:
         if collection_name not in self.list_collection():
             logger.error(f"The collection {collection_name} is not into the database.")
         try:
-            with connection.cursur() as cur:
+            with connection.cursor() as cur:
                 cur.execute(f"""
                 SELECT * FROM {collection_name} WHERE feedback = %s LIMIT %s
                 """, (feedback,str(k)))
