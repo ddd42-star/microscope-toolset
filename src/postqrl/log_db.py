@@ -12,6 +12,21 @@ class LoggerDB:
     def __init__(self, connection: DBConnection):
         self.connection = connection
 
+        # activate vector extension
+        self.initialize()
+
+    def initialize(self):
+        connection = self.connection.get_connect()
+
+        try:
+            with connection.cursor() as cur:
+                cur.execute("CREATE EXTENSION IF NOT EXISTS vector; -- doing a vector search")
+                print("Vector extension was activated")
+        except Exception as e:
+            logger.error(e)
+        finally:
+            self.connection.put_connect(connection)
+
     def list_collection(self):
         connection = self.connection.get_connect()
         try:
@@ -36,7 +51,6 @@ class LoggerDB:
         try:
             with connection.cursor() as cur:
                 cur.execute(f"""
-                CREATE EXTENSION IF NOT EXISTS vector; -- doing a vector search
                 CREATE TABLE {collection_name}(
                 id SERIAL PRIMARY KEY,
                 prompt TEXT NOT NULL,
