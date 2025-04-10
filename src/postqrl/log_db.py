@@ -21,6 +21,7 @@ class LoggerDB:
         try:
             with connection.cursor() as cur:
                 cur.execute("CREATE EXTENSION IF NOT EXISTS vector; -- doing a vector search")
+                connection.commit()
                 print("Vector extension was activated")
         except Exception as e:
             logger.error(e)
@@ -57,7 +58,7 @@ class LoggerDB:
                 output TEXT NOT NULL,
                 feedback BOOLEAN,
                 category TEXT,
-                embedding VECTOR(512),
+                embedding vector(512),
                 metadata JSONB,
                 created_at TIMESTAMP DEFAULT NOW()
                 );
