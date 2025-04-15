@@ -1,17 +1,22 @@
+import logging
+
 import chromadb
 import numpy as np
 from typing import List, Optional
 from openai import OpenAI
 from prompts.databaseAgentPrompt import DATABASE_PROMPT
+from postqrl.log_db import LoggerDB
 
 
 class DatabaseAgent:
 
     def __init__(self, client_openai: OpenAI, chroma_client: chromadb.ClientAPI,
-                 client_collection: chromadb.Collection):
+                 client_collection: chromadb.Collection, db_log: LoggerDB, db_log_collection_name: str):
         self.client_openai = client_openai
         self.chroma_client = chroma_client
         self.client_collection = client_collection
+        self.db_log = db_log
+        self.db_log_name = db_log_collection_name
 
     def embeds_query(self, query) -> np.array:
 
@@ -28,8 +33,11 @@ class DatabaseAgent:
         # embed the user query
         query_embedded = self.embeds_query(query=query)
 
-        # search into the database
-        results = self.client_collection.query(query_embeddings=query_embedded, n_results=10)
+        # search into the database for chroma
+        results = self.client_collection.query(query_embeddings=query_embedded, n_results=5)
+
+        # search into the database for the log
+        log_result = self.db_log.query_by_vector(collection_name=self.db_log_name, vector=query_embedded, k=5)
 
         # Extract relevant chuncks
         SIMILARITY_THREASHOLD = 0.80
@@ -38,7 +46,7 @@ class DatabaseAgent:
         relevant_chuncks = [
             f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
             for i in range(len(results["documents"][0]))]
-        #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+        # relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
         # relevant_chuncks = []
         # for index, doc in enumerate(results["documents"][0]):
         #    # transform distances into a similsrity score
@@ -47,9 +55,17 @@ class DatabaseAgent:
         #
         #    if score >= SIMILARITY_THREASHOLD:
         #        relevant_chuncks.append(doc)
+
+        # log_relevant_chunks
+        log_chunks = [
+            f"\n **Prompt** {log_result[i]['prompt']}\n **Output** {log_result[i]['output']}\n **Feedback** {log_result[i]['feedback']}\n **Category** {log_result[i]['category']}"
+            for i in range(len(log_result))
+        ]
         print("getting relevant information")
 
-        return relevant_chuncks
+        joined_chunks = [*relevant_chuncks, *log_chunks]
+
+        return joined_chunks
 
     def prepare_output(self, refactored_query: str, relevants_informations: Optional[List[str]] = None) -> str:
 
@@ -154,3 +170,12 @@ class DatabaseAgent:
         score = 1 / (1 + distance)
 
         return score
+
+    def add_log(self, data):
+        logger = logging.getLogger(__name__)
+        if ["prompt", "output", "feedback", "category"] not in data.keys():
+            logger.error("missing data")
+
+        # insert the feedback from the user inside the database
+        vector = self.embeds_query(data['prompt'])
+        self.db_log.insert(self.db_log_name, data, embeddings=vector)

@@ -127,6 +127,12 @@ def chat(
         else:
             microscope_status = "\n".join(microscopeStatus.update()) # new status
         chatLogger.info(microscope_status)
+
+        # add a feedback from the user
+        data_user = user_feedback(prompt=choice, output=code)
+        # insert the data into the collection
+        dbAgent.add_log(data_user)
+
         # microscopeStatus.update() # new status
         # refactor the output for the user
         # print("###########################################")
@@ -212,3 +218,25 @@ def try_new_strategy(
             fileName=fileName)
 
     return output
+
+def user_feedback(prompt: str, output: str):
+    logger = logging.getLogger(__name__)
+    logger.info(f"You asked '{prompt}'? This was the output of your query: {output}. Did the LLM answered your question? Please answer Yes or No: ")
+    feedback = ""
+    while feedback not in ["Yes", "No"]:
+        feedback = input("Did the LLM answered your question? Please answer Yes or No: ")
+    # ask the category
+    category_choose = ""
+    category = ""
+    while category_choose != "Yes":
+        category = input("What is the category of your prompt? ")
+        category_choose = input(f"This is the category you selected '{category}'. Do you confirm your choice? Please answer Yes or No: ")
+
+    data_dict = {
+        "prompt": prompt,
+        "output": output,
+        "feedback": feedback,
+        "category": category
+    }
+
+    return data_dict

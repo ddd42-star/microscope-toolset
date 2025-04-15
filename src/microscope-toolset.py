@@ -34,6 +34,8 @@ from agents.reasoning_agent import ReasoningAgent
 from microscope.microscope_status import MicroscopeStatus
 from pages.chat import chat
 import threading
+from postqrl.connection import DBConnection
+from postqrl.log_db import LoggerDB
 # silence other annoying logs
 logging.getLogger("chromadb").setLevel(logging.WARNING)
 logging.getLogger("openai").setLevel(logging.WARNING)
@@ -115,6 +117,10 @@ def main():
     monitor_thread = threading.Thread(target= microscopeStatus.monitor, daemon=True)
     monitor_thread.start()
 
+    # call the logger database
+    db_connection = DBConnection()
+    db_log = LoggerDB(db_connection)
+
     while True:
         menu_option = input(
             "------------------------------------\n"
@@ -137,6 +143,7 @@ def main():
             # sleep
             #time.sleep(1)
             client_collection = select_collection(chroma_client)
+            log_collection_name = select_log_collection(db_log)
 
             # try that the collection contains all needed data
             try:
@@ -175,7 +182,7 @@ def main():
             #print("-----------------")
             # Instance the Database agent
             dbAgent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
-                                    client_collection=client_collection)
+                                    client_collection=client_collection, db_log=db_log, db_log_collection_name=log_collection_name)
             mainLogger.info("DATABASE AGENT IS READY")
             #print("-----------------")
             # instance the prompt Agent
@@ -208,6 +215,7 @@ def main():
         elif menu_option == "exit":
             executor.is_running = False
             monitor_thread.join()
+            db_log.close()
             sys.exit("See you next time!")
         else:
             print(""
@@ -232,6 +240,24 @@ def select_collection(client: chromadb.ClientAPI) -> chromadb.Collection:
             logger.info("The collection doesn't exit! Please select one available option.")
 
     return client.get_collection(name=collection_name)
+
+def select_log_collection(db_connection: LoggerDB):
+    """This function select the available log collection name from the database"""
+    logger = logging.getLogger(__name__)
+    # show available collection
+    list_of_collection = db_connection.list_collection()
+    if len(list_of_collection) == 0: # empy list
+        no_name = []
+        return no_name
+    while True:
+        collection_name = input(f"The available log collection are {list_of_collection}, please select one: ")
+
+        if collection_name in list_of_collection:
+            break
+        else:
+            logger.info("The collection doesn't exist! Please select one available option.")
+
+    return collection_name
 
 
 if __name__ == "__main__":
