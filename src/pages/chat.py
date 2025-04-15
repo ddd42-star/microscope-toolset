@@ -60,6 +60,8 @@ def chat(
                 user_input = input("user: ").lower().strip() # not really a strong implementations since it depends on the user a lot
                 additional_infos = "LLM: " + evaluate_query + "\n" + "USER: " + user_input
                 conversation += "\n" + additional_infos
+            elif "This query does not require Python code" in evaluate_query:
+                break
 
 
         # while "I need more information" in evaluate_query:
@@ -75,7 +77,7 @@ def chat(
 
         # now decide where to send the strategy
         if "This query does not require Python code." in evaluate_query:
-            output = mainAgent.main_agent(query=choice, microscope_status=microscope_status, previous_outputs=output,
+            output_user = mainAgent.main_agent(query=choice, microscope_status=microscope_status, previous_outputs=output,
                                           context=context, conversation=conversation)
         elif "This is my strategy" in evaluate_query:
             # create the prompt to send for the softwareengeering
@@ -109,18 +111,24 @@ def chat(
                     executor=executor,
                     fileName=fileName,
                     query_strategy=evaluate_query)
-            # update conversation
-            conversation += "\n" + "LLM: " + output
-            # otherwise, code has run successfully. Prepare the output for the user and add callback.
-            # update the status of the microscope and wait for other messages
+        # otherwise, code has run successfully. Prepare the output for the user and add callback.
+        if output is None:
+            output_user = code
+        else:
+            output_user = output
+        # update conversation
+        conversation += "\n" + "LLM: " + output_user
 
-            # update the status of the microscope
-            # if len(microscopeStatus.update()) == 0:
-            #    microscope_status = microscope_status
-            # else:
-            #    microscope_status = "\n".join(microscopeStatus.update()) # new status
-            # microscopeStatus.update() # new status
-            # refactor the output for the user
+        # update the status of the microscope and wait for other messages
+
+        # update the status of the microscope
+        if len(microscopeStatus.update()) == 0:
+            microscope_status = microscope_status
+        else:
+            microscope_status = "\n".join(microscopeStatus.update()) # new status
+        chatLogger.info(microscope_status)
+        # microscopeStatus.update() # new status
+        # refactor the output for the user
         # print("###########################################")
         # print("OpenAI:")
         # print(output)
@@ -128,7 +136,7 @@ def chat(
         chatLogger.info("""
         OpenAI:
         %s
-        """, output)
+        """, output_user)
 
     return choice
 

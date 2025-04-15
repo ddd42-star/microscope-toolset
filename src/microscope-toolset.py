@@ -105,7 +105,7 @@ def main():
     mainLogger = logging.getLogger(__name__)
     mainLogger.info("Welcome to Microscope-toolset!!\n\n")
 
-    # Instancied the namespace
+    # Instanced the namespace
     executor = Execute(path_cfg_file)  # maybe refactor where user can put their instance object (?)
 
     # get the status of the microscope

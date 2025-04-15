@@ -38,13 +38,13 @@ class DatabaseAgent:
         relevant_chuncks = [
             f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
             for i in range(len(results["documents"][0]))]
-        # relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+        #relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
         # relevant_chuncks = []
         # for index, doc in enumerate(results["documents"][0]):
         #    # transform distances into a similsrity score
         #    score = self.similarity_score(results["distances"][0][index])
         #    print(score)
-
+        #
         #    if score >= SIMILARITY_THREASHOLD:
         #        relevant_chuncks.append(doc)
         print("getting relevant information")

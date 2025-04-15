@@ -39,10 +39,11 @@ def prepare_code(code: str, **kwargs) -> str:
         code = delete_part_of_code(code, "loadSystemConfiguration")
 
     # Fix indentation problems
-    formatted_code = code.format(
-        ", ".join(kwargs.keys()) if kwargs else "",
-        "\n".join('t' + i for i in code.split('\n'))
-    )
+    #formatted_code = code.format(
+    #    ", ".join(kwargs.keys()) if kwargs else "",
+    #    "\n".join('t' + i for i in code.split('\n'))
+    #)
 
 
-    return formatted_code
+    #return formatted_code
+    return code

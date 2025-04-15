@@ -67,7 +67,7 @@ class SoftwareEngeneeringAgent:
             is_valid = True
             return output, prepare_code_to_run, is_valid
 
-        # an error occured
+        # an error occurred
         error_prompt = output
 
         return error_prompt, prepare_code_to_run, is_valid
