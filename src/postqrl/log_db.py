@@ -1,6 +1,5 @@
-import os
 import logging
-from typing import Optional, List
+from typing import List
 from src.postqrl.connection import DBConnection
 
 logger = logging.getLogger(__name__)
@@ -92,8 +91,53 @@ class LoggerDB:
         finally:
             self.connection.put_connect(connection)
 
-    def update_collection(self):
-        pass
+    def get_columns_name(self, collection_name: str):
+
+        connection = self.connection.get_connect()
+
+        if collection_name not in self.list_collection():
+            logger.error(f"The collection {collection_name} doesn't exist or is not present into the database.")
+
+        try:
+            with connection.cusor() as cur:
+                cur.execute("""
+                SELECT column_name
+                FROM information_schema.columns
+                WHERE table_name = %s
+                """, collection_name)
+
+                return cur.fetchall()
+        except Exception as e:
+            logger.error(e)
+        finally:
+            self.connection.put_connect(connection)
+
+    def update_collection(self, collection_name: str, **update):
+        connection = self.connection.get_connect()
+
+        if collection_name not in self.list_collection():
+            logger.error(f"The collection {collection_name} doesn't exist or is not present into the database.")
+
+        if len(update) == 0:
+            logger.error("No updated values available.")
+
+        if update.keys() not in self.get_columns_name(collection_name):
+            logger.error("One or more column name are not present in the collection.")
+
+        try:
+            with connection.cursor() as cur:
+                for i in update:
+                    value_to_update = update[i]
+                    cur.execute(f"""
+                    UPDATE %s
+                    SET %s = {value_to_update}
+                    """, (collection_name, i))
+                    cur.commit()
+                    logger.info(f"The value of {i} was changed in {value_to_update}")
+        except Exception as e:
+            logger.info(e)
+        finally:
+            self.connection.put_connect(connection)
 
     def insert(self, collection_name: str, data_dict, embeddings=None):
 
@@ -212,4 +256,12 @@ class LoggerDB:
 
         finally:
             self.connection.put_connect(connection)
+
+
+    def close(self):
+
+        try:
+            self.connection.disconnect()
+        except Exception as e:
+            logger.error(e)
 

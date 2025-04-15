@@ -65,7 +65,7 @@ class DBConnection:
         return self.pool.getconn()
 
     def put_connect(self, connection):
-        return self.pool.putconn(connection)
+        self.pool.putconn(connection)
 
     def disconnect(self):
-        return self.pool.closeall()
+        self.pool.closeall()
