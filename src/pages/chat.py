@@ -77,7 +77,7 @@ def chat(
 
         # now decide where to send the strategy
         if "This query does not require Python code." in evaluate_query:
-            output_user = mainAgent.main_agent(query=choice, microscope_status=microscope_status, previous_outputs=output,
+            output = mainAgent.main_agent(query=choice, microscope_status=microscope_status, previous_outputs=output,
                                           context=context, conversation=conversation)
         elif "This is my strategy" in evaluate_query:
             # create the prompt to send for the softwareengeering

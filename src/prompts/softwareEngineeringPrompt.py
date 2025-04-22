@@ -40,6 +40,7 @@ You can use the CMMCorePlus object calling it with 'mmc'.
 * Just include snipped code into the triple backticks. DO NOT add any additional sentence (e.g. Here is a Python code snippet that...) 
 * Ensure **security standards** are met, especially for the microscope and any connected devices.
 * **Optimize your code** after generating it, considering both performance and clarity.
+* Assure that each output is saved into a variable and assure to print each results. If the variable has a value of 'None', create a string that specify what the output of the code was.
 ### Additional Guidelines:
 * Ensure the code produced is **clear and easy to maintain**, with comments where necessary.
 
