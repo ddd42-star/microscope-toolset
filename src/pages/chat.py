@@ -48,19 +48,21 @@ def chat(
             evaluate_query = mainAgent.evaluate_query(query=choice, microscope_status=microscope_status,
                                                       previous_outputs=output, context=context,
                                                       additional_infos=additional_infos, conversation=conversation)
+            status = evaluate_query['intent']
+            message = evaluate_query['message']
 
-            chatLogger.info("evaluate query: %s", evaluate_query)
+            chatLogger.info("evaluate query: %s", message)
 
-            if "I need more information" in evaluate_query:
+            if 'ask_for_info' == status: #"I need more information" in evaluate_query:
                 additional_infos_user = input("Add additional information here: ").strip()
                 additional_infos = "LLM: " + evaluate_query + "\n" + "USER: " + additional_infos_user
                 # update conversation
                 conversation += "\n" + additional_infos
-            elif "This is my strategy" in evaluate_query:
+            elif 'propose_strategy' == status: #"This is my strategy" in evaluate_query:
                 user_input = input("user: ").lower().strip() # not really a strong implementations since it depends on the user a lot
                 additional_infos = "LLM: " + evaluate_query + "\n" + "USER: " + user_input
                 conversation += "\n" + additional_infos
-            elif "This query does not require Python code" in evaluate_query:
+            elif 'no_code_needed' == status: #"This query does not require Python code" in evaluate_query:
                 break
 
 

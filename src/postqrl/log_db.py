@@ -1,6 +1,6 @@
 import logging
 from typing import List
-from src.postqrl.connection import DBConnection
+from postqrl.connection import DBConnection
 
 logger = logging.getLogger(__name__)
 from psycopg2.extras import Json
@@ -222,10 +222,9 @@ class LoggerDB:
         try:
             with connection.cursor() as cur:
                 cur.execute(f"""
-                SELECT prompt, output, feedback, category,
-                1 - (embedding <#> %s) AS similarity
+                SELECT prompt, output, feedback, category,1 - (embedding <#> %s)
                 FROM {collection_name}
-                ORDER BY similarity DESC
+                ORDER BY cosine_similarity
                 LIMIT %s
                 """, (str(vector), str(k)))
 

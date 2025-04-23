@@ -38,6 +38,8 @@ class DatabaseAgent:
 
         # search into the database for the log
         log_result = self.db_log.query_by_vector(collection_name=self.db_log_name, vector=query_embedded, k=5)
+        if log_result is None:
+            log_result = []
 
         # Extract relevant chuncks
         SIMILARITY_THREASHOLD = 0.80

@@ -66,7 +66,7 @@ class MainAgent:
                 },
             ],
         )
-
+        print(response.choices[0].message.content)
         return response.choices[0].message.content
 
     def main_agent(self, query: str, microscope_status: str, previous_outputs: str, context: str, conversation: str) -> str:
