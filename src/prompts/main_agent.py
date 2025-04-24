@@ -1,65 +1,201 @@
 from agents.database_agent import DatabaseAgent
 from agents.software_agent import SoftwareEngeneeringAgent
 from agents.reasoning_agent import ReasoningAgent
+from agents.strategy_agent import StrategyAgent
+from agents.error_agent import ErrorAgent
+from agents.no_coding_agent import NoCodingAgent
+from agents.clarification_agent import ClarificationAgent
+from prompts.mainAgentPrompt import CLASSIFY_INTENT
+from python.prepare_code import prepare_code
+from python.execute import Execute
+import ast
 from openai import OpenAI
+
 
 class MainAgentState:
 
-    def __init__(self, client_openai: OpenAI, db_agent: DatabaseAgent, software_agent: SoftwareEngeneeringAgent, reasoning_agent: ReasoningAgent):
+    def __init__(self, client_openai: OpenAI, db_agent: DatabaseAgent, software_agent: SoftwareEngeneeringAgent,
+                 reasoning_agent: ReasoningAgent, strategy_agent: StrategyAgent, no_coding_agent: NoCodingAgent,
+                 clarification_agent: ClarificationAgent, error_agent: ErrorAgent,
+                 executor: Execute):
         self.state = "initial"
         self.context = {
             "conversation": [],
             "user_query": "",
             "context": "",
             "extra_infos": "",
-            "microscope_status":{},
+            "microscope_status": {},
             "previous_outputs": "",
             "main_agent_strategy": None,
             "new_strategy": None,
             "code": None,
-            "error": None
-
+            "error": None,
+            "error_analysis": None,
+            "finale_output": False,
+            "output": None,
+            "clarification_request": ""
         }
         self.client_openai = client_openai
         self.db_agent = db_agent
         self.software_agent = software_agent
         self.reasoning_agent = reasoning_agent
-
+        self.strategy_agent = strategy_agent
+        self.error_agent = error_agent
+        self.execute = executor
+        self.no_coding_agent = no_coding_agent
+        self.clarification_agent = clarification_agent
         # add differents agents
+
+    def get_state(self) -> str:
+        return self.state
 
     def process_query(self, user_query: str):
 
-        if user_query == "quit":
-            return "quit"
-
-        else:
-            # return state, {dict with information}
-            if self.state == "initial":
-                # retrieve the context from the vector db
-                # retrieve the log from the feedback db
-                context = self.db_agent.look_for_context(query=user_query)
-                self.context["context"] = context
+        # return state, {dict with information}
+        if self.state == "initial":
+            # retrieve the context from the vector db
+            # retrieve the log from the feedback db
+            context = self.db_agent.look_for_context(query=user_query)
+            self.context["context"] = context
+            self.context["user_query"] = user_query
+            # classify user's intent
+            classify_intent = self.classify_intent(context=context)
+            if classify_intent["intent"] == 'ask_for_info':
+                self.state = "awaiting_clarification"
+                self.context["clarification_request"] = classify_intent["message"]
+                return "awaiting_clarification", self.context
+            elif classify_intent["intent"] == 'propose_strategy':
                 self.state = "planning_strategy"
+                return "planning_strategy", False, self.context
+            elif classify_intent["intent"] == 'no_code_needed':
+                # answer normally
+                answer_message = self.no_coding_agent.no_coding_asnwer(self.context)
+                self.context["output"] = answer_message
+                return "terminate", self.context
 
-                return "planning_strategy", { "user_query": user_query}
-            elif self.state == "awaiting_clarification":
-                # 1) awaiting clarification from user query
-                # 2) awaiting clarification from agent strategy
-                pass
-            elif self.state == "planning_strategy":
-                # create a strategy
+        elif self.state == "awaiting_clarification":
+            # 1) awaiting clarification from user query
+            user_clarification = self.clarification_agent.user_clarification(self.context)
+            self.context["extra_infos"] = user_clarification
+            self.state = "initial"
 
-                pass
-            elif self.state == "awaiting_user_approval":
-                pass
-            elif self.state == "validating_strategy":
-                pass
-            elif self.state == "executing_code":
-                pass
-            elif self.state == "handling_errors":
-                pass
-            elif self.state == "finish":
-                pass
+            return "initial", self.context
 
-        return None
+            # 2) awaiting clarification from agent strategy
+            # TODO checks if works for both clarification
 
+        elif self.state == "planning_strategy":
+
+            # no new strategy
+            if self.context["new_strategy"] is None:
+
+                #  1) create a strategy
+                created_strategy = self.strategy_agent.generate_strategy(self.context)
+                if created_strategy["intent"] == "strategy":
+                    # add strategy to self.context
+                    self.context["strategy"] = created_strategy["message"]
+                    # change state
+                    self.state = "awaiting_user_approval"
+                    return "awaiting_user_approval", self.context
+                elif created_strategy["intent"] == "need_information":
+                    self.state = "awaiting_clarification"
+                    self.context["clarification_request"] = created_strategy["message"]
+                    return "awaiting_clarification", self.context
+            else:
+                # 2) new strategy
+                new_strategy_agent = self.strategy_agent.revise_strategy(self.context)
+                if new_strategy_agent["intent"] == "new_strategy":
+                    self.context["new_strategy"] = new_strategy_agent["message"]
+                    self.state = "executing_code"
+
+                    return "executing_code", self.context
+
+        elif self.state == "awaiting_user_approval":
+            # ask the user for approval
+            if user_query.lower() == "yes":
+                self.state = "executing_code"
+                return "executing_code", self.context
+            elif user_query.lower() == "no":
+                self.state = "planning_strategy"
+                return "planning_strategy", "new_strategy", self.context
+        elif self.state == "validating_strategy":
+            # this with the new strategy proposed
+            pass
+        elif self.state == "executing_code":
+            if self.context["new_strategy"] is None:
+
+                # create piece of code
+                code = SoftwareEngeneeringAgent.generate_code(self.context)
+            else:
+                # fix code
+                code = SoftwareEngeneeringAgent.fix_code(self.context)
+
+            if code["intent"] == "code":
+                # run the code
+                prepare_code_to_run = prepare_code(code["message"].strip("```"))
+                self.context["code"] = prepare_code_to_run
+                print("prepare code: ", prepare_code_to_run)
+                # logger.info("prepare code: %s", prepare_code_to_run)
+                # run the code
+                output = self.execute.run_code(prepare_code_to_run)
+                # is_valid = False
+                if "Error" not in output:
+                    # 1) run successfully
+                    # is_valid = True
+                    self.state = "finish"
+                    self.context["output"] = output
+                    return "finish", self.context
+                    # return output, prepare_code_to_run, is_valid
+                else:
+                    # 2) errors. Catch it and send it to the agent
+                    self.context["error"] = output
+                    self.state = "handling_errors"
+                    return "handling_errors", self.context
+
+        elif self.state == "handling_errors":
+            # 1) analyze the error
+            error_analysis = self.error_agent.analyze_error(self.context)
+            if error_analysis["intent"] == "error_analysis":
+                # 2) ask new strategy
+                self.state = "planning_strategy"
+                self.context["error_analysis"] = error_analysis["message"]
+                return "planning_strategy", self.context
+
+        elif self.state == "finish":
+            if self.context["final_output"] is True:
+                # reset all the needed variable ready for a new user query
+                return "terminate", self.context
+
+        return "Unknown_status", self.context
+
+    def classify_intent(self, context):
+
+        prompt = CLASSIFY_INTENT.format(
+            conversation=context["conversation"] or "no information",
+            context=context["context"] or "no information",
+            microscope_status=context["microscope_status"] or "no information",
+            previous_outputs=context["previous_outputs"] or "no information",
+            extra_infos=context["extra_infos"] or "no information"
+        )
+
+        response = self.client_openai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt
+                },
+                {
+                    "role": "user",
+                    "content": context["user_query"]
+                }
+            ]
+        )
+
+        return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary
+
+    def parse_agent_response(self, response: str):
+        try:
+            return ast.literal_eval(response)
+        except (ValueError, SyntaxError):
+            pass

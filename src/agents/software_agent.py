@@ -1,7 +1,8 @@
 from openai import OpenAI
 from python.execute import Execute
 from python.prepare_code import prepare_code
-from prompts.softwareEngineeringPrompt import SOFTWARE_PROMPT
+from prompts.softwareEngineeringPrompt import SOFTWARE_PROMPT, SOFTWARE_AGENT, SOFTWARE_AGENT_RETRY
+import ast
 import logging
 
 
@@ -71,3 +72,63 @@ class SoftwareEngeneeringAgent:
         error_prompt = output
 
         return error_prompt, prepare_code_to_run, is_valid
+
+    def generate_code(self, context):
+
+        prompt = SOFTWARE_AGENT.format(
+            conversation=context["conversation"] or "no information",
+            context=context["context"] or "no information",
+            microscope_status = context["microscope_status"] or "no information",
+            previous_outputs = context["previous_outputs"] or "no information",
+            query_strategy=context["main_agent_strategy"] or "no information"
+        )
+        response = self.client_openai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt
+                },
+                {
+                    "role": "user",
+                    "content": context["user_query"]
+                }
+            ]
+            )
+
+        return self.parse_agent_response(response.choices[0].message.content)
+
+    def fix_code(self, context):
+
+        prompt = SOFTWARE_AGENT_RETRY.format(
+            conversation=context["conversation"] or "no information",
+            context=context["context"] or "no information",
+            microscope_status=context["microscope_status"] or "no information",
+            previous_outputs=context["previous_outputs"] or "no information",
+            query_strategy=context["main_agent_strategy"] or "no information",
+            error_message=context["error"] or "no information",
+            error_analysis=context["error_analysis"] or "no information",
+            new_strategy=context["new_strategy"] or "no information"
+        )
+        response = self.client_openai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt
+                },
+                {
+                    "role": "user",
+                    "content": context["user_query"]
+                }
+            ]
+        )
+
+        return self.parse_agent_response(response.choices[0].message.content)
+
+    def parse_agent_response(self, response: str):
+        try:
+            return ast.literal_eval(response)
+        except (ValueError, SyntaxError):
+            pass
+

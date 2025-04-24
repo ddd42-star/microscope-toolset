@@ -1,11 +1,12 @@
 # Run the application
 import logging
+
 # configure logging
 logging.basicConfig(
-        level=logging.WARNING,
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        handlers=[logging.StreamHandler()]
-    )
+    level=logging.WARNING,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[logging.StreamHandler()]
+)
 
 # Create a file handler to save logs to a file
 file_handler = logging.FileHandler('my_logs.log')
@@ -18,24 +19,28 @@ file_handler.setFormatter(formatter)
 # Add the file handler to the root logger (not using basicConfig, but manually adding)
 logging.getLogger().addHandler(file_handler)
 
-
-
 import sys
 import os
 from python.execute import Execute
 import chromadb
 from chromadb.utils import embedding_functions
 from openai import OpenAI
-from agents.main_agent import MainAgent
+# from agents.main_agent import MainAgent
+from prompts.main_agent import MainAgentState
 from agents.database_agent import DatabaseAgent
 from agents.prompt_agent import PromptAgent
 from agents.software_agent import SoftwareEngeneeringAgent
 from agents.reasoning_agent import ReasoningAgent
+from agents.error_agent import ErrorAgent
+from agents.clarification_agent import ClarificationAgent
+from agents.no_coding_agent import NoCodingAgent
+from agents.strategy_agent import StrategyAgent
 from microscope.microscope_status import MicroscopeStatus
 from pages.chat import chat
 import threading
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
+
 # silence other annoying logs
 logging.getLogger("chromadb").setLevel(logging.WARNING)
 logging.getLogger("openai").setLevel(logging.WARNING)
@@ -43,6 +48,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("pymmcore-plus").setLevel(logging.WARNING)
 logging.getLogger("urllib3").setLevel(logging.WARNING)
 logging.getLogger("httpcore").setLevel(logging.WARNING)
+
 
 def main():
     # the input should be like this
@@ -72,7 +78,7 @@ def main():
         # get API key
         api_key_dict = {}
         if str(sys.argv[4]) == "--database":
-            #get API key from system
+            # get API key from system
 
             for i in ["OPENAI_API_KEY", "GEMINI_API_KEY", "OLLOMA_API_KEY", "ANTHROPIC_API_KEY"]:
                 api_key_dict[i] = os.getenv(i)
@@ -114,7 +120,7 @@ def main():
     microscopeStatus = MicroscopeStatus(executor=executor)
 
     # initialize the thread
-    monitor_thread = threading.Thread(target= microscopeStatus.monitor, daemon=True)
+    monitor_thread = threading.Thread(target=microscopeStatus.monitor, daemon=True)
     monitor_thread.start()
 
     # call the logger database
@@ -141,7 +147,7 @@ def main():
 
             chroma_client = chromadb.PersistentClient(path=path_database_file)
             # sleep
-            #time.sleep(1)
+            # time.sleep(1)
             client_collection = select_collection(chroma_client)
             log_collection_name = select_log_collection(db_log)
 
@@ -155,60 +161,97 @@ def main():
 
             # instantiate openai
             client_openai = OpenAI(api_key=openai_key)
-            #print(openai_key)
+            # print(openai_key)
             # get the status of the microscope
-            #microscopeStatus = MicroscopeStatus(executor=executor)
+            # microscopeStatus = MicroscopeStatus(executor=executor)
 
             status = microscopeStatus.getCurrentStatus()  # dictonary with the current configuration values
             mainLogger.info("""
             Currently the microscope has the current configurations:
             %s
             """, status)
-            #print("###########################################################\n")
-            #print("Currently the microscope has the current configurations:\n")
-            #print(status)
-            #print("###########################################################\n")
+            # print("###########################################################\n")
+            # print("Currently the microscope has the current configurations:\n")
+            # print(status)
+            # print("###########################################################\n")
 
             # TODO checks that all the module of the requirement.txt are installed
 
             # The user may start to interact with LLM
             mainLogger.info("THE MICROSCOPE IS READY")
-            #print("-----------------------")
+            # print("-----------------------")
             mainLogger.info("THE LLM IS READY")
-            #print("-----------------")
+            # print("-----------------")
             # Instance the Main Agent
-            mainAgent = MainAgent(client_openai=client_openai)
-            mainLogger.info("MAIN AGENT IS READY")
-            #print("-----------------")
+            # mainAgent = MainAgent(client_openai=client_openai)
+            # mainLogger.info("MAIN AGENT IS READY")
+            # print("-----------------")
             # Instance the Database agent
             dbAgent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
-                                    client_collection=client_collection, db_log=db_log, db_log_collection_name=log_collection_name)
+                                    client_collection=client_collection, db_log=db_log,
+                                    db_log_collection_name=log_collection_name)
             mainLogger.info("DATABASE AGENT IS READY")
-            #print("-----------------")
+            # print("-----------------")
             # instance the prompt Agent
             promptAgent = PromptAgent()
             mainLogger.info("PROMPT AGENT IS READY")
-            #print("-----------------")
+            # print("-----------------")
             # Instance the Software Engeneering Agent
             softwareEngeneeringAgent = SoftwareEngeneeringAgent(client_openai=client_openai)
             mainLogger.info("SOFTWARE ENGENEERING AGENT IS READY")
-            #print("-----------------")
+            # print("-----------------")
             # Instance the Reasoning Agent
             reAcAgent = ReasoningAgent(client_openai=client_openai)
             mainLogger.info("REASONING AGENT IS READY")
-            #print("-----------------")
+            # print("-----------------")
+            # Instance the Error Agent
+            error_agent = ErrorAgent(client_openai=client_openai)
+            mainLogger.info("ERROR AGENT IS READY")
+
+            # Instance the Strategy Agent
+            strategy_agent = StrategyAgent(client_openai=client_openai)
+            mainLogger.info("STRATEGY AGENT IS READY")
+
+            # Instance No coding agent
+            no_coding_agent = NoCodingAgent(client_openai=client_openai)
+            mainLogger.info("NO CODING AGENT IS READY")
+
+            # Instance the Clarification Agent
+            clarification_agent = ClarificationAgent(client_openai=client_openai)
+            mainLogger.info("CLARIFICATION AGENT IS READY")
+
+            # Instance the Main Agent
+            main_agent = MainAgentState(client_openai=client_openai, db_agent=dbAgent,
+                                        software_agent=softwareEngeneeringAgent, reasoning_agent=reAcAgent,
+                                        strategy_agent=strategy_agent, no_coding_agent=no_coding_agent,
+                                        clarification_agent=clarification_agent, error_agent=error_agent,
+                                        executor=executor)
 
             # change to chat page
-            menu = ""
-            while menu != "quit":
-                menu = chat(mainAgent=mainAgent,
-                            dbAgent=dbAgent,
-                            promptAgent=promptAgent,
-                            codeAgent=softwareEngeneeringAgent,
-                            reacAgent=reAcAgent,
-                            executor=executor,
-                            microscopeStatus=microscopeStatus,
-                            fileName=path_cfg_file)
+            # menu = ""
+            # while menu != "quit":
+            #     menu = chat(mainAgent=mainAgent,
+            #                 dbAgent=dbAgent,
+            #                 promptAgent=promptAgent,
+            #                 codeAgent=softwareEngeneeringAgent,
+            #                 reacAgent=reAcAgent,
+            #                 executor=executor,
+            #                 microscopeStatus=microscopeStatus,
+            #                 fileName=path_cfg_file)
+            while True:
+                user_input = input("User: ")  # "Digit your question here: "
+
+                # checks if the user wants to quit
+                if user_input == "quit":
+                    break
+
+                response, data = main_agent.process_query(user_query=user_input)
+
+                # check if terminate
+                if response == "terminate":
+                    mainLogger.info(data["output"])
+                elif response == "Unknown_status":
+                    mainLogger.info("Unknown requests")
 
             # exit the loop
 
@@ -241,12 +284,13 @@ def select_collection(client: chromadb.ClientAPI) -> chromadb.Collection:
 
     return client.get_collection(name=collection_name)
 
+
 def select_log_collection(db_connection: LoggerDB):
     """This function select the available log collection name from the database"""
     logger = logging.getLogger(__name__)
     # show available collection
     list_of_collection = db_connection.list_collection()
-    if len(list_of_collection) == 0: # empy list
+    if len(list_of_collection) == 0:  # empy list
         no_name = []
         return no_name
     while True:
