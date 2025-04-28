@@ -59,16 +59,17 @@ def chat(executor, client_openai, dbAgent, softwareEngeneeringAgent, reAcAgent, 
             # reset state
             main_agent.set_state("initial")
             # reset the context dict
-            main_agent.set_context()
+            old_context = main_agent.get_context()
+            main_agent.set_context(old_output=old_context['output'], old_microscope_status=old_context['microscope_status'])
             user_query = user_request_query()
 
     return MAIN_MENU
 
-    pass
-
 def database(mainLogger, executor, microscopeStatus, dbLog):
 
-    pass
+    print("Function not yet present")
+
+    return MAIN_MENU
 
 def user_request_query():
     user_query = input("Digit your query: ")
@@ -85,6 +86,7 @@ def loop_through_states(main_agent, initial_user_query):
         if main_agent.get_state() in ["awaiting_clarification", "awaiting_user_approval"]:
             print(f"Main Agent: {response}")
             # add input
+            user_input = input("User: ")
         elif main_agent.get_state() == "terminate":
             print(f"The output of the user's query: {main_agent.get_context()['output']}")
             output = 'reset'

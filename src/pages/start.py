@@ -4,7 +4,7 @@ def start_page():
     # start the program
     #mainLogger = logging.getLogger(__name__)
     #mainLogger.info("Welcome to Microscope-toolset!!\n\n")
-    print("Welcome to Microscope-toolset!!\n\n")
+    print("Welcome to Microscope-toolset!!\n")
     print("Please select: 'start', 'infos', 'exit'")
 
     user_choice = input("> ")

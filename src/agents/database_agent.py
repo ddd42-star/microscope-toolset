@@ -34,7 +34,7 @@ class DatabaseAgent:
         query_embedded = self.embeds_query(query=query)
 
         # search into the database for chroma
-        results = self.client_collection.query(query_embeddings=query_embedded, n_results=5)
+        results = self.client_collection.query(query_embeddings=query_embedded, n_results=10)
 
         # search into the database for the log
         log_result = self.db_log.query_by_vector(collection_name=self.db_log_name, vector=query_embedded, k=5)
@@ -45,6 +45,7 @@ class DatabaseAgent:
         SIMILARITY_THREASHOLD = 0.80
 
         # result
+        # TODO:changeed how is printed the context (saw same content twice)
         relevant_chuncks = [
             f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
             for i in range(len(results["documents"][0]))]

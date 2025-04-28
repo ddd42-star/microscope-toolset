@@ -55,15 +55,15 @@ class MainAgentState:
 
     def set_state(self, new_state: str):
         self.state = new_state
-    def set_context(self):
-        # TODO: add later previous outputs, microscope status
+    def set_context(self, old_output, old_microscope_status):
+        # TODO: add later conversation (maybe!)
         self.context = {
             "conversation": [],
             "user_query": "",
             "context": "",
             "extra_infos": "",
-            "microscope_status": {},
-            "previous_outputs": "",
+            "microscope_status": old_microscope_status,
+            "previous_outputs": old_output,
             "main_agent_strategy": None,
             "new_strategy": None,
             "code": None,
@@ -85,14 +85,17 @@ class MainAgentState:
                 context = self.db_agent.look_for_context(query=user_query)
                 self.context["context"] = context
                 self.context["user_query"] = user_query
+                self.context["conversation"] = self.context["conversation"] + "\n" + "User: " + user_query
 
             # classify user's intent
             classify_intent = self.classify_intent(context=self.context)
-            print(classify_intent)
+
             if classify_intent.intent == 'ask_for_info':
                 self.state = "awaiting_clarification"
                 self.context["clarification_request"] = classify_intent.message
-                return classify_intent.message # no message needed
+                # add LLM answer to the conversation
+                self.context["conversation"] = self.context["conversation"] + "\n" + "LLM: " + classify_intent.message
+                return classify_intent.message
             elif classify_intent.intent == 'propose_strategy':
                 self.state = "planning_strategy"
                 return None # no message needed
@@ -105,8 +108,11 @@ class MainAgentState:
 
         elif self.state == "awaiting_clarification":
             # 1) awaiting clarification from user query
-            user_clarification = self.clarification_agent.user_clarification(self.context)
+            #user_clarification = self.clarification_agent.user_clarification(self.context)
+            user_clarification = user_query.lower()
             self.context["extra_infos"] =  "User: " + user_clarification
+            # add to the conversation
+            self.context["conversation"] = self.context["conversation"] + "\n" + "User: " + user_clarification
             self.state = "initial"
 
             return None # no message needed
@@ -129,12 +135,16 @@ class MainAgentState:
                 if created_strategy.intent == "strategy":
                     # add strategy to self.context
                     self.context["main_agent_strategy"] = created_strategy.message
+                    # add to conversation
+                    self.context["conversation"] = self.context["conversation"] + "\n" + "LLM: " + created_strategy.message
                     # change state
                     self.state = "awaiting_user_approval"
                     return created_strategy.message
                 elif created_strategy.intent == "need_information":
                     self.state = "awaiting_clarification"
                     self.context["clarification_request"] = created_strategy.message
+                    # add to conversation
+                    self.context["conversation"] = self.context["conversation"] + "\n" + "LLM: " + created_strategy.message
                     return created_strategy.message
 
             else:
@@ -142,11 +152,15 @@ class MainAgentState:
                 new_strategy_agent = self.strategy_agent.revise_strategy(self.context)
                 if new_strategy_agent.intent == "new_strategy":
                     self.context["new_strategy"] = new_strategy_agent.message
+                    # add to conversation
+                    self.context["conversation"] = self.context["conversation"] + "\n" + "LLM: " + new_strategy_agent.message
                     self.state = "executing_code"
 
                     return None # no message needed
 
         elif self.state == "awaiting_user_approval":
+            # add to conversation
+            self.context["conversation"] = self.context["conversation"] + "\n" + "User: " + user_query.lower()
             # ask the user for approval
             if user_query.lower() == "yes":
                 self.state = "executing_code"
@@ -157,6 +171,7 @@ class MainAgentState:
             else:
                 self.state = "awaiting_user_approval"
                 return "Please answer 'yes' or 'no'!"
+
         elif self.state == "validating_strategy":
             # this with the new strategy proposed
             pass
@@ -176,18 +191,22 @@ class MainAgentState:
                 print("prepare code: ", prepare_code_to_run)
                 # logger.info("prepare code: %s", prepare_code_to_run)
                 # run the code
+                self.context["conversation"] = self.context["conversation"] + "\n" + "LLM: " + prepare_code_to_run
                 output = self.execute.run_code(prepare_code_to_run)
                 # is_valid = False
                 if "Error" not in output:
                     # 1) run successfully
                     # is_valid = True
                     self.state = "finish"
+                    self.context["final_output"] = True
                     self.context["output"] = output
                     return None # no message needed
-                    # return output, prepare_code_to_run, is_valid
+
                 else:
                     # 2) errors. Catch it and send it to the agent
                     self.context["error"] = output
+                    # add to conversation
+                    self.context["conversation"] = self.context["conversation"] + "\n" + "LLM: " + output
                     self.state = "handling_errors"
                     return None # no message needed
 
@@ -202,6 +221,8 @@ class MainAgentState:
 
         elif self.state == "finish":
             if self.context["final_output"] is True:
+                # add to conversation
+                self.context["conversation"] = self.context["conversation"] + "\n" + f"LLM: The output of the query is {self.context['output']}"
                 # reset all the needed variable ready for a new user query
                 self.state = "terminate"
                 return None # no message needed
@@ -217,7 +238,7 @@ class MainAgentState:
             previous_outputs=context["previous_outputs"] or "no information",
             extra_infos=context["extra_infos"] or "no information"
         )
-        #print(prompt)
+        print(prompt)
 
         response = self.client_openai.chat.completions.create(
             model="gpt-4o-mini",
@@ -240,7 +261,6 @@ class MainAgentState:
             ],
             function_call="auto"
         )
-        print(response.choices[0].message.content)
         return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary
 
     def parse_agent_response(self, response: str):
@@ -253,9 +273,5 @@ class MainAgentState:
         # return ast.literal_eval(response)
         # verify if the LLM managed to output
         output_raw = MainAgentOutput.model_validate_json(response)
-
-        print(output_raw)
-        print(output_raw.intent)
-        print(output_raw.message)
 
         return output_raw
