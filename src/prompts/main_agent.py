@@ -65,15 +65,16 @@ class MainAgentState:
             if classify_intent.intent == 'ask_for_info':
                 self.state = "awaiting_clarification"
                 self.context["clarification_request"] = classify_intent.message
-                return "awaiting_clarification", self.context
+                return None # no message needed
             elif classify_intent.intent == 'propose_strategy':
                 self.state = "planning_strategy"
-                return "planning_strategy", False, self.context
+                return None # no message needed
             elif classify_intent.intent == 'no_code_needed':
                 # answer normally
                 answer_message = self.no_coding_agent.no_coding_asnwer(self.context)
                 self.context["output"] = answer_message
-                return "terminate", self.context
+                self.state = "terminate"
+                return  None # no message needed
 
         elif self.state == "awaiting_clarification":
             # 1) awaiting clarification from user query
@@ -81,7 +82,7 @@ class MainAgentState:
             self.context["extra_infos"] = user_clarification
             self.state = "initial"
 
-            return "initial", self.context
+            return None # no message needed
 
             # 2) awaiting clarification from agent strategy
             # TODO checks if works for both clarification
@@ -93,24 +94,24 @@ class MainAgentState:
 
                 #  1) create a strategy
                 created_strategy = self.strategy_agent.generate_strategy(self.context)
-                if created_strategy["intent"] == "strategy":
+                if created_strategy.intent == "strategy":
                     # add strategy to self.context
-                    self.context["strategy"] = created_strategy["message"]
+                    self.context["strategy"] = created_strategy.message
                     # change state
                     self.state = "awaiting_user_approval"
                     return "awaiting_user_approval", self.context
-                elif created_strategy["intent"] == "need_information":
+                elif created_strategy.intent == "need_information":
                     self.state = "awaiting_clarification"
-                    self.context["clarification_request"] = created_strategy["message"]
-                    return "awaiting_clarification", self.context
+                    self.context["clarification_request"] = created_strategy.message
+                    return None # no message needed
             else:
                 # 2) new strategy
                 new_strategy_agent = self.strategy_agent.revise_strategy(self.context)
-                if new_strategy_agent["intent"] == "new_strategy":
-                    self.context["new_strategy"] = new_strategy_agent["message"]
+                if new_strategy_agent.intent == "new_strategy":
+                    self.context["new_strategy"] = new_strategy_agent.message
                     self.state = "executing_code"
 
-                    return "executing_code", self.context
+                    return None # no message needed
 
         elif self.state == "awaiting_user_approval":
             # ask the user for approval

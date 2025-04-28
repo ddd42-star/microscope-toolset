@@ -9,14 +9,13 @@ Given:
     - The **previous output** (from the last system interaction, if any)
     - The **additional clarification** (more clarification given by the user, as you requested)
 
-Your main responsibility is to break the user's query into logical, sequenced steps, using available functions if possible.You must respond with a Python dict in the following format:
+Your main responsibility is to break the user's query into logical, sequenced steps, using available functions if possible.You must respond with a JSON object in the following format:
 
-```python
 {{
   'intent': <one of: 'strategy', 'need_information'>,
   'message': <your strategy, which clarification you need from the user>
 }}
-```
+
 ### **Build response**
     - **`strategy`**
         - Based on the information present into the prompt, elaborate a strategy to answer the user query.
@@ -58,14 +57,12 @@ Given:
 
 Your main responsibility is to propose one new revised strategy to fix the code.
 
-You must respond with a Python dict in this exact format:
+You must respond with a JSON object in this exact format:
 
-    ```python
     {{
       'intent': <'new_strategy'>,
       'message': <the new strategy to fix the code>
     }}
-    ```
 ### Current conversation
 {conversation}
 ### Relevant Context
