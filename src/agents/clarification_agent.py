@@ -10,7 +10,6 @@ class ClarificationAgent:
 
     def user_clarification(self, context):
 
-        print(context["clarification_request"])
         user_answer = input("User: ")
 
         return user_answer

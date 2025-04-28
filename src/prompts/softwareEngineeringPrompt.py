@@ -78,14 +78,12 @@ Your main responsibility is to generate Python code to answer the user's query u
         - **Logical**: appropriate and functional.
         - **Clear & Maintainable **: readable, cleanly structured.
         - **Optimized**: efficient, minimal, and focused.
-    - You must respond with a Python dict in this exact format:
+    - You must respond with a JSON object in this exact format:
 
-        ```python
         {{
           'intent': <'code'>,
           'message': <snipped code>
         }}
-        ```
 ### Constrains
     - Use mmc (an instance of CMMCorePlus) to interact with the microscope.
     - Do **not** re-instantiate or reconfigure CMMCorePlus.
@@ -139,14 +137,13 @@ Your main responsibilities is to revise the previous code accordingly using the 
         - **Logical**: appropriate and functional.
         - **Clear & Maintainable **: readable, cleanly structured.
         - **Optimized**: efficient, minimal, and focused.
-    - You must respond with a Python dict in this exact format:
+    - You must respond with a JSON object in this exact format:
 
-        ```python
         {{
           'intent': <'code'>,
           'message': <snipped code>
         }}
-        ```
+        
 ### Constrains
     - Use mmc (an instance of CMMCorePlus) to interact with the microscope.
     - Do **not** re-instantiate or reconfigure CMMCorePlus.

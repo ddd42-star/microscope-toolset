@@ -62,6 +62,7 @@ class LoggerDB:
                 created_at TIMESTAMP DEFAULT NOW()
                 );
                 """)
+                # add microscope configuration, microscope state, reformulated prompt and solution in text way, summarize/optmization the strategy from the coversation.
                 connection.commit()
                 logger.info(f"The collection {collection_name} was created successfully")
         except Exception as e:

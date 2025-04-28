@@ -50,22 +50,49 @@ class MainAgentState:
     def get_state(self) -> str:
         return self.state
 
+    def get_context(self):
+        return self.context
+
+    def set_state(self, new_state: str):
+        self.state = new_state
+    def set_context(self):
+        # TODO: add later previous outputs, microscope status
+        self.context = {
+            "conversation": [],
+            "user_query": "",
+            "context": "",
+            "extra_infos": "",
+            "microscope_status": {},
+            "previous_outputs": "",
+            "main_agent_strategy": None,
+            "new_strategy": None,
+            "code": None,
+            "error": None,
+            "error_analysis": None,
+            "finale_output": False,
+            "output": None,
+            "clarification_request": ""
+        }
+
     def process_query(self, user_query: str):
 
         # return state, {dict with information}
         if self.state == "initial":
             # retrieve the context from the vector db
             # retrieve the log from the feedback db
-            context = self.db_agent.look_for_context(query=user_query)
-            self.context["context"] = context
-            self.context["user_query"] = user_query
+            # retrieve the context just once
+            if self.context["context"] == "":
+                context = self.db_agent.look_for_context(query=user_query)
+                self.context["context"] = context
+                self.context["user_query"] = user_query
+
             # classify user's intent
             classify_intent = self.classify_intent(context=self.context)
             print(classify_intent)
             if classify_intent.intent == 'ask_for_info':
                 self.state = "awaiting_clarification"
                 self.context["clarification_request"] = classify_intent.message
-                return None # no message needed
+                return classify_intent.message # no message needed
             elif classify_intent.intent == 'propose_strategy':
                 self.state = "planning_strategy"
                 return None # no message needed
@@ -79,7 +106,7 @@ class MainAgentState:
         elif self.state == "awaiting_clarification":
             # 1) awaiting clarification from user query
             user_clarification = self.clarification_agent.user_clarification(self.context)
-            self.context["extra_infos"] = user_clarification
+            self.context["extra_infos"] =  "User: " + user_clarification
             self.state = "initial"
 
             return None # no message needed
@@ -91,19 +118,25 @@ class MainAgentState:
 
             # no new strategy
             if self.context["new_strategy"] is None:
+                if self.context["main_agent_strategy"] is None:
+                    #  1) create a strategy
+                    created_strategy = self.strategy_agent.generate_strategy(self.context)
 
-                #  1) create a strategy
-                created_strategy = self.strategy_agent.generate_strategy(self.context)
+                else:
+                    # 2) user doesn't like the main strategy
+                    created_strategy = self.strategy_agent.generate_strategy(self.context)
+
                 if created_strategy.intent == "strategy":
                     # add strategy to self.context
-                    self.context["strategy"] = created_strategy.message
+                    self.context["main_agent_strategy"] = created_strategy.message
                     # change state
                     self.state = "awaiting_user_approval"
-                    return "awaiting_user_approval", self.context
+                    return created_strategy.message
                 elif created_strategy.intent == "need_information":
                     self.state = "awaiting_clarification"
                     self.context["clarification_request"] = created_strategy.message
-                    return None # no message needed
+                    return created_strategy.message
+
             else:
                 # 2) new strategy
                 new_strategy_agent = self.strategy_agent.revise_strategy(self.context)
@@ -117,10 +150,13 @@ class MainAgentState:
             # ask the user for approval
             if user_query.lower() == "yes":
                 self.state = "executing_code"
-                return "executing_code", self.context
+                return None # no message needed
             elif user_query.lower() == "no":
                 self.state = "planning_strategy"
-                return "planning_strategy", "new_strategy", self.context
+                return "Please propose a new strategy."
+            else:
+                self.state = "awaiting_user_approval"
+                return "Please answer 'yes' or 'no'!"
         elif self.state == "validating_strategy":
             # this with the new strategy proposed
             pass
@@ -133,9 +169,9 @@ class MainAgentState:
                 # fix code
                 code = SoftwareEngeneeringAgent.fix_code(self.context)
 
-            if code["intent"] == "code":
+            if code.intent == "code":
                 # run the code
-                prepare_code_to_run = prepare_code(code["message"].strip("```"))
+                prepare_code_to_run = prepare_code(code.message.strip("```"))
                 self.context["code"] = prepare_code_to_run
                 print("prepare code: ", prepare_code_to_run)
                 # logger.info("prepare code: %s", prepare_code_to_run)
@@ -147,29 +183,30 @@ class MainAgentState:
                     # is_valid = True
                     self.state = "finish"
                     self.context["output"] = output
-                    return "finish", self.context
+                    return None # no message needed
                     # return output, prepare_code_to_run, is_valid
                 else:
                     # 2) errors. Catch it and send it to the agent
                     self.context["error"] = output
                     self.state = "handling_errors"
-                    return "handling_errors", self.context
+                    return None # no message needed
 
         elif self.state == "handling_errors":
             # 1) analyze the error
             error_analysis = self.error_agent.analyze_error(self.context)
-            if error_analysis["intent"] == "error_analysis":
+            if error_analysis.intent == "error_analysis":
                 # 2) ask new strategy
                 self.state = "planning_strategy"
-                self.context["error_analysis"] = error_analysis["message"]
-                return "planning_strategy", self.context
+                self.context["error_analysis"] = error_analysis.message
+                return None # no message needed
 
         elif self.state == "finish":
             if self.context["final_output"] is True:
                 # reset all the needed variable ready for a new user query
-                return "terminate", self.context
-
-        return "Unknown_status", self.context
+                self.state = "terminate"
+                return None # no message needed
+        self.state = "Unknown_status"
+        return None # no message needed
 
     def classify_intent(self, context):
         #print("this is the context that pass:", context)

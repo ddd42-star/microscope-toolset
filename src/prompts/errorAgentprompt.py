@@ -14,14 +14,14 @@ Given:
     
 Your main responsibility is to understand the cause of the error.
 
-You must respond with a Python dict in this exact format:
+You must respond with a JSON object in this exact format:
 
-    ```python
+
     {{
       'intent': <'error_analysis'>,
       'message': <the analysis of the error>
     }}
-    ```
+
 ### Current conversation
 {conversation}
 ### Relevant Context

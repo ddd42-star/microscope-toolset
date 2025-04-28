@@ -36,9 +36,9 @@ Your main responsibility is to break the user's query into logical, sequenced st
 {extra_infos}
 
 ### **Response Style**
-- Always respond with a Python dict object containing 'intent' and 'message'.
+- Always respond with a JSON object containing 'intent' and 'message'.
 - Maintain a **scientific, concise, and unambiguous** communication style. Avoid redundant or non-technical phrasing.
-- Do not return plain text — always wrap your result in a dict.
+- Do not return plain text — always wrap your result in a JSON object.
 """
 
 REVISED_STRATEGY = """

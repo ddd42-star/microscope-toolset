@@ -56,6 +56,10 @@ def chat(executor, client_openai, dbAgent, softwareEngeneeringAgent, reAcAgent, 
         loop_user_query = loop_through_states(main_agent=main_agent, initial_user_query=user_query)
 
         if loop_user_query in ['reset', 'unknown']:
+            # reset state
+            main_agent.set_state("initial")
+            # reset the context dict
+            main_agent.set_context()
             user_query = user_request_query()
 
     return MAIN_MENU
@@ -78,11 +82,11 @@ def loop_through_states(main_agent, initial_user_query):
         response = main_agent.process_query(user_query=user_input)
 
         # checks new state
-        if main_agent.get_state() in []:
-
+        if main_agent.get_state() in ["awaiting_clarification", "awaiting_user_approval"]:
             print(f"Main Agent: {response}")
+            # add input
         elif main_agent.get_state() == "terminate":
-            print("bla bla bla")
+            print(f"The output of the user's query: {main_agent.get_context()['output']}")
             output = 'reset'
             break
 

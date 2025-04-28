@@ -2,6 +2,7 @@ from openai import OpenAI
 from python.execute import Execute
 from python.prepare_code import prepare_code
 from prompts.softwareEngineeringPrompt import SOFTWARE_PROMPT, SOFTWARE_AGENT, SOFTWARE_AGENT_RETRY
+from agents.structuredOutput import SoftwareAgentOutput
 import ast
 import logging
 
@@ -93,7 +94,13 @@ class SoftwareEngeneeringAgent:
                     "role": "user",
                     "content": context["user_query"]
                 }
-            ]
+            ],
+            functions=[{
+                "name": "SoftwareAgentOutput",
+                "description": "Parser of the JSON object.",
+                "parameters": SoftwareAgentOutput.model_json_schema()
+            }],
+            function_call="auto"
             )
 
         return self.parse_agent_response(response.choices[0].message.content)
@@ -121,14 +128,28 @@ class SoftwareEngeneeringAgent:
                     "role": "user",
                     "content": context["user_query"]
                 }
-            ]
+            ],
+            functions=[{
+                "name": "SoftwareAgentOutput",
+                "description": "Parser of the JSON object.",
+                "parameters": SoftwareAgentOutput.model_json_schema()
+            }],
+            function_call="auto"
         )
 
         return self.parse_agent_response(response.choices[0].message.content)
 
     def parse_agent_response(self, response: str):
-        try:
-            return ast.literal_eval(response)
-        except (ValueError, SyntaxError):
-            pass
+        # try:
+        #     return ast.literal_eval(response)
+        # except (ValueError, SyntaxError):
+        #     pass
+        # verify if the LLM managed to output
+        # TODO: add refusal check in the output
+        output_raw = SoftwareAgentOutput.model_validate_json(response)
 
+        print(output_raw)
+        print(output_raw.intent)
+        print(output_raw.message)
+
+        return output_raw

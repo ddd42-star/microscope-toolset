@@ -13,3 +13,13 @@ class StrategyAgentOutput(BaseModel):
     message: str
 
 
+class SoftwareAgentOutput(BaseModel):
+
+    intent: str
+    message: str
+
+class ErrorAgentOutput(BaseModel):
+
+    intent: str
+    message: str
+

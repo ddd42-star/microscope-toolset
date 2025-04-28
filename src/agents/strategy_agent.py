@@ -78,7 +78,13 @@ class StrategyAgent:
                     "role": "user",
                     "content": context["user_query"]
                 }
-            ]
+            ],
+            functions=[{
+                "name": "StrategyAgentOutput",
+                "description": "Parser of the JSON object.",
+                "parameters": StrategyAgentOutput.model_json_schema()
+            }],
+            function_call="auto"
         )
 
         return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary
