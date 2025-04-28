@@ -5,6 +5,7 @@ from agents.strategy_agent import StrategyAgent
 from agents.error_agent import ErrorAgent
 from agents.no_coding_agent import NoCodingAgent
 from agents.clarification_agent import ClarificationAgent
+from agents.structuredOutput import MainAgentOutput
 from prompts.mainAgentPrompt import CLASSIFY_INTENT
 from python.prepare_code import prepare_code
 from python.execute import Execute
@@ -59,15 +60,16 @@ class MainAgentState:
             self.context["context"] = context
             self.context["user_query"] = user_query
             # classify user's intent
-            classify_intent = self.classify_intent(context=context)
-            if classify_intent["intent"] == 'ask_for_info':
+            classify_intent = self.classify_intent(context=self.context)
+            print(classify_intent)
+            if classify_intent.intent == 'ask_for_info':
                 self.state = "awaiting_clarification"
-                self.context["clarification_request"] = classify_intent["message"]
+                self.context["clarification_request"] = classify_intent.message
                 return "awaiting_clarification", self.context
-            elif classify_intent["intent"] == 'propose_strategy':
+            elif classify_intent.intent == 'propose_strategy':
                 self.state = "planning_strategy"
                 return "planning_strategy", False, self.context
-            elif classify_intent["intent"] == 'no_code_needed':
+            elif classify_intent.intent == 'no_code_needed':
                 # answer normally
                 answer_message = self.no_coding_agent.no_coding_asnwer(self.context)
                 self.context["output"] = answer_message
@@ -169,7 +171,7 @@ class MainAgentState:
         return "Unknown_status", self.context
 
     def classify_intent(self, context):
-
+        #print("this is the context that pass:", context)
         prompt = CLASSIFY_INTENT.format(
             conversation=context["conversation"] or "no information",
             context=context["context"] or "no information",
@@ -177,6 +179,7 @@ class MainAgentState:
             previous_outputs=context["previous_outputs"] or "no information",
             extra_infos=context["extra_infos"] or "no information"
         )
+        #print(prompt)
 
         response = self.client_openai.chat.completions.create(
             model="gpt-4o-mini",
@@ -189,13 +192,32 @@ class MainAgentState:
                     "role": "user",
                     "content": context["user_query"]
                 }
-            ]
+            ],
+            functions=[
+                {
+                    "name": "MainAgentOutput",
+                    "description": "Classify user intent",
+                    "parameters": MainAgentOutput.model_json_schema()
+                }
+            ],
+            function_call="auto"
         )
-
+        print(response.choices[0].message.content)
         return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary
 
     def parse_agent_response(self, response: str):
-        try:
-            return ast.literal_eval(response)
-        except (ValueError, SyntaxError):
-            pass
+        # try:
+        #     return ast.literal_eval(response)
+        # except (ValueError, SyntaxError):
+        #     pass
+
+
+        # return ast.literal_eval(response)
+        # verify if the LLM managed to output
+        output_raw = MainAgentOutput.model_validate_json(response)
+
+        print(output_raw)
+        print(output_raw.intent)
+        print(output_raw.message)
+
+        return output_raw
