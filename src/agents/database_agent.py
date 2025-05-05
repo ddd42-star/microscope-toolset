@@ -45,10 +45,13 @@ class DatabaseAgent:
         SIMILARITY_THREASHOLD = 0.80
 
         # result
-        # TODO:changeed how is printed the context (saw same content twice)
+
+        # relevant_chuncks = [
+        #     f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
+        #     for i in range(len(results["documents"][0]))]
         relevant_chuncks = [
-            f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
-            for i in range(len(results["documents"][0]))]
+            results['documents'][0][i] for i in range(len(results["documents"][0]))
+        ]
         # relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
         # relevant_chuncks = []
         # for index, doc in enumerate(results["documents"][0]):
