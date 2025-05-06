@@ -70,7 +70,12 @@ Given:
     - * **Previous outputs** from interactions with the microscope system.
     - * The *Main Agent Strategy* that you need to use to answer the user query.
     
-Your main responsibility is to generate Python code to answer the user's query using the strategy elaborate by the Strategy Agent and all the available context information.
+Your main responsibility is to generate Python code to answer the user's query using the strategy elaborate by the Strategy Agent and all the available context information. You must respond with a JSON object in this exact format:
+Return raw text, don't format as markdown.
+{{
+  'intent': <'code'>,
+  'message': <string of python code>
+}}
 
 ### Responsibilities
     - Use the strategy and the context to generate code that is:
@@ -78,12 +83,7 @@ Your main responsibility is to generate Python code to answer the user's query u
         - **Logical**: appropriate and functional.
         - **Clear & Maintainable **: readable, cleanly structured.
         - **Optimized**: efficient, minimal, and focused.
-    - You must respond with a JSON object in this exact format:
 
-        {{
-          'intent': <'code'>,
-          'message': <snipped code>
-        }}
 ### Constrains
     - Use mmc (an instance of CMMCorePlus) to interact with the microscope.
     - Do **not** re-instantiate or reconfigure CMMCorePlus.
@@ -103,6 +103,10 @@ Your main responsibility is to generate Python code to answer the user's query u
 {previous_outputs}
 ### Main Agent strategy
 {query_strategy}
+
+### **Response Style**
+- Always respond with a JSON object containing 'intent' and 'message'.
+- Do not return plain text — always wrap your result in a JSON object.
 """
 
 SOFTWARE_AGENT_RETRY = """
@@ -129,7 +133,11 @@ Given:
 - New Strategy to apply:
   {new_strategy}
 
-Your main responsibilities is to revise the previous code accordingly using the new strategy.
+Your main responsibilities is to revise the previous code accordingly using the new strategy.You must respond with a JSON object in this exact format:
+{{
+  'intent': <'code'>,
+  'message': <snipped code>
+}}
 
 ### Responsibilities
     - Use the strategy and the context to generate code that is:
@@ -137,12 +145,6 @@ Your main responsibilities is to revise the previous code accordingly using the 
         - **Logical**: appropriate and functional.
         - **Clear & Maintainable **: readable, cleanly structured.
         - **Optimized**: efficient, minimal, and focused.
-    - You must respond with a JSON object in this exact format:
-
-        {{
-          'intent': <'code'>,
-          'message': <snipped code>
-        }}
         
 ### Constrains
     - Use mmc (an instance of CMMCorePlus) to interact with the microscope.
@@ -163,5 +165,8 @@ Your main responsibilities is to revise the previous code accordingly using the 
 ### Main Agent strategy
 {query_strategy}
 
+### **Response Style**
+- Always respond with a JSON object containing 'intent' and 'message'.
+- Do not return plain text — always wrap your result in a JSON object.
 """
 

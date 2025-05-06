@@ -86,7 +86,7 @@ class DatabaseAgent:
         prompt = DATABASE_PROMPT.format(context=list_of_informations)
 
         response = self.client_openai.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4.1-mini",
             messages=[
                 {
                     "role": "system",

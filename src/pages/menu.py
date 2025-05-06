@@ -65,11 +65,49 @@ def chat(executor, client_openai, dbAgent, softwareEngeneeringAgent, reAcAgent, 
 
     return MAIN_MENU
 
-def database(mainLogger, executor, microscopeStatus, dbLog):
+def database(dbLog):
 
-    print("Function not yet present")
+    # Create database
+    print("""
+        Your available options are:\n
+        1) create (create a database)\n
+        2) list (list all database) \n
+        3) exit\n
+        """)
+    user_input = input("> ")
 
-    return MAIN_MENU
+    if user_input.lower().strip() == 'create':
+        user_choice = user_new_collection()
+        print(f'You selected the name {user_choice}. Are you sure? Please answer yes or no!')
+        user_confirm = input("> ")
+        if user_confirm.lower().strip() == 'yes':
+            try:
+                dbLog.create_collection(collection_name=user_choice)
+                return MAIN_MENU
+            except Exception as e:
+                print("impossible to create the new collection.")
+                return MAIN_MENU
+        elif user_confirm.lower().strip() == 'no':
+            return MAIN_MENU
+        else:
+            print("invalid options!")
+            return MAIN_MENU
+
+    elif user_input.lower().strip() == 'list':
+        list_of_collection = dbLog.list_collection()
+        print(f"The available collection are {list_of_collection}")
+        return MAIN_MENU
+    elif user_input.lower().strip() == 'exit':
+        return EXIT
+    else:
+        print("Invalid options!")
+        return MAIN_MENU
+
+def user_new_collection():
+    print("Please select the name of your new collection: \n")
+    user_choice = input("> ")
+
+    return user_choice
 
 def user_request_query():
     user_query = input("Digit your query: ")

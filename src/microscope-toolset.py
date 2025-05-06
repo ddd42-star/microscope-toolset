@@ -220,13 +220,11 @@ def main():
         elif state == MAIN_MENU:
             state = menu()
         elif state == CHAT_PAGE:
-            chat(executor=executor,client_openai=client_openai, dbAgent=dbAgent, softwareEngeneeringAgent=softwareEngeneeringAgent, reAcAgent=reAcAgent,
+            state = chat(executor=executor,client_openai=client_openai, dbAgent=dbAgent, softwareEngeneeringAgent=softwareEngeneeringAgent, reAcAgent=reAcAgent,
                  strategy_agent=strategy_agent, no_coding_agent=no_coding_agent,
                  clarification_agent=clarification_agent, error_agent=error_agent)
-            pass
         elif state == DATABASE:
-            database(mainLogger=mainLogger, executor=executor, microscopeStatus=microscopeStatus, dbLog=db_log)
-            pass
+            state = database(dbLog=db_log)
 
     executor.is_running = False
     monitor_thread.join()

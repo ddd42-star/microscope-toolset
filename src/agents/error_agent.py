@@ -22,25 +22,12 @@ class ErrorAgent:
             code=context["code"] or "no information",
             error_message=context["error"]
         )
-
-        response = self.client_openai.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "system",
-                    "content": prompt
-                },
-                {
-                    "role": "user",
-                    "content": context["user_query"]
-                }
-            ],
-            functions=[{
-                "name": "ErrorAgentOutput",
-                "description": "Parser of the JSON object.",
-                "parameters": ErrorAgentOutput.model_json_schema()
-            }],
-            function_call="auto"
+        history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context[
+            "conversation"]
+        response = self.client_openai.beta.chat.completions.parse(
+            model="gpt-4.1-mini",
+            messages=history,
+            response_format=ErrorAgentOutput
         )
 
         return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary

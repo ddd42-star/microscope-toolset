@@ -83,24 +83,12 @@ class SoftwareEngeneeringAgent:
             previous_outputs = context["previous_outputs"] or "no information",
             query_strategy=context["main_agent_strategy"] or "no information"
         )
-        response = self.client_openai.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "system",
-                    "content": prompt
-                },
-                {
-                    "role": "user",
-                    "content": context["user_query"]
-                }
-            ],
-            functions=[{
-                "name": "SoftwareAgentOutput",
-                "description": "Parser of the JSON object.",
-                "parameters": SoftwareAgentOutput.model_json_schema()
-            }],
-            function_call="auto"
+        print(prompt)
+        history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context["conversation"]
+        response = self.client_openai.beta.chat.completions.parse(
+            model="gpt-4.1-mini",
+            messages=history,
+            response_format=SoftwareAgentOutput
             )
 
         return self.parse_agent_response(response.choices[0].message.content)
@@ -117,24 +105,11 @@ class SoftwareEngeneeringAgent:
             error_analysis=context["error_analysis"] or "no information",
             new_strategy=context["new_strategy"] or "no information"
         )
-        response = self.client_openai.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "system",
-                    "content": prompt
-                },
-                {
-                    "role": "user",
-                    "content": context["user_query"]
-                }
-            ],
-            functions=[{
-                "name": "SoftwareAgentOutput",
-                "description": "Parser of the JSON object.",
-                "parameters": SoftwareAgentOutput.model_json_schema()
-            }],
-            function_call="auto"
+        history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context["conversation"]
+        response = self.client_openai.beta.chat.completions.parse(
+            model="gpt-4.1-mini",
+            messages=history,
+            response_format=SoftwareAgentOutput
         )
 
         return self.parse_agent_response(response.choices[0].message.content)
@@ -146,6 +121,7 @@ class SoftwareEngeneeringAgent:
         #     pass
         # verify if the LLM managed to output
         # TODO: add refusal check in the output
+        print(response)
         output_raw = SoftwareAgentOutput.model_validate_json(response)
 
         print(output_raw)
