@@ -34,7 +34,7 @@ class DatabaseAgent:
         query_embedded = self.embeds_query(query=query)
 
         # search into the database for chroma
-        results = self.client_collection.query(query_embeddings=query_embedded, n_results=10)
+        results = self.client_collection.query(query_embeddings=query_embedded, n_results=25)
 
         # search into the database for the log
         log_result = self.db_log.query_by_vector(collection_name=self.db_log_name, vector=query_embedded, k=5)

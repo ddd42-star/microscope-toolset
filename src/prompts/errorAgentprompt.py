@@ -22,19 +22,23 @@ You must respond with a JSON object in this exact format:
       'message': <the analysis of the error>
     }}
 
-### Current conversation
-{conversation}
+
 ### Relevant Context
 {context}
 ### Microscope Status
 {microscope_status}
 ### Previous Outputs
 {previous_outputs}
+
+"""
+
+"""
+### Current conversation
+{conversation}
 ### Main Agent strategy
 {query_strategy}
 ### Code
 {code}
 ### Error Message
 {error_message}
-
 """

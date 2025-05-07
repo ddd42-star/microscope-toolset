@@ -242,13 +242,11 @@ class MainAgentState:
     def classify_intent(self, context):
         #print("this is the context that pass:", context)
         prompt = CLASSIFY_INTENT.format(
-            conversation=context["conversation"] or "no information",
             context=context["context"] or "no information",
             microscope_status=context["microscope_status"] or "no information",
-            previous_outputs=context["previous_outputs"] or "no information",
-            extra_infos=context["extra_infos"] or "no information"
+            previous_outputs=context["previous_outputs"] or "no information"
         )
-        print(prompt)
+        # print(prompt)
         history = [{"role": "system","content": prompt},{"role": "user","content": context["user_query"]}] + context["conversation"]
         response = self.client_openai.beta.chat.completions.parse(
             model="gpt-4.1-mini",

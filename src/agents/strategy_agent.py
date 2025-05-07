@@ -36,12 +36,12 @@ class StrategyAgent:
         #     pass
         # verify if the LLM managed to output
         # TODO: add refusal check in the output
-        print(response)
+        # print(response)
         output_raw = StrategyAgentOutput.model_validate_json(response)
 
-        print(output_raw)
-        print(output_raw.intent)
-        print(output_raw.message)
+        # print(output_raw)
+        # print(output_raw.intent)
+        # print(output_raw.message)
 
         return output_raw
 
@@ -57,7 +57,7 @@ class StrategyAgent:
         history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context[
             "conversation"]
         response = self.client_openai.beta.chat.completions.parse(
-            model="gpt-4o-mini",
+            model="gpt-4.1-mini",
             messages=history,
             response_format=StrategyAgentOutput
         )

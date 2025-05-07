@@ -164,14 +164,18 @@ You must consider the following inputs when building your reasoning:
 {microscope_status}
 #### Previous Outputs:
 {previous_outputs}
-#### Additional clarifications already provided by user (DO NOT ask this again):
-{extra_infos}
-#### Current Conversation (Main Agent: LLM, User: User)
-{conversation}
+
 
 ### **Response Style**
 - Always respond with a JSON object containing 'intent' and 'message'.
 - Maintain a **scientific, concise, and unambiguous** communication style. Avoid redundant or non-technical phrasing.
 - Do not return raw reasoning without classifying intent.
 - Do not return plain text — always wrap your result in a JSON object.
+"""
+
+"""
+#### Additional clarifications already provided by user (DO NOT ask this again):
+{extra_infos}
+#### Current Conversation (Main Agent: LLM, User: User)
+{conversation}
 """
