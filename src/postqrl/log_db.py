@@ -1,16 +1,23 @@
 import logging
 from typing import List
 from postqrl.connection import DBConnection
+from psycopg2.extensions import register_adapter, AsIs
+import numpy as np
 
 logger = logging.getLogger(__name__)
 from psycopg2.extras import Json
+
+
+def ndarray_adapter(numpy_ndarray):
+    return AsIs(numpy_ndarray)
 
 
 class LoggerDB:
 
     def __init__(self, connection: DBConnection):
         self.connection = connection
-
+        # activate adapter
+        register_adapter(np.ndarray, ndarray_adapter)
         # activate vector extension
         self.initialize()
 

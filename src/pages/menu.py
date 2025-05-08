@@ -21,7 +21,7 @@ def menu():
         print("Invalid options! Please select one available options")
         return MAIN_MENU
 
-def chat(executor, client_openai, dbAgent, softwareEngeneeringAgent, reAcAgent, strategy_agent, no_coding_agent, clarification_agent, error_agent):
+def chat(executor, client_openai, dbAgent, softwareEngeneeringAgent, reAcAgent, strategy_agent, no_coding_agent, clarification_agent, error_agent, log_agent):
 
     # instance a new main agent
     # Instance the Main Agent
@@ -60,6 +60,12 @@ def chat(executor, client_openai, dbAgent, softwareEngeneeringAgent, reAcAgent, 
             main_agent.set_state("initial")
             # reset the context dict
             old_context = main_agent.get_context()
+            # add the summary to the conversation
+            summary_chat = log_agent.prepare_summary(old_context)
+            print(summary_chat)
+            if summary_chat.intent == "summary":
+                data = {"prompt": summary_chat.message, "output": old_context['code'], "feedback": "", "category": ""}
+                main_agent.db_agent.add_log(data)
             main_agent.set_context(old_output=old_context['output'], old_microscope_status=old_context['microscope_status'])
             user_query = user_request_query()
 

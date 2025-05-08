@@ -23,3 +23,8 @@ class ErrorAgentOutput(BaseModel):
     intent: str
     message: str
 
+class LoggerAgentOutput(BaseModel):
+
+    intent: str
+    message: str
+

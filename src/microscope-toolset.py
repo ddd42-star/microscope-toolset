@@ -35,6 +35,7 @@ from agents.error_agent import ErrorAgent
 from agents.clarification_agent import ClarificationAgent
 from agents.no_coding_agent import NoCodingAgent
 from agents.strategy_agent import StrategyAgent
+from agents.logger_agent import LoggerAgent
 from microscope.microscope_status import MicroscopeStatus
 import threading
 from postqrl.connection import DBConnection
@@ -214,6 +215,10 @@ def main():
     clarification_agent = ClarificationAgent(client_openai=client_openai)
     mainLogger.info("CLARIFICATION AGENT IS READY")
 
+    # Instance the Logger Agent
+    logger_agent = LoggerAgent(client_openai=client_openai)
+    mainLogger.info("LOGGER AGENT IS READY")
+
     while state != EXIT:
         if state == START_PAGE:
             state = start_page()
@@ -222,7 +227,7 @@ def main():
         elif state == CHAT_PAGE:
             state = chat(executor=executor,client_openai=client_openai, dbAgent=dbAgent, softwareEngeneeringAgent=softwareEngeneeringAgent, reAcAgent=reAcAgent,
                  strategy_agent=strategy_agent, no_coding_agent=no_coding_agent,
-                 clarification_agent=clarification_agent, error_agent=error_agent)
+                 clarification_agent=clarification_agent, error_agent=error_agent, log_agent=logger_agent)
         elif state == DATABASE:
             state = database(dbLog=db_log)
 

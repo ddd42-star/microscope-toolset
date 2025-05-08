@@ -179,9 +179,9 @@ class DatabaseAgent:
 
     def add_log(self, data):
         logger = logging.getLogger(__name__)
-        if ["prompt", "output", "feedback", "category"] not in data.keys():
-            logger.error("missing data")
+        #if ["prompt", "output", "feedback", "category"] not in data.keys():
+        #    logger.error("missing data")
 
         # insert the feedback from the user inside the database
         vector = self.embeds_query(data['prompt'])
-        self.db_log.insert(self.db_log_name, data, embeddings=vector)
+        self.db_log.insert(self.db_log_name, data, embeddings=str(vector))
