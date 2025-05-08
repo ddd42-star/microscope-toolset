@@ -3,4 +3,6 @@ openai
 pymupdf4llm
 pymupdf
 semantic_text_splitter
-textwrap
+napari[all]
+napari-micromanager
+pymmcore-plus
