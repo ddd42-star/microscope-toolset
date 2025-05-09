@@ -1,11 +1,11 @@
 import sys
 import time
 
-from agents.main_agent import MainAgent
-from agents.database_agent import DatabaseAgent
-from agents.prompt_agent import PromptAgent
-from agents.software_agent import SoftwareEngeneeringAgent
-from agents.reasoning_agent import ReasoningAgent
+from agentsNormal.main_agent import MainAgent
+from agentsNormal.database_agent import DatabaseAgent
+from agentsNormal.prompt_agent import PromptAgent
+from agentsNormal.software_agent import SoftwareEngeneeringAgent
+from agentsNormal.reasoning_agent import ReasoningAgent
 from python.execute import Execute
 from microscope.microscope_status import MicroscopeStatus
 import logging

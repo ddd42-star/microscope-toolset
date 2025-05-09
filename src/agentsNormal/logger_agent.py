@@ -1,6 +1,6 @@
 from openai import OpenAI
 from prompts.loggerAgentPrompt import SUMMARY
-from agents.structuredOutput import LoggerAgentOutput
+from agentsNormal.structuredOutput import LoggerAgentOutput
 
 class LoggerAgent:
 

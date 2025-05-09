@@ -1,7 +1,7 @@
 ERROR_ANALYSIS = """
 ### Microscope Assistant - Error Agent
 
-You are the **Error Agent** of a multi-agent system that allows users to interact with a microscope through intelligent agents.
+You are the **Error Agent** of a multi-agent system that allows users to interact with a microscope through intelligent agentsNormal.
 
 Given:
     - * The **current conversation** (The user and the LLM messages of the current chat)

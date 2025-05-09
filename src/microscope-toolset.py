@@ -25,17 +25,17 @@ from python.execute import Execute
 import chromadb
 from chromadb.utils import embedding_functions
 from openai import OpenAI
-# from agents.main_agent import MainAgent
+# from agentsNormal.main_agent import MainAgent
 from prompts.main_agent import MainAgentState
-from agents.database_agent import DatabaseAgent
-from agents.prompt_agent import PromptAgent
-from agents.software_agent import SoftwareEngeneeringAgent
-from agents.reasoning_agent import ReasoningAgent
-from agents.error_agent import ErrorAgent
-from agents.clarification_agent import ClarificationAgent
-from agents.no_coding_agent import NoCodingAgent
-from agents.strategy_agent import StrategyAgent
-from agents.logger_agent import LoggerAgent
+from agentsNormal.database_agent import DatabaseAgent
+from agentsNormal.prompt_agent import PromptAgent
+from agentsNormal.software_agent import SoftwareEngeneeringAgent
+from agentsNormal.reasoning_agent import ReasoningAgent
+from agentsNormal.error_agent import ErrorAgent
+from agentsNormal.clarification_agent import ClarificationAgent
+from agentsNormal.no_coding_agent import NoCodingAgent
+from agentsNormal.strategy_agent import StrategyAgent
+from agentsNormal.logger_agent import LoggerAgent
 from microscope.microscope_status import MicroscopeStatus
 import threading
 from postqrl.connection import DBConnection

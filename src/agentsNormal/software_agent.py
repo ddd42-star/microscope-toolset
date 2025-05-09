@@ -2,7 +2,7 @@ from openai import OpenAI
 from python.execute import Execute
 from python.prepare_code import prepare_code
 from prompts.softwareEngineeringPrompt import SOFTWARE_PROMPT, SOFTWARE_AGENT, SOFTWARE_AGENT_RETRY
-from agents.structuredOutput import SoftwareAgentOutput
+from agentsNormal.structuredOutput import SoftwareAgentOutput
 import ast
 import logging
 

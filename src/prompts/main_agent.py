@@ -1,11 +1,11 @@
-from agents.database_agent import DatabaseAgent
-from agents.software_agent import SoftwareEngeneeringAgent
-from agents.reasoning_agent import ReasoningAgent
-from agents.strategy_agent import StrategyAgent
-from agents.error_agent import ErrorAgent
-from agents.no_coding_agent import NoCodingAgent
-from agents.clarification_agent import ClarificationAgent
-from agents.structuredOutput import MainAgentOutput
+from agentsNormal.database_agent import DatabaseAgent
+from agentsNormal.software_agent import SoftwareEngeneeringAgent
+from agentsNormal.reasoning_agent import ReasoningAgent
+from agentsNormal.strategy_agent import StrategyAgent
+from agentsNormal.error_agent import ErrorAgent
+from agentsNormal.no_coding_agent import NoCodingAgent
+from agentsNormal.clarification_agent import ClarificationAgent
+from agentsNormal.structuredOutput import MainAgentOutput
 from prompts.mainAgentPrompt import CLASSIFY_INTENT
 from python.prepare_code import prepare_code
 from python.execute import Execute
@@ -55,7 +55,7 @@ class MainAgentState:
         self.execute = executor
         self.no_coding_agent = no_coding_agent
         self.clarification_agent = clarification_agent
-        # add differents agents
+        # add differents agentsNormal
 
     def get_state(self) -> str:
         return self.state

@@ -6,3 +6,4 @@ semantic_text_splitter
 napari[all]
 napari-micromanager
 pymmcore-plus
+openai-agents[viz]
