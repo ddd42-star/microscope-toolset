@@ -1,10 +1,17 @@
 from pydantic import BaseModel
-from agents import Agent
+from agents import Agent, Runner
 import asyncio
 import mcp.types as types
-from mcp.server import Server, FastMCP
 
-main_agent_server = FastMCP("Main Agent Server")
+main_agent = Agent(
+    name="Main Agent",
+    instructions="some text",
+    model="gpt-4.1-mini",
+    tools=[],
+    mcp_servers=[]
+)
+
+
 
 
 
