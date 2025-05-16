@@ -1,20 +1,31 @@
-import sys
+import chromadb
+import os
+import time
+import markdown
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                              QWidget, QScrollArea, QTextBrowser, QLineEdit, QPushButton,
                              QLabel, QComboBox)
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, QThread
-import os
 from openai import OpenAI
-import time
-import markdown
 from napari._qt.qt_resources import get_current_stylesheet
+from pymmcore_plus import CMMCorePlus
+from agentsNormal.clarification_agent import ClarificationAgent
+from agentsNormal.database_agent import DatabaseAgent
+from agentsNormal.error_agent import ErrorAgent
+from agentsNormal.logger_agent import LoggerAgent
+from agentsNormal.no_coding_agent import NoCodingAgent
+from agentsNormal.reasoning_agent import ReasoningAgent
+from agentsNormal.software_agent import SoftwareEngeneeringAgent
+from agentsNormal.strategy_agent import StrategyAgent
+from postqrl.connection import DBConnection
+from postqrl.log_db import LoggerDB
+from prompts.main_agent import MainAgentState
+
 
 # --- Worker Object for LLM API Call ---
-class LLMWorker(QObject):
+class BackgroundWorker(QObject):
     # Signal emitted when the LLM response is received
     response_received = pyqtSignal(str)
-    # Removed the 'finished' signal here, as it's not needed for task completion notification
-    # If needed for more complex state management, it would be used differently.
 
     def __init__(self, llm_client):
         super().__init__()
@@ -46,14 +57,44 @@ class LLMWorker(QObject):
 class MCPWindow(QMainWindow):
     # Custom signal to trigger the worker's processing slot
     trigger_llm_process = pyqtSignal(str)
+    microscope_toolset_process = pyqtSignal()
+    publication_process = pyqtSignal()
+    llm_page_process = pyqtSignal()
 
-    def __init__(self, client):
+    def __init__(self, client, mmc: CMMCorePlus):
         super().__init__()
         self.client = client
+        self._mmc = mmc
+        self._config_file_name = self._mmc.systemConfigurationFile()
+        # connect load config file event
+        self._mmc.events.systemConfigurationLoaded.connect(self._config_filechanged)
+        # Initiate executor
+        self.executor = None
+        # Initiate microscope status
+        self.microscope_status = None
+        # call logger database
+        self.db_connection = DBConnection()
+        self.db_logger = LoggerDB(self.db_connection)
+        # call chroma db
+        self.chroma_client = chromadb.PersistentClient(path="Vectore-store") # TODO after change it dynamically
+        self.client_collection = self.chroma_client.get_collection(name="documentation-microscope") # TODO add dynamically
+        self.log_collection_name = "log_user"
+        # define agents
+        self.db_agent = None
+        self.clarification_agent = None
+        self.software_engineering = None
+        self.reasoning_agent = None
+        self.error_agent = None
+        self.strategy_agent = None
+        self.no_coding_agent = None
+        self.logger_agent = None
+        self.main_agent = None
+
+        # ---- GUI -----
         self.setObjectName("MCPWindow")
 
         self.resize(600, 400)
-        self.setWindowTitle("MCP Window")
+        self.setWindowTitle("MCP Toolsets")
 
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
@@ -86,10 +127,14 @@ class MCPWindow(QMainWindow):
 
         llm_language_label = QLabel("LLM Language:")
         self.llm_language = QComboBox()
-        llms_labels = ["gpt-4o-mini", "gpt-4-turbo", "gpt-3.5-turbo", "gemini-pro", "other"]
+        llms_labels = ["gpt-4.1-mini", "gpt-4o-mini", "gpt-4-turbo", "gpt-3.5-turbo", "gemini-pro", "other"] # After insert only available LLM
         self.llm_language.addItems(llms_labels)
         # Set a default value if desired
-        self.llm_language.setCurrentText("gpt-4o-mini")
+        self.llm_language.setCurrentText("gpt-4.1-mini")
+        # current llm language
+        self.current_llm_language = self.llm_language.currentText()
+        # connect select llm event
+        self.llm_language.currentTextChanged.connect(self.llm_model_changed)
 
         toolsets_label = QLabel("Toolsets:")
         self.toolsets = QComboBox()
@@ -97,6 +142,10 @@ class MCPWindow(QMainWindow):
         self.toolsets.addItems(tools_labels)
         # Set a default value if desired
         self.toolsets.setCurrentText("LLM")
+        # current toolset
+        self.current_toolsets_item = self.toolsets.currentText()
+        # connect select event
+        self.toolsets.activated.connect(self.toolset_changed)
 
         option_layout.addWidget(llm_language_label)
         option_layout.addWidget(self.llm_language)
@@ -116,7 +165,7 @@ class MCPWindow(QMainWindow):
         print(f"Main Thread ({QThread.currentThread().objectName()}): Creating persistent LLM thread and worker.")
         self.llm_thread = QThread()
         self.llm_thread.setObjectName("LLMWorkerThread") # Set thread name
-        self.llm_worker = LLMWorker(self.client)
+        self.llm_worker = BackgroundWorker(self.client)
 
         # Move the worker object to the thread
         self.llm_worker.moveToThread(self.llm_thread)
@@ -126,6 +175,11 @@ class MCPWindow(QMainWindow):
         # The slot will execute in the worker's thread event loop
         self.trigger_llm_process.connect(self.llm_worker.process_message)
         print(f"Connected trigger_llm_process to worker.process_message.")
+
+        # Connect signals to select different pages
+        self.microscope_toolset_process.connect(self.microscope_toolset_page)
+        self.publication_process.connect(self.publication_page)
+        self.llm_page_process.connect(self.llm_page)
 
         # Connect Worker's signals back to the Main Thread
         # These slots will execute in the main thread
@@ -176,7 +230,6 @@ class MCPWindow(QMainWindow):
 
     @pyqtSlot(str)
     def add_llm_response(self, response_text):
-        # *** ADDED PRINT STATEMENT TO CHECK THREAD ***
         print(f"--- Entering add_llm_response ---")
         print(f"Current Thread (add_llm_response): {QThread.currentThread().objectName()} (ID: {int(QThread.currentThreadId())})")
 
@@ -194,7 +247,6 @@ class MCPWindow(QMainWindow):
 
 
     def send_message(self):
-        # *** ADDED PRINT STATEMENT TO CHECK THREAD ***
         print(f"--- Entering send_message ---")
         print(f"Current Thread (send_message): {QThread.currentThread().objectName()} (ID: {int(QThread.currentThreadId())})")
 
@@ -212,6 +264,126 @@ class MCPWindow(QMainWindow):
         # Emit the signal to the persistent worker thread
         print(f"Main Thread ({QThread.currentThread().objectName()}): Emitting trigger_llm_process signal.")
         self.trigger_llm_process.emit(message_text)
+
+    def send_agent_message(self):
+
+        message_text = self.message_input.text()
+        if not message_text:
+            return
+        self.append_message(message_text, "user")
+
+        self.message_input.clear()
+
+
+    def toolset_changed(self):
+        # emit signal to switch the page
+        current_toolset_choice = self.current_toolsets_item
+
+        new_toolset_choice = self.toolsets.currentText()
+
+        if current_toolset_choice == new_toolset_choice:
+            return
+        else:
+            if new_toolset_choice == "microscope-toolset":
+                self.microscope_toolset_process.emit()
+            elif new_toolset_choice == "search publications":
+                self.publication_process.emit()
+            elif new_toolset_choice == "LLM":
+                self.llm_page_process.emit()
+
+    def microscope_toolset_page(self):
+        print("microscope toolset was selected")
+        # disconnect message text input
+        self.message_input.returnPressed.disconnect(self.send_message)
+        # connect for the new chat
+        self.message_input.returnPressed.connect(self.send_agent_message)
+        # Instantiate all agent
+        self.db_agent = DatabaseAgent(client_openai=self.client, chroma_client=self.chroma_client,
+                            client_collection=self.client_collection, db_log=self.db_logger,
+                            db_log_collection_name=self.log_collection_name)
+        self.clarification_agent = ClarificationAgent(client_openai=self.client)
+        self.software_engineering = SoftwareEngeneeringAgent(client_openai=self.client)
+        self.reasoning_agent = ReasoningAgent(client_openai=self.client)
+        self.error_agent = ErrorAgent(client_openai=self.client)
+        self.strategy_agent = StrategyAgent(client_openai=self.client)
+        self.no_coding_agent = NoCodingAgent(client_openai=self.client)
+        self.logger_agent = LoggerAgent(client_openai=self.client)
+        self.main_agent = MainAgentState(client_openai=self.client, db_agent=self.db_agent,
+                                software_agent=self.software_engineering, reasoning_agent=self.reasoning_agent,
+                                strategy_agent=self.strategy_agent, no_coding_agent=self.no_coding_agent,
+                                clarification_agent=self.clarification_agent, error_agent=self.error_agent,
+                                executor=self.executor)
+
+        self.message_input.setPlaceholderText("Digit your questions here...")
+        while True:
+            loop_user_query = self.loop_through_states(main_agent=self.main_agent, initial_user_query=self.message_input.text())
+
+            if loop_user_query in ['reset', 'unknown']:
+                # reset state
+                self.main_agent.set_state("initial")
+                # reset the context dict
+                old_context = self.main_agent.get_context()
+                # add the summary to the conversation
+                summary_chat = self.logger_agent.prepare_summary(old_context)
+                #print(summary_chat)
+                if summary_chat.intent == "summary":
+                    data = {"prompt": summary_chat.message, "output": old_context['code'], "feedback": "",
+                            "category": ""}
+                    self.main_agent.db_agent.add_log(data)
+                self.main_agent.set_context(old_output=old_context['output'],
+                                       old_microscope_status=old_context['microscope_status'])
+                self.message_input.setPlaceholderText("Digit your questions here...")
+
+    def loop_through_states(self,main_agent, initial_user_query):
+        user_input = initial_user_query
+        self.append_message(user_input, "user")
+        while True:
+
+            response = main_agent.process_query(user_query=user_input)
+
+            # checks new state
+            if main_agent.get_state() in ["awaiting_clarification", "awaiting_user_approval"]:
+                #print(f"Main Agent: {response}")
+                self.append_message(response, "llm")
+                # add input
+                user_input = self.message_input.text()
+                self.append_message(user_input, "user")
+            elif main_agent.get_state() == "terminate":
+                #print(f"The output of the user's query: {main_agent.get_context()['output']}")
+                self.append_message(main_agent.get_context()['output'], "llm")
+                output = 'reset'
+                break
+
+            elif main_agent.get_state() == "Unknown_status":
+                #print("Unknown request")
+                self.append_message("Unknown request", "llm")
+                output = 'unknown'
+                break
+            else:
+                user_input = None  # the states don't need a user input
+
+        return output
+
+
+    def publication_page(self):
+        print("publication was selected")
+    def llm_page(self):
+        print("llm was selected")
+
+    def llm_model_changed(self):
+        # assign new value of llm model
+        self.current_llm_language = self.llm_language.currentText()
+
+    def _config_filechanged(self):
+        old_file = self._config_file_name
+        new_file = self._mmc.systemConfigurationFile()
+        if old_file != new_file:
+            self._config_file_name = new_file
+            # load the configuration file
+            self._mmc.loadSystemConfiguration(self._config_file_name)
+            print(self._mmc.systemConfigurationFile())
+
+
 
 
 class LLM:

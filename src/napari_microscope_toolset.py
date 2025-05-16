@@ -1,12 +1,16 @@
 import napari
-from mcp_gui import MCPWindow, LLM
+from gui.mcp_gui import MCPWindow, LLM
+from pymmcore_plus import CMMCorePlus
 
 def main():
+
+
     # call new napari viewer
     viewer = napari.Viewer()
     client = LLM()
+    mmc = CMMCorePlus.instance()
 
-    main_window = MCPWindow(client)
+    main_window = MCPWindow(client, mmc)
     viewer.window.add_plugin_dock_widget("napari-micromanager")
     viewer.window.add_dock_widget(widget=main_window, name="llm", area="right")
 

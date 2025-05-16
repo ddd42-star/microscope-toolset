@@ -18,3 +18,5 @@ protobuf~=5.29.4
 griffe~=1.7.3
 requests~=2.32.3
 tqdm~=4.67.1
+markdown
+pyqt5

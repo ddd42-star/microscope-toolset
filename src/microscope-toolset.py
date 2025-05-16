@@ -272,7 +272,7 @@ def select_log_collection(db_connection: LoggerDB):
 
     return collection_name
 
-
-if __name__ == "__main__":
-    # run the program
-    main()
+#
+# if __name__ == "__main__":
+#     # run the program
+#     main()
