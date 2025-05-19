@@ -108,13 +108,13 @@ class MainAgentState:
                 return classify_intent.message
             elif classify_intent.intent == 'propose_strategy':
                 self.state = "planning_strategy"
-                return None # no message needed
+                return "I am asking a strategy to the Strategy Agent" # no message needed
             elif classify_intent.intent == 'no_code_needed':
                 # answer normally
                 answer_message = self.no_coding_agent.no_coding_asnwer(self.context)
                 self.context["output"] = answer_message
                 self.state = "terminate"
-                return  None # no message needed
+                return  "This question doesn't require code. Sending your query to the No Coding Agent." # no message needed
 
         elif self.state == "awaiting_clarification":
             # 1) awaiting clarification from user query
@@ -125,7 +125,7 @@ class MainAgentState:
             self.context["conversation"] = self.context["conversation"] +  user_message(user_clarification)
             self.state = "initial"
 
-            return None # no message needed
+            return "I'm sending your clarification to the Main Agent" # no message needed
 
             # 2) awaiting clarification from agent strategy
             # TODO checks if works for both clarification
@@ -166,7 +166,7 @@ class MainAgentState:
                     self.context["conversation"] = self.context["conversation"] + agent_message(new_strategy_agent.message)
                     self.state = "executing_code"
 
-                    return None # no message needed
+                    return "I'm sending the new strategy to the Coding Agent." # no message needed
 
         elif self.state == "awaiting_user_approval":
             # add to conversation
@@ -174,7 +174,7 @@ class MainAgentState:
             # ask the user for approval
             if user_query.lower() == "yes":
                 self.state = "executing_code"
-                return None # no message needed
+                return "I'm sending the strategy to the Coding Agent" # no message needed
             elif user_query.lower() == "no":
                 self.state = "planning_strategy"
                 return "Please propose a new strategy."
@@ -210,7 +210,7 @@ class MainAgentState:
                     self.state = "finish"
                     self.context["final_output"] = True
                     self.context["output"] = output
-                    return None # no message needed
+                    return "Code run successfully" # no message needed
 
                 else:
                     # 2) errors. Catch it and send it to the agent
@@ -218,7 +218,7 @@ class MainAgentState:
                     # add to conversation
                     self.context["conversation"] = self.context["conversation"] + agent_message(output)
                     self.state = "handling_errors"
-                    return None # no message needed
+                    return output # no message needed
 
         elif self.state == "handling_errors":
             # 1) analyze the error
@@ -227,7 +227,7 @@ class MainAgentState:
                 # 2) ask new strategy
                 self.state = "planning_strategy"
                 self.context["error_analysis"] = error_analysis.message
-                return None # no message needed
+                return error_analysis.message # no message needed
 
         elif self.state == "finish":
             if self.context["final_output"] is True:
@@ -235,7 +235,7 @@ class MainAgentState:
                 self.context["conversation"] = self.context["conversation"] + agent_message(f"The output of the query is {self.context['output']}")
                 # reset all the needed variable ready for a new user query
                 self.state = "terminate"
-                return None # no message needed
+                return f"The output of the query is {self.context['output']}" # no message needed
         self.state = "Unknown_status"
         return None # no message needed
 
