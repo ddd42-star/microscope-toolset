@@ -16,7 +16,7 @@ class MCPClient:
         self.exit_stack = AsyncExitStack()
         self.openai = OpenAI()
 
-    async def conntect_to_server(self, server: str):
+    async def connect_to_server(self, server: str):
 
         is_python = server.endswith('.py')
         if not is_python:
