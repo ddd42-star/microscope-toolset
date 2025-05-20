@@ -1,4 +1,6 @@
 ### Roadmap
 
-- Explore [Litemind](https://pypi.org/project/litemind/) and build a basic controller for microscope
-- Thing about how to create RAG and how to give LLM context
+- Explore RAG and his limitation
+- Create basic workflow of microscope-toolset with different specialised Agent
+- Added to napari GUI of napari-micromanager
+- Created different tool to use in the GUI

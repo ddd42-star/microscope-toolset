@@ -7,7 +7,6 @@ from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, QThread
 from openai import OpenAI
 from napari._qt.qt_resources import get_current_stylesheet
-from pymmcore_plus import CMMCorePlus
 from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.database_agent import DatabaseAgent
 from agentsNormal.error_agent import ErrorAgent
@@ -20,7 +19,6 @@ from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
 from prompts.main_agent import MainAgentState, user_message, agent_message
 from python.execute import Execute
-from typing import List
 
 
 class AgentWorker(QObject):
