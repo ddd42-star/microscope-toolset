@@ -187,5 +187,21 @@ chroma_storage/
 *.sqlite3
 
 # jupyter notebbok
-*.ipynb 
+*.ipynb
+
+*.html
+
+# zip
+*.zip
+
+# json
+*.json
+
+*.cfg
+
+logs
+
+Vectore-store
+
+
 
