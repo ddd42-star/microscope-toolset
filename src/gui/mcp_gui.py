@@ -93,6 +93,24 @@ class BackgroundWorker(QObject):
         finally:
             # Removed self.finished.emit() - the worker stays alive and waits for the next signal
             print(f"Worker Thread ({QThread.currentThread().objectName()}): process_message task finished.")
+class PublicationWorker(QObject):
+    # Singal emitted when LLM is received
+    publication_received = pyqtSignal(str)
+
+    def __init__(self, client_vector_database):
+        super().__init__()
+        self.client_vector_database = client_vector_database
+
+    @pyqtSlot(str)
+    def process_message(self, user_question):
+
+        try:
+            response = self.client_vector_database.chat_gpt(user_question)
+
+            self.publication_received.emit(response)
+        except Exception as e:
+            self.publication_received.emit(f"Error getting response: {e}")
+
 
 
 # --- Main Application Window ---
@@ -104,11 +122,13 @@ class MCPWindow(QMainWindow):
     publication_process = pyqtSignal()
     llm_page_process = pyqtSignal()
     trigger_fsm_step = pyqtSignal(str)  # Signal to worker to run one FSM step
+    publication_trigger_process = pyqtSignal(str)
 
-    def __init__(self, client, mmc: CMMCorePlus):
+    def __init__(self, client, mmc, publication_client):
         super().__init__()
         self.client = client
         self._mmc = mmc
+        self.publication_client = publication_client
         self._config_file_name = self._mmc.systemConfigurationFile()
         # connect load config file event
         self._mmc.events.systemConfigurationLoaded.connect(self._config_filechanged)
@@ -218,7 +238,14 @@ class MCPWindow(QMainWindow):
         self.llm_worker.moveToThread(self.llm_thread)
         print(
             f"Worker moved to thread: {self.llm_worker.thread().objectName() if self.llm_worker.thread() else 'None'} (ID: {int(self.llm_worker.thread().currentThreadId()) if self.llm_worker.thread() else 'None'})")
+        self.publication_thread = QThread()
+        self.publication_thread.setObjectName("PublicationWorker")
+        self.publication_worker = PublicationWorker(self.publication_client)
+        self.publication_worker.moveToThread(self.publication_thread)
 
+        self.publication_trigger_process.connect(self.publication_worker.process_message)
+
+        self.publication_worker.publication_received.connect(self.add_publication_response)
         # Connect the signal from Main Thread to the Worker's slot
         # The slot will execute in the worker's thread event loop
         self.trigger_llm_process.connect(self.llm_worker.process_message)
@@ -255,6 +282,7 @@ class MCPWindow(QMainWindow):
         print(
             f"Main Thread ({QThread.currentThread().objectName()}): Starting persistent LLM worker thread event loop.")
         self.llm_thread.start()
+        self.publication_thread.start()
 
     # This method appends text to the single chat_display QTextBrowser with color and Markdown rendering
     def append_message(self, text, message_type):
@@ -326,6 +354,10 @@ class MCPWindow(QMainWindow):
         self.context_history["llm_assistant"] = self.context_history["llm_assistant"] + agent_message(response_text)
         self.append_message(response_text, "llm")
 
+    @pyqtSlot(str)
+    def add_publication_response(self, publication_response):
+        self.append_message(publication_response, "llm")
+
     def clear_text(self):
         self.chat_display.clear()
 
@@ -360,7 +392,7 @@ class MCPWindow(QMainWindow):
 
     def send_agent_message(self):
         """
-        Send a the message to the microscope toolset
+        Send a message to the microscope toolset
         """
         user_input = self.message_input.text()
         if not user_input:
@@ -376,6 +408,22 @@ class MCPWindow(QMainWindow):
         # Trigger the FSM step in the worker thread with user input
         print(f"Main Thread: User input received. Triggering FSM step with input: {user_input}")
         self.trigger_fsm_step.emit(user_input)
+
+    def send_publication_message(self):
+        """
+        Send a  message to the publication agent
+        """
+
+        user_input = self.message_input.text()
+        if not user_input:
+            return
+
+        self.append_message(user_input, "user")
+        self.message_input.clear()
+        self.message_input.setEnabled(False)
+        self.message_input.setPlaceholderText("Processing")
+
+        self.publication_trigger_process.emit(user_input)
 
     def toolset_changed(self):
         # emit signal to switch the page
@@ -475,6 +523,15 @@ class MCPWindow(QMainWindow):
 
     def publication_page(self):
         print("publication was selected")
+        self.message_input.disconnect()
+        self.message_input.returnPressed.connect(self.send_publication_message)
+        app_instance = QApplication.instance()
+        if app_instance:
+            app_instance.aboutToQuit.connect(self.publication_thread.quit)
+            print(f"Connected app.aboutToQuit to thread.quit.")
+        # set input text
+        self.message_input.setPlaceholderText("Search in the publication database...")
+
 
     def llm_page(self):
         print("llm was selected")
@@ -526,3 +583,123 @@ class LLM:
         except Exception as e:
             print(f"Error in LLM message call: {e}")
             return f"Error communicating with LLM: {e}"
+
+
+class Publication:
+
+    def __init__(self):
+        self.openai_key = os.getenv("OPENAI_API_KEY")
+        if not self.openai_key:
+            print("WARNING: OPENAI_API_KEY environment variable not set.")
+            print("LLM functionality will not work.")
+            self.client = None
+        else:
+            self.client = OpenAI(api_key=self.openai_key)
+            self.chroma_client = chromadb.PersistentClient(path="./chroma_storage")
+            self.publication_collection = self.chroma_client.get_collection(name="semantic_much_bigger_qa_collection")
+
+    def get_openai_embeddings(self, text):
+        response = self.client.embeddings.create(input=text, model="text-embedding-3-small")
+
+        embedding = response.data[0].embedding
+        #print("Generating embedding")
+
+        return embedding
+
+    # function to query documents
+    def query_documents(self,question):
+        query_embeddings = self.get_openai_embeddings(question)
+
+        results = self.publication_collection.query(query_embeddings=query_embeddings)
+
+        # Extract relevant chuncks
+        relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+
+        print("getting relevant information")
+        # print(results)
+
+        return relevant_chuncks
+
+    def generete_response(self, question, relevant_chuncks):
+        context = "\n\n".join(relevant_chuncks)
+
+        # prompt = (
+        # "You are scientific assistant tasked with answering questions. Below we provide some un-formated context that might or might not be relevant to the asked question. If it is relevant, be sure to use it to deliver concrete and concise answers. Give precise details. Don't use overly flowery voice." +
+        # "### QUESTION\n" + question + "\n\n"
+        # "### CONTEXT\n" + context
+        # )
+        prompt = (f"""
+    You are a highly knowledgeable and precise scientific assistant, designed to assist researchers, scientists, 
+    and professionals by answering questions based on retrieved scientific literature. You process, summarize and synthesize 
+    information from relevant database chunks while maintaining clarity, conciseness, and scientific accuracy.
+
+    ### Important Considerations:
+    - **Not all retrieved chunks will be relevant.** Some may contain unrelated, incorrect, or misleading information.
+    - **Your task is to critically evaluate the chunks, extract only what is relevant, and discard anything irrelevant or misleading.**
+    - **Do not assume all retrieved information is applicable.** Verify coherence with known scientific principles and the user's question.
+
+    ### Guidelines for Answering:
+
+    1. **Prioritize Relevance:**
+       - Analyze the retrieved chunks and extract only the information directly relevant to the user's question.
+       - Ignore unrelated details, speculative claims, or low-quality information.
+
+    2. **Ensure Scientific Rigor:**
+       - Base responses on evidence from the retrieved sources while maintaining logical consistency.
+       - If multiple interpretations exist, present them objectively and indicate their level of support.
+
+    3. **Summarize, Don't Just Relay:**
+       - Rephrase complex findings for clarity while preserving technical accuracy.
+       - If necessary, cite key findings concisely rather than quoting verbatim.
+       - Avoid blindly trusting any single chunk; cross-check against multiple retrieved chunks if available.
+
+    4. **Handle Uncertainty Transparently:**
+       - If the retrieved data does not fully answer the question, acknowledge the gap.
+       - Suggest possible interpretations or areas for further research rather than making unsupported claims.
+
+    5. **Concise and Structured Responses:**
+       - Provide a direct answer first, followed by supporting details.
+       - Use bullet points or structured explanations when appropriate.
+
+    6. **Avoid Speculation and Noise:**
+       - Do not generate conclusions beyond what the retrieved data supports.
+       - Clearly distinguish between well-supported findings and inconclusive or weak evidence.
+       - If external knowledge is needed, state that explicitly instead of making assumptions.
+
+    Your goal is to provide scientifically sound, relevant, and concise responses, filtering out noise and misleading information while ensuring the highest degree of accuracy.
+
+    ### BEGINNING OF CHUNKS
+    {context}              
+    """)
+
+        response = self.client.chat.completions.create(
+            model="gpt-4.1-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt,
+                },
+                {
+                    "role": "user",
+                    "content": question
+                },
+            ],
+        )
+
+        answer = response.choices[0].message.content
+
+        return answer
+
+    def chat_gpt(self, question):
+        # Example query
+        # query documents
+
+        # example question and response generation
+        # question = "What is the biological function of hGID"
+
+        relevant_chunkcs = self.query_documents(question)
+
+        answer = self.generete_response(question, relevant_chunkcs)
+
+        return answer
+
