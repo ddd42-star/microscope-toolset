@@ -30,6 +30,7 @@ class MainAgentState:
                  clarification_agent: ClarificationAgent, error_agent: ErrorAgent,
                  executor: Execute):
         self.state = "initial"
+        self.previous_state = None
         self.context = {
             "conversation": [],
             "user_query": "",
@@ -65,6 +66,7 @@ class MainAgentState:
 
     def set_state(self, new_state: str):
         self.state = new_state
+        self.previous_state = None
     def set_context(self, old_output, old_microscope_status):
         # TODO: add later conversation (maybe!)
         self.context = {
@@ -102,33 +104,48 @@ class MainAgentState:
 
             if classify_intent.intent == 'ask_for_info':
                 self.state = "awaiting_clarification"
+                self.previous_state = "initial"
                 self.context["clarification_request"] = classify_intent.message
                 # add LLM answer to the conversation
                 self.context["conversation"] = self.context["conversation"] + agent_message(classify_intent.message)
                 return classify_intent.message
             elif classify_intent.intent == 'propose_strategy':
                 self.state = "planning_strategy"
+                self.previous_state = "initial"
                 return "I am asking a strategy to the Strategy Agent" # no message needed
             elif classify_intent.intent == 'no_code_needed':
                 # answer normally
                 answer_message = self.no_coding_agent.no_coding_asnwer(self.context)
                 self.context["output"] = answer_message
                 self.state = "terminate"
+                self.previous_state = "initial"
                 return  "This question doesn't require code. Sending your query to the No Coding Agent." # no message needed
 
         elif self.state == "awaiting_clarification":
-            # 1) awaiting clarification from user query
-            #user_clarification = self.clarification_agent.user_clarification(self.context)
-            user_clarification = user_query.lower()
-            self.context["extra_infos"] =  "User: " + user_clarification
-            # add to the conversation
-            self.context["conversation"] = self.context["conversation"] +  user_message(user_clarification)
-            self.state = "initial"
+            if self.previous_state == "initial":
 
-            return "I'm sending your clarification to the Main Agent" # no message needed
+                # 1) awaiting clarification from user query
+                #user_clarification = self.clarification_agent.user_clarification(self.context)
+                user_clarification = user_query.lower()
+                self.context["extra_infos"] =  "User: " + user_clarification
+                # add to the conversation
+                self.context["conversation"] = self.context["conversation"] +  user_message(user_clarification)
+                self.state = "initial"
+                self.previous_state = "awaiting_clarification"
 
-            # 2) awaiting clarification from agent strategy
-            # TODO checks if works for both clarification
+                return "I'm sending your clarification to the Main Agent" # no message needed
+            elif self.previous_state == "planning_strategy":
+                user_clarification = user_query.lower()
+                self.context["extra_infos"] = "User: " + user_clarification
+                # add to the conversation
+                self.context["conversation"] = self.context["conversation"] + user_message(user_clarification)
+                self.state = "planning_strategy"
+                self.previous_state = "awaiting_clarification"
+
+                return "I'm sending your clarification to the Strategy Agent"  # no message needed
+
+                # 2) awaiting clarification from agent strategy
+                # TODO checks if works for both clarification
 
         elif self.state == "planning_strategy":
 
@@ -149,9 +166,11 @@ class MainAgentState:
                     self.context["conversation"] = self.context["conversation"] + user_message(created_strategy.message)
                     # change state
                     self.state = "awaiting_user_approval"
+                    self.previous_state = "planning_strategy"
                     return created_strategy.message
                 elif created_strategy.intent == "need_information":
                     self.state = "awaiting_clarification"
+                    self.previous_state = "planning_strategy"
                     self.context["clarification_request"] = created_strategy.message
                     # add to conversation
                     self.context["conversation"] = self.context["conversation"] + agent_message(created_strategy.message)
@@ -165,6 +184,7 @@ class MainAgentState:
                     # add to conversation
                     self.context["conversation"] = self.context["conversation"] + agent_message(new_strategy_agent.message)
                     self.state = "executing_code"
+                    self.previous_state = "planning_strategy"
 
                     return "I'm sending the new strategy to the Coding Agent." # no message needed
 

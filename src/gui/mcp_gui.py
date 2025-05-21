@@ -305,7 +305,7 @@ class MCPWindow(QMainWindow):
         print(f"Main Thread: Received new state: {new_state}")
         self._current_fsm_state = new_state
         # add in the history
-        self.context_history["microscope_toolset"] = self.main_agent.get_context["context"]
+        self.context_history["microscope_toolset"] = self.main_agent.get_context()["context"]
 
         # Enable/Disable input based on state
         if new_state in ["awaiting_clarification", "awaiting_user_approval", "initial"]:  # Also enable for new query
@@ -418,8 +418,8 @@ class MCPWindow(QMainWindow):
 
         self.append_message(user_input, "user")
         self.message_input.clear()
-        self.message_input.setEnabled(False)
-        self.message_input.setPlaceholderText("Processing")
+        #self.message_input.setEnabled(False)
+        #self.message_input.setPlaceholderText("Processing")
 
         self.publication_trigger_process.emit(user_input)
 
@@ -621,11 +621,11 @@ class Publication:
     def generete_response(self, question, relevant_chuncks):
         context = "\n\n".join(relevant_chuncks)
 
-        # prompt = (
-        # "You are scientific assistant tasked with answering questions. Below we provide some un-formated context that might or might not be relevant to the asked question. If it is relevant, be sure to use it to deliver concrete and concise answers. Give precise details. Don't use overly flowery voice." +
-        # "### QUESTION\n" + question + "\n\n"
-        # "### CONTEXT\n" + context
-        # )
+        # CONTEXT\n" + context
+        # )# prompt = (
+        #         # "You are scientific assistant tasked with answering questions. Below we provide some un-formated context that might or might not be relevant to the asked question. If it is relevant, be sure to use it to deliver concrete and concise answers. Give precise details. Don't use overly flowery voice." +
+        #         # "### QUESTION\n" + question + "\n\n"
+        #         # "##
         prompt = (f"""
     You are a highly knowledgeable and precise scientific assistant, designed to assist researchers, scientists, 
     and professionals by answering questions based on retrieved scientific literature. You process, summarize and synthesize 
