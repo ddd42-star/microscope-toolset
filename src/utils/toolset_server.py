@@ -6,23 +6,23 @@ import os
 from openai import OpenAI
 from normal_LLM import llm_prompt
 from dotenv import load_dotenv
-
-# create server
-toolset_server = FastMCP("Microscope Toolset")
-
-
-@toolset_server.tool()
-def microscope_toolset():
-    """
-    This tools is a Microscope Assistant. It is a multi-agent system that can interact directly with a microscope.
-    """
-    # Steps
-    # 1. Get Information of the user for the server (Which model,API_KEY, Datasets), just ask at the start the information and then cache it
-    # 2. Call the tool
-    # 3. Manage to connect also with the GUI (Think about this)
-    system_user_information = get_user_information()
-
-    return None
+from python.execute import Execute
+from microscope.microscope_status import MicroscopeStatus
+from postqrl.connection import DBConnection
+from postqrl.log_db import LoggerDB
+import chromadb
+from openai import OpenAI
+from agentsNormal.database_agent import DatabaseAgent
+from agentsNormal.software_agent import SoftwareEngeneeringAgent
+from agentsNormal.reasoning_agent import ReasoningAgent
+from agentsNormal.error_agent import ErrorAgent
+from agentsNormal.strategy_agent import StrategyAgent
+from agentsNormal.no_coding_agent import NoCodingAgent
+from agentsNormal.clarification_agent import ClarificationAgent
+from agentsNormal.logger_agent import LoggerAgent
+from prompts.main_agent import MainAgentState
+from mcp.types import ToolAnnotations
+from pydantic import Field
 
 def get_user_information() -> dict:
     """
@@ -34,9 +34,93 @@ def get_user_information() -> dict:
 
     user_information['model'] = os.getenv("model")
     user_information['api_key'] = os.getenv("API_KEY")
-    user_information['database'] = os.getenv("DATABASE")
+    user_information['database_path'] = os.getenv("DATABASE")
+    user_information['collection_name'] = os.getenv("DBNAME")
+    user_information['log_collection'] = os.getenv("LOGNAME")
+    user_information['cfg_file'] = os.getenv("CFGPATH")
 
     return user_information
+# 1. Get Information of the user for the server (Which model,API_KEY, Datasets), just ask at the start the information and then cache it
+system_user_information = get_user_information()
+# Test database and cfg file
+executor = Execute(system_user_information['cfg_file'])
+microscope_status = MicroscopeStatus(executor=executor)
+
+db_connection = DBConnection()
+
+db_log = LoggerDB(db_connection)
+
+chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
+client_collection = chroma_client.get_collection(system_user_information['collection_name'])
+
+client_openai = OpenAI(api_key=system_user_information['api_key'])
+
+# get current status
+status = microscope_status.getCurrentStatus()  # dictonary with the current configuration values
+
+# Initialize Agent
+database_agent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
+                            client_collection=client_collection, db_log=db_log,
+                            db_log_collection_name=system_user_information['log_collection'])
+software_agent = SoftwareEngeneeringAgent(client_openai=client_openai)
+
+reasoning_agent = ReasoningAgent(client_openai=client_openai)
+
+error_agent = ErrorAgent(client_openai=client_openai)
+
+# Instance the Strategy Agent
+strategy_agent = StrategyAgent(client_openai=client_openai)
+
+# Instance No coding agent
+no_coding_agent = NoCodingAgent(client_openai=client_openai)
+
+# Instance the Clarification Agent
+clarification_agent = ClarificationAgent(client_openai=client_openai)
+
+# Instance the Logger Agent
+logger_agent = LoggerAgent(client_openai=client_openai)
+
+main_agent = MainAgentState(client_openai=client_openai, db_agent=database_agent,
+                            software_agent=software_agent,reasoning_agent=reasoning_agent,
+                            strategy_agent=strategy_agent,no_coding_agent=no_coding_agent,
+                            clarification_agent=clarification_agent,error_agent=error_agent,
+                            executor=executor)
+
+# create server
+toolset_server = FastMCP(
+    name="Microscope Toolset",
+    main_agent=main_agent,
+    log_agent=logger_agent
+)
+
+
+@toolset_server.tool()
+def microscope_toolset(user_query: str):
+    """
+    This tools is a Microscope Assistant. It is a multi-agent system that can interact directly with a microscope.
+    """
+    # Steps
+    main_agent = toolset_server.settings.main_agent
+    log_agent = toolset_server.settings.log_agent
+
+
+
+    loop_user_query = main_agent.process_query(user_query=user_query)
+
+    if loop_user_query in ['reset', 'unknown']:
+        # reset state
+        main_agent.set_state("initial")
+        # reset the context dict
+        old_context = main_agent.get_context()
+        # add the summary to the conversation
+        summary_chat = log_agent.prepare_summary(old_context)
+        print(summary_chat)
+        if summary_chat.intent == "summary":
+            data = {"prompt": summary_chat.message, "output": old_context['code'], "feedback": "", "category": ""}
+            main_agent.db_agent.add_log(data)
+        main_agent.set_context(old_output=old_context['output'], old_microscope_status=old_context['microscope_status'])
+
+    return loop_user_query
 
 @toolset_server.tool()
 def search_articles():
