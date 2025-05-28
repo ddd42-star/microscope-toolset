@@ -6,7 +6,7 @@ from agentsNormal.database_agent import DatabaseAgent
 from agentsNormal.prompt_agent import PromptAgent
 from agentsNormal.software_agent import SoftwareEngeneeringAgent
 from agentsNormal.reasoning_agent import ReasoningAgent
-from python.execute import Execute
+from local.execute import Execute
 from microscope.microscope_status import MicroscopeStatus
 import logging
 

@@ -22,7 +22,7 @@ class MCPClient:
         if not is_python:
             raise ValueError("Server script must be .py")
 
-        command = "python"
+        command = "local"
 
         server_params = StdioServerParameters(
             command=command,

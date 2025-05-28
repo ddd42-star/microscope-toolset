@@ -18,7 +18,7 @@ from agentsNormal.strategy_agent import StrategyAgent
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
 from prompts.main_agent import MainAgentState, user_message, agent_message
-from python.execute import Execute
+from local.execute import Execute
 
 
 class AgentWorker(QObject):

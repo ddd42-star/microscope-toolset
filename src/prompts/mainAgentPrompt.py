@@ -120,7 +120,7 @@ Your responsibilities include:
     input given by the user. Do this until the user is happy with the strategy you are going to use.
 - **Output requirements**
   - Your output should be classified in three categories: 'ask_for_info', 'propose_strategy' or 'no_code_needed'
-  - Your output should be an python dict object like this example
+  - Your output should be an local dict object like this example
     dict(
     'intent': <Category of the output>
     'message' <Your answer>

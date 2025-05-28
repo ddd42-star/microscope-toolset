@@ -7,8 +7,8 @@ from agentsNormal.no_coding_agent import NoCodingAgent
 from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.structuredOutput import MainAgentOutput
 from prompts.mainAgentPrompt import CLASSIFY_INTENT
-from python.prepare_code import prepare_code
-from python.execute import Execute
+from local.prepare_code import prepare_code
+from local.execute import Execute
 import ast
 from openai import OpenAI
 
@@ -273,7 +273,7 @@ class MainAgentState:
             messages=history,
             response_format=MainAgentOutput
         )
-        return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary
+        return self.parse_agent_response(response.choices[0].message.content)  # it should be a local dictonary
 
     def parse_agent_response(self, response: str):
         # try:

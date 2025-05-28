@@ -1,6 +1,6 @@
 from openai import OpenAI
-from python.execute import Execute
-from python.prepare_code import prepare_code
+from local.execute import Execute
+from local.prepare_code import prepare_code
 from prompts.softwareEngineeringPrompt import SOFTWARE_PROMPT, SOFTWARE_AGENT, SOFTWARE_AGENT_RETRY
 from agentsNormal.structuredOutput import SoftwareAgentOutput
 import ast

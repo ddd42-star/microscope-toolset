@@ -21,7 +21,7 @@ logging.getLogger().addHandler(file_handler)
 
 import sys
 import os
-from python.execute import Execute
+from local.execute import Execute
 import chromadb
 from chromadb.utils import embedding_functions
 from openai import OpenAI
@@ -55,8 +55,8 @@ logging.getLogger("httpcore").setLevel(logging.WARNING)
 
 def main():
     # the input should be like this
-    # python microscope-toolset --cfg <cfg name> --api_key <LLM key> --database <path to database> 
-    # python microscope-toolset --cfg <cfg name> --api_key --database <path to database>
+    # local microscope-toolset --cfg <cfg name> --api_key <LLM key> --database <path to database>
+    # local microscope-toolset --cfg <cfg name> --api_key --database <path to database>
     tot_arg = len(sys.argv) - 1
 
     list_arg = str(sys.argv)

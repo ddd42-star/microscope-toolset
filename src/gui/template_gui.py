@@ -497,7 +497,7 @@ class MCPWindow(QMainWindow):
 class LLM:
     # Note: Passing the LLM client instance to the worker assumes
     # the underlying openai client is thread-safe for making calls.
-    # The openai-python library client generally is.
+    # The openai-local library client generally is.
     def __init__(self):
         # Get API key from environment variable
         self.openai_key = os.getenv("OPENAI_API_KEY")

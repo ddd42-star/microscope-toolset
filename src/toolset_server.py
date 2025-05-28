@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 import asyncio
 import mcp.types as types
-from mcp.server import FastMCP
+from mcp.server.fastmcp import FastMCP
 import os
 from openai import OpenAI
-from normal_LLM import llm_prompt
+from utils.normal_LLM import llm_prompt
 from dotenv import load_dotenv
-from python.execute import Execute
+from local.execute import Execute
 from microscope.microscope_status import MicroscopeStatus
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
@@ -53,7 +53,8 @@ db_log = LoggerDB(db_connection)
 chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
 client_collection = chroma_client.get_collection(system_user_information['collection_name'])
 
-client_openai = OpenAI(api_key=system_user_information['api_key'])
+#client_openai = OpenAI(api_key=system_user_information['api_key'])
+client_openai = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # get current status
 status = microscope_status.getCurrentStatus()  # dictonary with the current configuration values
@@ -87,11 +88,8 @@ main_agent = MainAgentState(client_openai=client_openai, db_agent=database_agent
                             executor=executor)
 
 # create server
-toolset_server = FastMCP(
-    name="Microscope Toolset",
-    main_agent=main_agent,
-    log_agent=logger_agent
-)
+#toolset_server = FastMCP(name="Microscope Toolset",main_agent=main_agent,log_agent=logger_agent)
+toolset_server = FastMCP(name="Microscope Toolset")
 
 
 @toolset_server.tool()
@@ -100,27 +98,30 @@ def microscope_toolset(user_query: str):
     This tools is a Microscope Assistant. It is a multi-agent system that can interact directly with a microscope.
     """
     # Steps
-    main_agent = toolset_server.settings.main_agent
-    log_agent = toolset_server.settings.log_agent
+    #main_agent = toolset_server.settings.main_agent
+    #log_agent = toolset_server.settings.log_agent
 
 
 
-    loop_user_query = main_agent.process_query(user_query=user_query)
+    response = main_agent.process_query(user_query=user_query)
+    current_state = main_agent.get_state()
 
-    if loop_user_query in ['reset', 'unknown']:
+    if current_state not in ["awaiting_clarification", "awaiting_user_approval"]:
+        return response
+    elif current_state in ['terminate', 'Unknown_status']:
         # reset state
         main_agent.set_state("initial")
         # reset the context dict
         old_context = main_agent.get_context()
         # add the summary to the conversation
-        summary_chat = log_agent.prepare_summary(old_context)
+        summary_chat = logger_agent.prepare_summary(old_context)
         print(summary_chat)
         if summary_chat.intent == "summary":
             data = {"prompt": summary_chat.message, "output": old_context['code'], "feedback": "", "category": ""}
             main_agent.db_agent.add_log(data)
         main_agent.set_context(old_output=old_context['output'], old_microscope_status=old_context['microscope_status'])
 
-    return loop_user_query
+    return response
 
 @toolset_server.tool()
 def search_articles():

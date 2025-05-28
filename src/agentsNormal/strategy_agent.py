@@ -27,7 +27,7 @@ class StrategyAgent:
             response_format=StrategyAgentOutput
         )
 
-        return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary
+        return self.parse_agent_response(response.choices[0].message.content)  # it should be a local dictonary
 
     def parse_agent_response(self, response: str):
         # try:
@@ -62,7 +62,7 @@ class StrategyAgent:
             response_format=StrategyAgentOutput
         )
 
-        return self.parse_agent_response(response.choices[0].message.content)  # it should be a python dictonary
+        return self.parse_agent_response(response.choices[0].message.content)  # it should be a local dictonary
 
 
 

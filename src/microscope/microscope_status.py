@@ -1,4 +1,4 @@
-from python.execute import Execute
+from local.execute import Execute
 import threading
 import time
 import ast
