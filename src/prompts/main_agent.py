@@ -119,7 +119,7 @@ class MainAgentState:
                 self.context["output"] = answer_message
                 self.state = "terminate"
                 self.previous_state = "initial"
-                return  "This question doesn't require code. Sending your query to the No Coding Agent." # no message needed
+                return  answer_message # no message needed
 
         elif self.state == "awaiting_clarification":
             if self.previous_state == "initial":

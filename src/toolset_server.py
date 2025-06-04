@@ -1,9 +1,6 @@
-from pydantic import BaseModel
 import asyncio
-import mcp.types as types
 from mcp.server.fastmcp import FastMCP
 import os
-from openai import OpenAI
 from utils.normal_LLM import llm_prompt
 from dotenv import load_dotenv
 from local.execute import Execute
@@ -23,6 +20,8 @@ from agentsNormal.logger_agent import LoggerAgent
 from prompts.main_agent import MainAgentState
 from mcp.types import ToolAnnotations
 from pydantic import Field
+from mcp_microscopetoolset.mcp_orchestrator import initialize_orchestrator
+from mcp_microscopetoolset.main_agent import MainAgent
 
 def get_user_information() -> dict:
     """
@@ -81,19 +80,25 @@ clarification_agent = ClarificationAgent(client_openai=client_openai)
 # Instance the Logger Agent
 logger_agent = LoggerAgent(client_openai=client_openai)
 
-main_agent = MainAgentState(client_openai=client_openai, db_agent=database_agent,
-                            software_agent=software_agent,reasoning_agent=reasoning_agent,
-                            strategy_agent=strategy_agent,no_coding_agent=no_coding_agent,
-                            clarification_agent=clarification_agent,error_agent=error_agent,
-                            executor=executor)
+# main_agent = MainAgentState(client_openai=client_openai, db_agent=database_agent,
+#                             software_agent=software_agent,reasoning_agent=reasoning_agent,
+#                             strategy_agent=strategy_agent,no_coding_agent=no_coding_agent,
+#                             clarification_agent=clarification_agent,error_agent=error_agent,
+#                             executor=executor)
+
+main_agent = MainAgent()
+
+#Initialize all client
+initialize_orchestrator(
+    client_openai,database_agent,software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent, clarification_agent, executor
+)
 
 # create server
 #toolset_server = FastMCP(name="Microscope Toolset",main_agent=main_agent,log_agent=logger_agent)
 toolset_server = FastMCP(name="Microscope Toolset")
 
-
 @toolset_server.tool()
-def microscope_toolset(user_query: str):
+async def microscope_toolset(user_query: str):
     """
     This tools is a Microscope Assistant. It is a multi-agent system that can interact directly with a microscope.
     """
@@ -101,27 +106,16 @@ def microscope_toolset(user_query: str):
     #main_agent = toolset_server.settings.main_agent
     #log_agent = toolset_server.settings.log_agent
 
+    response =  await main_agent.process_query(user_query=user_query)
 
+    print(f'Main Agent: {response}')
 
-    response = main_agent.process_query(user_query=user_query)
-    current_state = main_agent.get_state()
-
-    if current_state not in ["awaiting_clarification", "awaiting_user_approval"]:
-        return response
-    elif current_state in ['terminate', 'Unknown_status']:
-        # reset state
-        main_agent.set_state("initial")
-        # reset the context dict
-        old_context = main_agent.get_context()
-        # add the summary to the conversation
-        summary_chat = logger_agent.prepare_summary(old_context)
-        print(summary_chat)
-        if summary_chat.intent == "summary":
-            data = {"prompt": summary_chat.message, "output": old_context['code'], "feedback": "", "category": ""}
-            main_agent.db_agent.add_log(data)
-        main_agent.set_context(old_output=old_context['output'], old_microscope_status=old_context['microscope_status'])
+    if main_agent.is_conversation_complete():
+        return main_agent.get_final_output()
 
     return response
+
+
 
 @toolset_server.tool()
 def search_articles():

@@ -21,20 +21,13 @@ Then go into the folder of this repository and install all the packages using th
 ```
 pip install -r requirements.txt
 ```
-
-### How to start the toolset
-
-> Currently, the *Large Language Model* in use is from OpenAI. In the future it will be added the possibilities to choose the preferred Model. Be sure to have saved in the environment the api key for OpenAI with *OPENAI_API_KEY*.
-
-Run the following command
-```
-python .\src\napari_microscope_toolset.py
-```
-The following GUI should now open
-![My beatiful gui](/pictures/gui.png)
-> You cannot choose other LLM languages model for the moment. The model used for all functionality are *gpt-4.1-mini*.
 ### Functionalities
-The main functionality are the following:
+The main functionalities are the following:
+ - Napari GUI
+ - MCP Server
+ - MCP Client (from the terminal)
+
+Currently, this tool contains three different modality:
 #### LLM Assistant
 This is a normal assistant. It simulates the web user experience of chatting with chat-gpt.
 #### Scientific Assistant
@@ -44,11 +37,32 @@ Simply create your own personal vector database and the correct name when callin
 #### Microscope toolset Assistant
 This is the Microscope Assistant. It allows to interact with the microscope in use directly from
 *chat widget*. 
-> Before starting to use this functions, you need to load the configuration file of the microscope.
-> If you don't do it, it will not work.
 
+
+### How to start the toolset
+
+> Currently, the *Large Language Model* in use is from OpenAI. In the future it will be added the possibilities to choose the preferred Model. Be sure to have saved in the environment the api key for OpenAI with *OPENAI_API_KEY*.
+
+Run the following command for starting the Napari GUI
+```
+python .\src\napari_microscope_toolset.py
+```
+The following GUI should now open
+![My beatiful gui](/pictures/gui.png)
+
+or run the following command for starting the MCP Client
+```
+python .\src\main_file.py
+```
+or run the following command for starting the MCP Server
+```
+python .\src\toolset_server.py
+```
+> If you want to use the MCP Server directly, then use it with an LLM directly like Claude or OpenAI SDK.
+> You cannot choose other LLM languages model for the moment. The model used for all functionality are *gpt-4.1-mini*.
+> Before starting to use the Microscope toolset in the Napari GUI, you need to load the configuration file of the microscope.
+> If you don't do it, it will not work.\
 This Assistant use different specialised Agent to answer the user queries.
-
 > To interact with the microscope hardware, it is used pymmcore-plus. If your microscope
 > doesn't support pymmcore-plus it will not work.
 
