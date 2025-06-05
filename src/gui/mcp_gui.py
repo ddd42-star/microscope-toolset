@@ -1,10 +1,10 @@
 import chromadb
 import os
 import markdown
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                              QWidget, QScrollArea, QTextBrowser, QLineEdit, QPushButton,
                              QLabel, QComboBox, QMessageBox)
-from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot, QThread
+from PyQt6.QtCore import QObject, pyqtSignal, pyqtSlot, QThread
 from openai import OpenAI
 from napari._qt.qt_resources import get_current_stylesheet
 from agentsNormal.clarification_agent import ClarificationAgent

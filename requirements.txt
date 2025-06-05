@@ -3,7 +3,7 @@ openai
 pymupdf4llm
 pymupdf
 semantic_text_splitter
-napari[all]
+napari[pyqt6, optional]
 napari-micromanager
 pymmcore-plus
 openai-agents
@@ -18,5 +18,5 @@ griffe
 requests
 tqdm
 markdown
-pyqt5
+pyqt6
 chardet

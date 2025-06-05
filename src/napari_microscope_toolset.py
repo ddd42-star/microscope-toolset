@@ -12,7 +12,7 @@ def main():
     mmc = CMMCorePlus.instance()
 
     main_window = MCPWindow(client, mmc, publication_client)
-    viewer.window.add_plugin_dock_widget("napari-micromanager")
+    viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
     viewer.window.add_dock_widget(widget=main_window, name="llm", area="right")
 
     # start loop for gui interaction
