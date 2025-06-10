@@ -41,7 +41,7 @@ class MainAgent:
 
     def reset_conversation(self):
         """Resets the conversation by requesting a new session ID from the server."""
-        self.session_id = "new" # Signal to the server to create a new session
+        self.session_id = "reset" # Signal to the server to create a new session
         self._is_conversation_final = False
         self._final_output_content = None
 

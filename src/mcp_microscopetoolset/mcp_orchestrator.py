@@ -42,6 +42,25 @@ def _get_initial_context():
         "clarification_needed_from_user": False,
         "approval_needed_from_user": False
     }
+def _reset_context(old_output, old_microscope_status):
+    return {
+        "user_query": "",
+        "current_user_input": "",
+        "conversation": [],
+        "context": "",
+        "extra_infos": "",
+        "microscope_status": old_microscope_status,
+        "previous_outputs": old_output,
+        "main_agent_strategy": None,
+        "new_strategy_proposed": False,
+        "code": None,
+        "error": None,
+        "error_analysis": None,
+        "is_final_output": False,
+        "output": None,
+        "clarification_needed_from_user": False,
+        "approval_needed_from_user": False
+    }
 
 
 async def orchestrate_turn(session_context: dict):
@@ -116,8 +135,8 @@ async def orchestrate_turn(session_context: dict):
                 callable_args = {
                     "user_query": session_context["current_user_input"]
                 }
-            elif tool_name in ["answer_no_code_query", "generate_strategy", "revise_strategy",
-                               "generate_code", "fix_code", "analyze_error"]:
+            elif tool_name in ["answer_no_coding_query", "generate_strategy", "revise_strategy",
+                               "generate_code", "fix_code", "analyze_errors"]:
                 callable_args = {"data_dict": session_context}
             elif tool_name == "execute_python_code":
                 callable_args = {"code_string": session_context["code"]}
@@ -205,7 +224,7 @@ async def orchestrate_turn(session_context: dict):
                         #messages_for_llm.append(agent_message(tool_result.output))
                         messages_for_llm.append(agent_message("Code execution failed. Analyzing error..."))
 
-                elif tool_name == "analyze_error":
+                elif tool_name == "analyze_errors":
                     #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     session_context["error_analysis"] = tool_result["message"]
@@ -258,9 +277,14 @@ async def process_user_request(
     if session_id == "new" or session_id not in _active_session:
         session_id = str(uuid.uuid4())
         session_context = _get_initial_context()
-        print(session_context)
+        #print(session_context)
         _active_session[session_id] = session_context
         print(f"DEBUG: New session '{session_id}' initialized.")
+    elif session_id == "reset":
+        old_context = _active_session[session_id]
+        session_id = str(uuid.uuid4())
+        session_context = _reset_context(old_context["output"], old_context["microscope_status"])
+        _active_session[session_id] = session_context
     else:
         session_context = _active_session[session_id]
         # Make a deep copy to ensure modifications are tracked and explicitly saved

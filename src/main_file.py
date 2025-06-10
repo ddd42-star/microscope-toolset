@@ -136,11 +136,6 @@ async def run_application():
             print("Goodbye!")
             break
 
-        if user_input.lower() == 'reset':
-            main_agent.reset_conversation()
-            print("Conversation reset. Please enter a new query.")
-            continue
-
         # Process the user query. MainAgent will now send it to the server's orchestrator tool.
         llm_response = await main_agent.process_query(user_query=user_input)
 
@@ -150,7 +145,8 @@ async def run_application():
         # Check if the conversation is considered complete by the server
         if main_agent.is_conversation_complete():
             print(f"Final output: {main_agent.get_final_output()}")
-            print("\nConversation completed. Type 'reset' for a new query or 'exit' to quit.")
+            print("\nConversation completed. Type a new query or 'exit' to quit.")
+            main_agent.reset_conversation()
 
 
 if __name__ == "__main__":
