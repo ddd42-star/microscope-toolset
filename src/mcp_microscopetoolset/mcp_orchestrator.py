@@ -258,6 +258,7 @@ async def process_user_request(
     if session_id == "new" or session_id not in _active_session:
         session_id = str(uuid.uuid4())
         session_context = _get_initial_context()
+        print(session_context)
         _active_session[session_id] = session_context
         print(f"DEBUG: New session '{session_id}' initialized.")
     else:

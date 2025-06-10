@@ -1,6 +1,7 @@
 # main.py
 import asyncio
 from openai import OpenAI
+from typing import Any
 
 # Import your core agents (needed to initialize the server's agents)
 from agentsNormal.database_agent import DatabaseAgent
@@ -20,6 +21,8 @@ from dotenv import load_dotenv
 import os
 from mcp_microscopetoolset.mcp_orchestrator import initialize_orchestrator
 from mcp_microscopetoolset.main_agent import MainAgent
+from pymmcore_plus import CMMCorePlus
+import napari
 
 def get_user_information() -> dict:
     """
@@ -37,6 +40,29 @@ def get_user_information() -> dict:
     user_information['cfg_file'] = os.getenv("CFGPATH")
 
     return user_information
+def initiate_napari_micromanager():
+    """This function start the napari micromanager GUI and access the core instance"""
+
+    viewer = napari.Viewer()
+    # start the napari plugin
+    dw, mainwindow = viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
+
+    # access the instance core
+    mmc = CMMCorePlus.instance()
+
+
+    return mmc
+
+def load_config_file(config_file: str,mmc: CMMCorePlus.instance()):
+    """This function load the config file added directly in napari micromanager"""
+    mmc.loadSystemConfiguration(fileName=config_file)
+
+    return None
+
+def is_config_loaded():
+    """This function listen to napari events has test if the configuration file has been loaded"""
+
+    return None
 
 async def run_application():
     # 1. Get Information of the user for the server (Which model,API_KEY, Datasets), just ask at the start the information and then cache it
@@ -95,6 +121,12 @@ async def run_application():
 
     # Initialize the MainAgent (client wrapper)
     main_agent = MainAgent()
+
+    # start mmc core instance
+    mmc = initiate_napari_micromanager()
+
+    # load config file
+    load_config_file(config_file=system_user_information['cfg_file'], mmc=mmc)
 
     print("Welcome! How can I help you today? (Type 'exit' to quit, 'reset' to start fresh)")
 
