@@ -1,6 +1,7 @@
 # This class initialize namepsace dictonary where the
 # testing code will be run.
 import importlib
+import importlib.util
 import subprocess
 import sys
 from io import StringIO
@@ -21,6 +22,11 @@ class Execute:
     def install_library(self, module: str):
         """Install missing packages using pip"""
         try:
+            # loader
+            loader = importlib.util.find_spec(module)
+            if loader is not None:
+                return True
+            # install the packages
             subprocess.check_call([sys.executable, "-m", "pip", "install", module])
         except subprocess.CalledProcessError:
             return False

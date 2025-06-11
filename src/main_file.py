@@ -115,7 +115,8 @@ async def run_application():
         error_agent=error_agent,
         no_coding_agent=no_coding_agent,
         clarification_agent=clarification_agent,
-        executor=executor
+        executor=executor,
+        logger_agent=logger_agent
     )
     print("All server components initialized.")
 

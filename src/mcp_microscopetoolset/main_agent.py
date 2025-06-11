@@ -1,8 +1,8 @@
-# main_agent.py
 import asyncio
 import json
 import uuid
 from mcp_microscopetoolset.mcp_orchestrator import mcp_orchestrator
+
 
 class MainAgent:
     def __init__(self):

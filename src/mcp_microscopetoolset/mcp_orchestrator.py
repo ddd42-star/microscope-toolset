@@ -16,11 +16,11 @@ _active_session: dict[str, dict] = {}
 
 
 def initialize_orchestrator(openai_client: OpenAI, db_agent, software_agent, reasoning_agent, strategy_agent,
-                            error_agent, no_coding_agent, clarification_agent, executor):
+                            error_agent, no_coding_agent, clarification_agent, executor, logger_agent):
     global _orchestrator_llm_client
     _orchestrator_llm_client = openai_client
     initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent,
-                               clarification_agent, executor, openai_client)
+                               clarification_agent, executor, openai_client, logger_agent)
 
 
 def _get_initial_context():
@@ -40,7 +40,8 @@ def _get_initial_context():
         "is_final_output": False,
         "output": None,
         "clarification_needed_from_user": False,
-        "approval_needed_from_user": False
+        "approval_needed_from_user": False,
+        "is_request_responded": False
     }
 def _reset_context(old_output, old_microscope_status):
     return {
@@ -59,7 +60,8 @@ def _reset_context(old_output, old_microscope_status):
         "is_final_output": False,
         "output": None,
         "clarification_needed_from_user": False,
-        "approval_needed_from_user": False
+        "approval_needed_from_user": False,
+        "is_request_responded": False
     }
 
 
@@ -73,8 +75,8 @@ async def orchestrate_turn(session_context: dict):
         "You are an AI assistant managing a complex coding and problem-solving workflow. "
         "Your goal is to guide the user through the process using the available tools. "
         "Based on the conversation history and current context, decide which tool to call next, "
-        "or if you need to ask the user for more information or approval. "
-        "If you ask the user for clarification or approval, set the corresponding flags in the session_context. "
+        "or if you need to ask the user for more information or approval or feedback. "
+        "If you ask the user for clarification or approval or feedback, set the corresponding flags in the session_context. "
         "If the task is completed, ensure 'is_final_output' is set to True in the session_context. "
         "Respond with a natural language message for the user at the end of each turn, "
         "or indicate that you are performing an internal action."
@@ -85,9 +87,6 @@ async def orchestrate_turn(session_context: dict):
 
     # transform the List[Tool] into a OpenAI function
     tools_list_openai = [mcp_to_openai(tool) for tool in tool_definitions]
-    #print(tools_list_openai)
-
-    #print(tool_definitions)
 
     messages_for_llm = [
                            {"role": "system", "content": system_prompt},
@@ -112,10 +111,7 @@ async def orchestrate_turn(session_context: dict):
         if response_message.tool_calls:
             tool_call_count += 1
             tool_call = response_message.tool_calls[0]
-            #print("tool call: ", tool_call)
             tool_name = tool_call.function.name
-            #print("tool name: ", tool_name)
-            #print(tool_call.id)
             tool_args = tool_call.function.arguments
             # add tool call message
             messages_for_llm.append({"role": "assistant", "tool_calls": response_message.tool_calls})
@@ -140,22 +136,17 @@ async def orchestrate_turn(session_context: dict):
                 callable_args = {"data_dict": session_context}
             elif tool_name == "execute_python_code":
                 callable_args = {"code_string": session_context["code"]}
+            elif tool_name == "save_result":
+                callable_args = {"data_dict": session_context, "user_query": session_context["current_user_input"]}
             print("callable args: ", callable_args)
             try:
                 tool_result = await internal_mcp_tool.call_tool(tool_name, callable_args)
-                #print(tool_result[0].text)
-                #print(messages_for_llm)
                 messages_for_llm.append(tool_message(tool_call.id,tool_name, tool_result[0].text))
-                #print("Tool in use: ", tool_result[0])
-                #print("Tool in use: ", len(tool_result))
                 if tool_name == "retrieve_db_context":
                     session_context["context"] = tool_result[0].text
-                    #print("RUN IT")
                     messages_for_llm.append(agent_message("I have retrieved relevant context."))
                     # maybe add to the conversation history
                 elif tool_name == "classify_user_intent":
-                    #print(tool_result)
-                    #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     intent = tool_result["intent"]
                     message = tool_result["message"]
@@ -174,16 +165,12 @@ async def orchestrate_turn(session_context: dict):
 
 
                 elif tool_name == "answer_no_code_query":
-                    #print(tool_result)
-                    #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     session_context["output"] = tool_result["message"]
                     session_context["is_final_output"] = True
                     llm_response_text = f"Here is the answer: {tool_result["message"]}"
                     break  # Final output
                 elif tool_name == "generate_strategy":
-                    #print(tool_result)
-                    #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     session_context["main_agent_strategy"] = tool_result["message"]
                     # LLM should now ask for user approval
@@ -191,8 +178,6 @@ async def orchestrate_turn(session_context: dict):
                     llm_response_text = f"Here is the proposed strategy:\n{tool_result["message"]}\nDo you approve? (yes/no)"
                     break  # Break to ask user
                 elif tool_name == "revise_strategy":
-                    #print(tool_result)
-                    #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     session_context["main_agent_strategy"] = tool_result["message"]  # Update main strategy
                     session_context["new_strategy_proposed"] = True
@@ -201,8 +186,6 @@ async def orchestrate_turn(session_context: dict):
                     messages_for_llm.append(agent_message("Strategy revised. Moving to code generation/fix."))
 
                 elif tool_name == "generate_code" or tool_name == "fix_code":
-                    #print(tool_result)
-                    #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     session_context["code"] = tool_result["message"]
                     # LLM should now call execute_python_code
@@ -210,14 +193,14 @@ async def orchestrate_turn(session_context: dict):
                     messages_for_llm.append(agent_message("Code generated. Executing..."))
 
                 elif tool_name == "execute_python_code":
-                    #print(tool_result)
-                    #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     if tool_result.get("status") == "success":
                         session_context["output"] = tool_result["output"]
-                        session_context["is_final_output"] = True
-                        llm_response_text = f"Code executed successfully. Output:\n{tool_result["output"]}"
-                        break  # Final output
+                        # LLM should ask the user if the user's query was answered
+                        session_context["is_request_responded"] = True
+                        #session_context["is_final_output"] = True
+                        llm_response_text = f"Code executed successfully. Output:\n{tool_result["output"]}\nWas your question answered? (correct/wrong)"
+                        break
                     else:
                         session_context["error"] = tool_result["output"]
                         # LLM should now call analyze_error
@@ -225,7 +208,6 @@ async def orchestrate_turn(session_context: dict):
                         messages_for_llm.append(agent_message("Code execution failed. Analyzing error..."))
 
                 elif tool_name == "analyze_errors":
-                    #print(json.loads(tool_result[0].text))
                     tool_result = json.loads(tool_result[0].text)
                     session_context["error_analysis"] = tool_result["message"]
                     session_context["new_strategy_proposed"] = True  # Indicate need for strategy revision
@@ -233,11 +215,15 @@ async def orchestrate_turn(session_context: dict):
                     #messages_for_llm.append(agent_message(tool_result.message))
                     messages_for_llm.append(agent_message("Error analyzed. Attempting to revise strategy/code."))
 
+                elif tool_name == "save_result":
+                    session_context["is_final_output"] = True
+                    break  # Final output
+
                 # If LLM doesn't explicitly break, it means it needs to continue
                 # and call another tool or generate text.
                 # The while loop will continue by asking the LLM again.
             except Exception as e:
-                #print(e)
+                print(e)
                 error_info = f"Error executing tool '{tool_name}': {e}"
                 messages_for_llm.append(tool_message(tool_call.id,tool_name, error_info))
                 messages_for_llm.append(

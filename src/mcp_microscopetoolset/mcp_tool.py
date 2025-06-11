@@ -15,7 +15,7 @@ from agentsNormal.error_agent import ErrorAgent
 from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.no_coding_agent import NoCodingAgent
 from agentsNormal.clarification_agent import ClarificationAgent
-from mcp.types import ToolAnnotations
+from agentsNormal.logger_agent import LoggerAgent
 from pydantic import Field
 from mcp_microscopetoolset.utils import parse_agent_response, AgentOutput
 from prompts.mainAgentPrompt import CLASSIFY_INTENT
@@ -32,10 +32,13 @@ _no_coding_agent: NoCodingAgent = None
 _clarification_agent: ClarificationAgent = None
 _executor: Execute = None
 _openai_client: OpenAI = None
+_logger_agent: LoggerAgent = None
 
-def initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent, clarification_agent, executor, openai_client):
+
+def initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent,
+                               clarification_agent, executor, openai_client, logger_agent):
     """Initializes the agents used by the MCP tools. Call this once at startup."""
-    global _db_agent, _software_agent, _reasoning_agent, _strategy_agent, _error_agent, _no_coding_agent, _clarification_agent, _executor, _openai_client
+    global _db_agent, _software_agent, _reasoning_agent, _strategy_agent, _error_agent, _no_coding_agent, _clarification_agent, _executor, _openai_client, _logger_agent
     _db_agent = db_agent
     _software_agent = software_agent
     _reasoning_agent = reasoning_agent
@@ -45,6 +48,8 @@ def initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strate
     _clarification_agent = clarification_agent
     _executor = executor
     _openai_client = openai_client
+    _logger_agent = logger_agent
+
 
 @mcp_server.tool(
     name="retrieve_db_context",
@@ -55,6 +60,7 @@ async def retrieve_db_context(user_query: str = Field(description="The user's or
     Uses the DatabaseAgent to retrieve the context for answering the user's query.
     """
     return _db_agent.look_for_context(user_query)
+
 
 @mcp_server.tool(
     name="classify_user_intent",
@@ -76,7 +82,7 @@ async def classify_user_intent(
         previous_outputs=previous_outputs or "no information"
     )
 
-    history = [{"role": "system","content": prompt},{"role": "user","content": user_query}] + conversation_history
+    history = [{"role": "system", "content": prompt}, {"role": "user", "content": user_query}] + conversation_history
 
     try:
         response = _openai_client.beta.chat.completions.parse(
@@ -91,13 +97,16 @@ async def classify_user_intent(
     except Exception as e:
         return {"intent": "error", "message": f"Failed to classify intent: {e}"}
 
+
 @mcp_server.tool(
     name="answer_no_coding_query",
     description="Provides a direct answer to a user query that does not require code generation."
 )
-async def answer_no_coding_query(data_dict: dict = Field(description="The current context dictionary of the main agent.")):
+async def answer_no_coding_query(
+        data_dict: dict = Field(description="The current context dictionary of the main agent.")):
     """Uses the NoCodingAgent to generate an answer for non-code-related queries."""
     return _no_coding_agent.no_coding_asnwer(data_dict)
+
 
 @mcp_server.tool(
     name="generate_strategy",
@@ -109,6 +118,8 @@ async def generate_strategy(data_dict: dict = Field(description="The current con
     Return a json object with 'intent' (strategy/need_information) and 'message'
     """
     return _strategy_agent.generate_strategy(data_dict)
+
+
 @mcp_server.tool(
     name="revise_strategy",
     description="Revises an existing strategy based on new information or user feedback."
@@ -120,6 +131,7 @@ async def revise_strategy(data_dict: dict = Field(description="The current conte
     """
     return _strategy_agent.revise_strategy(data_dict)
 
+
 @mcp_server.tool(
     name="generate_code",
     description="Generates Python code based on the current strategy and context."
@@ -130,6 +142,8 @@ async def generate_code(data_dict: dict = Field(description="The current context
     Return a json object with 'intent' (code) and 'message'
     """
     return _software_agent.generate_code(data_dict)
+
+
 @mcp_server.tool(
     name="fix_code",
     description="Fixes existing Python code based on error analysis and context."
@@ -140,6 +154,8 @@ async def fix_code(data_dict: dict = Field(description="The current context dict
     Return a json object with 'intent' (code) and 'message' (the fixed code string)
     """
     return _software_agent.fix_code(data_dict)
+
+
 @mcp_server.tool(
     name="execute_python_code",
     description="Executes a given Python code string and returns its output or any errors."
@@ -158,6 +174,8 @@ async def execute_python_code(code_string: str = Field(description="The Python c
             return {'status': 'success', 'output': execution_output}
     except Exception as e:
         return {"status": "error", "output": f"Code preparation/execution failed: {e}"}
+
+
 @mcp_server.tool(
     name="analyze_errors",
     description="Analyzes an error message from code execution to provide insights for fixing the code."
@@ -168,6 +186,7 @@ async def analyze_errors(data_dict: dict = Field(description="The current contex
     Returns a json object with 'intent' (error_analysis) and 'message' (the analysis).
     """
     return _error_agent.analyze_error(data_dict)
+
 
 @mcp_server.tool(
     name="awaiting_user_approval",
@@ -182,3 +201,28 @@ async def awaiting_user_approval(user_query: str = Field(description="The user's
         return {"approved": True, "message": "User approved the action."}
     else:
         return {"approved": False, "message": "User did not approve the action."}
+
+
+@mcp_server.tool(
+    name="save_result",
+    description="Create a summary of the conversation between the user and the agentic system after 'is_final_output' is set to True and add it to the specialized database."
+)
+async def save_result(data_dict: dict = Field(description="The current context dictionary of the main agent."),
+                      user_query: str = Field(description="The user's response, typically 'correct' or 'wrong'.")):
+    """
+    Calls the LoggerAgent to save the output of the Agents into a database.
+    Returns a json object with 'intent' (save) and a message.
+    """
+    # evaluate user's answer
+    if user_query == "correct":
+        success = True
+    else:
+        success = False
+    # prepare summary of the code
+    summary_chat = _logger_agent.prepare_summary(data_dict)
+    if summary_chat.intent == "summary":
+        data = {"prompt": summary_chat.message, "output": data_dict['code'], "feedback": success, "category": ""}
+        # add into the db
+        _db_agent.add_log(data)
+
+    return {"intent": 'save', "message": "The previous result was added to the log database."}

@@ -184,4 +184,4 @@ class DatabaseAgent:
 
         # insert the feedback from the user inside the database
         vector = self.embeds_query(data['prompt'])
-        self.db_log.insert(self.db_log_name, data, embeddings=str(vector))
+        self.db_log.insert(self.db_log_name, data, embeddings=vector)

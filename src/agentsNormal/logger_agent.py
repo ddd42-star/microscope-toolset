@@ -11,7 +11,7 @@ class LoggerAgent:
     def prepare_summary(self, context):
 
         prompt = SUMMARY
-        task = "Create a summary of the interaction occured between one user and the multi-agent system."
+        task = "Create a summary of the interaction occurred between one user and the multi-agent system."
         history = [{"role": "system", "content": prompt}, {"role": "user", "content": task}] + context[
             "conversation"]
         response = self.client_openai.beta.chat.completions.parse(
