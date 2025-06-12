@@ -20,3 +20,4 @@ tqdm
 markdown
 pyqt6
 chardet
+pgvector

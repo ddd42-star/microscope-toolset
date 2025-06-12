@@ -18,7 +18,7 @@ class DatabaseAgent:
         self.db_log = db_log
         self.db_log_name = db_log_collection_name
 
-    def embeds_query(self, query) -> np.array:
+    def embeds_query(self, query) -> List[float]:
 
         response = self.client_openai.embeddings.create(input=query, model="text-embedding-3-small",
                                                         dimensions=512)  # later add model's choice
@@ -26,7 +26,7 @@ class DatabaseAgent:
         embedding = response.data[0].embedding  # list of floating values
         print("Generating embedding")
 
-        return np.array(embedding)
+        return embedding
 
     def retrieve_relevant_information(self, query: str) -> List[str]:
 
@@ -38,6 +38,7 @@ class DatabaseAgent:
 
         # search into the database for the log
         log_result = self.db_log.query_by_vector(collection_name=self.db_log_name, vector=query_embedded, k=5)
+        #print(log_result)
         if log_result is None:
             log_result = []
 
@@ -67,6 +68,7 @@ class DatabaseAgent:
             f"\n **Prompt** {log_result[i]['prompt']}\n **Output** {log_result[i]['output']}\n **Feedback** {log_result[i]['feedback']}\n **Category** {log_result[i]['category']}"
             for i in range(len(log_result))
         ]
+        #print(log_chunks)
         print("getting relevant information")
 
         joined_chunks = [*relevant_chuncks, *log_chunks]
@@ -177,11 +179,12 @@ class DatabaseAgent:
 
         return score
 
-    def add_log(self, data):
+    def add_log(self, data) -> None:
         logger = logging.getLogger(__name__)
         #if ["prompt", "output", "feedback", "category"] not in data.keys():
         #    logger.error("missing data")
 
         # insert the feedback from the user inside the database
         vector = self.embeds_query(data['prompt'])
+        #print(vector)
         self.db_log.insert(self.db_log_name, data, embeddings=vector)

@@ -1,15 +1,16 @@
 import logging
 from typing import List
 from postqrl.connection import DBConnection
-from psycopg2.extensions import register_adapter, AsIs
+#from psycopg2.extensions import register_adapter, AsIs
+from pgvector.psycopg2 import register_vector
 import numpy as np
 
 logger = logging.getLogger(__name__)
 from psycopg2.extras import Json
 
 
-def ndarray_adapter(numpy_ndarray):
-    return AsIs(numpy_ndarray)
+#def ndarray_adapter(numpy_ndarray):
+#    return AsIs(str(list(numpy_ndarray)))
 
 
 class LoggerDB:
@@ -17,7 +18,7 @@ class LoggerDB:
     def __init__(self, connection: DBConnection):
         self.connection = connection
         # activate adapter
-        register_adapter(np.ndarray, ndarray_adapter)
+        #register_adapter(np.ndarray, ndarray_adapter)
         # activate vector extension
         self.initialize()
 
@@ -26,9 +27,11 @@ class LoggerDB:
 
         try:
             with connection.cursor() as cur:
-                cur.execute("CREATE EXTENSION IF NOT EXISTS vector; -- doing a vector search")
+                cur.execute("CREATE EXTENSION IF NOT EXISTS vector")
                 connection.commit()
                 print("Vector extension was activated")
+                register_vector(cur)
+                print("pgvector type adapter REGISTERED.")
         except Exception as e:
             logger.error(e)
         finally:
@@ -147,7 +150,7 @@ class LoggerDB:
         finally:
             self.connection.put_connect(connection)
 
-    def insert(self, collection_name: str, data_dict, embeddings=None):
+    def insert(self, collection_name: str, data_dict, embeddings=list[float]):
 
         connection = self.connection.get_connect()
 
@@ -157,7 +160,8 @@ class LoggerDB:
         try:
 
             with connection.cursor() as cur:
-
+                register_vector(cur)
+                print("cursor run in insertion")
                 cur.execute(f"""
                 INSERT INTO {collection_name}
                 (prompt, output, feedback, category, embedding, metadata)
@@ -167,6 +171,7 @@ class LoggerDB:
                 embeddings, Json(data_dict)))
 
                 connection.commit()
+                print("Vector inserted successfully using custom adapter!")
 
         except Exception as e:
             logger.error(e)
@@ -221,23 +226,25 @@ class LoggerDB:
         finally:
             self.connection.put_connect(connection)
 
-    def query_by_vector(self, collection_name: str, vector: List[float], k=10):
+    def query_by_vector(self, collection_name: str, vector= list[float], k=10):
         connection = self.connection.get_connect()
 
         if collection_name not in self.list_collection():
             logger.error(f"The collection {collection_name} is not present into the database")
-
         try:
             with connection.cursor() as cur:
+                register_vector(cur)
+                print("is run the cursor")
                 cur.execute(f"""
-                SELECT prompt, output, feedback, category,1 - (embedding <#> %s)
+                SELECT prompt, output, feedback, category, (embedding <-> %s::vector) AS distance, embedding
                 FROM {collection_name}
-                ORDER BY cosine_similarity
+                ORDER BY distance
                 LIMIT %s
-                """, (str(vector), str(k)))
-
+                """, (vector, k))
+                #res = [row[0] for row in cur.fetchall()]
+                #print(res)
                 return [
-                    {"prompt": row[1], "output": row[2], "feedback": row[3], "category": row[4], "embedding": row[5]}
+                    {"prompt": row[0], "output": row[1], "feedback": row[2], "category": row[3], "distance": row[4]}
                     for row in cur.fetchall()]
         except Exception as e:
             logger.error(e)

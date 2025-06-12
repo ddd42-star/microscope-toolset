@@ -53,7 +53,7 @@ class DBConnection:
         print(self.db_port,self.db_password,self.db_user,self.db_name, self.db_host)
 
         self.pool = psycopg2.pool.SimpleConnectionPool(
-            minconn=2,
+            minconn=1,
             maxconn=30,
             host=self.db_host,
             user=self.db_user,
