@@ -20,7 +20,7 @@ from agentsNormal.software_agent import SoftwareEngeneeringAgent
 from agentsNormal.strategy_agent import StrategyAgent
 from local.prepare_code import prepare_code
 from mcp_microscopetoolset.utils import get_user_information, initiate_napari_micromanager, load_config_file, \
-    is_config_loaded, AgentOutput, parse_agent_response
+    is_config_loaded, AgentOutput, parse_agent_response, user_message, agent_message
 from local.execute import Execute
 
 from mcp_microscopetoolset.microscope_session import MicroscopeSession
@@ -103,8 +103,10 @@ async def retrieve_db_context(user_query: str = Field(description="The user's st
     if microscope_session_object.is_main_user_query():
         # call the database agent
         context = database_agent.look_for_context(user_query)
+        # add conversation
+        loc_conversation = data_dict['conversation'] + [user_message(user_query), agent_message(context)]
         # update the data_dict
-        microscope_session_object.update_data_dict(user_query=user_query, context=context)
+        microscope_session_object.update_data_dict(user_query=user_query, context=context, conversation=loc_conversation)
 
         return context
     return "This is not the user main question. This tool is not indicated for your need."
@@ -149,7 +151,9 @@ async def classify_user_intent():
         )
         # parse response
         parsed_response = parse_agent_response(response.choices[0].message.content)
-
+        # add conversation
+        loc_conversation = conversation_history + [agent_message(parsed_response)]
+        microscope_session_object.update_data_dict(conversation=loc_conversation)
         return parsed_response
     except Exception as e:
         return f"Failed to classify intent: {e}"
@@ -194,15 +198,17 @@ async def generate_strategy(additional_information: str = None):
         # Get data dict of the session
         data_dict = microscope_session_object.get_data_dict()
         strategy = strategy_agent.generate_strategy(data_dict)
+        loc_conversation = data_dict['conversation'] + [agent_message(strategy)]
     else:
         #update values
         microscope_session_object.update_data_dict(extra_infos=additional_information)
         # get current data dict
         data_dict = microscope_session_object.get_data_dict()
         strategy = strategy_agent.revise_strategy(data_dict)
+        loc_conversation = data_dict['conversation'] + [user_message(additional_information), agent_message(strategy)]
 
     # update main strategy
-    microscope_session_object.update_data_dict(main_agent_strategy=strategy)
+    microscope_session_object.update_data_dict(main_agent_strategy=strategy, conversation=loc_conversation)
 
     return strategy
 
@@ -225,7 +231,8 @@ async def generate_code():
         code = software_agent.fix_code(data_dict)
 
     # update code value
-    microscope_session_object.update_data_dict(code=code)
+    loc_conversation = data_dict['conversation'] + [agent_message(code)]
+    microscope_session_object.update_data_dict(code=code, conversation=loc_conversation)
 
     return code
 
@@ -249,7 +256,8 @@ async def execute_python_code() -> dict:
         execution_output = executor.run_code(prepare_code_to_run)
         if "Error" in execution_output:
             # update data dict
-            microscope_session_object.update_data_dict(error=execution_output)
+            loc_conversation = data_dict['conversation'] + [agent_message(execution_output)]
+            microscope_session_object.update_data_dict(error=execution_output, conversation=loc_conversation)
             return {'status': 'error', 'output': execution_output}
         else:
             # update data dict and is final output
@@ -257,7 +265,8 @@ async def execute_python_code() -> dict:
             return {'status': 'success', 'output': execution_output}
     except Exception as e:
         # update data dict value
-        microscope_session_object.update_data_dict(error=f"Code preparation/execution failed: {e}")
+        loc_conversation = data_dict['conversation'] + [agent_message(f"Code preparation/execution failed: {e}")]
+        microscope_session_object.update_data_dict(error=f"Code preparation/execution failed: {e}", conversation=loc_conversation)
         return {"status": "error", "output": f"Code preparation/execution failed: {e}"}
 # evaluate if 'analyze_error' will be needed
 
@@ -281,6 +290,8 @@ async def save_result(user_query: str = Field(description="The user's response, 
     elif user_query == "wrong":
         success = False
     else:
+        loc_conversation = data_dict['conversation'] + [agent_message("Please specify if your query was answered or not using 'correct' or 'wrong'!")]
+        microscope_session_object.update_data_dict(conversation=loc_conversation)
         return {"intent": 'error', "message": "Please specify if your query was answered or not using 'correct' or 'wrong'!"}
     # prepare summary of the code
     summary_chat = logger_agent.prepare_summary(data_dict)
@@ -292,6 +303,27 @@ async def save_result(user_query: str = Field(description="The user's response, 
     microscope_session_object.reset_data_dict(old_output=data_dict['output'], old_microscope_status=data_dict['microscope_status'])
 
     return {"intent": 'save', "message": "The previous result was added to the log database."}
+
+@mcp.tool(
+    name="show_result",
+    description="to add"
+)
+async def show_result():
+    "to add"
+    # Get current data dict
+    data_dict = microscope_session_object.get_data_dict()
+    # show the final output
+    if data_dict['is_final_output']:
+        final_output = data_dict['output']
+        # update conversation
+        loc_conversation = data_dict['conversation'] + agent_message(final_output)
+        microscope_session_object.update_data_dict(conversation=loc_conversation)
+        return final_output
+    else:
+        message = "The final output was not reach yet!"
+        loc_conversation = data_dict['conversation'] + [agent_message(message)]
+        microscope_session_object.update_data_dict(conversation=loc_conversation)
+        return message
 
 def mcp_server():
     mcp.run(transport="stdio")
