@@ -1,14 +1,10 @@
 import os
-import asyncio
-import sys
 
 import chromadb
 from mcp.server.fastmcp import FastMCP
-import threading
-import napari
+
 from openai import OpenAI
 from pydantic import Field
-from pymmcore_plus import CMMCorePlus
 
 from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.database_agent import DatabaseAgent
@@ -33,7 +29,10 @@ from prompts.mainAgentPrompt import CLASSIFY_INTENT
 mcp = FastMCP(
     name="Microscope Toolset",
     description="This server allows the user to controls a selected microscope via LLM.",
-    version="1.0.0"
+    version="1.0.0",
+    host="127.1.1.1",
+    port=5500,
+    path="/mcp"
 )
 
 # Initialize the microscope session object
@@ -100,16 +99,16 @@ async def retrieve_db_context(user_query: str = Field(description="The user's st
     # Get current data_dict
     data_dict = microscope_session_object.get_data_dict()
     # Checks the user_query
-    if microscope_session_object.is_main_user_query():
-        # call the database agent
-        context = database_agent.look_for_context(user_query)
-        # add conversation
-        loc_conversation = data_dict['conversation'] + [user_message(user_query), agent_message(context)]
-        # update the data_dict
-        microscope_session_object.update_data_dict(user_query=user_query, context=context, conversation=loc_conversation)
+    #if microscope_session_object.is_main_user_query():
+    # call the database agent
+    context = database_agent.look_for_context(user_query)
+    # add conversation
+    loc_conversation = data_dict['conversation'] + [user_message(user_query), agent_message(context)]
+    # update the data_dict
+    microscope_session_object.update_data_dict(user_query=user_query, context=context, conversation=loc_conversation)
 
-        return context
-    return "This is not the user main question. This tool is not indicated for your need."
+    return context
+    #return "This is not the user main question. This tool is not indicated for your need."
 
 @mcp.tool(
     name="classify_user_intent",
@@ -152,9 +151,9 @@ async def classify_user_intent():
         # parse response
         parsed_response = parse_agent_response(response.choices[0].message.content)
         # add conversation
-        loc_conversation = conversation_history + [agent_message(parsed_response)]
+        loc_conversation = conversation_history + [agent_message(parsed_response.message)]
         microscope_session_object.update_data_dict(conversation=loc_conversation)
-        return parsed_response
+        return parsed_response.message
     except Exception as e:
         return f"Failed to classify intent: {e}"
 
@@ -172,7 +171,7 @@ async def answer_no_coding_query():
     # final output
     output = no_coding_agent.no_coding_asnwer(data_dict)
     # update data dict values
-    microscope_session_object.update_data_dict(is_final_output=True, output=output)
+    microscope_session_object.update_data_dict(is_final_output=True, output=output.message)
     # update is final output
     #data_dict['is_final_output'] = True
     # update output values
@@ -180,7 +179,7 @@ async def answer_no_coding_query():
     # update the microscope session object
     #microscope_session_object.reset_data_dict(old_output=output, old_microscope_status=data_dict['microscope_status'])
 
-    return output # check which type of answer is given
+    return output.message # check which type of answer is given
 
 @mcp.tool(
     name="generate_strategy",
@@ -198,19 +197,19 @@ async def generate_strategy(additional_information: str = None):
         # Get data dict of the session
         data_dict = microscope_session_object.get_data_dict()
         strategy = strategy_agent.generate_strategy(data_dict)
-        loc_conversation = data_dict['conversation'] + [agent_message(strategy)]
+        loc_conversation = data_dict['conversation'] + [agent_message(strategy.message)]
     else:
         #update values
         microscope_session_object.update_data_dict(extra_infos=additional_information)
         # get current data dict
         data_dict = microscope_session_object.get_data_dict()
         strategy = strategy_agent.revise_strategy(data_dict)
-        loc_conversation = data_dict['conversation'] + [user_message(additional_information), agent_message(strategy)]
+        loc_conversation = data_dict['conversation'] + [user_message(additional_information), agent_message(strategy.message)]
 
     # update main strategy
-    microscope_session_object.update_data_dict(main_agent_strategy=strategy, conversation=loc_conversation)
+    microscope_session_object.update_data_dict(main_agent_strategy=strategy.message, conversation=loc_conversation)
 
-    return strategy
+    return strategy.message
 
 @mcp.tool(
     name="generate_code",
@@ -231,10 +230,10 @@ async def generate_code():
         code = software_agent.fix_code(data_dict)
 
     # update code value
-    loc_conversation = data_dict['conversation'] + [agent_message(code)]
-    microscope_session_object.update_data_dict(code=code, conversation=loc_conversation)
+    loc_conversation = data_dict['conversation'] + [agent_message(code.message)]
+    microscope_session_object.update_data_dict(code=code.message, conversation=loc_conversation)
 
-    return code
+    return code.message
 
 @mcp.tool(
     name="execute_python_code",
@@ -306,17 +305,20 @@ async def save_result(user_query: str = Field(description="The user's response, 
 
 @mcp.tool(
     name="show_result",
-    description="to add"
+    description="This tool is part of the feedback loop of the Microscope Toolset. Once the parameter 'is_final_output' "
+                "is changed to True, you need to show the user the final output."
 )
 async def show_result():
-    "to add"
+    """
+    Shows the user the final output
+    """
     # Get current data dict
     data_dict = microscope_session_object.get_data_dict()
     # show the final output
     if data_dict['is_final_output']:
         final_output = data_dict['output']
         # update conversation
-        loc_conversation = data_dict['conversation'] + agent_message(final_output)
+        loc_conversation = data_dict['conversation'] + [agent_message(final_output)]
         microscope_session_object.update_data_dict(conversation=loc_conversation)
         return final_output
     else:
@@ -325,24 +327,10 @@ async def show_result():
         microscope_session_object.update_data_dict(conversation=loc_conversation)
         return message
 
-def mcp_server():
-    mcp.run(transport="stdio")
-
-def run_gui():
-    # Initialize Napari gui
-    mmc, viewer = initiate_napari_micromanager()
-
-    # loads the configuration files from the microscope
-    load_config_file(config_file=system_user_information['cfg_file'], mmc=mmc)  # maybe change later
-
-    napari.run()
-
 if __name__ == "__main__":
-    # run the mcp server into another thread
-    thread_mcp_server = threading.Thread(name="MCP server", target=mcp_server)
-    # start the thread
-    thread_mcp_server.start()
-    # run napari gui
-    run_gui()
-    #once the gui is closed, stop the thread of the mcp server
-    # discover how to do it
+    # start sever
+    try:
+        mcp.run(transport="streamable-http")
+
+    except KeyboardInterrupt:
+        print("server interrupted by the user")

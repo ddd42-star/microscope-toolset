@@ -85,7 +85,7 @@ def get_user_information() -> dict:
 def initiate_napari_micromanager():
     """This function start the napari micromanager GUI and access the core instance"""
 
-    viewer = napari.Viewer()
+    viewer = napari.Viewer(show=False)
     # start the napari plugin
     dw, mainwindow = viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
 
