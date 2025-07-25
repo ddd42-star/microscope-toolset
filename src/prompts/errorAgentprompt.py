@@ -31,14 +31,3 @@ You must respond with a JSON object in this exact format:
 {previous_outputs}
 
 """
-
-"""
-### Current conversation
-{conversation}
-### Main Agent strategy
-{query_strategy}
-### Code
-{code}
-### Error Message
-{error_message}
-"""

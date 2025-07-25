@@ -1,5 +1,0 @@
-START_PAGE='start_page'
-MAIN_MENU='menu_page'
-CHAT_PAGE='chat_page'
-EXIT='exit'
-DATABASE='database'

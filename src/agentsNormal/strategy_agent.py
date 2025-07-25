@@ -1,7 +1,6 @@
 from openai import OpenAI
 from prompts.strategyAgentPrompt import STRATEGY
 from agentsNormal.structuredOutput import StrategyAgentOutput
-import ast
 
 class StrategyAgent:
 

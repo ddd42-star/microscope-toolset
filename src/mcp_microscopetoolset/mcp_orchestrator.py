@@ -15,12 +15,12 @@ _orchestrator_llm_client: OpenAI = None
 _active_session: dict[str, dict] = {}
 
 
-def initialize_orchestrator(openai_client: OpenAI, db_agent, software_agent, reasoning_agent, strategy_agent,
-                            error_agent, no_coding_agent, clarification_agent, executor, logger_agent, classification_agent):
+def initialize_orchestrator(openai_client: OpenAI, db_agent, software_agent, strategy_agent,
+                            error_agent, no_coding_agent, executor, logger_agent, classification_agent):
     global _orchestrator_llm_client
     _orchestrator_llm_client = openai_client
-    initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent,
-                               clarification_agent, executor, openai_client, logger_agent, classification_agent)
+    initialize_mcp_tool_agents(db_agent, software_agent, strategy_agent, error_agent, no_coding_agent,
+                               executor, openai_client, logger_agent, classification_agent)
 
 
 def _get_initial_context():

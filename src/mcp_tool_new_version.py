@@ -6,12 +6,10 @@ from mcp.server.fastmcp import FastMCP
 from openai import OpenAI
 from pydantic import Field
 
-from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.database_agent import DatabaseAgent
 from agentsNormal.error_agent import ErrorAgent
 from agentsNormal.logger_agent import LoggerAgent
 from agentsNormal.no_coding_agent import NoCodingAgent
-from agentsNormal.reasoning_agent import ReasoningAgent
 from agentsNormal.software_agent import SoftwareEngeneeringAgent
 from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.classify_user_intent import ClassifyAgent
@@ -66,15 +64,11 @@ database_agent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma
 
 software_agent = SoftwareEngeneeringAgent(client_openai=client_openai)
 
-reasoning_agent = ReasoningAgent(client_openai=client_openai)
-
 error_agent = ErrorAgent(client_openai=client_openai)
 
 strategy_agent = StrategyAgent(client_openai=client_openai)
 
 no_coding_agent = NoCodingAgent(client_openai=client_openai)
-
-clarification_agent = ClarificationAgent(client_openai=client_openai)
 
 logger_agent = LoggerAgent(client_openai=client_openai)
 
@@ -148,7 +142,7 @@ async def answer_no_coding_query():
     # Get data dict of the session
     data_dict = microscope_session_object.get_data_dict()
     # final output
-    output = no_coding_agent.no_coding_asnwer(data_dict)
+    output = no_coding_agent.no_coding_answer(data_dict)
     # update data dict values
     microscope_session_object.update_data_dict(is_final_output=True, output=output.message)
     # update is final output

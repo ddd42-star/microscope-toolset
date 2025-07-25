@@ -1,6 +1,0 @@
-QTextBrowser {
-                 background-color: black; /* A light background for the chat area */
-                 border: none; /* Remove border if you want a clean look */
-                 padding: 5px; /* Add some padding inside the text browser */
-                 font-size: 14px;
-            }

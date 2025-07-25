@@ -7,7 +7,7 @@ class NoCodingAgent:
     def __init__(self, client_openai: OpenAI):
         self.client_openai = client_openai
 
-    def no_coding_asnwer(self, context):
+    def no_coding_answer(self, context):
         prompt = ANSWER_PROMPT
 
         response = self.client_openai.chat.completions.create(

@@ -6,11 +6,9 @@ from typing import Any
 # Import your core agents (needed to initialize the server's agents)
 from agentsNormal.database_agent import DatabaseAgent
 from agentsNormal.software_agent import SoftwareEngeneeringAgent
-from agentsNormal.reasoning_agent import ReasoningAgent
 from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.error_agent import ErrorAgent
 from agentsNormal.no_coding_agent import NoCodingAgent
-from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.classify_user_intent import ClassifyAgent
 from microscope.microscope_status import MicroscopeStatus
 from postqrl.connection import DBConnection
@@ -91,8 +89,6 @@ async def run_application():
                                    db_log_collection_name=system_user_information['log_collection'])
     software_agent = SoftwareEngeneeringAgent(client_openai=client_openai)
 
-    reasoning_agent = ReasoningAgent(client_openai=client_openai)
-
     error_agent = ErrorAgent(client_openai=client_openai)
 
     # Instance the Strategy Agent
@@ -100,9 +96,6 @@ async def run_application():
 
     # Instance No coding agent
     no_coding_agent = NoCodingAgent(client_openai=client_openai)
-
-    # Instance the Clarification Agent
-    clarification_agent = ClarificationAgent(client_openai=client_openai)
 
     # Instance the Logger Agent
     logger_agent = LoggerAgent(client_openai=client_openai)
@@ -114,11 +107,9 @@ async def run_application():
         openai_client=client_openai,
         db_agent=database_agent,
         software_agent=software_agent,
-        reasoning_agent=reasoning_agent,
         strategy_agent=strategy_agent,
         error_agent=error_agent,
         no_coding_agent=no_coding_agent,
-        clarification_agent=clarification_agent,
         executor=executor,
         logger_agent=logger_agent,
         classification_agent=classification_agent

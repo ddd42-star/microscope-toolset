@@ -1,7 +1,6 @@
 from openai import OpenAI
 from prompts.errorAgentprompt import ERROR_ANALYSIS
 from agentsNormal.structuredOutput import ErrorAgentOutput
-import ast
 
 class ErrorAgent:
 

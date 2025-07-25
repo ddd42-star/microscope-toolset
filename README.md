@@ -27,28 +27,14 @@ The main functionalities are the following:
  - MCP Server
  - MCP Client (from the terminal)
 
-Currently, this tool contains three different modality:
-#### LLM Assistant
-This is a normal assistant. It simulates the web user experience of chatting with chat-gpt.
-#### Scientific Assistant
-This is a specialised assistant that use RAG to answer scientific questions. 
-Currently, the database contains public publication of the *Pertz Group*. But in any case custom database can be used.
-Simply create your own personal vector database and the correct name when calling the collection to use by the assistant.
-#### Microscope toolset Assistant
-This is the Microscope Assistant. It allows to interact with the microscope in use directly from
-*chat widget*. 
-
-
 ### How to start the toolset
 
 > Currently, the *Large Language Model* in use is from OpenAI. In the future it will be added the possibilities to choose the preferred Model. Be sure to have saved in the environment the api key for OpenAI with *OPENAI_API_KEY*.
 
 Run the following command for starting the Napari GUI
 ```
-python .\src\napari_microscope_toolset.py
+python .\src\plugin_napari.py
 ```
-The following GUI should now open
-![My beatiful gui](/pictures/gui.png)
 
 or run the following command for starting the MCP Client
 ```

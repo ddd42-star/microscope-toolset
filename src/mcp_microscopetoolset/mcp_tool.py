@@ -4,11 +4,9 @@ from local.execute import Execute
 from openai import OpenAI
 from agentsNormal.database_agent import DatabaseAgent
 from agentsNormal.software_agent import SoftwareEngeneeringAgent
-from agentsNormal.reasoning_agent import ReasoningAgent
 from agentsNormal.error_agent import ErrorAgent
 from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.no_coding_agent import NoCodingAgent
-from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.logger_agent import LoggerAgent
 from agentsNormal.classify_user_intent import ClassifyAgent
 from pydantic import Field
@@ -18,28 +16,24 @@ mcp_server = FastMCP("Toolset")
 
 _db_agent: DatabaseAgent = None
 _software_agent: SoftwareEngeneeringAgent = None
-_reasoning_agent: ReasoningAgent = None
 _strategy_agent: StrategyAgent = None
 _error_agent: ErrorAgent = None
 _no_coding_agent: NoCodingAgent = None
-_clarification_agent: ClarificationAgent = None
 _classification_agent: ClassifyAgent = None
 _executor: Execute = None
 _openai_client: OpenAI = None
 _logger_agent: LoggerAgent = None
 
 
-def initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent,
-                               clarification_agent, executor, openai_client, logger_agent, classification_agent):
+def initialize_mcp_tool_agents(db_agent, software_agent, strategy_agent, error_agent, no_coding_agent,
+                               executor, openai_client, logger_agent, classification_agent):
     """Initializes the agents used by the MCP tools. Call this once at startup."""
-    global _db_agent, _software_agent, _reasoning_agent, _strategy_agent, _error_agent, _no_coding_agent, _clarification_agent, _executor, _openai_client, _logger_agent, _classification_agent
+    global _db_agent, _software_agent, _strategy_agent, _error_agent, _no_coding_agent, _executor, _openai_client, _logger_agent, _classification_agent
     _db_agent = db_agent
     _software_agent = software_agent
-    _reasoning_agent = reasoning_agent
     _strategy_agent = strategy_agent
     _error_agent = error_agent
     _no_coding_agent = no_coding_agent
-    _clarification_agent = clarification_agent
     _executor = executor
     _openai_client = openai_client
     _logger_agent = logger_agent
@@ -77,7 +71,7 @@ async def classify_user_intent(
 async def answer_no_coding_query(
         data_dict: dict = Field(description="The current context dictionary of the main agent.")):
     """Uses the NoCodingAgent to generate an answer for non-code-related queries."""
-    return _no_coding_agent.no_coding_asnwer(data_dict)
+    return _no_coding_agent.no_coding_answer(data_dict)
 
 
 @mcp_server.tool(

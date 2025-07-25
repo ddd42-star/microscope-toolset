@@ -76,14 +76,6 @@ information from relevant database chunks while maintaining clarity, conciseness
    - If external knowledge is needed, state that explicitly instead of making assumptions.
 
 Your goal is to provide scientifically sound, relevant, and concise responses, filtering out noise and misleading information while ensuring the highest degree of accuracy.
-### Current conversation
-{conversation}
-### Relevant Context
-{context}
-### Microscope Status: 
-{microscope_status}
-### Previous Outputs:
-{previous_outputs}
 """
 
 REASONING_MAIN = """

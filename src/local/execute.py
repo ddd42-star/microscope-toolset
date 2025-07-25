@@ -1,5 +1,3 @@
-# This class initialize namepsace dictonary where the
-# testing code will be run.
 import importlib
 import importlib.util
 import subprocess

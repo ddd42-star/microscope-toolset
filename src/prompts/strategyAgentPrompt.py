@@ -39,13 +39,6 @@ Your main responsibility is to break the user's query into logical, sequenced st
 - Do not return plain text — always wrap your result in a JSON object.
 """
 
-"""
-- The **additional clarification** (more clarification given by the user, as you requested)
-### Current Conversation
-{conversation}
-### Additional clarification:
-{extra_infos}
-"""
 
 REVISED_STRATEGY = """
 ## Microscope Assistant - Strategy Agent
@@ -77,17 +70,4 @@ You must respond with a JSON object in this exact format:
 ### Previous Outputs
 {previous_outputs}
 
-"""
-
-"""
-### Current conversation
-{conversation}
-### Main Agent strategy
-{query_strategy}
-### Code
-{code}
-### Error Message
-{error_message}
-### Error Analysis
-{error_analysis}
 """

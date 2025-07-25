@@ -1,5 +1,3 @@
-# This function takes the str of the code from the LLM 
-# and prepare it for the execution
 
 
 def contains_instance_object(code: str) -> bool:

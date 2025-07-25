@@ -26,19 +26,6 @@ def _add_to_conversation(context: dict, role: str, message: str):
     """Helper to add messages to the conversation history within the context."""
     context["conversation"].append({"role": role, "content": message})
 
-def agent_action(client_openai: OpenAI, context: dict, prompt: str):
-
-    history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context[
-        "conversation"]
-
-    response = client_openai.beta.chat.completions.parse(
-        model="gpt-4.1-mini",
-        messages=history,
-        response_format=ClassificationAgentOutput
-    )
-
-    return ClassifyAgent.parse_agent_response(response.choices[0].message.content)
-
 def mcp_to_openai(tool: Tool):
     """
     Transform a mcp tool into an openai function schema
