@@ -209,10 +209,10 @@
 #     def clear_text(self):
 #         self.tab.clear()
 import sys
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                              QWidget, QScrollArea, QTextBrowser, QLineEdit, QPushButton,
                              QSizePolicy, QLabel, QComboBox)
-from PyQt5.QtCore import Qt, QTimer, QThread, QObject, pyqtSignal, pyqtSlot
+from PyQt6.QtCore import Qt, QTimer, QThread, QObject, pyqtSignal, pyqtSlot
 import os
 from openai import OpenAI
 import time # Import time for a small simulated delay if needed for testing

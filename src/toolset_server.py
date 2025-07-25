@@ -1,7 +1,5 @@
-import asyncio
 from mcp.server.fastmcp import FastMCP
 import os
-from utils.normal_LLM import llm_prompt
 from dotenv import load_dotenv
 from local.execute import Execute
 from microscope.microscope_status import MicroscopeStatus
@@ -17,9 +15,7 @@ from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.no_coding_agent import NoCodingAgent
 from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.logger_agent import LoggerAgent
-from prompts.main_agent import MainAgentState
-from mcp.types import ToolAnnotations
-from pydantic import Field
+from agentsNormal.classify_user_intent import ClassifyAgent
 from mcp_microscopetoolset.mcp_orchestrator import initialize_orchestrator
 from mcp_microscopetoolset.main_agent import MainAgent
 
@@ -80,17 +76,13 @@ clarification_agent = ClarificationAgent(client_openai=client_openai)
 # Instance the Logger Agent
 logger_agent = LoggerAgent(client_openai=client_openai)
 
-# main_agent = MainAgentState(client_openai=client_openai, db_agent=database_agent,
-#                             software_agent=software_agent,reasoning_agent=reasoning_agent,
-#                             strategy_agent=strategy_agent,no_coding_agent=no_coding_agent,
-#                             clarification_agent=clarification_agent,error_agent=error_agent,
-#                             executor=executor)
+classification_agent = ClassifyAgent(client_openai=client_openai)
 
 main_agent = MainAgent()
 
 #Initialize all client
 initialize_orchestrator(
-    client_openai,database_agent,software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent, clarification_agent, executor
+    client_openai,database_agent,software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent, clarification_agent, executor, logger_agent, classification_agent
 )
 
 # create server
@@ -138,7 +130,10 @@ def llm(user_input: str):
 
     client = OpenAI(api_key=openai_key)
 
-    prompt = llm_prompt
+    prompt = """
+You are a friendly assistant. Be always truthful and precise. You will receive any kind of request or question.
+If is required be as scientific as possible
+"""
 
     history = [{"role": "system", "content": prompt}, {"role": "user", "content": user_input}]
 

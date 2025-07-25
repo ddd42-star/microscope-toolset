@@ -14,16 +14,16 @@ from agentsNormal.no_coding_agent import NoCodingAgent
 from agentsNormal.reasoning_agent import ReasoningAgent
 from agentsNormal.software_agent import SoftwareEngeneeringAgent
 from agentsNormal.strategy_agent import StrategyAgent
+from agentsNormal.classify_user_intent import ClassifyAgent
 from local.prepare_code import prepare_code
 from mcp_microscopetoolset.utils import get_user_information, initiate_napari_micromanager, load_config_file, \
-    is_config_loaded, AgentOutput, parse_agent_response, user_message, agent_message
+    is_config_loaded, user_message, agent_message
 from local.execute import Execute
 
 from mcp_microscopetoolset.microscope_session import MicroscopeSession
 from microscope.microscope_status import MicroscopeStatus
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
-from prompts.mainAgentPrompt import CLASSIFY_INTENT
 
 # Create the mcp server
 mcp = FastMCP(
@@ -78,6 +78,8 @@ clarification_agent = ClarificationAgent(client_openai=client_openai)
 
 logger_agent = LoggerAgent(client_openai=client_openai)
 
+classify_agent = ClassifyAgent(client_openai=client_openai)
+
 # Initialize Napari gui
 #mmc, viewer = initiate_napari_micromanager()
 
@@ -127,35 +129,12 @@ async def classify_user_intent():
     """
     # Get data dict of the session
     data_dict = microscope_session_object.get_data_dict()
-    #specify parameters
-    user_query = data_dict['user_query']
-    context = data_dict['context']
-    microscope_status = data_dict['microscope_status']
-    previous_outputs = data_dict['previous_outputs']
-    conversation_history = data_dict['conversation']
-
-    prompt = CLASSIFY_INTENT.format(
-        context=context or "no information",
-        microscope_status=microscope_status or "no information",
-        previous_outputs=previous_outputs or "no information"
-    )
-
-    history = [{"role": "system", "content": prompt}, {"role": "user", "content": user_query}] + conversation_history
-
-    try:
-        response = client_openai.beta.chat.completions.parse(
-            model="gpt-4.1-mini",
-            messages=history,
-            response_format=AgentOutput
-        )
-        # parse response
-        parsed_response = parse_agent_response(response.choices[0].message.content)
-        # add conversation
-        loc_conversation = conversation_history + [agent_message(parsed_response.message)]
-        microscope_session_object.update_data_dict(conversation=loc_conversation)
-        return parsed_response.message
-    except Exception as e:
-        return f"Failed to classify intent: {e}"
+    classify_user_query = classify_agent.classify_user_intent(data_dict)
+    # add conversation
+    loc_conversation = data_dict['conversation'] + [agent_message(classify_user_query.message)]
+    # update conversation
+    microscope_session_object.update_data_dict(conversation=loc_conversation)
+    return classify_user_query.message
 
 
 @mcp.tool(

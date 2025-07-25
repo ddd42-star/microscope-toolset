@@ -11,6 +11,7 @@ from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.error_agent import ErrorAgent
 from agentsNormal.no_coding_agent import NoCodingAgent
 from agentsNormal.clarification_agent import ClarificationAgent
+from agentsNormal.classify_user_intent import ClassifyAgent
 from microscope.microscope_status import MicroscopeStatus
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
@@ -106,6 +107,9 @@ async def run_application():
     # Instance the Logger Agent
     logger_agent = LoggerAgent(client_openai=client_openai)
 
+    # Instance the Classification Agent
+    classification_agent = ClassifyAgent(client_openai=client_openai)
+
     initialize_orchestrator(
         openai_client=client_openai,
         db_agent=database_agent,
@@ -116,7 +120,8 @@ async def run_application():
         no_coding_agent=no_coding_agent,
         clarification_agent=clarification_agent,
         executor=executor,
-        logger_agent=logger_agent
+        logger_agent=logger_agent,
+        classification_agent=classification_agent
     )
     print("All server components initialized.")
 

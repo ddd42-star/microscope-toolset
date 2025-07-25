@@ -16,11 +16,11 @@ _active_session: dict[str, dict] = {}
 
 
 def initialize_orchestrator(openai_client: OpenAI, db_agent, software_agent, reasoning_agent, strategy_agent,
-                            error_agent, no_coding_agent, clarification_agent, executor, logger_agent):
+                            error_agent, no_coding_agent, clarification_agent, executor, logger_agent, classification_agent):
     global _orchestrator_llm_client
     _orchestrator_llm_client = openai_client
     initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent,
-                               clarification_agent, executor, openai_client, logger_agent)
+                               clarification_agent, executor, openai_client, logger_agent, classification_agent)
 
 
 def _get_initial_context():
@@ -119,19 +119,11 @@ async def orchestrate_turn(session_context: dict):
             print(f"DEBUG (Orchestrator): LLM decided to call tool: {tool_name} with args: {tool_args}")
 
             callable_args = {}
-            if tool_name == "classify_user_intent":
-                callable_args = {
-                    "user_query": session_context["current_user_input"],
-                    "context": session_context["context"],
-                    "microscope_status": session_context["microscope_status"],
-                    "previous_outputs": session_context["previous_outputs"],
-                    "conversation_history": session_context["conversation"]
-                }
-            elif tool_name == "retrieve_db_context":
+            if tool_name == "retrieve_db_context":
                 callable_args = {
                     "user_query": session_context["current_user_input"]
                 }
-            elif tool_name in ["answer_no_coding_query", "generate_strategy", "revise_strategy",
+            elif tool_name in ["classify_user_intent","answer_no_coding_query", "generate_strategy", "revise_strategy",
                                "generate_code", "fix_code", "analyze_errors"]:
                 callable_args = {"data_dict": session_context}
             elif tool_name == "execute_python_code":

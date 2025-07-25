@@ -1,8 +1,8 @@
 import sys
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
+from PyQt6.QtWidgets import (QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
                              QWidget, QScrollArea, QTextBrowser, QLineEdit, QPushButton,
                              QSizePolicy)
-from PyQt5.QtCore import Qt, QTimer
+from PyQt6.QtCore import Qt, QTimer
 
 # --- Custom Widget for a Message Bubble ---
 class MessageBubble(QWidget):

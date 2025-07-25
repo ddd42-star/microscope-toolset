@@ -1,10 +1,4 @@
-import asyncio
-import mcp.types as types
 from mcp.server.fastmcp import FastMCP
-import os
-from openai import OpenAI
-from utils.normal_LLM import llm_prompt
-from dotenv import load_dotenv
 from local.execute import Execute
 
 from openai import OpenAI
@@ -16,9 +10,8 @@ from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.no_coding_agent import NoCodingAgent
 from agentsNormal.clarification_agent import ClarificationAgent
 from agentsNormal.logger_agent import LoggerAgent
+from agentsNormal.classify_user_intent import ClassifyAgent
 from pydantic import Field
-from mcp_microscopetoolset.utils import parse_agent_response, AgentOutput
-from prompts.mainAgentPrompt import CLASSIFY_INTENT
 from local.prepare_code import prepare_code
 
 mcp_server = FastMCP("Toolset")
@@ -30,15 +23,16 @@ _strategy_agent: StrategyAgent = None
 _error_agent: ErrorAgent = None
 _no_coding_agent: NoCodingAgent = None
 _clarification_agent: ClarificationAgent = None
+_classification_agent: ClassifyAgent = None
 _executor: Execute = None
 _openai_client: OpenAI = None
 _logger_agent: LoggerAgent = None
 
 
 def initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strategy_agent, error_agent, no_coding_agent,
-                               clarification_agent, executor, openai_client, logger_agent):
+                               clarification_agent, executor, openai_client, logger_agent, classification_agent):
     """Initializes the agents used by the MCP tools. Call this once at startup."""
-    global _db_agent, _software_agent, _reasoning_agent, _strategy_agent, _error_agent, _no_coding_agent, _clarification_agent, _executor, _openai_client, _logger_agent
+    global _db_agent, _software_agent, _reasoning_agent, _strategy_agent, _error_agent, _no_coding_agent, _clarification_agent, _executor, _openai_client, _logger_agent, _classification_agent
     _db_agent = db_agent
     _software_agent = software_agent
     _reasoning_agent = reasoning_agent
@@ -49,6 +43,7 @@ def initialize_mcp_tool_agents(db_agent, software_agent, reasoning_agent, strate
     _executor = executor
     _openai_client = openai_client
     _logger_agent = logger_agent
+    _classification_agent = classification_agent
 
 
 @mcp_server.tool(
@@ -67,35 +62,12 @@ async def retrieve_db_context(user_query: str = Field(description="The user's or
     description="Classifies the user's initial query to determine their intent (e.g., ask for info, propose strategy, no code needed)."
 )
 async def classify_user_intent(
-        user_query: str = Field(description="The user's original query."),
-        context: str = Field(description="Relevant context from the vector database."),
-        microscope_status: dict = Field(description="Current microscope status, if any."),
-        previous_outputs: str = Field(description="Previous outputs from the system, if any."),
-        conversation_history: list = Field(description="Full conversation history.")):
+        data_dict: dict = Field(description="The current context dictionary of the main agent.")):
     """
     Call the internal intent classification logic.
     Returns a dictionary with 'intent' and 'message' (if clarification is needed).
     """
-    prompt = CLASSIFY_INTENT.format(
-        context=context or "no information",
-        microscope_status=microscope_status or "no information",
-        previous_outputs=previous_outputs or "no information"
-    )
-
-    history = [{"role": "system", "content": prompt}, {"role": "user", "content": user_query}] + conversation_history
-
-    try:
-        response = _openai_client.beta.chat.completions.parse(
-            model="gpt-4.1-mini",
-            messages=history,
-            response_format=AgentOutput
-        )
-        # parse response
-        parsed_response = parse_agent_response(response.choices[0].message.content)
-
-        return parsed_response
-    except Exception as e:
-        return {"intent": "error", "message": f"Failed to classify intent: {e}"}
+    return _classification_agent.classify_user_intent(data_dict)
 
 
 @mcp_server.tool(

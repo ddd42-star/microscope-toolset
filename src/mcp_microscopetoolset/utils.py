@@ -1,24 +1,13 @@
 import napari
 from dotenv import load_dotenv
-from pydantic import BaseModel, Field
 from pymmcore_plus import CMMCorePlus
 
-from prompts.mainAgentPrompt import CLASSIFY_INTENT
 from openai import OpenAI
 from mcp.types import Tool
 import os
 
-class AgentOutput(BaseModel):
-
-    intent: str
-    message: str
-
-def parse_agent_response(response: str):
-
-    try:
-        return AgentOutput.model_validate_json(response)
-    except Exception as e:
-        return e
+from agentsNormal.classify_user_intent import ClassifyAgent
+from agentsNormal.structuredOutput import ClassificationAgentOutput
 
 
 def user_message(message):
@@ -45,10 +34,10 @@ def agent_action(client_openai: OpenAI, context: dict, prompt: str):
     response = client_openai.beta.chat.completions.parse(
         model="gpt-4.1-mini",
         messages=history,
-        response_format=AgentOutput
+        response_format=ClassificationAgentOutput
     )
 
-    return parse_agent_response(response.choices[0].message.content)
+    return ClassifyAgent.parse_agent_response(response.choices[0].message.content)
 
 def mcp_to_openai(tool: Tool):
     """

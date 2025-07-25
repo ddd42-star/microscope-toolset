@@ -28,3 +28,8 @@ class LoggerAgentOutput(BaseModel):
     intent: str
     message: str
 
+class ClassificationAgentOutput(BaseModel):
+
+    intent: str
+    message: str
+
