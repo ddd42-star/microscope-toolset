@@ -1,4 +1,3 @@
-# This module containes the shared functions used in different scripts
 import os
 from typing import List
 import pymupdf4llm

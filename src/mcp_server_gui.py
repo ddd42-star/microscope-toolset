@@ -14,14 +14,11 @@ class MCPWorker(QObject):
     def run_mcp_server(self):
         self.start_thread.emit()
         self.result = subprocess.Popen(args=["python", 'C:\\Users\\dario\\OneDrive\\università\\MA\\Thesis\\microscope-toolset\\microscope-toolset\\src\\mcp_tool_new_version.py'], stdout=subprocess.PIPE)
-        print(self.result)
+
     @pyqtSlot()
     def stop_mcp_server(self):
-        print("stop used!")
         self.result.terminate()
-        #self.result.wait()
         self.stop_thread.emit()
-        print(f"Process returned with code: {self.result.returncode}")
 
 
 
@@ -79,24 +76,10 @@ class MCPServer(QMainWindow):
         self.start_button.setEnabled(False)
         self.stop_button.setEnabled(True)
         # start server
-        print("run this!")
-        #self.mcp_worker.run_mcp_server()
         self.mcp_thread.start()
-        print("I was started")
 
     def click_stop_server(self):
         self.stop_button.setEnabled(False)
         self.start_button.setEnabled(True)
-        #self.mcp_worker.stop_mcp_server()
         self.mcp_thread.quit()
-        print("i was stopped!")
-
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    main_mcp = MCPServer()
-
-    main_mcp.show()
-
-    sys.exit(app.exec())
 

@@ -1,5 +1,3 @@
-# This scripts creates the database of the cetorize context from pdfs
-
 import os
 import chromadb
 import pathlib

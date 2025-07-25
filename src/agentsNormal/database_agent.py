@@ -4,7 +4,7 @@ import chromadb
 import numpy as np
 from typing import List, Optional
 from openai import OpenAI
-from prompts.databaseAgentPrompt import DATABASE_PROMPT
+#from prompts.databaseAgentPrompt import DATABASE_PROMPT
 from postqrl.log_db import LoggerDB
 
 
@@ -74,54 +74,6 @@ class DatabaseAgent:
         joined_chunks = [*relevant_chuncks, *log_chunks]
 
         return joined_chunks
-
-    # def prepare_output(self, refactored_query: str, relevants_informations: Optional[List[str]] = None) -> str:
-    #
-    #     if len(relevants_informations) == 0 or relevants_informations is None:
-    #         return "No relevant information contained into the database."
-    #
-    #     more_relevants_informations = [f"CHUNK {ids}:\n" + relevant_chunk for ids, relevant_chunk in
-    #                                    enumerate(relevants_informations)]
-    #
-    #     list_of_informations = "\n\n".join(more_relevants_informations)
-    #
-    #     prompt = DATABASE_PROMPT.format(context=list_of_informations)
-    #
-    #     response = self.client_openai.chat.completions.create(
-    #         model="gpt-4.1-mini",
-    #         messages=[
-    #             {
-    #                 "role": "system",
-    #                 "content": prompt
-    #             },
-    #             {
-    #                 "role": "user",
-    #                 "content": refactored_query
-    #             },
-    #         ],
-    #     )
-    #
-    #     return response.choices[0].message.content
-
-    # def send_context(self, context: str):
-    #
-    #     context_summary = """CONTEXT:\n {context}""".format(context=context)
-    #
-    #     return context_summary
-
-    # def search_into_database(self, refactored_query: str) -> str:
-    #
-    #     # retrieve relvant informations
-    #     list_of_relevant_informations = self.retrieve_relevant_information(query=refactored_query)
-    #
-    #     # Ask to make a summary of the information retrieved
-    #     context_compacted = self.prepare_output(refactored_query=refactored_query,
-    #                                             relevants_informations=list_of_relevant_informations)
-    #
-    #     # prepare the output for the prompt Agent
-    #     context_summary = self.send_context(context=context_compacted)
-    #
-    #     return context_summary
 
     def look_for_context(self, query: str) -> str:
 

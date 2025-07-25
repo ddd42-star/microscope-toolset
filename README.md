@@ -21,11 +21,6 @@ Then go into the folder of this repository and install all the packages using th
 ```
 pip install -r requirements.txt
 ```
-### Functionalities
-The main functionalities are the following:
- - Napari GUI
- - MCP Server
- - MCP Client (from the terminal)
 
 ### How to start the toolset
 
@@ -35,20 +30,29 @@ Run the following command for starting the Napari GUI
 ```
 python .\src\plugin_napari.py
 ```
+On the right there is the panel control that will start or stop the MCP Microscope Toolset server.
 
-or run the following command for starting the MCP Client
+In the UI at your choice (e.g. vs-code, Claude Desktop) add the configuration file of the mcp server.
 ```
-python .\src\main_file.py
+{
+	"servers": {
+		"microscope toolset": {
+			"url": "http://127.1.1.1:5500/mcp",
+			"type": "http",
+			"env": {
+				"OPENAI_API_KEY":"${input:api-key}"
+			}
+		}
+	},
+	"inputs": [
+		{
+      "type": "promptString",
+      "id": "api-key",
+      "description": "Please enter your OpenAI API key.",
+      "password": true
+    }
+  ]
+}
 ```
-or run the following command for starting the MCP Server
-```
-python .\src\toolset_server.py
-```
-> If you want to use the MCP Server directly, then use it with an LLM directly like Claude or OpenAI SDK.
-> You cannot choose other LLM languages model for the moment. The model used for all functionality are *gpt-4.1-mini*.
-> Before starting to use the Microscope toolset in the Napari GUI, you need to load the configuration file of the microscope.
-> If you don't do it, it will not work.\
-This Assistant use different specialised Agent to answer the user queries.
-> To interact with the microscope hardware, it is used pymmcore-plus. If your microscope
-> doesn't support pymmcore-plus it will not work.
+After you added the *mcp.json* configuration file, you can start the MCP Client that will connect to the server.
 
