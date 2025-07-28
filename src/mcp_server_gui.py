@@ -1,5 +1,7 @@
 import sys
 import subprocess
+import threading
+
 from PyQt6.QtCore import Qt, QObject, pyqtSlot, QThread, pyqtSignal
 from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel, QApplication
 
@@ -7,27 +9,36 @@ from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QPushButton, QLab
 class MCPWorker(QObject):
     start_thread = pyqtSignal()
     stop_thread = pyqtSignal()
-    def __init__(self):
+    def __init__(self, run_server):
         super().__init__()
-        self.result = None
+        self.run_server = run_server
+        self.result = threading.Event()
+
     @pyqtSlot()
     def run_mcp_server(self):
         self.start_thread.emit()
-        self.result = subprocess.Popen(args=["python", 'C:\\Users\\dario\\OneDrive\\università\\MA\\Thesis\\microscope-toolset\\microscope-toolset\\src\\mcp_tool_new_version.py'], stdout=subprocess.PIPE)
+        try:
+            #self.run_server(stop_flag=self.result.is_set)
+            self.run_server.run(transport="streamable-http")
 
+            while not self.result.is_set():
+                print("call me")
+                QThread.msleep(100)
+        finally:
+            self.stop_thread.emit()
     @pyqtSlot()
     def stop_mcp_server(self):
-        self.result.terminate()
         self.stop_thread.emit()
-
+        self.result.set()
 
 
 class MCPServer(QMainWindow):
 
-    def __init__(self):
+    def __init__(self, run_server):
         super().__init__()
         self.mmc = None
         self.viewer = None
+        self.run_server = run_server
 
         # ---GUI----
         self.setObjectName("MCPServer")
@@ -61,7 +72,7 @@ class MCPServer(QMainWindow):
 
         # QThread
         self.mcp_thread = QThread()
-        self.mcp_worker = MCPWorker()
+        self.mcp_worker = MCPWorker(run_server=self.run_server)
 
         self.mcp_worker.moveToThread(self.mcp_thread)
 
@@ -82,4 +93,3 @@ class MCPServer(QMainWindow):
         self.stop_button.setEnabled(False)
         self.start_button.setEnabled(True)
         self.mcp_thread.quit()
-

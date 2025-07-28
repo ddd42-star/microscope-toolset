@@ -71,7 +71,7 @@ def initiate_napari_micromanager():
 
     return mmc, viewer
 
-def load_config_file(config_file: str,mmc: CMMCorePlus.instance()):
+def load_config_file(config_file: str,mmc: CMMCorePlus):
     """This function load the config file added directly in napari micromanager"""
     mmc.loadSystemConfiguration(fileName=config_file)
 
