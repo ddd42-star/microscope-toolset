@@ -9,44 +9,36 @@ class MicroscopeSession:
         """
         self.data_dict = {
         "user_query": "",
-        "current_user_input": "",
         "conversation": [],
         "context": "",
         "extra_infos": "",
         "microscope_status": {},
+        "microscope_properties": {},
+        "configuration_presets": {},
         "previous_outputs": "",
         "main_agent_strategy": None,
-        "new_strategy_proposed": False,
         "code": None,
         "error": None,
-        "error_analysis": None,
         "is_final_output": False,
-        "output": None,
-        "clarification_needed_from_user": False,
-        "approval_needed_from_user": False,
-        "is_request_responded": False
+        "output": None
     }
 
 
-    def reset_data_dict(self, old_output, old_microscope_status) -> None:
+    def reset_data_dict(self, old_output, old_microscope_status, old_microscope_properties, old_microscope_presets) -> None:
         self.data_dict = {
         "user_query": "",
-        "current_user_input": "",
         "conversation": [],
         "context": "",
         "extra_infos": "",
         "microscope_status": old_microscope_status,
+        "microscope_properties": old_microscope_properties,
+        "configuration_presets": old_microscope_presets,
         "previous_outputs": old_output,
         "main_agent_strategy": None,
-        "new_strategy_proposed": False,
         "code": None,
         "error": None,
-        "error_analysis": None,
         "is_final_output": False,
-        "output": None,
-        "clarification_needed_from_user": False,
-        "approval_needed_from_user": False,
-        "is_request_responded": False
+        "output": None
     }
 
     def get_data_dict(self):

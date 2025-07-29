@@ -37,7 +37,7 @@ def get_user_information() -> dict:
 system_user_information = get_user_information()
 # Test database and cfg file
 executor = Execute(system_user_information['cfg_file'])
-microscope_status = MicroscopeStatus(executor=executor)
+#microscope_status = MicroscopeStatus(executor=executor)
 
 db_connection = DBConnection()
 
@@ -50,7 +50,7 @@ client_collection = chroma_client.get_collection(system_user_information['collec
 client_openai = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # get current status
-status = microscope_status.getCurrentStatus()  # dictonary with the current configuration values
+#status = microscope_status.get_current_status()  # dictonary with the current configuration values
 
 # Initialize Agent
 database_agent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,

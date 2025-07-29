@@ -23,6 +23,7 @@ from microscope.microscope_status import MicroscopeStatus
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
 
+
 def build_server():
     # Create the mcp server
     mcp = FastMCP(
@@ -37,7 +38,7 @@ def build_server():
     # Initialize the microscope session object
     microscope_session_object = MicroscopeSession()
     # create the data_dict that will contain the feedback loop information
-    #data_dict = microscope_session_object.get_data_dict()
+    # data_dict = microscope_session_object.get_data_dict()
 
     # Get the information for the user
     system_user_information = get_user_information()
@@ -53,7 +54,6 @@ def build_server():
     # initialize vector database
     chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
     client_collection = chroma_client.get_collection(name=system_user_information['collection_name'])
-
 
     # initialize LLM API
     client_openai = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
@@ -76,8 +76,7 @@ def build_server():
     classify_agent = ClassifyAgent(client_openai=client_openai)
 
     # loads the configuration files from the microscope
-    #load_config_file(config_file=system_user_information['cfg_file'], mmc=mmc)  # maybe change later
-
+    # load_config_file(config_file=system_user_information['cfg_file'], mmc=mmc)  # maybe change later
 
     # define different tools
     @mcp.tool(
@@ -86,20 +85,22 @@ def build_server():
                     "the information contained in the vector database that are the most relevant to the user main question. "
                     "You always call first this tool at the start of the feedback."
     )
-    async def retrieve_db_context(user_query: str = Field(description="The user's starting query of the feedback loop.")):
+    async def retrieve_db_context(
+            user_query: str = Field(description="The user's starting query of the feedback loop.")):
         """
         Uses the DatabaseAgent to retrieve the context for answering the user's query.Uses the DatabaseAgent to retrieve the context for answering the user's query.
         """
         # Get current data_dict
         data_dict = microscope_session_object.get_data_dict()
         # Checks the user_query
-        #if microscope_session_object.is_main_user_query():
+        # if microscope_session_object.is_main_user_query():
         # call the database agent
         context = database_agent.look_for_context(user_query)
         # add conversation
         loc_conversation = data_dict['conversation'] + [user_message(user_query), agent_message(context)]
         # update the data_dict
-        microscope_session_object.update_data_dict(user_query=user_query, context=context, conversation=loc_conversation)
+        microscope_session_object.update_data_dict(user_query=user_query, context=context,
+                                                   conversation=loc_conversation)
 
         return context
 
@@ -127,7 +128,6 @@ def build_server():
         microscope_session_object.update_data_dict(conversation=loc_conversation)
         return classify_user_query.message
 
-
     @mcp.tool(
         name="answer_no_coding_query",
         description="This tool is part of the feedback loop of the Microscope Toolset. It provides a direct answer to a "
@@ -143,13 +143,13 @@ def build_server():
         # update data dict values
         microscope_session_object.update_data_dict(is_final_output=True, output=output.message)
         # update is final output
-        #data_dict['is_final_output'] = True
+        # data_dict['is_final_output'] = True
         # update output values
-        #data_dict['output'] = output
+        # data_dict['output'] = output
         # update the microscope session object
-        #microscope_session_object.reset_data_dict(old_output=output, old_microscope_status=data_dict['microscope_status'])
+        # microscope_session_object.reset_data_dict(old_output=output, old_microscope_status=data_dict['microscope_status'])
 
-        return output.message # check which type of answer is given
+        return output.message  # check which type of answer is given
 
     @mcp.tool(
         name="generate_strategy",
@@ -169,12 +169,13 @@ def build_server():
             strategy = strategy_agent.generate_strategy(data_dict)
             loc_conversation = data_dict['conversation'] + [agent_message(strategy.message)]
         else:
-            #update values
+            # update values
             microscope_session_object.update_data_dict(extra_infos=additional_information)
             # get current data dict
             data_dict = microscope_session_object.get_data_dict()
             strategy = strategy_agent.revise_strategy(data_dict)
-            loc_conversation = data_dict['conversation'] + [user_message(additional_information), agent_message(strategy.message)]
+            loc_conversation = data_dict['conversation'] + [user_message(additional_information),
+                                                            agent_message(strategy.message)]
 
         # update main strategy
         microscope_session_object.update_data_dict(main_agent_strategy=strategy.message, conversation=loc_conversation)
@@ -235,8 +236,10 @@ def build_server():
         except Exception as e:
             # update data dict value
             loc_conversation = data_dict['conversation'] + [agent_message(f"Code preparation/execution failed: {e}")]
-            microscope_session_object.update_data_dict(error=f"Code preparation/execution failed: {e}", conversation=loc_conversation)
+            microscope_session_object.update_data_dict(error=f"Code preparation/execution failed: {e}",
+                                                       conversation=loc_conversation)
             return {"status": "error", "output": f"Code preparation/execution failed: {e}"}
+
     # evaluate if 'analyze_error' will be needed
 
     @mcp.tool(
@@ -259,9 +262,11 @@ def build_server():
         elif user_query == "wrong":
             success = False
         else:
-            loc_conversation = data_dict['conversation'] + [agent_message("Please specify if your query was answered or not using 'correct' or 'wrong'!")]
+            loc_conversation = data_dict['conversation'] + [
+                agent_message("Please specify if your query was answered or not using 'correct' or 'wrong'!")]
             microscope_session_object.update_data_dict(conversation=loc_conversation)
-            return {"intent": 'error', "message": "Please specify if your query was answered or not using 'correct' or 'wrong'!"}
+            return {"intent": 'error',
+                    "message": "Please specify if your query was answered or not using 'correct' or 'wrong'!"}
         # prepare summary of the code
         summary_chat = logger_agent.prepare_summary(data_dict)
         if summary_chat.intent == "summary":
@@ -269,7 +274,10 @@ def build_server():
             # add into the db
             database_agent.add_log(data)
         # update the microscope session object
-        microscope_session_object.reset_data_dict(old_output=data_dict['output'], old_microscope_status=data_dict['microscope_status'])
+        microscope_session_object.reset_data_dict(old_output=data_dict['output'],
+                                                  old_microscope_status=data_dict['microscope_status'],
+                                                  old_microscope_properties=data_dict['microscope_properties'],
+                                                  old_microscope_presets=data_dict['configuration_presets'])
 
         return {"intent": 'save', "message": "The previous result was added to the log database."}
 
@@ -297,7 +305,62 @@ def build_server():
             microscope_session_object.update_data_dict(conversation=loc_conversation)
             return message
 
+    @mcp.tool(
+        name="get_microscope_properties",
+        description="This tool is part of the feedback loop of the Microscope Toolset.It retrieves all the properties of all the devices present in the microscope. Only retrieve once all the properties of the microscope during the feedback loop."
+    )
+    async def get_microscope_properties():
+        """
+        Retrieve all the properties of the microscope
+        """
+        # Get current data dict
+        data_dict = microscope_session_object.get_data_dict()
+
+        microscope_properties_response = microscope_status.get_properties()
+        # update microscope
+        loc_conversation = data_dict['conversation'] + [
+            agent_message("Retrieved all the properties from the microscope")]
+        microscope_session_object.update_data_dict(microscope_status=microscope_properties_response,
+                                                   conversation=loc_conversation)
+        return microscope_properties_response
+
+    @mcp.tool(
+        name="get_currently_microscope_status",
+        description="This tool is part of the feedback loop of the Microscope Toolset.It retrieves the system state properties currently selected of the microscope."
+    )
+    async def get_currently_microscope_status():
+        """
+        Retrieve the current settings of the microscope
+        """
+        # Get current data dict
+        data_dict = microscope_session_object.get_data_dict()
+
+        microscope_status_response = microscope_status.get_current_status()
+        # update microscope
+        loc_conversation = data_dict['conversation'] + [
+            agent_message("Retrieved the current system state properties")]
+        microscope_session_object.update_data_dict(microscope_status=microscope_status_response,
+                                                   conversation=loc_conversation)
+        return microscope_status_response
+
+    @mcp.tool(
+        name="get_config_settings",
+        description="This tool is part of the feedback loop of the Microscope Toolset. It retrieves the Configuration Groups with the applied presets. Only retrieves once the Configuration Groups with their presets values."
+    )
+    async def get_config_settings():
+        # Get current data
+        data_dict = microscope_session_object.get_data_dict()
+
+        config_settings = microscope_status.get_available_configs()
+        # update conversation
+        loc_conversation = data_dict['conversation'] + [
+            agent_message("Retrieved the Configuration Groups with their Presets values!")
+        ]
+        microscope_session_object.update_data_dict(configuration_presets=config_settings, conversation=loc_conversation)
+        return config_settings
+
     return mcp
+
 
 if __name__ == "__main__":
     # start sever
