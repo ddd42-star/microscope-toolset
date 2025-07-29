@@ -1,9 +1,8 @@
-import sys
-import subprocess
-import threading
+import os
+import signal
 
 from PyQt6.QtCore import Qt, QObject, pyqtSlot, QThread, pyqtSignal
-from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel, QApplication
+from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel
 
 
 class MCPWorker(QObject):
@@ -12,24 +11,26 @@ class MCPWorker(QObject):
     def __init__(self, run_server):
         super().__init__()
         self.run_server = run_server
-        self.result = threading.Event()
 
     @pyqtSlot()
     def run_mcp_server(self):
-        self.start_thread.emit()
+        """
+        Start the MCP server
+        """
         try:
-            #self.run_server(stop_flag=self.result.is_set)
+            print(os.getpid())
             self.run_server.run(transport="streamable-http")
-
-            while not self.result.is_set():
-                print("call me")
-                QThread.msleep(100)
+        except Exception as e:
+            print(f"Error:{e}")
         finally:
             self.stop_thread.emit()
     @pyqtSlot()
     def stop_mcp_server(self):
-        self.stop_thread.emit()
-        self.result.set()
+        """
+        Stop MCP Server
+        """
+        print("STOP MCP Server called")
+        os.kill(os.getpid(), signal.SIGINT)
 
 
 class MCPServer(QMainWindow):
@@ -53,8 +54,18 @@ class MCPServer(QMainWindow):
 
         self.start_button = QPushButton()
         self.start_button.setText("Start Server")
+        self.start_button.setStyleSheet(
+            "QPushButton { background-color: #4CAF50; color: white; border-radius: 8px; padding: 10px 20px; }"
+            "QPushButton:hover { background-color: #45a049; }"
+            "QPushButton:disabled { background-color: #cccccc; color: #666666; }"
+        )
         self.stop_button = QPushButton()
         self.stop_button.setText("Stop Server")
+        self.stop_button.setStyleSheet(
+            "QPushButton { background-color: #f44336; color: white; border-radius: 8px; padding: 10px 20px; }"
+            "QPushButton:hover { background-color: #da190b; }"
+            "QPushButton:disabled { background-color: #cccccc; color: #666666; }"
+        )
 
         label_title = QLabel()
         label_title.setText("Microscope Toolset MCP Server")
@@ -77,9 +88,8 @@ class MCPServer(QMainWindow):
         self.mcp_worker.moveToThread(self.mcp_thread)
 
         self.mcp_thread.started.connect(self.mcp_worker.run_mcp_server)
+        self.mcp_worker.stop_thread.connect(self.mcp_thread.quit)
         self.mcp_thread.finished.connect(self.mcp_worker.stop_mcp_server)
-
-
 
 
     def click_start_server(self):
@@ -91,5 +101,6 @@ class MCPServer(QMainWindow):
 
     def click_stop_server(self):
         self.stop_button.setEnabled(False)
+        self.mcp_worker.stop_mcp_server()
         self.start_button.setEnabled(True)
         self.mcp_thread.quit()

@@ -1,7 +1,4 @@
 import os
-import threading
-import time
-from PyQt6.QtCore import QTimer
 
 import chromadb
 from mcp.server.fastmcp import FastMCP
@@ -34,7 +31,7 @@ def build_server():
         version="1.0.0",
         host="127.1.1.1",
         port=5500,
-        path="/mcp"
+        streamable_http_path="/mcp"
     )
 
     # Initialize the microscope session object
@@ -78,9 +75,6 @@ def build_server():
 
     classify_agent = ClassifyAgent(client_openai=client_openai)
 
-    # Initialize Napari gui
-    #mmc, viewer = initiate_napari_micromanager()
-
     # loads the configuration files from the microscope
     #load_config_file(config_file=system_user_information['cfg_file'], mmc=mmc)  # maybe change later
 
@@ -108,7 +102,6 @@ def build_server():
         microscope_session_object.update_data_dict(user_query=user_query, context=context, conversation=loc_conversation)
 
         return context
-        #return "This is not the user main question. This tool is not indicated for your need."
 
     @mcp.tool(
         name="classify_user_intent",

@@ -1,3 +1,5 @@
+import threading
+
 import napari
 from pymmcore_plus import CMMCorePlus
 from mcp_server_gui import MCPServer
