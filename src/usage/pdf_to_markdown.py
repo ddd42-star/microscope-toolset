@@ -14,8 +14,12 @@ from pathlib import Path
 
 
 class ImageToMarkdown(BaseModel):
+    title: str = None
+    page_number: int = None
+    author: str = None
+    text: str
+class MarkdownText(BaseModel):
     title: str
-    page_number: int
     author: str
     text: str
 
@@ -57,7 +61,8 @@ async def image_to_markdown(base64_image):
     """
     client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     asynch_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-    prompt = "TO add"
+    prompt = ("Extract the markdown text output from this page in a PDF using formatting to match the structure of the page as close as you can get. Only output the markdown and nothing else. Do not explain the output, just return it. Do not use a single # for a heading. All headings will start with ## or ### or ####. Convert tables to markdown tables. Describe charts as best you can. DO NOT return in a codeblock. Just return the raw text in markdown format."
+              "Add the metadata required. Some field will be changed only once because are different images of the same PDF.")
     response = await asynch_client.responses.parse(
         model="gpt-4.1",
         input=[
@@ -65,7 +70,7 @@ async def image_to_markdown(base64_image):
                 "role": "user",
                 "content": [
                     {"type": "input_text",
-                     "text": "Extract the text from this pdf page. Add the metadata of the document."},
+                     "text": prompt},
                     {
                         "type": "input_image",
                         "image_url": f"data:image/png;base64,{base64_image}",
@@ -172,30 +177,35 @@ async def extract_text_from_pdf(path_for_the_db: str = None, pdf_path: Path = No
 
             file.close()
 
-        # extract the markdown text using pymupdf4llm
-        # extract Markdown text using pymupdf4llm
-        docs = pymupdf.open(pdf_path)
-        for page in docs:
-            print(f"Process {page}")
-            page_text = pymupdf4llm.to_markdown(doc=pdf_path, pages=[page.number])
-            # write the file
-            Path(f"{pymupdf4llm_folder_vector_database}/page-%i.md" % page.number).write_bytes(page_text.encode())
-            # add to the list
-            infos = {
-                "page": page.number,
-                "text": page_text
-            }
-            pymupdf4llm_pages.append(infos)
+        # # extract the markdown text using pymupdf4llm
+        # # extract Markdown text using pymupdf4llm
+        # docs = pymupdf.open(pdf_path)
+        # for page in docs:
+        #     print(f"Process {page}")
+        #     page_text = pymupdf4llm.to_markdown(doc=pdf_path, pages=[page.number])
+        #     # write the file
+        #     Path(f"{pymupdf4llm_folder_vector_database}/page-%i.md" % page.number).write_bytes(page_text.encode())
+        #     # add to the list
+        #     infos = {
+        #         "page": page.number,
+        #         "text": page_text
+        #     }
+        #     pymupdf4llm_pages.append(infos)
         cleaned_markdown_list = []
-        # Use both markdown object to create the final one
+        # # Use both markdown object to create the final one
         for i, _ in enumerate(multimodal_pages):
-            cleaned_markdown_text = await clean_markdown(multimodal_pages[i], pymupdf4llm_pages[i])
+            cleaned_markdown_text = await clean_markdown(multimodal_pages[i], pymupdf4llm_pages)
             cleaned_markdown_list.append(cleaned_markdown_text)
+            with open(f"{pymupdf4llm_folder_vector_database}/page-{i}.md", 'w', encoding='utf-8') as file:
+                file.write(cleaned_markdown_text['text'])
+            file.close()
+        #cleaned_markdown_text = await clean_markdown(multimodal_pages, pymupdf4llm_pages)
 
         # create unique Markdown doc
         unique_markdown_text = ''.join([page['text'] for page in cleaned_markdown_list])
         with open(Path(vector_database) / f"{pdf_path.name.split('.')[0]}.md", 'w', encoding='utf-8') as file:
             file.write(unique_markdown_text)
+            #file.write(cleaned_markdown_text['text'])
 
         file.close()
 
@@ -203,11 +213,12 @@ async def extract_text_from_pdf(path_for_the_db: str = None, pdf_path: Path = No
         raise FileNotFoundError("The path to the pdfs doesn't exists!")
 
 
-async def clean_markdown(multimodal_object: dict, pymupdf_object: dict):
+async def clean_markdown(multimodal_object: dict, pymupdf_object: list):
     asynch_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     #prompt = CLEAN_MARKDOWN_TEXT
+    #sections = '\n'.join([page['text'] for page in multimodal_object])
     prompt = """
-You are tasked with cleaning up the following markdown text. You should return only the cleaned up markdown text. Do not explain your output or reasoning. \n remove any irellevant text from the markdown, returning the cleaned up version of the content. Examples include any images []() or 'click here' or 'Listen to this article' or page numbers or logos.",
+You are tasked with cleaning up the following markdown text. You should return only the cleaned up markdown text. Do not explain your output or reasoning. \n remove any irrelevant text from the markdown, returning the cleaned up version of the content. Examples include any images []() or 'click here' or 'Listen to this article' or page numbers or logos.
 """
     text = """
     # TEXT TO CLEAN
@@ -215,9 +226,9 @@ You are tasked with cleaning up the following markdown text. You should return o
     """
     format_text = text.format(multimodal_text=multimodal_object['text'])
     response = await asynch_client.responses.parse(
-        model="gpt-4.1",
-        input=[{"role": "system", "content": prompt}, {"role": "user", "content": text}],
-        text_format=ImageToMarkdown
+        model="gpt-4.1-mini",
+        input=[{"role": "system", "content": prompt}, {"role": "user", "content": format_text}],
+        text_format=MarkdownText
     )
 
     # convert to a json object
