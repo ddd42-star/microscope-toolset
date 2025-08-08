@@ -55,6 +55,7 @@ def get_user_information() -> dict:
     user_information['collection_name'] = os.getenv("DBNAME")
     user_information['log_collection'] = os.getenv("LOGNAME")
     user_information['cfg_file'] = os.getenv("CFGPATH")
+    user_information['pdf_collection_name'] = os.getenv("PDFDB")
 
     return user_information
 

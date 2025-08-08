@@ -1,4 +1,4 @@
-# microscope-toolset
+# Microscope Toolset
 This repository is a toolset for microscope that use pymmcore-plus with LLM
 
 
@@ -21,6 +21,13 @@ Then go into the folder of this repository and install all the packages using th
 ```
 pip install -r requirements.txt
 ```
+
+### Create the vector database with pdf files
+To help the different agents to avoid hallucination, it's advised to create a vector database with the different "knowledge". We have the documentation of *pymmcore_plus* and the publications of the *Pertz Lab*. If you want to add other pdfs file you can run this command:
+```
+python .\src\create_database_from_publication.py --db <path to db> --doc <path to pdf(s)>
+```
+In the folder that you choose were to save the database, at the moment two directories will be created: *pages_png* and *pages_markdown*. The first will contain the png files of each page of the document and in the second the markdown files of the text extracted. 
 
 ### How to start the toolset
 

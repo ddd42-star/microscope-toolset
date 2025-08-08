@@ -205,5 +205,8 @@ Vectore-store
 
 pgvector/
 
+# png files
+*.png
+
 
 
