@@ -8,6 +8,7 @@ import os
 
 from agentsNormal.classify_user_intent import ClassifyAgent
 from agentsNormal.structuredOutput import ClassificationAgentOutput
+from postqrl.log_db import LoggerDB
 
 
 def user_message(message):
@@ -49,7 +50,7 @@ def get_user_information() -> dict:
     # load user from the environment
     load_dotenv()
 
-    user_information['model'] = os.getenv("model")
+    user_information['model'] = os.getenv("MODEL")
     user_information['api_key'] = os.getenv("API_KEY")
     user_information['database_path'] = os.getenv("DATABASE")
     user_information['collection_name'] = os.getenv("DBNAME")
@@ -82,3 +83,18 @@ def is_config_loaded():
     """This function listen to napari events has test if the configuration file has been loaded"""
 
     return None
+
+def logger_database_exists(logger: LoggerDB, name: str) -> bool:
+    """
+    This function check if a logger database exists
+    """
+
+    # list the connection in the database
+    list_of_collection = logger.list_collection()
+
+    if name in list_of_collection:
+        # The collection is already present
+        return True
+    else:
+        # The collection doesn't exist
+        return False

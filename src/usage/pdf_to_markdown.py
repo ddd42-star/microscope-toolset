@@ -156,12 +156,12 @@ async def extract_text_from_pdf(path_for_the_db: str, pdf_path: Path, client_ope
             file.close()
 
             # create a list with all the chunk, as default will be 5000 character
-            print("Create chunks list")
-            chunks_list = split_markdown(unique_markdown_text, 5000)
+            #print("Create chunks list")
+            #chunks_list = split_markdown(unique_markdown_text, 5000)
 
             # insert chunked list into the vector db
             print("Insert chunks into the database")
-            insert_chunks_into_collection(pdf_path.name.split('.')[0], chunks_list, client_openai, collection_name)
+            #insert_chunks_into_collection(pdf_path.name.split('.')[0], chunks_list, client_openai, collection_name)
 
         except Exception as e:
             print(e)

@@ -10,7 +10,7 @@ def main():
 
 
     viewer = napari.Viewer()
-    mmc = CMMCorePlus.instance()
+    #mmc = CMMCorePlus.instance()
     mcp_run_server = build_server()
 
     main_window = MCPServer(run_server=mcp_run_server)

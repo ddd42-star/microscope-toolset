@@ -27,19 +27,19 @@ class DBConnection:
         if db_name is None:
             load_dotenv()
             try:
-                self.db_name = os.getenv("DB_NAME")
+                self.db_name = os.getenv("DB_NEW_NAME")
             except Exception as e:
                 raise ValueError(e)
         if db_user is None:
             load_dotenv()
             try:
-                self.db_user = os.getenv("DB_USER")
+                self.db_user = os.getenv("DB_NEW_USER")
             except Exception as e:
                 raise ValueError(e)
         if db_password is None:
             load_dotenv()
             try:
-                self.db_password = os.getenv("DB_PASSWORD")
+                self.db_password = os.getenv("DB_NEW_PASSWORD")
             except Exception as e:
                 raise ValueError(e)
         if db_port is None:
@@ -50,7 +50,7 @@ class DBConnection:
                 raise ValueError(e)
 
 
-        print(self.db_port,self.db_password,self.db_user,self.db_name, self.db_host)
+        #print(self.db_port,self.db_password,self.db_user,self.db_name, self.db_host)
 
         self.pool = psycopg2.pool.SimpleConnectionPool(
             minconn=1,

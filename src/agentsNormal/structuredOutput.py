@@ -28,3 +28,11 @@ class ClassificationAgentOutput(BaseModel):
     intent: str
     message: str
 
+class RephraseOutput(BaseModel):
+
+    intent: str
+    message: str
+
+class ExtractKeywordOutput(BaseModel):
+    intent: str
+    message: str

@@ -24,3 +24,5 @@ pgvector
 pytesseract
 poppler
 pdf2image
+elasticsearch
+tiktoken

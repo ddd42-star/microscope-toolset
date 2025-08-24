@@ -4,6 +4,8 @@ import chromadb
 import numpy as np
 from typing import List, Optional
 from openai import OpenAI
+
+from agentsNormal.structuredOutput import RephraseOutput, ExtractKeywordOutput
 #from prompts.databaseAgentPrompt import DATABASE_PROMPT
 from postqrl.log_db import LoggerDB
 
@@ -140,3 +142,66 @@ class DatabaseAgent:
         vector = self.embeds_query(data['prompt'])
         #print(vector)
         self.db_log.insert(self.db_log_name, data, embeddings=vector)
+
+    def rephrase_query(self, query):
+        """
+        Rephrase user query for better achieving retrieval from a vector database and BM25
+        """
+        try:
+
+            # define prompt
+            prompt = """
+            Given the user question, rephrase and expand it to help you do better answering. Maintain all information in the original question.
+            """
+            # rephrase the query
+            response = self.client_openai.responses.parse(
+                model="gpt-4.1-mini",
+                input=[{"role": "system", "content": prompt}, {"role": "user", "content": query}],
+                text_format=RephraseOutput
+            )
+            parsed_response = self.rephrase_parse_response(response.choices[0].message.content)
+            # TODO change api call if the output will be already an json object
+
+            return parsed_response
+        except Exception as e:
+            return {'intent': 'error', 'message': f"Failed to rephrase user query: {e}"}
+
+    def split_query_in_keyword(self, query):
+        """
+        From the user query, extract keywords to use for searching into the BM25 database
+        """
+        try:
+
+            prompt = """
+            Extract only the key technical terms, endpoint names, HTTP methods, and parameter names
+            from the following API-related query. 
+            Return them as a short space-separated string, no explanations.
+            """
+
+            # retrieve the keyword of the query
+            response = self.client_openai.responses.parse(
+                model="gpt-4.1-mini",
+                input=[{"role": "system", "content": prompt}, {"role": "user", "content": query}],
+                text_format=ExtractKeywordOutput
+            )
+            parsed_response = self.extract_keyword_response(response.choices[0].message.content)
+
+            # TODO change api call if the output will be already an json object
+
+            return parsed_response # return a string -> transform it in a list using split
+
+        except Exception as e:
+            return {'intent': 'error', 'message': f"Failed to extract keyword: {e}"}
+
+    def rephrase_parse_response(self, response):
+
+        try:
+            return RephraseOutput.model_validate_json(response)
+        except Exception as e:
+            return e
+
+    def extract_keyword_response(self, response):
+        try:
+            return ExtractKeywordOutput.model_validate_json(response)
+        except Exception as e:
+            return e

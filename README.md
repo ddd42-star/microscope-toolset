@@ -22,6 +22,48 @@ Then go into the folder of this repository and install all the packages using th
 pip install -r requirements.txt
 ```
 
+#### Postgresql
+To improve our agents, we created a *Postgresql* database that will collect all the results obtained by our differents tool. To use it, you will need to download [Postgressql](https://www.postgresql.org/download/) based on your OS.
+
+*Window installation*
+
+There are plenty of tutorial for the installation available online, just follow the most appropriate one. After the installation go in your terminal and digit the following:
+```
+ > psql -U postgres -p 5410
+```
+*-U* is the username of the user. The default one is **postgres** and is the one with the most privilige. *-p* is to specify the port number: if during the installation, you changed the port number from **5432**(the default one) to another, specify the correct one. After this, you will be asked to insert the password for the user *postgres*
+```
+Insert the password for the user postgres:
+```
+Here you need to put the password you used as a *master password*.
+Finally you will see the psql console:
+```
+postgres=# ...
+```
+Now before continuing, you need to:
+
+1. Create a new *user* with a new *password*
+2. Create a new *database* owned by the new user
+
+In this way the data will be saved into a 'local' user and not the 'admin' one called postgres.
+```
+> postgres=# CREATE USER <new_user> WITH PASSWORD '<newly_password>';
+> CREATE ROLE
+> postgres=# CREATE DATABASE <database name> OWNER <new_user>;      
+> CREATE DATABASE
+```
+After this you can quit
+```
+> postgres=# \q
+```
+and save the new information into the *.env* file.
+
+ - DB_NAME=<_The name of the database_>
+ - DB_USER=<_The new user name created_>
+ - DB_PASSWORD=<_The new password of the new user_>
+
+*DB_HOST* still remains _localhost_ and *DB_PORT* still remains the one you choosed during the installation. If an error occured, you should not be able to connect at your database and you will not able to start the GUI.
+
 ### Create the vector database with pdf files
 To help the different agents to avoid hallucination, it's advised to create a vector database with the different "knowledge". We have the documentation of *pymmcore_plus* and the publications of the *Pertz Lab*. If you want to add other pdfs file you can run this command:
 ```

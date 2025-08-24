@@ -15,7 +15,7 @@ from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.classify_user_intent import ClassifyAgent
 from local.prepare_code import prepare_code
 from mcp_microscopetoolset.utils import get_user_information, initiate_napari_micromanager, load_config_file, \
-    is_config_loaded, user_message, agent_message
+    is_config_loaded, user_message, agent_message, logger_database_exists
 from local.execute import Execute
 
 from mcp_microscopetoolset.microscope_session import MicroscopeSession
@@ -30,7 +30,7 @@ def build_server():
         name="Microscope Toolset",
         description="This server allows the user to controls a selected microscope via LLM.",
         version="1.0.0",
-        host="127.1.1.1",
+        host="127.0.0.1",
         port=5500,
         streamable_http_path="/mcp"
     )
@@ -50,6 +50,12 @@ def build_server():
     # initialize Logger database and his connection
     db_connection = DBConnection()
     db_log = LoggerDB(db_connection)
+
+    # check if the logger database already exist
+    if not logger_database_exists(db_log, system_user_information['collection_name']):
+        # it doesn't exist. We create a new one
+        db_log.create_collection(system_user_information['collection_name'])
+        print(f"A new collection named {system_user_information['collection_name']} has been created.")
 
     # initialize vector database
     chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])

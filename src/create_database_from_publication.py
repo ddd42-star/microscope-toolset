@@ -34,8 +34,8 @@ async def main():
     system_user_information = get_user_information()
 
     # Initialize chroma db
-    chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
-    pdf_collection = chroma_client.get_or_create_collection(name=system_user_information['pdf_collection_name'])
+    #chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
+    #pdf_collection = chroma_client.get_or_create_collection(name=system_user_information['pdf_collection_name'])
 
     # Initialize client and async client
     client_openai = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
