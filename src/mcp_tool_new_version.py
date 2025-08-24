@@ -1,4 +1,5 @@
 import os
+import sys
 
 import chromadb
 from mcp.server.fastmcp import FastMCP
@@ -22,6 +23,9 @@ from mcp_microscopetoolset.microscope_session import MicroscopeSession
 from microscope.microscope_status import MicroscopeStatus
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
+from databases.elasticsearch_db import ElasticSearchDB
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
 
 
 def build_server():
@@ -58,20 +62,50 @@ def build_server():
         print(f"A new collection named {system_user_information['collection_name']} has been created.")
 
     # initialize vector database
-    chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
-    client_collection = chroma_client.get_collection(name=system_user_information['collection_name'])
+    # chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
+    # client_collection = chroma_client.get_collection(name=system_user_information['collection_name'])
+    # initialize elasticsearch
+    es_client = ElasticSearchDB()
+    try_connection = 0
+
+    while try_connection < 10:
+        # try to establish the connection
+        if es_client.is_connected():
+            # the client is connected successfully
+            break
+        elif not es_client.is_connected() and try_connection < 10:
+            sys.exit("Could not connect to elasticsearch. Please make sure to start the server before starting")
+        else:
+            # not connect
+            try_connection += 1
+            # try new client
+            es_client = ElasticSearchDB()
+
+    # get relevant information for the db
+    pdf_publication = system_user_information['pdf_publication']
+    micromanager_collection = system_user_information['micromanager_collection']
+    api_collection = system_user_information['api_collection']
+
+    # Load the cross-encoder for re-ranking
+    model_name = "cross-encoder/ms-marco-MiniM-L-6-v2"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
     # initialize LLM API
     client_openai = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
     # initialize different Agents
-    database_agent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
-                                   client_collection=client_collection, db_log=db_log,
-                                   db_log_collection_name=system_user_information['log_collection'])
+    # database_agent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
+    #                                client_collection=client_collection, db_log=db_log,
+    #                                db_log_collection_name=system_user_information['log_collection'])
+    database_agent = DatabaseAgent(client_openai=client_openai, es_client=es_client, pdf_collection=pdf_publication,
+                                   micromanager_collection=micromanager_collection, api_collection=api_collection,
+                                   db_log=db_log, db_log_collection_name=system_user_information['collection_name'],
+                                   tokenizer=tokenizer, model=model)
 
     software_agent = SoftwareEngeneeringAgent(client_openai=client_openai)
 
-    error_agent = ErrorAgent(client_openai=client_openai)
+    # error_agent = ErrorAgent(client_openai=client_openai)
 
     strategy_agent = StrategyAgent(client_openai=client_openai)
 
@@ -88,7 +122,10 @@ def build_server():
     @mcp.tool(
         name="retrieve_db_context",
         description="This is the tool starts the feedback loop of the Microscope Toolset server. This tool retrieves "
-                    "the information contained in the vector database that are the most relevant to the user main question. "
+                    "the information contained in the database that are the most relevant to the user main question. "
+                    "It first reformulate the user query, then it use it in an hybrid search where a BM25 a KNN search"
+                    "is performed. Finally, a rerank of the result is done using a cross-encoder and the top relevant "
+                    "information are obtained."
                     "You always call first this tool at the start of the feedback."
     )
     async def retrieve_db_context(
@@ -101,7 +138,11 @@ def build_server():
         # Checks the user_query
         # if microscope_session_object.is_main_user_query():
         # call the database agent
-        context = database_agent.look_for_context(user_query)
+        # context = database_agent.look_for_context(user_query)
+        # First reformulate query
+        reformulated_query = database_agent.rephrase_query(user_query)
+        # The search the information in our database
+        context = database_agent.look_for_context(reformulated_query["message"])
         # add conversation
         loc_conversation = data_dict['conversation'] + [user_message(user_query), agent_message(context)]
         # update the data_dict

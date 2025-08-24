@@ -8,6 +8,12 @@ class ElasticSearchDB:
         self.es = Elasticsearch("http://localhost:4500")
         #self.index_name = index_name
 
+    def is_connected(self) -> bool:
+        """
+        This function returns True if the connection is established.
+        """
+        return self.es.ping()
+
     def close(self) -> None:
         """
         Disconnect python Client from server
@@ -18,7 +24,7 @@ class ElasticSearchDB:
 
     def get_info(self):
         """
-        This function gets the server information from ELasticsearch
+        This function gets the server information from Elasticsearch
         """
         api_answer = self.es.info()
 

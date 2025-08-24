@@ -57,6 +57,8 @@ def get_user_information() -> dict:
     user_information['log_collection'] = os.getenv("LOGNAME")
     user_information['cfg_file'] = os.getenv("CFGPATH")
     user_information['pdf_collection_name'] = os.getenv("PDFDB")
+    user_information['micromanager_devices_collection'] = os.getenv("DEVDB")
+    user_information['elastic_search_path_home'] = os.getenv("ELASTICSEARCH")
 
     return user_information
 
