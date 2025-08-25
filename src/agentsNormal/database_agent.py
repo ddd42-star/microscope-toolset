@@ -15,6 +15,7 @@ from postqrl.log_db import LoggerDB
 from databases.elasticsearch_db import ElasticSearchDB
 import json
 from typing import Any
+import torch
 
 
 class DatabaseAgent:
@@ -53,116 +54,130 @@ class DatabaseAgent:
 
         return embedding
 
-    def retrieve_relevant_information(self, query: str) -> List[str]:
+    def retrieve_relevant_information(self, query: str):
 
-        # embed the user query
-        query_embedded = self.embeds_query(query=query)
+        try:
+            # embed the user query
+            query_embedded = self.embeds_query(query=query)
 
-        # search into the database for chroma
-        # results = self.client_collection.query(query_embeddings=query_embedded, n_results=25)
-        # search into the db of Elasticsearch
-        # 1. search into the api collection
-        api_docs_result = self.es_client.hybrid_search(index_name=self.api_collection, query=query,
-                                                       query_vector=query_embedded,
-                                                       keyword_to_search_for_bm25="contextualize_text")
-        # 2. search into pdf collection
-        pdf_docs_results = self.es_client.hybrid_search(index_name=self.pdf_collection, query=query,
-                                                        query_vector=query_embedded,
-                                                        keyword_to_search_for_bm25="content")
-        # 3. search into micromanager devices
-        micromanager_docs_results = self.es_client.hybrid_search(index_name=self.micromanager_collection, query=query,
-                                                                 query_vector=query_embedded,
-                                                                 keyword_to_search_for_bm25="content")
-        # now extract list of object for reranking
-        list_api_docs_result = [{
-            "type": result["_source"]["type"],
-            "name": result["_source"]["name"],
-            "signature": result["_source"]["signature"],
-            "description": result["_source"]["description"],
-            "filename": result["_source"]["filename"],
-            "contextualize_text": result["_source"]["contextualize_text"],
-        }
-            for result in api_docs_result["hits"]["hits"]
-        ]
-        list_pdf_docs_results = [{
-            "content": result["_source"]["content"],
-            "chunk_id": result["_source"]["chunk_id"],
-            "filename": result["_source"]["filename"]
-        }
-            for result in pdf_docs_results["hits"]["hits"]
-        ]
-        list_micromanager_docs_results = [{
-            "doc_id": result["_source"]["doc_id"],
-            "content": result["_source"]["content"],
-            "chunk_id": result["_source"]["chunk_id"],
-            "filename": result["_source"]["filename"],
-        }
-            for result in micromanager_docs_results["hits"]["hits"]
-        ]
-        # merge all result into a single list
-        merged_list = []
-        # iterate through the first list
-        merged_list = self.rerank_and_add_to_list(merged_list=merged_list, partial_result_list=list_api_docs_result,
-                                                  keyword_field="contextualize_text", query=query)
-        # iterate through the second list
-        merged_list = self.rerank_and_add_to_list(merged_list=merged_list, partial_result_list=list_pdf_docs_results,
-                                                  keyword_field="content", query=query)
-        # iterate through the last list
-        merged_list = self.rerank_and_add_to_list(merged_list=merged_list,
-                                                  partial_result_list=list_micromanager_docs_results,
-                                                  keyword_field="content", query=query)
-        # sort the list descending, from higher score through lower
-        sorted_merged_list = sorted(merged_list, key=lambda x: x["score"], reverse=True)
+            # search into the database for chroma
+            # results = self.client_collection.query(query_embeddings=query_embedded, n_results=25)
+            # search into the db of Elasticsearch
+            # 1. search into the api collection
+            api_docs_result = self.es_client.hybrid_search(index_name=self.api_collection, query=query,
+                                                           query_vector=query_embedded,
+                                                           keyword_to_search_for_bm25="contextualize_text")
+            # 2. search into pdf collection
+            pdf_docs_results = self.es_client.hybrid_search(index_name=self.pdf_collection, query=query,
+                                                            query_vector=query_embedded,
+                                                            keyword_to_search_for_bm25="content")
+            # 3. search into micromanager devices
+            micromanager_docs_results = self.es_client.hybrid_search(index_name=self.micromanager_collection, query=query,
+                                                                     query_vector=query_embedded,
+                                                                     keyword_to_search_for_bm25="content")
+            # now extract list of object for reranking
+            list_api_docs_result = [{
+                "type": result["_source"]["type"],
+                "name": result["_source"]["name"],
+                "signature": result["_source"]["signature"],
+                "description": result["_source"]["description"],
+                "filename": result["_source"]["filename"],
+                "contextualize_text": result["_source"]["contextualize_text"],
+                "score": result["_score"]
+            }
+                for result in api_docs_result["hits"]["hits"]
+            ]
+            list_pdf_docs_results = [{
+                "content": result["_source"]["content"],
+                "chunk_id": result["_source"]["chunk_id"],
+                "filename": result["_source"]["filename"],
+                "score": result["_score"]
+            }
+                for result in pdf_docs_results["hits"]["hits"]
+            ]
+            list_micromanager_docs_results = [{
+                "doc_id": result["_source"]["doc_id"],
+                "content": result["_source"]["content"],
+                "chunk_id": result["_source"]["chunk_id"],
+                "filename": result["_source"]["filename"],
+                "score": result["_score"]
+            }
+                for result in micromanager_docs_results["hits"]["hits"]
+            ]
+            # sort list of results
+            list_api_docs_result = sorted(list_api_docs_result, key=lambda x: x["score"], reverse=True)
+            list_micromanager_docs_results = sorted(list_micromanager_docs_results, key=lambda x: x["score"], reverse=True)
+            list_pdf_docs_results = sorted(list_pdf_docs_results, key=lambda x: x["score"], reverse=True)
 
-        # Just keep first 25 results
-        results = sorted_merged_list[::24]
+            # merge all result into a single list
+            merged_list = []
+            # iterate through the first list
+            merged_list = self.rerank_and_add_to_list(merged_list=merged_list, partial_result_list=list_api_docs_result,
+                                                      keyword_field="contextualize_text", query=query)
+            # iterate through the second list
+            merged_list = self.rerank_and_add_to_list(merged_list=merged_list, partial_result_list=list_pdf_docs_results,
+                                                      keyword_field="content", query=query)
+            # iterate through the last list
+            merged_list = self.rerank_and_add_to_list(merged_list=merged_list,
+                                                      partial_result_list=list_micromanager_docs_results,
+                                                      keyword_field="content", query=query)
+            #print(merged_list)
+            # sort the list descending, from higher score through lower
+            sorted_merged_list = sorted(merged_list, key=lambda x: x["score"], reverse=True)
+            #print(sorted_merged_list)
 
-        # search into the database for the log
-        log_result = self.db_log.query_by_vector(collection_name=self.db_log_name, vector=query_embedded, k=5)
-        # print(log_result)
-        if log_result is None:
-            log_result = []
+            # Just keep first 25 results
+            results = sorted_merged_list[:24]
+            #print(results)
 
-        relevant_information = [json.dumps(chunk) for chunk in results]
+            # search into the database for the log
+            log_result = self.db_log.query_by_vector(collection_name=self.db_log_name, vector=query_embedded, k=5)
+            # print(log_result)
+            if log_result is None:
+                log_result = []
 
-        # log_relevant_chunks
-        log_chunks = [
-            json.dumps({
-                "prompt": log_result[i]['prompt'],
-                "output": log_result[i]['output'],
-                "feedback": log_result[i]['feedback'],
-                "category": log_result[i]['category']
-            })
-            for i in range(len(log_result))
-        ]
+            relevant_information = [json.dumps(chunk) for chunk in results]
 
-        # Extract relevant chuncks
-        SIMILARITY_THREASHOLD = 0.80
+            # log_relevant_chunks
+            log_chunks = [
+                json.dumps({
+                    "prompt": log_result[i]['prompt'],
+                    "output": log_result[i]['output'],
+                    "feedback": log_result[i]['feedback'],
+                    "category": log_result[i]['category']
+                })
+                for i in range(len(log_result))
+            ]
 
-        # result
+            # Extract relevant chuncks
+            SIMILARITY_THREASHOLD = 0.80
 
-        # relevant_chuncks = [
-        #     f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
-        #     for i in range(len(results["documents"][0]))]
-        # relevant_chuncks = [
-        #     results['documents'][0][i] for i in range(len(results["documents"][0]))
-        # ]
-        # relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
-        # relevant_chuncks = []
-        # for index, doc in enumerate(results["documents"][0]):
-        #    # transform distances into a similsrity score
-        #    score = self.similarity_score(results["distances"][0][index])
-        #    print(score)
-        #
-        #    if score >= SIMILARITY_THREASHOLD:
-        #        relevant_chuncks.append(doc)
+            # result
 
-        # print(log_chunks)
-        print("getting relevant information")
+            # relevant_chuncks = [
+            #     f"\n **Function:** {results['metadatas'][0][i]['function_name']}\n **Signature:** {results['metadatas'][0][i]['signature']}\n **Description:** {results['metadatas'][0][i]['description']}\n **Doc Snippet:**\n{results['documents'][0][i]}"
+            #     for i in range(len(results["documents"][0]))]
+            # relevant_chuncks = [
+            #     results['documents'][0][i] for i in range(len(results["documents"][0]))
+            # ]
+            # relevant_chuncks = [doc for sublist in results["documents"] for doc in sublist]
+            # relevant_chuncks = []
+            # for index, doc in enumerate(results["documents"][0]):
+            #    # transform distances into a similsrity score
+            #    score = self.similarity_score(results["distances"][0][index])
+            #    print(score)
+            #
+            #    if score >= SIMILARITY_THREASHOLD:
+            #        relevant_chuncks.append(doc)
 
-        joined_chunks = [*relevant_information, *log_chunks]
+            # print(log_chunks)
+            print("getting relevant information")
 
-        return joined_chunks
+            joined_chunks = [*relevant_information, *log_chunks]
+
+            return joined_chunks
+        except Exception as e:
+            logging.error(e)
 
     def look_for_context(self, query: str) -> str:
 
@@ -301,9 +316,12 @@ class DatabaseAgent:
         This function rerank the result obtained from hybrid search
         """
         try:
+            print("Starting rerank")
             inputs = self.tokenizer(query, chunk, return_tensors="pt", truncation=True, max_length=512)
+            self.model.eval()
             with torch.no_grad():
                 scores = self.model(**inputs).logits
+
             return scores.item()
 
         except Exception as e:
@@ -318,7 +336,7 @@ class DatabaseAgent:
                 score = self.rerank(query, hit[keyword_field])
                 # add the score to the json object
                 hit["score"] = score
-                merged_list.append(score)
+                merged_list.append(hit)
 
             return merged_list
 

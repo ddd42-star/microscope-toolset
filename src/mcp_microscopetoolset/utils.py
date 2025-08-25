@@ -62,29 +62,29 @@ def get_user_information() -> dict:
 
     return user_information
 
-def initiate_napari_micromanager():
-    """This function start the napari micromanager GUI and access the core instance"""
-
-    viewer = napari.Viewer(show=False)
-    # start the napari plugin
-    dw, mainwindow = viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
-
-    # access the instance core
-    mmc = CMMCorePlus.instance()
-
-
-    return mmc, viewer
-
-def load_config_file(config_file: str,mmc: CMMCorePlus):
-    """This function load the config file added directly in napari micromanager"""
-    mmc.loadSystemConfiguration(fileName=config_file)
-
-    return None
-
-def is_config_loaded():
-    """This function listen to napari events has test if the configuration file has been loaded"""
-
-    return None
+# def initiate_napari_micromanager():
+#     """This function start the napari micromanager GUI and access the core instance"""
+#
+#     viewer = napari.Viewer(show=False)
+#     # start the napari plugin
+#     dw, mainwindow = viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
+#
+#     # access the instance core
+#     mmc = CMMCorePlus.instance()
+#
+#
+#     return mmc, viewer
+#
+# def load_config_file(config_file: str,mmc: CMMCorePlus):
+#     """This function load the config file added directly in napari micromanager"""
+#     mmc.loadSystemConfiguration(fileName=config_file)
+#
+#     return None
+#
+# def is_config_loaded():
+#     """This function listen to napari events has test if the configuration file has been loaded"""
+#
+#     return None
 
 def logger_database_exists(logger: LoggerDB, name: str) -> bool:
     """

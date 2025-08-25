@@ -15,8 +15,7 @@ from agentsNormal.software_agent import SoftwareEngeneeringAgent
 from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.classify_user_intent import ClassifyAgent
 from local.prepare_code import prepare_code
-from mcp_microscopetoolset.utils import get_user_information, initiate_napari_micromanager, load_config_file, \
-    is_config_loaded, user_message, agent_message, logger_database_exists
+from mcp_microscopetoolset.utils import get_user_information, user_message, agent_message, logger_database_exists
 from local.execute import Execute
 
 from mcp_microscopetoolset.microscope_session import MicroscopeSession
@@ -25,19 +24,18 @@ from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
 from databases.elasticsearch_db import ElasticSearchDB
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
 
 
 def build_server():
     # Create the mcp server
     mcp = FastMCP(
         name="Microscope Toolset",
-        description="This server allows the user to controls a selected microscope via LLM.",
-        version="1.0.0",
         host="127.0.0.1",
         port=5500,
         streamable_http_path="/mcp"
     )
+    # description="This server allows the user to controls a selected microscope via LLM.",
+    # version="1.0.0",
 
     # Initialize the microscope session object
     microscope_session_object = MicroscopeSession()
@@ -56,10 +54,10 @@ def build_server():
     db_log = LoggerDB(db_connection)
 
     # check if the logger database already exist
-    if not logger_database_exists(db_log, system_user_information['collection_name']):
+    if not logger_database_exists(db_log, system_user_information['log_collection']):
         # it doesn't exist. We create a new one
-        db_log.create_collection(system_user_information['collection_name'])
-        print(f"A new collection named {system_user_information['collection_name']} has been created.")
+        db_log.create_collection(system_user_information['log_collection'])
+        print(f"A new collection named {system_user_information['log_collection']} has been created.")
 
     # initialize vector database
     # chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
@@ -69,6 +67,7 @@ def build_server():
     try_connection = 0
 
     while try_connection < 10:
+        print("Trying connection...")
         # try to establish the connection
         if es_client.is_connected():
             # the client is connected successfully
@@ -82,12 +81,13 @@ def build_server():
             es_client = ElasticSearchDB()
 
     # get relevant information for the db
-    pdf_publication = system_user_information['pdf_publication']
-    micromanager_collection = system_user_information['micromanager_collection']
-    api_collection = system_user_information['api_collection']
+    pdf_publication = system_user_information['pdf_collection_name']
+    micromanager_collection = system_user_information['micromanager_devices_collection']
+    api_collection = system_user_information['collection_name']
 
     # Load the cross-encoder for re-ranking
-    model_name = "cross-encoder/ms-marco-MiniM-L-6-v2"
+    # Load model directly
+    model_name = "cross-encoder/ms-marco-MiniLM-L6-v2"
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
@@ -100,7 +100,7 @@ def build_server():
     #                                db_log_collection_name=system_user_information['log_collection'])
     database_agent = DatabaseAgent(client_openai=client_openai, es_client=es_client, pdf_collection=pdf_publication,
                                    micromanager_collection=micromanager_collection, api_collection=api_collection,
-                                   db_log=db_log, db_log_collection_name=system_user_information['collection_name'],
+                                   db_log=db_log, db_log_collection_name=system_user_information['log_collection'],
                                    tokenizer=tokenizer, model=model)
 
     software_agent = SoftwareEngeneeringAgent(client_openai=client_openai)
@@ -141,13 +141,36 @@ def build_server():
         # context = database_agent.look_for_context(user_query)
         # First reformulate query
         reformulated_query = database_agent.rephrase_query(user_query)
+        print(reformulated_query["message"])
         # The search the information in our database
         context = database_agent.look_for_context(reformulated_query["message"])
         # add conversation
         loc_conversation = data_dict['conversation'] + [user_message(user_query), agent_message(context)]
         # update the data_dict
-        microscope_session_object.update_data_dict(user_query=user_query, context=context,
+        microscope_session_object.update_data_dict(user_query=reformulated_query["message"], context=context,
                                                    conversation=loc_conversation)
+        # Get Properties of the microscope
+        microscope_properties_response = microscope_status.get_properties()
+        # update microscope
+        loc_conversation = data_dict['conversation'] + [
+            agent_message("Retrieved all the properties from the microscope")]
+        microscope_session_object.update_data_dict(microscope_properties=microscope_properties_response,
+                                                   conversation=loc_conversation)
+        # Get current settings
+        microscope_status_response = microscope_status.get_current_status()
+        # update microscope
+        loc_conversation = data_dict['conversation'] + [
+            agent_message("Retrieved the current system state properties")]
+        microscope_session_object.update_data_dict(microscope_status=microscope_status_response,
+                                                   conversation=loc_conversation)
+        # Get configuration settings
+        config_settings = microscope_status.get_available_configs()
+        # update conversation
+        loc_conversation = data_dict['conversation'] + [
+            agent_message("Retrieved the Configuration Groups with their Presets values!")
+        ]
+        microscope_session_object.update_data_dict(configuration_presets=config_settings, conversation=loc_conversation)
+
 
         return context
 
@@ -289,44 +312,44 @@ def build_server():
 
     # evaluate if 'analyze_error' will be needed
 
-    @mcp.tool(
-        name="save_result",
-        description="This tool is part of the feedback loop of the Microscope Toolset. After showing the result to the user, "
-                    "it will be asked to the user if the answer obtained was correct. We want to save into a database the "
-                    "correct and the wrong answer to help you to answer the future user's questions. After you successfully "
-                    "completed this, the user will likely ask you others questions or stop the server."
-    )
-    async def save_result(user_query: str = Field(description="The user's response, typically 'correct' or 'wrong'.")):
-        """
-        Calls the LoggerAgent to save the output of the Agents into a database.
-        Returns a json object with 'intent' (save) and a message.
-        """
-        # Get current data dict
-        data_dict = microscope_session_object.get_data_dict()
-        # evaluate user's answer
-        if user_query == "correct":
-            success = True
-        elif user_query == "wrong":
-            success = False
-        else:
-            loc_conversation = data_dict['conversation'] + [
-                agent_message("Please specify if your query was answered or not using 'correct' or 'wrong'!")]
-            microscope_session_object.update_data_dict(conversation=loc_conversation)
-            return {"intent": 'error',
-                    "message": "Please specify if your query was answered or not using 'correct' or 'wrong'!"}
-        # prepare summary of the code
-        summary_chat = logger_agent.prepare_summary(data_dict)
-        if summary_chat.intent == "summary":
-            data = {"prompt": summary_chat.message, "output": data_dict['code'], "feedback": success, "category": ""}
-            # add into the db
-            database_agent.add_log(data)
-        # update the microscope session object
-        microscope_session_object.reset_data_dict(old_output=data_dict['output'],
-                                                  old_microscope_status=data_dict['microscope_status'],
-                                                  old_microscope_properties=data_dict['microscope_properties'],
-                                                  old_microscope_presets=data_dict['configuration_presets'])
-
-        return {"intent": 'save', "message": "The previous result was added to the log database."}
+    # @mcp.tool(
+    #     name="save_result",
+    #     description="This tool is part of the feedback loop of the Microscope Toolset. After showing the result to the user, "
+    #                 "it will be asked to the user if the answer obtained was correct. We want to save into a database the "
+    #                 "correct and the wrong answer to help you to answer the future user's questions. After you successfully "
+    #                 "completed this, the user will likely ask you others questions or stop the server."
+    # )
+    # async def save_result(user_query: str = Field(description="The user's response, typically 'correct' or 'wrong'.")):
+    #     """
+    #     Calls the LoggerAgent to save the output of the Agents into a database.
+    #     Returns a json object with 'intent' (save) and a message.
+    #     """
+    #     # Get current data dict
+    #     data_dict = microscope_session_object.get_data_dict()
+    #     # evaluate user's answer
+    #     if user_query == "correct":
+    #         success = True
+    #     elif user_query == "wrong":
+    #         success = False
+    #     else:
+    #         loc_conversation = data_dict['conversation'] + [
+    #             agent_message("Please specify if your query was answered or not using 'correct' or 'wrong'!")]
+    #         microscope_session_object.update_data_dict(conversation=loc_conversation)
+    #         return {"intent": 'error',
+    #                 "message": "Please specify if your query was answered or not using 'correct' or 'wrong'!"}
+    #     # prepare summary of the code
+    #     summary_chat = logger_agent.prepare_summary(data_dict)
+    #     if summary_chat.intent == "summary":
+    #         data = {"prompt": summary_chat.message, "output": data_dict['code'], "feedback": success, "category": ""}
+    #         # add into the db
+    #         database_agent.add_log(data)
+    #     # update the microscope session object
+    #     microscope_session_object.reset_data_dict(old_output=data_dict['output'],
+    #                                               old_microscope_status=data_dict['microscope_status'],
+    #                                               old_microscope_properties=data_dict['microscope_properties'],
+    #                                               old_microscope_presets=data_dict['configuration_presets'])
+    #
+    #     return {"intent": 'save', "message": "The previous result was added to the log database."}
 
     @mcp.tool(
         name="show_result",
@@ -345,6 +368,20 @@ def build_server():
             # update conversation
             loc_conversation = data_dict['conversation'] + [agent_message(final_output)]
             microscope_session_object.update_data_dict(conversation=loc_conversation)
+            # prepare summary of the code
+            summary_chat = logger_agent.prepare_summary(data_dict)
+            if summary_chat.intent == "summary":
+                data = {"prompt": summary_chat.message, "output": data_dict['code'], "feedback": True,
+                        "category": ""}
+                # add into the db
+                database_agent.add_log(data)
+            # update the microscope session object
+            microscope_session_object.reset_data_dict(old_output=data_dict['output'],
+                                                      old_microscope_status=data_dict['microscope_status'],
+                                                      old_microscope_properties=data_dict['microscope_properties'],
+                                                      old_microscope_presets=data_dict['configuration_presets'])
+
+
             return final_output
         else:
             message = "The final output was not reach yet!"
@@ -352,59 +389,59 @@ def build_server():
             microscope_session_object.update_data_dict(conversation=loc_conversation)
             return message
 
-    @mcp.tool(
-        name="get_microscope_properties",
-        description="This tool is part of the feedback loop of the Microscope Toolset.It retrieves all the properties of all the devices present in the microscope. Only retrieve once all the properties of the microscope during the feedback loop."
-    )
-    async def get_microscope_properties():
-        """
-        Retrieve all the properties of the microscope
-        """
-        # Get current data dict
-        data_dict = microscope_session_object.get_data_dict()
+    # @mcp.tool(
+    #     name="get_microscope_properties",
+    #     description="This tool is part of the feedback loop of the Microscope Toolset.It retrieves all the properties of all the devices present in the microscope. Only retrieve once all the properties of the microscope during the feedback loop."
+    # )
+    # async def get_microscope_properties():
+    #     """
+    #     Retrieve all the properties of the microscope
+    #     """
+    #     # Get current data dict
+    #     data_dict = microscope_session_object.get_data_dict()
+    #
+    #     microscope_properties_response = microscope_status.get_properties()
+    #     # update microscope
+    #     loc_conversation = data_dict['conversation'] + [
+    #         agent_message("Retrieved all the properties from the microscope")]
+    #     microscope_session_object.update_data_dict(microscope_properties=microscope_properties_response,
+    #                                                conversation=loc_conversation)
+    #     return microscope_properties_response
 
-        microscope_properties_response = microscope_status.get_properties()
-        # update microscope
-        loc_conversation = data_dict['conversation'] + [
-            agent_message("Retrieved all the properties from the microscope")]
-        microscope_session_object.update_data_dict(microscope_status=microscope_properties_response,
-                                                   conversation=loc_conversation)
-        return microscope_properties_response
+    # @mcp.tool(
+    #     name="get_currently_microscope_status",
+    #     description="This tool is part of the feedback loop of the Microscope Toolset.It retrieves the system state properties currently selected of the microscope."
+    # )
+    # async def get_currently_microscope_status():
+    #     """
+    #     Retrieve the current settings of the microscope
+    #     """
+    #     # Get current data dict
+    #     data_dict = microscope_session_object.get_data_dict()
+    #
+    #     microscope_status_response = microscope_status.get_current_status()
+    #     # update microscope
+    #     loc_conversation = data_dict['conversation'] + [
+    #         agent_message("Retrieved the current system state properties")]
+    #     microscope_session_object.update_data_dict(microscope_status=microscope_status_response,
+    #                                                conversation=loc_conversation)
+    #     return microscope_status_response
 
-    @mcp.tool(
-        name="get_currently_microscope_status",
-        description="This tool is part of the feedback loop of the Microscope Toolset.It retrieves the system state properties currently selected of the microscope."
-    )
-    async def get_currently_microscope_status():
-        """
-        Retrieve the current settings of the microscope
-        """
-        # Get current data dict
-        data_dict = microscope_session_object.get_data_dict()
-
-        microscope_status_response = microscope_status.get_current_status()
-        # update microscope
-        loc_conversation = data_dict['conversation'] + [
-            agent_message("Retrieved the current system state properties")]
-        microscope_session_object.update_data_dict(microscope_status=microscope_status_response,
-                                                   conversation=loc_conversation)
-        return microscope_status_response
-
-    @mcp.tool(
-        name="get_config_settings",
-        description="This tool is part of the feedback loop of the Microscope Toolset. It retrieves the Configuration Groups with the applied presets. Only retrieves once the Configuration Groups with their presets values."
-    )
-    async def get_config_settings():
-        # Get current data
-        data_dict = microscope_session_object.get_data_dict()
-
-        config_settings = microscope_status.get_available_configs()
-        # update conversation
-        loc_conversation = data_dict['conversation'] + [
-            agent_message("Retrieved the Configuration Groups with their Presets values!")
-        ]
-        microscope_session_object.update_data_dict(configuration_presets=config_settings, conversation=loc_conversation)
-        return config_settings
+    # @mcp.tool(
+    #     name="get_config_settings",
+    #     description="This tool is part of the feedback loop of the Microscope Toolset. It retrieves the Configuration Groups with the applied presets. Only retrieves once the Configuration Groups with their presets values."
+    # )
+    # async def get_config_settings():
+    #     # Get current data
+    #     data_dict = microscope_session_object.get_data_dict()
+    #
+    #     config_settings = microscope_status.get_available_configs()
+    #     # update conversation
+    #     loc_conversation = data_dict['conversation'] + [
+    #         agent_message("Retrieved the Configuration Groups with their Presets values!")
+    #     ]
+    #     microscope_session_object.update_data_dict(configuration_presets=config_settings, conversation=loc_conversation)
+    #     return config_settings
 
     return mcp
 

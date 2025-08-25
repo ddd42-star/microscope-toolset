@@ -21,9 +21,8 @@ markdown
 pyqt6
 chardet
 pgvector
-pytesseract
-poppler
 pdf2image
 elasticsearch
 tiktoken
 transformers
+torch

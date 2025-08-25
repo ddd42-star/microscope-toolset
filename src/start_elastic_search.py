@@ -11,7 +11,7 @@ def start_elastic_search():
     """
     user_information = get_user_information()
 
-    elasticsearch_home = user_information["elasticsearch_home"]
+    elasticsearch_home = user_information["elastic_search_path_home"]
 
     # build the path depending on the OS
     if os.name == 'nt':
@@ -24,16 +24,31 @@ def start_elastic_search():
 
     try:
         print("Starting elastic search...")
+        print(es_executable)
         # start the server
-        es_process = subprocess.Popen([es_executable], preexec_fn=os.setsid, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        if os.name == 'nt':
+            es_process = subprocess.Popen([es_executable, "-d", "-p", "pid"], shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        else:
+            es_process = subprocess.Popen([es_executable, "-d", "-p", "pid"],shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+
+        # Print the PID for debugging/management
+        print(f"Elasticsearch started with PID: {es_process.pid}")
+        with open("./tmp_es_pid.txt", "w") as f:
+            f.write(str(es_process.pid))
+
+        #print(es_process.stdout.read())
+        es_process.wait()
 
         # wait the server
         # not sure if is needed...if not just delete
-        time.sleep(20)
+        #time.sleep(100)
+        #return es_process.pid
 
     except FileNotFoundError:
-        return f"Error starting elasticsearch: {es_executable}"
+        print(f"Error starting elasticsearch: {es_executable}")
+        #return None
 
     except Exception as e:
-        return f"Error starting elasticsearch: {e}"
-
+        print(f"Error starting elasticsearch: {e}")
+        #return None
