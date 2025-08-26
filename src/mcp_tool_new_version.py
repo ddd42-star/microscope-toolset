@@ -125,7 +125,10 @@ def build_server():
                     "the information contained in the database that are the most relevant to the user main question. "
                     "It first reformulate the user query, then it use it in an hybrid search where a BM25 a KNN search"
                     "is performed. Finally, a rerank of the result is done using a cross-encoder and the top relevant "
-                    "information are obtained."
+                    "information are obtained. In addition you get a dictionary containing the information about the"
+                    "status of the microscope like all the properties of the microscope, the current values selected"
+                    "from the properties of the microscope and the configuration groups provided in the configuration"
+                    "file."
                     "You always call first this tool at the start of the feedback."
     )
     async def retrieve_db_context(
@@ -151,26 +154,23 @@ def build_server():
                                                    conversation=loc_conversation)
         # Get Properties of the microscope
         microscope_properties_response = microscope_status.get_properties()
-        # update microscope
-        loc_conversation = data_dict['conversation'] + [
-            agent_message("Retrieved all the properties from the microscope")]
-        microscope_session_object.update_data_dict(microscope_properties=microscope_properties_response,
-                                                   conversation=loc_conversation)
         # Get current settings
         microscope_status_response = microscope_status.get_current_status()
-        # update microscope
-        loc_conversation = data_dict['conversation'] + [
-            agent_message("Retrieved the current system state properties")]
-        microscope_session_object.update_data_dict(microscope_status=microscope_status_response,
-                                                   conversation=loc_conversation)
         # Get configuration settings
         config_settings = microscope_status.get_available_configs()
-        # update conversation
-        loc_conversation = data_dict['conversation'] + [
+        microscope_status_settings = {
+            "properties": microscope_properties_response,
+            "current_status": microscope_status_response,
+            "configuration_settings": config_settings
+        }
+        # update microscope status
+        log_conversation = data_dict['conversation'] + [
+            agent_message("Retrieved all the properties from the microscope."),
+            agent_message("Retrieved the current system state properties."),
             agent_message("Retrieved the Configuration Groups with their Presets values!")
         ]
-        microscope_session_object.update_data_dict(configuration_presets=config_settings, conversation=loc_conversation)
-
+        microscope_session_object.update_data_dict(microscope_status=microscope_status_settings,
+                                                   conversation=log_conversation)
 
         return context
 
@@ -377,9 +377,7 @@ def build_server():
                 database_agent.add_log(data)
             # update the microscope session object
             microscope_session_object.reset_data_dict(old_output=data_dict['output'],
-                                                      old_microscope_status=data_dict['microscope_status'],
-                                                      old_microscope_properties=data_dict['microscope_properties'],
-                                                      old_microscope_presets=data_dict['configuration_presets'])
+                                                      old_microscope_status=data_dict['microscope_status'])
 
 
             return final_output

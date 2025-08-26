@@ -13,8 +13,6 @@ class MicroscopeSession:
         "context": "",
         "extra_infos": "",
         "microscope_status": {},
-        "microscope_properties": {},
-        "configuration_presets": {},
         "previous_outputs": "",
         "main_agent_strategy": None,
         "code": None,
@@ -24,15 +22,13 @@ class MicroscopeSession:
     }
 
 
-    def reset_data_dict(self, old_output, old_microscope_status, old_microscope_properties, old_microscope_presets) -> None:
+    def reset_data_dict(self, old_output, old_microscope_status) -> None:
         self.data_dict = {
         "user_query": "",
         "conversation": [],
         "context": "",
         "extra_infos": "",
         "microscope_status": old_microscope_status,
-        "microscope_properties": old_microscope_properties,
-        "configuration_presets": old_microscope_presets,
         "previous_outputs": old_output,
         "main_agent_strategy": None,
         "code": None,
