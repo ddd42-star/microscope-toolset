@@ -36,3 +36,7 @@ class RephraseOutput(BaseModel):
 class ExtractKeywordOutput(BaseModel):
     intent: str
     message: str
+
+class NoCodingAgentOutput(BaseModel):
+    intent: str
+    message: str

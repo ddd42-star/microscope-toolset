@@ -1,5 +1,6 @@
+import json
 from openai import OpenAI
-from prompts.strategyAgentPrompt import STRATEGY
+from prompts.strategyAgentPrompt import STRATEGY, STRATEGY_NEW
 from agentsNormal.structuredOutput import StrategyAgentOutput
 
 class StrategyAgent:
@@ -18,31 +19,44 @@ class StrategyAgent:
             previous_outputs=context["previous_outputs"] or "no information",
             extra_infos=context["extra_infos"] or "no information"
         )
+        prompt = STRATEGY_NEW.format(relevant_context=json.dumps(context))
+
         history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context[
             "conversation"]
-        response = self.client_openai.beta.chat.completions.parse(
+        # response = self.client_openai.beta.chat.completions.parse(
+        #     model="gpt-4.1-mini",
+        #     messages=history,
+        #     response_format=StrategyAgentOutput
+        # )
+        response = self.client_openai.responses.parse(
             model="gpt-4.1-mini",
-            messages=history,
-            response_format=StrategyAgentOutput
+            input=history,
+            text_format=StrategyAgentOutput
         )
 
-        return self.parse_agent_response(response.choices[0].message.content)  # it should be a local dictonary
+        parsed_response = json.loads(response.output_text)
 
-    def parse_agent_response(self, response: str):
-        # try:
-        #     return ast.literal_eval(response)
-        # except (ValueError, SyntaxError):
-        #     pass
-        # verify if the LLM managed to output
-        # TODO: add refusal check in the output
-        # print(response)
-        output_raw = StrategyAgentOutput.model_validate_json(response)
+        print(parsed_response)
 
-        # print(output_raw)
-        # print(output_raw.intent)
-        # print(output_raw.message)
+        return parsed_response
 
-        return output_raw
+        #return self.parse_agent_response(response.choices[0].message.content)  # it should be a local dictonary
+
+    # def parse_agent_response(self, response: str):
+    #     # try:
+    #     #     return ast.literal_eval(response)
+    #     # except (ValueError, SyntaxError):
+    #     #     pass
+    #     # verify if the LLM managed to output
+    #     # TODO: add refusal check in the output
+    #     # print(response)
+    #     output_raw = StrategyAgentOutput.model_validate_json(response)
+    #
+    #     # print(output_raw)
+    #     # print(output_raw.intent)
+    #     # print(output_raw.message)
+    #
+    #     return output_raw
 
     def revise_strategy(self, context):
 
@@ -53,15 +67,26 @@ class StrategyAgent:
             previous_outputs=context["previous_outputs"] or "no information",
             extra_infos=context["extra_infos"] or "no information"
         )
+        prompt = STRATEGY_NEW.format(relevant_context=json.dumps(context))
+
         history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context[
             "conversation"]
-        response = self.client_openai.beta.chat.completions.parse(
+        # response = self.client_openai.beta.chat.completions.parse(
+        #     model="gpt-4.1-mini",
+        #     messages=history,
+        #     response_format=StrategyAgentOutput
+        # )
+        response = self.client_openai.responses.parse(
             model="gpt-4.1-mini",
-            messages=history,
-            response_format=StrategyAgentOutput
+            input=history,
+            text_format=StrategyAgentOutput
         )
+        parsed_response = json.loads(response.output_text)
+        print(parsed_response)
 
-        return self.parse_agent_response(response.choices[0].message.content)  # it should be a local dictonary
+        return parsed_response
+
+        #return self.parse_agent_response(response.choices[0].message.content)  # it should be a local dictonary
 
 
 

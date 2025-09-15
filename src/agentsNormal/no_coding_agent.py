@@ -1,5 +1,8 @@
+import json
+
 from openai import OpenAI
 from prompts.mainAgentPrompt import ANSWER_PROMPT
+from agentsNormal.structuredOutput import NoCodingAgentOutput
 
 
 class NoCodingAgent:
@@ -8,11 +11,9 @@ class NoCodingAgent:
         self.client_openai = client_openai
 
     def no_coding_answer(self, context):
-        prompt = ANSWER_PROMPT
+        prompt = ANSWER_PROMPT.format(additional_data=context)
 
-        response = self.client_openai.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
+        history = [
                 {
                     "role": "system",
                     "content": prompt
@@ -22,6 +23,27 @@ class NoCodingAgent:
                     "content": context["user_query"]
                 }
             ]
+        # response = self.client_openai.chat.completions.create(
+        #     model="gpt-4.1-mini",
+        #     messages=[
+        #         {
+        #             "role": "system",
+        #             "content": prompt
+        #         },
+        #         {
+        #             "role": "user",
+        #             "content": context["user_query"]
+        #         }
+        #     ]
+        # )
+        response = self.client_openai.responses.parse(
+            model="gpt-4.1-mini",
+            input=history,
+            text_format=NoCodingAgentOutput
         )
+
+        parsed_response = json.loads(response.output_text)
+
+        return parsed_response
 
         return response.choices[0].message.content

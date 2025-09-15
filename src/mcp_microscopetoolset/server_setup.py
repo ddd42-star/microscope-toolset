@@ -1,124 +1,28 @@
-import os
-import sys
-
-import chromadb
 from mcp.server.fastmcp import FastMCP
-
-from openai import OpenAI
 from pydantic import Field
-
-from agentsNormal.database_agent import DatabaseAgent
-from agentsNormal.error_agent import ErrorAgent
-from agentsNormal.logger_agent import LoggerAgent
-from agentsNormal.no_coding_agent import NoCodingAgent
-from agentsNormal.software_agent import SoftwareEngeneeringAgent
-from agentsNormal.strategy_agent import StrategyAgent
-from agentsNormal.classify_user_intent import ClassifyAgent
+from mcp_microscopetoolset.utils import agent_message, user_message
 from local.prepare_code import prepare_code
-from mcp_microscopetoolset.utils import get_user_information, user_message, agent_message, logger_database_exists
-from local.execute import Execute
-
-from mcp_microscopetoolset.microscope_session import MicroscopeSession
-from microscope.microscope_status import MicroscopeStatus
-from postqrl.connection import DBConnection
-from postqrl.log_db import LoggerDB
-from databases.elasticsearch_db import ElasticSearchDB
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 
-def build_server():
-    # Create the mcp server
+def create_mcp_server(
+        microscope_session_object,
+        database_agent,
+        microscope_status,
+        classify_agent,
+        no_coding_agent,
+        strategy_agent,
+        software_agent,
+        executor,
+        logger_agent
+):
     mcp = FastMCP(
         name="Microscope Toolset",
         host="127.0.0.1",
         port=5500,
         streamable_http_path="/mcp"
     )
-    # description="This server allows the user to controls a selected microscope via LLM.",
-    # version="1.0.0",
 
-    # Initialize the microscope session object
-    microscope_session_object = MicroscopeSession()
-    # create the data_dict that will contain the feedback loop information
-    # data_dict = microscope_session_object.get_data_dict()
-
-    # Get the information for the user
-    system_user_information = get_user_information()
-
-    # start executor and tracking of the microscope status
-    executor = Execute(system_user_information['cfg_file'])
-    microscope_status = MicroscopeStatus(executor=executor)
-
-    # initialize Logger database and his connection
-    db_connection = DBConnection()
-    db_log = LoggerDB(db_connection)
-
-    # check if the logger database already exist
-    if not logger_database_exists(db_log, system_user_information['log_collection']):
-        # it doesn't exist. We create a new one
-        db_log.create_collection(system_user_information['log_collection'])
-        print(f"A new collection named {system_user_information['log_collection']} has been created.")
-
-    # initialize vector database
-    # chroma_client = chromadb.PersistentClient(path=system_user_information['database_path'])
-    # client_collection = chroma_client.get_collection(name=system_user_information['collection_name'])
-    # initialize elasticsearch
-    es_client = ElasticSearchDB()
-    try_connection = 0
-
-    while try_connection < 10:
-        print("Trying connection...")
-        # try to establish the connection
-        if es_client.is_connected():
-            # the client is connected successfully
-            break
-        elif not es_client.is_connected() and try_connection < 10:
-            sys.exit("Could not connect to elasticsearch. Please make sure to start the server before starting")
-        else:
-            # not connect
-            try_connection += 1
-            # try new client
-            es_client = ElasticSearchDB()
-
-    # get relevant information for the db
-    pdf_publication = system_user_information['pdf_collection_name']
-    micromanager_collection = system_user_information['micromanager_devices_collection']
-    api_collection = system_user_information['collection_name']
-
-    # Load the cross-encoder for re-ranking
-    # Load model directly
-    model_name = "cross-encoder/ms-marco-MiniLM-L6-v2"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name)
-
-    # initialize LLM API
-    client_openai = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-
-    # initialize different Agents
-    # database_agent = DatabaseAgent(client_openai=client_openai, chroma_client=chroma_client,
-    #                                client_collection=client_collection, db_log=db_log,
-    #                                db_log_collection_name=system_user_information['log_collection'])
-    database_agent = DatabaseAgent(client_openai=client_openai, es_client=es_client, pdf_collection=pdf_publication,
-                                   micromanager_collection=micromanager_collection, api_collection=api_collection,
-                                   db_log=db_log, db_log_collection_name=system_user_information['log_collection'],
-                                   tokenizer=tokenizer, model=model)
-
-    software_agent = SoftwareEngeneeringAgent(client_openai=client_openai)
-
-    # error_agent = ErrorAgent(client_openai=client_openai)
-
-    strategy_agent = StrategyAgent(client_openai=client_openai)
-
-    no_coding_agent = NoCodingAgent(client_openai=client_openai)
-
-    logger_agent = LoggerAgent(client_openai=client_openai)
-
-    classify_agent = ClassifyAgent(client_openai=client_openai)
-
-    # loads the configuration files from the microscope
-    # load_config_file(config_file=system_user_information['cfg_file'], mmc=mmc)  # maybe change later
-
-    # define different tools
+    # define tools
     @mcp.tool(
         name="retrieve_db_context",
         description="This is the tool starts the feedback loop of the Microscope Toolset server. This tool retrieves "
@@ -131,7 +35,7 @@ def build_server():
                     "file."
                     "You always call first this tool at the start of the feedback."
     )
-    async def retrieve_db_context(
+    def retrieve_db_context(
             user_query: str = Field(description="The user's starting query of the feedback loop.")):
         """
         Uses the DatabaseAgent to retrieve the context for answering the user's query.Uses the DatabaseAgent to retrieve the context for answering the user's query.
@@ -184,7 +88,7 @@ def build_server():
                     "- no code needed: From the information retrieved from the vector database and the user's main question, you are able to understand that it doesn't need any sort of coding script for answering the user's main question. You can call the No Coding Agent."
                     "This tool normally is always the second tool to call in the feedback loop."
     )
-    async def classify_user_intent():
+    def classify_user_intent():
         """
         Call the internal intent classification logic.
         Returns a dictionary with 'intent' and 'message' (if clarification is needed).
@@ -204,7 +108,7 @@ def build_server():
                     "user query that does not require code generation. This tool will be called if the classify agent tool "
                     "classify the user's query as a 'no code needed'."
     )
-    async def answer_no_coding_query():
+    def answer_no_coding_query():
         """Uses the NoCodingAgent to generate an answer for non-code-related queries."""
         # Get data dict of the session
         data_dict = microscope_session_object.get_data_dict()
@@ -228,7 +132,7 @@ def build_server():
                     "classify the user's query as a 'propose strategy'. The user then will decide if the strategy proposed is good enough for answering the question. If the user doesn't agree"
                     "with the strategy proposed, the user will add the missing information."
     )
-    async def generate_strategy(additional_information: str = None):
+    def generate_strategy(additional_information: str = None):
         """
         Calls the StrategyAgent to generate a strategy.
         Return a json object with 'intent' (strategy/need_information) and 'message'
@@ -248,7 +152,8 @@ def build_server():
                                                             agent_message(strategy["message"])]
 
         # update main strategy
-        microscope_session_object.update_data_dict(main_agent_strategy=strategy["message"], conversation=loc_conversation)
+        microscope_session_object.update_data_dict(main_agent_strategy=strategy["message"],
+                                                   conversation=loc_conversation)
 
         return strategy["message"]
 
@@ -258,7 +163,7 @@ def build_server():
                     "the current strategy and context. In addition, you could receive also the error produced by the code "
                     "you wrote. If this is the case you will need to fix your implementation."
     )
-    async def generate_code():
+    def generate_code():
         """
         Calls the SoftwareAgent to generate code.
         Return a json object with 'intent' (code) and 'message'
@@ -283,7 +188,7 @@ def build_server():
                     "Please always ask if the user query was answered or not (typically 'correct' or 'wrong') and save it "
                     "in the logger database"
     )
-    async def execute_python_code() -> dict:
+    def execute_python_code() -> dict:
         """
         Prepares and executes Python code using the Execute agent.
         Returns a dictionary with 'output' (the execution result) and 'error' (if any).
@@ -356,7 +261,7 @@ def build_server():
         description="This tool is part of the feedback loop of the Microscope Toolset. Once the parameter 'is_final_output' "
                     "is changed to True, you need to show the user the final output."
     )
-    async def show_result():
+    def show_result():
         """
         Shows the user the final output
         """
@@ -378,7 +283,6 @@ def build_server():
             # update the microscope session object
             microscope_session_object.reset_data_dict(old_output=data_dict['output'],
                                                       old_microscope_status=data_dict['microscope_status'])
-
 
             return final_output
         else:
@@ -444,11 +348,6 @@ def build_server():
     return mcp
 
 
-if __name__ == "__main__":
-    # start sever
-    try:
-        mcp = build_server()
-        mcp.run(transport="streamable-http")
+def run_server(mcp: FastMCP):
 
-    except KeyboardInterrupt:
-        print("server interrupted by the user")
+    mcp.run(transport="streamable-http")

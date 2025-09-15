@@ -3,14 +3,16 @@ import signal
 
 from PyQt6.QtCore import Qt, QObject, pyqtSlot, QThread, pyqtSignal
 from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QPushButton, QLabel
+from mcp_microscopetoolset.server_setup import run_server
+from mcp.server.fastmcp import FastMCP
 
 
 class MCPWorker(QObject):
     start_thread = pyqtSignal()
     stop_thread = pyqtSignal()
-    def __init__(self, run_server):
+    def __init__(self, mcp_worker_server_object: FastMCP):
         super().__init__()
-        self.run_server = run_server
+        self._mcp_worker_server_object = mcp_worker_server_object
 
     @pyqtSlot()
     def run_mcp_server(self):
@@ -19,7 +21,8 @@ class MCPWorker(QObject):
         """
         try:
             print(os.getpid())
-            self.run_server.run(transport="streamable-http")
+            #self.run_server.run(transport="streamable-http")
+            run_server(self._mcp_worker_server_object)
         except Exception as e:
             print(f"Error:{e}")
         finally:
@@ -35,11 +38,11 @@ class MCPWorker(QObject):
 
 class MCPServer(QMainWindow):
 
-    def __init__(self, run_server):
+    def __init__(self, mcp_server_object: FastMCP):
         super().__init__()
         self.mmc = None
         self.viewer = None
-        self.run_server = run_server
+        self._mcp_server_object = mcp_server_object
 
         # ---GUI----
         self.setObjectName("MCPServer")
@@ -83,7 +86,7 @@ class MCPServer(QMainWindow):
 
         # QThread
         self.mcp_thread = QThread()
-        self.mcp_worker = MCPWorker(run_server=self.run_server)
+        self.mcp_worker = MCPWorker(mcp_worker_server_object=self._mcp_server_object)
 
         self.mcp_worker.moveToThread(self.mcp_thread)
 
