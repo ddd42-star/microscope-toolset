@@ -3,7 +3,7 @@ from .base_agent import BaseAgent, OpenAI
 import json
 from .structuredOutput import ClassificationAgentOutput, NoCodingAgentOutput, SoftwareAgentOutput, StrategyAgentOutput,RephraseOutput, ExtractKeywordOutput
 from prompts.mainAgentPrompt import CLASSIFY_INTENT_NEW, ANSWER_PROMPT
-from prompts.softwareEngineeringPrompt import SOFTWARE_AGENT, SOFTWARE_AGENT_RETRY, SOFTWARE_AGENT_NEW, SOFTWARE_AGENT_RETRY_NEW
+from prompts.softwareEngineeringPrompt import SOFTWARE_AGENT_NEW, SOFTWARE_AGENT_RETRY_NEW
 from databases.elasticsearch_db import ElasticSearchDB
 from postqrl.log_db import LoggerDB
 import torch
@@ -19,7 +19,7 @@ class ClassifyAgent(BaseAgent):
         prompt = CLASSIFY_INTENT_NEW.format(relevant_inputs=json.dumps(context))
 
         history = [{"role": "system", "content": prompt},
-                   {"role": "user", "content": context['user_query']}] + context['conversation']
+                   {"role": "user", "content": context['user_query']}] #+ context['conversation']
         error_description = "Failed to classify intent"
 
         return self.call_agent(model="gpt-4.1-mini",input_user=history, error_string=error_description, output_format=ClassificationAgentOutput)
@@ -52,11 +52,11 @@ class NoCodingAgent(BaseAgent):
 class SoftwareEngeneeringAgent(BaseAgent):
 
     def generate_code(self, context):
-
+        print(context)
         prompt = SOFTWARE_AGENT_NEW.format(relevant_context=json.dumps(context))
 
-        history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context[
-            "conversation"]
+        history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] #+ context[
+            #"conversation"]
 
         error_description = "Failed to generate code"
 
@@ -76,11 +76,13 @@ class SoftwareEngeneeringAgent(BaseAgent):
 class StrategyAgent(BaseAgent):
 
     def generate_strategy(self, context):
-
+        #print(context)
         prompt = STRATEGY_NEW.format(relevant_context=json.dumps(context))
+        print(prompt)
 
-        history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] + context[
-            "conversation"]
+        history = [{"role": "system", "content": prompt}, {"role": "user", "content": context["user_query"]}] #+ context[
+            #"conversation"]
+        print(history)
         error_description = "Failed to generate strategy"
 
         return self.call_agent(model="gpt-4.1-mini",input_user=history, error_string=error_description, output_format=StrategyAgentOutput)
@@ -225,6 +227,176 @@ class DatabaseAgent(BaseAgent):
             return joined_chunks
         except Exception as e:
             return [f"Error getting relevant information from databases: {str(e)}"]
+
+    def _retrieve_api_information(self, reformulated_query: str) -> list | str:
+        try:
+            # embed the user query
+            query_embedded = self._embeds_query(query=reformulated_query)
+
+            # search into the db of Elasticsearch
+            # 1. search into the api collection
+            api_docs_result = self.es_client.hybrid_search(index_name=self.api_collection, query=reformulated_query,
+                                                           query_vector=query_embedded,
+                                                           keyword_to_search_for_bm25="contextualize_text")
+
+            # now extract list of object for reranking
+            list_api_docs_result = [{
+                "type": result["_source"]["type"],
+                "name": result["_source"]["name"],
+                "signature": result["_source"]["signature"],
+                "description": result["_source"]["description"],
+                "filename": result["_source"]["filename"],
+                "contextualize_text": result["_source"]["contextualize_text"],
+                "score": result["_score"]
+            }
+                for result in api_docs_result["hits"]["hits"]]
+
+            # sort list of results
+            sorted_list_api_docs_result = sorted(list_api_docs_result, key=lambda x: x["score"], reverse=True)
+
+            # merge all result into a single list
+            merged_list = []
+            # iterate through the first list
+            merged_list = self._rerank_and_add_to_list(merged_list=merged_list,
+                                                       partial_result_list=sorted_list_api_docs_result,
+                                                       keyword_field="contextualize_text", query=reformulated_query)
+            # sort the list descending, from higher score through lower
+            sorted_merged_list = sorted(merged_list, key=lambda x: x["score"], reverse=True)
+
+
+            return sorted_merged_list[0:24]
+
+        except Exception as e:
+            return f"Error retrieving information from databases: {str(e)}"
+
+    def _retrieve_api_micromanager_information(self, reformulated_query: str) -> list | str:
+        try:
+            # embed the user query
+            query_embedded = self._embeds_query(query=reformulated_query)
+
+            # 3. search into micromanager devices
+            micromanager_docs_results = self.es_client.hybrid_search(index_name=self.micromanager_collection,
+                                                                     query=reformulated_query,
+                                                                     query_vector=query_embedded,
+                                                                     keyword_to_search_for_bm25="content")
+
+            list_micromanager_docs_results = [{
+                "doc_id": result["_source"]["doc_id"],
+                "content": result["_source"]["content"],
+                "chunk_id": result["_source"]["chunk_id"],
+                "filename": result["_source"]["filename"],
+                "score": result["_score"]
+            }
+                for result in micromanager_docs_results["hits"]["hits"]
+            ]
+
+            # sort list of results
+            sorted_list_micromanager_docs_results = sorted(list_micromanager_docs_results, key=lambda x: x["score"],
+                                                    reverse=True)
+
+            merged_list = []
+
+            # iterate through the last list
+            merged_list = self._rerank_and_add_to_list(merged_list=merged_list,
+                                                       partial_result_list=sorted_list_micromanager_docs_results,
+                                                       keyword_field="content", query=reformulated_query)
+
+            sorted_merged_list = sorted(merged_list, key=lambda x: x["score"], reverse=True)
+
+            return sorted_merged_list[0:24]
+
+        except Exception as e:
+            return f"Error retrieving information from databases: {str(e)}"
+
+    def _retrieve_pdfs_information(self, reformulated_query: str) -> list | str:
+        try:
+            # embed the user query
+            query_embedded = self._embeds_query(query=reformulated_query)
+
+            # 2. search into pdf collection
+            pdf_docs_results = self.es_client.hybrid_search(index_name=self.pdf_collection, query=reformulated_query,
+                                                            query_vector=query_embedded,
+                                                            keyword_to_search_for_bm25="content")
+
+            list_pdf_docs_results = [{
+                "content": result["_source"]["content"],
+                "chunk_id": result["_source"]["chunk_id"],
+                "filename": result["_source"]["filename"],
+                "score": result["_score"]
+            }
+                for result in pdf_docs_results["hits"]["hits"]
+            ]
+
+            # sort list of results
+            sorted_list_pdf_docs_results = sorted(list_pdf_docs_results, key=lambda x: x["score"], reverse=True)
+
+            merged_list = []
+
+            # iterate through the second list
+            merged_list = self._rerank_and_add_to_list(merged_list=merged_list,
+                                                       partial_result_list=sorted_list_pdf_docs_results,
+                                                       keyword_field="content", query=reformulated_query)
+
+            sorted_merged_list = sorted(merged_list, key=lambda x: x["score"], reverse=True)
+
+            return sorted_merged_list[0:24]
+
+        except Exception as e:
+            return f"Error retrieving information from databases: {str(e)}"
+
+    def api_pymmcore_context(self, query: str, reformulated_query: str) -> dict[str, ...]:
+
+        # retrieve relevant information from the api
+        list_api_docs_result = self._retrieve_api_information(reformulated_query)
+
+        if list_api_docs_result is None or len(list_api_docs_result) == 0:
+            return {
+                "user_query": query,
+                "reformulated_query": reformulated_query,
+                "context": "No relevant information were retrieved"
+            }
+
+        return {
+            "user_query": query,
+            "reformulated_query": reformulated_query,
+            "context": list_api_docs_result
+        }
+
+    def devices_micromanager_context(self, query: str, reformulated_query: str) -> dict[str, ...]:
+
+        # retrieve relevant information from the micromanager device database
+        list_devices_micromanager_result = self._retrieve_api_micromanager_information(reformulated_query)
+
+        if list_devices_micromanager_result is None or len(list_devices_micromanager_result) == 0:
+            return {
+                "user_query": query,
+                "reformulated_query": reformulated_query,
+                "context": "No relevant information were retrieved"
+            }
+
+        return {
+            "user_query": query,
+            "reformulated_query": reformulated_query,
+            "context": list_devices_micromanager_result
+        }
+
+    def pdf_publication_context(self, query: str, reformulated_query: str) -> dict[str, ...]:
+
+        # retrieve relevant information from the publication of scientific articles
+        list_pdfs_result = self._retrieve_pdfs_information(reformulated_query)
+
+        if list_pdfs_result is None or len(list_pdfs_result) == 0:
+            return {
+                "user_query": query,
+                "reformulated_query": reformulated_query,
+                "context": "No relevant information were retrieved"
+            }
+
+        return {
+            "user_query": query,
+            "reformulated_query": reformulated_query,
+            "context": list_pdfs_result
+        }
 
     def look_for_context(self, query: str) -> str:
 

@@ -24,13 +24,9 @@ if __name__ == "__main__":
         print("start mcp server")
         #mcp_run_server = build_server()
         agents_initialization = initialize_agents()
-        mcp_run_server = create_mcp_server(microscope_session_object=agents_initialization["microscope_session_object"],
-                                           database_agent=agents_initialization["database_agent"],
+        mcp_run_server = create_mcp_server(database_agent=agents_initialization["database_agent"],
                                            microscope_status=agents_initialization["microscope_status"],
-                                           classify_agent=agents_initialization["classify_agent"],
                                            no_coding_agent=agents_initialization["no_coding_agent"],
-                                           strategy_agent=agents_initialization["strategy_agent"],
-                                           software_agent=agents_initialization["software_agent"],
                                            executor=agents_initialization["executor"],
                                            logger_agent=agents_initialization["logger_agent"]
                                            )

@@ -39,13 +39,13 @@ def initialize_agents():
     es_client = ElasticSearchDB()
     try_connection = 0
 
-    while try_connection < 10:
+    while try_connection < 100:
         print("Trying connection...")
         # try to establish the connection
         if es_client.is_connected():
             # the client is connected successfully
             break
-        elif not es_client.is_connected() and try_connection < 10:
+        elif not es_client.is_connected() and try_connection < 100:
             sys.exit("Could not connect to elasticsearch. Please make sure to start the server before starting")
         else:
             # not connect
