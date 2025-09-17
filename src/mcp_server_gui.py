@@ -36,7 +36,7 @@ class MCPWorker(QObject):
         os.kill(os.getpid(), signal.SIGINT)
 
 
-class MCPServer(QMainWindow):
+class MCPServer(QWidget):
 
     def __init__(self, mcp_server_object: FastMCP):
         super().__init__()
@@ -50,10 +50,11 @@ class MCPServer(QMainWindow):
 
         self.setWindowTitle("MCP Server - Microscope Toolset")
 
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
+        #central_widget = QWidget()
+        #self.setCentralWidget(central_widget)
 
-        main_layout = QVBoxLayout(central_widget)
+        #main_layout = QVBoxLayout(central_widget)
+        main_layout = QVBoxLayout(self)
 
         self.start_button = QPushButton()
         self.start_button.setText("Start Server")
@@ -107,3 +108,8 @@ class MCPServer(QMainWindow):
         self.mcp_worker.stop_mcp_server()
         self.start_button.setEnabled(True)
         self.mcp_thread.quit()
+
+    def closeEvent(self, event):
+        self.hide()
+        event.ignore()
+        print("I was run")

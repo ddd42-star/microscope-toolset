@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "microscope-toolset"
+version = "0.1.0"
+description = "Microscope Toolset for napari"
+authors = [{ name = "Dario Bassi", email = "your@email.com" }]
+dependencies = [
+    "napari-plugin-engine",
+    "pymmcore-plus"
+    # add other dependencies here
+]
+
+[project.entry-points."napari.plugin"]
+microscope-toolset = "microscope_toolset.src.plugin_napari"

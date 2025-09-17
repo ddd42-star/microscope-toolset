@@ -12,6 +12,7 @@ from mcp_microscopetoolset.utils import logger_database_exists, get_user_informa
 from microscope.microscope_status import MicroscopeStatus
 from postqrl.connection import DBConnection
 from postqrl.log_db import LoggerDB
+import time
 
 
 def initialize_agents():
@@ -39,19 +40,20 @@ def initialize_agents():
     es_client = ElasticSearchDB()
     try_connection = 0
 
-    while try_connection < 100:
-        print("Trying connection...")
-        # try to establish the connection
+    max_retries = 100
+    retry_delay = 1  # seconds
+
+    for attempt in range(max_retries):
+        print(f"Trying connection to Elasticsearch (attempt {attempt + 1}/{max_retries})...")
         if es_client.is_connected():
-            # the client is connected successfully
+            print("Connected to Elasticsearch!")
             break
-        elif not es_client.is_connected() and try_connection < 100:
-            sys.exit("Could not connect to elasticsearch. Please make sure to start the server before starting")
-        else:
-            # not connect
-            try_connection += 1
-            # try new client
-            es_client = ElasticSearchDB()
+        time.sleep(retry_delay)
+        retry_delay *= 2
+        es_client = ElasticSearchDB()
+    else:
+        raise RuntimeError(
+            "Could not connect to Elasticsearch after 100 attempts. Please make sure the server is running.")
 
     # get relevant information for the db
     pdf_publication = system_user_information['pdf_collection_name']
