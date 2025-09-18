@@ -79,6 +79,10 @@ class MCPServer(QWidget):
         main_layout.addWidget(self.start_button,alignment=Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.stop_button,alignment=Qt.AlignmentFlag.AlignCenter)
 
+        # Choose between Microscope with Configuration File or Virtual Microscope
+        # * Microscope from Configuration File -> Start the Server/Close application
+        # * Virtual Microscope -> start/stop
+
         # connect signals
         self.start_button.clicked.connect(self.click_start_server)
         self.stop_button.clicked.connect(self.click_stop_server)

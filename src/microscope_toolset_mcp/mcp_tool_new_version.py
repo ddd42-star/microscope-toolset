@@ -14,9 +14,9 @@ from agentsNormal.no_coding_agent import NoCodingAgent
 from agentsNormal.software_agent import SoftwareEngeneeringAgent
 from agentsNormal.strategy_agent import StrategyAgent
 from agentsNormal.classify_user_intent import ClassifyAgent
-from local.prepare_code import prepare_code
+from local_coding.prepare_code import prepare_code
 from mcp_microscopetoolset.utils import get_user_information, user_message, agent_message, logger_database_exists
-from local.execute import Execute
+from local_coding.execute import Execute
 
 from mcp_microscopetoolset.microscope_session import MicroscopeSession
 from microscope.microscope_status import MicroscopeStatus

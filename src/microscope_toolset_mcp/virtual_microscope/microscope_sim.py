@@ -354,7 +354,7 @@ class Cell:
                 # # Finally add glow layer on top
                 # surf.blit(self._glow_surf, (0, 0), special_flags=pygame.BLEND_ADD)
                 # Membrane channel: fill cell with membrane color, nucleus area with dark red
-                membrane_color = (255, 165, 0)  # Orange
+                membrane_color = (136, 8, 8)  # Blood Red
                 #nucleus_color = (120, 0, 0)  # Dark red
 
                 # Fill the whole cell
