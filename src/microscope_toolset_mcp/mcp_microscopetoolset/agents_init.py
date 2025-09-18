@@ -1,16 +1,16 @@
 import os
 from openai import OpenAI
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
-from agentsNormal.logger_agent import LoggerAgent
-from agentsNormal.classify_user_intent import ClassifyAgent
-from agentsNormal.specialized_agent import DatabaseAgent, SoftwareEngeneeringAgent, StrategyAgent, NoCodingAgent
-from databases.elasticsearch_db import ElasticSearchDB
-from local.execute import Execute
-from mcp_microscopetoolset.microscope_session import MicroscopeSession
-from mcp_microscopetoolset.utils import logger_database_exists, get_user_information
-from microscope.microscope_status import MicroscopeStatus
-from postqrl.connection import DBConnection
-from postqrl.log_db import LoggerDB
+from ..agentsNormal.logger_agent import LoggerAgent
+from ..agentsNormal.classify_user_intent import ClassifyAgent
+from ..agentsNormal.specialized_agent import DatabaseAgent, SoftwareEngeneeringAgent, StrategyAgent, NoCodingAgent
+from ..databases.elasticsearch_db import ElasticSearchDB
+from ..local.execute import Execute
+from ..mcp_microscopetoolset.microscope_session import MicroscopeSession
+from ..mcp_microscopetoolset.utils import logger_database_exists, get_user_information
+from ..microscope.microscope_status import MicroscopeStatus
+from ..postqrl.connection import DBConnection
+from ..postqrl.log_db import LoggerDB
 import time
 
 

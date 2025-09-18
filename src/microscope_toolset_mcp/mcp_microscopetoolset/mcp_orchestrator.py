@@ -2,9 +2,9 @@ import uuid
 from mcp.server.fastmcp import FastMCP
 from openai import OpenAI
 from pydantic import Field
-from mcp_microscopetoolset.utils import agent_message, user_message, tool_message, _add_to_conversation, mcp_to_openai
-from mcp_microscopetoolset.mcp_tool import mcp_server as internal_mcp_tool
-from mcp_microscopetoolset.mcp_tool import initialize_mcp_tool_agents
+from ..mcp_microscopetoolset.utils import agent_message, user_message, tool_message, _add_to_conversation, mcp_to_openai
+from ..mcp_microscopetoolset.mcp_tool import mcp_server as internal_mcp_tool
+from ..mcp_microscopetoolset.mcp_tool import initialize_mcp_tool_agents
 import json
 import copy
 

@@ -1,5 +1,5 @@
 import logging
-from postqrl.connection import DBConnection
+from ..postqrl.connection import DBConnection
 from pgvector.psycopg2 import register_vector
 
 logger = logging.getLogger(__name__)

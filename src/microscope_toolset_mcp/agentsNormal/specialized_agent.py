@@ -1,11 +1,11 @@
-from prompts.strategyAgentPrompt import STRATEGY_NEW
+from ..prompts.strategyAgentPrompt import STRATEGY_NEW
 from .base_agent import BaseAgent, OpenAI
 import json
 from .structuredOutput import ClassificationAgentOutput, NoCodingAgentOutput, SoftwareAgentOutput, StrategyAgentOutput,RephraseOutput, ExtractKeywordOutput
-from prompts.mainAgentPrompt import CLASSIFY_INTENT_NEW, ANSWER_PROMPT
-from prompts.softwareEngineeringPrompt import SOFTWARE_AGENT_NEW, SOFTWARE_AGENT_RETRY_NEW
-from databases.elasticsearch_db import ElasticSearchDB
-from postqrl.log_db import LoggerDB
+from ..prompts.mainAgentPrompt import CLASSIFY_INTENT_NEW, ANSWER_PROMPT
+from ..prompts.softwareEngineeringPrompt import SOFTWARE_AGENT_NEW, SOFTWARE_AGENT_RETRY_NEW
+from ..databases.elasticsearch_db import ElasticSearchDB
+from ..postqrl.log_db import LoggerDB
 import torch
 from typing import Any, List
 

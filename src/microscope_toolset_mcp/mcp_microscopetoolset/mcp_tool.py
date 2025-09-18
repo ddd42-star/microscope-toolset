@@ -1,16 +1,16 @@
 from mcp.server.fastmcp import FastMCP
-from local.execute import Execute
+from ..local.execute import Execute
 
 from openai import OpenAI
-from agentsNormal.database_agent import DatabaseAgent
-from agentsNormal.software_agent import SoftwareEngeneeringAgent
-from agentsNormal.error_agent import ErrorAgent
-from agentsNormal.strategy_agent import StrategyAgent
-from agentsNormal.no_coding_agent import NoCodingAgent
-from agentsNormal.logger_agent import LoggerAgent
-from agentsNormal.classify_user_intent import ClassifyAgent
+from ..agentsNormal.database_agent import DatabaseAgent
+from ..agentsNormal.software_agent import SoftwareEngeneeringAgent
+from ..agentsNormal.error_agent import ErrorAgent
+from ..agentsNormal.strategy_agent import StrategyAgent
+from ..agentsNormal.no_coding_agent import NoCodingAgent
+from ..agentsNormal.logger_agent import LoggerAgent
+from ..agentsNormal.classify_user_intent import ClassifyAgent
 from pydantic import Field
-from local.prepare_code import prepare_code
+from ..local.prepare_code import prepare_code
 
 mcp_server = FastMCP("Toolset")
 

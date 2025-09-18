@@ -1,5 +1,5 @@
 import json
-from mcp_microscopetoolset.mcp_orchestrator import mcp_orchestrator
+from ..mcp_microscopetoolset.mcp_orchestrator import mcp_orchestrator
 
 
 class MainAgent:

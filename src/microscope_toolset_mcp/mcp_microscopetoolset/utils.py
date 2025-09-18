@@ -3,9 +3,9 @@ from dotenv import load_dotenv
 from mcp.types import Tool
 import os
 
-from agentsNormal.classify_user_intent import ClassifyAgent
-from agentsNormal.structuredOutput import ClassificationAgentOutput
-from postqrl.log_db import LoggerDB
+from ..agentsNormal.classify_user_intent import ClassifyAgent
+from ..agentsNormal.structuredOutput import ClassificationAgentOutput
+from ..postqrl.log_db import LoggerDB
 
 
 def user_message(message):

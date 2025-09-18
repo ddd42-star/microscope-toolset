@@ -1,7 +1,7 @@
 from typing import Any
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
-from local_coding.prepare_code import prepare_code
+from ..local.prepare_code import prepare_code
 
 
 
