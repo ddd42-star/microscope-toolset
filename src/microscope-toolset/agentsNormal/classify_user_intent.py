@@ -1,5 +1,4 @@
 import json
-from .base_agent import BaseAgent
 from openai import OpenAI
 from prompts.mainAgentPrompt import CLASSIFY_INTENT, CLASSIFY_INTENT_NEW
 from agentsNormal.structuredOutput import ClassificationAgentOutput

@@ -1,11 +1,9 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "microscope-toolset"
 version = "0.1.0"
 description = "Microscope Toolset for napari"
+readme = "README.md"
+requires-python = ">=3.11"
 authors = [{ name = "Dario Bassi", email = "your@email.com" }]
 dependencies = [
     "napari-plugin-engine",
@@ -13,5 +11,9 @@ dependencies = [
     # add other dependencies here
 ]
 
-[project.entry-points."napari.plugin"]
-microscope-toolset = "microscope_toolset.src.plugin_napari"
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

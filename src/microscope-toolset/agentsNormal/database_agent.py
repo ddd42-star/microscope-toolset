@@ -1,12 +1,9 @@
 import logging
 
-import chromadb
-import numpy as np
-from typing import List, Optional
+from typing import List
 
 from cmap.data.cmasher import torch
 from openai import OpenAI
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 from agentsNormal.structuredOutput import RephraseOutput, ExtractKeywordOutput
 # from contextualization_pymmcore import parsed_response

@@ -1,5 +1,4 @@
 import os
-import sys
 from openai import OpenAI
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from agentsNormal.logger_agent import LoggerAgent

@@ -1,4 +1,3 @@
-import asyncio
 import uuid
 from mcp.server.fastmcp import FastMCP
 from openai import OpenAI

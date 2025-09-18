@@ -1,8 +1,5 @@
-import napari
 from dotenv import load_dotenv
-from pymmcore_plus import CMMCorePlus
 
-from openai import OpenAI
 from mcp.types import Tool
 import os
 
