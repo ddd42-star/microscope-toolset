@@ -441,7 +441,7 @@ class DatabaseAgent(BaseAgent):
                     From the user query extract keywords to use for searching into the BM25 database
                     Extract only the key technical terms, endpoint names, methods, and parameter names
                     from the following query. 
-                    Return them as a short space-separated string, no explanations.
+                    Return them as a list of string, no explanations.
                     """
         history = [{"role": "system", "content": prompt}, {"role": "user", "content": query}]
 

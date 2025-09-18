@@ -26,3 +26,7 @@ elasticsearch
 tiktoken
 transformers
 torch
+pygame
+pillow
+scikit-image
+more-itertools

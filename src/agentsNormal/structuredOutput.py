@@ -34,8 +34,7 @@ class RephraseOutput(BaseModel):
     reformulated_query: str
 
 class ExtractKeywordOutput(BaseModel):
-    intent: str
-    message: str
+    keyword: list[str]
 
 class NoCodingAgentOutput(BaseModel):
     intent: str
