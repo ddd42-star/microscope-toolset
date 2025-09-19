@@ -1,0 +1,10 @@
+name: microscope-toolset
+contributions:
+  commands:
+    - id: napari-hello.say_hi # to change
+      title: Say hello, world! # to change
+      python_name: microscope_toolset.plugin_napari # to change
+  widgets:
+    - command: microscope_toolset.plugin_napari  # note, same as command.id above
+      display_name: Hello World
+      autogenerate: true
