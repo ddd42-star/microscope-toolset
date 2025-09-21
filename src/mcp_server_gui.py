@@ -8,7 +8,7 @@ import time
 
 import napari
 from PyQt6.QtCore import Qt, QObject, pyqtSlot, QThread, pyqtSignal
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QComboBox
 from pymmcore_plus import CMMCorePlus
 
 from src.mcp_microscopetoolset.utils import get_user_information
@@ -33,12 +33,17 @@ class MCPWorker(QObject):
     status_update = pyqtSignal(str)  # For status messages
     servers_ready = pyqtSignal()  # When both servers are ready
     servers_stopped = pyqtSignal()  # When both servers are stopped
-    def __init__(self,mmc=None):
+    def __init__(self,mmc=None, microscope_type: str = "real"):
         super().__init__()
         self._elastic_search_process: subprocess.Popen = None
         #self._fastmcp_process: subprocess.Popen = None
         # TODO maybe add viewer or mmc
         self._mmc =mmc
+        self._microscope_type = microscope_type
+
+    def set_microscope_type(self, microscope_type: str):
+        self._microscope_type = microscope_type
+        logger.info(f"Setting microscope type to {microscope_type}")
 
     @pyqtSlot()
     def run_mcp_server(self):
@@ -93,8 +98,8 @@ class MCPWorker(QObject):
         def run_fastmcp():
 
             try:
-                logger.info("Initializing agents...")
-                agents = initialize_agents(mmc=self._mmc)
+                logger.info("Initializing agents for {self._microscope_type} microscope...}")
+                agents = initialize_agents(mmc=self._mmc, microscope_type=self._microscope_type)
 
                 logger.info("Creating MCP server...")
                 mcp_server = create_mcp_server(
@@ -164,7 +169,7 @@ class MCPServer(QWidget):
         # ---GUI----
         self.setObjectName("MCPServer")
         self.resize(300, 150)
-        self.setWindowTitle("MCP Server - Microscope Toolset")
+        self.setWindowTitle("MCP Server - Microscope Toolset") # maybe change the name
 
         main_layout = QVBoxLayout(self)
 
@@ -173,6 +178,32 @@ class MCPServer(QWidget):
         label_title.setText("Microscope Toolset MCP Server")
         label_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         label_title.setStyleSheet("font-weight: bold; font-size: 14px; margin-bottom: 10px;")
+
+        # Microscope type selection
+        microscope_label = QLabel("Microscope type selection:")
+        microscope_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        microscope_label.setStyleSheet("font-size: 12px; margin-bottom: 5px;")
+
+        self.microscope_combo = QComboBox()
+        self.microscope_combo.addItems(["Select microscope type...", "Virtual Microscope", "Real Microscope"])
+        self.microscope_combo.setStyleSheet(
+            "QComboBox { "
+            "    border: 2px solid #cccccc; "
+            "    border-radius: 8px; "
+            "    padding: 8px 12px; "
+            "    font-size: 12px; "
+            "    background-color: white; "
+            "} "
+            "QComboBox::drop-down { "
+            "    border: none; "
+            "} "
+            "QComboBox::down-arrow { "
+            "    width: 12px; "
+            "    height: 12px; "
+            "}"
+        )
+        self.microscope_combo.currentTextChanged.connect(self.on_microscope_type_changed)
+
 
         # Status label
         self.status_label = QLabel()
@@ -188,6 +219,7 @@ class MCPServer(QWidget):
             "QPushButton:hover { background-color: #45a049; }"
             "QPushButton:disabled { background-color: #cccccc; color: #666666; }"
         )
+        self.start_button.setEnabled(False)
 
         # Stop button
         self.stop_button = QPushButton()
@@ -197,9 +229,12 @@ class MCPServer(QWidget):
             "QPushButton:hover { background-color: #da190b; }"
             "QPushButton:disabled { background-color: #cccccc; color: #666666; }"
         )
+        self.stop_button.setEnabled(False)
 
         # Add components to layout
         main_layout.addWidget(label_title)
+        main_layout.addWidget(microscope_label)
+        main_layout.addWidget(self.microscope_combo, alignment=Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.status_label)
         main_layout.addWidget(self.start_button, alignment=Qt.AlignmentFlag.AlignCenter)
         main_layout.addWidget(self.stop_button, alignment=Qt.AlignmentFlag.AlignCenter)
@@ -212,8 +247,9 @@ class MCPServer(QWidget):
         self.stop_button.setEnabled(False)
 
         # QThread setup
-        self.mcp_thread = QThread()
-        self.mcp_worker = MCPWorker(mmc=self.mmc)
+        self.mcp_thread = None
+        self.mcp_worker = None
+        self._current_microscope = None
         self.mcp_worker.moveToThread(self.mcp_thread)
 
         # Connect worker signals
@@ -225,20 +261,70 @@ class MCPServer(QWidget):
         self.mcp_worker.servers_ready.connect(self.on_servers_ready)
         self.mcp_worker.servers_stopped.connect(self.on_servers_stopped)
 
+    def on_microscope_change(self, text: str):
+        """Handle microscope type selection"""
+        if text == "Virtual Microscope":
+            self._current_microscope_type = "virtual"
+            self.start_button.setEnabled(True)
+            self.status_label.setText("Virtual microscope selected - Ready to start servers")
+            self.status_label.setStyleSheet(
+                "font-size: 12px; color: #2196F3; margin-bottom: 15px; padding: 5px; font-weight: bold;")
+            logger.info("Virtual microscope selected")
+
+        elif text == "Real Microscope":
+            self._current_microscope_type = "real"
+            self.start_button.setEnabled(True)
+            self.status_label.setText("Real microscope selected - Ready to start servers")
+            self.status_label.setStyleSheet(
+                "font-size: 12px; color: #4CAF50; margin-bottom: 15px; padding: 5px; font-weight: bold;")
+            logger.info("Real microscope selected")
+
+        else:
+            self._current_microscope_type = None
+            self.start_button.setEnabled(False)
+            self.stop_button.setEnabled(False)
+            self.status_label.setText("Please select a microscope type to continue")
+            self.status_label.setStyleSheet("font-size: 12px; color: #666; margin-bottom: 15px; padding: 5px;")
+
+
+
     def click_start_server(self):
         """Handle start button click"""
+        if self._current_microscope_type is None:
+            return
+
+        # Create new Worker and thread for each start
+        self.mcp_thread = QThread()
+        self.mcp_worker = MCPWorker(mmc=self.mmc, microscope_type=self._current_microscope_type)
+        self.mcp_worker.moveToThread(self.mcp_thread)
+
+        # Connect worker signal
+        self.mcp_thread.started.connect(self.mcp_worker.run_mcp_server)
+        self.mcp_thread.stop_thread.connect(self.mcp_thread.quit)
+
+        # Connect status update
+        self.mcp_worker.status_update.connect(self.update_status_label)
+        self.mcp_worker.servers_ready.connect(self.on_servers_ready)
+        self.mcp_worker.servers_stopped.connect(self.on_servers_stopped)
+
+        # Update UI
         self.start_button.setEnabled(False)
-        self.stop_button.setEnabled(False)  # Disable until servers are ready
-        self.status_label.setText("Starting servers...")
+        self.stop_button.setEnabled(False)
+        self.microscope_combo.setEnabled(False)
+        self.status_label.setText(f"Starting servers for {self._current_microscope_type} microscope...")
+
         self.mcp_thread.start()
 
     def click_stop_server(self):
         """Handle stop button click"""
+        if self.mcp_thread is None:
+            return
         self.stop_button.setEnabled(False)
         self.start_button.setEnabled(False)
         self.status_label.setText("Stopping servers...")
         self.mcp_worker.stop_mcp_server()
-        self.mcp_thread.quit()
+        if self.mcp_thread:
+            self.mcp_thread.quit()
 
     @pyqtSlot(str)
     def update_status_label(self, message):
@@ -255,6 +341,9 @@ class MCPServer(QWidget):
         elif "loading" in message.lower() or "starting" in message.lower() or "stopping" in message.lower() or "waiting" in message.lower():
             self.status_label.setStyleSheet(
                 "font-size: 12px; color: #FF9800; margin-bottom: 15px; padding: 5px; font-weight: bold;")
+        elif "virtual" in message.lower():
+            self.status_label.setStyleSheet(
+                "font-size: 12px; color: #2196F3; margin-bottom: 15px; padding: 5px; font-weight: bold;")
         else:
             self.status_label.setStyleSheet("font-size: 12px; color: #666; margin-bottom: 15px; padding: 5px;")
 
@@ -269,9 +358,17 @@ class MCPServer(QWidget):
         """Called when both servers are stopped"""
         self.start_button.setEnabled(True)
         self.stop_button.setEnabled(False)
-        self.status_label.setText("Ready to start servers")
+        self.microscope_combo.setEnabled(True)
 
-    def closeEvent(self, event):
+        if self._current_microscope_type == "virtual":
+            self.status_label.setText("Virtual microscope - Ready to start servers")
+            self.status_label.setStyleSheet("font-size: 12px; color: #2196F3; margin-bottom: 15px; padding: 5px;")
+        else:
+            self.status_label.setText("Real microscope - Ready to start servers")
+            self.status_label.setStyleSheet("font-size: 12px; color: #4CAF50; margin-bottom: 15px; padding: 5px;")
+
+
+def closeEvent(self, event):
         """Handle window close event"""
         self.hide()
         event.ignore()

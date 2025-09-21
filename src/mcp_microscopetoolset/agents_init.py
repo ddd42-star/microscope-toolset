@@ -28,7 +28,7 @@ fh.setFormatter(logging.Formatter(
 logger.addHandler(fh)
 
 
-def initialize_agents(mmc=None):
+def initialize_agents(mmc=None, microscope_type: str = "real"):
     # Initialize the microscope session object
     logger.info("Initializing Microscope Session")
     microscope_session_object = MicroscopeSession()
@@ -40,9 +40,16 @@ def initialize_agents(mmc=None):
     logger.info("Getting User Information...")
     system_user_information = get_user_information()
     logger.info("System User Information: {}".format(system_user_information))
+    # Determine configuration file based on executor
+    if microscope_type == "virtual":
+        cfg_file = None
+        logger.info("Initializing UniCore...")
+    else:
+        cfg_file = system_user_information['cfg_file']
+        logger.info(f"Initializing real microscope with config: {cfg_file}")
     # start executor and tracking of the microscope status
     logger.info("Initializing Executor...")
-    executor = Execute(system_user_information['cfg_file'], mmc=mmc)
+    executor = Execute(filename=cfg_file, mmc=mmc, microscope_type=microscope_type)
     logger.info("Executor Initialized")
     logger.info("Initializing Microscope Status...")
     microscope_status = MicroscopeStatus(executor=executor)
