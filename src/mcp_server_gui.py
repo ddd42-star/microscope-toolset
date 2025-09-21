@@ -1,15 +1,25 @@
+import os
 import subprocess
 import sys
 import logging
+import threading
+import signal
+import time
+
+import napari
 from PyQt6.QtCore import Qt, QObject, pyqtSlot, QThread, pyqtSignal
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel
+from pymmcore_plus import CMMCorePlus
+
 from src.mcp_microscopetoolset.utils import get_user_information
-from src.start_subprocess.servers import _start_server,_stop_server, wait_for_es
+from src.start_subprocess.servers import _start_server, wait_for_es
+from src.mcp_microscopetoolset.server_setup import create_mcp_server, run_server
+from src.mcp_microscopetoolset.agents_init import initialize_agents
 
 #  logger
 logger = logging.getLogger("MCPServer")
 logger.setLevel(logging.INFO)
-fh = logging.FileHandler("mcp_subprocess.log", encoding="utf-8")
+fh = logging.FileHandler("microscope_toolset.log", encoding="utf-8")
 fh.setFormatter(logging.Formatter(
     "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
@@ -23,10 +33,12 @@ class MCPWorker(QObject):
     status_update = pyqtSignal(str)  # For status messages
     servers_ready = pyqtSignal()  # When both servers are ready
     servers_stopped = pyqtSignal()  # When both servers are stopped
-    def __init__(self):
+    def __init__(self,mmc=None):
         super().__init__()
         self._elastic_search_process: subprocess.Popen = None
-        self._fastmcp_process: subprocess.Popen = None
+        #self._fastmcp_process: subprocess.Popen = None
+        # TODO maybe add viewer or mmc
+        self._mmc =mmc
 
     @pyqtSlot()
     def run_mcp_server(self):
@@ -47,7 +59,6 @@ class MCPWorker(QObject):
             logger.info(f"Launching Elasticsearch: {exe}")
             self._elastic_search_process = _start_server([exe, "-d", "-p", "pid"])
             logger.info(f"Elasticsearch server started with PID={self._elastic_search_process.pid}")
-
             # Wait until server has started and ping with Elasticsearch Client
             self.status_update.emit("Waiting for Elasticsearch to be ready...")
             try:
@@ -61,8 +72,9 @@ class MCPWorker(QObject):
 
             # Start FastMCP server
             self.status_update.emit("Loading FastMCP server...")
-            self._fastmcp_process = _start_server([sys.executable, "-m", "src.start_subprocess.fastmcp_server_script"])
-            logger.info(f"FastMCP server started with PID={self._fastmcp_process.pid}")
+            #self._fastmcp_process = _start_server([sys.executable, "-m", "src.start_subprocess.fastmcp_server_script"])
+            #logger.info(f"FastMCP server started with PID={self._fastmcp_process.pid}")
+            self._start_fastmcp_in_process()
 
             # Both servers are ready
             logger.info("Both processes started successfully")
@@ -75,6 +87,35 @@ class MCPWorker(QObject):
         finally:
             self.stop_thread.emit()
 
+    def _start_fastmcp_in_process(self):
+        """Start FastMCP server in the same process but different thread"""
+
+        def run_fastmcp():
+
+            try:
+                logger.info("Initializing agents...")
+                agents = initialize_agents(mmc=self._mmc)
+
+                logger.info("Creating MCP server...")
+                mcp_server = create_mcp_server(
+                    database_agent=agents["database_agent"],
+                    microscope_status=agents["microscope_status"],
+                    no_coding_agent=agents["no_coding_agent"],
+                    executor=agents["executor"],
+                    logger_agent=agents["logger_agent"]
+                )
+
+                # Run the server
+                logger.info("Starting FastMCP server...")
+                run_server(mcp_server)
+
+            except Exception as e:
+                logger.exception(f"FastMCP error: {e}")
+
+        self._fastmcp_thread = threading.Thread(target=run_fastmcp, daemon=True)
+        self._fastmcp_thread.start()
+
+
     @pyqtSlot()
     def stop_mcp_server(self):
         """
@@ -82,27 +123,27 @@ class MCPWorker(QObject):
         """
         self.status_update.emit("Stopping servers...")
 
-        # Check if processes exist
-        if self._elastic_search_process is None and self._fastmcp_process is None:
-            self.status_update.emit("No servers to stop")
-            self.servers_stopped.emit()
-            return
-
         try:
-            # Stop FastMCP first
-            if self._fastmcp_process is not None:
-                self.status_update.emit("Stopping FastMCP server...")
-                _stop_server(self._fastmcp_process)
-                logger.info("Stopped FastMCP")
-                self._fastmcp_process = None
-
-            # Stop Elasticsearch
-            if self._elastic_search_process is not None:
+            if sys.platform.startswith("win"):
+                # Stop Elasticsearch
                 self.status_update.emit("Stopping Elasticsearch server...")
-                _stop_server(self._elastic_search_process)
+                subprocess.call(["taskkill", "/F", "/IM", "java.exe"])
                 logger.info("Stopped Elasticsearch")
-                self._elastic_search_process = None
 
+            else:
+                self.status_update.emit("Stopping Elasticsearch server...")
+                #os.kill(self._elastic_search_process.pid, signal.SIGTERM)
+                logger.info("Stopped Elasticsearch")
+                os.killpg(os.getpgid(self._elastic_search_process.pid), signal.SIGTERM)
+
+            time.sleep(5)
+
+            # shutdown all process
+            # TODO:
+            #  For the moment we don't handle the running of the server so we don't have access the the server instance of uvicorn
+            #  because of this we just stop all process
+            # Stop FastMCP
+            os.kill(os.getpid(), signal.SIGTERM)
             logger.info("All servers stopped")
             self.status_update.emit("All servers stopped")
             self.servers_stopped.emit()
@@ -117,8 +158,8 @@ class MCPServer(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.mmc = None
-        self.viewer = None
+        self.mmc = CMMCorePlus.instance()
+        self.viewer = napari.current_viewer()
 
         # ---GUI----
         self.setObjectName("MCPServer")
@@ -172,7 +213,7 @@ class MCPServer(QWidget):
 
         # QThread setup
         self.mcp_thread = QThread()
-        self.mcp_worker = MCPWorker()
+        self.mcp_worker = MCPWorker(mmc=self.mmc)
         self.mcp_worker.moveToThread(self.mcp_thread)
 
         # Connect worker signals

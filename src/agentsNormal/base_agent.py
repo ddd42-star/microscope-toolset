@@ -1,5 +1,19 @@
 import json
 from openai import OpenAI
+import  logging
+import sys
+
+#  logger
+logger = logging.getLogger("Base Agent")
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler(sys.stdout))
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler("microscope_toolset.log", encoding="utf-8")
+fh.setFormatter(logging.Formatter(
+    "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+))
+logger.addHandler(fh)
 
 class BaseAgent:
 
@@ -20,7 +34,8 @@ class BaseAgent:
 
             # parse json object
             parsed_response = json.loads(response.output_text)
-
+            logger.info(parsed_response)
             return parsed_response
         except Exception as e:
+            logger.error({"intent": "error", "message": f"{error_string}: {e}"})
             return {"intent": "error", "message": f"{error_string}: {e}"}

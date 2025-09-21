@@ -5,7 +5,6 @@ import ast
 class MicroscopeStatus:
 
     def __init__(self, executor: Execute):
-
         self.executor = executor
 
 

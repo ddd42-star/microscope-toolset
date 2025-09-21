@@ -2,6 +2,20 @@ from typing import Any
 from mcp.server.fastmcp import FastMCP
 from pydantic import Field
 from src.local.prepare_code import prepare_code
+import logging
+import sys
+
+#  logger
+logger = logging.getLogger("Server Setup")
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler(sys.stdout))
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler("microscope_toolset.log", encoding="utf-8")
+fh.setFormatter(logging.Formatter(
+    "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+))
+logger.addHandler(fh)
 
 
 
@@ -17,7 +31,8 @@ def create_mcp_server(
         name="Microscope Toolset",
         host="127.0.0.1",
         port=5500,
-        streamable_http_path="/mcp"
+        streamable_http_path="/mcp",
+        log_level="INFO"
     )
 
     @mcp.tool(
@@ -103,7 +118,12 @@ def create_mcp_server(
             "current_properties_status": microscope_status_response,
             "configuration_groups_settings": config_settings
         }
-
+        logger.info({
+            "tool": "get_microscope_settings",
+            "properties_schema": microscope_properties_response,
+            "current_properties_status": microscope_status_response,
+            "configuration_groups_settings": config_settings
+        })
         return microscope_status_settings
 
     # @mcp.tool(
@@ -153,10 +173,14 @@ def create_mcp_server(
         }
         # final output
         output = no_coding_agent.no_coding_answer(data_dict)
-
+        logger.info({
+            "tool": "answer_no_coding_query",
+            "is_final_output": True,
+            "output": output["message"]
+        })
         return {
             "is_final_output": True,
-            output: output["message"]
+            "output": output["message"]
         } # check which type of answer is given
 
     # @mcp.tool(
@@ -283,6 +307,13 @@ def create_mcp_server(
             prepare_code_to_run = prepare_code(code)#code_string.strip("```")
             execution_output = executor.run_code(prepare_code_to_run)
             if "Error" in execution_output:
+                logger.error({
+                    "tool": "execute_python_code",
+                    "user_query": user_query,
+                    "strategy": strategy,
+                    "code": code,
+                    "error": execution_output
+                })
                 return {
                     "user_query": user_query,
                     "strategy": strategy,
@@ -290,6 +321,14 @@ def create_mcp_server(
                     "error": execution_output
                 }
             else:
+                logger.info({
+                    "tool": "execute_python_code",
+                    "user_query": user_query,
+                    "strategy": strategy,
+                    "code": code,
+                    "is_final_output": True,
+                    "output": execution_output
+                })
                 return {
                     "user_query": user_query,
                     "strategy": strategy,
@@ -298,6 +337,13 @@ def create_mcp_server(
                     "output": execution_output
                 }
         except Exception as e:
+            logger.error({
+                "tool": "execute_python_code",
+                "user_query": user_query,
+                "strategy": strategy,
+                "code": code,
+                "error": f"Code preparation/execution failed: {e}"
+            })
             return {
                 "user_query": user_query,
                 "strategy": strategy,
@@ -375,12 +421,21 @@ def create_mcp_server(
         # show the final output
         if data_dict['is_final_output']:
             final_output = data_dict['output']
+            logger.info({
+                "tool": "show_result",
+                "output": final_output
+            })
             return final_output
         else:
             message = "The final output was not reach yet!"
+            logger.info({
+                "tool": "show_result",
+                "is_final_output": False,
+                "message": message
+            })
             return {
-                is_final_output: False,
-                message: message
+                "is_final_output": False,
+                "message": message
             }
 
 
@@ -391,4 +446,5 @@ def run_server(mcp: FastMCP) -> None:
     """
     Start the MCP Microscope Toolset server.
     """
+    logger.info("MCP Microscope Toolset server started using streamable-http.")
     mcp.run(transport="streamable-http")

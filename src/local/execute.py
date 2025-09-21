@@ -3,86 +3,121 @@ import importlib.util
 import subprocess
 import sys
 from io import StringIO
-from contextlib import redirect_stdout
+from contextlib import redirect_stdout,redirect_stderr
+
+from pymmcore_plus import CMMCorePlus
+import logging
+
+#  logger
+logger = logging.getLogger("Execute")
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler("microscope_toolset.log", encoding="utf-8")
+fh.setFormatter(logging.Formatter(
+    "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+))
+logger.addHandler(fh)
 
 
 class Execute:
 
-    def __init__(self, filename: str):
+    def __init__(self, filename: str, mmc = None):
         self.namespace = {}
-        exec(
-            f"from pymmcore_plus import CMMCorePlus\nmmc = CMMCorePlus().instance()\nmmc.loadSystemConfiguration(fileName='{filename}')",
-            self.namespace)  # add fist line of code
-        # instantiate the object
-        #self.namespace["mmc"] = self.namespace["The class"]()
-        # probably not necessary
+        if mmc is not None:
+            self.namespace["mmc"] = mmc
+            logger.info("mmc instance is loaded into the namespace")
+            # Load config file
+            mmc.loadSystemConfiguration(fileName=filename)
+            logger.info("configuration file of the microscope was loaded")
+        else:
+            self.namespace["mmc"] = CMMCorePlus().instance()
+            exec(f"mmc.loadSystemConfiguration(fileName='{filename}')", self.namespace)
 
-    def install_library(self, module: str):
-        """Install missing packages using pip"""
+
+    def _install_library(self, module: str):
+        """Install missing packages using pip with better error handling"""
         try:
-            # loader
-            loader = importlib.util.find_spec(module)
-            if loader is not None:
+            # First check if module is already available
+            spec = importlib.util.find_spec(module)
+            if spec is not None:
                 return True
-            # install the packages
-            subprocess.check_call([sys.executable, "-m", "pip", "install", module])
-        except subprocess.CalledProcessError:
-            return False
 
-        return True
+            logger.info(f"Installing package: {module}")
 
-    def test_code(self, code: str):
+            # Install the package
+            result = subprocess.run([
+                sys.executable, "-m", "pip", "install", module
+            ], capture_output=True, text=True, timeout=120)  # Add timeout
 
-        while True:
-
-            try:
-                exec(code, self.namespace)
-                print("Code executed successfully")
+            if result.returncode == 0:
+                logger.info(f"Successfully installed {module}")
                 return True
-            except ModuleNotFoundError as e:  # case 1, module not imported
-                module_name = str(e).strip("'")[1]  # to check, extract module name
-                self.namespace[module_name] = importlib.import_module(module_name)
-            except ImportError as e:  # case 2, module not found, it must be installed (this only after checking if all the modules are presents.)
-                import_module = str(e).strip("'")[1]  # extract module name
-                if self.install_library(import_module):
-                    continue
-                else:
-                    print("Could not install the module")
-                    return False
-            except Exception as e:
-                print(f"{e}")
-                print("Stop execution")
+            else:
+                logger.error(f"Failed to install {module}: {result.stderr}")
                 return False
 
+        except subprocess.TimeoutExpired:
+            logger.error(f"Timeout installing {module}")
+            return False
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Installation failed for {module}: {e}")
+            return False
+        except Exception as e:
+            logger.error(f"Unexpected error installing {module}: {e}")
+            return False
+
     def run_code(self, code: str):
-        #print(code)
-        is_run = False
+        """Execute code with better error handling and output capture"""
+        max_attempts = 3  # Prevent infinite loops
+        attempts = 0
         read_output = ""
-        while not is_run:
+
+        while attempts < max_attempts:
+            attempts += 1
             try:
                 f = StringIO()
                 with redirect_stdout(f):
-                    exec(code, self.namespace)
+                    # Also capture stderr
+                    err_f = StringIO()
+                    with redirect_stderr(err_f):
+                        exec(code, self.namespace)
 
                 read_output = f.getvalue().strip()
-                print("Code executed successfully")
-                is_run = True
-            except ModuleNotFoundError as e:  # case 1, module not imported
-                module_name = str(e).strip("'")[1]  # to check, extract module name
-                print(module_name)
-                self.namespace[module_name] = importlib.import_module(module_name)
-            except ImportError as e:  # case 2, module not found, it must be installed (this only after checking if all the modules are presents.)
-                import_module = str(e).strip("'")[1]  # extract module name
-                if self.install_library(import_module):
+                stderr_output = err_f.getvalue().strip()
+
+                if stderr_output:
+                    read_output += f"\nWarnings/Errors: {stderr_output}"
+
+                logger.info("Code executed successfully")
+                return read_output if read_output else "Code executed successfully (no output)"
+
+            except ModuleNotFoundError as e:
+                module_name = str(e).split("'")[1] if "'" in str(e) else str(e)
+                logger.info(f"Attempting to import missing module: {module_name}")
+
+                try:
+                    self.namespace[module_name] = importlib.import_module(module_name)
+                    continue  # Retry execution
+                except ImportError:
+                    # Module not available, try to install
+                    if self._install_library(module_name):
+                        self.namespace[module_name] = importlib.import_module(module_name)
+                        continue
+                    else:
+                        return f"Could not install required module: {module_name}"
+
+            except ImportError as e:
+                import_module = str(e).split("'")[1] if "'" in str(e) else str(e)
+                logger.info(f"Attempting to install missing package: {import_module}")
+
+                if self._install_library(import_module):
                     continue
                 else:
-                    print(f"Could not install the module {import_module}")
-                    read_output = f"Could not install the module {import_module}"
-                    break
+                    return f"Could not install the module {import_module}"
+
             except Exception as e:
-                print(f"{e}")
-                print("Stop execution, send back the code to the agent!")
-                read_output = repr(e)
-                is_run = True
-        
-        return read_output
+                error_msg = f"Execution error: {type(e).__name__}: {str(e)}"
+                logger.error(error_msg)
+                return error_msg
+
+        return f"Code execution failed after {max_attempts} attempts"

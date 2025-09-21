@@ -8,6 +8,20 @@ from src.databases.elasticsearch_db import ElasticSearchDB
 from src.postqrl.log_db import LoggerDB
 import torch
 from typing import Any, List
+import logging
+import sys
+
+#  logger
+logger = logging.getLogger("Specialized Agent")
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler(sys.stdout))
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler("microscope_toolset.log", encoding="utf-8")
+fh.setFormatter(logging.Formatter(
+    "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+))
+logger.addHandler(fh)
 
 
 class ClassifyAgent(BaseAgent):
@@ -355,7 +369,12 @@ class DatabaseAgent(BaseAgent):
                 "reformulated_query": reformulated_query,
                 "context": "No relevant information were retrieved"
             }
-
+        logger.info({
+            "tool": "pymmcore_api_database",
+            "user_query": query,
+            "reformulated_query": reformulated_query,
+            "context": list_api_docs_result
+        })
         return {
             "user_query": query,
             "reformulated_query": reformulated_query,
@@ -373,7 +392,12 @@ class DatabaseAgent(BaseAgent):
                 "reformulated_query": reformulated_query,
                 "context": "No relevant information were retrieved"
             }
-
+        logger.info({
+            "tool": "micromanager_device_database",
+            "user_query": query,
+            "reformulated_query": reformulated_query,
+            "context": list_devices_micromanager_result
+        })
         return {
             "user_query": query,
             "reformulated_query": reformulated_query,
@@ -391,7 +415,12 @@ class DatabaseAgent(BaseAgent):
                 "reformulated_query": reformulated_query,
                 "context": "No relevant information were retrieved"
             }
-
+        logger.info({
+            "tool": "pdfs_publication_database",
+            "user_query": query,
+            "reformulated_query": reformulated_query,
+            "context": list_pdfs_result
+        })
         return {
             "user_query": query,
             "reformulated_query": reformulated_query,

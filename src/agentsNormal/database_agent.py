@@ -262,7 +262,6 @@ class DatabaseAgent:
             # parsed_response = self.rephrase_parse_response(response.choices[0].message.content)
             # transform into a json object
             parsed_response = json.loads(response.output_text)
-            print(parsed_response)
 
             return parsed_response
         except Exception as e:
@@ -290,7 +289,6 @@ class DatabaseAgent:
             # parsed_response = self.extract_keyword_response(response.choices[0].message.content)
             # transform into a json object
             parsed_response = json.loads(response.output_text)
-
             return parsed_response  # return a string -> transform it in a list using split
 
         except Exception as e:

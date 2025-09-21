@@ -27,7 +27,17 @@ def _stop_server(proc):
 
     if sys.platform.startswith("win"):
         #proc.send_signal(signal.CTRL_BREAK_EVENT)
-        proc.terminate()
+        #proc.terminate()
+        #os.kill(proc.pid, signal.CTRL_BREAK_EVENT)
+        #subprocess.call(['taskkill', '/F', '/T', '/PID', str(proc.pid)])
+        import psutil
+        p = psutil.Process(proc.pid)
+        print(p)
+        for child in p.children(recursive=True):
+            if "java" in child.name().lower():
+                es_proc = child
+                break
+        subprocess.call(['taskkill', '/F', '/T', '/PID', str(es_proc.pid)])
 
     else:
         os.killpg(os.getpgid(proc.pid), signal.SIGTERM)
@@ -46,4 +56,6 @@ def wait_for_es(max_wait=60, interval=1):
         time.sleep(interval)
         waited += interval
         logger.info(f"Waiting for ES: {waited}/{max_wait}s")
+
+    logger.error("Elasticsearch did not become ready in time")
     raise RuntimeError("Elasticsearch did not become ready in time")
