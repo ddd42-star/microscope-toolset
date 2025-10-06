@@ -3,6 +3,7 @@ from src.mcp_server_gui import MCPServer
 import os
 import logging
 import sys
+import subprocess
 
 #  logger
 logger = logging.getLogger("Napari-MicroscopeTool")
@@ -25,11 +26,15 @@ if __name__ == "__main__":
         logger.info(viewer.window)
         logger.info("start mcp server widget")
         main_window = MCPServer()
-        viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
+        #viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
         viewer.window.add_dock_widget(widget=main_window, name="MCP Server", area="top", allowed_areas=["right"])
 
         # start loop
         napari.run()
+
+        # add to kill elasticsearch progress in case user close the windows from the close tab
+        subprocess.call(["taskkill", "/F", "/IM", "java.exe"])
+        logger.info("Stopped Elasticsearch! See you next time!")
 
         logger.info("Napari finished")
     except Exception as e:

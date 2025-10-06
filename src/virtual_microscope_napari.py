@@ -1,11 +1,11 @@
-from .virtual_microscope.pymmcore_camera_sim import SimCameraDevice
-from .virtual_microscope.pymmcore_slm_sim import SimSLMDevice
-from .virtual_microscope.pymmcore_stage_sim import SimStageDevice
-from .virtual_microscope.pymmcore_state_device_sim import SimStateDevice
-from .virtual_microscope.pymmcore_shutter_sim import SimShutterDevice
+from src.virtual_microscope.pymmcore_camera_sim import SimCameraDevice
+from src.virtual_microscope.pymmcore_slm_sim import SimSLMDevice
+from src.virtual_microscope.pymmcore_stage_sim import SimStageDevice
+from src.virtual_microscope.pymmcore_state_device_sim import SimStateDevice
+from src.virtual_microscope.pymmcore_shutter_sim import SimShutterDevice
 import napari
 from pymmcore_plus.experimental.unicore import UniMMCore
-from .virtual_microscope.microscope_sim import MicroscopeSim
+from src.virtual_microscope.microscope_sim import MicroscopeSim
 
 
 if __name__ == "__main__":
@@ -47,6 +47,17 @@ if __name__ == "__main__":
         core.setCameraDevice("Camera")
         core.setXYStageDevice("XYStage")
         core.setShutterDevice("Shutter")
+
+        # define Group configuration
+        core.defineConfigGroup("Test Channel")
+        # define configuration
+        core.defineConfig("Test Channel", "orange-channel", "LED", "Label", "ORANGE")
+        core.defineConfig("Test Channel", "orange-channel", "Filter Wheel", "Label", "mScarlet3(569/582)")
+        core.defineConfig("Test Channel", "red-channel", "LED", "Label", "RED")
+        core.defineConfig("Test Channel", "red-channel", "Filter Wheel", "Label", "miRFP670(642/670)")
+
+        print(core.getLoadedDevices())
+        print(core.getProperty("LED", "Label"))
         viewer = napari.Viewer()
 
         viewer.window.add_plugin_dock_widget(plugin_name='napari-micromanager')

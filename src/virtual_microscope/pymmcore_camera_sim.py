@@ -12,6 +12,7 @@ from .microscope_sim import MicroscopeSim
 import pygame
 from pymmcore_plus.experimental.unicore import pymm_property
 from PIL import ImageEnhance
+from pymmcore_plus import CMMCorePlus
 
 class SimCameraDevice(CameraDevice):
     """
@@ -47,10 +48,11 @@ class SimCameraDevice(CameraDevice):
     def shape(self) -> tuple[int, int] | tuple[int, int, int]:
         # Use the simulation's dimensions
         # change it with the viewpoint
-        if self._sim.n_channel == 2:
-            return self._sim.viewport_height, self._sim.viewport_width
-        else:
-            return self._sim.viewport_height, self._sim.viewport_width, self._sim.n_channel
+        # if self._sim.n_channel == 2:
+        #     return self._sim.viewport_height, self._sim.viewport_width
+        # else:
+        #     return self._sim.viewport_height, self._sim.viewport_width, self._sim.n_channel
+        return self._sim.viewport_height, self._sim.viewport_width
 
     def dtype(self) -> DTypeLike:
         return np.uint8

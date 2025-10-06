@@ -1,5 +1,7 @@
 import os
 from openai import OpenAI
+from pymmcore_plus import CMMCorePlus
+from pymmcore_plus.experimental.unicore import UniMMCore
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from src.agentsNormal.logger_agent import LoggerAgent
 from src.agentsNormal.classify_user_intent import ClassifyAgent
@@ -28,7 +30,7 @@ fh.setFormatter(logging.Formatter(
 logger.addHandler(fh)
 
 
-def initialize_agents(mmc=None, microscope_type: str = "real"):
+def initialize_agents(mmc: CMMCorePlus | UniMMCore, microscope_type: str = "real"):
     # Initialize the microscope session object
     logger.info("Initializing Microscope Session")
     microscope_session_object = MicroscopeSession()

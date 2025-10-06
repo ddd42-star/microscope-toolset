@@ -4,6 +4,9 @@ import subprocess
 import sys
 from io import StringIO
 from contextlib import redirect_stdout,redirect_stderr
+
+from pymmcore_plus.experimental.unicore import UniMMCore
+
 from src.virtual_microscope.initialize_virtual_microscope import initialize_virtual_microscope
 
 from pymmcore_plus import CMMCorePlus
@@ -22,22 +25,28 @@ logger.addHandler(fh)
 
 class Execute:
 
-    def __init__(self, filename: str, mmc = None, microscope_type: str = "real"):
+    def __init__(self, filename: str, mmc: CMMCorePlus | UniMMCore = None, microscope_type: str = "real"):
         self.namespace = {}
-        if mmc is not None:
-            self.namespace["mmc"] = mmc
-            logger.info("mmc instance is loaded into the namespace")
-            if microscope_type == "real":
+        #self.namespace["mmc"] = mmc
+        #logger.info("mmc instance is loaded into the namespace")
+        if microscope_type == "real":
+            if mmc is not None:
+                self.namespace["mmc"] = mmc
+                logger.info("mmc instance is loaded into the namespace")
                 # Load config file
                 mmc.loadSystemConfiguration(fileName=filename)
                 logger.info("configuration file of the microscope was loaded")
-            elif microscope_type == "virtual":
-                logger.info("Initializing virtual microscope...")
-                initialize_virtual_microscope()
+            else:
+                self.namespace["mmc"] = CMMCorePlus().instance()
+                exec(f"mmc.loadSystemConfiguration(fileName='{filename}')", self.namespace)
+        elif microscope_type == "virtual":
+            logger.info("Initializing virtual microscope...")
+            self.namespace["mmc"] = mmc
+            initialize_virtual_microscope(core=mmc)
 
-        else:
-            self.namespace["mmc"] = CMMCorePlus().instance()
-            exec(f"mmc.loadSystemConfiguration(fileName='{filename}')", self.namespace)
+            logger.info("mmc instance is loaded into the namespace")
+
+
 
         logger.info(f"Execute initialized for {microscope_type} microscope")
 

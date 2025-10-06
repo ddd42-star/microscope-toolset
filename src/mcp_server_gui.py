@@ -6,10 +6,13 @@ import threading
 import signal
 import time
 
+from typing import Any
+
 import napari
 from PyQt6.QtCore import Qt, QObject, pyqtSlot, QThread, pyqtSignal
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QComboBox
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QComboBox, QMainWindow
 from pymmcore_plus import CMMCorePlus
+from pymmcore_plus.experimental.unicore import UniMMCore
 
 from src.mcp_microscopetoolset.utils import get_user_information
 from src.start_subprocess.servers import _start_server, wait_for_es
@@ -33,12 +36,13 @@ class MCPWorker(QObject):
     status_update = pyqtSignal(str)  # For status messages
     servers_ready = pyqtSignal()  # When both servers are ready
     servers_stopped = pyqtSignal()  # When both servers are stopped
-    def __init__(self,mmc=None, microscope_type: str = "real"):
+    add_napari_micromanager = pyqtSignal()  # Signal to add napari-micromanager
+    def __init__(self,viewer: Any, microscope_type: str = "real"):
         super().__init__()
         self._elastic_search_process: subprocess.Popen = None
         #self._fastmcp_process: subprocess.Popen = None
-        # TODO maybe add viewer or mmc
-        self._mmc =mmc
+        self._mmc: UniMMCore | CMMCorePlus = None
+        self._viewer = viewer
         self._microscope_type = microscope_type
 
     def set_microscope_type(self, microscope_type: str):
@@ -80,6 +84,8 @@ class MCPWorker(QObject):
             #self._fastmcp_process = _start_server([sys.executable, "-m", "src.start_subprocess.fastmcp_server_script"])
             #logger.info(f"FastMCP server started with PID={self._fastmcp_process.pid}")
             self._start_fastmcp_in_process()
+            # New: start the napari-micromanager plugin
+            self.add_napari_micromanager.emit()
 
             # Both servers are ready
             logger.info("Both processes started successfully")
@@ -98,8 +104,15 @@ class MCPWorker(QObject):
         def run_fastmcp():
 
             try:
-                logger.info("Initializing agents for {self._microscope_type} microscope...}")
-                agents = initialize_agents(mmc=self._mmc, microscope_type=self._microscope_type)
+                logger.info("Initializing agents...}")
+                if self._microscope_type == "real":
+                    logger.info("Real Microscope...")
+                    self._mmc = CMMCorePlus().instance() # get global singleton
+                    agents = initialize_agents(mmc=self._mmc, microscope_type=self._microscope_type)
+                else:
+                    logger.info("Virtual Microscope...")
+                    self._mmc = UniMMCore()
+                    agents = initialize_agents(mmc=self._mmc, microscope_type=self._microscope_type)
 
                 logger.info("Creating MCP server...")
                 mcp_server = create_mcp_server(
@@ -163,8 +176,10 @@ class MCPServer(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.mmc = CMMCorePlus.instance()
+        self.mmc = None
         self.viewer = napari.current_viewer()
+
+        print(napari.current_viewer())
 
         # ---GUI----
         self.setObjectName("MCPServer")
@@ -188,11 +203,9 @@ class MCPServer(QWidget):
         self.microscope_combo.addItems(["Select microscope type...", "Virtual Microscope", "Real Microscope"])
         self.microscope_combo.setStyleSheet(
             "QComboBox { "
-            "    border: 2px solid #cccccc; "
             "    border-radius: 8px; "
             "    padding: 8px 12px; "
             "    font-size: 12px; "
-            "    background-color: white; "
             "} "
             "QComboBox::drop-down { "
             "    border: none; "
@@ -202,6 +215,8 @@ class MCPServer(QWidget):
             "    height: 12px; "
             "}"
         )
+        # "    background-color: white; "
+        #  "    border: 2px solid #cccccc; "
         self.microscope_combo.currentTextChanged.connect(self.on_microscope_type_changed)
 
 
@@ -249,19 +264,19 @@ class MCPServer(QWidget):
         # QThread setup
         self.mcp_thread = None
         self.mcp_worker = None
-        self._current_microscope = None
-        self.mcp_worker.moveToThread(self.mcp_thread)
+        self._current_microscope_type = None
+        #self.mcp_worker.moveToThread(self.mcp_thread)
 
         # Connect worker signals
-        self.mcp_thread.started.connect(self.mcp_worker.run_mcp_server)
-        self.mcp_worker.stop_thread.connect(self.mcp_thread.quit)
+        #self.mcp_thread.started.connect(self.mcp_worker.run_mcp_server)
+        #self.mcp_worker.stop_thread.connect(self.mcp_thread.quit)
 
         # Connect status update signals
-        self.mcp_worker.status_update.connect(self.update_status_label)
-        self.mcp_worker.servers_ready.connect(self.on_servers_ready)
-        self.mcp_worker.servers_stopped.connect(self.on_servers_stopped)
+        #self.mcp_worker.status_update.connect(self.update_status_label)
+        #self.mcp_worker.servers_ready.connect(self.on_servers_ready)
+        #self.mcp_worker.servers_stopped.connect(self.on_servers_stopped)
 
-    def on_microscope_change(self, text: str):
+    def on_microscope_type_changed(self, text: str):
         """Handle microscope type selection"""
         if text == "Virtual Microscope":
             self._current_microscope_type = "virtual"
@@ -295,17 +310,19 @@ class MCPServer(QWidget):
 
         # Create new Worker and thread for each start
         self.mcp_thread = QThread()
-        self.mcp_worker = MCPWorker(mmc=self.mmc, microscope_type=self._current_microscope_type)
+        self.mcp_worker = MCPWorker(microscope_type=self._current_microscope_type, viewer=self.viewer)
         self.mcp_worker.moveToThread(self.mcp_thread)
 
         # Connect worker signal
         self.mcp_thread.started.connect(self.mcp_worker.run_mcp_server)
-        self.mcp_thread.stop_thread.connect(self.mcp_thread.quit)
+        self.mcp_worker.stop_thread.connect(self.mcp_thread.quit)
 
         # Connect status update
         self.mcp_worker.status_update.connect(self.update_status_label)
         self.mcp_worker.servers_ready.connect(self.on_servers_ready)
         self.mcp_worker.servers_stopped.connect(self.on_servers_stopped)
+
+        self.mcp_worker.add_napari_micromanager.connect(self.add_napari_micromanager_plugin)
 
         # Update UI
         self.start_button.setEnabled(False)
@@ -367,8 +384,18 @@ class MCPServer(QWidget):
             self.status_label.setText("Real microscope - Ready to start servers")
             self.status_label.setStyleSheet("font-size: 12px; color: #4CAF50; margin-bottom: 15px; padding: 5px;")
 
+    @pyqtSlot()
+    def add_napari_micromanager_plugin(self):
+        """Add a new napari micromanager plugin"""
+        try:
+            logger.info("Adding new napari micromanager plugin...")
+            self.viewer.window.add_plugin_dock_widget(plugin_name="napari-micromanager")
+            logger.info("Successfully added napari micromanager plugin")
+        except Exception as e:
+            logger.error(f"Failed to add new napari micromanager plugin: {e}")
 
-def closeEvent(self, event):
+
+    def closeEvent(self, event):
         """Handle window close event"""
         self.hide()
         event.ignore()

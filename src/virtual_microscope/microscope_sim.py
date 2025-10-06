@@ -340,7 +340,7 @@ class Cell:
             if mode == 1:
                 if self.nucleus_fluorescence > 0:
                     glow_radius = int(0.55 * self.base_r)
-                    pygame.draw.circle(surf, (255, 0, 0),
+                    pygame.draw.circle(surf, (136, 8, 8),
                                        (int(self.center[0] + ox - camera_offset[0]),
                                         int(self.center[1] + oy - camera_offset[1])), glow_radius)
                 # Finally add glow layer on top
@@ -670,11 +670,11 @@ class MicroscopeSim:
         if filter_wheel_channel_label == "mScarlet3(569/582)" and led_channel_label == "ORANGE":
             # show nucleus
             self.mode = 1
-            self._cell_layer.fill((0, 0, 0))
+            self._cell_layer.fill((235, 235, 235))
         elif filter_wheel_channel_label == "miRFP670(642/670)" and led_channel_label == "RED":
             # show membrane
             self.mode = 2
-            self._cell_layer.fill((0, 0, 0))
+            self._cell_layer.fill((235, 235, 235))
         else:
             self.mode = 0
             self._cell_layer.fill((235, 235, 235))
@@ -700,15 +700,17 @@ class MicroscopeSim:
         mult_arr = np.clip(mult_arr, 0, 255).astype(np.uint8)
 
         # depending on gray or color return array
-        if self.mode == 0:
-            arr = mult_arr[...,0].astype(np.uint8)
-            #print(np.shape(arr))
-            self.n_channel = len(np.shape(arr))
-            return arr.T
-        else:
-            self.n_channel = len(np.shape(mult_arr))
-            # swap witdh and height for the microscope
-            mult_arr = np.transpose(mult_arr, (1,0,2))
-            #print(np.shape(mult_arr))
-
-            return mult_arr.astype(np.uint8)
+        # if self.mode == 0:
+        #     arr = mult_arr[..., 0].astype(np.uint8)
+        #     # print(np.shape(arr))
+        #     self.n_channel = len(np.shape(arr))
+        #     return arr.T
+        # else:
+        #     self.n_channel = len(np.shape(mult_arr))
+        #     # swap witdh and height for the microscope
+        #     mult_arr = np.transpose(mult_arr, (1, 0, 2))
+        #     # print(np.shape(mult_arr))
+        #
+        #     return mult_arr.astype(np.uint8)
+        arr = mult_arr[..., 0].astype(np.uint8)
+        return arr.T
