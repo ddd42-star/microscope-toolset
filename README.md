@@ -36,7 +36,7 @@ There are plenty of tutorial for the installation available online, just follow 
 Insert the password for the user postgres:
 ```
 Here you need to put the password you used as a *master password*.
-Finally you will see the psql console:
+Finally, you will see the psql console:
 ```
 postgres=# ...
 ```
@@ -77,7 +77,7 @@ In the folder that you choose were to save the database, at the moment two direc
 
 Run the following command for starting the Napari GUI
 ```
-python .\src\plugin_napari.py
+python -m src.plugin_napari
 ```
 On the right there is the panel control that will start or stop the MCP Microscope Toolset server.
 
